@@ -21,6 +21,7 @@
 		ABB24E00268CDF64006FEE57 /* NanumSquareOTF_acB.otf in Resources */ = {isa = PBXBuildFile; fileRef = ABB24DFC268CDF64006FEE57 /* NanumSquareOTF_acB.otf */; };
 		ABB24E01268CDF64006FEE57 /* NanumSquareOTF_acR.otf in Resources */ = {isa = PBXBuildFile; fileRef = ABB24DFD268CDF64006FEE57 /* NanumSquareOTF_acR.otf */; };
 		ABB24E06268CE317006FEE57 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB24E05268CE317006FEE57 /* UIFont+Extension.swift */; };
+		ABB24E08268CEF0B006FEE57 /* UIColor_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB24E07268CEF0B006FEE57 /* UIColor_Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		ABB24DFC268CDF64006FEE57 /* NanumSquareOTF_acB.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareOTF_acB.otf; sourceTree = "<group>"; };
 		ABB24DFD268CDF64006FEE57 /* NanumSquareOTF_acR.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareOTF_acR.otf; sourceTree = "<group>"; };
 		ABB24E05268CE317006FEE57 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
+		ABB24E07268CEF0B006FEE57 /* UIColor_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor_Extension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				ABB24E05268CE317006FEE57 /* UIFont+Extension.swift */,
+				ABB24E07268CEF0B006FEE57 /* UIColor_Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -233,6 +236,7 @@
 				ABB24E06268CE317006FEE57 /* UIFont+Extension.swift in Sources */,
 				ABB24DF6268CD9D3006FEE57 /* HomeViewController.swift in Sources */,
 				ABB24DF4268CD9B7006FEE57 /* CardCollectionViewCell.swift in Sources */,
+				ABB24E08268CEF0B006FEE57 /* UIColor_Extension.swift in Sources */,
 				AB5AF766268A2E84001D3CD1 /* ViewController.swift in Sources */,
 				AB5AF762268A2E84001D3CD1 /* AppDelegate.swift in Sources */,
 				AB5AF764268A2E84001D3CD1 /* SceneDelegate.swift in Sources */,

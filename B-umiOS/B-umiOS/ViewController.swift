@@ -13,7 +13,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.HomeLabel.titleLabel?.font = UIFont.nanumSquareFont(type: .light, size: 26)
+        self.HomeLabel.titleLabel?.font = UIFont.nanumSquareFont(type: .bold, size: 26)
+        self.HomeLabel.tintColor = UIColor.white
+        self.HomeLabel.backgroundColor = UIColor.green3
 
         self.navigationController?.isNavigationBarHidden = true
     }
