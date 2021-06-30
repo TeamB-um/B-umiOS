@@ -16,6 +16,11 @@
 		ABB24DF4268CD9B7006FEE57 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB24DF3268CD9B7006FEE57 /* CardCollectionViewCell.swift */; };
 		ABB24DF6268CD9D3006FEE57 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB24DF5268CD9D3006FEE57 /* HomeViewController.swift */; };
 		ABB24DF8268CD9FF006FEE57 /* HomeStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABB24DF7268CD9FF006FEE57 /* HomeStoryboard.storyboard */; };
+		ABB24DFE268CDF64006FEE57 /* NanumSquareOTF_acEB.otf in Resources */ = {isa = PBXBuildFile; fileRef = ABB24DFA268CDF64006FEE57 /* NanumSquareOTF_acEB.otf */; };
+		ABB24DFF268CDF64006FEE57 /* NanumSquareOTF_acL.otf in Resources */ = {isa = PBXBuildFile; fileRef = ABB24DFB268CDF64006FEE57 /* NanumSquareOTF_acL.otf */; };
+		ABB24E00268CDF64006FEE57 /* NanumSquareOTF_acB.otf in Resources */ = {isa = PBXBuildFile; fileRef = ABB24DFC268CDF64006FEE57 /* NanumSquareOTF_acB.otf */; };
+		ABB24E01268CDF64006FEE57 /* NanumSquareOTF_acR.otf in Resources */ = {isa = PBXBuildFile; fileRef = ABB24DFD268CDF64006FEE57 /* NanumSquareOTF_acR.otf */; };
+		ABB24E06268CE317006FEE57 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB24E05268CE317006FEE57 /* UIFont+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +35,11 @@
 		ABB24DF3268CD9B7006FEE57 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
 		ABB24DF5268CD9D3006FEE57 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		ABB24DF7268CD9FF006FEE57 /* HomeStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeStoryboard.storyboard; sourceTree = "<group>"; };
+		ABB24DFA268CDF64006FEE57 /* NanumSquareOTF_acEB.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareOTF_acEB.otf; sourceTree = "<group>"; };
+		ABB24DFB268CDF64006FEE57 /* NanumSquareOTF_acL.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareOTF_acL.otf; sourceTree = "<group>"; };
+		ABB24DFC268CDF64006FEE57 /* NanumSquareOTF_acB.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareOTF_acB.otf; sourceTree = "<group>"; };
+		ABB24DFD268CDF64006FEE57 /* NanumSquareOTF_acR.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareOTF_acR.otf; sourceTree = "<group>"; };
+		ABB24E05268CE317006FEE57 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,10 +72,12 @@
 		AB5AF760268A2E84001D3CD1 /* B-umiOS */ = {
 			isa = PBXGroup;
 			children = (
+				ABB24E02268CE1A8006FEE57 /* Common */,
 				ABB24DEF268CD8DF006FEE57 /* Home */,
 				ABB24DEE268CD6D9006FEE57 /* Supporting Files */,
 				AB5AF765268A2E84001D3CD1 /* ViewController.swift */,
 				AB5AF767268A2E84001D3CD1 /* Main.storyboard */,
+				AB5AF76C268A2E87001D3CD1 /* LaunchScreen.storyboard */,
 			);
 			path = "B-umiOS";
 			sourceTree = "<group>";
@@ -73,11 +85,11 @@
 		ABB24DEE268CD6D9006FEE57 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				ABB24DF9268CDEF4006FEE57 /* Font */,
 				AB5AF76F268A2E87001D3CD1 /* Info.plist */,
 				AB5AF761268A2E84001D3CD1 /* AppDelegate.swift */,
 				AB5AF763268A2E84001D3CD1 /* SceneDelegate.swift */,
 				AB5AF76A268A2E87001D3CD1 /* Assets.xcassets */,
-				AB5AF76C268A2E87001D3CD1 /* LaunchScreen.storyboard */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -114,6 +126,33 @@
 				ABB24DF3268CD9B7006FEE57 /* CardCollectionViewCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		ABB24DF9268CDEF4006FEE57 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				ABB24DFC268CDF64006FEE57 /* NanumSquareOTF_acB.otf */,
+				ABB24DFA268CDF64006FEE57 /* NanumSquareOTF_acEB.otf */,
+				ABB24DFB268CDF64006FEE57 /* NanumSquareOTF_acL.otf */,
+				ABB24DFD268CDF64006FEE57 /* NanumSquareOTF_acR.otf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+		ABB24E02268CE1A8006FEE57 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				ABB24E03268CE1D8006FEE57 /* Extension */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		ABB24E03268CE1D8006FEE57 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				ABB24E05268CE317006FEE57 /* UIFont+Extension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -174,8 +213,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB5AF76E268A2E87001D3CD1 /* LaunchScreen.storyboard in Resources */,
+				ABB24DFE268CDF64006FEE57 /* NanumSquareOTF_acEB.otf in Resources */,
 				AB5AF76B268A2E87001D3CD1 /* Assets.xcassets in Resources */,
+				ABB24E01268CDF64006FEE57 /* NanumSquareOTF_acR.otf in Resources */,
+				ABB24DFF268CDF64006FEE57 /* NanumSquareOTF_acL.otf in Resources */,
 				ABB24DF8268CD9FF006FEE57 /* HomeStoryboard.storyboard in Resources */,
+				ABB24E00268CDF64006FEE57 /* NanumSquareOTF_acB.otf in Resources */,
 				AB5AF769268A2E84001D3CD1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -187,6 +230,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABB24E06268CE317006FEE57 /* UIFont+Extension.swift in Sources */,
 				ABB24DF6268CD9D3006FEE57 /* HomeViewController.swift in Sources */,
 				ABB24DF4268CD9B7006FEE57 /* CardCollectionViewCell.swift in Sources */,
 				AB5AF766268A2E84001D3CD1 /* ViewController.swift in Sources */,

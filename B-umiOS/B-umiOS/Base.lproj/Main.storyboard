@@ -30,6 +30,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="kxn-tj-TVA"/>
+                    <connections>
+                        <outlet property="HomeLabel" destination="phb-bQ-MMr" id="bqu-ny-wPG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

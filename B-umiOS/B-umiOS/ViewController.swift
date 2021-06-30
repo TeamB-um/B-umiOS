@@ -8,8 +8,12 @@
 import UIKit
 
 class ViewController: UIViewController {
+    @IBOutlet var HomeLabel: UIButton!
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        self.HomeLabel.titleLabel?.font = UIFont.nanumSquareFont(type: .light, size: 26)
 
         self.navigationController?.isNavigationBarHidden = true
     }
