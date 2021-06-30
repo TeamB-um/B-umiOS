@@ -8,12 +8,15 @@
 import UIKit
 
 class ViewController: UIViewController {
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+
+        self.navigationController?.isNavigationBarHidden = true
     }
 
+    @IBAction func didTapHomeLabel(_ sender: Any) {
+        let homeViewController = UIStoryboard(name: "HomeStoryboard", bundle: nil).instantiateViewController(identifier: "HomeViewController")
 
+        self.navigationController?.pushViewController(homeViewController, animated: true)
+    }
 }
-
