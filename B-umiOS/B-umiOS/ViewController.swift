@@ -18,6 +18,7 @@ class ViewController: UIViewController {
         self.HomeLabel.backgroundColor = UIColor.green3
 
         self.navigationController?.isNavigationBarHidden = true
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
     }
 
     @IBAction func didTapHomeLabel(_ sender: Any) {
