@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,15 +16,23 @@
 		AB5AF76E268A2E87001D3CD1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB5AF76C268A2E87001D3CD1 /* LaunchScreen.storyboard */; };
 		ABB24DF4268CD9B7006FEE57 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB24DF3268CD9B7006FEE57 /* CardCollectionViewCell.swift */; };
 		ABB24DF6268CD9D3006FEE57 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB24DF5268CD9D3006FEE57 /* HomeViewController.swift */; };
-		ABB24DF8268CD9FF006FEE57 /* HomeStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABB24DF7268CD9FF006FEE57 /* HomeStoryboard.storyboard */; };
+		ABB24DF8268CD9FF006FEE57 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABB24DF7268CD9FF006FEE57 /* Home.storyboard */; };
 		ABB24DFE268CDF64006FEE57 /* NanumSquareOTF_acEB.otf in Resources */ = {isa = PBXBuildFile; fileRef = ABB24DFA268CDF64006FEE57 /* NanumSquareOTF_acEB.otf */; };
 		ABB24DFF268CDF64006FEE57 /* NanumSquareOTF_acL.otf in Resources */ = {isa = PBXBuildFile; fileRef = ABB24DFB268CDF64006FEE57 /* NanumSquareOTF_acL.otf */; };
 		ABB24E00268CDF64006FEE57 /* NanumSquareOTF_acB.otf in Resources */ = {isa = PBXBuildFile; fileRef = ABB24DFC268CDF64006FEE57 /* NanumSquareOTF_acB.otf */; };
 		ABB24E01268CDF64006FEE57 /* NanumSquareOTF_acR.otf in Resources */ = {isa = PBXBuildFile; fileRef = ABB24DFD268CDF64006FEE57 /* NanumSquareOTF_acR.otf */; };
 		ABB24E06268CE317006FEE57 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB24E05268CE317006FEE57 /* UIFont+Extension.swift */; };
-		ABB24E08268CEF0B006FEE57 /* UIColor_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB24E07268CEF0B006FEE57 /* UIColor_Extension.swift */; };
+		ABB24E08268CEF0B006FEE57 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB24E07268CEF0B006FEE57 /* UIColor+Extension.swift */; };
 		ABB24E0A268CF33B006FEE57 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB24E09268CF33B006FEE57 /* UIView+Extension.swift */; };
 		ABB24E0C268CF49C006FEE57 /* UIDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB24E0B268CF49C006FEE57 /* UIDevice+Extension.swift */; };
+		ABB24E53268E1912006FEE57 /* FloatingBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB24E52268E1912006FEE57 /* FloatingBarView.swift */; };
+		ABB24E55268E193B006FEE57 /* FloatingTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB24E54268E193B006FEE57 /* FloatingTabBarController.swift */; };
+		ABB24E59268E19A1006FEE57 /* MyPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABB24E58268E19A1006FEE57 /* MyPage.storyboard */; };
+		ABB24E5C268E1A18006FEE57 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB24E5B268E1A18006FEE57 /* MyPageViewController.swift */; };
+		ABB24E60268E1A57006FEE57 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABB24E5F268E1A57006FEE57 /* Setting.storyboard */; };
+		ABB24E63268E1A75006FEE57 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB24E62268E1A75006FEE57 /* SettingViewController.swift */; };
+		ABB24E6F268E20EB006FEE57 /* Separate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABB24E6E268E20EB006FEE57 /* Separate.storyboard */; };
+		ABB24E71268E20F9006FEE57 /* SeparateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB24E70268E20F9006FEE57 /* SeparateViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,15 +47,23 @@
 		AB5AF76F268A2E87001D3CD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ABB24DF3268CD9B7006FEE57 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
 		ABB24DF5268CD9D3006FEE57 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		ABB24DF7268CD9FF006FEE57 /* HomeStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeStoryboard.storyboard; sourceTree = "<group>"; };
+		ABB24DF7268CD9FF006FEE57 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		ABB24DFA268CDF64006FEE57 /* NanumSquareOTF_acEB.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareOTF_acEB.otf; sourceTree = "<group>"; };
 		ABB24DFB268CDF64006FEE57 /* NanumSquareOTF_acL.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareOTF_acL.otf; sourceTree = "<group>"; };
 		ABB24DFC268CDF64006FEE57 /* NanumSquareOTF_acB.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareOTF_acB.otf; sourceTree = "<group>"; };
 		ABB24DFD268CDF64006FEE57 /* NanumSquareOTF_acR.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareOTF_acR.otf; sourceTree = "<group>"; };
 		ABB24E05268CE317006FEE57 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
-		ABB24E07268CEF0B006FEE57 /* UIColor_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor_Extension.swift; sourceTree = "<group>"; };
+		ABB24E07268CEF0B006FEE57 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		ABB24E09268CF33B006FEE57 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		ABB24E0B268CF49C006FEE57 /* UIDevice+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extension.swift"; sourceTree = "<group>"; };
+		ABB24E52268E1912006FEE57 /* FloatingBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingBarView.swift; sourceTree = "<group>"; };
+		ABB24E54268E193B006FEE57 /* FloatingTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingTabBarController.swift; sourceTree = "<group>"; };
+		ABB24E58268E19A1006FEE57 /* MyPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyPage.storyboard; sourceTree = "<group>"; };
+		ABB24E5B268E1A18006FEE57 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
+		ABB24E5F268E1A57006FEE57 /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
+		ABB24E62268E1A75006FEE57 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		ABB24E6E268E20EB006FEE57 /* Separate.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Separate.storyboard; sourceTree = "<group>"; };
+		ABB24E70268E20F9006FEE57 /* SeparateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparateViewController.swift; sourceTree = "<group>"; };
 		DE4AD5ABF46F8BFB0EBB47E7 /* Pods-B-umiOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-B-umiOS.release.xcconfig"; path = "Target Support Files/Pods-B-umiOS/Pods-B-umiOS.release.xcconfig"; sourceTree = "<group>"; };
 		F7A7067B2D1BCE34B37D28DF /* Pods-B-umiOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-B-umiOS.debug.xcconfig"; path = "Target Support Files/Pods-B-umiOS/Pods-B-umiOS.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -70,7 +86,6 @@
 				F7A7067B2D1BCE34B37D28DF /* Pods-B-umiOS.debug.xcconfig */,
 				DE4AD5ABF46F8BFB0EBB47E7 /* Pods-B-umiOS.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -103,6 +118,10 @@
 		AB5AF760268A2E84001D3CD1 /* B-umiOS */ = {
 			isa = PBXGroup;
 			children = (
+				ABB24E6B268E20CC006FEE57 /* Separate */,
+				ABB24E5D268E1A31006FEE57 /* Setting */,
+				ABB24E56268E198D006FEE57 /* MyPage */,
+				ABB24E4D268E00F3006FEE57 /* TabBar */,
 				ABB24E02268CE1A8006FEE57 /* Common */,
 				ABB24DEF268CD8DF006FEE57 /* Home */,
 				ABB24DEE268CD6D9006FEE57 /* Supporting Files */,
@@ -138,7 +157,7 @@
 		ABB24DF0268CD8E6006FEE57 /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				ABB24DF7268CD9FF006FEE57 /* HomeStoryboard.storyboard */,
+				ABB24DF7268CD9FF006FEE57 /* Home.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -182,11 +201,95 @@
 			isa = PBXGroup;
 			children = (
 				ABB24E05268CE317006FEE57 /* UIFont+Extension.swift */,
-				ABB24E07268CEF0B006FEE57 /* UIColor_Extension.swift */,
+				ABB24E07268CEF0B006FEE57 /* UIColor+Extension.swift */,
 				ABB24E09268CF33B006FEE57 /* UIView+Extension.swift */,
 				ABB24E0B268CF49C006FEE57 /* UIDevice+Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		ABB24E4D268E00F3006FEE57 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				ABB24E52268E1912006FEE57 /* FloatingBarView.swift */,
+				ABB24E54268E193B006FEE57 /* FloatingTabBarController.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		ABB24E56268E198D006FEE57 /* MyPage */ = {
+			isa = PBXGroup;
+			children = (
+				ABB24E5A268E19AC006FEE57 /* ViewController */,
+				ABB24E57268E1994006FEE57 /* Storyboard */,
+			);
+			path = MyPage;
+			sourceTree = "<group>";
+		};
+		ABB24E57268E1994006FEE57 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				ABB24E58268E19A1006FEE57 /* MyPage.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		ABB24E5A268E19AC006FEE57 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				ABB24E5B268E1A18006FEE57 /* MyPageViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		ABB24E5D268E1A31006FEE57 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				ABB24E61268E1A62006FEE57 /* ViewController */,
+				ABB24E5E268E1A37006FEE57 /* Storyboard */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		ABB24E5E268E1A37006FEE57 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				ABB24E5F268E1A57006FEE57 /* Setting.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		ABB24E61268E1A62006FEE57 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				ABB24E62268E1A75006FEE57 /* SettingViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		ABB24E6B268E20CC006FEE57 /* Separate */ = {
+			isa = PBXGroup;
+			children = (
+				ABB24E6D268E20DD006FEE57 /* ViewController */,
+				ABB24E6C268E20D7006FEE57 /* Storyboard */,
+			);
+			path = Separate;
+			sourceTree = "<group>";
+		};
+		ABB24E6C268E20D7006FEE57 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				ABB24E6E268E20EB006FEE57 /* Separate.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		ABB24E6D268E20DD006FEE57 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				ABB24E70268E20F9006FEE57 /* SeparateViewController.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -252,8 +355,11 @@
 				ABB24DFE268CDF64006FEE57 /* NanumSquareOTF_acEB.otf in Resources */,
 				AB5AF76B268A2E87001D3CD1 /* Assets.xcassets in Resources */,
 				ABB24E01268CDF64006FEE57 /* NanumSquareOTF_acR.otf in Resources */,
+				ABB24E59268E19A1006FEE57 /* MyPage.storyboard in Resources */,
 				ABB24DFF268CDF64006FEE57 /* NanumSquareOTF_acL.otf in Resources */,
-				ABB24DF8268CD9FF006FEE57 /* HomeStoryboard.storyboard in Resources */,
+				ABB24DF8268CD9FF006FEE57 /* Home.storyboard in Resources */,
+				ABB24E6F268E20EB006FEE57 /* Separate.storyboard in Resources */,
+				ABB24E60268E1A57006FEE57 /* Setting.storyboard in Resources */,
 				ABB24E00268CDF64006FEE57 /* NanumSquareOTF_acB.otf in Resources */,
 				AB5AF769268A2E84001D3CD1 /* Main.storyboard in Resources */,
 			);
@@ -309,11 +415,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABB24E06268CE317006FEE57 /* UIFont+Extension.swift in Sources */,
+				ABB24E55268E193B006FEE57 /* FloatingTabBarController.swift in Sources */,
 				ABB24DF6268CD9D3006FEE57 /* HomeViewController.swift in Sources */,
+				ABB24E63268E1A75006FEE57 /* SettingViewController.swift in Sources */,
 				ABB24E0A268CF33B006FEE57 /* UIView+Extension.swift in Sources */,
+				ABB24E53268E1912006FEE57 /* FloatingBarView.swift in Sources */,
 				ABB24DF4268CD9B7006FEE57 /* CardCollectionViewCell.swift in Sources */,
+				ABB24E71268E20F9006FEE57 /* SeparateViewController.swift in Sources */,
 				ABB24E0C268CF49C006FEE57 /* UIDevice+Extension.swift in Sources */,
-				ABB24E08268CEF0B006FEE57 /* UIColor_Extension.swift in Sources */,
+				ABB24E5C268E1A18006FEE57 /* MyPageViewController.swift in Sources */,
+				ABB24E08268CEF0B006FEE57 /* UIColor+Extension.swift in Sources */,
 				AB5AF766268A2E84001D3CD1 /* ViewController.swift in Sources */,
 				AB5AF762268A2E84001D3CD1 /* AppDelegate.swift in Sources */,
 				AB5AF764268A2E84001D3CD1 /* SceneDelegate.swift in Sources */,
