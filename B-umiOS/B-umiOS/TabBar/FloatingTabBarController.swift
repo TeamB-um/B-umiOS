@@ -39,7 +39,12 @@ class FloatingTabBarController: UITabBarController {
     }
     
     func setTabBarController() {
-        viewControllers = [createNavigationController(viewController: UIViewController()), createNavigationController(viewController: UIViewController()), createNavigationController(viewController: UIViewController()), createNavigationController(viewController: UIViewController())]
+        let homeViewController = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(identifier: "HomeViewController")
+        let separateViewController = UIStoryboard(name: "Separate", bundle: nil).instantiateViewController(identifier: "SeparateViewController")
+        let myPageViewController = UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(identifier: "MyPageViewController")
+        let settingViewController = UIStoryboard(name: "Setting", bundle: nil).instantiateViewController(identifier: "SettingViewController")
+        
+        viewControllers = [createNavigationController(viewController: homeViewController), createNavigationController(viewController: separateViewController), myPageViewController, createNavigationController(viewController: settingViewController)]
         
         tabBar.isHidden = true
     }
