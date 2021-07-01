@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -25,6 +25,8 @@
 		ABB24E08268CEF0B006FEE57 /* UIColor_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB24E07268CEF0B006FEE57 /* UIColor_Extension.swift */; };
 		ABB24E0A268CF33B006FEE57 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB24E09268CF33B006FEE57 /* UIView+Extension.swift */; };
 		ABB24E0C268CF49C006FEE57 /* UIDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB24E0B268CF49C006FEE57 /* UIDevice+Extension.swift */; };
+		ABB24E4F268E0152006FEE57 /* FloatingTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB24E4E268E0152006FEE57 /* FloatingTabBarController.swift */; };
+		ABB24E51268E0552006FEE57 /* FloatingBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB24E50268E0552006FEE57 /* FloatingBarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +50,8 @@
 		ABB24E07268CEF0B006FEE57 /* UIColor_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor_Extension.swift; sourceTree = "<group>"; };
 		ABB24E09268CF33B006FEE57 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		ABB24E0B268CF49C006FEE57 /* UIDevice+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extension.swift"; sourceTree = "<group>"; };
+		ABB24E4E268E0152006FEE57 /* FloatingTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FloatingTabBarController.swift; path = "../../../../swift-labs/floating-tabbar/floating-tabbar/ViewController/FloatingTabBarController.swift"; sourceTree = "<group>"; };
+		ABB24E50268E0552006FEE57 /* FloatingBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FloatingBarView.swift; path = "../../../../swift-labs/floating-tabbar/floating-tabbar/ViewController/FloatingBarView.swift"; sourceTree = "<group>"; };
 		DE4AD5ABF46F8BFB0EBB47E7 /* Pods-B-umiOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-B-umiOS.release.xcconfig"; path = "Target Support Files/Pods-B-umiOS/Pods-B-umiOS.release.xcconfig"; sourceTree = "<group>"; };
 		F7A7067B2D1BCE34B37D28DF /* Pods-B-umiOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-B-umiOS.debug.xcconfig"; path = "Target Support Files/Pods-B-umiOS/Pods-B-umiOS.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -70,7 +74,6 @@
 				F7A7067B2D1BCE34B37D28DF /* Pods-B-umiOS.debug.xcconfig */,
 				DE4AD5ABF46F8BFB0EBB47E7 /* Pods-B-umiOS.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -103,6 +106,7 @@
 		AB5AF760268A2E84001D3CD1 /* B-umiOS */ = {
 			isa = PBXGroup;
 			children = (
+				ABB24E4D268E00F3006FEE57 /* TabBar */,
 				ABB24E02268CE1A8006FEE57 /* Common */,
 				ABB24DEF268CD8DF006FEE57 /* Home */,
 				ABB24DEE268CD6D9006FEE57 /* Supporting Files */,
@@ -187,6 +191,15 @@
 				ABB24E0B268CF49C006FEE57 /* UIDevice+Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		ABB24E4D268E00F3006FEE57 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				ABB24E4E268E0152006FEE57 /* FloatingTabBarController.swift */,
+				ABB24E50268E0552006FEE57 /* FloatingBarView.swift */,
+			);
+			path = TabBar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -310,11 +323,13 @@
 			files = (
 				ABB24E06268CE317006FEE57 /* UIFont+Extension.swift in Sources */,
 				ABB24DF6268CD9D3006FEE57 /* HomeViewController.swift in Sources */,
+				ABB24E51268E0552006FEE57 /* FloatingBarView.swift in Sources */,
 				ABB24E0A268CF33B006FEE57 /* UIView+Extension.swift in Sources */,
 				ABB24DF4268CD9B7006FEE57 /* CardCollectionViewCell.swift in Sources */,
 				ABB24E0C268CF49C006FEE57 /* UIDevice+Extension.swift in Sources */,
 				ABB24E08268CEF0B006FEE57 /* UIColor_Extension.swift in Sources */,
 				AB5AF766268A2E84001D3CD1 /* ViewController.swift in Sources */,
+				ABB24E4F268E0152006FEE57 /* FloatingTabBarController.swift in Sources */,
 				AB5AF762268A2E84001D3CD1 /* AppDelegate.swift in Sources */,
 				AB5AF764268A2E84001D3CD1 /* SceneDelegate.swift in Sources */,
 			);
