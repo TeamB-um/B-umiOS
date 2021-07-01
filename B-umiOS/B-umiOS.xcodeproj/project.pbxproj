@@ -22,7 +22,7 @@
 		ABB24E00268CDF64006FEE57 /* NanumSquareOTF_acB.otf in Resources */ = {isa = PBXBuildFile; fileRef = ABB24DFC268CDF64006FEE57 /* NanumSquareOTF_acB.otf */; };
 		ABB24E01268CDF64006FEE57 /* NanumSquareOTF_acR.otf in Resources */ = {isa = PBXBuildFile; fileRef = ABB24DFD268CDF64006FEE57 /* NanumSquareOTF_acR.otf */; };
 		ABB24E06268CE317006FEE57 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB24E05268CE317006FEE57 /* UIFont+Extension.swift */; };
-		ABB24E08268CEF0B006FEE57 /* UIColor_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB24E07268CEF0B006FEE57 /* UIColor_Extension.swift */; };
+		ABB24E08268CEF0B006FEE57 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB24E07268CEF0B006FEE57 /* UIColor+Extension.swift */; };
 		ABB24E0A268CF33B006FEE57 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB24E09268CF33B006FEE57 /* UIView+Extension.swift */; };
 		ABB24E0C268CF49C006FEE57 /* UIDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB24E0B268CF49C006FEE57 /* UIDevice+Extension.swift */; };
 		ABB24E4F268E0152006FEE57 /* FloatingTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB24E4E268E0152006FEE57 /* FloatingTabBarController.swift */; };
@@ -47,7 +47,7 @@
 		ABB24DFC268CDF64006FEE57 /* NanumSquareOTF_acB.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareOTF_acB.otf; sourceTree = "<group>"; };
 		ABB24DFD268CDF64006FEE57 /* NanumSquareOTF_acR.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareOTF_acR.otf; sourceTree = "<group>"; };
 		ABB24E05268CE317006FEE57 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
-		ABB24E07268CEF0B006FEE57 /* UIColor_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor_Extension.swift; sourceTree = "<group>"; };
+		ABB24E07268CEF0B006FEE57 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		ABB24E09268CF33B006FEE57 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		ABB24E0B268CF49C006FEE57 /* UIDevice+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extension.swift"; sourceTree = "<group>"; };
 		ABB24E4E268E0152006FEE57 /* FloatingTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FloatingTabBarController.swift; path = "../../../../swift-labs/floating-tabbar/floating-tabbar/ViewController/FloatingTabBarController.swift"; sourceTree = "<group>"; };
@@ -186,7 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				ABB24E05268CE317006FEE57 /* UIFont+Extension.swift */,
-				ABB24E07268CEF0B006FEE57 /* UIColor_Extension.swift */,
+				ABB24E07268CEF0B006FEE57 /* UIColor+Extension.swift */,
 				ABB24E09268CF33B006FEE57 /* UIView+Extension.swift */,
 				ABB24E0B268CF49C006FEE57 /* UIDevice+Extension.swift */,
 			);
@@ -327,7 +327,7 @@
 				ABB24E0A268CF33B006FEE57 /* UIView+Extension.swift in Sources */,
 				ABB24DF4268CD9B7006FEE57 /* CardCollectionViewCell.swift in Sources */,
 				ABB24E0C268CF49C006FEE57 /* UIDevice+Extension.swift in Sources */,
-				ABB24E08268CEF0B006FEE57 /* UIColor_Extension.swift in Sources */,
+				ABB24E08268CEF0B006FEE57 /* UIColor+Extension.swift in Sources */,
 				AB5AF766268A2E84001D3CD1 /* ViewController.swift in Sources */,
 				ABB24E4F268E0152006FEE57 /* FloatingTabBarController.swift in Sources */,
 				AB5AF762268A2E84001D3CD1 /* AppDelegate.swift in Sources */,
