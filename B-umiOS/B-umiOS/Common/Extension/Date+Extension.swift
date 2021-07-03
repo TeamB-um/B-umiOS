@@ -6,3 +6,12 @@
 //
 
 import Foundation
+
+extension Date {
+    func dateToString(format: String = "yyyy.MM.dd", date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = .init(identifier: "ko_KR")
+        dateFormatter.dateFormat = format
+
+        return dateFormatter.string(from: date)
+    }}
