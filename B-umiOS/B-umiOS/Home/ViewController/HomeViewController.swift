@@ -41,6 +41,7 @@ class HomeViewController: UIViewController {
     private lazy var paperButton = UIButton().then {
         $0.addTarget(self, action: #selector(didTapPaperButton(_:)), for: .touchUpInside)
         $0.backgroundColor = .paper1
+        $0.tag = 1
         $0.transform = CGAffineTransform(rotationAngle: -CGFloat(Double.pi / 4))
         $0.isHidden = true
     }
@@ -81,7 +82,9 @@ class HomeViewController: UIViewController {
     
     @objc
     func didTapPaperButton(_ sender: UIButton) {
-        navigationController?.pushViewController(WritingViewController(), animated: true)
+        if let style = WritingStyle(rawValue: sender.tag) {
+            navigationController?.pushViewController(WritingViewController(style: style), animated: true)
+        }
     }
     
     // MARK: - Methods

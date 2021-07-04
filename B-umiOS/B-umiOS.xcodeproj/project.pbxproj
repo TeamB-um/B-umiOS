@@ -17,6 +17,7 @@
 		AB9F9DF22690997300088502 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9F9DF12690997300088502 /* Date+Extension.swift */; };
 		AB9F9DF426909E2100088502 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9F9DF326909E2100088502 /* UILabel+Extension.swift */; };
 		AB9F9DF72690CD9900088502 /* WritingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9F9DF62690CD9900088502 /* WritingViewController.swift */; };
+		AB9F9DF92691F0D100088502 /* WritingStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9F9DF82691F0D100088502 /* WritingStyle.swift */; };
 		ABB24DF4268CD9B7006FEE57 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB24DF3268CD9B7006FEE57 /* CardCollectionViewCell.swift */; };
 		ABB24DF6268CD9D3006FEE57 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB24DF5268CD9D3006FEE57 /* HomeViewController.swift */; };
 		ABB24DF8268CD9FF006FEE57 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABB24DF7268CD9FF006FEE57 /* Home.storyboard */; };
@@ -51,6 +52,7 @@
 		AB9F9DF12690997300088502 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		AB9F9DF326909E2100088502 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		AB9F9DF62690CD9900088502 /* WritingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingViewController.swift; sourceTree = "<group>"; };
+		AB9F9DF82691F0D100088502 /* WritingStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingStyle.swift; sourceTree = "<group>"; };
 		ABB24DF3268CD9B7006FEE57 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
 		ABB24DF5268CD9D3006FEE57 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		ABB24DF7268CD9FF006FEE57 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				AB9F9DF62690CD9900088502 /* WritingViewController.swift */,
+				AB9F9DF82691F0D100088502 /* WritingStyle.swift */,
 			);
 			path = Writing;
 			sourceTree = "<group>";
@@ -441,6 +444,7 @@
 				ABB24DF4268CD9B7006FEE57 /* CardCollectionViewCell.swift in Sources */,
 				AB9F9DF426909E2100088502 /* UILabel+Extension.swift in Sources */,
 				ABB24E71268E20F9006FEE57 /* SeparateViewController.swift in Sources */,
+				AB9F9DF92691F0D100088502 /* WritingStyle.swift in Sources */,
 				ABB24E0C268CF49C006FEE57 /* UIDevice+Extension.swift in Sources */,
 				ABB24E5C268E1A18006FEE57 /* MyPageViewController.swift in Sources */,
 				ABB24E08268CEF0B006FEE57 /* UIColor+Extension.swift in Sources */,
