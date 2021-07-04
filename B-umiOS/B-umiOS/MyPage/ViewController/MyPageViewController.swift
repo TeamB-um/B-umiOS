@@ -20,12 +20,12 @@ class MyPageViewController: UIViewController {
     
     private lazy var myPageMenuCollectionView: UICollectionView = {
         var layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
 
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .white
 
         collectionView.register(MyPageMenuCollectionViewCell.self, forCellWithReuseIdentifier: MyPageMenuCollectionViewCell.identifier)
-        collectionView.selectItem(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .right)
 
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -49,7 +49,6 @@ class MyPageViewController: UIViewController {
         collectionView.backgroundColor = .white
         collectionView.isPagingEnabled = true
         collectionView.showsHorizontalScrollIndicator = false
-        collectionView.selectItem(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .right)
 
         collectionView.register(MenuSectionCollectionViewCell.self, forCellWithReuseIdentifier: MenuSectionCollectionViewCell.identifier)
 
@@ -59,13 +58,17 @@ class MyPageViewController: UIViewController {
         return collectionView
     }()
     
+    var label = UILabel().then {
+        $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 20)
+    }
     // MARK: - Properties
     
-    var label = UILabel()
     var indicatorLayoutConstraint : [NSLayoutConstraint] = []
 
     let menu = ["글", "리워드", "휴지통"]
     let subViewControllers: [UIViewController] = [MyWritingViewController(), MyRewardViewController(), MyTrashBinViewController()]
+    
+    let myPageMenuCellLineSpacing: CGFloat = 39.0
     
     // MARK: - Initializer
     
@@ -74,12 +77,8 @@ class MyPageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setCollectionView()
         setConstraint()
-        collectionView(myPageMenuCollectionView, didSelectItemAt: IndexPath(row: 0, section: 0))
-        
-        
-        
+        setCollectionView()
     }
     
     // MARK: - Actions
@@ -88,6 +87,7 @@ class MyPageViewController: UIViewController {
     
     
     func setCollectionView() {
+        myPageMenuCollectionView.selectItem(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .init())
         collectionView(myPageMenuCollectionView, didSelectItemAt: IndexPath(row: 0, section: 0))
     }
 
@@ -103,16 +103,14 @@ class MyPageViewController: UIViewController {
         myPageMenuCollectionView.snp.makeConstraints { make in
             make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
             make.leading.trailing.equalToSuperview()
-            make.height.equalTo(56)
+            make.height.equalTo(labelSize.height + 26)
         }
 
         indicatorBarView.snp.makeConstraints { make in
-
             make.top.equalTo(myPageMenuCollectionView.snp.bottom)
+            make.leading.equalTo(self.view.safeAreaLayoutGuide.snp.leading).offset(myPageMenuCellLineSpacing)
+            make.width.equalTo(labelSize.width + 10)
             make.height.equalTo(3)
-
-            print("초기 레이아웃 설정")
-
         }
 
         menuSectionCollectionView.snp.makeConstraints { make in
@@ -136,14 +134,14 @@ class MyPageViewController: UIViewController {
 
     func calcLabelSize(text: String) -> CGSize {
         label.text = text
-        label.font = UIFont.systemFont(ofSize: 15, weight: .bold)
         label.sizeToFit()
 
         return label.bounds.size
     }
 
     func scrollToMenu(to index: Int) {
-        menuSectionCollectionView.selectItem(at: IndexPath(row: index, section: 0), animated: true, scrollPosition: .right)
+        myPageMenuCollectionView.selectItem(at: IndexPath(row: index, section: 0), animated: true, scrollPosition: .init())
+        collectionView(myPageMenuCollectionView, didSelectItemAt: IndexPath(row: index, section: 0))
     }
 }
     
@@ -155,31 +153,32 @@ class MyPageViewController: UIViewController {
 
 extension MyPageViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return .zero
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         if collectionView == myPageMenuCollectionView {
-            return 20
+            return 26
         }
         return 0
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         if collectionView == myPageMenuCollectionView {
-            return UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
+            return UIEdgeInsets(top: 0, left: myPageMenuCellLineSpacing, bottom: 0, right: 0)
         }
         return .zero
     }
     
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let label = UILabel()
-        label.text = menu[indexPath.row]
-        label.font = UIFont.systemFont(ofSize: 15, weight: .bold)
-        label.sizeToFit()
+        let size = calcLabelSize(text: menu[indexPath.row])
 
         if collectionView == myPageMenuCollectionView {
-            return CGSize(width: label.bounds.width + 30, height: 56)
+            return CGSize(width: size.width + 10, height: size.height + 26)
         }
-        let height = UIScreen.main.bounds.height - (myPageMenuCollectionView.contentSize.height + 5)
-        return CGSize(width: UIScreen.main.bounds.width, height: height)
+        let height = UIScreen.main.bounds.height - (size.height + 26 + 3 + view.safeAreaInsets.top + view.safeAreaInsets.bottom)
+        return CGSize(width: UIScreen.main.bounds.width, height: floor(height))
     }
 }
 
@@ -198,7 +197,6 @@ extension MyPageViewController: UICollectionViewDataSource {
 
             if indexPath.row == 0 {
                 cell.isSelected = true
-                myPageMenuCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: .init())
             } else {
                 cell.isSelected = false
             }
@@ -221,34 +219,23 @@ extension MyPageViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == myPageMenuCollectionView {
-            
             menuSectionCollectionView.isPagingEnabled = false
             menuSectionCollectionView.scrollToItem(at: indexPath, at: .left, animated: true)
             menuSectionCollectionView.isPagingEnabled = true
             
-            self.view.addSubview(indicatorBarView)
-            
-    
             guard let cell = myPageMenuCollectionView.cellForItem(at: indexPath) as? MyPageMenuCollectionViewCell else {
                 return }
                                           
-            indicatorBarView.translatesAutoresizingMaskIntoConstraints = false
-            
-            updateViewConstraints()
-            NSLayoutConstraint.deactivate(indicatorLayoutConstraint)
-            indicatorLayoutConstraint = [ indicatorBarView.leadingAnchor.constraint(equalTo:
-                                                                                        cell.leadingAnchor , constant: 10),
-                                          indicatorBarView.trailingAnchor.constraint(equalTo:
-                                                                                        cell.trailingAnchor, constant: -10),
-                                          indicatorBarView.topAnchor.constraint(equalTo: cell.bottomAnchor),
-                                          ]
-            
-            NSLayoutConstraint.activate(indicatorLayoutConstraint)
-            UIView.animate(withDuration: 0.3) {
-                self.view.layoutIfNeeded() }
-            
-            menuSectionCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+            indicatorBarView.snp.remakeConstraints { make in
+                make.top.equalTo(cell.snp.bottom)
+                make.leading.equalTo(cell.snp.leading)
+                make.width.equalTo(cell.snp.width)
+                make.height.equalTo(3)
+            }
 
+            UIView.animate(withDuration: 0.3) {
+                self.view.layoutIfNeeded()
+            }
         }
     }
     
