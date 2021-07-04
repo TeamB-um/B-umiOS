@@ -38,7 +38,28 @@ class HomeViewController: UIViewController {
         $0.tintColor = .white
     }
     
+    private lazy var paperButton = UIButton().then {
+        $0.addTarget(self, action: #selector(didTapPaperButton(_:)), for: .touchUpInside)
+        $0.backgroundColor = .paper1
+        $0.transform = CGAffineTransform(rotationAngle: -CGFloat(Double.pi / 4))
+        $0.isHidden = true
+    }
+    
     // MARK: - Properties
+    
+    var isSelectedTrashBin = false {
+        didSet {
+            if isSelectedTrashBin {
+                guideLabel.text = "스트레스 양에 따라\n종이를 선택하세요"
+                arrowImage.isHidden = true
+                paperButton.isHidden = false
+            } else {
+                guideLabel.text = "휴지통을 클릭해\n스트레스를 비워보세요"
+                arrowImage.isHidden = false
+                paperButton.isHidden = true
+            }
+        }
+    }
     
     // MARK: - Initializer
     
@@ -55,13 +76,18 @@ class HomeViewController: UIViewController {
     
     @objc
     func didTapTrashBinButton(_ sender: UIButton) {
+        isSelectedTrashBin.toggle()
+    }
+    
+    @objc
+    func didTapPaperButton(_ sender: UIButton) {
         navigationController?.pushViewController(WritingViewController(), animated: true)
     }
     
     // MARK: - Methods
     
     func setConstraint() {
-        view.addSubviews([dateLabel, guideLabel, arrowImage, trashBinButton])
+        view.addSubviews([dateLabel, guideLabel, arrowImage, trashBinButton, paperButton])
         
         dateLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
@@ -82,6 +108,16 @@ class HomeViewController: UIViewController {
         trashBinButton.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalTo(arrowImage.snp.bottom).offset(50)
+        }
+        
+        paperButton.snp.makeConstraints { make in
+            let width = 55.7 / UIScreen.main.bounds.width
+            let height = 84.5 / width
+            
+            make.top.equalTo(guideLabel.snp.bottom).offset(90.39)
+            make.leading.equalToSuperview().inset(33)
+            make.width.equalTo(self.view).multipliedBy(width)
+            make.height.equalTo(84.5).multipliedBy(height)
         }
     }
     
