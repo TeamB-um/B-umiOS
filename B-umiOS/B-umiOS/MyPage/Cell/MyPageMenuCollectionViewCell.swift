@@ -62,7 +62,6 @@ class MyPageMenuCollectionViewCell: UICollectionViewCell {
         menuTitle.snp.updateConstraints { make in
             make.centerX.equalToSuperview()
             make.centerY.equalToSuperview()
-            make.width.height.equalToSuperview()
         }
     }
     
