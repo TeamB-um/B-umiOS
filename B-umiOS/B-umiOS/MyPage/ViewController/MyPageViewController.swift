@@ -15,9 +15,8 @@ enum menuStatus: Int {
 }
 
 class MyPageViewController: UIViewController {
-    
     // MARK: - UIComponenets
-    
+
     private lazy var myPageMenuCollectionView: UICollectionView = {
         var layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -41,7 +40,6 @@ class MyPageViewController: UIViewController {
     }()
 
     private lazy var menuSectionCollectionView: UICollectionView = {
-        
         var layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
 
@@ -57,49 +55,43 @@ class MyPageViewController: UIViewController {
 
         return collectionView
     }()
-    
+
     var label = UILabel().then {
         $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 20)
     }
+
     // MARK: - Properties
-    
-    var indicatorLayoutConstraint : [NSLayoutConstraint] = []
 
     let menu = ["글", "리워드", "휴지통"]
     let subViewControllers: [UIViewController] = [MyWritingViewController(), MyRewardViewController(), MyTrashBinViewController()]
-    
     let myPageMenuCellLineSpacing: CGFloat = 39.0
-    
+
     // MARK: - Initializer
-    
+
     // MARK: - LifeCycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setConstraint()
         setCollectionView()
     }
-    
+
     // MARK: - Actions
-    
+
     // MARK: - Methods
-    
-    
+
     func setCollectionView() {
         myPageMenuCollectionView.selectItem(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .init())
         collectionView(myPageMenuCollectionView, didSelectItemAt: IndexPath(row: 0, section: 0))
     }
 
     func setConstraint() {
-        let views: [UIView] = [myPageMenuCollectionView, indicatorBarView, menuSectionCollectionView]
-        views.forEach { v in
-            view.addSubview(v)
-        }
+        view.addSubviews([myPageMenuCollectionView, indicatorBarView, menuSectionCollectionView])
 
         let labelSize = calcLabelSize(text: menu[0])
         print(labelSize)
-        
+
         myPageMenuCollectionView.snp.makeConstraints { make in
             make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
             make.leading.trailing.equalToSuperview()
@@ -127,7 +119,7 @@ class MyPageViewController: UIViewController {
         /// 다른 UIViewController, PageViewController 등의 컨테이너 뷰컨에서 다른 UIViewController가 추가, 삭제된 후에 호출된다.
         /// 인자로 부모 뷰컨을 넣어서 호출해줌..
         /// 자식 뷰컨이 부모 뷰컨으로부터 추가, 삭제되는 상황에 반응할 수 있도록.
-        
+
         viewColtroller.didMove(toParent: self)
         return cell
     }
@@ -144,18 +136,16 @@ class MyPageViewController: UIViewController {
         collectionView(myPageMenuCollectionView, didSelectItemAt: IndexPath(row: index, section: 0))
     }
 }
-    
-    // MARK: - Protocols
-    
 
+// MARK: - Protocols
 
-    // MARK: - Extensions
+// MARK: - Extensions
 
 extension MyPageViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return .zero
+        .zero
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         if collectionView == myPageMenuCollectionView {
             return 26
@@ -169,7 +159,6 @@ extension MyPageViewController: UICollectionViewDelegateFlowLayout {
         }
         return .zero
     }
-    
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let size = calcLabelSize(text: menu[indexPath.row])
@@ -202,16 +191,16 @@ extension MyPageViewController: UICollectionViewDataSource {
             }
 
             cell.setCell(menu: menu[indexPath.row])
-            
+
             return cell
-            
+
         case menuSectionCollectionView:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MenuSectionCollectionViewCell.identifier, for: indexPath) as? MenuSectionCollectionViewCell
             else { return UICollectionViewCell() }
             let sectionVC = subViewControllers[indexPath.row]
 
             return wrapAndGetCell(viewColtroller: sectionVC, cell: cell)
-            
+
         default:
             return UICollectionViewCell()
         }
@@ -222,10 +211,11 @@ extension MyPageViewController: UICollectionViewDataSource {
             menuSectionCollectionView.isPagingEnabled = false
             menuSectionCollectionView.scrollToItem(at: indexPath, at: .left, animated: true)
             menuSectionCollectionView.isPagingEnabled = true
-            
+
             guard let cell = myPageMenuCollectionView.cellForItem(at: indexPath) as? MyPageMenuCollectionViewCell else {
-                return }
-                                          
+                return
+            }
+
             indicatorBarView.snp.remakeConstraints { make in
                 make.top.equalTo(cell.snp.bottom)
                 make.leading.equalTo(cell.snp.leading)
@@ -238,23 +228,18 @@ extension MyPageViewController: UICollectionViewDataSource {
             }
         }
     }
-    
 }
 
 extension MyPageViewController: UICollectionViewDelegate {
-    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        //print(scrollView.contentOffset.x)
-        
-        if scrollView.contentOffset.x > 375 {
-            
-        }
-        //..menu.indicatorLeadingConstarint.constant = scrollView.contentOffset.x / 3
+        // print(scrollView.contentOffset.x)
+
+        if scrollView.contentOffset.x > 375 {}
+        // ..menu.indicatorLeadingConstarint.constant = scrollView.contentOffset.x / 3
     }
-    
+
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let idx = Int(scrollView.contentOffset.x / UIScreen.main.bounds.width)
         scrollToMenu(to: idx)
-        print("ㅜㅇ왕부왕ㅂ우보앙")
     }
 }
