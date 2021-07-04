@@ -13,43 +13,55 @@ class SettingViewController: UIViewController {
     private var headerView = UIView().then {
         $0.backgroundColor = .white
     }
+    
     private var headerLabel = UILabel().then {
         $0.text = "설정"
         $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 20)
     }
+    
     private var topStackView = UIStackView().then {
         $0.distribution = .fillEqually
         $0.spacing = 21
         $0.axis = .vertical
     }
+    
     private var bottomStackView = UIStackView().then {
         $0.distribution = .fillEqually
         $0.spacing = 21
         $0.axis = .vertical
     }
+    
     private var trashbinPeriodLabel = UILabel().then {
         $0.text = "3일"
         $0.textColor = .textGray
         $0.font = UIFont.nanumSquareFont(type: .regular, size: 16)
     }
+    
     private var trashbinPeriodButton = UIButton().then {
         $0.setImage(UIImage(named: "brnEdit"), for: .normal)
     }
+    
     private var trashbinManageButton = UIButton().then {
         $0.setImage(UIImage(named: "btnLeft"), for: .normal)
+        $0.addTarget(self, action: #selector(didTapTrashBinManageButton(_:)), for: .touchUpInside)
     }
+    
     private var pushAlarmSwitch = UISwitch().then {
         $0.onTintColor = .blue2Main
     }
+    
     private var serviceConditionButton = UIButton().then {
         $0.setImage(UIImage(named: "btnLeft"), for: .normal)
     }
+    
     private var personalInfomationButton = UIButton().then {
         $0.setImage(UIImage(named: "btnLeft"), for: .normal)
     }
+    
     private var opensourceLicenseButton = UIButton().then {
         $0.setImage(UIImage(named: "btnLeft"), for: .normal)
     }
+    
     private var developerInformationButton = UIButton().then {
         $0.setImage(UIImage(named: "btnLeft"), for: .normal)
     }
@@ -68,17 +80,23 @@ class SettingViewController: UIViewController {
 
     // MARK: - Actions
 
+    @objc
+        private func didTapTrashBinManageButton(_ sender: UIButton) {
+            if let pushVC = self.storyboard?.instantiateViewController(withIdentifier: "SettingTrashBinViewController"){
+                self.navigationController?.pushViewController(pushVC, animated: true)
+            }
+        }
     // MARK: - Methods
     
     func setConstraint(){
         let line1 = makeLine()
         let line2 = makeLine()
         
-        self.view.addSubviews([headerView, topStackView, bottomStackView, line1, line2])
+        self.view.addSubviews([headerView,topStackView, bottomStackView,line1,line2])
         headerView.addSubview(headerLabel)
         
         headerView.snp.makeConstraints { make in
-            make.top.equalTo(self.view).offset(0)
+            make.top.equalTo(self.view)
             make.width.equalToSuperview()
         }
         
@@ -90,8 +108,8 @@ class SettingViewController: UIViewController {
         
         headerLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.bottom.equalTo(headerView.snp.bottom).offset(-20)
-            make.top.equalTo(headerView.snp.top).offset(50)
+            make.top.equalTo(headerView).inset(62)
+            make.bottom.equalTo(headerView).inset(18)
         }
         
         topStackView.snp.makeConstraints { make in
