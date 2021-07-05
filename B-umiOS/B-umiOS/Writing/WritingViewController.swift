@@ -48,8 +48,9 @@ class WritingViewController: UIViewController {
         $0.backgroundColor = self.style.dividerColor
     }
     
-    private let titleTextField = UITextField().then {
+    private lazy var titleTextField = UITextField().then {
         $0.placeholder = "제목"
+        $0.textColor = self.style.textColor
         $0.font = UIFont.nanumSquareFont(type: .bold, size: 14)
     }
     
@@ -64,12 +65,19 @@ class WritingViewController: UIViewController {
     }
     
     private lazy var textView = UITextView().then {
-        $0.textColor = self.style.textColor
-        $0.font = UIFont.nanumSquareFont(type: .light, size: 14)
+        $0.backgroundColor = .clear
+        $0.delegate = self
+        $0.text = self.placeholder
+        
+        let style = NSMutableParagraphStyle()
+        style.lineSpacing = 8
+        let attributes = [NSAttributedString.Key.paragraphStyle: style, NSAttributedString.Key.foregroundColor: self.style.textColor, NSAttributedString.Key.font: UIFont.nanumSquareFont(type: .light, size: 14)]
+        $0.attributedText = NSAttributedString(string: $0.text, attributes: attributes)
     }
     
     // MARK: - Properties
 
+    let placeholder = "당신의 스트레스를 적어주세요"
     let style: WritingStyle
     
     // MARK: - Initializer
@@ -160,11 +168,32 @@ class WritingViewController: UIViewController {
         }
         
         textView.snp.makeConstraints { make in
-            make.top.equalTo(textFieldDividerView.snp.bottom)
+            make.top.equalTo(textFieldDividerView.snp.bottom).offset(19.5)
             make.leading.trailing.equalTo(textFieldDividerView)
             make.bottom.equalToSuperview().offset(-48)
         }
     }
+
+    func setTextView() {
+        textView.text = placeholder
+        if textView.text.isEmpty {
+            textView.text = placeholder
+        } else {
+            textView.text = ""
+        }
+    }
     
     // MARK: - Protocols
+}
+
+extension WritingViewController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        setTextView()
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            setTextView()
+        }
+    }
 }

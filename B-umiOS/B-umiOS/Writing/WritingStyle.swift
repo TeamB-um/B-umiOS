@@ -39,10 +39,8 @@ extension WritingStyle {
 
     var dividerColor: UIColor {
         switch self {
-        case .paper1:
-            return UIColor.textGray
-        case .paper2:
-            return UIColor.paper1
+        case .paper1, .paper2:
+            return UIColor.iconGray
         case .paper3:
             return UIColor.paper2
         case .paper4:
@@ -70,7 +68,7 @@ extension WritingStyle {
             return UIColor.white
         }
     }
-    
+
 //    var gradientImage: UIImage {
 //        switch self {
 //        case .paper1, .paper2:
