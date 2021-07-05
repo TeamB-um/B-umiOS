@@ -68,7 +68,7 @@ class SettingTrashBinViewController: UIViewController {
                 popUpVC.modalPresentationStyle = .overCurrentContext
                 popUpVC.modalTransitionStyle = .crossDissolve
                         
-                self.present(popUpVC, animated: true, completion: nil)
+                self.tabBarController?.present(popUpVC, animated: true, completion: nil)
             }
                    
         }
