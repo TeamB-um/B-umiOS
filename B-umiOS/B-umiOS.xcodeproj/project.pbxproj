@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4A2ED671A9B461F851BCEC5B /* Pods_B_umiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35912B5C45814D34BAA702A8 /* Pods_B_umiOS.framework */; };
+		4F34E10326935F7100A54336 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F34E10226935F7100A54336 /* UIViewController+Extension.swift */; };
+		4F34E1062693618A00A54336 /* TapGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F34E1052693618A00A54336 /* TapGesture.swift */; };
 		4F7FD2E82690E5B400122964 /* SettingTrashBinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7FD2E72690E5B400122964 /* SettingTrashBinViewController.swift */; };
 		4F7FD2EC26920F3800122964 /* TrashBinTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7FD2EA26920F3800122964 /* TrashBinTableViewCell.swift */; };
 		4F7FD2ED26920F3800122964 /* TrashBinTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F7FD2EB26920F3800122964 /* TrashBinTableViewCell.xib */; };
@@ -54,6 +56,8 @@
 
 /* Begin PBXFileReference section */
 		35912B5C45814D34BAA702A8 /* Pods_B_umiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_B_umiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F34E10226935F7100A54336 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		4F34E1052693618A00A54336 /* TapGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapGesture.swift; sourceTree = "<group>"; };
 		4F7FD2E72690E5B400122964 /* SettingTrashBinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTrashBinViewController.swift; sourceTree = "<group>"; };
 		4F7FD2EA26920F3800122964 /* TrashBinTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashBinTableViewCell.swift; sourceTree = "<group>"; };
 		4F7FD2EB26920F3800122964 /* TrashBinTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrashBinTableViewCell.xib; sourceTree = "<group>"; };
@@ -114,6 +118,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4F34E1042693617A00A54336 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4F34E1052693618A00A54336 /* TapGesture.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		4F7FD2E926920F1300122964 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -264,6 +276,7 @@
 		ABB24E02268CE1A8006FEE57 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				4F34E1042693617A00A54336 /* Model */,
 				ABB24E03268CE1D8006FEE57 /* Extension */,
 			);
 			path = Common;
@@ -276,6 +289,7 @@
 				ABB24E07268CEF0B006FEE57 /* UIColor+Extension.swift */,
 				ABB24E09268CF33B006FEE57 /* UIView+Extension.swift */,
 				ABB24E0B268CF49C006FEE57 /* UIDevice+Extension.swift */,
+				4F34E10226935F7100A54336 /* UIViewController+Extension.swift */,
 				AB9F9DF12690997300088502 /* Date+Extension.swift */,
 				AB9F9DF326909E2100088502 /* UILabel+Extension.swift */,
 			);
@@ -523,11 +537,13 @@
 				ABB24DF4268CD9B7006FEE57 /* CardCollectionViewCell.swift in Sources */,
 				FC0541B62690C6EF00FFA9D1 /* MenuSectionCollectionViewCell.swift in Sources */,
 				ABB24E71268E20F9006FEE57 /* SeparateViewController.swift in Sources */,
+				4F34E10326935F7100A54336 /* UIViewController+Extension.swift in Sources */,
 				AB9F9DF92691F0D100088502 /* WritingStyle.swift in Sources */,
 				ABB24E0C268CF49C006FEE57 /* UIDevice+Extension.swift in Sources */,
 				ABB24E5C268E1A18006FEE57 /* MyPageViewController.swift in Sources */,
 				AB8C3F56269331EF00B2BA30 /* WritingTagCollectionViewCell.swift in Sources */,
 				ABB24E08268CEF0B006FEE57 /* UIColor+Extension.swift in Sources */,
+				4F34E1062693618A00A54336 /* TapGesture.swift in Sources */,
 				FC0541B82690C80000FFA9D1 /* MyWritingViewController.swift in Sources */,
 				AB5AF766268A2E84001D3CD1 /* ViewController.swift in Sources */,
 				AB5AF762268A2E84001D3CD1 /* AppDelegate.swift in Sources */,
