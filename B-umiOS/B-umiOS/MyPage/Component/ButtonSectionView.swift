@@ -50,17 +50,17 @@ class ButtonSectionView: UICollectionReusableView {
     }
 
       // MARK: - Actions
+    
+    
       
       // MARK: - Methods
     
     private func setConstraint(){
         self.addSubviews([categoryButtton, selectButtton, deleteButton])
         
-        
         categoryButtton.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(20)
             make.leading.equalTo(16)
-            make.width.equalTo(137)
         }
         
         selectButtton.snp.makeConstraints { make in

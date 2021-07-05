@@ -7,8 +7,8 @@
 
 import SnapKit
 import UIKit
-///...수정해. 안유경.
-enum menuStatus: Int {
+
+enum MenuStatus: Int {
     case myWriting = 0
     case myReward = 1
     case MyTrashBin = 2
@@ -90,7 +90,6 @@ class MyPageViewController: UIViewController {
         view.addSubviews([myPageMenuCollectionView, indicatorBarView, menuSectionCollectionView])
 
         let labelSize = calcLabelSize(text: menu[0])
-        print(labelSize)
 
         myPageMenuCollectionView.snp.makeConstraints { make in
             make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)

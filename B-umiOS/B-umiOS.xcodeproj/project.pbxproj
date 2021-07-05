@@ -53,7 +53,6 @@
 		FC0541BE2691AA3500FFA9D1 /* MyWriting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC0541BD2691AA3500FFA9D1 /* MyWriting.storyboard */; };
 		FC0541C02691B7AE00FFA9D1 /* MyWritingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0541BF2691B7AE00FFA9D1 /* MyWritingCollectionViewCell.swift */; };
 		FC69E37726935B81001093F9 /* RoundingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC69E37626935B81001093F9 /* RoundingButton.swift */; };
-		FC6A7A452692F15800A4ACBE /* trashButtonSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6A7A442692F15800A4ACBE /* trashButtonSectionView.swift */; };
 		FC6A7A472693198900A4ACBE /* ButtonSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6A7A462693198900A4ACBE /* ButtonSectionView.swift */; };
 /* End PBXBuildFile section */
 
@@ -108,7 +107,6 @@
 		FC0541BD2691AA3500FFA9D1 /* MyWriting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyWriting.storyboard; sourceTree = "<group>"; };
 		FC0541BF2691B7AE00FFA9D1 /* MyWritingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWritingCollectionViewCell.swift; sourceTree = "<group>"; };
 		FC69E37626935B81001093F9 /* RoundingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundingButton.swift; sourceTree = "<group>"; };
-		FC6A7A442692F15800A4ACBE /* trashButtonSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = trashButtonSectionView.swift; sourceTree = "<group>"; };
 		FC6A7A462693198900A4ACBE /* ButtonSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonSectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -399,7 +397,6 @@
 		FC6A7A432692F13100A4ACBE /* Component */ = {
 			isa = PBXGroup;
 			children = (
-				FC6A7A442692F15800A4ACBE /* trashButtonSectionView.swift */,
 				FC6A7A462693198900A4ACBE /* ButtonSectionView.swift */,
 				FC69E37626935B81001093F9 /* RoundingButton.swift */,
 			);
@@ -550,7 +547,6 @@
 				AB9F9DF92691F0D100088502 /* WritingStyle.swift in Sources */,
 				ABB24E0C268CF49C006FEE57 /* UIDevice+Extension.swift in Sources */,
 				AB8C3F56269331EF00B2BA30 /* WritingTagCollectionViewCell.swift in Sources */,
-				FC6A7A452692F15800A4ACBE /* trashButtonSectionView.swift in Sources */,
 				ABB24E5C268E1A18006FEE57 /* MyPageViewController.swift in Sources */,
 				FC69E37726935B81001093F9 /* RoundingButton.swift in Sources */,
 				FC6A7A472693198900A4ACBE /* ButtonSectionView.swift in Sources */,

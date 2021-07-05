@@ -4,7 +4,7 @@
 //
 //  Created by kong on 2021/07/06.
 //
-
+import SnapKit
 import UIKit
 
 class RoundingButton: UIButton {
@@ -31,11 +31,14 @@ class RoundingButton: UIButton {
         buttonTitle.font = .nanumSquareFont(type: .regular, size: 14)
         buttonImage.image = UIImage(named: image)
         
+        let labelSize = buttonTitle.calculateLabelSize(text: title, font: buttonTitle.font)
+        
         self.addSubviews([buttonTitle, buttonImage])
         
-//        self.snp.makeConstraints { make in
-//            make.width.equalTo(calc)
-//        }
+        self.snp.makeConstraints { make in
+            make.width.equalTo(labelSize.width + 56)
+        }
+        
         buttonImage.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.leading.equalToSuperview().offset(16)
