@@ -38,6 +38,11 @@
 		ABB24E63268E1A75006FEE57 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB24E62268E1A75006FEE57 /* SettingViewController.swift */; };
 		ABB24E6F268E20EB006FEE57 /* Separate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABB24E6E268E20EB006FEE57 /* Separate.storyboard */; };
 		ABB24E71268E20F9006FEE57 /* SeparateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB24E70268E20F9006FEE57 /* SeparateViewController.swift */; };
+		FC0541B22690C28200FFA9D1 /* MyPageMenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0541B12690C28200FFA9D1 /* MyPageMenuCollectionViewCell.swift */; };
+		FC0541B62690C6EF00FFA9D1 /* MenuSectionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0541B52690C6EF00FFA9D1 /* MenuSectionCollectionViewCell.swift */; };
+		FC0541B82690C80000FFA9D1 /* MyWritingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0541B72690C80000FFA9D1 /* MyWritingViewController.swift */; };
+		FC0541BA2690C92A00FFA9D1 /* MyRewardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0541B92690C92A00FFA9D1 /* MyRewardViewController.swift */; };
+		FC0541BC2690C94700FFA9D1 /* MyTrashBinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0541BB2690C94700FFA9D1 /* MyTrashBinViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +81,11 @@
 		ABB24E70268E20F9006FEE57 /* SeparateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparateViewController.swift; sourceTree = "<group>"; };
 		DE4AD5ABF46F8BFB0EBB47E7 /* Pods-B-umiOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-B-umiOS.release.xcconfig"; path = "Target Support Files/Pods-B-umiOS/Pods-B-umiOS.release.xcconfig"; sourceTree = "<group>"; };
 		F7A7067B2D1BCE34B37D28DF /* Pods-B-umiOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-B-umiOS.debug.xcconfig"; path = "Target Support Files/Pods-B-umiOS/Pods-B-umiOS.debug.xcconfig"; sourceTree = "<group>"; };
+		FC0541B12690C28200FFA9D1 /* MyPageMenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageMenuCollectionViewCell.swift; sourceTree = "<group>"; };
+		FC0541B52690C6EF00FFA9D1 /* MenuSectionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuSectionCollectionViewCell.swift; sourceTree = "<group>"; };
+		FC0541B72690C80000FFA9D1 /* MyWritingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWritingViewController.swift; sourceTree = "<group>"; };
+		FC0541B92690C92A00FFA9D1 /* MyRewardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRewardViewController.swift; sourceTree = "<group>"; };
+		FC0541BB2690C94700FFA9D1 /* MyTrashBinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTrashBinViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,6 +249,7 @@
 		ABB24E56268E198D006FEE57 /* MyPage */ = {
 			isa = PBXGroup;
 			children = (
+				FC0541B02690C26600FFA9D1 /* Cell */,
 				ABB24E5A268E19AC006FEE57 /* ViewController */,
 				ABB24E57268E1994006FEE57 /* Storyboard */,
 			);
@@ -257,6 +268,9 @@
 			isa = PBXGroup;
 			children = (
 				ABB24E5B268E1A18006FEE57 /* MyPageViewController.swift */,
+				FC0541B72690C80000FFA9D1 /* MyWritingViewController.swift */,
+				FC0541B92690C92A00FFA9D1 /* MyRewardViewController.swift */,
+				FC0541BB2690C94700FFA9D1 /* MyTrashBinViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -313,6 +327,15 @@
 				ABB24E70268E20F9006FEE57 /* SeparateViewController.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		FC0541B02690C26600FFA9D1 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				FC0541B12690C28200FFA9D1 /* MyPageMenuCollectionViewCell.swift */,
+				FC0541B52690C6EF00FFA9D1 /* MenuSectionCollectionViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -448,14 +471,19 @@
 				4F7FD2EF26922F4A00122964 /* TrashBinPopUpViewController.swift in Sources */,
 				ABB24E53268E1912006FEE57 /* FloatingBarView.swift in Sources */,
 				ABB24DF4268CD9B7006FEE57 /* CardCollectionViewCell.swift in Sources */,
+				FC0541B62690C6EF00FFA9D1 /* MenuSectionCollectionViewCell.swift in Sources */,
 				ABB24E71268E20F9006FEE57 /* SeparateViewController.swift in Sources */,
 				ABB24E0C268CF49C006FEE57 /* UIDevice+Extension.swift in Sources */,
 				ABB24E5C268E1A18006FEE57 /* MyPageViewController.swift in Sources */,
 				ABB24E08268CEF0B006FEE57 /* UIColor+Extension.swift in Sources */,
+				FC0541B82690C80000FFA9D1 /* MyWritingViewController.swift in Sources */,
 				AB5AF766268A2E84001D3CD1 /* ViewController.swift in Sources */,
 				AB5AF762268A2E84001D3CD1 /* AppDelegate.swift in Sources */,
 				4F7FD2F126929D6300122964 /* PeriodPopUpViewController.swift in Sources */,
+				FC0541BA2690C92A00FFA9D1 /* MyRewardViewController.swift in Sources */,
+				FC0541BC2690C94700FFA9D1 /* MyTrashBinViewController.swift in Sources */,
 				AB5AF764268A2E84001D3CD1 /* SceneDelegate.swift in Sources */,
+				FC0541B22690C28200FFA9D1 /* MyPageMenuCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
