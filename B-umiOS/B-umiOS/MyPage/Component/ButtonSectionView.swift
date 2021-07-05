@@ -8,69 +8,39 @@
 import SnapKit
 import UIKit
 
-class ButtonSectionView: UIView {
+class ButtonSectionView: UICollectionReusableView {
     // MARK: - UIComponenets
     
-    private let filterButton: UIButton = {
-        let button = UIButton()
-
-        button.backgroundColor = .white
-        //모서리 굴곡률
-        button.layer.cornerRadius = 16
-        //테두리 굵기
-        button.layer.borderWidth = 1
-        //테두리 색상
-        button.layer.borderColor = UIColor.disable.cgColor
+    static let identifier = "ButtonSectionView"
+    
+    private let categoryButtton: UIButton = {
+        let button = RoundingButton()
+        button.setupRoundingButton(title: "전체 카테고리", image: "btnFilter")
         
         return button
     }()
     
-    private let filterButtonTitle: UILabel = {
-        let label = UILabel()
-        
-        label.text = "전체 카테고리"
-        label.textColor = .disable
-        label.font = .nanumSquareFont(type: .regular, size: 14)
-        
-        return label
-    }()
-    
-    private let filterButtonImage: UIImageView = {
-        var image = UIImageView()
-        image.image = UIImage(named: "btnCheckUnseleted")
-        
-        return image
-    }()
-    
-    private let selectButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = .orange
-        
-        return button
-    }()
-    
-    private let closeButton: UIButton = {
-       let button = UIButton()
-        button.backgroundColor = .yellow
+    private let selectButtton: UIButton = {
+        let button = RoundingButton()
+        button.setupRoundingButton(title: "선택", image: "btnCheckUnseleted")
         
         return button
     }()
     
     private let deleteButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = .blue
+        let button = RoundingButton()
+        button.setupRoundingButton(title: "삭제", image: "btnRemove")
         
         return button
     }()
+
       // MARK: - Properties
       
       // MARK: - Initializer
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        //code
-        setConstraint()
+
     }
     
     required init?(coder: NSCoder) {
@@ -84,27 +54,33 @@ class ButtonSectionView: UIView {
       // MARK: - Methods
     
     private func setConstraint(){
-        self.addSubviews([filterButton, filterButtonTitle, filterButtonImage])
+        self.addSubviews([categoryButtton, selectButtton, deleteButton])
         
-        filterButton.snp.makeConstraints { make in
-            make.center.equalToSuperview()
-            make.leading.equalToSuperview().offset(16)
+        
+        categoryButtton.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(20)
+            make.leading.equalTo(16)
+            make.width.equalTo(137)
         }
         
-        filterButtonImage.snp.makeConstraints { make in
-            make.center.equalTo(filterButton)
-            make.leading.equalTo(filterButton).offset(16)
+        selectButtton.snp.makeConstraints { make in
+            make.centerY.equalTo(categoryButtton)
+            make.leading.equalTo(categoryButtton.snp.trailing).offset(8)
+            make.width.equalTo(80)
         }
         
-        filterButtonTitle.snp.makeConstraints { make in
-            make.center.equalTo(filterButton)
-            make.leading.equalTo(filterButtonImage).offset(5)
+        deleteButton.snp.makeConstraints { make in
+            make.centerY.equalTo(selectButtton)
+            make.leading.equalTo(selectButtton.snp.trailing).offset(8)
+            make.width.equalTo(80)
         }
 
     }
     
-    func setButton(){
-        
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        setConstraint()
     }
     
       // MARK: - Protocols

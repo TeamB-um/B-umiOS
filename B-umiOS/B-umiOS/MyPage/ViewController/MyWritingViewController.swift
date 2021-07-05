@@ -19,6 +19,8 @@ class MyWritingViewController: UIViewController {
         
         collectionView.register(MyWritingCollectionViewCell.self, forCellWithReuseIdentifier: MyWritingCollectionViewCell.identifier)
         
+        collectionView.register(ButtonSectionView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ButtonSectionView.identifier)
+        
         collectionView.delegate = self
         collectionView.dataSource = self
         
@@ -41,7 +43,8 @@ class MyWritingViewController: UIViewController {
     
     func setConstraint(){
         
-
+        view.addSubview(myWritingCollectionView)
+        
         myWritingCollectionView.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.bottom.leading.trailing.equalToSuperview()
@@ -72,6 +75,14 @@ extension MyWritingViewController : UICollectionViewDataSource {
         
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+//        let headerView = collectionView.dequeueReusableCell(withReuseIdentifier: ButtonSectionView.identifier, for: indexPath)
+        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ButtonSectionView.identifier, for: indexPath)
+
+        return headerView
+    }
 
 
 }
@@ -93,6 +104,12 @@ extension MyWritingViewController : UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 20, left: 16, bottom: 116, right: 16)
+        return UIEdgeInsets(top: 0, left: 16, bottom: 116, right: 16)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        let width = UIScreen.main.bounds.width
+        
+        return CGSize(width: width, height: 72)
     }
 }

@@ -7,7 +7,7 @@
 
 import SnapKit
 import UIKit
-
+///...수정해. 안유경.
 enum menuStatus: Int {
     case myWriting = 0
     case myReward = 1
