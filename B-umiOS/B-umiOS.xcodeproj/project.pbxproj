@@ -144,10 +144,18 @@
 		AB9F9DF52690CD8100088502 /* Writing */ = {
 			isa = PBXGroup;
 			children = (
+				AB9F9DFC2693072900088502 /* Cell */,
 				AB9F9DF62690CD9900088502 /* WritingViewController.swift */,
 				AB9F9DF82691F0D100088502 /* WritingStyle.swift */,
 			);
 			path = Writing;
+			sourceTree = "<group>";
+		};
+		AB9F9DFC2693072900088502 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		ABB24DEE268CD6D9006FEE57 /* Supporting Files */ = {

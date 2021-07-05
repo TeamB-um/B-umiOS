@@ -32,8 +32,13 @@ class WritingViewController: UIViewController {
         $0.setImage(UIImage(named: "btnCheck"), for: .normal)
     }
     
-    private let navigationDividerView = UIView().then {
-        $0.backgroundColor = UIColor.paper1
+    private lazy var navigationDividerView = UIView().then {
+        $0.backgroundColor = self.style.dividerColor
+    }
+    
+    private lazy var settingButton = UIButton().then {
+        $0.setImage(UIImage(named: "btnSetting"), for: .normal)
+        $0.addTarget(self, action: #selector(didTapSettingButton(_:)), for: .touchUpInside)
     }
     
     private let tagCollectionView: UICollectionView = {
@@ -103,6 +108,11 @@ class WritingViewController: UIViewController {
     
     // MARK: - Actions
     
+    @objc
+    func didTapSettingButton(_ sender: UIButton) {
+        /// settingVC로 이동 ...
+    }
+    
     // MARK: - Methods
     
     func setView() {
@@ -111,7 +121,7 @@ class WritingViewController: UIViewController {
     
     func setConstraint() {
         navigationView.addSubviews([navigationLabel, backButton, checkButton])
-        view.addSubviews([navigationView, navigationDividerView, tagCollectionView, dividerView, titleTextField, textFieldCountLabel, textFieldDividerView, textView])
+        view.addSubviews([navigationView, navigationDividerView, settingButton, tagCollectionView, dividerView, titleTextField, textFieldCountLabel, textFieldDividerView, textView])
         
         let screenSize = UIScreen.main.bounds
         
@@ -137,9 +147,22 @@ class WritingViewController: UIViewController {
             make.height.equalTo(64 * screenSize.width / 375)
         }
         
-        tagCollectionView.snp.makeConstraints { make in
+        navigationDividerView.snp.makeConstraints { make in
             make.top.equalTo(navigationView.snp.bottom)
             make.leading.trailing.equalToSuperview()
+            make.height.equalTo(1)
+        }
+        
+        settingButton.snp.makeConstraints { make in
+            make.top.equalTo(navigationDividerView.snp.bottom).offset(7.5 * screenSize.width / 375)
+            make.leading.equalToSuperview().offset(2 * screenSize.width / 375)
+            make.width.height.equalTo(48 * screenSize.width / 375)
+        }
+        
+        tagCollectionView.snp.makeConstraints { make in
+            make.top.equalTo(navigationDividerView.snp.bottom)
+            make.leading.equalTo(settingButton.snp.trailing).offset(6 * screenSize.width / 375)
+            make.trailing.equalToSuperview()
             make.height.equalTo(64 * screenSize.width / 375)
         }
         

@@ -40,7 +40,7 @@ extension WritingStyle {
     var dividerColor: UIColor {
         switch self {
         case .paper1, .paper2:
-            return UIColor.iconGray
+            return UIColor.textGray
         case .paper3:
             return UIColor.paper2
         case .paper4:
