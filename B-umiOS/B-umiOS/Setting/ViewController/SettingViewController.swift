@@ -7,11 +7,16 @@
 
 import UIKit
 
-class SettingViewController: UIViewController {
+class SettingViewController: UIViewController, popupDelegate{
+    
     // MARK: - UIComponenets
 
     private var headerView = UIView().then {
         $0.backgroundColor = .white
+    }
+    
+    private var backgroundView = UIView().then {
+        $0.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
     }
     
     private var headerLabel = UILabel().then {
@@ -39,6 +44,7 @@ class SettingViewController: UIViewController {
     
     private var trashbinPeriodButton = UIButton().then {
         $0.setImage(UIImage(named: "brnEdit"), for: .normal)
+        $0.addTarget(self, action: #selector(setPeriodButton(_:)), for: .touchUpInside)
     }
     
     private var trashbinManageButton = UIButton().then {
@@ -86,6 +92,27 @@ class SettingViewController: UIViewController {
                 self.navigationController?.pushViewController(pushVC, animated: true)
             }
         }
+    
+    @objc
+        private func setPeriodButton(_ sender: UIButton) {
+            
+            let popUpVC = self.storyboard?.instantiateViewController(identifier: "PeriodPopUpViewController") as! PeriodPopUpViewController
+            popUpVC.modalPresentationStyle = .overFullScreen
+            popUpVC.modalTransitionStyle = .coverVertical
+            
+            popUpVC.popupdelegate = self
+            
+            DispatchQueue.main.async {
+                self.view.addSubview(self.backgroundView)
+                self.backgroundView.snp.makeConstraints { make in
+                    make.edges.equalToSuperview()
+                }
+            }
+            self.present(popUpVC, animated: true, completion: nil)
+            
+            
+        }
+    
     // MARK: - Methods
     
     func setConstraint(){
@@ -188,6 +215,12 @@ class SettingViewController: UIViewController {
         }
     }
     
-    
     // MARK: - Protocols
+    func diss() {
+        self.backgroundView.removeFromSuperview()
+    }
+}
+
+protocol popupDelegate {
+    func diss()
 }
