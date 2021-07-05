@@ -45,6 +45,10 @@ class WritingViewController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .clear
+        collectionView.showsHorizontalScrollIndicator = false
+        
+        collectionView.register(WritingTagCollectionViewCell.self, forCellWithReuseIdentifier: WritingTagCollectionViewCell.identifier)
         
         return collectionView
     }()
@@ -103,6 +107,7 @@ class WritingViewController: UIViewController {
         super.viewDidLoad()
         
         setView()
+        setCollectionView()
         setConstraint()
     }
     
@@ -203,6 +208,11 @@ class WritingViewController: UIViewController {
         } else if textView.text == placeholder {
             textView.text = ""
         }
+    }
+    
+    func setCollectionView() {
+        tagCollectionView.delegate = self
+        tagCollectionView.dataSource = self
     }
     
     // MARK: - Protocols
