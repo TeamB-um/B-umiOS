@@ -21,7 +21,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-477" y="100"/>
+            <point key="canvasLocation" x="-1761" y="54"/>
         </scene>
         <!--Setting Trash Bin View Controller-->
         <scene sceneID="PQb-iK-qmd">
@@ -36,7 +36,22 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NiU-hh-Rtf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="783" y="100"/>
+            <point key="canvasLocation" x="-832" y="54"/>
+        </scene>
+        <!--Trash Bin Pop Up View Controller-->
+        <scene sceneID="mLq-xC-OA6">
+            <objects>
+                <viewController storyboardIdentifier="TrashBinPopUpViewController" id="bQB-kK-apo" customClass="TrashBinPopUpViewController" customModule="B_umiOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8NF-b6-oE0">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="RA2-p5-gN2"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1kY-XB-09b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="94" y="54"/>
         </scene>
     </scenes>
     <resources>

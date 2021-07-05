@@ -25,6 +25,7 @@ class SettingTrashBinViewController: UIViewController {
     
     private var addButton = UIButton().then {
         $0.setImage(UIImage(named: "btnPlus"), for: .normal)
+        $0.addTarget(self, action: #selector(didTapAddButton(_:)), for: .touchUpInside)
     }
     
     private var trashbinStatusLabel = UILabel().then {
@@ -60,6 +61,17 @@ class SettingTrashBinViewController: UIViewController {
     
     // MARK: - Actions
     
+    @objc
+        private func didTapAddButton(_ sender: UIButton) {
+            
+            if let popUpVC = self.storyboard?.instantiateViewController(identifier: "TrashBinPopUpViewController"){
+                popUpVC.modalPresentationStyle = .overCurrentContext
+                popUpVC.modalTransitionStyle = .crossDissolve
+                        
+                self.present(popUpVC, animated: true, completion: nil)
+            }
+                   
+        }
     
     // MARK: - Methods
   

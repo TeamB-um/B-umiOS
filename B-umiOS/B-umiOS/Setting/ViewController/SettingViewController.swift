@@ -92,7 +92,7 @@ class SettingViewController: UIViewController {
         let line1 = makeLine()
         let line2 = makeLine()
         
-        self.view.addSubviews([headerView,topStackView, bottomStackView,line1,line2])
+        self.view.addSubviews([headerView, topStackView, bottomStackView, line1, line2])
         headerView.addSubview(headerLabel)
         
         headerView.snp.makeConstraints { make in
