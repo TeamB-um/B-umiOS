@@ -18,12 +18,28 @@ class WritingTagCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Properties
     
+    override var isSelected: Bool {
+        willSet {
+            if isSelected {
+                tagLabel.textColor = .header
+                
+                contentView.backgroundColor = UIColor(red: 183/255, green: 227/255, blue: 205/255, alpha: 1)
+                contentView.layer.borderColor = UIColor(red: 143/255, green: 212/255, blue: 177/255, alpha: 1).cgColor
+            } else {
+                tagLabel.textColor = .paper3
+                
+                contentView.backgroundColor = .disable
+                contentView.layer.borderColor = UIColor.textGray.cgColor
+            }
+        }
+    }
+    
     // MARK: - Initializer
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        setCell()
+        isSelected = false
     }
     
     @available(*, unavailable)
@@ -37,6 +53,10 @@ class WritingTagCollectionViewCell: UICollectionViewCell {
         setConstraints()
         
         contentView.cornerRound(radius: 20)
+    }
+    
+    override func prepareForReuse() {
+        isSelected = false
     }
     
     // MARK: - Actions
