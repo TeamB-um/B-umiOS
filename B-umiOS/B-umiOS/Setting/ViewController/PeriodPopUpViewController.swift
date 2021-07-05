@@ -8,13 +8,17 @@
 import UIKit
 
 class PeriodPopUpViewController: UIViewController{
-
     // MARK: - UIComponenets
     
     private let popupView = UIView().then {
         $0.cornerRound(radius: 10)
         $0.backgroundColor = .white
         $0.layer.maskedCorners = CACornerMask(arrayLiteral: .layerMinXMinYCorner, .layerMaxXMinYCorner)
+    }
+    
+    private let rect = UIView().then {
+        $0.backgroundColor = .paper1
+        $0.cornerRound(radius: 10)
     }
     
     private let pickerView = UIPickerView()
@@ -47,7 +51,7 @@ class PeriodPopUpViewController: UIViewController{
     
     var popupdelegate : popupDelegate?
     
-    // MARK: - Initializerpopupdelegate
+    // MARK: - Initializer
 
     // MARK: - LifeCycle
 
@@ -60,7 +64,7 @@ class PeriodPopUpViewController: UIViewController{
         
         setConstraint()
     }
-    
+
     // MARK: - Actions
     
     @objc private func didTapBackgroundButton(_ sender: UIButton) {
@@ -71,12 +75,6 @@ class PeriodPopUpViewController: UIViewController{
     // MARK: - Methods
     
     func setConstraint() {
-        let rect = UIView().then {
-            $0.backgroundColor = .paper1
-            $0.clipsToBounds = true
-            $0.cornerRound(radius: 10)
-        }
-        
         self.view.addSubviews([backgroundButton,popupView])
         
         popupView.snp.makeConstraints { make in
@@ -90,8 +88,9 @@ class PeriodPopUpViewController: UIViewController{
         popupView.addSubviews([rect,headerLabel,subLabel,pickerView,confirmButton])
         
         rect.snp.makeConstraints { make in
-            make.height.equalTo(8)
-            make.width.equalTo(65)
+            let width = UIScreen.main.bounds.width*65/375
+            make.height.equalTo(6*width/65)
+            make.width.equalTo(width)
             make.top.equalToSuperview().offset(10)
             make.centerX.equalToSuperview()
         }
@@ -119,7 +118,6 @@ class PeriodPopUpViewController: UIViewController{
             make.bottom.equalToSuperview().inset(66)
             make.height.equalTo(50)
         }
-        
     }
     // MARK: - Protocols
 }

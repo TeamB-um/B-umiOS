@@ -8,8 +8,8 @@
 import UIKit
 
 class SettingTrashBinViewController: UIViewController {
-
     // MARK: - UIComponenets
+    
     private var headerView = UIView().then {
         $0.backgroundColor = .white
     }
@@ -70,7 +70,6 @@ class SettingTrashBinViewController: UIViewController {
                         
                 self.tabBarController?.present(popUpVC, animated: true, completion: nil)
             }
-                   
         }
     
     // MARK: - Methods
@@ -132,8 +131,6 @@ class SettingTrashBinViewController: UIViewController {
         
         trashbinTableView.register(UINib(nibName: "TrashBinTableViewCell", bundle: nil), forCellReuseIdentifier: "TrashBinTableViewCell")
     }
-    
-    // MARK: - Protocols
 }
 
 // MARK: - Protocols
@@ -153,6 +150,4 @@ extension SettingTrashBinViewController: UITableViewDataSource{
         cell.trashbinName.text = bins[indexPath.row]
         return cell
     }
-    
-    
 }

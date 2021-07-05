@@ -8,7 +8,6 @@
 import UIKit
 
 class TrashBinPopUpViewController: UIViewController {
-    
     // MARK: - UIComponenets
     
     private let popupView = UIView().then {
@@ -79,7 +78,6 @@ class TrashBinPopUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
-        //0 0 0, 0.5
         setConstraint()
     }
     

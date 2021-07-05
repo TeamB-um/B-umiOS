@@ -8,7 +8,6 @@
 import UIKit
 
 class SettingViewController: UIViewController, popupDelegate{
-    
     // MARK: - UIComponenets
 
     private var headerView = UIView().then {
@@ -173,7 +172,6 @@ class SettingViewController: UIViewController, popupDelegate{
         for view in bottomViews{
             bottomStackView.addArrangedSubview(view)
         }
-        
     }
     
     func createView(text : String, items: [NSCoding]) -> UIView{
@@ -190,9 +188,9 @@ class SettingViewController: UIViewController, popupDelegate{
             $0.spacing = 15
             $0.axis = .horizontal
         }
+        
         newView.addSubview(stackView)
         
-
         for item in items{
             stackView.addArrangedSubview(item as! UIView)
         }
