@@ -175,10 +175,9 @@ class WritingViewController: UIViewController {
     }
 
     func setTextView() {
-        textView.text = placeholder
         if textView.text.isEmpty {
             textView.text = placeholder
-        } else {
+        } else if textView.text == placeholder {
             textView.text = ""
         }
     }
