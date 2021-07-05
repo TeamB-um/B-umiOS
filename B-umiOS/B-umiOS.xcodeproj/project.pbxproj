@@ -8,12 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		4A2ED671A9B461F851BCEC5B /* Pods_B_umiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35912B5C45814D34BAA702A8 /* Pods_B_umiOS.framework */; };
+		4F7FD2E82690E5B400122964 /* SettingTrashBinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7FD2E72690E5B400122964 /* SettingTrashBinViewController.swift */; };
+		4F7FD2EC26920F3800122964 /* TrashBinTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7FD2EA26920F3800122964 /* TrashBinTableViewCell.swift */; };
+		4F7FD2ED26920F3800122964 /* TrashBinTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F7FD2EB26920F3800122964 /* TrashBinTableViewCell.xib */; };
+		4F7FD2EF26922F4A00122964 /* TrashBinPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7FD2EE26922F4A00122964 /* TrashBinPopUpViewController.swift */; };
+		4F7FD2F126929D6300122964 /* PeriodPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7FD2F026929D6300122964 /* PeriodPopUpViewController.swift */; };
 		AB5AF762268A2E84001D3CD1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5AF761268A2E84001D3CD1 /* AppDelegate.swift */; };
 		AB5AF764268A2E84001D3CD1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5AF763268A2E84001D3CD1 /* SceneDelegate.swift */; };
 		AB5AF766268A2E84001D3CD1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5AF765268A2E84001D3CD1 /* ViewController.swift */; };
 		AB5AF769268A2E84001D3CD1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB5AF767268A2E84001D3CD1 /* Main.storyboard */; };
 		AB5AF76B268A2E87001D3CD1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB5AF76A268A2E87001D3CD1 /* Assets.xcassets */; };
 		AB5AF76E268A2E87001D3CD1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB5AF76C268A2E87001D3CD1 /* LaunchScreen.storyboard */; };
+		AB8C3F56269331EF00B2BA30 /* WritingTagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8C3F55269331EF00B2BA30 /* WritingTagCollectionViewCell.swift */; };
+		AB8C3F582693371100B2BA30 /* WritingViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8C3F572693371100B2BA30 /* WritingViewController+Extension.swift */; };
+		AB8C3F5B26935E8600B2BA30 /* WritingViewController+layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8C3F5A26935E8600B2BA30 /* WritingViewController+layout.swift */; };
+		AB9F9DF22690997300088502 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9F9DF12690997300088502 /* Date+Extension.swift */; };
+		AB9F9DF426909E2100088502 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9F9DF326909E2100088502 /* UILabel+Extension.swift */; };
+		AB9F9DF72690CD9900088502 /* WritingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9F9DF62690CD9900088502 /* WritingViewController.swift */; };
+		AB9F9DF92691F0D100088502 /* WritingStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9F9DF82691F0D100088502 /* WritingStyle.swift */; };
 		ABB24DF4268CD9B7006FEE57 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB24DF3268CD9B7006FEE57 /* CardCollectionViewCell.swift */; };
 		ABB24DF6268CD9D3006FEE57 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB24DF5268CD9D3006FEE57 /* HomeViewController.swift */; };
 		ABB24DF8268CD9FF006FEE57 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABB24DF7268CD9FF006FEE57 /* Home.storyboard */; };
@@ -45,6 +57,11 @@
 
 /* Begin PBXFileReference section */
 		35912B5C45814D34BAA702A8 /* Pods_B_umiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_B_umiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F7FD2E72690E5B400122964 /* SettingTrashBinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTrashBinViewController.swift; sourceTree = "<group>"; };
+		4F7FD2EA26920F3800122964 /* TrashBinTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashBinTableViewCell.swift; sourceTree = "<group>"; };
+		4F7FD2EB26920F3800122964 /* TrashBinTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrashBinTableViewCell.xib; sourceTree = "<group>"; };
+		4F7FD2EE26922F4A00122964 /* TrashBinPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashBinPopUpViewController.swift; sourceTree = "<group>"; };
+		4F7FD2F026929D6300122964 /* PeriodPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodPopUpViewController.swift; sourceTree = "<group>"; };
 		AB5AF75E268A2E84001D3CD1 /* B-umiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "B-umiOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB5AF761268A2E84001D3CD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB5AF763268A2E84001D3CD1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -53,6 +70,13 @@
 		AB5AF76A268A2E87001D3CD1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AB5AF76D268A2E87001D3CD1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AB5AF76F268A2E87001D3CD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AB8C3F55269331EF00B2BA30 /* WritingTagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingTagCollectionViewCell.swift; sourceTree = "<group>"; };
+		AB8C3F572693371100B2BA30 /* WritingViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WritingViewController+Extension.swift"; sourceTree = "<group>"; };
+		AB8C3F5A26935E8600B2BA30 /* WritingViewController+layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WritingViewController+layout.swift"; sourceTree = "<group>"; };
+		AB9F9DF12690997300088502 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		AB9F9DF326909E2100088502 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
+		AB9F9DF62690CD9900088502 /* WritingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingViewController.swift; sourceTree = "<group>"; };
+		AB9F9DF82691F0D100088502 /* WritingStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingStyle.swift; sourceTree = "<group>"; };
 		ABB24DF3268CD9B7006FEE57 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
 		ABB24DF5268CD9D3006FEE57 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		ABB24DF7268CD9FF006FEE57 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
@@ -96,6 +120,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4F7FD2E926920F1300122964 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				4F7FD2EA26920F3800122964 /* TrashBinTableViewCell.swift */,
+				4F7FD2EB26920F3800122964 /* TrashBinTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		6C81B240BDBA40A25B2A405D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -134,6 +167,7 @@
 		AB5AF760268A2E84001D3CD1 /* B-umiOS */ = {
 			isa = PBXGroup;
 			children = (
+				AB9F9DF52690CD8100088502 /* Writing */,
 				ABB24E6B268E20CC006FEE57 /* Separate */,
 				ABB24E5D268E1A31006FEE57 /* Setting */,
 				ABB24E56268E198D006FEE57 /* MyPage */,
@@ -146,6 +180,34 @@
 				AB5AF76C268A2E87001D3CD1 /* LaunchScreen.storyboard */,
 			);
 			path = "B-umiOS";
+			sourceTree = "<group>";
+		};
+		AB8C3F592693371B00B2BA30 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AB9F9DF82691F0D100088502 /* WritingStyle.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AB9F9DF52690CD8100088502 /* Writing */ = {
+			isa = PBXGroup;
+			children = (
+				AB8C3F592693371B00B2BA30 /* Model */,
+				AB9F9DFC2693072900088502 /* Cell */,
+				AB9F9DF62690CD9900088502 /* WritingViewController.swift */,
+				AB8C3F572693371100B2BA30 /* WritingViewController+Extension.swift */,
+				AB8C3F5A26935E8600B2BA30 /* WritingViewController+layout.swift */,
+			);
+			path = Writing;
+			sourceTree = "<group>";
+		};
+		AB9F9DFC2693072900088502 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				AB8C3F55269331EF00B2BA30 /* WritingTagCollectionViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		ABB24DEE268CD6D9006FEE57 /* Supporting Files */ = {
@@ -220,6 +282,8 @@
 				ABB24E07268CEF0B006FEE57 /* UIColor+Extension.swift */,
 				ABB24E09268CF33B006FEE57 /* UIView+Extension.swift */,
 				ABB24E0B268CF49C006FEE57 /* UIDevice+Extension.swift */,
+				AB9F9DF12690997300088502 /* Date+Extension.swift */,
+				AB9F9DF326909E2100088502 /* UILabel+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -267,6 +331,7 @@
 		ABB24E5D268E1A31006FEE57 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				4F7FD2E926920F1300122964 /* Cell */,
 				ABB24E61268E1A62006FEE57 /* ViewController */,
 				ABB24E5E268E1A37006FEE57 /* Storyboard */,
 			);
@@ -285,6 +350,9 @@
 			isa = PBXGroup;
 			children = (
 				ABB24E62268E1A75006FEE57 /* SettingViewController.swift */,
+				4F7FD2E72690E5B400122964 /* SettingTrashBinViewController.swift */,
+				4F7FD2EE26922F4A00122964 /* TrashBinPopUpViewController.swift */,
+				4F7FD2F026929D6300122964 /* PeriodPopUpViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -396,6 +464,7 @@
 				ABB24DFE268CDF64006FEE57 /* NanumSquareOTF_acEB.otf in Resources */,
 				AB5AF76B268A2E87001D3CD1 /* Assets.xcassets in Resources */,
 				ABB24E01268CDF64006FEE57 /* NanumSquareOTF_acR.otf in Resources */,
+				4F7FD2ED26920F3800122964 /* TrashBinTableViewCell.xib in Resources */,
 				ABB24E59268E19A1006FEE57 /* MyPage.storyboard in Resources */,
 				ABB24DFF268CDF64006FEE57 /* NanumSquareOTF_acL.otf in Resources */,
 				ABB24DF8268CD9FF006FEE57 /* Home.storyboard in Resources */,
@@ -456,21 +525,35 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABB24E06268CE317006FEE57 /* UIFont+Extension.swift in Sources */,
+				4F7FD2E82690E5B400122964 /* SettingTrashBinViewController.swift in Sources */,
 				ABB24E55268E193B006FEE57 /* FloatingTabBarController.swift in Sources */,
 				ABB24DF6268CD9D3006FEE57 /* HomeViewController.swift in Sources */,
+				4F7FD2EC26920F3800122964 /* TrashBinTableViewCell.swift in Sources */,
 				ABB24E63268E1A75006FEE57 /* SettingViewController.swift in Sources */,
 				ABB24E0A268CF33B006FEE57 /* UIView+Extension.swift in Sources */,
+				AB9F9DF22690997300088502 /* Date+Extension.swift in Sources */,
+				ABB24E53268E1912006FEE57 /* FloatingBarView.swift in Sources */,
+				ABB24DF4268CD9B7006FEE57 /* CardCollectionViewCell.swift in Sources */,
+				AB8C3F5B26935E8600B2BA30 /* WritingViewController+layout.swift in Sources */,
+				AB9F9DF426909E2100088502 /* UILabel+Extension.swift in Sources */,
+				4F7FD2EF26922F4A00122964 /* TrashBinPopUpViewController.swift in Sources */,
 				ABB24E53268E1912006FEE57 /* FloatingBarView.swift in Sources */,
 				ABB24DF4268CD9B7006FEE57 /* CardCollectionViewCell.swift in Sources */,
 				FC0541B62690C6EF00FFA9D1 /* MenuSectionCollectionViewCell.swift in Sources */,
 				ABB24E71268E20F9006FEE57 /* SeparateViewController.swift in Sources */,
 				FC6A7A452692F15800A4ACBE /* ButtonSectionView.swift in Sources */,
+				AB9F9DF92691F0D100088502 /* WritingStyle.swift in Sources */,
 				ABB24E0C268CF49C006FEE57 /* UIDevice+Extension.swift in Sources */,
 				ABB24E5C268E1A18006FEE57 /* MyPageViewController.swift in Sources */,
+				AB8C3F56269331EF00B2BA30 /* WritingTagCollectionViewCell.swift in Sources */,
 				ABB24E08268CEF0B006FEE57 /* UIColor+Extension.swift in Sources */,
 				FC0541B82690C80000FFA9D1 /* MyWritingViewController.swift in Sources */,
 				AB5AF766268A2E84001D3CD1 /* ViewController.swift in Sources */,
 				AB5AF762268A2E84001D3CD1 /* AppDelegate.swift in Sources */,
+				AB9F9DF72690CD9900088502 /* WritingViewController.swift in Sources */,
+				AB5AF764268A2E84001D3CD1 /* SceneDelegate.swift in Sources */,
+				AB8C3F582693371100B2BA30 /* WritingViewController+Extension.swift in Sources */,
+				4F7FD2F126929D6300122964 /* PeriodPopUpViewController.swift in Sources */,
 				FC0541BA2690C92A00FFA9D1 /* MyRewardViewController.swift in Sources */,
 				FC0541BC2690C94700FFA9D1 /* MyTrashBinViewController.swift in Sources */,
 				AB5AF764268A2E84001D3CD1 /* SceneDelegate.swift in Sources */,
