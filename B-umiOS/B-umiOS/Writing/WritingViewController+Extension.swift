@@ -18,17 +18,17 @@ extension WritingViewController: UICollectionViewDelegateFlowLayout {
         label.font = UIFont.nanumSquareFont(type: .regular, size: 16)
         label.sizeToFit()
 
-        return CGSize(width: label.bounds.width + 32, height: label.bounds.height + 18)
+        return CGSize(width: label.bounds.width + 30, height: label.bounds.height + 20)
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         28
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         8
     }

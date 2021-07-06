@@ -44,6 +44,7 @@ class WritingViewController: UIViewController {
     let tagCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
+        layout.estimatedItemSize = .zero
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .clear
         collectionView.showsHorizontalScrollIndicator = false
@@ -135,6 +136,8 @@ class WritingViewController: UIViewController {
     func setCollectionView() {
         tagCollectionView.delegate = self
         tagCollectionView.dataSource = self
+        
+        tagCollectionView.selectItem(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: [])
     }
     
     // MARK: - Protocols

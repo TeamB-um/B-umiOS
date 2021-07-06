@@ -19,7 +19,7 @@ class WritingTagCollectionViewCell: UICollectionViewCell {
     // MARK: - Properties
     
     override var isSelected: Bool {
-        willSet {
+        didSet {
             if isSelected {
                 tagLabel.textColor = .header
                 
@@ -40,6 +40,7 @@ class WritingTagCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         
         isSelected = false
+        contentView.layer.borderWidth = 1.0
     }
     
     @available(*, unavailable)
@@ -50,24 +51,21 @@ class WritingTagCollectionViewCell: UICollectionViewCell {
     // MARK: - LifeCycle
     
     override func layoutSubviews() {
-        setConstraints()
+        super.layoutSubviews()
         
+        setConstraints()
         contentView.cornerRound(radius: 20)
     }
     
     override func prepareForReuse() {
         isSelected = false
+        
+        updateConstraint()
     }
     
     // MARK: - Actions
     
     // MARK: - Methods
-    
-    func setCell() {
-        contentView.backgroundColor = UIColor.disable
-        contentView.layer.borderWidth = 1.0
-        contentView.layer.borderColor = UIColor.textGray.cgColor
-    }
     
     func setTagLabel(tag: String) {
         tagLabel.text = tag
@@ -78,6 +76,12 @@ class WritingTagCollectionViewCell: UICollectionViewCell {
         contentView.addSubviews([tagLabel])
         
         tagLabel.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
+    }
+    
+    func updateConstraint() {
+        tagLabel.snp.updateConstraints { make in
             make.center.equalToSuperview()
         }
     }
