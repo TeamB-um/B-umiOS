@@ -79,7 +79,7 @@ class WritingViewController: UIViewController {
     }
     
     lazy var titleTextField = UITextField().then {
-        $0.placeholder = "제목"
+        $0.attributedPlaceholder = NSAttributedString(string: "제목", attributes: [NSAttributedString.Key.foregroundColor: self.style.textColor, NSAttributedString.Key.font: UIFont.nanumSquareFont(type: .bold, size: 14)])
         $0.textColor = self.style.textColor
         $0.font = UIFont.nanumSquareFont(type: .bold, size: 14)
     }
