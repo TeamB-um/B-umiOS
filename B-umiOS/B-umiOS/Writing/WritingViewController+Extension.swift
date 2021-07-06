@@ -48,3 +48,21 @@ extension WritingViewController: UICollectionViewDataSource {
         return cell
     }
 }
+
+extension WritingViewController: UICollectionViewDelegate {
+    // FIXME: - 일단.. 잠시 사라지게만 해뒀음 좌표값에 따라 변경 필요
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.x < 10 {
+            UIView.animate(withDuration: 0.3) {
+                self.leftGradientView.alpha = 0
+                self.righrGradientView.alpha = 1
+            }
+        } else if scrollView.contentOffset.x > scrollView.contentSize.width - scrollView.bounds.width {
+            UIView.animate(withDuration: 0.3) {
+                self.leftGradientView.alpha = 1
+                self.righrGradientView.alpha = 0
+            }
+        }
+    }
+}
