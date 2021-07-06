@@ -77,9 +77,6 @@ class ButtonSectionView: UICollectionReusableView {
 
     }
     
-    @objc func btnConfirmPressed{
-        
-    }
     
     
     override func layoutSubviews() {
