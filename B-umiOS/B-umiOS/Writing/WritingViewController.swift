@@ -63,6 +63,16 @@ class WritingViewController: UIViewController {
         
         return collectionView
     }()
+    
+    lazy var leftGradientView = UIImageView().then {
+        $0.image = UIImage(named: "writing1GradientEnd")?.withRenderingMode(.alwaysTemplate)
+        $0.tintColor = style.paperBgColor
+    }
+
+    lazy var righrGradientView = UIImageView().then {
+        $0.image = UIImage(named: "writing1GradientRight")?.withRenderingMode(.alwaysTemplate)
+        $0.tintColor = style.paperBgColor
+    }
 
     lazy var dividerView = UIView().then {
         $0.backgroundColor = self.style.dividerColor

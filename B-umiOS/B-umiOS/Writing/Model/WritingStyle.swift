@@ -68,12 +68,4 @@ extension WritingStyle {
             return UIColor.white
         }
     }
-
-//    var gradientImage: UIImage {
-//        switch self {
-//        case .paper1, .paper2:
-//            return
-//        case .paper3, .paper4:
-//            return
-//    }
 }

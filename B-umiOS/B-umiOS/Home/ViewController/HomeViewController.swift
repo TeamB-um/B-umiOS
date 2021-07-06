@@ -9,6 +9,8 @@ import SnapKit
 import Then
 import UIKit
 
+// TODO: - guide label 숨김 처리
+
 class HomeViewController: UIViewController {
     // MARK: - UIComponenets
 
@@ -41,7 +43,7 @@ class HomeViewController: UIViewController {
     private lazy var paperButton = UIButton().then {
         $0.addTarget(self, action: #selector(didTapPaperButton(_:)), for: .touchUpInside)
         $0.backgroundColor = .paper1
-        $0.tag = 1
+        $0.tag = 3
         $0.transform = CGAffineTransform(rotationAngle: -CGFloat(Double.pi / 4))
         $0.isHidden = true
     }

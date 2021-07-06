@@ -10,7 +10,7 @@ import UIKit
 extension WritingViewController {
     func setConstraint() {
         navigationView.addSubviews([navigationLabel, backButton, checkButton])
-        view.addSubviews([navigationView, navigationDividerView, settingButton, guideImage, guideLabel, tagCollectionView, dividerView, titleTextField, textFieldCountLabel, textFieldDividerView, textView])
+        view.addSubviews([navigationView, navigationDividerView, guideImage, guideLabel, tagCollectionView, leftGradientView, righrGradientView, settingButton, dividerView, titleTextField, textFieldCountLabel, textFieldDividerView, textView])
         
         let screenSize = UIScreen.main.bounds
         
@@ -63,6 +63,20 @@ extension WritingViewController {
             make.leading.equalTo(settingButton.snp.trailing).offset(6 * screenSize.width / 375)
             make.trailing.equalToSuperview()
             make.height.equalTo(64 * screenSize.width / 375)
+        }
+        
+        leftGradientView.snp.makeConstraints { make in
+            make.top.equalTo(navigationDividerView.snp.bottom)
+            make.leading.equalToSuperview()
+            make.width.equalTo(100 * screenSize.width / 375)
+            make.bottom.equalTo(dividerView.snp.bottom)
+        }
+        
+        righrGradientView.snp.makeConstraints { make in
+            make.top.equalTo(navigationDividerView.snp.bottom)
+            make.trailing.equalToSuperview()
+            make.width.equalTo(81 * screenSize.width / 375)
+            make.bottom.equalTo(dividerView.snp.bottom)
         }
         
         dividerView.snp.makeConstraints { make in
