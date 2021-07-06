@@ -41,6 +41,16 @@ class WritingViewController: UIViewController {
         $0.addTarget(self, action: #selector(didTapSettingButton(_:)), for: .touchUpInside)
     }
     
+    let guideImage = UIImageView().then {
+        $0.image = UIImage(named: "icArrow")
+    }
+    
+    let guideLabel = UILabel().then {
+        $0.text = "카테고리를 추가해주세요!"
+        $0.font = UIFont.nanumSquareFont(type: .regular, size: 16)
+        $0.textColor = UIColor.green2Main
+    }
+    
     let tagCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
