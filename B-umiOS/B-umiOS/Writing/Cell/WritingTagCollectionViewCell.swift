@@ -54,7 +54,7 @@ class WritingTagCollectionViewCell: UICollectionViewCell {
         super.layoutSubviews()
         
         setConstraints()
-        contentView.cornerRound(radius: 20)
+        contentView.cornerRound(radius: 19)
     }
     
     override func prepareForReuse() {
