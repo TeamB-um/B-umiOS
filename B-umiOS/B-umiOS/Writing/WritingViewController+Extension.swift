@@ -47,11 +47,15 @@ extension WritingViewController: UICollectionViewDataSource {
         cell.setTagLabel(tag: tag[indexPath.row])
         return cell
     }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+    }
 }
 
 extension WritingViewController: UICollectionViewDelegate {
     // FIXME: - 일단.. 잠시 사라지게만 해뒀음 좌표값에 따라 변경 필요
-    
+
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.contentOffset.x < 10 {
             UIView.animate(withDuration: 0.3) {
