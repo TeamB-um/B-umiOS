@@ -51,18 +51,17 @@ class WritingViewController: UIViewController {
         $0.textColor = UIColor.green2Main
     }
     
-    let tagCollectionView: UICollectionView = {
+    let tagCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout()).then {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.estimatedItemSize = .zero
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .clear
-        collectionView.showsHorizontalScrollIndicator = false
+
+        $0.backgroundColor = .clear
+        $0.showsHorizontalScrollIndicator = false
+        $0.collectionViewLayout = layout
         
-        collectionView.register(WritingTagCollectionViewCell.self, forCellWithReuseIdentifier: WritingTagCollectionViewCell.identifier)
-        
-        return collectionView
-    }()
+        $0.register(WritingTagCollectionViewCell.self, forCellWithReuseIdentifier: WritingTagCollectionViewCell.identifier)
+    }
     
     lazy var leftGradientView = UIImageView().then {
         $0.image = UIImage(named: "writing1GradientEnd")?.withRenderingMode(.alwaysTemplate)
