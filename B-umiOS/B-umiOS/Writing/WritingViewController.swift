@@ -79,6 +79,7 @@ class WritingViewController: UIViewController {
     }
     
     lazy var titleTextField = UITextField().then {
+        $0.autocorrectionType = .no
         $0.attributedPlaceholder = NSAttributedString(string: "제목", attributes: [NSAttributedString.Key.foregroundColor: self.style.textColor, NSAttributedString.Key.font: UIFont.nanumSquareFont(type: .bold, size: 14)])
         $0.textColor = self.style.textColor
         $0.font = UIFont.nanumSquareFont(type: .bold, size: 14)
@@ -95,6 +96,7 @@ class WritingViewController: UIViewController {
     }
     
     lazy var textView = UITextView().then {
+        $0.autocorrectionType = .no
         $0.backgroundColor = .clear
         $0.delegate = self
         $0.text = self.placeholder
@@ -166,19 +168,5 @@ class WritingViewController: UIViewController {
         tagCollectionView.dataSource = self
         
         tagCollectionView.selectItem(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: [])
-    }
-    
-    // MARK: - Protocols
-}
-
-extension WritingViewController: UITextViewDelegate {
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        setTextView()
-    }
-    
-    func textViewDidEndEditing(_ textView: UITextView) {
-        if textView.text.isEmpty {
-            setTextView()
-        }
     }
 }

@@ -70,3 +70,17 @@ extension WritingViewController: UICollectionViewDelegate {
         }
     }
 }
+
+// MARK: - UITextViewDelegate
+
+extension WritingViewController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        setTextView()
+    }
+
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            setTextView()
+        }
+    }
+}
