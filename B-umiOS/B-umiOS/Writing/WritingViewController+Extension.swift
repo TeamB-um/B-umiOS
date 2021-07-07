@@ -86,7 +86,7 @@ extension WritingViewController: UITextViewDelegate {
     }
 }
 
-// MARK: -
+// MARK: - UITextFieldDelegate
 
 extension WritingViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -101,7 +101,8 @@ extension WritingViewController: UITextFieldDelegate {
         guard let stringRange = Range(range, in: currentText) else { return false }
 
         let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
-        textFieldCountLabel.text = "\(updatedText.count)/20"
+        let length = (textField.text?.count)! - range.length + string.count
+        textFieldCountLabel.text = "\(length > limitLength ? limitLength : length)/20"
 
         return updatedText.count <= limitLength
     }
