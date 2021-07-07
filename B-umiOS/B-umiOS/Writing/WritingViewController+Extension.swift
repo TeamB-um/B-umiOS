@@ -18,17 +18,17 @@ extension WritingViewController: UICollectionViewDelegateFlowLayout {
         label.font = UIFont.nanumSquareFont(type: .regular, size: 16)
         label.sizeToFit()
 
-        return CGSize(width: label.bounds.width + 32, height: label.bounds.height + 18)
+        return CGSize(width: label.bounds.width + 30, height: label.bounds.height + 20)
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         28
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         8
     }
@@ -46,5 +46,27 @@ extension WritingViewController: UICollectionViewDataSource {
 
         cell.setTagLabel(tag: tag[indexPath.row])
         return cell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+    }
+}
+
+extension WritingViewController: UICollectionViewDelegate {
+    // FIXME: - 일단.. 잠시 사라지게만 해뒀음 좌표값에 따라 변경 필요
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.x < 10 {
+            UIView.animate(withDuration: 0.3) {
+                self.leftGradientView.alpha = 0
+                self.righrGradientView.alpha = 1
+            }
+        } else if scrollView.contentOffset.x > scrollView.contentSize.width - scrollView.bounds.width {
+            UIView.animate(withDuration: 0.3) {
+                self.leftGradientView.alpha = 1
+                self.righrGradientView.alpha = 0
+            }
+        }
     }
 }

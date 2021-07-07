@@ -2,18 +2,18 @@
   "images" : [
     {
       "scale" : "1x",
-      "idiom" : "universal",
-      "filename" : "btnRemove.png"
+      "filename" : "icArrow.png",
+      "idiom" : "universal"
     },
     {
-      "filename" : "btnRemove@2x.png",
       "idiom" : "universal",
-      "scale" : "2x"
+      "scale" : "2x",
+      "filename" : "icArrow@2x.png"
     },
     {
       "scale" : "3x",
-      "idiom" : "universal",
-      "filename" : "btnRemove@3x.png"
+      "filename" : "icArrow@3x.png",
+      "idiom" : "universal"
     }
   ],
   "info" : {
