@@ -14,6 +14,7 @@
 		4F4992992693FA02009541AA /* SeparateViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4992982693FA02009541AA /* SeparateViewController+Extension.swift */; };
 		4F49929D26942AD8009541AA /* SeparateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F49929B26942AD8009541AA /* SeparateCollectionViewCell.swift */; };
 		4F49929E26942AD8009541AA /* SeparateCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F49929C26942AD8009541AA /* SeparateCollectionViewCell.xib */; };
+		4F4992A2269577FF009541AA /* SizeConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4992A1269577FF009541AA /* SizeConstants.swift */; };
 		4F7FD2E82690E5B400122964 /* SettingTrashBinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7FD2E72690E5B400122964 /* SettingTrashBinViewController.swift */; };
 		4F7FD2EC26920F3800122964 /* TrashBinTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7FD2EA26920F3800122964 /* TrashBinTableViewCell.swift */; };
 		4F7FD2ED26920F3800122964 /* TrashBinTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F7FD2EB26920F3800122964 /* TrashBinTableViewCell.xib */; };
@@ -66,6 +67,7 @@
 		4F4992982693FA02009541AA /* SeparateViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SeparateViewController+Extension.swift"; sourceTree = "<group>"; };
 		4F49929B26942AD8009541AA /* SeparateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparateCollectionViewCell.swift; sourceTree = "<group>"; };
 		4F49929C26942AD8009541AA /* SeparateCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeparateCollectionViewCell.xib; sourceTree = "<group>"; };
+		4F4992A1269577FF009541AA /* SizeConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeConstants.swift; sourceTree = "<group>"; };
 		4F7FD2E72690E5B400122964 /* SettingTrashBinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTrashBinViewController.swift; sourceTree = "<group>"; };
 		4F7FD2EA26920F3800122964 /* TrashBinTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashBinTableViewCell.swift; sourceTree = "<group>"; };
 		4F7FD2EB26920F3800122964 /* TrashBinTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrashBinTableViewCell.xib; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				4F34E1052693618A00A54336 /* TapGesture.swift */,
+				4F4992A1269577FF009541AA /* SizeConstants.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -573,6 +576,7 @@
 				AB5AF762268A2E84001D3CD1 /* AppDelegate.swift in Sources */,
 				AB9F9DF72690CD9900088502 /* WritingViewController.swift in Sources */,
 				AB5AF764268A2E84001D3CD1 /* SceneDelegate.swift in Sources */,
+				4F4992A2269577FF009541AA /* SizeConstants.swift in Sources */,
 				AB8C3F582693371100B2BA30 /* WritingViewController+Extension.swift in Sources */,
 				4F7FD2F126929D6300122964 /* PeriodPopUpViewController.swift in Sources */,
 				FC0541BA2690C92A00FFA9D1 /* MyRewardViewController.swift in Sources */,
