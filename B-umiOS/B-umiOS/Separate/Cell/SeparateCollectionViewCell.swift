@@ -23,6 +23,7 @@ class SeparateCollectionViewCell: UICollectionViewCell {
     }
     
     // MARK: - Properites
+    
     static let identifier = "SeparateCollectionViewCell"
     
     // MARK: - Initializer

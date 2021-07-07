@@ -54,17 +54,6 @@ class SeparateViewController: UIViewController {
         $0.showsVerticalScrollIndicator = false
     }
         
-//        = {
-//        let layout = UICollectionViewFlowLayout()
-//        layout.scrollDirection = .vertical
-//        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-//
-//        collectionView.backgroundColor = .white
-//        //collectionView.showsVerticalScrollIndicator = false
-//
-//        return collectionView
-//    }()
-    
     // MARK: - Properties
     
     // MARK: - Initializer

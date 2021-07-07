@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension SeparateViewController{
+extension SeparateViewController {
     func setConstraint(){
         view.addSubviews([navigationView, navigationDividerView, explanationView, separateCollectionView])
         navigationView.addSubviews([navigationLabel, graphButton])
