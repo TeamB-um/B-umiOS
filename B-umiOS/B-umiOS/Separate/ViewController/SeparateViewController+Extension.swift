@@ -46,3 +46,13 @@ extension SeparateViewController: UICollectionViewDataSource {
         return cell
     }
 }
+
+// MARK: - UICollectionViewDelegate
+
+extension SeparateViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let pushVC = self.storyboard?.instantiateViewController(withIdentifier: "SeparateDetailViewController"){
+            self.navigationController?.pushViewController(pushVC, animated: true)
+        }
+    }
+}
