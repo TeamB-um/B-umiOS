@@ -83,6 +83,9 @@ class WritingViewController: UIViewController {
         $0.attributedPlaceholder = NSAttributedString(string: "제목", attributes: [NSAttributedString.Key.foregroundColor: self.style.textColor, NSAttributedString.Key.font: UIFont.nanumSquareFont(type: .bold, size: 14)])
         $0.textColor = self.style.textColor
         $0.font = UIFont.nanumSquareFont(type: .bold, size: 14)
+        
+        $0.delegate = self
+        $0.becomeFirstResponder()
     }
     
     lazy var textFieldDividerView = UIView().then {
@@ -156,6 +159,8 @@ class WritingViewController: UIViewController {
     }
     
     func setTextView() {
+        // FIXME: - else if 조건 변경
+        
         if textView.text.isEmpty {
             textView.text = placeholder
         } else if textView.text == placeholder {

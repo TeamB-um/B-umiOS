@@ -84,3 +84,14 @@ extension WritingViewController: UITextViewDelegate {
         }
     }
 }
+
+// MARK: -
+
+extension WritingViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        textView.becomeFirstResponder()
+
+        return true
+    }
+}
