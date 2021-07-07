@@ -240,8 +240,8 @@
 			isa = PBXGroup;
 			children = (
 				ABB24DF2268CD913006FEE57 /* Cell */,
-				ABB24DF1268CD909006FEE57 /* ViewController */,
 				ABB24DF0268CD8E6006FEE57 /* Storyboard */,
+				ABB24DF5268CD9D3006FEE57 /* HomeViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -252,14 +252,6 @@
 				ABB24DF7268CD9FF006FEE57 /* Home.storyboard */,
 			);
 			path = Storyboard;
-			sourceTree = "<group>";
-		};
-		ABB24DF1268CD909006FEE57 /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				ABB24DF5268CD9D3006FEE57 /* HomeViewController.swift */,
-			);
-			path = ViewController;
 			sourceTree = "<group>";
 		};
 		ABB24DF2268CD913006FEE57 /* Cell */ = {
