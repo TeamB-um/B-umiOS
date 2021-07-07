@@ -20,4 +20,13 @@ extension UILabel {
             self.attributedText = attributeString
         }
     }
+    
+    func calculateLabelSize(text: String, font: UIFont) -> CGSize {
+        let label = UILabel()
+        label.text = text
+        label.font = font
+        label.sizeToFit()
+        
+        return label.bounds.size
+    }
 }
