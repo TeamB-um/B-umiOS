@@ -44,16 +44,26 @@ class SeparateViewController: UIViewController {
         $0.attributedText = attributedStr
     }
     
-    let separateCollectionView : UICollectionView = {
+    let separateCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then{
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-       
-        collectionView.backgroundColor = .white
-        //collectionView.showsVerticalScrollIndicator = false
-
-        return collectionView
-    }()
+        
+        $0.backgroundColor = .white
+        $0.frame = .zero
+        $0.collectionViewLayout = layout
+        $0.showsVerticalScrollIndicator = false
+    }
+        
+//        = {
+//        let layout = UICollectionViewFlowLayout()
+//        layout.scrollDirection = .vertical
+//        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+//
+//        collectionView.backgroundColor = .white
+//        //collectionView.showsVerticalScrollIndicator = false
+//
+//        return collectionView
+//    }()
     
     // MARK: - Properties
     

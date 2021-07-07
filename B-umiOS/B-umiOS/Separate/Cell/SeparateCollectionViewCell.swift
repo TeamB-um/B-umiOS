@@ -65,6 +65,5 @@ class SeparateCollectionViewCell: UICollectionViewCell {
             make.top.equalTo(separateImage.snp.bottom).offset(8 * screenSize.width / 375)
             make.bottom.equalToSuperview()
         }
-        print(separateImage.frame.width)
     }
 }
