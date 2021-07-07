@@ -41,24 +41,45 @@ class WritingViewController: UIViewController {
         $0.addTarget(self, action: #selector(didTapSettingButton(_:)), for: .touchUpInside)
     }
     
-    let tagCollectionView: UICollectionView = {
+    let guideImage = UIImageView().then {
+        $0.image = UIImage(named: "icArrow")
+    }
+    
+    let guideLabel = UILabel().then {
+        $0.text = "카테고리를 추가해주세요!"
+        $0.font = UIFont.nanumSquareFont(type: .regular, size: 16)
+        $0.textColor = UIColor.green2Main
+    }
+    
+    let tagCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout()).then {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .clear
-        collectionView.showsHorizontalScrollIndicator = false
+        layout.estimatedItemSize = .zero
+
+        $0.backgroundColor = .clear
+        $0.showsHorizontalScrollIndicator = false
+        $0.collectionViewLayout = layout
         
-        collectionView.register(WritingTagCollectionViewCell.self, forCellWithReuseIdentifier: WritingTagCollectionViewCell.identifier)
-        
-        return collectionView
-    }()
+        $0.register(WritingTagCollectionViewCell.self, forCellWithReuseIdentifier: WritingTagCollectionViewCell.identifier)
+    }
+    
+    lazy var leftGradientView = UIImageView().then {
+        $0.image = UIImage(named: "writing1GradientEnd")?.withRenderingMode(.alwaysTemplate)
+        $0.tintColor = style.paperBgColor
+        $0.alpha = 0
+    }
+
+    lazy var righrGradientView = UIImageView().then {
+        $0.image = UIImage(named: "writing1GradientRight")?.withRenderingMode(.alwaysTemplate)
+        $0.tintColor = style.paperBgColor
+    }
 
     lazy var dividerView = UIView().then {
         $0.backgroundColor = self.style.dividerColor
     }
     
     lazy var titleTextField = UITextField().then {
-        $0.placeholder = "제목"
+        $0.attributedPlaceholder = NSAttributedString(string: "제목", attributes: [NSAttributedString.Key.foregroundColor: self.style.textColor, NSAttributedString.Key.font: UIFont.nanumSquareFont(type: .bold, size: 14)])
         $0.textColor = self.style.textColor
         $0.font = UIFont.nanumSquareFont(type: .bold, size: 14)
     }
@@ -111,6 +132,14 @@ class WritingViewController: UIViewController {
         setConstraint()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        NotificationCenter.default.post(name: Notification.Name.TabBarHide, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.post(name: Notification.Name.TabBarShow, object: nil)
+    }
+    
     // MARK: - Actions
     
     @objc
@@ -135,6 +164,8 @@ class WritingViewController: UIViewController {
     func setCollectionView() {
         tagCollectionView.delegate = self
         tagCollectionView.dataSource = self
+        
+        tagCollectionView.selectItem(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: [])
     }
     
     // MARK: - Protocols
