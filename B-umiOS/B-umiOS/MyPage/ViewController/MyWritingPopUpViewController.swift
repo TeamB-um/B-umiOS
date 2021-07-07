@@ -32,19 +32,13 @@ class MyWritingPopUpViewController: UIViewController {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .clear
         
-        collectionView.register(MyWritingCollectionViewCell.self, forCellWithReuseIdentifier: MyWritingCollectionViewCell.identifier)
-        
-        collectionView.register(ButtonSectionView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ButtonSectionView.identifier)
+        collectionView.register(WritingTagCollectionViewCell.self, forCellWithReuseIdentifier: WritingTagCollectionViewCell.identifier)
         
         collectionView.delegate = self
         collectionView.dataSource = self
         
         return collectionView
     }()
-    
-    
-    
-    
     
     private lazy var categoryLabel = UILabel().then {
         $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 20)
@@ -53,16 +47,13 @@ class MyWritingPopUpViewController: UIViewController {
     }
     
     //타임피커
+
     
-    
-    
-    
-    
-    private lazy var setDateLabel = UILabel().then {
-        $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 20)
-        $0.textColor = .header
-        $0.text = "기간 설정"
-    }
+//    private lazy var setDateLabel = UILabel().then {
+//        $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 20)
+//        $0.textColor = .header
+//        $0.text = "기간 설정"
+//    }
     
     //토글
     
@@ -70,12 +61,12 @@ class MyWritingPopUpViewController: UIViewController {
     
     
     
-    
-    private var stackView = UIStackView().then {
-        $0.distribution = .fillEqually
-        $0.spacing = 13
-        $0.axis = .horizontal
-    }
+//
+//    private var stackView = UIStackView().then {
+//        $0.distribution = .fillEqually
+//        $0.spacing = 13
+//        $0.axis = .horizontal
+//    }
     
     private let rect = UIView().then {
         $0.backgroundColor = .paper1
@@ -90,6 +81,8 @@ class MyWritingPopUpViewController: UIViewController {
     
     var subText : String = "sub view"
     var placeholder : String = "placeholder"
+    var tag: [String] = ["인간관계", "취업", "날파리", "거지챌린지", "아르바이트", "부장님"]
+
     
     // MARK: - Initializer
     
@@ -113,8 +106,14 @@ class MyWritingPopUpViewController: UIViewController {
         
         self.view.addSubviews([backgroundButton,popupView])
         
-
-        popupView.addSubviews([rect,headerLabel,subLabel,textfield,stackView])
+        popupView.addSubviews([confirmButton, categoryTagCollecitonView, categoryLabel])
+        
+        confirmButton.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(24)
+            make.bottom.equalToSuperview().inset(32)
+            make.height.equalTo(50)
+        }
+        
         popupView.snp.makeConstraints { make in
             make.bottom.equalToSuperview()
             make.top.equalToSuperview().inset(429)
@@ -125,52 +124,56 @@ class MyWritingPopUpViewController: UIViewController {
             make.edges.equalToSuperview()
         }
         
-        headerLabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(24)
-            make.top.equalToSuperview().inset(32)
-        }
-
-        subLabel.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.top.equalTo(headerLabel.snp.bottom).offset(8)
-        }
-
-        textfield.snp.makeConstraints { make in
+        categoryTagCollecitonView.snp.makeConstraints { make in
+            make.top.equalTo(categoryLabel.snp.bottom).offset(20)
+            make.bottom.equalTo(confirmButton.snp.top).offset(30)
             make.leading.trailing.equalToSuperview().inset(24)
-            make.top.equalTo(subLabel.snp.bottom).offset(28)
-        }
-
-        stackView.snp.makeConstraints { make in
-            make.top.equalTo(textfield.snp.bottom).offset(28)
-            make.leading.trailing.equalToSuperview().inset(24)
-            make.bottom.equalToSuperview().inset(32)
-            make.height.equalTo(50)
         }
         
+        categoryLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(200)
+            make.leading.equalTo(confirmButton)
+        }
 
-        stackView.addArrangedSubview(confirmButton)
     }
 }
+
     // MARK: - Protocols
     // MARK: - Extensions
+extension MyWritingPopUpViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let label = UILabel()
+        label.text = tag[indexPath.row]
+        label.font = UIFont.nanumSquareFont(type: .regular, size: 16)
+        label.sizeToFit()
 
-extension MyWritingPopUpViewController: UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        //서버에서 휴지통 개수 계산해서 여따 넣어라
-        return 8
+        return CGSize(width: label.bounds.width + 32, height: label.bounds.height + 18)
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryTagCollectionViewCell.identifier, for: indexPath) as? CategoryTagCollectionViewCell else { return UICollectionViewCell() }
-        
-        
-        
-        return cell
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 16)
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        8
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        8
+    }
 }
 
-extension MyWritingPopUpViewController: UICollectionViewDelegateFlowLayout {
-    
+// MARK: - UICollectionViewDataSource
+
+extension MyWritingPopUpViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        tag.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WritingTagCollectionViewCell.identifier, for: indexPath) as? WritingTagCollectionViewCell else { return UICollectionViewCell() }
+
+        cell.setTagLabel(tag: tag[indexPath.row])
+        return cell
+    }
 }

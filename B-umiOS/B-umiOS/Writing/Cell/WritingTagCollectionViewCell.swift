@@ -8,7 +8,7 @@
 import UIKit
 
 class WritingTagCollectionViewCell: UICollectionViewCell {
-    static let identifier = "WrtingTagCollectionViewCell"
+    static let identifier = "WritingTagCollectionViewCell"
     
     // MARK: - UIComponenets
     
