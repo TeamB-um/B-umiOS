@@ -10,6 +10,11 @@
 		4A2ED671A9B461F851BCEC5B /* Pods_B_umiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35912B5C45814D34BAA702A8 /* Pods_B_umiOS.framework */; };
 		4F34E10326935F7100A54336 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F34E10226935F7100A54336 /* UIViewController+Extension.swift */; };
 		4F34E1062693618A00A54336 /* TapGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F34E1052693618A00A54336 /* TapGesture.swift */; };
+		4F4992972693F9F2009541AA /* SeparateViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4992962693F9F2009541AA /* SeparateViewController+Layout.swift */; };
+		4F4992992693FA02009541AA /* SeparateViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4992982693FA02009541AA /* SeparateViewController+Extension.swift */; };
+		4F49929D26942AD8009541AA /* SeparateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F49929B26942AD8009541AA /* SeparateCollectionViewCell.swift */; };
+		4F49929E26942AD8009541AA /* SeparateCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F49929C26942AD8009541AA /* SeparateCollectionViewCell.xib */; };
+		4F4992A2269577FF009541AA /* SizeConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4992A1269577FF009541AA /* SizeConstants.swift */; };
 		4F7FD2E82690E5B400122964 /* SettingTrashBinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7FD2E72690E5B400122964 /* SettingTrashBinViewController.swift */; };
 		4F7FD2EC26920F3800122964 /* TrashBinTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7FD2EA26920F3800122964 /* TrashBinTableViewCell.swift */; };
 		4F7FD2ED26920F3800122964 /* TrashBinTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F7FD2EB26920F3800122964 /* TrashBinTableViewCell.xib */; };
@@ -63,6 +68,11 @@
 		35912B5C45814D34BAA702A8 /* Pods_B_umiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_B_umiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F34E10226935F7100A54336 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		4F34E1052693618A00A54336 /* TapGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapGesture.swift; sourceTree = "<group>"; };
+		4F4992962693F9F2009541AA /* SeparateViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SeparateViewController+Layout.swift"; sourceTree = "<group>"; };
+		4F4992982693FA02009541AA /* SeparateViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SeparateViewController+Extension.swift"; sourceTree = "<group>"; };
+		4F49929B26942AD8009541AA /* SeparateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparateCollectionViewCell.swift; sourceTree = "<group>"; };
+		4F49929C26942AD8009541AA /* SeparateCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeparateCollectionViewCell.xib; sourceTree = "<group>"; };
+		4F4992A1269577FF009541AA /* SizeConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeConstants.swift; sourceTree = "<group>"; };
 		4F7FD2E72690E5B400122964 /* SettingTrashBinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTrashBinViewController.swift; sourceTree = "<group>"; };
 		4F7FD2EA26920F3800122964 /* TrashBinTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashBinTableViewCell.swift; sourceTree = "<group>"; };
 		4F7FD2EB26920F3800122964 /* TrashBinTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrashBinTableViewCell.xib; sourceTree = "<group>"; };
@@ -132,8 +142,18 @@
 			isa = PBXGroup;
 			children = (
 				4F34E1052693618A00A54336 /* TapGesture.swift */,
+				4F4992A1269577FF009541AA /* SizeConstants.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		4F49929A26942AA5009541AA /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				4F49929B26942AD8009541AA /* SeparateCollectionViewCell.swift */,
+				4F49929C26942AD8009541AA /* SeparateCollectionViewCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		4F7FD2E926920F1300122964 /* Cell */ = {
@@ -379,6 +399,7 @@
 		ABB24E6B268E20CC006FEE57 /* Separate */ = {
 			isa = PBXGroup;
 			children = (
+				4F49929A26942AA5009541AA /* Cell */,
 				ABB24E6D268E20DD006FEE57 /* ViewController */,
 				ABB24E6C268E20D7006FEE57 /* Storyboard */,
 			);
@@ -397,6 +418,8 @@
 			isa = PBXGroup;
 			children = (
 				ABB24E70268E20F9006FEE57 /* SeparateViewController.swift */,
+				4F4992982693FA02009541AA /* SeparateViewController+Extension.swift */,
+				4F4992962693F9F2009541AA /* SeparateViewController+Layout.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -480,6 +503,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB5AF76E268A2E87001D3CD1 /* LaunchScreen.storyboard in Resources */,
+				4F49929E26942AD8009541AA /* SeparateCollectionViewCell.xib in Resources */,
 				FC0541BE2691AA3500FFA9D1 /* MyWriting.storyboard in Resources */,
 				ABB24DFE268CDF64006FEE57 /* NanumSquareOTF_acEB.otf in Resources */,
 				AB5AF76B268A2E87001D3CD1 /* Assets.xcassets in Resources */,
@@ -560,11 +584,14 @@
 				4F7FD2EF26922F4A00122964 /* TrashBinPopUpViewController.swift in Sources */,
 				ABB24E53268E1912006FEE57 /* FloatingBarView.swift in Sources */,
 				ABB24DF4268CD9B7006FEE57 /* CardCollectionViewCell.swift in Sources */,
+				4F4992972693F9F2009541AA /* SeparateViewController+Layout.swift in Sources */,
 				FC0541B62690C6EF00FFA9D1 /* MenuSectionCollectionViewCell.swift in Sources */,
 				ABB24E71268E20F9006FEE57 /* SeparateViewController.swift in Sources */,
 				4F34E10326935F7100A54336 /* UIViewController+Extension.swift in Sources */,
 				AB9F9DF92691F0D100088502 /* WritingStyle.swift in Sources */,
 				ABB24E0C268CF49C006FEE57 /* UIDevice+Extension.swift in Sources */,
+				ABB24E5C268E1A18006FEE57 /* MyPageViewController.swift in Sources */,
+				4F4992992693FA02009541AA /* SeparateViewController+Extension.swift in Sources */,
 				AB8C3F56269331EF00B2BA30 /* WritingTagCollectionViewCell.swift in Sources */,
 				ABB24E5C268E1A18006FEE57 /* MyPageViewController.swift in Sources */,
 				FC69E37726935B81001093F9 /* RoundingButton.swift in Sources */,
@@ -573,9 +600,11 @@
 				4F34E1062693618A00A54336 /* TapGesture.swift in Sources */,
 				FC0541B82690C80000FFA9D1 /* MyWritingViewController.swift in Sources */,
 				AB5AF766268A2E84001D3CD1 /* ViewController.swift in Sources */,
+				4F49929D26942AD8009541AA /* SeparateCollectionViewCell.swift in Sources */,
 				AB5AF762268A2E84001D3CD1 /* AppDelegate.swift in Sources */,
 				AB9F9DF72690CD9900088502 /* WritingViewController.swift in Sources */,
 				AB5AF764268A2E84001D3CD1 /* SceneDelegate.swift in Sources */,
+				4F4992A2269577FF009541AA /* SizeConstants.swift in Sources */,
 				AB8C3F582693371100B2BA30 /* WritingViewController+Extension.swift in Sources */,
 				4F7FD2F126929D6300122964 /* PeriodPopUpViewController.swift in Sources */,
 				FC0541BA2690C92A00FFA9D1 /* MyRewardViewController.swift in Sources */,
