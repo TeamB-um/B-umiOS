@@ -24,10 +24,28 @@ class FloatingTabBarController: UITabBarController {
         
         setTabBarController()
         setFloatingTabBarView()
+        setNotifiaction()
         setConstraint()
     }
     
     // MARK: - Actions
+
+    @objc
+    func hideTabBar(_ sender: NotificationCenter) {
+        /// curveEaseIn - 느리게 시작했다가 빠르게
+        /// /// curveEaseIn - 느리게 빠르게 시작했다가 느리게
+        /// curveEaseInOut - 느리게 - 가속 - 느리게 (default)
+        UIView.animate(withDuration: 0.6, delay: 0, options: .curveEaseIn, animations: {
+            self.floatingTabbarView.transform = CGAffineTransform(translationX: 0, y: self.floatingTabbarView.frame.origin.y + self.view.safeAreaInsets.bottom + self.floatingTabbarView.frame.height)
+        })
+    }
+
+    @objc
+    func showTabBar(_ sender: NotificationCenter) {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.9, options: .curveEaseInOut, animations: {
+            self.floatingTabbarView.transform = .identity
+        })
+    }
     
     // MARK: - Methods
     
@@ -60,6 +78,11 @@ class FloatingTabBarController: UITabBarController {
             make.leading.trailing.equalToSuperview().inset(37)
             make.bottom.equalToSuperview().offset(-34)
         }
+    }
+    
+    func setNotifiaction() {
+        NotificationCenter.default.addObserver(self, selector: #selector(showTabBar(_:)), name: Notification.Name.TabBarShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(hideTabBar(_:)), name: Notification.Name.TabBarHide, object: nil)
     }
 }
 
