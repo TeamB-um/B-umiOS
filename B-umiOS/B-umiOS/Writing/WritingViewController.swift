@@ -111,6 +111,14 @@ class WritingViewController: UIViewController {
         setConstraint()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        NotificationCenter.default.post(name: Notification.Name.TabBarHide, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.post(name: Notification.Name.TabBarShow, object: nil)
+    }
+    
     // MARK: - Actions
     
     @objc
