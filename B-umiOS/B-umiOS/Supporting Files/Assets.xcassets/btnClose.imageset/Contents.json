@@ -1,19 +1,19 @@
 {
   "images" : [
     {
-      "filename" : "btnClose.png",
+      "idiom" : "universal",
       "scale" : "1x",
-      "idiom" : "universal"
+      "filename" : "btnClose.png"
     },
     {
-      "scale" : "2x",
       "filename" : "btnClose@2x.png",
-      "idiom" : "universal"
+      "idiom" : "universal",
+      "scale" : "2x"
     },
     {
       "scale" : "3x",
-      "filename" : "btnClose@3x.png",
-      "idiom" : "universal"
+      "idiom" : "universal",
+      "filename" : "btnClose@3x.png"
     }
   ],
   "info" : {

@@ -13,23 +13,26 @@ class ButtonSectionView: UICollectionReusableView {
     
     static let identifier = "ButtonSectionView"
     
-    private let categoryButtton: UIButton = {
+    private let categoryButtton: RoundingButton = {
         let button = RoundingButton()
         button.setupRoundingButton(title: "전체 카테고리", image: "btnFilter")
-        
+        button.addTarget(self, action: #selector(didTapAddButton(_:)), for: .touchUpInside)
         return button
     }()
     
-    private let selectButtton: UIButton = {
+    private let selectButtton: RoundingButton = {
         let button = RoundingButton()
         button.setupRoundingButton(title: "선택", image: "btnCheckUnseleted")
+        button.addTarget(self, action: #selector(didTapSelectButtton(_:)), for: .touchUpInside)
         
         return button
     }()
     
-    private let deleteButton: UIButton = {
+    private let deleteButton: RoundingButton = {
         let button = RoundingButton()
         button.setupRoundingButton(title: "삭제", image: "btnRemove")
+        button.addTarget(self, action: #selector(didTapDeleteButton(_:)), for: .touchUpInside)
+        button.isHidden = true
         
         return button
     }()
@@ -61,6 +64,8 @@ class ButtonSectionView: UICollectionReusableView {
         categoryButtton.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(20)
             make.leading.equalTo(16)
+            make.width.equalTo(137)
+            
         }
         
         selectButtton.snp.makeConstraints { make in
@@ -82,6 +87,41 @@ class ButtonSectionView: UICollectionReusableView {
     override func layoutSubviews() {
         super.layoutSubviews()
         setConstraint()
+    }
+    
+    // MARK: - Action
+    
+    @objc
+    private func didTapAddButton(_ sender: UIButton) {
+            let popUpVC =  MyWritingPopUpViewController()
+            popUpVC.modalPresentationStyle = .overFullScreen
+            self.parentViewController?.present(popUpVC, animated: true, completion: nil)
+
+        }
+    
+    @objc
+    func didTapCategoryButton(_ sender: UIButton) {
+        if categoryButtton.isSelected {
+            categoryButtton.setupRoundingButton(title: "전체 카테고리", image: "btnFilter", selected: true)
+        } else {
+            categoryButtton.setupRoundingButton(title: "서버에서", image: "btnFilterWhite", selected: false)
+        }
+    }
+    
+    @objc
+    func didTapSelectButtton(_ sender: UIButton) {
+        if selectButtton.isSelected {
+            selectButtton.setupRoundingButton(title: "선택", image: "btnCheckUnseleted", selected: true)
+            deleteButton.isHidden = true
+        } else {
+            selectButtton.setupRoundingButton(title: "취소", image: "btnClose", selected: false)
+            deleteButton.isHidden = false
+        }
+    }
+    
+    @objc
+    func didTapDeleteButton(_ sender: UIButton) {
+
     }
     
       // MARK: - Protocols
