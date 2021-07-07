@@ -95,7 +95,7 @@ class WritingViewController: UIViewController {
     lazy var textFieldCountLabel = UILabel().then {
         $0.textColor = self.style.countColor
         $0.font = UIFont.systemFont(ofSize: 15, weight: .regular)
-        $0.text = "2/20"
+        $0.text = "0/20"
     }
     
     lazy var textView = UITextView().then {
@@ -176,6 +176,6 @@ class WritingViewController: UIViewController {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
+        view.endEditing(true)
     }
 }

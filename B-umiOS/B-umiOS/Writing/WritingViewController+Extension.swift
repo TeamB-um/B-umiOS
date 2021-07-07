@@ -10,6 +10,7 @@ import UIKit
 // MARK: - UICollectionViewDelegateFlowLayout
 
 var tag: [String] = ["인간관계", "취업", "날파리", "거지챌린지", "아르바이트", "부장님"]
+private let limitLength = 20
 
 extension WritingViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -93,5 +94,15 @@ extension WritingViewController: UITextFieldDelegate {
         textView.becomeFirstResponder()
 
         return true
+    }
+
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let currentText = textField.text ?? ""
+        guard let stringRange = Range(range, in: currentText) else { return false }
+
+        let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
+        textFieldCountLabel.text = "\(updatedText.count)/20"
+
+        return updatedText.count <= limitLength
     }
 }
