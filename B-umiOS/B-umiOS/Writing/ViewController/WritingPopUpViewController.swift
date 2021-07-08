@@ -51,8 +51,6 @@ class WritingPopUpViewController: UIViewController {
     
     // MARK: - Properties
     
-    let backgroundTabGesture = UITapGestureRecognizer()
-    
     // MARK: - Initializer
     
     // MARK: - LifeCycle
