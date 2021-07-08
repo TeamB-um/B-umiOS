@@ -57,14 +57,15 @@ class ThrowTrashViewController: UIViewController {
         $0.textColor = .textGray
     }
     
-    let trash = UIImageView().then {
+    lazy var trash = UIImageView().then {
         $0.image = UIImage(systemName: "paperplane.fill")
         $0.backgroundColor = .orange
+        $0.isUserInteractionEnabled = true
+        $0.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:))))
     }
     
     let trashBin = UIImageView().then {
         $0.image = UIImage(systemName: "trash")
-        $0.backgroundColor = .orange
     }
 
     // MARK: - Properties
@@ -94,6 +95,23 @@ class ThrowTrashViewController: UIViewController {
     }
     
     // MARK: - Actions
+
+    @objc
+    func handlePanGesture(_ gesture: UIPanGestureRecognizer) {
+        switch gesture.state {
+        case .changed:
+            print("changed")
+            let translation = gesture.translation(in: view)
+            trash.transform = CGAffineTransform(translationX: translation.x, y: translation.y)
+        case .ended:
+            UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.6, options: .curveEaseIn) {
+                self.trash.transform = .identity
+            }
+        case .cancelled, .possible, .failed, .began: break
+        @unknown default:
+            break
+        }
+    }
     
     // MARK: - Methods
     
