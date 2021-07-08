@@ -68,11 +68,17 @@ class ThrowTrashViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setView()
     }
     
     // MARK: - Actions
     
     // MARK: - Methods
+    
+    func setView() {
+        view.backgroundColor = .white
+    }
     
     // MARK: - Protocols
 }
