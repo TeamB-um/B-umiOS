@@ -34,7 +34,7 @@ class ThrowTrashViewController: UIViewController {
     let explanationView = UIView().then {
         $0.backgroundColor = .white
         $0.cornerRound(radius: 10)
-        $0.setShadow(radius: 13, offset: CGSize(width: 1, height: 4), opacity: 0.1, color: UIColor(red: 45 / 255, green: 45 / 255, blue: 45.255, alpha: 1))
+        $0.setShadow(radius: 13, offset: CGSize(width: 1, height: 4), opacity: 0.1, color: UIColor(red: 45 / 255, green: 45 / 255, blue: 45 / 255, alpha: 1))
     }
     
     let explanationImage = UIImageView().then {
