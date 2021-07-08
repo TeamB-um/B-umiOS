@@ -24,6 +24,8 @@ extension SeparateDetailViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SeparateDetailTableViewCell.identifier, for: indexPath) as? SeparateDetailTableViewCell else {
             return UITableViewCell()
         }
+        cell.checkButton.isHidden = !self.checkButton.isSelected
+    
         return cell
     }
 }

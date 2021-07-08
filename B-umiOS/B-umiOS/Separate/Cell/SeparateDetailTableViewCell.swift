@@ -33,7 +33,6 @@ class SeparateDetailTableViewCell: UITableViewCell {
     // MARK: - Properites
     
     static let identifier = "SeparateDetailTableViewCell"
-    
     // MARK: - Initializer
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -78,3 +77,4 @@ class SeparateDetailTableViewCell: UITableViewCell {
         }
     }
 }
+

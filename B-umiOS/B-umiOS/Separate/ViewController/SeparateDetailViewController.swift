@@ -26,10 +26,12 @@ class SeparateDetailViewController: UIViewController {
     
     var removeButton = RoundingButton().then {
         $0.setupRoundingButton(title: "삭제", image: "btnRemove")
+        $0.isHidden = true
     }
     
     var checkButton = RoundingButton().then {
         $0.setupRoundingButton(title: "선택", image: "btnCheckUnseleted")
+        $0.addTarget(self, action: #selector(didTapCheckButton), for: .touchUpInside)
     }
     
     lazy var navigationDividerView = UIView().then {
@@ -48,7 +50,6 @@ class SeparateDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setView()
         setTableView()
         setConstraint()
@@ -58,6 +59,23 @@ class SeparateDetailViewController: UIViewController {
     @objc func didTapBackButton(){
         self.navigationController?.popViewController(animated: true)
     }
+    
+    @objc func didTapCheckButton(){
+        
+        if self.checkButton.isSelected {
+            self.checkButton.setupRoundingButton(title: "선택", image: "btnCheckUnseleted")
+            self.removeButton.isHidden = true
+            self.checkButton.isSelected = false
+        }
+        else{
+            self.checkButton.setupRoundingButton(title: "취소", image: "btnDelete")
+            self.removeButton.isHidden = false
+            self.checkButton.isSelected = true
+        }
+        
+        self.detailTableView.reloadData()
+    }
+    
     // MARK: - Methods
 
     func setView(){
