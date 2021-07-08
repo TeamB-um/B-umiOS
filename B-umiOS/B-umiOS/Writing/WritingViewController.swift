@@ -29,7 +29,9 @@ class WritingViewController: UIViewController {
     lazy var checkButton = UIButton(type: .custom, primaryAction: UIAction(handler: { _ in
         print("꾹..")
     })).then {
-        $0.setImage(UIImage(named: "btnCheck"), for: .normal)
+        $0.setImage(UIImage(named: "btnCheck")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        $0.tintColor = .disable
+        $0.isUserInteractionEnabled = false
     }
     
     lazy var navigationDividerView = UIView().then {
@@ -41,26 +43,51 @@ class WritingViewController: UIViewController {
         $0.addTarget(self, action: #selector(didTapSettingButton(_:)), for: .touchUpInside)
     }
     
-    let tagCollectionView: UICollectionView = {
+    let guideImage = UIImageView().then {
+        $0.image = UIImage(named: "icArrow")
+    }
+    
+    let guideLabel = UILabel().then {
+        $0.text = "카테고리를 추가해주세요!"
+        $0.font = UIFont.nanumSquareFont(type: .regular, size: 16)
+        $0.textColor = UIColor.green2Main
+    }
+    
+    let tagCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout()).then {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .clear
-        collectionView.showsHorizontalScrollIndicator = false
+        layout.estimatedItemSize = .zero
+
+        $0.backgroundColor = .clear
+        $0.showsHorizontalScrollIndicator = false
+        $0.collectionViewLayout = layout
         
-        collectionView.register(WritingTagCollectionViewCell.self, forCellWithReuseIdentifier: WritingTagCollectionViewCell.identifier)
-        
-        return collectionView
-    }()
+        $0.register(WritingTagCollectionViewCell.self, forCellWithReuseIdentifier: WritingTagCollectionViewCell.identifier)
+    }
+    
+    lazy var leftGradientView = UIImageView().then {
+        $0.image = UIImage(named: "writing1GradientEnd")?.withRenderingMode(.alwaysTemplate)
+        $0.tintColor = style.paperBgColor
+        $0.alpha = 0
+    }
+
+    lazy var righrGradientView = UIImageView().then {
+        $0.image = UIImage(named: "writing1GradientRight")?.withRenderingMode(.alwaysTemplate)
+        $0.tintColor = style.paperBgColor
+    }
 
     lazy var dividerView = UIView().then {
         $0.backgroundColor = self.style.dividerColor
     }
     
     lazy var titleTextField = UITextField().then {
-        $0.placeholder = "제목"
+        $0.autocorrectionType = .no
+        $0.attributedPlaceholder = NSAttributedString(string: "제목", attributes: [NSAttributedString.Key.foregroundColor: self.style.textColor, NSAttributedString.Key.font: UIFont.nanumSquareFont(type: .bold, size: 14)])
         $0.textColor = self.style.textColor
         $0.font = UIFont.nanumSquareFont(type: .bold, size: 14)
+        
+        $0.delegate = self
+        $0.becomeFirstResponder()
     }
     
     lazy var textFieldDividerView = UIView().then {
@@ -70,10 +97,11 @@ class WritingViewController: UIViewController {
     lazy var textFieldCountLabel = UILabel().then {
         $0.textColor = self.style.countColor
         $0.font = UIFont.systemFont(ofSize: 15, weight: .regular)
-        $0.text = "2/20"
+        $0.text = "0/20"
     }
     
     lazy var textView = UITextView().then {
+        $0.autocorrectionType = .no
         $0.backgroundColor = .clear
         $0.delegate = self
         $0.text = self.placeholder
@@ -111,6 +139,14 @@ class WritingViewController: UIViewController {
         setConstraint()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        NotificationCenter.default.post(name: Notification.Name.TabBarHide, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.post(name: Notification.Name.TabBarShow, object: nil)
+    }
+    
     // MARK: - Actions
     
     @objc
@@ -125,6 +161,8 @@ class WritingViewController: UIViewController {
     }
     
     func setTextView() {
+        // FIXME: - else if 조건 변경
+        
         if textView.text.isEmpty {
             textView.text = placeholder
         } else if textView.text == placeholder {
@@ -135,19 +173,26 @@ class WritingViewController: UIViewController {
     func setCollectionView() {
         tagCollectionView.delegate = self
         tagCollectionView.dataSource = self
+        
+        tagCollectionView.selectItem(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: [])
     }
     
-    // MARK: - Protocols
-}
-
-extension WritingViewController: UITextViewDelegate {
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        setTextView()
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
     
-    func textViewDidEndEditing(_ textView: UITextView) {
-        if textView.text.isEmpty {
-            setTextView()
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        let currentCharacterCount = textView.text?.count ?? 0
+        let newLength = currentCharacterCount + text.count - range.length
+        
+        if newLength > 0 {
+            checkButton.isUserInteractionEnabled = true
+            checkButton.tintColor = .header
+        } else {
+            checkButton.isUserInteractionEnabled = false
+            checkButton.tintColor = .disable
         }
+
+        return true
     }
 }
