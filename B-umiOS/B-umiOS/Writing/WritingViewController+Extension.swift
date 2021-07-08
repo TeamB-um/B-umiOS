@@ -75,7 +75,7 @@ extension WritingViewController: UICollectionViewDelegate {
 
 extension WritingViewController: WritingPopUpDelegate {
     func writingPopUpViewPush(trash: TrashType) {
-        let trashViewController = ThrowTrashViewController(trashType: .trash)
+        let trashViewController = ThrowTrashViewController(trashType: trash)
         self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
         self.navigationController?.pushViewController(trashViewController, animated: true)
     }

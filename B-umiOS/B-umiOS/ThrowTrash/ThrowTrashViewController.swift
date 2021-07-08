@@ -34,7 +34,11 @@ class ThrowTrashViewController: UIViewController {
     let explanationView = UIView().then {
         $0.backgroundColor = .white
         $0.cornerRound(radius: 10)
-        $0.setShadow(radius: 13, offset: CGSize(width: 1, height: 4), opacity: 0.1, color: UIColor(red: 45/255, green: 45/255, blue: 45.255, alpha: 1))
+        $0.setShadow(radius: 13, offset: CGSize(width: 1, height: 4), opacity: 0.1, color: UIColor(red: 45 / 255, green: 45 / 255, blue: 45.255, alpha: 1))
+    }
+    
+    let explanationImage = UIImageView().then {
+        $0.image = UIImage(systemName: "book.fill")
     }
     
     lazy var explanationLabel = UILabel().then {
@@ -70,6 +74,7 @@ class ThrowTrashViewController: UIViewController {
         super.viewDidLoad()
         
         setView()
+        setConstraints()
     }
     
     // MARK: - Actions
@@ -78,6 +83,47 @@ class ThrowTrashViewController: UIViewController {
     
     func setView() {
         view.backgroundColor = .white
+    }
+    
+    func setConstraints() {
+        let navigationHeight = 56 + UIDevice.current.safeAreaInset.top
+        
+        navigationView.addSubviews([navigationLabel, backButton])
+        explanationView.addSubviews([explanationImage, explanationLabel])
+        view.addSubviews([navigationView, explanationView])
+        
+        navigationLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-13)
+        }
+        
+        backButton.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset(8 * SizeConstants.ScreenRatio)
+            make.width.height.equalTo(36 * SizeConstants.ScreenRatio)
+            make.bottom.equalToSuperview().offset(-10)
+        }
+
+        navigationView.snp.makeConstraints { make in
+            make.top.width.equalToSuperview()
+            make.height.equalTo(navigationHeight * SizeConstants.ScreenRatio)
+        }
+        
+        explanationView.snp.makeConstraints { make in
+            make.top.equalTo(navigationView.snp.bottom).offset(16 * SizeConstants.ScreenRatio)
+            make.leading.trailing.equalToSuperview().inset(24)
+            make.height.equalTo(48 * SizeConstants.ScreenRatio)
+        }
+        
+        explanationImage.snp.makeConstraints { make in
+            make.width.height.equalTo(24 * SizeConstants.ScreenRatio)
+            make.leading.equalTo(24 * SizeConstants.ScreenRatio)
+            make.centerY.equalToSuperview()
+        }
+        
+        explanationLabel.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().offset(-27 * SizeConstants.ScreenRatio)
+            make.centerY.equalToSuperview()
+        }
     }
     
     // MARK: - Protocols
