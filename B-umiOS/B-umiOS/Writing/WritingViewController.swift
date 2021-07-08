@@ -29,7 +29,9 @@ class WritingViewController: UIViewController {
     lazy var checkButton = UIButton(type: .custom, primaryAction: UIAction(handler: { _ in
         print("꾹..")
     })).then {
-        $0.setImage(UIImage(named: "btnCheck"), for: .normal)
+        $0.setImage(UIImage(named: "btnCheck")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        $0.tintColor = .disable
+        $0.isUserInteractionEnabled = false
     }
     
     lazy var navigationDividerView = UIView().then {
@@ -180,5 +182,20 @@ extension WritingViewController: UITextViewDelegate {
         if textView.text.isEmpty {
             setTextView()
         }
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        let currentCharacterCount = textView.text?.count ?? 0
+        let newLength = currentCharacterCount + text.count - range.length
+        
+        if newLength > 0 {
+            checkButton.isUserInteractionEnabled = true
+            checkButton.tintColor = .header
+        } else {
+            checkButton.isUserInteractionEnabled = false
+            checkButton.tintColor = .disable
+        }
+
+        return true
     }
 }
