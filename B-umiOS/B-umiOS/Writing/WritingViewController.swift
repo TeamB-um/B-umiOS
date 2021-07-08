@@ -27,7 +27,11 @@ class WritingViewController: UIViewController {
     }
     
     lazy var checkButton = UIButton(type: .custom, primaryAction: UIAction(handler: { _ in
-        print("꾹..")
+        let popUpViewController = WritingPopUpViewController()
+        popUpViewController.modalPresentationStyle = .overCurrentContext
+        popUpViewController.modalTransitionStyle = .crossDissolve
+        
+        self.present(popUpViewController, animated: true, completion: nil)
     })).then {
         $0.setImage(UIImage(named: "btnCheck")?.withRenderingMode(.alwaysTemplate), for: .normal)
         $0.tintColor = .disable
