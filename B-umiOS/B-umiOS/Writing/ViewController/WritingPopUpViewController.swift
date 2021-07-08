@@ -24,7 +24,9 @@ class WritingPopUpViewController: UIViewController {
         $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 20)
     }
     
-    private let closeButton = UIButton().then {
+    private lazy var closeButton = UIButton(frame: .zero, primaryAction: UIAction(handler: { _ in
+        self.dismiss(animated: true, completion: nil)
+    })).then {
         $0.setImage(UIImage(named: "btnCloseBlack"), for: .normal)
     }
     
