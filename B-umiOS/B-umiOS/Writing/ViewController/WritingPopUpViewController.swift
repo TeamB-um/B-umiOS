@@ -39,7 +39,10 @@ class WritingPopUpViewController: UIViewController {
         $0.textColor = .paper3
     }
     
-    private let deleteButton = UIButton().then {
+    private lazy var deleteButton = UIButton(primaryAction: UIAction(handler: { _ in
+        self.dismiss(animated: true, completion: nil)
+        self.popUpDelegate?.writingPopUpViewPush(trash: .trash)
+    })).then {
         $0.setTitle("삭제", for: .normal)
         $0.setTitleColor(.paper3, for: .normal)
         $0.cornerRound(radius: 10)
@@ -47,13 +50,19 @@ class WritingPopUpViewController: UIViewController {
         $0.layer.borderColor = UIColor(red: 210/255, green: 210/255, blue: 210/255, alpha: 1).cgColor
     }
     
-    private let archiveButton = UIButton().then {
+    private lazy var archiveButton = UIButton(primaryAction: UIAction(handler: { _ in
+        self.dismiss(animated: true, completion: nil)
+        self.popUpDelegate?.writingPopUpViewPush(trash: .separate)
+    })).then {
         $0.backgroundColor = .blue2Main
         $0.setTitle("보관", for: .normal)
+        $0.setTitleColor(.white, for: .normal)
         $0.cornerRound(radius: 10)
     }
     
     // MARK: - Properties
+    
+    var popUpDelegate: WritingPopUpDelegate?
     
     // MARK: - Initializer
     

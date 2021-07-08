@@ -70,3 +70,15 @@ extension WritingViewController: UICollectionViewDelegate {
         }
     }
 }
+
+// MARK: - WritingPopUpDelegate
+
+extension WritingViewController: WritingPopUpDelegate {
+    func writingPopUpViewPush(trash: TrashType) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.45) {
+            let trashViewController = ThrowTrashViewController(trashType: .trash)
+            self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
+            self.navigationController?.pushViewController(trashViewController, animated: true)
+        }
+    }
+}

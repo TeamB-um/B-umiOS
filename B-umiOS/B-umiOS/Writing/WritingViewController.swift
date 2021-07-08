@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol WritingPopUpDelegate {
+    func writingPopUpViewPush(trash: TrashType)
+}
+
 class WritingViewController: UIViewController {
     // MARK: - UIComponenets
 
@@ -30,6 +34,7 @@ class WritingViewController: UIViewController {
         let popUpViewController = WritingPopUpViewController()
         popUpViewController.modalPresentationStyle = .overCurrentContext
         popUpViewController.modalTransitionStyle = .crossDissolve
+        popUpViewController.popUpDelegate = self
         
         self.present(popUpViewController, animated: true, completion: nil)
     })).then {
