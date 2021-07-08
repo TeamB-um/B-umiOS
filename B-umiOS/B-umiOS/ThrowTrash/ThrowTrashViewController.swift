@@ -98,15 +98,20 @@ class ThrowTrashViewController: UIViewController {
 
     @objc
     func handlePanGesture(_ gesture: UIPanGestureRecognizer) {
+        let translation = gesture.translation(in: view)
+
         switch gesture.state {
         case .changed:
-            print("changed")
-            let translation = gesture.translation(in: view)
             trash.transform = CGAffineTransform(translationX: translation.x, y: translation.y)
         case .ended:
-            UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.6, options: .curveEaseIn) {
-                self.trash.transform = .identity
+            // FIXME: - 야매로 계산. 쓰레기통 나오면 찐 계산합니다.
+            
+            if translation.x > -50 || translation.x < 50, translation.y > 250 {
+                throwAwayTrash()
+            } else {
+                resetTrash()
             }
+            
         case .cancelled, .possible, .failed, .began: break
         @unknown default:
             break
@@ -117,6 +122,22 @@ class ThrowTrashViewController: UIViewController {
     
     func setView() {
         view.backgroundColor = .white
+    }
+    
+    func resetTrash() {
+        UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.6, options: .curveEaseIn) {
+            self.trash.transform = .identity
+        }
+    }
+    
+    func throwAwayTrash() {
+        UIView.animate(withDuration: 0.3) {
+            self.trash.alpha = 0
+        }
+        
+        /// 진동 + 토스트
+        
+        navigationController?.popToRootViewController(animated: true)
     }
 
     // MARK: - Protocols
