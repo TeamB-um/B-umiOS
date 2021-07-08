@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--My Writing View Controller-->
+        <!--My Writing Pop Up View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="MyWritingViewController" id="Y6W-OH-hqX" customClass="MyWritingViewController" customModule="B_umiOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="MyWritingPopUpViewController" storyboardIdentifier="MyWritingPopUpViewController" id="Y6W-OH-hqX" customClass="MyWritingPopUpViewController" customModule="B_umiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -21,7 +21,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="92.753623188405811" y="58.928571428571423"/>
+            <point key="canvasLocation" x="139" y="68"/>
         </scene>
     </scenes>
     <resources>

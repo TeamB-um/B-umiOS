@@ -80,6 +80,7 @@ extension MyWritingViewController : UICollectionViewDataSource {
         
 //        let headerView = collectionView.dequeueReusableCell(withReuseIdentifier: ButtonSectionView.identifier, for: indexPath)
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ButtonSectionView.identifier, for: indexPath)
+        
 
         return headerView
     }
@@ -104,7 +105,7 @@ extension MyWritingViewController : UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 16, bottom: 116, right: 16)
+        return UIEdgeInsets(top: 0, left: 16, bottom: 210, right: 16)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
