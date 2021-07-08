@@ -50,6 +50,22 @@ class ThrowTrashViewController: UIViewController {
 
         $0.attributedText = attributedStr
     }
+    
+    private let guideLabel = UILabel().then {
+        $0.text = "쓰레기통으로 넣어보세요!"
+        $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 20)
+        $0.textColor = .textGray
+    }
+    
+    let trash = UIImageView().then {
+        $0.image = UIImage(systemName: "paperplane.fill")
+        $0.backgroundColor = .orange
+    }
+    
+    let trashBin = UIImageView().then {
+        $0.image = UIImage(systemName: "trash")
+        $0.backgroundColor = .orange
+    }
 
     // MARK: - Properties
     
@@ -90,7 +106,7 @@ class ThrowTrashViewController: UIViewController {
         
         navigationView.addSubviews([navigationLabel, backButton])
         explanationView.addSubviews([explanationImage, explanationLabel])
-        view.addSubviews([navigationView, explanationView])
+        view.addSubviews([navigationView, explanationView, trash, trashBin, guideLabel])
         
         navigationLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
@@ -123,6 +139,23 @@ class ThrowTrashViewController: UIViewController {
         explanationLabel.snp.makeConstraints { make in
             make.trailing.equalToSuperview().offset(-27 * SizeConstants.ScreenRatio)
             make.centerY.equalToSuperview()
+        }
+        
+        trash.snp.makeConstraints { make in
+            make.top.equalTo(explanationView.snp.bottom).offset(28 * SizeConstants.ScreenRatio)
+            make.width.height.equalTo(88 * SizeConstants.ScreenRatio)
+            make.centerX.equalToSuperview()
+        }
+        
+        guideLabel.snp.makeConstraints { make in
+            make.top.equalTo(trash.snp.bottom)
+            make.centerX.equalToSuperview()
+        }
+        
+        trashBin.snp.makeConstraints { make in
+            make.top.equalTo(trash.snp.bottom)
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(400 * SizeConstants.ScreenRatio)
         }
     }
     
