@@ -38,10 +38,10 @@
             </objects>
             <point key="canvasLocation" x="993" y="100"/>
         </scene>
-        <!--Separate Graph View Controller-->
+        <!--Separate Graph Pop Up View Controller-->
         <scene sceneID="d04-R2-dsI">
             <objects>
-                <viewController storyboardIdentifier="SeparateGraphViewController" id="OBG-7a-dpU" customClass="SeparateGraphViewController" customModule="B_umiOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SeparateGraphPopUpViewController" id="OBG-7a-dpU" customClass="SeparateGraphPopUpViewController" customModule="B_umiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ci0-c0-OEU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -22,7 +22,7 @@ class SeparateViewController: UIViewController {
     
     let graphButton = UIButton().then {
         $0.setImage(UIImage(named: "btnGraph"), for: .normal)
-        $0.addTarget(SeparateGraphViewController.identifier, .popup)
+        $0.addTarget(SeparateGraphPopUpViewController.identifier, .popup)
     }
     
     let navigationDividerView = UIView().then {
