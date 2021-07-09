@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4A2ED671A9B461F851BCEC5B /* Pods_B_umiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35912B5C45814D34BAA702A8 /* Pods_B_umiOS.framework */; };
 		4F2D1F302697FB2D00D941A1 /* GraphComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D1F2F2697FB2D00D941A1 /* GraphComponentView.swift */; };
+		4F2D1F322698B86D00D941A1 /* SettingViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D1F312698B86D00D941A1 /* SettingViewController+Layout.swift */; };
 		4F34E10326935F7100A54336 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F34E10226935F7100A54336 /* UIViewController+Extension.swift */; };
 		4F34E1062693618A00A54336 /* TapGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F34E1052693618A00A54336 /* TapGesture.swift */; };
 		4F4992972693F9F2009541AA /* SeparateViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4992962693F9F2009541AA /* SeparateViewController+Layout.swift */; };
@@ -81,6 +82,7 @@
 /* Begin PBXFileReference section */
 		35912B5C45814D34BAA702A8 /* Pods_B_umiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_B_umiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F2D1F2F2697FB2D00D941A1 /* GraphComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphComponentView.swift; sourceTree = "<group>"; };
+		4F2D1F312698B86D00D941A1 /* SettingViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingViewController+Layout.swift"; sourceTree = "<group>"; };
 		4F34E10226935F7100A54336 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		4F34E1052693618A00A54336 /* TapGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapGesture.swift; sourceTree = "<group>"; };
 		4F4992962693F9F2009541AA /* SeparateViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SeparateViewController+Layout.swift"; sourceTree = "<group>"; };
@@ -448,6 +450,7 @@
 			isa = PBXGroup;
 			children = (
 				ABB24E62268E1A75006FEE57 /* SettingViewController.swift */,
+				4F2D1F312698B86D00D941A1 /* SettingViewController+Layout.swift */,
 				4F7FD2E72690E5B400122964 /* SettingTrashBinViewController.swift */,
 				4F7FD2EE26922F4A00122964 /* TrashBinPopUpViewController.swift */,
 				4F7FD2F026929D6300122964 /* PeriodPopUpViewController.swift */,
@@ -644,6 +647,7 @@
 				ABB24E63268E1A75006FEE57 /* SettingViewController.swift in Sources */,
 				ABB24E0A268CF33B006FEE57 /* UIView+Extension.swift in Sources */,
 				AB9F9DF22690997300088502 /* Date+Extension.swift in Sources */,
+				4F2D1F322698B86D00D941A1 /* SettingViewController+Layout.swift in Sources */,
 				ABB24E53268E1912006FEE57 /* FloatingBarView.swift in Sources */,
 				FCE3608C2694B25F00866525 /* FilterBottmSheetViewController.swift in Sources */,
 				AB7F6DDF2696BDF300EF9C6E /* WritingPopUpViewController.swift in Sources */,
@@ -659,7 +663,6 @@
 				ABB24DF4268CD9B7006FEE57 /* CardCollectionViewCell.swift in Sources */,
 				4F4992972693F9F2009541AA /* SeparateViewController+Layout.swift in Sources */,
 				FC0541B62690C6EF00FFA9D1 /* MenuSectionCollectionViewCell.swift in Sources */,
-				ABB24E71268E20F9006FEE57 /* SeparateViewController.swift in Sources */,
 				4F875E302697EE3A0085D104 /* GraphView.swift in Sources */,
 				4F34E10326935F7100A54336 /* UIViewController+Extension.swift in Sources */,
 				4F4992E826960B60009541AA /* SeparateDetailTableViewCell.swift in Sources */,
