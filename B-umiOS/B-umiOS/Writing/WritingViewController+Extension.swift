@@ -107,3 +107,13 @@ extension WritingViewController: UITextFieldDelegate {
         return updatedText.count <= limitLength
     }
 }
+
+// MARK: - WritingPopUpDelegate
+
+extension WritingViewController: WritingPopUpDelegate {
+    func writingPopUpViewPush(trash: TrashType) {
+        let trashViewController = ThrowTrashViewController(trashType: trash)
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
+        self.navigationController?.pushViewController(trashViewController, animated: true)
+    }
+}
