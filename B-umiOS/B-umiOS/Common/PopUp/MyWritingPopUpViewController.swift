@@ -87,35 +87,35 @@ class MyWritingPopUpViewController: UIViewController {
         
         popUpView.snp.makeConstraints { make in
             make.center.equalToSuperview()
-            make.width.equalTo(343 * SizeConstants.ScreenRatio)
-            make.height.equalTo(593 * SizeConstants.ScreenRatio)
+            make.width.equalTo(343 * SizeConstants.screenRatio)
+            make.height.equalTo(593 * SizeConstants.screenRatio)
         }
         
         closeButton.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(4 * SizeConstants.ScreenRatio)
-            make.trailing.equalToSuperview().inset(4 * SizeConstants.ScreenRatio)
-            make.width.height.equalTo(48 * SizeConstants.ScreenRatio)
+            make.top.equalToSuperview().inset(4 * SizeConstants.screenRatio)
+            make.trailing.equalToSuperview().inset(4 * SizeConstants.screenRatio)
+            make.width.height.equalTo(48 * SizeConstants.screenRatio)
         }
         
         trashBinLabel.snp.makeConstraints { make in
-            make.top.leading.equalToSuperview().offset(24 * SizeConstants.ScreenRatio)
+            make.top.leading.equalToSuperview().offset(24 * SizeConstants.screenRatio)
         }
         
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(trashBinLabel.snp.bottom).offset(12 * SizeConstants.ScreenRatio)
+            make.top.equalTo(trashBinLabel.snp.bottom).offset(12 * SizeConstants.screenRatio)
             make.leading.equalTo(trashBinLabel.snp.leading)
         }
         
         dateLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(4 * SizeConstants.ScreenRatio)
+            make.top.equalTo(titleLabel.snp.bottom).offset(4 * SizeConstants.screenRatio)
             make.leading.equalTo(trashBinLabel.snp.leading)
         }
         
         scrollView.snp.makeConstraints { make in
-            make.top.equalTo(dateLabel.snp.bottom).offset(20 * SizeConstants.ScreenRatio)
+            make.top.equalTo(dateLabel.snp.bottom).offset(20 * SizeConstants.screenRatio)
             make.leading.equalTo(trashBinLabel.snp.leading)
-            make.trailing.equalToSuperview().inset(24 * SizeConstants.ScreenRatio)
-            make.bottom.equalToSuperview().inset(39 * SizeConstants.ScreenRatio)
+            make.trailing.equalToSuperview().inset(24 * SizeConstants.screenRatio)
+            make.bottom.equalToSuperview().inset(39 * SizeConstants.screenRatio)
         }
     }
     
