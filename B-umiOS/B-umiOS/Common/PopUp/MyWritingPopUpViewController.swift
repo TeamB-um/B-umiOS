@@ -77,12 +77,12 @@ class MyWritingPopUpViewController: UIViewController {
         view.addSubviews([popUpView])
         
         contentLabel.snp.makeConstraints { make in
-//            make.top.bottom.equalTo(scrollView)
             make.top.leading.trailing.bottom.equalToSuperview()
         }
         
         contentView.snp.makeConstraints { make in
-            make.top.bottom.leading.trailing.equalTo(scrollView)
+            make.top.bottom.equalTo(scrollView)
+            make.leading.trailing.equalTo(view)
         }
         
         popUpView.snp.makeConstraints { make in
