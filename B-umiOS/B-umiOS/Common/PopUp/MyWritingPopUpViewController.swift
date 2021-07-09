@@ -1,0 +1,133 @@
+//
+//  MyWritingPopUpViewController.swift
+//  B-umiOS
+//
+//  Created by inae Lee on 2021/07/09.
+//
+
+import UIKit
+
+class MyWritingPopUpViewController: UIViewController {
+    // MARK: - UIComponenets
+    
+    private let popUpView = UIView().then {
+        $0.backgroundColor = .white
+        $0.cornerRound(radius: 10)
+    }
+    
+    private lazy var closeButton = UIButton(primaryAction: UIAction(handler: { _ in
+        self.dismiss(animated: true, completion: nil)
+    })).then {
+        $0.setImage(UIImage(named: "btnCloseBlack"), for: .normal)
+        $0.tintColor = .header
+    }
+    
+    private let trashBinLabel = UILabel().then {
+        $0.text = "인간관계"
+        $0.font = UIFont.nanumSquareFont(type: .regular, size: 14)
+        $0.textColor = UIColor.blue2Main
+    }
+    
+    private let titleLabel = UILabel().then {
+        $0.text = "글 제목 입니다."
+        $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 20)
+        $0.textColor = .black
+    }
+    
+    private let dateLabel = UILabel().then {
+        $0.text = Date().dateToString(format: "yyyy년 MM월 dd일 (E)", date: Date())
+        $0.textColor = .textGray
+    }
+    
+    private let contentLabel = UILabel().then {
+        $0.textColor = .header
+        $0.font = UIFont.nanumSquareFont(type: .light, size: 14)
+        $0.numberOfLines = 0
+        $0.lineSpacing(spacing: 8.4)
+        $0.text = "당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요."
+    }
+    
+    private let scrollView = UIScrollView().then {
+        $0.showsHorizontalScrollIndicator = false
+    }
+    
+    private let contentView = UIView()
+    
+    // MARK: - Properties
+    
+    // MARK: - Initializer
+    
+    // MARK: - LifeCycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setView()
+        setConstraints()
+    }
+
+    // MARK: - Actions
+    
+    // MARK: - Methods
+    
+    func setConstraints() {
+        contentView.addSubview(contentLabel)
+        scrollView.addSubview(contentView)
+        popUpView.addSubviews([closeButton, trashBinLabel, titleLabel, dateLabel, scrollView])
+        view.addSubviews([popUpView])
+        
+        contentLabel.snp.makeConstraints { make in
+//            make.top.bottom.equalTo(scrollView)
+            make.top.leading.trailing.bottom.equalToSuperview()
+        }
+        
+        contentView.snp.makeConstraints { make in
+            make.top.bottom.leading.trailing.equalTo(scrollView)
+        }
+        
+        popUpView.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.width.equalTo(343 * SizeConstants.ScreenRatio)
+            make.height.equalTo(593 * SizeConstants.ScreenRatio)
+        }
+        
+        closeButton.snp.makeConstraints { make in
+            make.top.equalToSuperview().inset(4 * SizeConstants.ScreenRatio)
+            make.trailing.equalToSuperview().inset(4 * SizeConstants.ScreenRatio)
+            make.width.height.equalTo(48 * SizeConstants.ScreenRatio)
+        }
+        
+        trashBinLabel.snp.makeConstraints { make in
+            make.top.leading.equalToSuperview().offset(24 * SizeConstants.ScreenRatio)
+        }
+        
+        titleLabel.snp.makeConstraints { make in
+            make.top.equalTo(trashBinLabel.snp.bottom).offset(12 * SizeConstants.ScreenRatio)
+            make.leading.equalTo(trashBinLabel.snp.leading)
+        }
+        
+        dateLabel.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom).offset(4 * SizeConstants.ScreenRatio)
+            make.leading.equalTo(trashBinLabel.snp.leading)
+        }
+        
+        scrollView.snp.makeConstraints { make in
+            make.top.equalTo(dateLabel.snp.bottom).offset(20 * SizeConstants.ScreenRatio)
+            make.leading.equalTo(trashBinLabel.snp.leading)
+            make.trailing.equalToSuperview().inset(24 * SizeConstants.ScreenRatio)
+            make.bottom.equalToSuperview().inset(39 * SizeConstants.ScreenRatio)
+        }
+    }
+    
+    func setView() {
+        view.layer.backgroundColor = UIColor.black.withAlphaComponent(0.5).cgColor
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if touches.first?.view != popUpView {
+            dismiss(animated: true, completion: nil)
+        }
+    }
+
+    // MARK: - Protocols
+}

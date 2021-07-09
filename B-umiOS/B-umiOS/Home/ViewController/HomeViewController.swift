@@ -80,6 +80,11 @@ class HomeViewController: UIViewController {
     @objc
     func didTapTrashBinButton(_ sender: UIButton) {
         isSelectedTrashBin.toggle()
+        let pop = MyWritingPopUpViewController()
+        pop.modalTransitionStyle = .crossDissolve
+        pop.modalPresentationStyle = .overCurrentContext
+        
+        present(pop, animated: true, completion: nil)
     }
     
     @objc
