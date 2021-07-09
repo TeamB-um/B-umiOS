@@ -121,17 +121,17 @@ class MyWritingPopUpViewController: UIViewController {
         }
         
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(trashBinLabel.snp.bottom).offset(12 * SizeConstants.screenRatio)
+            make.top.equalTo(trashBinLabel.snp.bottom).offset(14 * SizeConstants.screenRatio)
             make.leading.equalTo(trashBinLabel.snp.leading)
         }
         
         dateLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(4 * SizeConstants.screenRatio)
+            make.top.equalTo(titleLabel.snp.bottom).offset(8 * SizeConstants.screenRatio)
             make.leading.equalTo(trashBinLabel.snp.leading)
         }
         
         scrollView.snp.makeConstraints { make in
-            make.top.equalTo(dateLabel.snp.bottom).offset(20 * SizeConstants.screenRatio)
+            make.top.equalTo(dateLabel.snp.bottom).offset(22 * SizeConstants.screenRatio)
             make.leading.equalTo(trashBinLabel.snp.leading)
             make.trailing.equalToSuperview().inset(24 * SizeConstants.screenRatio)
             make.bottom.equalToSuperview().inset(39 * SizeConstants.screenRatio)
