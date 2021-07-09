@@ -88,39 +88,39 @@ class WritingPopUpViewController: UIViewController {
         popUpView.addSubviews([closeButton, titleLabel, guideLabel, deleteButton, archiveButton])
         
         popUpView.snp.makeConstraints { make in
-            make.width.equalTo(343 * SizeConstants.ScreenRatio)
-            make.height.equalTo(226 * SizeConstants.ScreenRatio)
+            make.width.equalTo(343 * SizeConstants.screenRatio)
+            make.height.equalTo(226 * SizeConstants.screenRatio)
             make.center.equalToSuperview()
         }
         
         closeButton.snp.makeConstraints { make in
-            make.width.height.equalTo(48 * SizeConstants.ScreenRatio)
-            make.top.equalToSuperview().inset(4 * SizeConstants.ScreenRatio)
-            make.trailing.equalToSuperview().inset(8 * SizeConstants.ScreenRatio)
+            make.width.height.equalTo(48 * SizeConstants.screenRatio)
+            make.top.equalToSuperview().inset(4 * SizeConstants.screenRatio)
+            make.trailing.equalToSuperview().inset(8 * SizeConstants.screenRatio)
         }
         
         titleLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(28 * SizeConstants.ScreenRatio)
+            make.top.equalToSuperview().offset(28 * SizeConstants.screenRatio)
             make.centerX.equalToSuperview()
         }
         
         guideLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(10 * SizeConstants.ScreenRatio)
+            make.top.equalTo(titleLabel.snp.bottom).offset(10 * SizeConstants.screenRatio)
             make.centerX.equalToSuperview()
         }
         
         deleteButton.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(24 * SizeConstants.ScreenRatio)
-            make.bottom.equalToSuperview().offset(-32 * SizeConstants.ScreenRatio)
-            make.width.equalTo(141 * SizeConstants.ScreenRatio)
-            make.height.equalTo(50 * SizeConstants.ScreenRatio)
+            make.leading.equalToSuperview().offset(24 * SizeConstants.screenRatio)
+            make.bottom.equalToSuperview().offset(-32 * SizeConstants.screenRatio)
+            make.width.equalTo(141 * SizeConstants.screenRatio)
+            make.height.equalTo(50 * SizeConstants.screenRatio)
         }
         
         archiveButton.snp.makeConstraints { make in
-            make.trailing.equalToSuperview().offset(-24 * SizeConstants.ScreenRatio)
-            make.bottom.equalToSuperview().offset(-32 * SizeConstants.ScreenRatio)
-            make.width.equalTo(141 * SizeConstants.ScreenRatio)
-            make.height.equalTo(50 * SizeConstants.ScreenRatio)
+            make.trailing.equalToSuperview().offset(-24 * SizeConstants.screenRatio)
+            make.bottom.equalToSuperview().offset(-32 * SizeConstants.screenRatio)
+            make.width.equalTo(141 * SizeConstants.screenRatio)
+            make.height.equalTo(50 * SizeConstants.screenRatio)
         }
     }
     

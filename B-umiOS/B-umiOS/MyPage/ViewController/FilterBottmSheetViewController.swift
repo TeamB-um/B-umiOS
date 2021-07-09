@@ -267,13 +267,13 @@ class FilterBottmSheetViewController: UIViewController {
         startDateLine.snp.makeConstraints { make in
             make.top.equalTo(startDateButton.snp.bottom)
             make.leading.equalToSuperview()
-            make.width.equalTo((SizeConstants.ScreenWidth - 55)/2)
+            make.width.equalTo((SizeConstants.screenWidth - 55)/2)
             make.height.equalTo(2)
         }
         
         endDateLine.snp.makeConstraints { make in
             make.top.equalTo(endDateButton.snp.bottom)
-            make.width.equalTo((SizeConstants.ScreenWidth - 55)/2)
+            make.width.equalTo((SizeConstants.screenWidth - 55)/2)
             make.trailing.equalToSuperview()
             make.height.equalTo(2)
         }
