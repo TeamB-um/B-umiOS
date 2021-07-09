@@ -15,6 +15,11 @@
 		4F49929D26942AD8009541AA /* SeparateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F49929B26942AD8009541AA /* SeparateCollectionViewCell.swift */; };
 		4F49929E26942AD8009541AA /* SeparateCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F49929C26942AD8009541AA /* SeparateCollectionViewCell.xib */; };
 		4F4992A2269577FF009541AA /* SizeConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4992A1269577FF009541AA /* SizeConstants.swift */; };
+		4F4992E12695F65B009541AA /* SeparateDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4992E02695F65B009541AA /* SeparateDetailViewController.swift */; };
+		4F4992E32695FBE9009541AA /* SeparateDetailViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4992E22695FBE9009541AA /* SeparateDetailViewController+Layout.swift */; };
+		4F4992E52695FCC6009541AA /* SeparateDetailViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4992E42695FCC6009541AA /* SeparateDetailViewController+Extension.swift */; };
+		4F4992E826960B60009541AA /* SeparateDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4992E626960B60009541AA /* SeparateDetailTableViewCell.swift */; };
+		4F4992E926960B60009541AA /* SeparateDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F4992E726960B60009541AA /* SeparateDetailTableViewCell.xib */; };
 		4F7FD2E82690E5B400122964 /* SettingTrashBinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7FD2E72690E5B400122964 /* SettingTrashBinViewController.swift */; };
 		4F7FD2EC26920F3800122964 /* TrashBinTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7FD2EA26920F3800122964 /* TrashBinTableViewCell.swift */; };
 		4F7FD2ED26920F3800122964 /* TrashBinTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F7FD2EB26920F3800122964 /* TrashBinTableViewCell.xib */; };
@@ -77,6 +82,11 @@
 		4F49929B26942AD8009541AA /* SeparateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparateCollectionViewCell.swift; sourceTree = "<group>"; };
 		4F49929C26942AD8009541AA /* SeparateCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeparateCollectionViewCell.xib; sourceTree = "<group>"; };
 		4F4992A1269577FF009541AA /* SizeConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeConstants.swift; sourceTree = "<group>"; };
+		4F4992E02695F65B009541AA /* SeparateDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparateDetailViewController.swift; sourceTree = "<group>"; };
+		4F4992E22695FBE9009541AA /* SeparateDetailViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SeparateDetailViewController+Layout.swift"; sourceTree = "<group>"; };
+		4F4992E42695FCC6009541AA /* SeparateDetailViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SeparateDetailViewController+Extension.swift"; sourceTree = "<group>"; };
+		4F4992E626960B60009541AA /* SeparateDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparateDetailTableViewCell.swift; sourceTree = "<group>"; };
+		4F4992E726960B60009541AA /* SeparateDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeparateDetailTableViewCell.xib; sourceTree = "<group>"; };
 		4F7FD2E72690E5B400122964 /* SettingTrashBinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTrashBinViewController.swift; sourceTree = "<group>"; };
 		4F7FD2EA26920F3800122964 /* TrashBinTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashBinTableViewCell.swift; sourceTree = "<group>"; };
 		4F7FD2EB26920F3800122964 /* TrashBinTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrashBinTableViewCell.xib; sourceTree = "<group>"; };
@@ -160,6 +170,8 @@
 			children = (
 				4F49929B26942AD8009541AA /* SeparateCollectionViewCell.swift */,
 				4F49929C26942AD8009541AA /* SeparateCollectionViewCell.xib */,
+				4F4992E626960B60009541AA /* SeparateDetailTableViewCell.swift */,
+				4F4992E726960B60009541AA /* SeparateDetailTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -448,6 +460,9 @@
 				ABB24E70268E20F9006FEE57 /* SeparateViewController.swift */,
 				4F4992982693FA02009541AA /* SeparateViewController+Extension.swift */,
 				4F4992962693F9F2009541AA /* SeparateViewController+Layout.swift */,
+				4F4992E02695F65B009541AA /* SeparateDetailViewController.swift */,
+				4F4992E42695FCC6009541AA /* SeparateDetailViewController+Extension.swift */,
+				4F4992E22695FBE9009541AA /* SeparateDetailViewController+Layout.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -530,6 +545,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F4992E926960B60009541AA /* SeparateDetailTableViewCell.xib in Resources */,
 				AB5AF76E268A2E87001D3CD1 /* LaunchScreen.storyboard in Resources */,
 				4F49929E26942AD8009541AA /* SeparateCollectionViewCell.xib in Resources */,
 				ABB24DFE268CDF64006FEE57 /* NanumSquareOTF_acEB.otf in Resources */,
@@ -596,6 +612,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F4992E12695F65B009541AA /* SeparateDetailViewController.swift in Sources */,
 				ABB24E06268CE317006FEE57 /* UIFont+Extension.swift in Sources */,
 				4F7FD2E82690E5B400122964 /* SettingTrashBinViewController.swift in Sources */,
 				ABB24E55268E193B006FEE57 /* FloatingTabBarController.swift in Sources */,
@@ -620,6 +637,7 @@
 				FC0541B62690C6EF00FFA9D1 /* MenuSectionCollectionViewCell.swift in Sources */,
 				ABB24E71268E20F9006FEE57 /* SeparateViewController.swift in Sources */,
 				4F34E10326935F7100A54336 /* UIViewController+Extension.swift in Sources */,
+				4F4992E826960B60009541AA /* SeparateDetailTableViewCell.swift in Sources */,
 				AB9F9DF92691F0D100088502 /* WritingStyle.swift in Sources */,
 				ABB24E0C268CF49C006FEE57 /* UIDevice+Extension.swift in Sources */,
 				ABB24E5C268E1A18006FEE57 /* MyPageViewController.swift in Sources */,
@@ -634,10 +652,12 @@
 				AB5AF766268A2E84001D3CD1 /* ViewController.swift in Sources */,
 				4F49929D26942AD8009541AA /* SeparateCollectionViewCell.swift in Sources */,
 				AB5AF762268A2E84001D3CD1 /* AppDelegate.swift in Sources */,
+				4F4992E32695FBE9009541AA /* SeparateDetailViewController+Layout.swift in Sources */,
 				AB9F9DF72690CD9900088502 /* WritingViewController.swift in Sources */,
 				AB5AF764268A2E84001D3CD1 /* SceneDelegate.swift in Sources */,
 				4F4992A2269577FF009541AA /* SizeConstants.swift in Sources */,
 				AB8C3F582693371100B2BA30 /* WritingViewController+Extension.swift in Sources */,
+				4F4992E52695FCC6009541AA /* SeparateDetailViewController+Extension.swift in Sources */,
 				4F7FD2F126929D6300122964 /* PeriodPopUpViewController.swift in Sources */,
 				FC0541BA2690C92A00FFA9D1 /* MyRewardViewController.swift in Sources */,
 				FC0541BC2690C94700FFA9D1 /* MyTrashBinViewController.swift in Sources */,
