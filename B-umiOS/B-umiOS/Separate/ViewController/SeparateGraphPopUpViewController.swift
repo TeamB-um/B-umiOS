@@ -17,7 +17,7 @@ class SeparateGraphPopUpViewController: UIViewController {
     }
     
     let backgroundButton = UIButton().then {
-        $0.addTarget(self, action: #selector(didTapBackgroundButton(_:)), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(closeView(_:)), for: .touchUpInside)
     }
     
     lazy var headerLabel = UILabel().then {
@@ -26,7 +26,16 @@ class SeparateGraphPopUpViewController: UIViewController {
         $0.text = "그래프"
     }
     
-    let monthView = GraphView()
+    let closeButton = UIButton().then {
+        $0.setImage(UIImage(named: "btnCloseBlack"), for: .normal)
+        $0.addTarget(self, action: #selector(closeView(_:)), for: .touchUpInside)
+    }
+    let monthGraphView = GraphView()
+    let entireGraphView = GraphView()
+    
+    var devideLine = UIView().then {
+        $0.backgroundColor = .paper1
+    }
     
     // MARK: - Properties
     
@@ -45,7 +54,7 @@ class SeparateGraphPopUpViewController: UIViewController {
     
     // MARK: - Actions
     
-    @objc  private func didTapBackgroundButton(_ sender: UIButton) {
+    @objc  private func closeView(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
     

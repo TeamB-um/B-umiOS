@@ -10,6 +10,7 @@ import UIKit
 
 class GraphComponentView : UIView{
     // MARK: - UIComponenets
+    
     var circle = UIImageView().then {
         $0.image = UIImage.init(systemName: "circle.fill")
     }
@@ -23,6 +24,7 @@ class GraphComponentView : UIView{
         $0.text = "35%"
         $0.font = UIFont.nanumSquareFont(type: .regular, size: 14)
     }
+    
     // MARK: - Initializer
     
     init(){
@@ -39,15 +41,14 @@ class GraphComponentView : UIView{
     // MARK: - Method
     
     func setData(){
-        //self.categoryName.text =
-        //self.percent.text =
+        //서버 붙이고 기능 추가 자리
+        //self.categoryName.text
+        //self.percent.text
     }
     
     func setView(){
-        //self.circle.tintColor
-        //self.categoryName.textColor
-        self.backgroundColor = .gray
-        //self.cornerRound(radius: 10)
+        self.backgroundColor = .yellow
+        self.cornerRound(radius: 10)
     
     }
     
@@ -63,18 +64,18 @@ class GraphComponentView : UIView{
         categoryName.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.leading.equalTo(circle.snp.trailing).offset(4 * SizeConstants.screenRatio)
+            
         }
 
         percent.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.trailing.equalToSuperview().inset(10).priority(.high)
-            //make.leading.equalTo(categoryName.snp.trailing).offset(10)
         }
         
         self.snp.makeConstraints { make in
-            make.width.equalTo(146)
-            make.height.equalTo(46)
+            make.height.equalTo(46 * SizeConstants.screenRatio)
         }
     }
+    
     // MARK: - Extension
 }

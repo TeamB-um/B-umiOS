@@ -39,15 +39,19 @@ class GraphView: UIView {
     let verticalStackView = UIStackView().then {
         $0.axis = .vertical
         $0.distribution = .fillEqually
+        $0.spacing = 11 * SizeConstants.screenRatio
+        $0.backgroundColor = .systemGray4
     }
     
     // MARK: - Initializer
     
     init() {
         super.init(frame: .init(x: 0, y: 0, width: SizeConstants.screenWidth, height: 200))
+        self.backgroundColor = .background
         setConstraint()
         setStackView()
         progressView.dataSource = self
+        
         DispatchQueue.main.async {
             self.progressView.setProgress(section: 0, to: 0.4)
             self.progressView.setProgress(section: 1, to: 0.3)
@@ -89,20 +93,24 @@ class GraphView: UIView {
         }
         
         verticalStackView.snp.makeConstraints { make in
-            make.top.equalTo(progressView.snp.bottom)
-            make.leading.trailing.bottom.equalToSuperview()
+            make.top.equalTo(progressBackGroundView.snp.bottom).offset(36 * SizeConstants.screenRatio)
+            make.leading.trailing.equalToSuperview().inset(20 * SizeConstants.screenRatio)
+            make.bottom.equalToSuperview()
         }
     }
     
     func setStackView() {
-        let component = GraphComponentView()
-        let component2 = GraphComponentView()
 
         for _ in 0 ... 1 {
-            let horizontalStackView = UIStackView(arrangedSubviews: [component, component2])
-            horizontalStackView.alignment = .fill
-            horizontalStackView.axis = .horizontal
-            horizontalStackView.distribution = .fillEqually
+            let component = GraphComponentView()
+            let component2 = GraphComponentView()
+
+            let horizontalStackView = UIStackView(arrangedSubviews: [component, component2]).then {
+                $0.alignment = .fill
+                $0.spacing = 11 * SizeConstants.screenRatio
+                $0.axis = .horizontal
+                $0.distribution = .fillEqually
+            }
             
             verticalStackView.addArrangedSubview(horizontalStackView)
         }
