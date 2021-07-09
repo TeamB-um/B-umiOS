@@ -93,7 +93,7 @@ class ButtonSectionView: UICollectionReusableView {
     
     @objc
     private func didTapAddButton(_ sender: UIButton) {
-            let popUpVC =  MyWritingPopUpViewController()
+            let popUpVC =  FilterBottmSheetViewController()
             popUpVC.modalPresentationStyle = .overFullScreen
             self.parentViewController?.present(popUpVC, animated: true, completion: nil)
 
