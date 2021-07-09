@@ -6,10 +6,10 @@
 //
 
 import Foundation
-import UIKit
 import MultiProgressView
+import UIKit
 
-class GraphView : UIView {
+class GraphView: UIView {
     // MARK: - UIComponenets
         
     lazy var titleLabel = UILabel().then {
@@ -36,20 +36,17 @@ class GraphView : UIView {
         $0.trackBorderColor = .blue
     }
     
-    let horizonStackView = UIStackView().then {
-        $0.axis = .vertical
-    }
     let verticalStackView = UIStackView().then {
         $0.axis = .vertical
+        $0.distribution = .fillEqually
     }
-    
-    let component = GraphComponentView()
     
     // MARK: - Initializer
     
-    init(){
+    init() {
         super.init(frame: .init(x: 0, y: 0, width: SizeConstants.screenWidth, height: 200))
         setConstraint()
+        setStackView()
         progressView.dataSource = self
         DispatchQueue.main.async {
             self.progressView.setProgress(section: 0, to: 0.4)
@@ -59,14 +56,15 @@ class GraphView : UIView {
         }
     }
     
+    @available(*, unavailable)
     required init(coder: NSCoder) {
-       fatalError("init(coder:) has not been implemented")
-     }
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - Method
     
-    func setConstraint(){
-        self.addSubviews([titleLabel, subLabel, progressBackGroundView, component, horizonStackView, verticalStackView])
+    func setConstraint() {
+        addSubviews([titleLabel, subLabel, progressBackGroundView, verticalStackView])
         progressBackGroundView.addSubview(progressView)
         
         titleLabel.snp.makeConstraints { make in
@@ -90,22 +88,37 @@ class GraphView : UIView {
             make.top.bottom.equalToSuperview()
         }
         
-        component.snp.makeConstraints { make in
-            make.top.equalTo(progressBackGroundView.snp.bottom).offset(10)
-            make.leading.equalToSuperview().inset(20 * SizeConstants.screenRatio)
+        verticalStackView.snp.makeConstraints { make in
+            make.top.equalTo(progressView.snp.bottom)
+            make.leading.trailing.bottom.equalToSuperview()
+        }
+    }
+    
+    func setStackView() {
+        let component = GraphComponentView()
+        let component2 = GraphComponentView()
+
+        for _ in 0 ... 1 {
+            let horizontalStackView = UIStackView(arrangedSubviews: [component, component2])
+            horizontalStackView.alignment = .fill
+            horizontalStackView.axis = .horizontal
+            horizontalStackView.distribution = .fillEqually
+            
+            verticalStackView.addArrangedSubview(horizontalStackView)
         }
     }
 }
 
 // MARK: - Extension
-extension GraphView : MultiProgressViewDataSource{
+
+extension GraphView: MultiProgressViewDataSource {
     func numberOfSections(in progressView: MultiProgressView) -> Int {
-        return 4
+        4
     }
     
     func progressView(_ progressView: MultiProgressView, viewForSection section: Int) -> ProgressViewSection {
         let bar = ProgressViewSection()
-        let colors : [UIColor] = [ .red, .blue, .green, .systemPink]
+        let colors: [UIColor] = [.red, .blue, .green, .systemPink]
         bar.backgroundColor = colors[section]
         return bar
     }

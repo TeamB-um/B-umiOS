@@ -71,6 +71,10 @@ class GraphComponentView : UIView{
             //make.leading.equalTo(categoryName.snp.trailing).offset(10)
         }
         
+        self.snp.makeConstraints { make in
+            make.width.equalTo(146)
+            make.height.equalTo(46)
+        }
     }
     // MARK: - Extension
 }
