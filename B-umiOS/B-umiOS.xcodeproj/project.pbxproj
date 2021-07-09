@@ -457,8 +457,6 @@
 		ABB24E6D268E20DD006FEE57 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				ABB24E70268E20F9006FEE57 /* SeparateViewController.swift */,
-				4F4992982693FA02009541AA /* SeparateViewController+Extension.swift */,
 				4F4992962693F9F2009541AA /* SeparateViewController+Layout.swift */,
 				4F4992E02695F65B009541AA /* SeparateDetailViewController.swift */,
 				4F4992E42695FCC6009541AA /* SeparateDetailViewController+Extension.swift */,
@@ -812,7 +810,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = G7SD8523Y3;
+				DEVELOPMENT_TEAM = L9D5M5DM3Y;
 				INFOPLIST_FILE = "B-umiOS/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -832,7 +830,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = G7SD8523Y3;
+				DEVELOPMENT_TEAM = 4QG3GC35LA;
 				INFOPLIST_FILE = "B-umiOS/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -13,7 +13,6 @@ class MyWritingCollectionViewCell: UICollectionViewCell {
     
     static let identifier = "MyWritingCollectionViewCell"
     
-    
     private let categoryTitle: UILabel = {
         let label = UILabel()
         label.font = .nanumSquareFont(type: .regular, size: 14)

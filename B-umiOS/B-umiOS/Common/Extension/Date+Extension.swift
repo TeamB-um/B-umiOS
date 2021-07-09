@@ -14,4 +14,13 @@ extension Date {
         dateFormatter.dateFormat = format
 
         return dateFormatter.string(from: date)
-    }}
+    }
+    
+    func stringToDate(format: String = "yyyy-MM-dd", date: String) -> Date {
+            let dateFormatter = DateFormatter()
+            dateFormatter.locale = .init(identifier: "ko_KR")
+            dateFormatter.dateFormat = format
+
+            return dateFormatter.date(from: date) ?? Date()
+        }
+}
