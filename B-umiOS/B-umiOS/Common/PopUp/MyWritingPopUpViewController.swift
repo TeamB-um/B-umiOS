@@ -7,6 +7,13 @@
 
 import UIKit
 
+struct DummyWriting {
+    var trashBin: String
+    var title: String
+    var date: Date
+    var content: String
+}
+
 class MyWritingPopUpViewController: UIViewController {
     // MARK: - UIComponenets
     
@@ -22,29 +29,29 @@ class MyWritingPopUpViewController: UIViewController {
         $0.tintColor = .header
     }
     
-    private let trashBinLabel = UILabel().then {
-        $0.text = "인간관계"
+    private lazy var trashBinLabel = UILabel().then {
+        $0.text = self.writing.trashBin
         $0.font = UIFont.nanumSquareFont(type: .regular, size: 14)
         $0.textColor = UIColor.blue2Main
     }
     
-    private let titleLabel = UILabel().then {
-        $0.text = "글 제목 입니다."
+    private lazy var titleLabel = UILabel().then {
+        $0.text = self.writing.title
         $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 20)
         $0.textColor = .black
     }
     
-    private let dateLabel = UILabel().then {
-        $0.text = Date().dateToString(format: "yyyy년 MM월 dd일 (E)", date: Date())
+    private lazy var dateLabel = UILabel().then {
+        $0.text = Date().dateToString(format: "yyyy년 MM월 dd일 (E)", date: self.writing.date)
         $0.textColor = .textGray
     }
     
-    private let contentLabel = UILabel().then {
+    private lazy var contentLabel = UILabel().then {
         $0.textColor = .header
         $0.font = UIFont.nanumSquareFont(type: .light, size: 14)
         $0.numberOfLines = 0
-        $0.lineSpacing(spacing: 8.4)
-        $0.text = "당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요.당신의 고민을 적어주세요."
+        $0.text = self.writing.content
+        $0.lineSpacing(spacing: 9)
     }
     
     private let scrollView = UIScrollView().then {
@@ -55,7 +62,19 @@ class MyWritingPopUpViewController: UIViewController {
     
     // MARK: - Properties
     
+    private let writing: DummyWriting
+    
     // MARK: - Initializer
+    
+    init(writing: DummyWriting) {
+        self.writing = writing
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - LifeCycle
     
@@ -82,7 +101,7 @@ class MyWritingPopUpViewController: UIViewController {
         
         contentView.snp.makeConstraints { make in
             make.top.bottom.equalTo(scrollView)
-            make.leading.trailing.equalTo(view)
+            make.width.equalTo(scrollView.snp.width)
         }
         
         popUpView.snp.makeConstraints { make in
