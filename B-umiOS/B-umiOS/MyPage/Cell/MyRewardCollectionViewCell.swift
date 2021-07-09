@@ -73,7 +73,7 @@ class MyRewardCollectionViewCell: UICollectionViewCell {
         }
         
         authorLabel.snp.updateConstraints { make in
-            make.top.equalTo(rewardLabel.snp.bottom).offset(10)
+            make.top.equalTo(rewardLabel.snp.bottom).offset(16)
             make.leading.trailing.equalToSuperview().inset(17)
         }
         

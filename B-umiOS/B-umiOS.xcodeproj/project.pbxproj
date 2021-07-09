@@ -70,7 +70,7 @@
 		FC69E37726935B81001093F9 /* RoundingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC69E37626935B81001093F9 /* RoundingButton.swift */; };
 		FC6A7A472693198900A4ACBE /* ButtonSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6A7A462693198900A4ACBE /* ButtonSectionView.swift */; };
 		FC8A6F552695C65500E64FA5 /* MyPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC8A6F542695C65500E64FA5 /* MyPage.storyboard */; };
-		FCE3608C2694B25F00866525 /* MyWritingPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE3608B2694B25F00866525 /* MyWritingPopUpViewController.swift */; };
+		FCE3608C2694B25F00866525 /* FilterBottmSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE3608B2694B25F00866525 /* FilterBottmSheetViewController.swift */; };
 		FCE3608E2694CE3700866525 /* MyWritingPopUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCE3608D2694CE3700866525 /* MyWritingPopUp.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -142,7 +142,7 @@
 		FC69E37626935B81001093F9 /* RoundingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundingButton.swift; sourceTree = "<group>"; };
 		FC6A7A462693198900A4ACBE /* ButtonSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonSectionView.swift; sourceTree = "<group>"; };
 		FC8A6F542695C65500E64FA5 /* MyPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyPage.storyboard; sourceTree = "<group>"; };
-		FCE3608B2694B25F00866525 /* MyWritingPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWritingPopUpViewController.swift; sourceTree = "<group>"; };
+		FCE3608B2694B25F00866525 /* FilterBottmSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterBottmSheetViewController.swift; sourceTree = "<group>"; };
 		FCE3608D2694CE3700866525 /* MyWritingPopUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyWritingPopUp.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -404,7 +404,7 @@
 				FC0541B72690C80000FFA9D1 /* MyWritingViewController.swift */,
 				FC0541B92690C92A00FFA9D1 /* MyRewardViewController.swift */,
 				FC0541BB2690C94700FFA9D1 /* MyTrashBinViewController.swift */,
-				FCE3608B2694B25F00866525 /* MyWritingPopUpViewController.swift */,
+				FCE3608B2694B25F00866525 /* FilterBottmSheetViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -625,7 +625,7 @@
 				ABB24E0A268CF33B006FEE57 /* UIView+Extension.swift in Sources */,
 				AB9F9DF22690997300088502 /* Date+Extension.swift in Sources */,
 				ABB24E53268E1912006FEE57 /* FloatingBarView.swift in Sources */,
-				FCE3608C2694B25F00866525 /* MyWritingPopUpViewController.swift in Sources */,
+				FCE3608C2694B25F00866525 /* FilterBottmSheetViewController.swift in Sources */,
 				AB7F6DDF2696BDF300EF9C6E /* WritingPopUpViewController.swift in Sources */,
 				ABB24DF4268CD9B7006FEE57 /* CardCollectionViewCell.swift in Sources */,
 				AB8C3F5B26935E8600B2BA30 /* WritingViewController+Layout.swift in Sources */,
