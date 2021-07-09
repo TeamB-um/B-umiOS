@@ -20,7 +20,7 @@ class MyRewardCollectionViewCell: UICollectionViewCell {
         $0.font = .nanumSquareFont(type: .extraBold, size: 14)
         $0.textColor = .iconGray
         $0.numberOfLines = 3
-        $0.text = "버들가쥣쓰는 야카나..다른 재목을 묵는 버들가짓스다."
+        $0.text = "버들가쥣쓰는 야카나..다른 재목을 묵는 버들가짓스다.버들가쥣쓰는 야카나..다른 재목을 묵는 버들가짓스다.버들가쥣쓰는 야카나..다른 재목을 묵는 버들가짓스다."
         
         let attrString = NSMutableAttributedString(string: $0.text!)
         let paragraphStyle = NSMutableParagraphStyle()
@@ -29,7 +29,7 @@ class MyRewardCollectionViewCell: UICollectionViewCell {
         attrString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attrString.length))
         $0.attributedText = attrString
         $0.textAlignment = .center
-
+        $0.lineBreakMode = .byTruncatingTail
     }
     
     private let authorLabel = UILabel().then {
@@ -37,6 +37,7 @@ class MyRewardCollectionViewCell: UICollectionViewCell {
         $0.textColor = .black
         $0.text = "-이인애-"
         $0.textAlignment = .center
+        $0.lineBreakMode = .byTruncatingTail
     }
 
     // MARK: - Properties
