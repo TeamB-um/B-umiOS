@@ -10,17 +10,16 @@ import UIKit
 class MyTrashBinViewController: UIViewController {
 
     // MARK: - UIComponenets
-    var removeButton = RoundingButton().then {
-        $0.setupRoundingButton(title: "삭제", image: "btnRemove")
-        $0.isHidden = true
-    }
-    
-    var checkButton = RoundingButton().then {
-        $0.setupRoundingButton(title: "선택", image: "btnCheckUnseleted")
+    var settingButton = RoundingButton().then {
+        $0.setupRoundingButton(title: "설정", image: "btnCheckUnseleted")
         //$0.addTarget(self, action: #selector(didTapCheckButton), for: .touchUpInside)
     }
     
-    lazy var detailTableView = UITableView().then {
+    lazy var headerView = UIView().then {
+        $0.backgroundColor = .background
+    }
+    
+    lazy var detailTableView = UITableView(frame: .zero, style: .grouped).then {
         $0.separatorStyle = .none
     }
     // MARK: - Properties
@@ -31,31 +30,21 @@ class MyTrashBinViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .yellow
+        setView()
+        setTableView()
+        setConstraint()
     }
     
     // MARK: - Actions
     
-    @objc func didTapCheckButton(){
-        
-        if self.checkButton.isSelected {
-            self.checkButton.setupRoundingButton(title: "선택", image: "btnCheckUnseleted")
-            self.removeButton.isHidden = true
-            self.checkButton.isSelected = false
-        }
-        else{
-            self.checkButton.setupRoundingButton(title: "취소", image: "btnDelete")
-            self.removeButton.isHidden = false
-            self.checkButton.isSelected = true
-        }
-        
+    @objc func didTapSettingButton(){
+        //휴지통 삭제 기간 팝업 뷰를 띄웁니다
         self.detailTableView.reloadData()
     }
     // MARK: - Methods
     
     func setView(){
         view.backgroundColor = .background
-        navigationController?.interactivePopGestureRecognizer?.delegate = nil
     }
     
     func setTableView(){
@@ -65,21 +54,16 @@ class MyTrashBinViewController: UIViewController {
     }
     
     func setConstraint(){
-        view.addSubviews([removeButton, checkButton, detailTableView])
-        checkButton.snp.makeConstraints { make in
-            make.trailing.equalToSuperview().inset(16 * SizeConstants.ScreenRatio)
-            make.top.equalToSuperview().offset(16 * SizeConstants.ScreenRatio)
-        }
+        view.addSubviews([detailTableView])
+        headerView.addSubview(settingButton)
 
-        removeButton.snp.makeConstraints { make in
-            make.trailing.equalTo(checkButton.snp.leading).offset(-8 * SizeConstants.ScreenRatio)
-            make.top.equalTo(checkButton)
+        settingButton.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().inset(16 * SizeConstants.screenRatio)
+            make.top.equalToSuperview().offset(16 * SizeConstants.screenRatio)
         }
 
         detailTableView.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview()
-            make.top.equalTo(checkButton.snp.bottom).offset(8 * SizeConstants.ScreenRatio)
-            make.bottom.equalToSuperview()
+            make.top.leading.trailing.bottom.equalToSuperview()
         }
     }
     // MARK: - Protocols
@@ -99,11 +83,20 @@ extension MyTrashBinViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: SeparateDetailTableViewCell.identifier, for: indexPath) as? SeparateDetailTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: MyTrashBinTableViewCell.identifier, for: indexPath) as? MyTrashBinTableViewCell else {
             return UITableViewCell()
         }
-        cell.checkButton.isHidden = !self.checkButton.isSelected
+//        cell.checkButton.isHidden = !self.checkButton.isSelected
     
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        headerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        72
     }
 }

@@ -59,34 +59,33 @@ class MyTrashBinTableViewCell: UITableViewCell {
     
     func setConstraint(){
         contentView.addSubview(mainView)
-        
+        mainView.addSubviews([categoryLabel, remainingDayLabel, headerLabel, previewLabel])
+
         mainView.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(16 * SizeConstants.ScreenRatio)
-            make.top.bottom.equalToSuperview().inset(8 * SizeConstants.ScreenRatio)
+            make.leading.trailing.equalToSuperview().inset(16 * SizeConstants.screenRatio)
+            make.top.bottom.equalToSuperview().inset(8 * SizeConstants.screenRatio)
         }
         
-        mainView.addSubviews([categoryLabel, remainingDayLabel, headerLabel, previewLabel])
-        
         categoryLabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview().inset(16 * SizeConstants.ScreenRatio)
-            make.top.equalToSuperview().inset(12 * SizeConstants.ScreenRatio)
+            make.leading.equalToSuperview().inset(16 * SizeConstants.screenRatio)
+            make.top.equalToSuperview().inset(12 * SizeConstants.screenRatio)
         }
         
         remainingDayLabel.snp.makeConstraints { make in
             make.centerY.equalTo(categoryLabel.snp.centerY)
-            make.trailing.equalToSuperview().inset(16 * SizeConstants.ScreenRatio)
+            make.trailing.equalToSuperview().inset(16 * SizeConstants.screenRatio)
         }
         
         headerLabel.snp.makeConstraints { make in
             make.leading.equalTo(categoryLabel.snp.leading)
             make.trailing.equalTo(remainingDayLabel.snp.trailing)
-            make.top.equalTo(categoryLabel.snp.bottom)
+            make.top.equalTo(categoryLabel.snp.bottom).offset(12 * SizeConstants.screenRatio)
         }
         
         previewLabel.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(16 * SizeConstants.ScreenRatio)
-            make.top.equalTo(headerLabel.snp.bottom)
-            make.bottom.equalToSuperview().inset(12 * SizeConstants.ScreenRatio)
+            make.leading.trailing.equalToSuperview().inset(16 * SizeConstants.screenRatio)
+            make.top.equalTo(headerLabel.snp.bottom).offset(14 * SizeConstants.screenRatio)
+            make.bottom.equalToSuperview().inset(12 * SizeConstants.screenRatio)
         }
     }
 }

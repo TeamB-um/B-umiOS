@@ -76,7 +76,6 @@
 		FC6A7A472693198900A4ACBE /* ButtonSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6A7A462693198900A4ACBE /* ButtonSectionView.swift */; };
 		FC8A6F552695C65500E64FA5 /* MyPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC8A6F542695C65500E64FA5 /* MyPage.storyboard */; };
 		FCE3608C2694B25F00866525 /* FilterBottmSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE3608B2694B25F00866525 /* FilterBottmSheetViewController.swift */; };
-		FCE3608E2694CE3700866525 /* MyWritingPopUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCE3608D2694CE3700866525 /* MyWritingPopUp.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -153,7 +152,6 @@
 		FC6A7A462693198900A4ACBE /* ButtonSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonSectionView.swift; sourceTree = "<group>"; };
 		FC8A6F542695C65500E64FA5 /* MyPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyPage.storyboard; sourceTree = "<group>"; };
 		FCE3608B2694B25F00866525 /* FilterBottmSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterBottmSheetViewController.swift; sourceTree = "<group>"; };
-		FCE3608D2694CE3700866525 /* MyWritingPopUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyWritingPopUp.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -410,7 +408,6 @@
 		ABB24E57268E1994006FEE57 /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				FCE3608D2694CE3700866525 /* MyWritingPopUp.storyboard */,
 				FC8A6F542695C65500E64FA5 /* MyPage.storyboard */,
 			);
 			path = Storyboard;
@@ -575,7 +572,6 @@
 				AB5AF76E268A2E87001D3CD1 /* LaunchScreen.storyboard in Resources */,
 				4F49929E26942AD8009541AA /* SeparateCollectionViewCell.xib in Resources */,
 				ABB24DFE268CDF64006FEE57 /* NanumSquareOTF_acEB.otf in Resources */,
-				FCE3608E2694CE3700866525 /* MyWritingPopUp.storyboard in Resources */,
 				AB5AF76B268A2E87001D3CD1 /* Assets.xcassets in Resources */,
 				ABB24E01268CDF64006FEE57 /* NanumSquareOTF_acR.otf in Resources */,
 				4F7FD2ED26920F3800122964 /* TrashBinTableViewCell.xib in Resources */,
@@ -663,7 +659,6 @@
 				ABB24DF4268CD9B7006FEE57 /* CardCollectionViewCell.swift in Sources */,
 				4F4992972693F9F2009541AA /* SeparateViewController+Layout.swift in Sources */,
 				FC0541B62690C6EF00FFA9D1 /* MenuSectionCollectionViewCell.swift in Sources */,
-				ABB24E71268E20F9006FEE57 /* SeparateViewController.swift in Sources */,
 				4F875E302697EE3A0085D104 /* GraphView.swift in Sources */,
 				4F34E10326935F7100A54336 /* UIViewController+Extension.swift in Sources */,
 				4F4992E826960B60009541AA /* SeparateDetailTableViewCell.swift in Sources */,
