@@ -22,10 +22,9 @@ class MyRewardViewController: UIViewController {
         
         return collectionView
     }()
+    
     // MARK: - Properties
-    
     // MARK: - Initializer
-    
     // MARK: - LifeCycle
 
     override func viewDidLoad() {
@@ -34,28 +33,18 @@ class MyRewardViewController: UIViewController {
     }
     
     // MARK: - Actions
-    
     // MARK: - Methods
     
     func setConstraint(){
-        
         view.addSubview(myRewardCollectionView)
         
         myRewardCollectionView.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.bottom.leading.trailing.equalToSuperview()
         }
-        
-        
     }
-    
-
-    
     // MARK: - Protocols
 }
-
-
-
     // MARK: - Extension
 
 extension MyRewardViewController : UICollectionViewDataSource {
@@ -65,9 +54,7 @@ extension MyRewardViewController : UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyRewardCollectionViewCell.identifier, for: indexPath) as? MyRewardCollectionViewCell else { return UICollectionViewCell() }
-        
-        cell.setShadow(radius: 20, offset: CGSize(width: 0, height: 4), opacity: 0.03)
-        
+    
         return cell
     }
 }
@@ -75,8 +62,8 @@ extension MyRewardViewController : UICollectionViewDataSource {
 extension MyRewardViewController : UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = UIScreen.main.bounds.width
-        let sideLength = (width - 47) / 2
-        let cellSize = CGSize(width: sideLength, height: sideLength)
+        let sideLength = (width - 50) / 2
+        let cellSize = CGSize(width: sideLength, height: 232)
         return cellSize
     }
     
@@ -85,16 +72,11 @@ extension MyRewardViewController : UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        15.0
+        18.0
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 16, bottom: 210, right: 16)
+        return UIEdgeInsets(top: 16, left: 16, bottom: 210, right: 16)
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        let width = UIScreen.main.bounds.width
-        
-        return CGSize(width: width, height: 72)
-    }
 }
