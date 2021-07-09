@@ -77,7 +77,7 @@ class SeparateDetailViewController: UIViewController {
     }
     
     // MARK: - Methods
-
+        
     func setView(){
         view.backgroundColor = .background
         navigationController?.interactivePopGestureRecognizer?.delegate = nil
