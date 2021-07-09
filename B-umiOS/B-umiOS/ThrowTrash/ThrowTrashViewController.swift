@@ -111,7 +111,6 @@ class ThrowTrashViewController: UIViewController {
             } else {
                 resetTrash()
             }
-            
         case .cancelled, .possible, .failed, .began: break
         @unknown default:
             break
