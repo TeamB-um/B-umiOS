@@ -20,7 +20,7 @@ class SeparateGraphPopUpViewController: UIViewController {
         $0.addTarget(self, action: #selector(closeView(_:)), for: .touchUpInside)
     }
     
-    lazy var headerLabel = UILabel().then {
+    var headerLabel = UILabel().then {
         $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 20)
         $0.textColor = .header
         $0.text = "그래프"

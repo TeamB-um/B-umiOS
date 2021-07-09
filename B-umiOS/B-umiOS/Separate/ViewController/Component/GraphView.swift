@@ -12,13 +12,13 @@ import UIKit
 class GraphView: UIView {
     // MARK: - UIComponenets
         
-    lazy var titleLabel = UILabel().then {
+    var titleLabel = UILabel().then {
         $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 18)
         $0.textColor = .header
         $0.text = "월간 그래프"
     }
     
-    lazy var subLabel = UILabel().then {
+    var subLabel = UILabel().then {
         $0.font = UIFont.nanumSquareFont(type: .regular, size: 13)
         $0.textColor = .paper3
         $0.text = "한 달 내 카테고리별 스트레스 비율입니다"
@@ -48,6 +48,7 @@ class GraphView: UIView {
     init() {
         super.init(frame: .init(x: 0, y: 0, width: SizeConstants.screenWidth, height: 200))
         self.backgroundColor = .background
+        
         setConstraint()
         setStackView()
         progressView.dataSource = self
@@ -100,7 +101,6 @@ class GraphView: UIView {
     }
     
     func setStackView() {
-
         for _ in 0 ... 1 {
             let component = GraphComponentView()
             let component2 = GraphComponentView()

@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class GraphComponentView : UIView{
+class GraphComponentView: UIView {
     // MARK: - UIComponenets
     
     var circle = UIImageView().then {
@@ -16,7 +16,7 @@ class GraphComponentView : UIView{
     }
     
     var categoryName = UILabel().then {
-        $0.text = "인간관계"
+        $0.text = "인간관계sdfdsfsd"
         $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 14)
     }
     
@@ -69,7 +69,7 @@ class GraphComponentView : UIView{
 
         percent.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.trailing.equalToSuperview().inset(10).priority(.high)
+            make.trailing.equalToSuperview().inset(10)
         }
         
         self.snp.makeConstraints { make in
