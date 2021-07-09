@@ -8,7 +8,7 @@ import Then
 import SnapKit
 import UIKit
 
-class MyWritingPopUpViewController: UIViewController {
+class FilterBottmSheetViewController: UIViewController {
     // MARK: - UIComponenets
     
     private let popupView = UIView().then {
@@ -311,7 +311,7 @@ class MyWritingPopUpViewController: UIViewController {
 
 // MARK: - Protocols
 // MARK: - Extensions
-extension MyWritingPopUpViewController: UICollectionViewDelegateFlowLayout {
+extension FilterBottmSheetViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let label = UILabel()
         label.text = tag[indexPath.row]
@@ -335,7 +335,7 @@ extension MyWritingPopUpViewController: UICollectionViewDelegateFlowLayout {
 }
 // MARK: - UICollectionViewDataSource
 
-extension MyWritingPopUpViewController: UICollectionViewDataSource {
+extension FilterBottmSheetViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         tag.count
     }
