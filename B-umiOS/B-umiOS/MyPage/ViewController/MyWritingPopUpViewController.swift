@@ -42,7 +42,7 @@ class MyWritingPopUpViewController: UIViewController {
         $0.text = "카테고리"
     }
     
-    private var setDateView = UIView().then {
+    private var settingPeriodView = UIView().then {
         $0.backgroundColor = .clear
         $0.clipsToBounds = true
     }
@@ -185,7 +185,7 @@ class MyWritingPopUpViewController: UIViewController {
     
     @objc private func switchDidTap(_ sender: UISwitch) {
         if sender.isOn {
-            setDateView.snp.updateConstraints { make in
+            settingPeriodView.snp.updateConstraints { make in
                 make.leading.trailing.equalToSuperview().inset(16)
                 make.bottom.equalTo(categoryLabel.snp.top).offset(-34)
                 make.height.equalTo(220)
@@ -195,7 +195,7 @@ class MyWritingPopUpViewController: UIViewController {
             endLabel.isHidden = false
             endDateButton.isHidden = false
         } else {
-            setDateView.snp.updateConstraints { make in
+            settingPeriodView.snp.updateConstraints { make in
                 make.leading.trailing.equalToSuperview().inset(16)
                 make.bottom.equalTo(categoryLabel.snp.top).offset(-34)
                 make.height.equalTo(0)
@@ -206,8 +206,8 @@ class MyWritingPopUpViewController: UIViewController {
     
     func setConstraint() {
         self.view.addSubviews([backgroundButton,popupView])
-        popupView.addSubviews([confirmButton, categoryTagCollecitonView, categoryLabel, setDateView, setDateLabel, dateSwitch])
-        setDateView.addSubviews([datePickerView, startDateButton,endDateButton,startDateLine, endDateLine, startLabel, endLabel])
+        popupView.addSubviews([confirmButton, categoryTagCollecitonView, categoryLabel, settingPeriodView, setDateLabel, dateSwitch])
+        settingPeriodView.addSubviews([datePickerView, startDateButton,endDateButton,startDateLine, endDateLine, startLabel, endLabel])
 
         backgroundButton.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -236,7 +236,7 @@ class MyWritingPopUpViewController: UIViewController {
             make.leading.equalTo(confirmButton)
         }
         
-        setDateView.snp.makeConstraints { make in
+        settingPeriodView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(16)
             make.bottom.equalTo(categoryLabel.snp.top).offset(-34)
             make.height.equalTo(0)
@@ -286,7 +286,7 @@ class MyWritingPopUpViewController: UIViewController {
         
         setDateLabel.snp.makeConstraints { make in
             make.leading.equalTo(confirmButton)
-            make.bottom.equalTo(setDateView.snp.top).offset(-24)
+            make.bottom.equalTo(settingPeriodView.snp.top).offset(-24)
         }
         
         dateSwitch.snp.makeConstraints { make in

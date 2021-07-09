@@ -15,6 +15,7 @@ extension Date {
 
         return dateFormatter.string(from: date)
     }
+    
     func stringToDate(format: String = "yyyy-MM-dd", date: String) -> Date {
             let dateFormatter = DateFormatter()
             dateFormatter.locale = .init(identifier: "ko_KR")
