@@ -44,7 +44,7 @@ class HomeViewController: UIViewController {
         $0.addTarget(self, action: #selector(didTapPaperButton(_:)), for: .touchUpInside)
         $0.backgroundColor = .paper1
         $0.tag = 3
-        $0.transform = CGAffineTransform(rotationAngle: -CGFloat(Double.pi / 4))
+        $0.transform = CGAffineTransform(rotationAngle: -CGFloat(Double.pi / 180 * 45))
         $0.isHidden = true
     }
     
@@ -52,7 +52,7 @@ class HomeViewController: UIViewController {
         $0.addTarget(self, action: #selector(didTapPaperButton(_:)), for: .touchUpInside)
         $0.backgroundColor = .paper2
         $0.tag = 2
-        $0.transform = CGAffineTransform(rotationAngle: -CGFloat(Double.pi / 4))
+        $0.transform = CGAffineTransform(rotationAngle: -CGFloat(Double.pi / 180 * 15))
         $0.isHidden = true
     }
     
@@ -60,7 +60,7 @@ class HomeViewController: UIViewController {
         $0.addTarget(self, action: #selector(didTapPaperButton(_:)), for: .touchUpInside)
         $0.backgroundColor = .paper3
         $0.tag = 3
-        $0.transform = CGAffineTransform(rotationAngle: -CGFloat(Double.pi / 4))
+        $0.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi / 180 * 15))
         $0.isHidden = true
     }
     
@@ -68,7 +68,7 @@ class HomeViewController: UIViewController {
         $0.addTarget(self, action: #selector(didTapPaperButton(_:)), for: .touchUpInside)
         $0.backgroundColor = .paper4
         $0.tag = 4
-        $0.transform = CGAffineTransform(rotationAngle: -CGFloat(Double.pi / 4))
+        $0.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi / 180 * 45))
         $0.isHidden = true
     }
 
@@ -137,7 +137,7 @@ class HomeViewController: UIViewController {
         arrowImage.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalTo(guideLabel.snp.bottom).offset(44)
-            make.width.height.equalTo(75 * UIScreen.main.bounds.width / 375)
+            make.width.height.equalTo(75 * SizeConstants.ScreenRatio)
         }
         
         trashBinButton.snp.makeConstraints { make in
@@ -145,33 +145,33 @@ class HomeViewController: UIViewController {
             make.top.equalTo(arrowImage.snp.bottom).offset(50)
         }
         
-        let width = 55.7 / UIScreen.main.bounds.width
+        let width = 55.7 / SizeConstants.ScreenWidth
         let height = 84.5 / width
         
         paper1Button.snp.makeConstraints { make in
-            make.top.equalTo(guideLabel.snp.bottom).offset(90.39)
-            make.leading.equalToSuperview().inset(33)
+            make.top.equalTo(guideLabel.snp.bottom).offset(90.39 * SizeConstants.ScreenRatio)
+            make.leading.equalToSuperview().inset(33 * SizeConstants.ScreenRatio)
             make.width.equalTo(self.view).multipliedBy(width)
             make.height.equalTo(84.5).multipliedBy(height)
         }
         
         paper2Button.snp.makeConstraints { make in
-            make.top.equalTo(guideLabel.snp.bottom).offset(90.39)
-            make.leading.equalToSuperview().inset(33)
+            make.top.equalTo(guideLabel.snp.bottom).offset(47.77 * SizeConstants.ScreenRatio)
+            make.leading.equalTo(paper1Button.snp.trailing).offset(33 * SizeConstants.ScreenRatio)
             make.width.equalTo(self.view).multipliedBy(width)
             make.height.equalTo(84.5).multipliedBy(height)
         }
         
         paper3Button.snp.makeConstraints { make in
-            make.top.equalTo(guideLabel.snp.bottom).offset(90.39)
-            make.leading.equalToSuperview().inset(33)
+            make.top.equalTo(paper2Button.snp.top)
+            make.trailing.equalTo(paper4Button.snp.leading).offset(-24.81 * SizeConstants.ScreenRatio)
             make.width.equalTo(self.view).multipliedBy(width)
             make.height.equalTo(84.5).multipliedBy(height)
         }
         
         paper4Button.snp.makeConstraints { make in
-            make.top.equalTo(guideLabel.snp.bottom).offset(90.39)
-            make.leading.equalToSuperview().inset(33)
+            make.top.equalTo(paper1Button.snp.top)
+            make.trailing.equalToSuperview().inset(33 * SizeConstants.ScreenRatio)
             make.width.equalTo(self.view).multipliedBy(width)
             make.height.equalTo(84.5).multipliedBy(height)
         }
