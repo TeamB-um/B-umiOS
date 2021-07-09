@@ -79,6 +79,7 @@ class HomeViewController: UIViewController {
 
     // MARK: - Properties
     
+    let animator = UIViewPropertyAnimator(duration: 0.6, curve: .easeOut)
     var isSelectedTrashBin = false {
         didSet {
             if isSelectedTrashBin {
@@ -110,6 +111,7 @@ class HomeViewController: UIViewController {
         
         setView()
         setConstraint()
+        configureInitAnimate()
     }
     
     // MARK: - Actions
@@ -117,6 +119,14 @@ class HomeViewController: UIViewController {
     @objc
     func didTapTrashBinButton(_ sender: UIButton) {
         isSelectedTrashBin.toggle()
+        
+        if isSelectedTrashBin {
+            configureAnimate()
+            animator.startAnimation()
+        } else {
+            animator.stopAnimation(true)
+            configureInitAnimate()
+        }
     }
     
     @objc
@@ -194,6 +204,36 @@ class HomeViewController: UIViewController {
         
         navigationController?.isNavigationBarHidden = true
         navigationController?.interactivePopGestureRecognizer?.delegate = nil
+    }
+    
+    func configureInitAnimate() {
+        backgroundView.alpha = 0
+        paper1Button.alpha = 0
+        paper2Button.alpha = 0
+        paper3Button.alpha = 0
+        paper4Button.alpha = 0
+
+        backgroundView.transform = CGAffineTransform(translationX: 0, y: 100)
+        paper1Button.transform = CGAffineTransform(translationX: 0, y: 100)
+        paper2Button.transform = CGAffineTransform(translationX: 0, y: 100)
+        paper3Button.transform = CGAffineTransform(translationX: 0, y: 100)
+        paper4Button.transform = CGAffineTransform(translationX: 0, y: 100)
+    }
+    
+    func configureAnimate() {
+        animator.addAnimations {
+            self.backgroundView.alpha = 1
+            self.paper1Button.alpha = 1
+            self.paper2Button.alpha = 1
+            self.paper3Button.alpha = 1
+            self.paper4Button.alpha = 1
+            
+            self.backgroundView.transform = .identity
+            self.paper1Button.layer.transform = CATransform3DMakeRotation(-CGFloat(Double.pi / 180 * 45), 0, 0, 1)
+            self.paper2Button.layer.transform = CATransform3DMakeRotation(-CGFloat(Double.pi / 180 * 15), 0, 0, 1)
+            self.paper3Button.layer.transform = CATransform3DMakeRotation(CGFloat(Double.pi / 180 * 15), 0, 0, 1)
+            self.paper4Button.layer.transform = CATransform3DMakeRotation(CGFloat(Double.pi / 180 * 45), 0, 0, 1)
+        }
     }
     
     // MARK: - Protocols
