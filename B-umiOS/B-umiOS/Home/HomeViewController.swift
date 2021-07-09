@@ -30,7 +30,7 @@ class HomeViewController: UIViewController {
     }
     
     private let arrowImage = UIImageView().then {
-        $0.image = UIImage(named: "bgElements")
+        $0.image = UIImage(named: "homeAreaTrashbin")
     }
     
     private lazy var trashBinButton = UIButton().then {
@@ -71,6 +71,11 @@ class HomeViewController: UIViewController {
         $0.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi / 180 * 45))
         $0.isHidden = true
     }
+    
+    private let backgroundView = UIImageView().then {
+        $0.image = UIImage(named: "bgElements")
+        $0.isHidden = true
+    }
 
     // MARK: - Properties
     
@@ -80,6 +85,7 @@ class HomeViewController: UIViewController {
                 guideLabel.text = "스트레스 양에 따라\n종이를 선택하세요"
                 arrowImage.isHidden = true
                 
+                backgroundView.isHidden = false
                 [paper1Button, paper2Button, paper3Button, paper4Button].forEach { button in
                     button.isHidden = false
                 }
@@ -87,6 +93,7 @@ class HomeViewController: UIViewController {
                 guideLabel.text = "휴지통을 클릭해\n스트레스를 비워보세요"
                 arrowImage.isHidden = false
                 
+                backgroundView.isHidden = true
                 [paper1Button, paper2Button, paper3Button, paper4Button].forEach { button in
                     button.isHidden = true
                 }
@@ -122,7 +129,7 @@ class HomeViewController: UIViewController {
     // MARK: - Methods
     
     func setConstraint() {
-        view.addSubviews([dateLabel, guideLabel, arrowImage, trashBinButton, paper1Button, paper2Button, paper3Button, paper4Button])
+        view.addSubviews([backgroundView, dateLabel, guideLabel, arrowImage, trashBinButton, paper1Button, paper2Button, paper3Button, paper4Button])
         
         dateLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
@@ -136,8 +143,8 @@ class HomeViewController: UIViewController {
         
         arrowImage.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalTo(guideLabel.snp.bottom).offset(44)
-            make.width.height.equalTo(75 * SizeConstants.ScreenRatio)
+            make.top.equalTo(guideLabel.snp.bottom).offset(37 * SizeConstants.ScreenRatio)
+            make.width.height.equalTo(90 * SizeConstants.ScreenRatio)
         }
         
         trashBinButton.snp.makeConstraints { make in
@@ -174,6 +181,11 @@ class HomeViewController: UIViewController {
             make.trailing.equalToSuperview().inset(33 * SizeConstants.ScreenRatio)
             make.width.equalTo(self.view).multipliedBy(width)
             make.height.equalTo(84.5).multipliedBy(height)
+        }
+        
+        backgroundView.snp.makeConstraints { make in
+            make.top.equalTo(guideLabel.snp.bottom).offset(25)
+            make.leading.trailing.equalToSuperview()
         }
     }
     
