@@ -7,6 +7,14 @@
 
 import UIKit
 
+/// 사용은 이렇게.. 해주세요 (구조체 임시 - 서버 확정 후 변경)
+
+// let pop = MyWritingPopUpViewController(writing: DummyWriting(trashBin: "웅앵", title: "아아아아", date: Date(timeIntervalSince1970: .init()), content: "당신의 고민을 적어주세요.당신의 고민을 적어주세요."))
+// pop.modalTransitionStyle = .crossDissolve
+// pop.modalPresentationStyle = .overCurrentContext
+//
+// present(pop, animated: true, completion: nil)
+
 struct DummyWriting {
     var trashBin: String
     var title: String
