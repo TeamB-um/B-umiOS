@@ -69,6 +69,7 @@
 		FC0541BA2690C92A00FFA9D1 /* MyRewardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0541B92690C92A00FFA9D1 /* MyRewardViewController.swift */; };
 		FC0541BC2690C94700FFA9D1 /* MyTrashBinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0541BB2690C94700FFA9D1 /* MyTrashBinViewController.swift */; };
 		FC0541C02691B7AE00FFA9D1 /* MyWritingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0541BF2691B7AE00FFA9D1 /* MyWritingCollectionViewCell.swift */; };
+		FC4AFBAB269899F800B9801B /* MyTrashBinTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4AFBAA269899F800B9801B /* MyTrashBinTableViewCell.swift */; };
 		FC6448CD26983F8A00C8E30C /* MyRewardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6448CC26983F8A00C8E30C /* MyRewardCollectionViewCell.swift */; };
 		FC6448D0269847CA00C8E30C /* SeparateViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6448CE269847CA00C8E30C /* SeparateViewController+Extension.swift */; };
 		FC6448D1269847CA00C8E30C /* SeparateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6448CF269847CA00C8E30C /* SeparateViewController.swift */; };
@@ -76,7 +77,6 @@
 		FC6A7A472693198900A4ACBE /* ButtonSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6A7A462693198900A4ACBE /* ButtonSectionView.swift */; };
 		FC8A6F552695C65500E64FA5 /* MyPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC8A6F542695C65500E64FA5 /* MyPage.storyboard */; };
 		FCE3608C2694B25F00866525 /* FilterBottmSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE3608B2694B25F00866525 /* FilterBottmSheetViewController.swift */; };
-		FCE3608E2694CE3700866525 /* MyWritingPopUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCE3608D2694CE3700866525 /* MyWritingPopUp.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -146,6 +146,7 @@
 		FC0541B92690C92A00FFA9D1 /* MyRewardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRewardViewController.swift; sourceTree = "<group>"; };
 		FC0541BB2690C94700FFA9D1 /* MyTrashBinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTrashBinViewController.swift; sourceTree = "<group>"; };
 		FC0541BF2691B7AE00FFA9D1 /* MyWritingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWritingCollectionViewCell.swift; sourceTree = "<group>"; };
+		FC4AFBAA269899F800B9801B /* MyTrashBinTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTrashBinTableViewCell.swift; sourceTree = "<group>"; };
 		FC6448CC26983F8A00C8E30C /* MyRewardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRewardCollectionViewCell.swift; sourceTree = "<group>"; };
 		FC6448CE269847CA00C8E30C /* SeparateViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SeparateViewController+Extension.swift"; sourceTree = "<group>"; };
 		FC6448CF269847CA00C8E30C /* SeparateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeparateViewController.swift; sourceTree = "<group>"; };
@@ -153,7 +154,6 @@
 		FC6A7A462693198900A4ACBE /* ButtonSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonSectionView.swift; sourceTree = "<group>"; };
 		FC8A6F542695C65500E64FA5 /* MyPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyPage.storyboard; sourceTree = "<group>"; };
 		FCE3608B2694B25F00866525 /* FilterBottmSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterBottmSheetViewController.swift; sourceTree = "<group>"; };
-		FCE3608D2694CE3700866525 /* MyWritingPopUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyWritingPopUp.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -410,7 +410,6 @@
 		ABB24E57268E1994006FEE57 /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				FCE3608D2694CE3700866525 /* MyWritingPopUp.storyboard */,
 				FC8A6F542695C65500E64FA5 /* MyPage.storyboard */,
 			);
 			path = Storyboard;
@@ -499,6 +498,7 @@
 				FC0541B52690C6EF00FFA9D1 /* MenuSectionCollectionViewCell.swift */,
 				FC0541BF2691B7AE00FFA9D1 /* MyWritingCollectionViewCell.swift */,
 				FC6448CC26983F8A00C8E30C /* MyRewardCollectionViewCell.swift */,
+				FC4AFBAA269899F800B9801B /* MyTrashBinTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -575,7 +575,6 @@
 				AB5AF76E268A2E87001D3CD1 /* LaunchScreen.storyboard in Resources */,
 				4F49929E26942AD8009541AA /* SeparateCollectionViewCell.xib in Resources */,
 				ABB24DFE268CDF64006FEE57 /* NanumSquareOTF_acEB.otf in Resources */,
-				FCE3608E2694CE3700866525 /* MyWritingPopUp.storyboard in Resources */,
 				AB5AF76B268A2E87001D3CD1 /* Assets.xcassets in Resources */,
 				ABB24E01268CDF64006FEE57 /* NanumSquareOTF_acR.otf in Resources */,
 				4F7FD2ED26920F3800122964 /* TrashBinTableViewCell.xib in Resources */,
@@ -651,6 +650,7 @@
 				ABB24E53268E1912006FEE57 /* FloatingBarView.swift in Sources */,
 				FCE3608C2694B25F00866525 /* FilterBottmSheetViewController.swift in Sources */,
 				AB7F6DDF2696BDF300EF9C6E /* WritingPopUpViewController.swift in Sources */,
+				FC4AFBAB269899F800B9801B /* MyTrashBinTableViewCell.swift in Sources */,
 				ABB24DF4268CD9B7006FEE57 /* CardCollectionViewCell.swift in Sources */,
 				AB8C3F5B26935E8600B2BA30 /* WritingViewController+Layout.swift in Sources */,
 				AB8C3F5D2695743E00B2BA30 /* NotificationName+Extension.swift in Sources */,

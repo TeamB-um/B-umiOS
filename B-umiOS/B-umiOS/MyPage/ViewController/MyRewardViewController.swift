@@ -15,7 +15,7 @@ class MyRewardViewController: UIViewController {
         layout.scrollDirection = .vertical
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .paper1
+        collectionView.backgroundColor = .background
         collectionView.register(MyRewardCollectionViewCell.self, forCellWithReuseIdentifier: MyRewardCollectionViewCell.identifier)
         collectionView.delegate = self
         collectionView.dataSource = self
