@@ -89,4 +89,3 @@ class MyTrashBinTableViewCell: UITableViewCell {
         }
     }
 }
-

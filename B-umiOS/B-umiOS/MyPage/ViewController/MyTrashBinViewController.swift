@@ -8,18 +8,18 @@
 import UIKit
 
 class MyTrashBinViewController: UIViewController {
-
     // MARK: - UIComponenets
-    var settingButton = RoundingButton().then {
+    
+    private var settingButton = RoundingButton().then {
         $0.setupRoundingButton(title: "설정", image: "btnCheckUnseleted")
         //$0.addTarget(self, action: #selector(didTapCheckButton), for: .touchUpInside)
     }
     
-    lazy var headerView = UIView().then {
-        $0.backgroundColor = .background
+    private var headerView = UIView().then {
+        $0.backgroundColor = .clear
     }
     
-    lazy var detailTableView = UITableView(frame: .zero, style: .grouped).then {
+    lazy var detailTableView = UITableView().then {
         $0.separatorStyle = .none
     }
     // MARK: - Properties
@@ -72,6 +72,13 @@ class MyTrashBinViewController: UIViewController {
 // MARK: - UITableViewDelegate
 
 extension MyTrashBinViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        headerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        72
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -86,17 +93,6 @@ extension MyTrashBinViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MyTrashBinTableViewCell.identifier, for: indexPath) as? MyTrashBinTableViewCell else {
             return UITableViewCell()
         }
-//        cell.checkButton.isHidden = !self.checkButton.isSelected
-    
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
-        headerView
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        72
     }
 }
