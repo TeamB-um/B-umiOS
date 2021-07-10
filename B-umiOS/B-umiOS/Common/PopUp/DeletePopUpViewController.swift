@@ -9,8 +9,10 @@ import UIKit
 
 // TODO: - 삭제 버튼 Action 등록
 
-class DeleteWritingPopUpViewController: UIViewController {
-    static let identifier = "DeleteWritingPopUpViewController"
+/// DeletePopUpViewController(title: "글 삭제", guide: "글을 삭제하시겠습니까?")
+
+class DeletePopUpViewController: UIViewController {
+    static let identifier = "DeletePopUpViewController"
 
     // MARK: - UIComponenets
     
@@ -20,14 +22,14 @@ class DeleteWritingPopUpViewController: UIViewController {
         $0.cornerRound(radius: 10)
     }
     
-    private let titleLabel = UILabel().then {
-        $0.text = "글 삭제"
+    private lazy var titleLabel = UILabel().then {
+        $0.text = self.popUpTitle
         $0.textColor = .header
         $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 20)
     }
     
-    private let guideLabel = UILabel().then {
-        $0.text = "글을 삭제하시겠습니까?"
+    private lazy var guideLabel = UILabel().then {
+        $0.text = self.popUpGuide
         $0.numberOfLines = 0
         $0.lineSpacing(spacing: 7)
         $0.textAlignment = .center
@@ -58,8 +60,22 @@ class DeleteWritingPopUpViewController: UIViewController {
     // MARK: - Properties
     
     var popUpDelegate: WritingPopUpDelegate?
+    var popUpTitle: String
+    var popUpGuide: String
     
     // MARK: - Initializer
+    
+    init(title popUpTitle: String, guide popUpGuide: String) {
+        self.popUpTitle = popUpTitle
+        self.popUpGuide = popUpGuide
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - LifeCycle
     
@@ -84,7 +100,6 @@ class DeleteWritingPopUpViewController: UIViewController {
         
         popUpView.snp.makeConstraints { make in
             make.width.equalTo(343 * SizeConstants.screenRatio)
-            make.height.equalTo(199 * SizeConstants.screenRatio)
             make.center.equalToSuperview()
         }
 
@@ -99,6 +114,7 @@ class DeleteWritingPopUpViewController: UIViewController {
         }
         
         cancelButton.snp.makeConstraints { make in
+            make.top.equalTo(guideLabel.snp.bottom).offset(30 * SizeConstants.screenRatio).priority(.high)
             make.leading.equalToSuperview().offset(24 * SizeConstants.screenRatio)
             make.bottom.equalToSuperview().offset(-28 * SizeConstants.screenRatio)
             make.width.equalTo(141 * SizeConstants.screenRatio)
@@ -106,6 +122,7 @@ class DeleteWritingPopUpViewController: UIViewController {
         }
         
         deleteButton.snp.makeConstraints { make in
+            make.top.equalTo(cancelButton.snp.top)
             make.trailing.equalToSuperview().offset(-24 * SizeConstants.screenRatio)
             make.bottom.equalToSuperview().offset(-28 * SizeConstants.screenRatio)
             make.width.equalTo(141 * SizeConstants.screenRatio)
