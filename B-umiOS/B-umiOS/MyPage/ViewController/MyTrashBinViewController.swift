@@ -11,7 +11,7 @@ class MyTrashBinViewController: UIViewController {
     // MARK: - UIComponenets
     
     private var settingButton = RoundingButton().then {
-        $0.setupRoundingButton(title: "설정", image: "btnCheckUnseleted")
+        $0.setupRoundingButton(title: "설정", image: "settings")
         //$0.addTarget(self, action: #selector(didTapCheckButton), for: .touchUpInside)
     }
     
@@ -19,8 +19,13 @@ class MyTrashBinViewController: UIViewController {
         $0.backgroundColor = .clear
     }
     
+    private var headerGardientBackground = UIImageView().then {
+        $0.image = UIImage(named: "mywritingTrashbinBgGradientTop")
+    }
+    
     lazy var detailTableView = UITableView().then {
         $0.separatorStyle = .none
+        $0.backgroundColor = .background
     }
     // MARK: - Properties
     
@@ -55,11 +60,14 @@ class MyTrashBinViewController: UIViewController {
     
     func setConstraint(){
         view.addSubviews([detailTableView])
-        headerView.addSubview(settingButton)
+        headerView.addSubviews([headerGardientBackground, settingButton])
 
+        headerGardientBackground.snp.makeConstraints { make in
+            make.top.leading.trailing.bottom.equalToSuperview()
+        }
         settingButton.snp.makeConstraints { make in
             make.trailing.equalToSuperview().inset(16 * SizeConstants.screenRatio)
-            make.top.equalToSuperview().offset(16 * SizeConstants.screenRatio)
+            make.centerY.equalToSuperview()
         }
 
         detailTableView.snp.makeConstraints { make in
@@ -77,7 +85,7 @@ extension MyTrashBinViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        72
+        72 * SizeConstants.screenRatio
     }
 }
 
