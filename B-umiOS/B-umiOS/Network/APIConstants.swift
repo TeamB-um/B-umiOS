@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+struct APIConstants {
+    //API 넣기
+    //static let baseURL =
+    static let application_json = "application/json"
+}
