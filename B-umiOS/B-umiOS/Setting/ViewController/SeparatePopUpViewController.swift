@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TrashBinPopUpViewController: UIViewController {
+class SeparatePopUpViewController: UIViewController {
     // MARK: - UIComponenets
     
     private let popupView = UIView().then {
