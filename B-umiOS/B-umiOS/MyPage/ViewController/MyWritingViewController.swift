@@ -13,6 +13,7 @@ class MyWritingViewController: UIViewController {
     private lazy var myWritingCollectionView : UICollectionView = {
         var layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
+        layout.sectionHeadersPinToVisibleBounds = true
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .background
@@ -78,15 +79,14 @@ extension MyWritingViewController : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ButtonSectionView.identifier, for: indexPath)
-    
+        
         return headerView
     }
 }
 
 extension MyWritingViewController : UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = UIScreen.main.bounds.width
-        let sideLength = (width - 47) / 2
+        let sideLength = (SizeConstants.screenWidth - 47) / 2
         let cellSize = CGSize(width: sideLength, height: sideLength)
         return cellSize
     }
@@ -104,8 +104,6 @@ extension MyWritingViewController : UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        let width = UIScreen.main.bounds.width
-        
-        return CGSize(width: width, height: 72)
+        return CGSize(width: SizeConstants.screenWidth, height: 72 * SizeConstants.screenRatio)
     }
 }
