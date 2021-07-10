@@ -7,6 +7,11 @@
 
 import UIKit
 
+enum PopUpMethod {
+    case add
+    case modify
+}
+
 class SeparatePopUpViewController: UIViewController {
     // MARK: - UIComponenets
     
@@ -17,29 +22,28 @@ class SeparatePopUpViewController: UIViewController {
     }
     
     private  let backgroundButton = UIButton().then {
-        $0.addTarget(self, action: #selector(didTapBackgroundButton(_:)), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(closePopUp(_:)), for: .touchUpInside)
     }
     
     private lazy var headerLabel = UILabel().then {
         $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 20)
         $0.textColor = .header
-        $0.text = headerText
     }
         
     private lazy var subLabel = UILabel().then {
         $0.font = UIFont.nanumSquareFont(type: .regular, size: 16)
         $0.textColor = .paper3
-        $0.text = subText
     }
     
     private lazy var textfield = UITextField().then {
-        $0.placeholder = placeholder
         $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 14)
         $0.textColor = .header
         $0.borderStyle = .roundedRect
         $0.layer.borderWidth = 1
-        $0.layer.cornerRadius = 10
+        $0.layer.cornerRadius = 5
         $0.layer.borderColor = UIColor.paper2.cgColor
+        $0.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10 * SizeConstants.screenRatio, height: self.view.frame.height))
+        $0.leftViewMode = .always
     }
 
     private lazy var textNumberLabel = UILabel().then {
@@ -56,6 +60,7 @@ class SeparatePopUpViewController: UIViewController {
         $0.setTitleColor(.paper3, for: .normal)
         $0.setTitle("취소", for: .normal)
         $0.titleLabel?.font = UIFont.nanumSquareFont(type: .bold, size: 18)
+        $0.addTarget(self, action: #selector(closePopUp(_:)), for: .touchUpInside)
     }
     
     private let confirmButton = UIButton().then {
@@ -75,9 +80,10 @@ class SeparatePopUpViewController: UIViewController {
     
     // MARK: - Properties
     
-    var headerText : String = "header view"
-    var subText : String = "sub view"
-    var placeholder : String = "placeholder"
+//    var headerText : String = "header view"
+//    var subText : String = "sub view"
+//    var placeholder : String = "placeholder"
+    var method : PopUpMethod?
     static let identifier = "SeparatePopUpViewController"
     
     // MARK: - Initializer
@@ -86,7 +92,7 @@ class SeparatePopUpViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+
         setTextField()
         setView()
         setConstraint()
@@ -94,7 +100,7 @@ class SeparatePopUpViewController: UIViewController {
     
     // MARK: - Actions
     
-    @objc private func didTapBackgroundButton(_ sender: UIButton) {
+    @objc private func closePopUp(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -106,6 +112,17 @@ class SeparatePopUpViewController: UIViewController {
     
     func setView(){
         self.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+        
+        switch method {
+        case .add:
+            self.headerLabel.text = "분리수거 추가"
+            self.subLabel.text = "분리수거함을 추가해 스트레스를 분류하세요."
+        case .modify:
+            self.headerLabel.text = "분리수거 수정"
+            self.subLabel.text = "분리수거함의 이름을 수정해보세요."
+        case .none:
+            break
+        }
     }
     
     func setConstraint() {
@@ -129,7 +146,7 @@ class SeparatePopUpViewController: UIViewController {
 
         subLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalTo(headerLabel.snp.bottom).offset(8 * SizeConstants.screenRatio)
+            make.top.equalToSuperview().inset(70 * SizeConstants.screenRatio)
         }
 
         textfield.snp.makeConstraints { make in
@@ -176,6 +193,7 @@ extension SeparatePopUpViewController: UITextFieldDelegate {
                 self.confirmButton.isEnabled = true
             }
         }
+        
         return updatedText.count < 12
     }
 }

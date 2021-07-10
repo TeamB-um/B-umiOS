@@ -69,20 +69,19 @@ class SettingSeparateViewController: UIViewController {
     // MARK: - Actions
     
     @objc
-        private func didTapBackButton(_ sender: UIButton) {
-            self.navigationController?.popViewController(animated: true)
-        }
+    private func didTapBackButton(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
     
     @objc
-        private func didTapAddButton(_ sender: UIButton) {
-            
-            if let popUpVC = self.storyboard?.instantiateViewController(identifier: SeparatePopUpViewController.identifier){
-                popUpVC.modalPresentationStyle = .overCurrentContext
-                popUpVC.modalTransitionStyle = .crossDissolve
-                        
-                self.tabBarController?.present(popUpVC, animated: true, completion: nil)
-            }
+    private func didTapAddButton(_ sender: UIButton) {
+        if let nextVC = storyboard?.instantiateViewController(identifier: SeparatePopUpViewController.identifier) as? SeparatePopUpViewController{
+            nextVC.method = .add
+            nextVC.modalPresentationStyle = .overFullScreen
+            nextVC.modalTransitionStyle = .crossDissolve
+            self.present(nextVC, animated: true, completion: nil)
         }
+    }
     
     // MARK: - Methods
   
@@ -162,7 +161,7 @@ extension SettingSeparateViewController: UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: SeparateTableViewCell.identifier, for: indexPath) as! SeparateTableViewCell
         
         cell.selectionStyle = .none
-        cell.trashbinName.text = bins[indexPath.row]
+        cell.seperateName.text = bins[indexPath.row]
         return cell
     }
 }
