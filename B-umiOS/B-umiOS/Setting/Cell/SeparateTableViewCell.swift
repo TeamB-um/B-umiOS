@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TrashBinTableViewCell: UITableViewCell {
+class SeparateTableViewCell: UITableViewCell {
 
     // MARK: - UIComponenets
     
