@@ -85,7 +85,8 @@ class SettingViewController: UIViewController, popupDelegate{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .background
+        
+        setView()
         setConstraint()
     }
 
@@ -119,6 +120,10 @@ class SettingViewController: UIViewController, popupDelegate{
         }
     
     // MARK: - Methods
+    
+    func setView(){
+        self.view.backgroundColor = .background
+    }
     
     func createView(text : String, items: [NSCoding]) -> UIView{
         let newView = UIView().then {
@@ -162,11 +167,11 @@ class SettingViewController: UIViewController, popupDelegate{
 
     // MARK: - Protocols
     
-    func diss() {
+    func closeBottomSheet() {
         self.backgroundView.removeFromSuperview()
     }
 }
 
 protocol popupDelegate {
-    func diss()
+    func closeBottomSheet()
 }
