@@ -93,7 +93,7 @@ class SettingViewController: UIViewController, popupDelegate{
 
     @objc
         private func didTapTrashBinManageButton(_ sender: UIButton) {
-            if let pushVC = self.storyboard?.instantiateViewController(withIdentifier: "SettingTrashBinViewController"){
+            if let pushVC = self.storyboard?.instantiateViewController(withIdentifier: SettingSeparateViewController.identifier){
                 self.navigationController?.pushViewController(pushVC, animated: true)
             }
         }

@@ -23,10 +23,10 @@
             </objects>
             <point key="canvasLocation" x="-1761" y="54"/>
         </scene>
-        <!--Setting Trash Bin View Controller-->
+        <!--Setting Separate View Controller-->
         <scene sceneID="PQb-iK-qmd">
             <objects>
-                <viewController storyboardIdentifier="SettingTrashBinViewController" id="qBb-Df-P6f" customClass="SettingTrashBinViewController" customModule="B_umiOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SettingSeparateViewController" id="qBb-Df-P6f" customClass="SettingSeparateViewController" customModule="B_umiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0VG-1z-CtR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
