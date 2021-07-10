@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SettingTrashBinViewController: UIViewController {
+class SettingSeparateViewController: UIViewController {
     // MARK: - UIComponenets
     
     private var headerView = UIView().then {
@@ -50,6 +50,7 @@ class SettingTrashBinViewController: UIViewController {
     
     // MARK: - Initializer
     
+    static let identifier = "SettingSeparateViewController"
     // MARK: - LifeCycle
 
     override func viewDidLoad() {
@@ -135,11 +136,11 @@ class SettingTrashBinViewController: UIViewController {
 
 // MARK: - Protocols
 
-extension SettingTrashBinViewController: UITableViewDelegate{
+extension SettingSeparateViewController: UITableViewDelegate{
     
 }
 
-extension SettingTrashBinViewController: UITableViewDataSource{
+extension SettingSeparateViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return bins.count
     }

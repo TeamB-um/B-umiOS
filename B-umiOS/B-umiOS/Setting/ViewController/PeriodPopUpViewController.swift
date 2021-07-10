@@ -68,7 +68,7 @@ class PeriodPopUpViewController: UIViewController{
     // MARK: - Actions
     
     @objc private func didTapBackgroundButton(_ sender: UIButton) {
-        popupdelegate?.diss()
+        popupdelegate?.closeBottomSheet()
         self.dismiss(animated: true, completion: nil)
     }
     
