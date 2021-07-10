@@ -16,8 +16,9 @@ class SeparateTableViewCell: UITableViewCell {
         $0.font = UIFont.nanumSquareFont(type: .regular, size: 16)
     }
     
-    var deleteButton = UIButton().then {
+    lazy var deleteButton = UIButton().then {
         $0.setImage(UIImage(named: "btnDelete"), for: .normal)
+        $0.addTarget(self, action: #selector(didTapDeleteButton(_:)), for: .touchUpInside)
     }
     // MARK: - Properties
     
@@ -28,6 +29,11 @@ class SeparateTableViewCell: UITableViewCell {
     // MARK: - LifeCycle
     
     // MARK: - Actions
+    
+    @objc
+        private func didTapDeleteButton(_ sender: UIButton) {
+            print("click")
+        }
     
     // MARK: - Methods
     

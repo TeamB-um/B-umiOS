@@ -76,7 +76,7 @@ class SettingSeparateViewController: UIViewController {
     @objc
         private func didTapAddButton(_ sender: UIButton) {
             
-            if let popUpVC = self.storyboard?.instantiateViewController(identifier: "TrashBinPopUpViewController"){
+            if let popUpVC = self.storyboard?.instantiateViewController(identifier: SeparatePopUpViewController.identifier){
                 popUpVC.modalPresentationStyle = .overCurrentContext
                 popUpVC.modalTransitionStyle = .crossDissolve
                         
@@ -150,7 +150,7 @@ class SettingSeparateViewController: UIViewController {
 // MARK: - Protocols
 
 extension SettingSeparateViewController: UITableViewDelegate{
-    
+
 }
 
 extension SettingSeparateViewController: UITableViewDataSource{
@@ -161,6 +161,7 @@ extension SettingSeparateViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SeparateTableViewCell.identifier, for: indexPath) as! SeparateTableViewCell
         
+        cell.selectionStyle = .none
         cell.trashbinName.text = bins[indexPath.row]
         return cell
     }

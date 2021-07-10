@@ -25,7 +25,7 @@
 		4F7FD2E82690E5B400122964 /* SettingSeparateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7FD2E72690E5B400122964 /* SettingSeparateViewController.swift */; };
 		4F7FD2EC26920F3800122964 /* SeparateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7FD2EA26920F3800122964 /* SeparateTableViewCell.swift */; };
 		4F7FD2ED26920F3800122964 /* SeparateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F7FD2EB26920F3800122964 /* SeparateTableViewCell.xib */; };
-		4F7FD2EF26922F4A00122964 /* TrashBinPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7FD2EE26922F4A00122964 /* TrashBinPopUpViewController.swift */; };
+		4F7FD2EF26922F4A00122964 /* SeparatePopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7FD2EE26922F4A00122964 /* SeparatePopUpViewController.swift */; };
 		4F7FD2F126929D6300122964 /* PeriodPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7FD2F026929D6300122964 /* PeriodPopUpViewController.swift */; };
 		4F875E2B2697E0930085D104 /* SeparateGraphPopUpViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F875E2A2697E0930085D104 /* SeparateGraphPopUpViewController+Layout.swift */; };
 		4F875E302697EE3A0085D104 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F875E2F2697EE3A0085D104 /* GraphView.swift */; };
@@ -98,7 +98,7 @@
 		4F7FD2E72690E5B400122964 /* SettingSeparateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSeparateViewController.swift; sourceTree = "<group>"; };
 		4F7FD2EA26920F3800122964 /* SeparateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparateTableViewCell.swift; sourceTree = "<group>"; };
 		4F7FD2EB26920F3800122964 /* SeparateTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeparateTableViewCell.xib; sourceTree = "<group>"; };
-		4F7FD2EE26922F4A00122964 /* TrashBinPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashBinPopUpViewController.swift; sourceTree = "<group>"; };
+		4F7FD2EE26922F4A00122964 /* SeparatePopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatePopUpViewController.swift; sourceTree = "<group>"; };
 		4F7FD2F026929D6300122964 /* PeriodPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodPopUpViewController.swift; sourceTree = "<group>"; };
 		4F875E2A2697E0930085D104 /* SeparateGraphPopUpViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SeparateGraphPopUpViewController+Layout.swift"; sourceTree = "<group>"; };
 		4F875E2F2697EE3A0085D104 /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
@@ -452,7 +452,7 @@
 				ABB24E62268E1A75006FEE57 /* SettingViewController.swift */,
 				4F2D1F312698B86D00D941A1 /* SettingViewController+Layout.swift */,
 				4F7FD2E72690E5B400122964 /* SettingSeparateViewController.swift */,
-				4F7FD2EE26922F4A00122964 /* TrashBinPopUpViewController.swift */,
+				4F7FD2EE26922F4A00122964 /* SeparatePopUpViewController.swift */,
 				4F7FD2F026929D6300122964 /* PeriodPopUpViewController.swift */,
 			);
 			path = ViewController;
@@ -658,7 +658,7 @@
 				AB9F9DF426909E2100088502 /* UILabel+Extension.swift in Sources */,
 				FC6448D0269847CA00C8E30C /* SeparateViewController+Extension.swift in Sources */,
 				AB7F6DE426973E0500EF9C6E /* ThrowTrashViewController.swift in Sources */,
-				4F7FD2EF26922F4A00122964 /* TrashBinPopUpViewController.swift in Sources */,
+				4F7FD2EF26922F4A00122964 /* SeparatePopUpViewController.swift in Sources */,
 				ABB24E53268E1912006FEE57 /* FloatingBarView.swift in Sources */,
 				ABB24DF4268CD9B7006FEE57 /* CardCollectionViewCell.swift in Sources */,
 				4F4992972693F9F2009541AA /* SeparateViewController+Layout.swift in Sources */,
