@@ -23,8 +23,8 @@
 		4F4992E926960B60009541AA /* SeparateDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F4992E726960B60009541AA /* SeparateDetailTableViewCell.xib */; };
 		4F4992EB2696F685009541AA /* SeparateGraphPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4992EA2696F685009541AA /* SeparateGraphPopUpViewController.swift */; };
 		4F7FD2E82690E5B400122964 /* SettingSeparateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7FD2E72690E5B400122964 /* SettingSeparateViewController.swift */; };
-		4F7FD2EC26920F3800122964 /* TrashBinTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7FD2EA26920F3800122964 /* TrashBinTableViewCell.swift */; };
-		4F7FD2ED26920F3800122964 /* TrashBinTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F7FD2EB26920F3800122964 /* TrashBinTableViewCell.xib */; };
+		4F7FD2EC26920F3800122964 /* SeparateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7FD2EA26920F3800122964 /* SeparateTableViewCell.swift */; };
+		4F7FD2ED26920F3800122964 /* SeparateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F7FD2EB26920F3800122964 /* SeparateTableViewCell.xib */; };
 		4F7FD2EF26922F4A00122964 /* TrashBinPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7FD2EE26922F4A00122964 /* TrashBinPopUpViewController.swift */; };
 		4F7FD2F126929D6300122964 /* PeriodPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7FD2F026929D6300122964 /* PeriodPopUpViewController.swift */; };
 		4F875E2B2697E0930085D104 /* SeparateGraphPopUpViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F875E2A2697E0930085D104 /* SeparateGraphPopUpViewController+Layout.swift */; };
@@ -96,8 +96,8 @@
 		4F4992E726960B60009541AA /* SeparateDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeparateDetailTableViewCell.xib; sourceTree = "<group>"; };
 		4F4992EA2696F685009541AA /* SeparateGraphPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparateGraphPopUpViewController.swift; sourceTree = "<group>"; };
 		4F7FD2E72690E5B400122964 /* SettingSeparateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSeparateViewController.swift; sourceTree = "<group>"; };
-		4F7FD2EA26920F3800122964 /* TrashBinTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashBinTableViewCell.swift; sourceTree = "<group>"; };
-		4F7FD2EB26920F3800122964 /* TrashBinTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrashBinTableViewCell.xib; sourceTree = "<group>"; };
+		4F7FD2EA26920F3800122964 /* SeparateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparateTableViewCell.swift; sourceTree = "<group>"; };
+		4F7FD2EB26920F3800122964 /* SeparateTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeparateTableViewCell.xib; sourceTree = "<group>"; };
 		4F7FD2EE26922F4A00122964 /* TrashBinPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashBinPopUpViewController.swift; sourceTree = "<group>"; };
 		4F7FD2F026929D6300122964 /* PeriodPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodPopUpViewController.swift; sourceTree = "<group>"; };
 		4F875E2A2697E0930085D104 /* SeparateGraphPopUpViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SeparateGraphPopUpViewController+Layout.swift"; sourceTree = "<group>"; };
@@ -191,8 +191,8 @@
 		4F7FD2E926920F1300122964 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				4F7FD2EA26920F3800122964 /* TrashBinTableViewCell.swift */,
-				4F7FD2EB26920F3800122964 /* TrashBinTableViewCell.xib */,
+				4F7FD2EA26920F3800122964 /* SeparateTableViewCell.swift */,
+				4F7FD2EB26920F3800122964 /* SeparateTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -578,7 +578,7 @@
 				FCE3608E2694CE3700866525 /* MyWritingPopUp.storyboard in Resources */,
 				AB5AF76B268A2E87001D3CD1 /* Assets.xcassets in Resources */,
 				ABB24E01268CDF64006FEE57 /* NanumSquareOTF_acR.otf in Resources */,
-				4F7FD2ED26920F3800122964 /* TrashBinTableViewCell.xib in Resources */,
+				4F7FD2ED26920F3800122964 /* SeparateTableViewCell.xib in Resources */,
 				ABB24DFF268CDF64006FEE57 /* NanumSquareOTF_acL.otf in Resources */,
 				ABB24DF8268CD9FF006FEE57 /* Home.storyboard in Resources */,
 				ABB24E6F268E20EB006FEE57 /* Separate.storyboard in Resources */,
@@ -643,7 +643,7 @@
 				4F7FD2E82690E5B400122964 /* SettingSeparateViewController.swift in Sources */,
 				ABB24E55268E193B006FEE57 /* FloatingTabBarController.swift in Sources */,
 				ABB24DF6268CD9D3006FEE57 /* HomeViewController.swift in Sources */,
-				4F7FD2EC26920F3800122964 /* TrashBinTableViewCell.swift in Sources */,
+				4F7FD2EC26920F3800122964 /* SeparateTableViewCell.swift in Sources */,
 				ABB24E63268E1A75006FEE57 /* SettingViewController.swift in Sources */,
 				ABB24E0A268CF33B006FEE57 /* UIView+Extension.swift in Sources */,
 				AB9F9DF22690997300088502 /* Date+Extension.swift in Sources */,

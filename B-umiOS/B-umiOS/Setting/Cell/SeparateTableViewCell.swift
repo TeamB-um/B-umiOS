@@ -19,6 +19,13 @@ class SeparateTableViewCell: UITableViewCell {
     var deleteButton = UIButton().then {
         $0.setImage(UIImage(named: "btnDelete"), for: .normal)
     }
+    // MARK: - Properties
+    
+    static let identifier = "SeparateTableViewCell"
+    
+    // MARK: - Initializer
+    
+    // MARK: - LifeCycle
     
     // MARK: - Actions
     
@@ -38,14 +45,14 @@ class SeparateTableViewCell: UITableViewCell {
         self.contentView.addSubviews([trashbinName,deleteButton])
         
         trashbinName.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(14)
-            make.bottom.equalToSuperview().inset(15)
-            make.leading.equalToSuperview().inset(24)
+            make.top.equalToSuperview().inset(14 * SizeConstants.screenRatio)
+            make.bottom.equalToSuperview().inset(15 * SizeConstants.screenRatio)
+            make.leading.equalToSuperview().inset(24 * SizeConstants.screenRatio)
         }
         
         deleteButton.snp.makeConstraints { make in
             make.center.equalTo(trashbinName)
-            make.trailing.equalToSuperview().inset(24)
+            make.trailing.equalToSuperview().inset(24 * SizeConstants.screenRatio)
         }
         
     }

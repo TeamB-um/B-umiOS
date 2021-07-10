@@ -39,34 +39,35 @@ class SettingSeparateViewController: UIViewController {
         $0.textColor = .green2Main
     }
     
-    private var trashbinStatusNumber = UILabel().then {
-        $0.text = "5/9"
+    lazy var trashbinStatusNumber = UILabel().then {
+        $0.text = "\(bins.count)/9"
         $0.font = UIFont.nanumSquareFont(type: .regular, size: 13)
         $0.textColor = .green2Main
     }
     
-    private lazy var trashbinTableView = UITableView().then {
+    private lazy var separateTableView = UITableView().then {
         $0.separatorStyle = .none
     }
     
     // MARK: - Properties
     
     var bins = ["a","b","c","d","e"]
+    static let identifier = "SettingSeparateViewController"
     
     // MARK: - Initializer
     
-    static let identifier = "SettingSeparateViewController"
     // MARK: - LifeCycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .background
         
+        setView()
         setConstraint()
         setTableView()
     }
     
     // MARK: - Actions
+    
     @objc
         private func didTapBackButton(_ sender: UIButton) {
             self.navigationController?.popViewController(animated: true)
@@ -85,10 +86,15 @@ class SettingSeparateViewController: UIViewController {
     
     // MARK: - Methods
   
+    func setView(){
+        navigationController?.interactivePopGestureRecognizer?.delegate = nil
+        self.view.backgroundColor = .background
+    }
+    
     func setConstraint(){
         let navigationHeight = 56 + UIDevice.current.safeAreaInset.top
         
-        self.view.addSubviews([navigationView, navigationDividerView, trashbinStatusLabel, trashbinStatusNumber, trashbinTableView])
+        self.view.addSubviews([navigationView, navigationDividerView, trashbinStatusLabel, trashbinStatusNumber, separateTableView])
         navigationView.addSubviews([headerLabel,backButton,addButton])
         
         navigationView.snp.makeConstraints { make in
@@ -127,17 +133,17 @@ class SettingSeparateViewController: UIViewController {
             make.trailing.equalToSuperview().inset(28)
         }
         
-        trashbinTableView.snp.makeConstraints { make in
+        separateTableView.snp.makeConstraints { make in
             make.top.equalTo(trashbinStatusLabel.snp.bottom).offset(12)
             make.trailing.leading.bottom.equalToSuperview()
         }
     }
     
     func setTableView(){
-        trashbinTableView.delegate = self
-        trashbinTableView.dataSource = self
-        
-        trashbinTableView.register(UINib(nibName: "TrashBinTableViewCell", bundle: nil), forCellReuseIdentifier: "TrashBinTableViewCell")
+        separateTableView.delegate = self
+        separateTableView.dataSource = self
+        separateTableView.backgroundColor = .background
+        separateTableView.register(UINib(nibName: SeparateTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: SeparateTableViewCell.identifier)
     }
 }
 
@@ -153,7 +159,7 @@ extension SettingSeparateViewController: UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TrashBinTableViewCell", for: indexPath) as! TrashBinTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: SeparateTableViewCell.identifier, for: indexPath) as! SeparateTableViewCell
         
         cell.trashbinName.text = bins[indexPath.row]
         return cell
