@@ -10,17 +10,22 @@ import UIKit
 class SettingSeparateViewController: UIViewController {
     // MARK: - UIComponenets
     
-    private var headerView = UIView().then {
+    let navigationView = UIView().then {
         $0.backgroundColor = .white
     }
     
-    private var headerLabel = UILabel().then {
-        $0.text = "휴지통 관리"
+    let navigationDividerView = UIView().then {
+        $0.backgroundColor = .paper1
+    }
+    
+    let headerLabel = UILabel().then {
+        $0.text = "분리수거함 관리"
         $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 20)
     }
     
-    private var backButton = UIButton().then {
+    var backButton = UIButton().then {
         $0.setImage(UIImage(named: "btnBack"), for: .normal)
+        $0.addTarget(self, action: #selector(didTapBackButton(_:)), for: .touchUpInside)
     }
     
     private var addButton = UIButton().then {
@@ -56,11 +61,16 @@ class SettingSeparateViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .background
+        
         setConstraint()
         setTableView()
     }
     
     // MARK: - Actions
+    @objc
+        private func didTapBackButton(_ sender: UIButton) {
+            self.navigationController?.popViewController(animated: true)
+        }
     
     @objc
         private func didTapAddButton(_ sender: UIButton) {
@@ -76,43 +86,40 @@ class SettingSeparateViewController: UIViewController {
     // MARK: - Methods
   
     func setConstraint(){
-        let line = UIView().then {
-            $0.backgroundColor = UIColor(white: 237.0 / 255.0, alpha: 1.0)
+        let navigationHeight = 56 + UIDevice.current.safeAreaInset.top
+        
+        self.view.addSubviews([navigationView, navigationDividerView, trashbinStatusLabel, trashbinStatusNumber, trashbinTableView])
+        navigationView.addSubviews([headerLabel,backButton,addButton])
+        
+        navigationView.snp.makeConstraints { make in
+            make.top.width.equalToSuperview()
+            make.height.equalTo(navigationHeight * SizeConstants.screenRatio)
         }
         
-        self.view.addSubviews([headerView,line,trashbinStatusLabel,trashbinStatusNumber,trashbinTableView])
-        headerView.addSubviews([headerLabel,backButton,addButton])
-        
-        headerView.snp.makeConstraints { make in
-            make.top.equalTo(self.view)
-            make.width.equalToSuperview()
-        }
-        
-        headerLabel.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.top.equalToSuperview().inset(57)
-            make.bottom.equalToSuperview().inset(13)
-        }
-        
-        backButton.snp.makeConstraints { make in
-            make.leading.equalToSuperview().inset(16)
-            make.centerY.equalTo(headerLabel)
-        }
-        
-        addButton.snp.makeConstraints { make in
-            make.trailing.equalToSuperview().inset(16)
-            make.centerY.equalTo(headerLabel)
-        }
-        
-        line.snp.makeConstraints { make in
-            make.top.equalTo(headerView.snp.bottom)
+        navigationDividerView.snp.makeConstraints { make in
+            make.top.equalTo(navigationView.snp.bottom)
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(1)
         }
         
+        headerLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalToSuperview().inset(13 * SizeConstants.screenRatio)
+        }
+        
+        backButton.snp.makeConstraints { make in
+            make.leading.equalToSuperview().inset(16 * SizeConstants.screenRatio)
+            make.centerY.equalTo(headerLabel)
+        }
+        
+        addButton.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().inset(16 * SizeConstants.screenRatio)
+            make.centerY.equalTo(headerLabel)
+        }
+        
         trashbinStatusLabel.snp.makeConstraints { make in
-            make.top.equalTo(line).offset(16)
-            make.leading.equalToSuperview().inset(24)
+            make.top.equalTo(navigationDividerView.snp.bottom).offset(16 * SizeConstants.screenRatio)
+            make.leading.equalToSuperview().inset(24 * SizeConstants.screenRatio)
         }
         
         trashbinStatusNumber.snp.makeConstraints { make in
