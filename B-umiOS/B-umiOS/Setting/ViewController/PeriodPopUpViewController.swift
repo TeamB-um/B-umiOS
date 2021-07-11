@@ -127,6 +127,7 @@ class PeriodPopUpViewController: UIViewController{
             make.height.equalTo(50 * SizeConstants.screenRatio)
         }
     }
+    
     // MARK: - Protocols
 }
 

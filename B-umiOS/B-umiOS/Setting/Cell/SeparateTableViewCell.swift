@@ -84,5 +84,4 @@ class SeparateTableViewCell: UITableViewCell {
             make.trailing.equalToSuperview().inset(24 * SizeConstants.screenRatio)
         }
     }
-    
 }
