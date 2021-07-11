@@ -189,19 +189,4 @@ class WritingViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
-    
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        let currentCharacterCount = textView.text?.count ?? 0
-        let newLength = currentCharacterCount + text.count - range.length
-        
-        if newLength > 0 {
-            checkButton.isUserInteractionEnabled = true
-            checkButton.tintColor = .header
-        } else {
-            checkButton.isUserInteractionEnabled = false
-            checkButton.tintColor = .disable
-        }
-
-        return true
-    }
 }
