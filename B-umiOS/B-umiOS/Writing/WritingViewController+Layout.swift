@@ -17,7 +17,7 @@ extension WritingViewController {
         
         navigationLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview().offset(-13)
+            make.centerY.equalTo(backButton.snp.centerY)
         }
         
         backButton.snp.makeConstraints { make in

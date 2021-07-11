@@ -13,6 +13,9 @@ class ButtonSectionView: UICollectionReusableView {
     
     static let identifier = "ButtonSectionView"
     
+    private let gradationBackground = UIImageView().then {
+        $0.image = UIImage(named: "mywritingTrashbinBgGradientTop")
+    }
     private let categoryButtton: RoundingButton = {
         let button = RoundingButton()
         button.setupRoundingButton(title: "전체 카테고리", image: "btnFilter")
@@ -59,13 +62,16 @@ class ButtonSectionView: UICollectionReusableView {
       // MARK: - Methods
     
     private func setConstraint(){
-        self.addSubviews([categoryButtton, selectButtton, deleteButton])
+        self.addSubviews([gradationBackground, categoryButtton, selectButtton, deleteButton])
+        
+        gradationBackground.snp.makeConstraints { make in
+            make.top.bottom.leading.trailing.equalToSuperview()
+        }
         
         categoryButtton.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(20)
-            make.leading.equalTo(16)
+            make.centerY.equalToSuperview()
+            make.leading.equalTo(16 * SizeConstants.screenRatio)
             make.width.equalTo(137)
-            
         }
         
         selectButtton.snp.makeConstraints { make in
@@ -75,11 +81,10 @@ class ButtonSectionView: UICollectionReusableView {
         }
         
         deleteButton.snp.makeConstraints { make in
-            make.centerY.equalTo(selectButtton)
+            make.centerY.equalTo(categoryButtton)
             make.leading.equalTo(selectButtton.snp.trailing).offset(8)
             make.width.equalTo(80)
         }
-
     }
     
     

@@ -44,7 +44,7 @@ class MyPageViewController: UIViewController {
         layout.scrollDirection = .horizontal
 
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = .background
         collectionView.isPagingEnabled = true
         collectionView.showsHorizontalScrollIndicator = false
 
