@@ -84,7 +84,7 @@ extension MyRewardViewController : UICollectionViewDelegateFlowLayout {
         
         print("야옹")
         popUpVC.modalTransitionStyle = .crossDissolve
-        popUpVC.modalPresentationStyle = .fullScreen
+        popUpVC.modalPresentationStyle = .overCurrentContext
         
         self.present(popUpVC, animated: true, completion: nil)
     }
