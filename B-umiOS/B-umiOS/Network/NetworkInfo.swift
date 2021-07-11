@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Alamofire
 
 enum NetworkHeaderKey: String {
     case auth = "x-auth-token"
@@ -17,11 +18,11 @@ struct NetworkInfo {
     
     static let token = UserDefaults.standard.string(forKey: "token") ?? ""
     
-    static var headerOnlyType: [String: String] {
-        return [NetworkHeaderKey.content_type.rawValue: APIConstants.application_json]
+    static var headerOnlyType: HTTPHeaders {
+        return [NetworkHeaderKey.content_type.rawValue:  APIConstants.application_json]
     }
     
-    static var headerWithToken: [String: String] {
+    static var headerWithToken: HTTPHeaders {
         return [NetworkHeaderKey.content_type.rawValue: APIConstants.application_json, NetworkHeaderKey.auth.rawValue: token]
     }
     
