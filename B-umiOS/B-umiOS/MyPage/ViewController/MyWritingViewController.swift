@@ -13,9 +13,10 @@ class MyWritingViewController: UIViewController {
     private lazy var myWritingCollectionView : UICollectionView = {
         var layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
+        layout.sectionHeadersPinToVisibleBounds = true
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .paper1
+        collectionView.backgroundColor = .background
         
         collectionView.register(MyWritingCollectionViewCell.self, forCellWithReuseIdentifier: MyWritingCollectionViewCell.identifier)
         
@@ -42,31 +43,21 @@ class MyWritingViewController: UIViewController {
     // MARK: - Methods
     
     func setConstraint(){
-        
         view.addSubview(myWritingCollectionView)
         
         myWritingCollectionView.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.bottom.leading.trailing.equalToSuperview()
         }
-        
-        
     }
-    
-
-    
     // MARK: - Protocols
 }
-
-
-
     // MARK: - Extension
 
 extension MyWritingViewController : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 17
     }
-    
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyWritingCollectionViewCell.identifier, for: indexPath) as? MyWritingCollectionViewCell else { return UICollectionViewCell() }
@@ -78,20 +69,15 @@ extension MyWritingViewController : UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
-//        let headerView = collectionView.dequeueReusableCell(withReuseIdentifier: ButtonSectionView.identifier, for: indexPath)
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ButtonSectionView.identifier, for: indexPath)
         
-
         return headerView
     }
-
-
 }
 
 extension MyWritingViewController : UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = UIScreen.main.bounds.width
-        let sideLength = (width - 47) / 2
+        let sideLength = (SizeConstants.screenWidth - 47) / 2
         let cellSize = CGSize(width: sideLength, height: sideLength)
         return cellSize
     }
@@ -109,8 +95,6 @@ extension MyWritingViewController : UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        let width = UIScreen.main.bounds.width
-        
-        return CGSize(width: width, height: 72)
+        return CGSize(width: SizeConstants.screenWidth, height: 72 * SizeConstants.screenRatio)
     }
 }

@@ -44,7 +44,7 @@ class MyPageViewController: UIViewController {
         layout.scrollDirection = .horizontal
 
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = .background
         collectionView.isPagingEnabled = true
         collectionView.showsHorizontalScrollIndicator = false
 
@@ -62,7 +62,7 @@ class MyPageViewController: UIViewController {
 
     // MARK: - Properties
 
-    let menu = ["글", "리워드", "휴지통"]
+    let menu = ["글", "리워드", "삭제함"]
     let subViewControllers: [UIViewController] = [MyWritingViewController(), MyRewardViewController(), MyTrashBinViewController()]
     let myPageMenuCellLineSpacing: CGFloat = 39.0
 
