@@ -14,6 +14,7 @@
 		4F2D1F37269A1B5900D941A1 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D1F36269A1B5900D941A1 /* APIConstants.swift */; };
 		4F2D1F39269A1BCB00D941A1 /* RequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D1F38269A1BCB00D941A1 /* RequestHandler.swift */; };
 		4F2D1F3B269A1C9C00D941A1 /* NetworkInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D1F3A269A1C9C00D941A1 /* NetworkInfo.swift */; };
+		4F2D1F3D269ACE7600D941A1 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D1F3C269ACE7600D941A1 /* LoginService.swift */; };
 		4F34E10326935F7100A54336 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F34E10226935F7100A54336 /* UIViewController+Extension.swift */; };
 		4F34E1062693618A00A54336 /* TapGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F34E1052693618A00A54336 /* TapGesture.swift */; };
 		4F4992972693F9F2009541AA /* SeparateViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4992962693F9F2009541AA /* SeparateViewController+Layout.swift */; };
@@ -93,6 +94,7 @@
 		4F2D1F36269A1B5900D941A1 /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 		4F2D1F38269A1BCB00D941A1 /* RequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestHandler.swift; sourceTree = "<group>"; };
 		4F2D1F3A269A1C9C00D941A1 /* NetworkInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkInfo.swift; sourceTree = "<group>"; };
+		4F2D1F3C269ACE7600D941A1 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		4F34E10226935F7100A54336 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		4F34E1052693618A00A54336 /* TapGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapGesture.swift; sourceTree = "<group>"; };
 		4F4992962693F9F2009541AA /* SeparateViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SeparateViewController+Layout.swift"; sourceTree = "<group>"; };
@@ -183,12 +185,21 @@
 		4F2D1F33269A1A4900D941A1 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				4F2D1F42269ADCCF00D941A1 /* Service */,
 				4F2D1F34269A1AA700D941A1 /* NetworkResult.swift */,
 				4F2D1F36269A1B5900D941A1 /* APIConstants.swift */,
 				4F2D1F38269A1BCB00D941A1 /* RequestHandler.swift */,
 				4F2D1F3A269A1C9C00D941A1 /* NetworkInfo.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		4F2D1F42269ADCCF00D941A1 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				4F2D1F3C269ACE7600D941A1 /* LoginService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		4F34E1042693617A00A54336 /* Model */ = {
@@ -732,6 +743,7 @@
 				4F2D1F35269A1AA700D941A1 /* NetworkResult.swift in Sources */,
 				FC0541BC2690C94700FFA9D1 /* MyTrashBinViewController.swift in Sources */,
 				AB5AF764268A2E84001D3CD1 /* SceneDelegate.swift in Sources */,
+				4F2D1F3D269ACE7600D941A1 /* LoginService.swift in Sources */,
 				FC0541B22690C28200FFA9D1 /* MyPageMenuCollectionViewCell.swift in Sources */,
 				FC0541C02691B7AE00FFA9D1 /* MyWritingCollectionViewCell.swift in Sources */,
 				AB7F6DFE2698C6FD00EF9C6E /* DeletePopUpViewController.swift in Sources */,

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Alamofire
 
 enum NetworkHeaderKey: String {
     case auth = "x-auth-token"
@@ -14,15 +15,14 @@ enum NetworkHeaderKey: String {
 
 struct NetworkInfo {
     static let shared = NetworkInfo()
-
-    let token = UserDefaults.standard.string(forKey: "token") ?? ""
-
-    var headerOnlyType: [String: String] {
-        [NetworkHeaderKey.content_type.rawValue: APIConstants.application_json]
+    static let token = UserDefaults.standard.string(forKey: "token") ?? ""
+    
+    static var headerOnlyType: HTTPHeaders {
+        return [NetworkHeaderKey.content_type.rawValue:  APIConstants.application_json]
     }
-
-    var headerWithToken: [String: String] {
-        [NetworkHeaderKey.content_type.rawValue: APIConstants.application_json, NetworkHeaderKey.auth.rawValue: token]
+    
+    static var headerWithToken: HTTPHeaders {
+        return [NetworkHeaderKey.content_type.rawValue: APIConstants.application_json, NetworkHeaderKey.auth.rawValue: token]
     }
 
     /// 모델에 따라 parameter 만들기
