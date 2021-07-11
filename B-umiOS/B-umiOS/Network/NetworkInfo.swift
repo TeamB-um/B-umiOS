@@ -14,21 +14,23 @@ enum NetworkHeaderKey: String {
 
 struct NetworkInfo {
     static let shared = NetworkInfo()
-    
-    static let token = UserDefaults.standard.string(forKey: "token") ?? ""
-    
-    static var headerOnlyType: [String: String] {
-        return [NetworkHeaderKey.content_type.rawValue: APIConstants.application_json]
+
+    let token = UserDefaults.standard.string(forKey: "token") ?? ""
+
+    var headerOnlyType: [String: String] {
+        [NetworkHeaderKey.content_type.rawValue: APIConstants.application_json]
     }
-    
-    static var headerWithToken: [String: String] {
-        return [NetworkHeaderKey.content_type.rawValue: APIConstants.application_json, NetworkHeaderKey.auth.rawValue: token]
+
+    var headerWithToken: [String: String] {
+        [NetworkHeaderKey.content_type.rawValue: APIConstants.application_json, NetworkHeaderKey.auth.rawValue: token]
     }
-    
-    func makeParameter<T : Codable> (model : T.Type){
-        switch model {
-        default: break
-        }
-        //모델에 따라 parameter 만들기
+
+    /// 모델에 따라 parameter 만들기
+    func makeParameter<T: Codable>(model: T) -> [String: Any]? {
+        let jsonEncoder = JSONEncoder()
+        guard let jsonData = try? jsonEncoder.encode(model) else { return nil }
+        guard let dictionary = try? JSONSerialization.jsonObject(with: jsonData, options: []) as? [String: Any] else { return nil }
+
+        return dictionary
     }
 }
