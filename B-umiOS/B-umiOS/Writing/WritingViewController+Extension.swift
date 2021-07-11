@@ -84,6 +84,21 @@ extension WritingViewController: UITextViewDelegate {
             setTextView()
         }
     }
+
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        let currentCharacterCount = textView.text?.count ?? 0
+        let newLength = currentCharacterCount + text.count - range.length
+
+        if newLength > 0 {
+            checkButton.isUserInteractionEnabled = true
+            checkButton.tintColor = .header
+        } else {
+            checkButton.isUserInteractionEnabled = false
+            checkButton.tintColor = .disable
+        }
+
+        return true
+    }
 }
 
 // MARK: - UITextFieldDelegate
