@@ -13,6 +13,8 @@ import UIKit
 
 class HomeViewController: UIViewController {
     // MARK: - UIComponenets
+    
+//    private let background
 
     private let dateLabel = UILabel().then {
         $0.text = Date().dateToString(date: Date())
@@ -72,7 +74,7 @@ class HomeViewController: UIViewController {
         $0.isHidden = true
     }
     
-    private let backgroundView = UIImageView().then {
+    private let whiteShadowView = UIImageView().then {
         $0.image = UIImage(named: "bgElements")
         $0.isHidden = true
     }
@@ -86,7 +88,7 @@ class HomeViewController: UIViewController {
                 guideLabel.text = "스트레스 양에 따라\n종이를 선택하세요"
                 arrowImage.isHidden = true
                 
-                backgroundView.isHidden = false
+                whiteShadowView.isHidden = false
                 [paper1Button, paper2Button, paper3Button, paper4Button].forEach { button in
                     button.isHidden = false
                 }
@@ -94,7 +96,7 @@ class HomeViewController: UIViewController {
                 guideLabel.text = "휴지통을 클릭해\n스트레스를 비워보세요"
                 arrowImage.isHidden = false
                 
-                backgroundView.isHidden = true
+                whiteShadowView.isHidden = true
                 [paper1Button, paper2Button, paper3Button, paper4Button].forEach { button in
                     button.isHidden = true
                 }
@@ -139,7 +141,7 @@ class HomeViewController: UIViewController {
     // MARK: - Methods
     
     func setConstraint() {
-        view.addSubviews([backgroundView, dateLabel, guideLabel, arrowImage, trashBinButton, paper1Button, paper2Button, paper3Button, paper4Button])
+        view.addSubviews([whiteShadowView, dateLabel, guideLabel, arrowImage, trashBinButton, paper1Button, paper2Button, paper3Button, paper4Button])
         
         dateLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
@@ -193,7 +195,7 @@ class HomeViewController: UIViewController {
             make.height.equalTo(84.5).multipliedBy(height)
         }
         
-        backgroundView.snp.makeConstraints { make in
+        whiteShadowView.snp.makeConstraints { make in
             make.top.equalTo(guideLabel.snp.bottom).offset(25)
             make.leading.trailing.equalToSuperview()
         }
@@ -207,13 +209,13 @@ class HomeViewController: UIViewController {
     }
     
     func configureInitAnimate() {
-        backgroundView.alpha = 0
+        whiteShadowView.alpha = 0
         paper1Button.alpha = 0
         paper2Button.alpha = 0
         paper3Button.alpha = 0
         paper4Button.alpha = 0
 
-        backgroundView.transform = CGAffineTransform(translationX: 0, y: 100)
+        whiteShadowView.transform = CGAffineTransform(translationX: 0, y: 100)
         paper1Button.transform = CGAffineTransform(translationX: 0, y: 100)
         paper2Button.transform = CGAffineTransform(translationX: 0, y: 100)
         paper3Button.transform = CGAffineTransform(translationX: 0, y: 100)
@@ -222,13 +224,13 @@ class HomeViewController: UIViewController {
     
     func configureAnimate() {
         animator.addAnimations {
-            self.backgroundView.alpha = 1
+            self.whiteShadowView.alpha = 1
             self.paper1Button.alpha = 1
             self.paper2Button.alpha = 1
             self.paper3Button.alpha = 1
             self.paper4Button.alpha = 1
             
-            self.backgroundView.transform = .identity
+            self.whiteShadowView.transform = .identity
             self.paper1Button.layer.transform = CATransform3DMakeRotation(-CGFloat(Double.pi / 180 * 45), 0, 0, 1)
             self.paper2Button.layer.transform = CATransform3DMakeRotation(-CGFloat(Double.pi / 180 * 15), 0, 0, 1)
             self.paper3Button.layer.transform = CATransform3DMakeRotation(CGFloat(Double.pi / 180 * 15), 0, 0, 1)
