@@ -70,9 +70,9 @@ class SeparateTableViewCell: UITableViewCell {
         self.contentView.addSubviews([seperateName, modifyButton, deleteButton])
         
         seperateName.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(14 * SizeConstants.screenRatio)
-            make.bottom.equalToSuperview().inset(15 * SizeConstants.screenRatio)
+            make.centerY.equalToSuperview()
             make.leading.equalToSuperview().inset(24 * SizeConstants.screenRatio)
+            make.height.equalTo(56 * SizeConstants.screenRatio)
         }
         
         modifyButton.snp.makeConstraints { make in

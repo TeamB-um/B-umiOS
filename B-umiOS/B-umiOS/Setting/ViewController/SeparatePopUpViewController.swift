@@ -38,9 +38,8 @@ class SeparatePopUpViewController: UIViewController {
     private lazy var textfield = UITextField().then {
         $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 14)
         $0.textColor = .header
-        $0.borderStyle = .roundedRect
         $0.layer.borderWidth = 1
-        $0.layer.cornerRadius = 5
+        $0.layer.cornerRadius = 10
         $0.layer.borderColor = UIColor.paper2.cgColor
         $0.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10 * SizeConstants.screenRatio, height: self.view.frame.height))
         $0.leftViewMode = .always
@@ -152,6 +151,7 @@ class SeparatePopUpViewController: UIViewController {
         textfield.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(24 * SizeConstants.screenRatio)
             make.top.equalTo(subLabel.snp.bottom).offset(34 * SizeConstants.screenRatio)
+            make.height.equalTo(40 * SizeConstants.screenRatio)
         }
 
         stackView.snp.makeConstraints { make in

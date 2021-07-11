@@ -4,6 +4,351 @@
    <FileRef
       location = "group:B-umiOS.xcodeproj">
    </FileRef>
+   <Group
+      location = "group:B-umiOS"
+      name = "B-umiOS">
+      <Group
+         location = "group:B-umiOS/ThrowTrash"
+         name = "ThrowTrash">
+         <FileRef
+            location = "group:B-umiOS/ThrowTrash/ThrowTrashViewController.swift">
+         </FileRef>
+         <FileRef
+            location = "group:B-umiOS/ThrowTrash/ThrowTrashViewController+Layout.swift">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:B-umiOS/Writing"
+         name = "Writing">
+         <Group
+            location = "group:B-umiOS/Writing/ViewController"
+            name = "ViewController">
+            <FileRef
+               location = "group:B-umiOS/Writing/ViewController/WritingPopUpViewController.swift">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:B-umiOS/Writing/Model"
+            name = "Model">
+            <FileRef
+               location = "group:B-umiOS/Writing/Model/WritingStyle.swift">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:B-umiOS/Writing/Cell"
+            name = "Cell">
+            <FileRef
+               location = "group:B-umiOS/Writing/Cell/WritingTagCollectionViewCell.swift">
+            </FileRef>
+         </Group>
+         <FileRef
+            location = "group:B-umiOS/Writing/WritingViewController.swift">
+         </FileRef>
+         <FileRef
+            location = "group:B-umiOS/Writing/WritingViewController+Extension.swift">
+         </FileRef>
+         <FileRef
+            location = "group:B-umiOS/Writing/WritingViewController+Layout.swift">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:B-umiOS/Separate"
+         name = "Separate">
+         <Group
+            location = "group:B-umiOS/Separate/Cell"
+            name = "Cell">
+            <FileRef
+               location = "group:B-umiOS/Separate/Cell/SeparateCollectionViewCell.swift">
+            </FileRef>
+            <FileRef
+               location = "group:B-umiOS/Separate/Cell/SeparateCollectionViewCell.xib">
+            </FileRef>
+            <FileRef
+               location = "group:B-umiOS/Separate/Cell/SeparateDetailTableViewCell.swift">
+            </FileRef>
+            <FileRef
+               location = "group:B-umiOS/Separate/Cell/SeparateDetailTableViewCell.xib">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:B-umiOS/Separate/ViewController"
+            name = "ViewController">
+            <FileRef
+               location = "group:B-umiOS/Separate/ViewController/SeparateViewController.swift">
+            </FileRef>
+            <FileRef
+               location = "group:B-umiOS/Separate/ViewController/SeparateViewController+Extension.swift">
+            </FileRef>
+            <FileRef
+               location = "group:B-umiOS/Separate/ViewController/SeparateViewController+Layout.swift">
+            </FileRef>
+            <FileRef
+               location = "group:B-umiOS/Separate/ViewController/SeparateDetailViewController.swift">
+            </FileRef>
+            <FileRef
+               location = "group:B-umiOS/Separate/ViewController/SeparateDetailViewController+Extension.swift">
+            </FileRef>
+            <FileRef
+               location = "group:B-umiOS/Separate/ViewController/SeparateDetailViewController+Layout.swift">
+            </FileRef>
+            <Group
+               location = "group:B-umiOS/Separate/ViewController/Component"
+               name = "Component">
+               <FileRef
+                  location = "group:B-umiOS/Separate/ViewController/Component/GraphView.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:B-umiOS/Separate/ViewController/Component/GraphComponentView.swift">
+               </FileRef>
+            </Group>
+            <FileRef
+               location = "group:B-umiOS/Separate/ViewController/SeparateGraphPopUpViewController.swift">
+            </FileRef>
+            <FileRef
+               location = "group:B-umiOS/Separate/ViewController/SeparateGraphPopUpViewController+Layout.swift">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:B-umiOS/Separate/Storyboard"
+            name = "Storyboard">
+            <FileRef
+               location = "group:B-umiOS/Separate/Storyboard/Separate.storyboard">
+            </FileRef>
+         </Group>
+      </Group>
+      <Group
+         location = "group:B-umiOS/Setting"
+         name = "Setting">
+         <Group
+            location = "group:B-umiOS/Setting/Cell"
+            name = "Cell">
+            <FileRef
+               location = "group:B-umiOS/Setting/Cell/TrashBinTableViewCell.swift">
+            </FileRef>
+            <FileRef
+               location = "group:B-umiOS/Setting/Cell/TrashBinTableViewCell.xib">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:B-umiOS/Setting/ViewController"
+            name = "ViewController">
+            <FileRef
+               location = "group:B-umiOS/Setting/ViewController/SettingViewController.swift">
+            </FileRef>
+            <FileRef
+               location = "group:B-umiOS/Setting/ViewController/SettingTrashBinViewController.swift">
+            </FileRef>
+            <FileRef
+               location = "group:B-umiOS/Setting/ViewController/TrashBinPopUpViewController.swift">
+            </FileRef>
+            <FileRef
+               location = "group:B-umiOS/Setting/ViewController/PeriodPopUpViewController.swift">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:B-umiOS/Setting/Storyboard"
+            name = "Storyboard">
+            <FileRef
+               location = "group:B-umiOS/Setting/Storyboard/Setting.storyboard">
+            </FileRef>
+         </Group>
+      </Group>
+      <Group
+         location = "group:B-umiOS/MyPage"
+         name = "MyPage">
+         <Group
+            location = "group:B-umiOS/MyPage/Component"
+            name = "Component">
+            <FileRef
+               location = "group:B-umiOS/MyPage/Component/ButtonSectionView.swift">
+            </FileRef>
+            <FileRef
+               location = "group:B-umiOS/MyPage/Component/RoundingButton.swift">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:B-umiOS/MyPage/Cell"
+            name = "Cell">
+            <FileRef
+               location = "group:B-umiOS/MyPage/Cell/MyPageMenuCollectionViewCell.swift">
+            </FileRef>
+            <FileRef
+               location = "group:B-umiOS/MyPage/Cell/MenuSectionCollectionViewCell.swift">
+            </FileRef>
+            <FileRef
+               location = "group:B-umiOS/MyPage/Cell/MyWritingCollectionViewCell.swift">
+            </FileRef>
+            <FileRef
+               location = "group:B-umiOS/MyPage/Cell/MyRewardCollectionViewCell.swift">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:B-umiOS/MyPage/ViewController"
+            name = "ViewController">
+            <FileRef
+               location = "group:B-umiOS/MyPage/ViewController/MyPageViewController.swift">
+            </FileRef>
+            <FileRef
+               location = "group:B-umiOS/MyPage/ViewController/MyWritingViewController.swift">
+            </FileRef>
+            <FileRef
+               location = "group:B-umiOS/MyPage/ViewController/MyRewardViewController.swift">
+            </FileRef>
+            <FileRef
+               location = "group:B-umiOS/MyPage/ViewController/MyTrashBinViewController.swift">
+            </FileRef>
+            <FileRef
+               location = "group:B-umiOS/MyPage/ViewController/FilterBottmSheetViewController.swift">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:B-umiOS/MyPage/Storyboard"
+            name = "Storyboard">
+            <FileRef
+               location = "group:B-umiOS/MyPage/Storyboard/MyWritingPopUp.storyboard">
+            </FileRef>
+            <FileRef
+               location = "group:B-umiOS/MyPage/Storyboard/MyPage.storyboard">
+            </FileRef>
+         </Group>
+      </Group>
+      <Group
+         location = "group:B-umiOS/TabBar"
+         name = "TabBar">
+         <FileRef
+            location = "group:B-umiOS/TabBar/FloatingBarView.swift">
+         </FileRef>
+         <FileRef
+            location = "group:B-umiOS/TabBar/FloatingTabBarController.swift">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:B-umiOS/Common"
+         name = "Common">
+         <Group
+            location = "group:B-umiOS/Common/PopUp"
+            name = "PopUp">
+            <FileRef
+               location = "group:B-umiOS/Common/PopUp/MyWritingPopUpViewController.swift">
+            </FileRef>
+            <FileRef
+               location = "group:B-umiOS/Common/PopUp/DeleteWritingPopUpViewController.swift">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:B-umiOS/Common/Model"
+            name = "Model">
+            <FileRef
+               location = "group:B-umiOS/Common/Model/TapGesture.swift">
+            </FileRef>
+            <FileRef
+               location = "group:B-umiOS/Common/Model/SizeConstants.swift">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:B-umiOS/Common/Extension"
+            name = "Extension">
+            <FileRef
+               location = "group:B-umiOS/Common/Extension/UIFont+Extension.swift">
+            </FileRef>
+            <FileRef
+               location = "group:B-umiOS/Common/Extension/UIColor+Extension.swift">
+            </FileRef>
+            <FileRef
+               location = "group:B-umiOS/Common/Extension/UIView+Extension.swift">
+            </FileRef>
+            <FileRef
+               location = "group:B-umiOS/Common/Extension/UIDevice+Extension.swift">
+            </FileRef>
+            <FileRef
+               location = "group:B-umiOS/Common/Extension/UIViewController+Extension.swift">
+            </FileRef>
+            <FileRef
+               location = "group:B-umiOS/Common/Extension/Date+Extension.swift">
+            </FileRef>
+            <FileRef
+               location = "group:B-umiOS/Common/Extension/UILabel+Extension.swift">
+            </FileRef>
+            <FileRef
+               location = "group:B-umiOS/Common/Extension/NotificationName+Extension.swift">
+            </FileRef>
+         </Group>
+      </Group>
+      <Group
+         location = "group:B-umiOS/Home"
+         name = "Home">
+         <Group
+            location = "group:B-umiOS/Home/Cell"
+            name = "Cell">
+            <FileRef
+               location = "group:B-umiOS/Home/Cell/CardCollectionViewCell.swift">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:B-umiOS/Home/ViewController"
+            name = "ViewController">
+            <FileRef
+               location = "group:B-umiOS/Home/ViewController/HomeViewController.swift">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:B-umiOS/Home/Storyboard"
+            name = "Storyboard">
+            <FileRef
+               location = "group:B-umiOS/Home/Storyboard/Home.storyboard">
+            </FileRef>
+         </Group>
+      </Group>
+      <Group
+         location = "group:B-umiOS/Supporting Files"
+         name = "Supporting Files">
+         <Group
+            location = "group:B-umiOS/Supporting Files/Font"
+            name = "Font">
+            <FileRef
+               location = "group:B-umiOS/Supporting Files/Font/NanumSquareOTF_acB.otf">
+            </FileRef>
+            <FileRef
+               location = "group:B-umiOS/Supporting Files/Font/NanumSquareOTF_acEB.otf">
+            </FileRef>
+            <FileRef
+               location = "group:B-umiOS/Supporting Files/Font/NanumSquareOTF_acL.otf">
+            </FileRef>
+            <FileRef
+               location = "group:B-umiOS/Supporting Files/Font/NanumSquareOTF_acR.otf">
+            </FileRef>
+         </Group>
+         <FileRef
+            location = "group:B-umiOS/Supporting Files/Info.plist">
+         </FileRef>
+         <FileRef
+            location = "group:B-umiOS/Supporting Files/AppDelegate.swift">
+         </FileRef>
+         <FileRef
+            location = "group:B-umiOS/Supporting Files/SceneDelegate.swift">
+         </FileRef>
+         <FileRef
+            location = "group:B-umiOS/Supporting Files/Assets.xcassets">
+         </FileRef>
+      </Group>
+      <FileRef
+         location = "group:B-umiOS/ViewController.swift">
+      </FileRef>
+      <Group
+         location = "group:B-umiOS"
+         name = "Main.storyboard">
+         <FileRef
+            location = "group:B-umiOS/Base.lproj/Main.storyboard">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:B-umiOS"
+         name = "LaunchScreen.storyboard">
+         <FileRef
+            location = "group:B-umiOS/Base.lproj/LaunchScreen.storyboard">
+         </FileRef>
+      </Group>
+   </Group>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
