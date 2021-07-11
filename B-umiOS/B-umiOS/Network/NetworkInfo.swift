@@ -5,8 +5,8 @@
 //  Created by 홍진석 on 2021/07/11.
 //
 
-import Foundation
 import Alamofire
+import Foundation
 
 enum NetworkHeaderKey: String {
     case auth = "x-auth-token"
@@ -16,13 +16,13 @@ enum NetworkHeaderKey: String {
 struct NetworkInfo {
     static let shared = NetworkInfo()
     static let token = UserDefaults.standard.string(forKey: "token") ?? ""
-    
+
     static var headerOnlyType: HTTPHeaders {
-        return [NetworkHeaderKey.content_type.rawValue:  APIConstants.application_json]
+        [NetworkHeaderKey.content_type.rawValue: APIConstants.application_json]
     }
-    
+
     static var headerWithToken: HTTPHeaders {
-        return [NetworkHeaderKey.content_type.rawValue: APIConstants.application_json, NetworkHeaderKey.auth.rawValue: token]
+        [NetworkHeaderKey.content_type.rawValue: APIConstants.application_json, NetworkHeaderKey.auth.rawValue: token]
     }
 
     /// 모델에 따라 parameter 만들기
