@@ -31,7 +31,7 @@ class SeparateCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setConstraint()
-        self.backgroundColor = .red
+        self.backgroundColor = .background
         isSelected = false
     }
     

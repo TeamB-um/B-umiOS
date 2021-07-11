@@ -81,6 +81,11 @@ class SeparateViewController: UIViewController {
         separateCollectionView.delegate = self
         separateCollectionView.dataSource = self
         separateCollectionView.register(SeparateCollectionViewCell.self, forCellWithReuseIdentifier: SeparateCollectionViewCell.identifier)
+        separateCollectionView.backgroundColor = .background
+    }
+    
+    func setSeperateImage(row : Int, count : Int) -> String{
+        return "seperate\(row+1)_\(count)"
     }
     
     // MARK: - Protocols
