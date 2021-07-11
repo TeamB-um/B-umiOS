@@ -43,24 +43,15 @@ class MyWritingViewController: UIViewController {
     // MARK: - Methods
     
     func setConstraint(){
-        
         view.addSubview(myWritingCollectionView)
         
         myWritingCollectionView.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.bottom.leading.trailing.equalToSuperview()
         }
-        
-        
     }
-    
-
-    
     // MARK: - Protocols
 }
-
-
-
     // MARK: - Extension
 
 extension MyWritingViewController : UICollectionViewDataSource {
