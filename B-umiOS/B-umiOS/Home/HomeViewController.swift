@@ -153,8 +153,8 @@ class HomeViewController: UIViewController {
         
         arrowImage.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalTo(guideLabel.snp.bottom).offset(37 * SizeConstants.ScreenRatio)
-            make.width.height.equalTo(90 * SizeConstants.ScreenRatio)
+            make.top.equalTo(guideLabel.snp.bottom).offset(37 * SizeConstants.screenRatio)
+            make.width.height.equalTo(90 * SizeConstants.screenRatio)
         }
         
         trashBinButton.snp.makeConstraints { make in
@@ -162,33 +162,33 @@ class HomeViewController: UIViewController {
             make.top.equalTo(arrowImage.snp.bottom).offset(50)
         }
         
-        let width = 55.7 / SizeConstants.ScreenWidth
+        let width = 55.7 / SizeConstants.screenWidth
         let height = 84.5 / width
         
         paper1Button.snp.makeConstraints { make in
-            make.top.equalTo(guideLabel.snp.bottom).offset(90.39 * SizeConstants.ScreenRatio)
-            make.leading.equalToSuperview().inset(33 * SizeConstants.ScreenRatio)
+            make.top.equalTo(guideLabel.snp.bottom).offset(90.39 * SizeConstants.screenRatio)
+            make.leading.equalToSuperview().inset(33 * SizeConstants.screenRatio)
             make.width.equalTo(self.view).multipliedBy(width)
             make.height.equalTo(84.5).multipliedBy(height)
         }
         
         paper2Button.snp.makeConstraints { make in
-            make.top.equalTo(guideLabel.snp.bottom).offset(47.77 * SizeConstants.ScreenRatio)
-            make.leading.equalTo(paper1Button.snp.trailing).offset(33 * SizeConstants.ScreenRatio)
+            make.top.equalTo(guideLabel.snp.bottom).offset(47.77 * SizeConstants.screenRatio)
+            make.leading.equalTo(paper1Button.snp.trailing).offset(33 * SizeConstants.screenRatio)
             make.width.equalTo(self.view).multipliedBy(width)
             make.height.equalTo(84.5).multipliedBy(height)
         }
         
         paper3Button.snp.makeConstraints { make in
             make.top.equalTo(paper2Button.snp.top)
-            make.trailing.equalTo(paper4Button.snp.leading).offset(-24.81 * SizeConstants.ScreenRatio)
+            make.trailing.equalTo(paper4Button.snp.leading).offset(-24.81 * SizeConstants.screenRatio)
             make.width.equalTo(self.view).multipliedBy(width)
             make.height.equalTo(84.5).multipliedBy(height)
         }
         
         paper4Button.snp.makeConstraints { make in
             make.top.equalTo(paper1Button.snp.top)
-            make.trailing.equalToSuperview().inset(33 * SizeConstants.ScreenRatio)
+            make.trailing.equalToSuperview().inset(33 * SizeConstants.screenRatio)
             make.width.equalTo(self.view).multipliedBy(width)
             make.height.equalTo(84.5).multipliedBy(height)
         }
