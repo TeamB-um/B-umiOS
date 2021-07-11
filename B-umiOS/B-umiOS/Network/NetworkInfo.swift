@@ -5,6 +5,7 @@
 //  Created by 홍진석 on 2021/07/11.
 //
 
+import Alamofire
 import Foundation
 
 enum NetworkHeaderKey: String {
@@ -15,13 +16,13 @@ enum NetworkHeaderKey: String {
 struct NetworkInfo {
     static let shared = NetworkInfo()
 
-    let token = UserDefaults.standard.string(forKey: "token") ?? ""
+    static let token = UserDefaults.standard.string(forKey: "token") ?? ""
 
-    var headerOnlyType: [String: String] {
+    static var headerOnlyType: HTTPHeaders {
         [NetworkHeaderKey.content_type.rawValue: APIConstants.application_json]
     }
 
-    var headerWithToken: [String: String] {
+    static var headerWithToken: HTTPHeaders {
         [NetworkHeaderKey.content_type.rawValue: APIConstants.application_json, NetworkHeaderKey.auth.rawValue: token]
     }
 
