@@ -45,7 +45,7 @@ class MyRewardPopUpViewController: UIViewController {
         $0.textColor = .white
     }
     
-    private lazy var titleRewardLabel = UILabel().then {
+    private lazy var titleLabel = UILabel().then {
         $0.text = self.reward.titleReward
         $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 20)
         $0.textColor = .white
@@ -104,7 +104,7 @@ class MyRewardPopUpViewController: UIViewController {
     
     func setConstraints() {
         view.addSubviews([popUpView])
-        popUpView.addSubviews([backgroundImageView, rewardLabel, closeButton, dateLabel, titleRewardLabel, authorLabel, subRewardLabel])
+        popUpView.addSubviews([backgroundImageView, rewardLabel, closeButton, dateLabel, titleLabel, authorLabel, subRewardLabel])
         
         popUpView.snp.makeConstraints { make in
             make.center.equalToSuperview()
@@ -132,14 +132,14 @@ class MyRewardPopUpViewController: UIViewController {
             make.centerX.equalToSuperview()
         }
         
-        titleRewardLabel.snp.makeConstraints { make in
+        titleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(191 * SizeConstants.screenRatio)
             make.bottom.equalToSuperview().inset(317 * SizeConstants.screenRatio)
             make.leading.trailing.equalToSuperview().inset(16)
         }
         
         authorLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleRewardLabel.snp.bottom).offset(35)
+            make.top.equalTo(titleLabel.snp.bottom).offset(35)
             make.centerX.equalToSuperview()
         }
         
