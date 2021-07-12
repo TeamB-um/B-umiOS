@@ -126,4 +126,12 @@ extension HomeViewController {
         transition.type = .fade
         guideLabel.layer.add(transition, forKey: CATransitionType.push.rawValue)
     }
+    
+    func reverseArrowAnimate() {
+        UIView.animate(withDuration: 1.0, delay: 0, options: [.repeat, .autoreverse]) {
+            self.arrowImage.transform = CGAffineTransform(translationX: 0, y: 30).scaledBy(x: 0.9, y: 0.9)
+        } completion: { _ in
+            self.arrowImage.transform = .identity
+        }
+    }
 }
