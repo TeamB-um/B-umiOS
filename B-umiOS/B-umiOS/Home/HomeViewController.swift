@@ -133,7 +133,8 @@ class HomeViewController: UIViewController {
         } else {
             animator.stopAnimation(true)
             configureInitAnimate()
-            backgroundView.play(fromFrame: 1, toFrame: 0, loopMode: .playOnce, completion: nil)
+//            backgroundView.play(fromFrame: backgroundView.currentProgress, toFrame: 0, loopMode: .playOnce, completion: nil)
+            backgroundView.play(fromProgress: backgroundView.currentProgress, toProgress: 0, loopMode: .playOnce, completion: nil)
         }
     }
     
@@ -189,7 +190,7 @@ class HomeViewController: UIViewController {
         
         paper2Button.snp.makeConstraints { make in
             make.top.equalTo(guideLabel.snp.bottom).offset(47.77 * SizeConstants.screenRatio)
-            make.leading.equalTo(paper1Button.snp.trailing).offset(33 * SizeConstants.screenRatio)
+            make.leading.equalTo(paper1Button.snp.trailing).offset(24.81 * SizeConstants.screenRatio)
             make.width.equalTo(self.view).multipliedBy(width)
             make.height.equalTo(84.5).multipliedBy(height)
         }
