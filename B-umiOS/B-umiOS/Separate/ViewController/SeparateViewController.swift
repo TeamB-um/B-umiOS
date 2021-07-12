@@ -68,7 +68,8 @@ class SeparateViewController: UIViewController {
         separateCollectionView.backgroundColor = .background
         
         separateCollectionView.register(SeparateCollectionViewCell.self, forCellWithReuseIdentifier: SeparateCollectionViewCell.identifier)
-        separateCollectionView.register(SeperateSectionView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SeperateSectionView.identifier)
+        separateCollectionView.register(SeperateHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SeperateHeaderView.identifier)
+        separateCollectionView.register(SeperateFooterView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: SeperateFooterView.identifier)
     }
     
     func setSeperateImage(row : Int, count : Int) -> String{

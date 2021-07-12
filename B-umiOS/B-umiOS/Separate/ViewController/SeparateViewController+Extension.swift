@@ -6,10 +6,11 @@
 //
 
 import UIKit
+import SnapKit
 
 // MARK: - UICollectionViewDelegateFlowLayout
 
-let trash: [String] = ["aaa","bbb","cccc","dd","eee","fff","g"]
+let trash: [String] = ["aaa","bbb","cccc","dd","eee","fff","empty"]
 
 extension SeparateViewController: UICollectionViewDelegateFlowLayout {
 
@@ -43,7 +44,14 @@ extension SeparateViewController: UICollectionViewDataSource {
         }
         
         cell.separateName.text = trash[indexPath.row]
-        cell.separateImage.image = UIImage(named: setSeperateImage(row: indexPath.row, count: 0))
+        
+        if(trash[indexPath.row].contains("empty")){
+            cell.separateImage.image = UIImage(named: "group174")
+        }
+        else{
+            cell.separateImage.image = UIImage(named: setSeperateImage(row: indexPath.row, count: 0))
+        }
+    
         return cell
     }
 }
@@ -52,19 +60,42 @@ extension SeparateViewController: UICollectionViewDataSource {
 
 extension SeparateViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let pushVC = self.storyboard?.instantiateViewController(withIdentifier: "SeparateDetailViewController"){
-            self.navigationController?.pushViewController(pushVC, animated: true)
+        
+        if(trash[indexPath.row].contains("empty")){
+            let storyboard = UIStoryboard.init(name: "Setting", bundle: nil)
+            if let nextVC = storyboard.instantiateViewController(identifier: SeparatePopUpViewController.identifier) as? SeparatePopUpViewController{
+                nextVC.method = .add
+                nextVC.modalPresentationStyle = .overFullScreen
+                nextVC.modalTransitionStyle = .crossDissolve
+                self.present(nextVC, animated: true, completion: nil)
+            }
+        }
+        else{
+            if let pushVC = self.storyboard?.instantiateViewController(withIdentifier: "SeparateDetailViewController"){
+                self.navigationController?.pushViewController(pushVC, animated: true)
+            }
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
-        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SeperateSectionView.identifier, for: indexPath)
-        
-        return headerView
+        switch kind {
+        case UICollectionView.elementKindSectionHeader:
+            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SeperateHeaderView.identifier, for: indexPath)
+            
+            return headerView
+        default:
+            let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: SeperateFooterView.identifier, for: indexPath)
+            
+            return footerView
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         CGSize(width: SizeConstants.screenWidth, height: 72 * SizeConstants.screenRatio)
      }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        CGSize(width: SizeConstants.screenWidth, height: 100 * SizeConstants.screenRatio)
+    }
 }

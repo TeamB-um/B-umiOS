@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class SeperateSectionView: UICollectionReusableView {
+class SeperateHeaderView: UICollectionReusableView {
     // MARK: - UIComponenets
     
     let explanationView = UIView().then {

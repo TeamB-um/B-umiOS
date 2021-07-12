@@ -15,7 +15,8 @@
 		4F2D1F39269A1BCB00D941A1 /* RequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D1F38269A1BCB00D941A1 /* RequestHandler.swift */; };
 		4F2D1F3B269A1C9C00D941A1 /* NetworkInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D1F3A269A1C9C00D941A1 /* NetworkInfo.swift */; };
 		4F2D1F3D269ACE7600D941A1 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D1F3C269ACE7600D941A1 /* LoginService.swift */; };
-		4F2D1F47269C0C5000D941A1 /* SeperateSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D1F46269C0C5000D941A1 /* SeperateSectionView.swift */; };
+		4F2D1F47269C0C5000D941A1 /* SeperateHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D1F46269C0C5000D941A1 /* SeperateHeaderView.swift */; };
+		4F2D1F49269C556300D941A1 /* SeperateFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D1F48269C556300D941A1 /* SeperateFooterView.swift */; };
 		4F34E10326935F7100A54336 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F34E10226935F7100A54336 /* UIViewController+Extension.swift */; };
 		4F34E1062693618A00A54336 /* TapGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F34E1052693618A00A54336 /* TapGesture.swift */; };
 		4F4992972693F9F2009541AA /* SeparateViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4992962693F9F2009541AA /* SeparateViewController+Layout.swift */; };
@@ -98,7 +99,8 @@
 		4F2D1F38269A1BCB00D941A1 /* RequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestHandler.swift; sourceTree = "<group>"; };
 		4F2D1F3A269A1C9C00D941A1 /* NetworkInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkInfo.swift; sourceTree = "<group>"; };
 		4F2D1F3C269ACE7600D941A1 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
-		4F2D1F46269C0C5000D941A1 /* SeperateSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeperateSectionView.swift; sourceTree = "<group>"; };
+		4F2D1F46269C0C5000D941A1 /* SeperateHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeperateHeaderView.swift; sourceTree = "<group>"; };
+		4F2D1F48269C556300D941A1 /* SeperateFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeperateFooterView.swift; sourceTree = "<group>"; };
 		4F34E10226935F7100A54336 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		4F34E1052693618A00A54336 /* TapGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapGesture.swift; sourceTree = "<group>"; };
 		4F4992962693F9F2009541AA /* SeparateViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SeparateViewController+Layout.swift"; sourceTree = "<group>"; };
@@ -242,7 +244,8 @@
 			children = (
 				4F875E2F2697EE3A0085D104 /* GraphView.swift */,
 				4F2D1F2F2697FB2D00D941A1 /* GraphComponentView.swift */,
-				4F2D1F46269C0C5000D941A1 /* SeperateSectionView.swift */,
+				4F2D1F46269C0C5000D941A1 /* SeperateHeaderView.swift */,
+				4F2D1F48269C556300D941A1 /* SeperateFooterView.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -697,7 +700,7 @@
 				4F7FD2E82690E5B400122964 /* SettingSeparateViewController.swift in Sources */,
 				ABB24E55268E193B006FEE57 /* FloatingTabBarController.swift in Sources */,
 				ABB24DF6268CD9D3006FEE57 /* HomeViewController.swift in Sources */,
-				4F2D1F47269C0C5000D941A1 /* SeperateSectionView.swift in Sources */,
+				4F2D1F47269C0C5000D941A1 /* SeperateHeaderView.swift in Sources */,
 				4F7FD2EC26920F3800122964 /* SeparateTableViewCell.swift in Sources */,
 				ABB24E63268E1A75006FEE57 /* SettingViewController.swift in Sources */,
 				ABB24E0A268CF33B006FEE57 /* UIView+Extension.swift in Sources */,
@@ -716,6 +719,7 @@
 				AB7F6DE426973E0500EF9C6E /* ThrowTrashViewController.swift in Sources */,
 				4F7FD2EF26922F4A00122964 /* SeparatePopUpViewController.swift in Sources */,
 				4F7FD2EF26922F4A00122964 /* SeparatePopUpViewController.swift in Sources */,
+				4F2D1F49269C556300D941A1 /* SeperateFooterView.swift in Sources */,
 				4F2D1F39269A1BCB00D941A1 /* RequestHandler.swift in Sources */,
 				ABB24E53268E1912006FEE57 /* FloatingBarView.swift in Sources */,
 				ABB24DF4268CD9B7006FEE57 /* CardCollectionViewCell.swift in Sources */,
