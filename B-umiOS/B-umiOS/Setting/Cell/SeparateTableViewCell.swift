@@ -8,7 +8,6 @@
 import UIKit
 
 class SeparateTableViewCell: UITableViewCell {
-
     // MARK: - UIComponenets
     
     var seperateName = UILabel().then {
@@ -30,6 +29,7 @@ class SeparateTableViewCell: UITableViewCell {
     // MARK: - Properties
     
     static let identifier = "SeparateTableViewCell"
+    var textdelegate : TextDelegate?
     
     // MARK: - Initializer
     
@@ -39,7 +39,11 @@ class SeparateTableViewCell: UITableViewCell {
     
     @objc
         private func didTapDeleteButton(_ sender: UIButton) {
-            print("click")
+            let vc = DeletePopUpViewController(title: "분리수거함 삭제", guide: "분리수거함을 삭제하면 글도 모두 지워져요.\n정말 삭제하시겠어요?")
+            vc.modalTransitionStyle = .crossDissolve
+            vc.modalPresentationStyle = .overCurrentContext
+            
+            self.window?.rootViewController?.present(vc, animated: true, completion: nil)
         }
     
     @objc
@@ -47,6 +51,10 @@ class SeparateTableViewCell: UITableViewCell {
             
             let storyBoard = UIStoryboard(name: "Setting", bundle: Bundle.main)
             if let nextVC = storyBoard.instantiateViewController(identifier: SeparatePopUpViewController.identifier) as? SeparatePopUpViewController{
+                
+                self.textdelegate = nextVC
+                textdelegate?.sendData(name: seperateName.text ?? "")
+                
                 nextVC.method = .modify
                 nextVC.modalPresentationStyle = .overFullScreen
                 nextVC.modalTransitionStyle = .crossDissolve
