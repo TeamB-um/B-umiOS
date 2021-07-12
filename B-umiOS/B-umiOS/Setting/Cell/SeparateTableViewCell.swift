@@ -8,7 +8,6 @@
 import UIKit
 
 class SeparateTableViewCell: UITableViewCell {
-
     // MARK: - UIComponenets
     
     var seperateName = UILabel().then {
@@ -30,6 +29,7 @@ class SeparateTableViewCell: UITableViewCell {
     // MARK: - Properties
     
     static let identifier = "SeparateTableViewCell"
+    var textdelegate : TextDelegate?
     
     // MARK: - Initializer
     
@@ -47,6 +47,10 @@ class SeparateTableViewCell: UITableViewCell {
             
             let storyBoard = UIStoryboard(name: "Setting", bundle: Bundle.main)
             if let nextVC = storyBoard.instantiateViewController(identifier: SeparatePopUpViewController.identifier) as? SeparatePopUpViewController{
+                
+                self.textdelegate = nextVC
+                textdelegate?.sendData(name: seperateName.text ?? "")
+                
                 nextVC.method = .modify
                 nextVC.modalPresentationStyle = .overFullScreen
                 nextVC.modalTransitionStyle = .crossDissolve
