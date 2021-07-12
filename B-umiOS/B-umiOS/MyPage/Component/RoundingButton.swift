@@ -31,7 +31,7 @@ class RoundingButton: UIButton {
         
         let labelSize = buttonTitle.calculateLabelSize(text: title, font: buttonTitle.font)
 
-        self.snp.remakeConstraints { make in
+        self.snp.updateConstraints { make in
             make.width.equalTo(labelSize.width + 56)
         }
         if selected {
@@ -41,6 +41,7 @@ class RoundingButton: UIButton {
             self.backgroundColor = .blue2Main
             buttonTitle.textColor = .white
         }
+        
         isSelected.toggle()
     }
     
