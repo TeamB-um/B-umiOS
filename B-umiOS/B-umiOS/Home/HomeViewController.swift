@@ -49,7 +49,7 @@ class HomeViewController: UIViewController {
     lazy var paper1Button = UIButton().then {
         $0.addTarget(self, action: #selector(didTapPaperButton(_:)), for: .touchUpInside)
         $0.backgroundColor = .paper1
-        $0.tag = 3
+        $0.tag = 1
         $0.transform = CGAffineTransform(rotationAngle: -CGFloat(Double.pi / 180 * 45))
         $0.isHidden = true
     }
