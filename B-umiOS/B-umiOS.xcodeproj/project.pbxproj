@@ -47,6 +47,7 @@
 		AB7F6DFC269897CA00EF9C6E /* MyWritingPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F6DFB269897CA00EF9C6E /* MyWritingPopUpViewController.swift */; };
 		AB7F6DFE2698C6FD00EF9C6E /* DeletePopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F6DFD2698C6FD00EF9C6E /* DeletePopUpViewController.swift */; };
 		AB7F6E59269B550500EF9C6E /* home_ios.json in Resources */ = {isa = PBXBuildFile; fileRef = AB7F6E58269B550500EF9C6E /* home_ios.json */; };
+		AB7F6E5B269BF7AC00EF9C6E /* HomeViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F6E5A269BF7AB00EF9C6E /* HomeViewController+Layout.swift */; };
 		AB8C3F56269331EF00B2BA30 /* WritingTagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8C3F55269331EF00B2BA30 /* WritingTagCollectionViewCell.swift */; };
 		AB8C3F582693371100B2BA30 /* WritingViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8C3F572693371100B2BA30 /* WritingViewController+Extension.swift */; };
 		AB8C3F5B26935E8600B2BA30 /* WritingViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8C3F5A26935E8600B2BA30 /* WritingViewController+Layout.swift */; };
@@ -132,6 +133,7 @@
 		AB7F6DFB269897CA00EF9C6E /* MyWritingPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWritingPopUpViewController.swift; sourceTree = "<group>"; };
 		AB7F6DFD2698C6FD00EF9C6E /* DeletePopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletePopUpViewController.swift; sourceTree = "<group>"; };
 		AB7F6E58269B550500EF9C6E /* home_ios.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = home_ios.json; sourceTree = "<group>"; };
+		AB7F6E5A269BF7AB00EF9C6E /* HomeViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+Layout.swift"; sourceTree = "<group>"; };
 		AB8C3F55269331EF00B2BA30 /* WritingTagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingTagCollectionViewCell.swift; sourceTree = "<group>"; };
 		AB8C3F572693371100B2BA30 /* WritingViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WritingViewController+Extension.swift"; sourceTree = "<group>"; };
 		AB8C3F5A26935E8600B2BA30 /* WritingViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WritingViewController+Layout.swift"; sourceTree = "<group>"; };
@@ -384,6 +386,7 @@
 				ABB24DF2268CD913006FEE57 /* Cell */,
 				ABB24DF0268CD8E6006FEE57 /* Storyboard */,
 				ABB24DF5268CD9D3006FEE57 /* HomeViewController.swift */,
+				AB7F6E5A269BF7AB00EF9C6E /* HomeViewController+Layout.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -708,6 +711,7 @@
 				AB7F6DDF2696BDF300EF9C6E /* WritingPopUpViewController.swift in Sources */,
 				FC4AFBAB269899F800B9801B /* MyTrashBinTableViewCell.swift in Sources */,
 				ABB24DF4268CD9B7006FEE57 /* CardCollectionViewCell.swift in Sources */,
+				AB7F6E5B269BF7AC00EF9C6E /* HomeViewController+Layout.swift in Sources */,
 				AB8C3F5B26935E8600B2BA30 /* WritingViewController+Layout.swift in Sources */,
 				AB8C3F5D2695743E00B2BA30 /* NotificationName+Extension.swift in Sources */,
 				AB7F6DE726975A0900EF9C6E /* ThrowTrashViewController+Layout.swift in Sources */,
