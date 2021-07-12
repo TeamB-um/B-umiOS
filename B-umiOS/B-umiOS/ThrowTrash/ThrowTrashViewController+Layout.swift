@@ -13,7 +13,11 @@ extension ThrowTrashViewController {
         
         navigationView.addSubviews([navigationLabel, backButton])
         explanationView.addSubviews([explanationImage, explanationLabel])
-        view.addSubviews([navigationView, explanationView, trash, trashBin, guideLabel])
+        view.addSubviews([backgroudImage, navigationView, explanationView, trash, trashBin, guideLabel])
+        
+        backgroudImage.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
         
         navigationLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
@@ -55,14 +59,15 @@ extension ThrowTrashViewController {
         }
         
         guideLabel.snp.makeConstraints { make in
-            make.top.equalTo(trash.snp.bottom)
+            make.top.equalTo(trash.snp.bottom).offset(52 * SizeConstants.screenRatio)
             make.centerX.equalToSuperview()
         }
         
         trashBin.snp.makeConstraints { make in
-            make.top.equalTo(trash.snp.bottom)
-            make.leading.trailing.equalToSuperview()
-            make.height.equalTo(400 * SizeConstants.screenRatio)
+            make.top.equalTo(guideLabel.snp.bottom).offset(83 * SizeConstants.screenRatio)
+            make.centerX.equalToSuperview()
+            make.width.equalToSuperview().multipliedBy(178.0 / 375.0)
+            make.height.equalTo(trashBin.snp.width).multipliedBy(233.0 / 178.0)
         }
     }
 }
