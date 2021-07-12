@@ -125,15 +125,17 @@ class HomeViewController: UIViewController {
     @objc
     func didTapTrashBinButton(_ sender: UIButton) {
         isSelectedTrashBin.toggle()
+        makeLabelTransition()
         
         if isSelectedTrashBin {
             configureAnimate()
             animator.startAnimation()
+            
             backgroundView.play()
         } else {
             animator.stopAnimation(true)
             configureInitAnimate()
-//            backgroundView.play(fromFrame: backgroundView.currentProgress, toFrame: 0, loopMode: .playOnce, completion: nil)
+            
             backgroundView.play(fromProgress: backgroundView.currentProgress, toProgress: 0, loopMode: .playOnce, completion: nil)
         }
     }
@@ -251,6 +253,14 @@ class HomeViewController: UIViewController {
             self.paper3Button.layer.transform = CATransform3DMakeRotation(CGFloat(Double.pi / 180 * 15), 0, 0, 1)
             self.paper4Button.layer.transform = CATransform3DMakeRotation(CGFloat(Double.pi / 180 * 45), 0, 0, 1)
         }
+    }
+    
+    func makeLabelTransition() {
+        let transition = CATransition()
+        transition.duration = 0.5
+        transition.timingFunction = .init(name: .easeInEaseOut)
+        transition.type = .fade
+        guideLabel.layer.add(transition, forKey: CATransitionType.push.rawValue)
     }
     
     // MARK: - Protocols
