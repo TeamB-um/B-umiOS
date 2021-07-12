@@ -100,19 +100,22 @@ class ThrowTrashViewController: UIViewController {
 
     @objc
     func handlePanGesture(_ gesture: UIPanGestureRecognizer) {
-        let translation = gesture.translation(in: view)
-
         switch gesture.state {
         case .changed:
+            let translation = gesture.translation(in: view)
             trash.transform = CGAffineTransform(translationX: translation.x, y: translation.y)
         case .ended:
+            guideLabel.alpha = 1
+            
             let position = gesture.location(in: view)
             if position.x > trashBin.frame.midX, position.x < trashBin.frame.maxX, position.y > trashBin.frame.minY, position.y < trashBin.frame.maxY {
                 throwAwayTrash()
             } else {
                 resetTrash()
             }
-        case .cancelled, .possible, .failed, .began: break
+        case .began:
+            guideLabel.alpha = 0
+        case .cancelled, .possible, .failed: break
         @unknown default:
             break
         }
