@@ -29,25 +29,10 @@ class SeparateViewController: UIViewController {
         $0.backgroundColor = .paper1
     }
     
-    let explanationView = UIView().then {
-        $0.backgroundColor = .paper1
-        $0.cornerRound(radius: 10)
-        $0.setShadow(radius: 13, offset: CGSize(width: 1, height: 4) , opacity: 0.1, color: .black)
-    }
-    
-    let explanationLabel = UILabel().then {
-        $0.text = "당신이 보관한 스트레스입니다."
-        $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 14)
-        let attributedStr = NSMutableAttributedString(string: "당신이 보관한 스트레스입니다.")
-
-        attributedStr.addAttribute(.foregroundColor, value: UIColor.blue3, range: ("당신이 보관한 스트레스입니다." as NSString).range(of: "스트레스"))
-
-        $0.attributedText = attributedStr
-    }
-    
     let separateCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then{
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
+        layout.sectionHeadersPinToVisibleBounds = true
         
         $0.backgroundColor = .white
         $0.frame = .zero
@@ -80,8 +65,11 @@ class SeparateViewController: UIViewController {
     func setCollectionView() {
         separateCollectionView.delegate = self
         separateCollectionView.dataSource = self
-        separateCollectionView.register(SeparateCollectionViewCell.self, forCellWithReuseIdentifier: SeparateCollectionViewCell.identifier)
         separateCollectionView.backgroundColor = .background
+        
+        separateCollectionView.register(SeparateCollectionViewCell.self, forCellWithReuseIdentifier: SeparateCollectionViewCell.identifier)
+        separateCollectionView.register(SeperateHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SeperateHeaderView.identifier)
+        separateCollectionView.register(SeperateFooterView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: SeperateFooterView.identifier)
     }
     
     func setSeperateImage(row : Int, count : Int) -> String{

@@ -9,25 +9,26 @@ import UIKit
 
 extension SeparateViewController {
     func setConstraint(){
-        view.addSubviews([navigationView, navigationDividerView, explanationView, separateCollectionView])
+        let navigationHeight = 56 + UIDevice.current.safeAreaInset.top
+        
+        self.view.addSubviews([navigationView, navigationDividerView,separateCollectionView])
+        
         navigationView.addSubviews([navigationLabel, graphButton])
         
-        let screenSize = UIScreen.main.bounds
-    
-        navigationLabel.snp.makeConstraints { make in
-            make.center.equalToSuperview()
+        navigationView.snp.makeConstraints { make in
+            make.top.width.equalToSuperview()
+            make.height.equalTo(navigationHeight * SizeConstants.screenRatio)
         }
         
-        navigationView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-            make.width.equalToSuperview()
-            make.height.equalTo(64 * screenSize.width / 375)
+        navigationLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalToSuperview().inset(13 * SizeConstants.screenRatio)
         }
         
         graphButton.snp.makeConstraints { make in
-            make.trailing.equalToSuperview().offset(-8 * screenSize.width / 375)
-            make.width.height.equalTo(36 * screenSize.width / 375)
-            make.centerY.equalToSuperview()
+            make.trailing.equalToSuperview().offset(-8 * SizeConstants.screenRatio)
+            make.width.height.equalTo(36 * SizeConstants.screenRatio)
+            make.centerY.equalTo(navigationLabel)
         }
         
         navigationDividerView.snp.makeConstraints { make in
@@ -36,22 +37,9 @@ extension SeparateViewController {
             make.height.equalTo(1)
         }
         
-        explanationView.addSubviews([explanationLabel])
-        
-        explanationView.snp.makeConstraints { make in
-            make.top.equalTo(navigationDividerView.snp.bottom).offset(16 * screenSize.width / 375)
-            make.leading.trailing.equalToSuperview().inset(24 * screenSize.width / 375)
-            make.height.equalTo(48 * screenSize.width / 375)
-        }
-
-        explanationLabel.snp.makeConstraints { make in
-            make.center.equalToSuperview()
-        }
-        
         separateCollectionView.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview()
-            make.top.equalTo(explanationView.snp.bottom).offset(24 * screenSize.width / 375)
-            make.bottom.equalToSuperview()
+            make.top.equalTo(navigationDividerView.snp.bottom)
+            make.leading.trailing.bottom.equalToSuperview()
         }
     }
 }
