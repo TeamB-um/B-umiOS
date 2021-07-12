@@ -39,7 +39,11 @@ class SeparateTableViewCell: UITableViewCell {
     
     @objc
         private func didTapDeleteButton(_ sender: UIButton) {
-            print("click")
+            let vc = DeletePopUpViewController(title: "분리수거함 삭제", guide: "분리수거함을 삭제하면 글도 모두 지워져요.\n정말 삭제하시겠어요?")
+            vc.modalTransitionStyle = .crossDissolve
+            vc.modalPresentationStyle = .overCurrentContext
+            
+            self.window?.rootViewController?.present(vc, animated: true, completion: nil)
         }
     
     @objc
