@@ -12,7 +12,7 @@ class SeperateSectionView: UICollectionReusableView {
     // MARK: - UIComponenets
     
     let explanationView = UIView().then {
-        $0.backgroundColor = .clear
+        $0.backgroundColor = .background
         $0.cornerRound(radius: 10)
         $0.setShadow(radius: 13, offset: CGSize(width: 1, height: 4) , opacity: 0.1, color: .black)
     }
@@ -25,6 +25,10 @@ class SeperateSectionView: UICollectionReusableView {
         attributedStr.addAttribute(.foregroundColor, value: UIColor.blue3, range: ("당신이 보관한 스트레스입니다." as NSString).range(of: "스트레스"))
 
         $0.attributedText = attributedStr
+    }
+    
+    let seperateImage = UIImageView().then {
+        $0.image = UIImage(named: "toastPaper1")
     }
     
     let gardientBackground = UIImageView().then {
@@ -56,13 +60,13 @@ class SeperateSectionView: UICollectionReusableView {
     }
         
     func setConstraint(){
-        self.addSubviews([gardientBackground, explanationView, explanationLabel])
+        self.addSubviews([gardientBackground, explanationView])
         
         gardientBackground.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
         
-        explanationView.addSubviews([explanationLabel])
+        explanationView.addSubviews([seperateImage, explanationLabel])
         
         
         explanationView.snp.makeConstraints { make in
@@ -71,9 +75,15 @@ class SeperateSectionView: UICollectionReusableView {
             make.leading.trailing.equalToSuperview().inset(24 * SizeConstants.screenRatio)
             make.height.equalTo(48 * SizeConstants.screenRatio)
         }
-
+        
+        seperateImage.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.leading.equalToSuperview().inset(25 * SizeConstants.screenRatio)
+        }
+        
         explanationLabel.snp.makeConstraints { make in
-            make.center.equalToSuperview()
+            make.leading.equalTo(seperateImage.snp.trailing).offset(48 * SizeConstants.screenRatio)
+            make.centerY.equalToSuperview()
         }
     }
 }

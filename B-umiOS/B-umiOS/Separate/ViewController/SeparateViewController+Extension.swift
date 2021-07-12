@@ -63,4 +63,8 @@ extension SeparateViewController: UICollectionViewDelegate {
         
         return headerView
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        CGSize(width: SizeConstants.screenWidth, height: 72 * SizeConstants.screenRatio)
+     }
 }
