@@ -9,5 +9,5 @@ import UIKit
 
 struct SizeConstants {
     static let screenWidth = UIScreen.main.bounds.width
-    static let screenRatio = UIScreen.main.bounds.width / 375
+    static let screenRatio = UIScreen.main.bounds.width / 375.0
 }
