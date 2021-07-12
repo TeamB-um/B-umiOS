@@ -34,6 +34,7 @@
 		4F7FD2F126929D6300122964 /* PeriodPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7FD2F026929D6300122964 /* PeriodPopUpViewController.swift */; };
 		4F875E2B2697E0930085D104 /* SeparateGraphPopUpViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F875E2A2697E0930085D104 /* SeparateGraphPopUpViewController+Layout.swift */; };
 		4F875E302697EE3A0085D104 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F875E2F2697EE3A0085D104 /* GraphView.swift */; };
+		AB21E3A9269CA06900D32EFF /* CompletionMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB21E3A8269CA06900D32EFF /* CompletionMessage.swift */; };
 		AB5AF762268A2E84001D3CD1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5AF761268A2E84001D3CD1 /* AppDelegate.swift */; };
 		AB5AF764268A2E84001D3CD1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5AF763268A2E84001D3CD1 /* SceneDelegate.swift */; };
 		AB5AF766268A2E84001D3CD1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5AF765268A2E84001D3CD1 /* ViewController.swift */; };
@@ -117,6 +118,7 @@
 		4F7FD2F026929D6300122964 /* PeriodPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodPopUpViewController.swift; sourceTree = "<group>"; };
 		4F875E2A2697E0930085D104 /* SeparateGraphPopUpViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SeparateGraphPopUpViewController+Layout.swift"; sourceTree = "<group>"; };
 		4F875E2F2697EE3A0085D104 /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
+		AB21E3A8269CA06900D32EFF /* CompletionMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionMessage.swift; sourceTree = "<group>"; };
 		AB5AF75E268A2E84001D3CD1 /* B-umiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "B-umiOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB5AF761268A2E84001D3CD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB5AF763268A2E84001D3CD1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -263,6 +265,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		AB21E3A7269CA02200D32EFF /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				AB21E3A8269CA06900D32EFF /* CompletionMessage.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
 		AB5AF755268A2E84001D3CD1 = {
 			isa = PBXGroup;
 			children = (
@@ -312,6 +322,7 @@
 		AB7F6DE226973DB800EF9C6E /* ThrowTrash */ = {
 			isa = PBXGroup;
 			children = (
+				AB21E3A7269CA02200D32EFF /* Component */,
 				AB7F6DE326973E0500EF9C6E /* ThrowTrashViewController.swift */,
 				AB7F6DE626975A0900EF9C6E /* ThrowTrashViewController+Layout.swift */,
 			);
@@ -735,6 +746,7 @@
 				ABB24E08268CEF0B006FEE57 /* UIColor+Extension.swift in Sources */,
 				4F34E1062693618A00A54336 /* TapGesture.swift in Sources */,
 				FC0541B82690C80000FFA9D1 /* MyWritingViewController.swift in Sources */,
+				AB21E3A9269CA06900D32EFF /* CompletionMessage.swift in Sources */,
 				4F875E2B2697E0930085D104 /* SeparateGraphPopUpViewController+Layout.swift in Sources */,
 				4F4992EB2696F685009541AA /* SeparateGraphPopUpViewController.swift in Sources */,
 				AB5AF766268A2E84001D3CD1 /* ViewController.swift in Sources */,

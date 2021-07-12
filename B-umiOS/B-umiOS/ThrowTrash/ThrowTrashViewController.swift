@@ -110,6 +110,8 @@ class ThrowTrashViewController: UIViewController {
             let position = gesture.location(in: view)
             if position.x > trashBin.frame.midX, position.x < trashBin.frame.maxX, position.y > trashBin.frame.minY, position.y < trashBin.frame.maxY {
                 throwAwayTrash()
+                /// network
+                showToast()
             } else {
                 resetTrash()
             }
@@ -134,13 +136,29 @@ class ThrowTrashViewController: UIViewController {
     }
     
     func throwAwayTrash() {
+        guideLabel.alpha = 0
         UIView.animate(withDuration: 0.3) {
             self.trash.alpha = 0
         }
+    }
+    
+    func showToast() {
+        let msg = trashType == .trash ? "삭제되었습니다" : "분리수거 되었습니다"
+        let toast = CompletionMessage(image: "img_\(trashType)_toast", message: msg)
+        toast.tag = 1000
         
-        /// 진동 + 토스트
+        tabBarController?.view.addSubview(toast)
+        toast.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+
+        /// 진동
         
-        navigationController?.popToRootViewController(animated: true)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            toast.alpha = 0
+            toast.removeFromSuperview()
+            self.navigationController?.popToRootViewController(animated: true)
+        }
     }
 
     // MARK: - Protocols
