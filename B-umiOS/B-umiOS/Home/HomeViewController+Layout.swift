@@ -45,14 +45,14 @@ extension HomeViewController {
         let height = 84.5 / width
         
         paper1Button.snp.makeConstraints { make in
-            make.top.equalTo(guideLabel.snp.bottom).offset(90.39 * SizeConstants.screenRatio)
+            make.top.equalTo(whiteShadowView.snp.top).offset(67.39 * SizeConstants.screenRatio)
             make.leading.equalToSuperview().inset(33 * SizeConstants.screenRatio)
             make.width.equalToSuperview().multipliedBy(width)
             make.height.equalTo(84.5).multipliedBy(height)
         }
         
         paper2Button.snp.makeConstraints { make in
-            make.top.equalTo(guideLabel.snp.bottom).offset(47.77 * SizeConstants.screenRatio)
+            make.top.equalTo(whiteShadowView.snp.top).offset(24.77 * SizeConstants.screenRatio)
             make.leading.equalTo(paper1Button.snp.trailing).offset(24.81 * SizeConstants.screenRatio)
             make.width.equalToSuperview().multipliedBy(width)
             make.height.equalTo(84.5).multipliedBy(height)
@@ -73,9 +73,9 @@ extension HomeViewController {
         }
         
         whiteShadowView.snp.makeConstraints { make in
-            make.top.equalTo(guideLabel.snp.bottom).offset(25)
+            make.top.equalTo(guideLabel.snp.bottom).offset(15)
             make.width.equalToSuperview()
-            make.height.equalToSuperview().multipliedBy(0.325)
+            make.height.equalTo(whiteShadowView.snp.width).multipliedBy(264.0 / 375.0)
         }
     }
     
@@ -128,8 +128,8 @@ extension HomeViewController {
     }
     
     func reverseArrowAnimate() {
-        UIView.animate(withDuration: 1.0, delay: 0, options: [.repeat, .autoreverse]) {
-            self.arrowImage.transform = CGAffineTransform(translationX: 0, y: 30).scaledBy(x: 0.9, y: 0.9)
+        UIView.animate(withDuration: 1.5, delay: 0, options: [.repeat, .autoreverse]) {
+            self.arrowImage.transform = CGAffineTransform(translationX: 0, y: 40).scaledBy(x: 0.9, y: 0.9)
         } completion: { _ in
             self.arrowImage.transform = .identity
         }
