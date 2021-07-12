@@ -133,7 +133,7 @@ class HomeViewController: UIViewController {
             
             backgroundView.play()
         } else {
-            animator.stopAnimation(true)
+//            animator.stopAnimation(true)
             configureInitAnimate()
             
             backgroundView.play(fromProgress: backgroundView.currentProgress, toProgress: 0, loopMode: .playOnce, completion: nil)
