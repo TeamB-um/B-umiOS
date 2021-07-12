@@ -56,4 +56,11 @@ extension SeparateViewController: UICollectionViewDelegate {
             self.navigationController?.pushViewController(pushVC, animated: true)
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SeperateSectionView.identifier, for: indexPath)
+        
+        return headerView
+    }
 }

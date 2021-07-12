@@ -11,10 +11,10 @@ extension SeparateViewController {
     func setConstraint(){
         let navigationHeight = 56 + UIDevice.current.safeAreaInset.top
         
-        self.view.addSubviews([navigationView, navigationDividerView, explanationView, separateCollectionView])
+        self.view.addSubviews([navigationView, navigationDividerView,separateCollectionView])
         
         navigationView.addSubviews([navigationLabel, graphButton])
-            
+        
         navigationView.snp.makeConstraints { make in
             make.top.width.equalToSuperview()
             make.height.equalTo(navigationHeight * SizeConstants.screenRatio)
@@ -37,22 +37,9 @@ extension SeparateViewController {
             make.height.equalTo(1)
         }
         
-        explanationView.addSubviews([explanationLabel])
-        
-        explanationView.snp.makeConstraints { make in
-            make.top.equalTo(navigationDividerView.snp.bottom).offset(16 * SizeConstants.screenRatio)
-            make.leading.trailing.equalToSuperview().inset(24 * SizeConstants.screenRatio)
-            make.height.equalTo(48 * SizeConstants.screenRatio)
-        }
-
-        explanationLabel.snp.makeConstraints { make in
-            make.center.equalToSuperview()
-        }
-        
         separateCollectionView.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview()
-            make.top.equalTo(explanationView.snp.bottom).offset(24 * SizeConstants.screenRatio)
-            make.bottom.equalToSuperview()
+            make.top.equalTo(navigationDividerView.snp.bottom)
+            make.leading.trailing.bottom.equalToSuperview()
         }
     }
 }
