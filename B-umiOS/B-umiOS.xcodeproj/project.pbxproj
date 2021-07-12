@@ -40,12 +40,13 @@
 		AB5AF769268A2E84001D3CD1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB5AF767268A2E84001D3CD1 /* Main.storyboard */; };
 		AB5AF76B268A2E87001D3CD1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB5AF76A268A2E87001D3CD1 /* Assets.xcassets */; };
 		AB5AF76E268A2E87001D3CD1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB5AF76C268A2E87001D3CD1 /* LaunchScreen.storyboard */; };
-		AB7F6DEA26977A9C00EF9C6E /* bium_home_ios.json in Resources */ = {isa = PBXBuildFile; fileRef = AB7F6DE926977A9C00EF9C6E /* bium_home_ios.json */; };
 		AB7F6DDF2696BDF300EF9C6E /* WritingPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F6DDE2696BDF300EF9C6E /* WritingPopUpViewController.swift */; };
 		AB7F6DE426973E0500EF9C6E /* ThrowTrashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F6DE326973E0500EF9C6E /* ThrowTrashViewController.swift */; };
 		AB7F6DE726975A0900EF9C6E /* ThrowTrashViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F6DE626975A0900EF9C6E /* ThrowTrashViewController+Layout.swift */; };
+		AB7F6DEA26977A9C00EF9C6E /* bium_home_ios.json in Resources */ = {isa = PBXBuildFile; fileRef = AB7F6DE926977A9C00EF9C6E /* bium_home_ios.json */; };
 		AB7F6DFC269897CA00EF9C6E /* MyWritingPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F6DFB269897CA00EF9C6E /* MyWritingPopUpViewController.swift */; };
 		AB7F6DFE2698C6FD00EF9C6E /* DeletePopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F6DFD2698C6FD00EF9C6E /* DeletePopUpViewController.swift */; };
+		AB7F6E59269B550500EF9C6E /* home_ios.json in Resources */ = {isa = PBXBuildFile; fileRef = AB7F6E58269B550500EF9C6E /* home_ios.json */; };
 		AB8C3F56269331EF00B2BA30 /* WritingTagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8C3F55269331EF00B2BA30 /* WritingTagCollectionViewCell.swift */; };
 		AB8C3F582693371100B2BA30 /* WritingViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8C3F572693371100B2BA30 /* WritingViewController+Extension.swift */; };
 		AB8C3F5B26935E8600B2BA30 /* WritingViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8C3F5A26935E8600B2BA30 /* WritingViewController+Layout.swift */; };
@@ -124,12 +125,13 @@
 		AB5AF76A268A2E87001D3CD1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AB5AF76D268A2E87001D3CD1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AB5AF76F268A2E87001D3CD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AB7F6DE926977A9C00EF9C6E /* bium_home_ios.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bium_home_ios.json; sourceTree = "<group>"; };
 		AB7F6DDE2696BDF300EF9C6E /* WritingPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingPopUpViewController.swift; sourceTree = "<group>"; };
 		AB7F6DE326973E0500EF9C6E /* ThrowTrashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThrowTrashViewController.swift; sourceTree = "<group>"; };
 		AB7F6DE626975A0900EF9C6E /* ThrowTrashViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThrowTrashViewController+Layout.swift"; sourceTree = "<group>"; };
+		AB7F6DE926977A9C00EF9C6E /* bium_home_ios.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bium_home_ios.json; sourceTree = "<group>"; };
 		AB7F6DFB269897CA00EF9C6E /* MyWritingPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWritingPopUpViewController.swift; sourceTree = "<group>"; };
 		AB7F6DFD2698C6FD00EF9C6E /* DeletePopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletePopUpViewController.swift; sourceTree = "<group>"; };
+		AB7F6E58269B550500EF9C6E /* home_ios.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = home_ios.json; sourceTree = "<group>"; };
 		AB8C3F55269331EF00B2BA30 /* WritingTagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingTagCollectionViewCell.swift; sourceTree = "<group>"; };
 		AB8C3F572693371100B2BA30 /* WritingViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WritingViewController+Extension.swift"; sourceTree = "<group>"; };
 		AB8C3F5A26935E8600B2BA30 /* WritingViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WritingViewController+Layout.swift"; sourceTree = "<group>"; };
@@ -299,14 +301,6 @@
 			path = "B-umiOS";
 			sourceTree = "<group>";
 		};
-		AB7F6DE826977A7600EF9C6E /* Lottie */ = {
-			isa = PBXGroup;
-			children = (
-				AB7F6DE926977A9C00EF9C6E /* bium_home_ios.json */,
-			);
-			path = Lottie;
-      sourceTree = "<group>";
-		};
 		AB7F6DDD2696BDB100EF9C6E /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -322,6 +316,15 @@
 				AB7F6DE626975A0900EF9C6E /* ThrowTrashViewController+Layout.swift */,
 			);
 			path = ThrowTrash;
+			sourceTree = "<group>";
+		};
+		AB7F6DE826977A7600EF9C6E /* Lottie */ = {
+			isa = PBXGroup;
+			children = (
+				AB7F6E58269B550500EF9C6E /* home_ios.json */,
+				AB7F6DE926977A9C00EF9C6E /* bium_home_ios.json */,
+			);
+			path = Lottie;
 			sourceTree = "<group>";
 		};
 		AB7F6DF92698976900EF9C6E /* PopUp */ = {
@@ -630,6 +633,7 @@
 				ABB24E01268CDF64006FEE57 /* NanumSquareOTF_acR.otf in Resources */,
 				4F7FD2ED26920F3800122964 /* TrashBinTableViewCell.xib in Resources */,
 				ABB24DFF268CDF64006FEE57 /* NanumSquareOTF_acL.otf in Resources */,
+				AB7F6E59269B550500EF9C6E /* home_ios.json in Resources */,
 				AB7F6DEA26977A9C00EF9C6E /* bium_home_ios.json in Resources */,
 				ABB24DF8268CD9FF006FEE57 /* Home.storyboard in Resources */,
 				ABB24E6F268E20EB006FEE57 /* Separate.storyboard in Resources */,

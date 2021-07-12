@@ -5,6 +5,7 @@
 //  Created by inae Lee on 2021/07/01.
 //
 
+import Lottie
 import SnapKit
 import Then
 import UIKit
@@ -14,11 +15,15 @@ import UIKit
 class HomeViewController: UIViewController {
     // MARK: - UIComponenets
     
-//    private let background
+    private let backgroundView = AnimationView().then {
+        $0.animation = Animation.named("home_ios")
+        $0.loopMode = .playOnce
+    }
 
     private let dateLabel = UILabel().then {
         $0.text = Date().dateToString(date: Date())
         $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 20)
+        $0.adjustsFontForContentSizeCategory = true
         $0.textColor = .white
     }
     
@@ -28,6 +33,7 @@ class HomeViewController: UIViewController {
         $0.numberOfLines = 2
         $0.textAlignment = .center
         $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 26)
+        $0.adjustsFontForContentSizeCategory = true
         $0.textColor = UIColor.white
     }
     
@@ -37,9 +43,7 @@ class HomeViewController: UIViewController {
     
     private lazy var trashBinButton = UIButton().then {
         $0.addTarget(self, action: #selector(didTapTrashBinButton(_:)), for: .touchUpInside)
-        $0.backgroundColor = .green3
-        $0.setTitle("쓰레기통", for: .normal)
-        $0.tintColor = .white
+        $0.backgroundColor = .clear
     }
     
     private lazy var paper1Button = UIButton().then {
@@ -75,7 +79,7 @@ class HomeViewController: UIViewController {
     }
     
     private let whiteShadowView = UIImageView().then {
-        $0.image = UIImage(named: "bgElements")
+        $0.image = UIImage(named: "bgElementsStroke")
         $0.isHidden = true
     }
 
@@ -125,9 +129,11 @@ class HomeViewController: UIViewController {
         if isSelectedTrashBin {
             configureAnimate()
             animator.startAnimation()
+            backgroundView.play()
         } else {
             animator.stopAnimation(true)
             configureInitAnimate()
+            backgroundView.play(fromFrame: 1, toFrame: 0, loopMode: .playOnce, completion: nil)
         }
     }
     
@@ -141,11 +147,15 @@ class HomeViewController: UIViewController {
     // MARK: - Methods
     
     func setConstraint() {
-        view.addSubviews([whiteShadowView, dateLabel, guideLabel, arrowImage, trashBinButton, paper1Button, paper2Button, paper3Button, paper4Button])
+        view.addSubviews([backgroundView, whiteShadowView, dateLabel, guideLabel, arrowImage, trashBinButton, paper1Button, paper2Button, paper3Button, paper4Button])
+        
+        backgroundView.snp.makeConstraints { make in
+            make.top.leading.trailing.bottom.equalToSuperview()
+        }
         
         dateLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalTo(self.view.safeAreaLayoutGuide).offset(13)
+            make.top.equalTo(self.view.safeAreaLayoutGuide).offset(SizeConstants.screenRatio * 13.0)
         }
         
         guideLabel.snp.makeConstraints { make in
@@ -156,12 +166,15 @@ class HomeViewController: UIViewController {
         arrowImage.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalTo(guideLabel.snp.bottom).offset(37 * SizeConstants.screenRatio)
-            make.width.height.equalTo(90 * SizeConstants.screenRatio)
+            make.width.equalToSuperview().multipliedBy(90.0 / 375.0)
+            make.height.equalTo(arrowImage.snp.width)
         }
         
         trashBinButton.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalTo(arrowImage.snp.bottom).offset(50)
+            make.top.equalTo(arrowImage.snp.bottom).offset(59 * SizeConstants.screenRatio)
+            make.width.equalToSuperview().multipliedBy(187.0 / 375.0)
+            make.height.equalToSuperview().multipliedBy(0.312)
         }
         
         let width = 55.7 / SizeConstants.screenWidth
@@ -197,7 +210,8 @@ class HomeViewController: UIViewController {
         
         whiteShadowView.snp.makeConstraints { make in
             make.top.equalTo(guideLabel.snp.bottom).offset(25)
-            make.leading.trailing.equalToSuperview()
+            make.width.equalToSuperview()
+            make.height.equalTo(whiteShadowView.snp.width).multipliedBy(264.0 / 375.0)
         }
     }
     
