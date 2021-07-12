@@ -170,8 +170,13 @@ class SettingViewController: UIViewController, popupDelegate{
     func closeBottomSheet() {
         self.backgroundView.removeFromSuperview()
     }
+    
+    func sendPeriod(period : Int) {
+        trashbinPeriodLabel.text = "\(period)일"
+    }
 }
 
 protocol popupDelegate {
     func closeBottomSheet()
+    func sendPeriod(period : Int)
 }

@@ -29,6 +29,7 @@ class PeriodPopUpViewController: UIViewController{
         $0.tintColor = .white
         $0.backgroundColor = .blue2Main
         $0.cornerRound(radius: 10)
+        $0.addTarget(self, action: #selector(selectPeriod(_:)), for: .touchUpInside)
     }
     
     private  let backgroundButton = UIButton().then {
@@ -42,14 +43,15 @@ class PeriodPopUpViewController: UIViewController{
     }
     
     private let subLabel = UILabel().then {
-        $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 14)
+        $0.font = UIFont.nanumSquareFont(type: .regular, size: 14)
         $0.textColor = .paper3
         $0.text = "미화원이 휴지통을 비워갈 기간을 정해주세요."
     }
+    
     // MARK: - Properties
     var pickContents : [String] = ["즉시 삭제", "1일", "2일", "3일", "4일", "5일", "6일", "7일", "8일", "9일"]
-    
     var popupdelegate : popupDelegate?
+    var trashBinPeriod : String?
     
     // MARK: - Initializer
 
@@ -58,7 +60,6 @@ class PeriodPopUpViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .clear
-        
         self.pickerView.delegate = self
         self.pickerView.dataSource = self
         
@@ -66,6 +67,14 @@ class PeriodPopUpViewController: UIViewController{
     }
 
     // MARK: - Actions
+    
+    @objc private func selectPeriod(_ sender: UIButton) {
+        print(trashBinPeriod)
+        popupdelegate?.sendPeriod(period: 1)
+        popupdelegate?.closeBottomSheet()
+        self.dismiss(animated: true, completion: nil)
+        
+    }
     
     @objc private func didTapBackgroundButton(_ sender: UIButton) {
         popupdelegate?.closeBottomSheet()
@@ -88,43 +97,47 @@ class PeriodPopUpViewController: UIViewController{
         popupView.addSubviews([rect,headerLabel,subLabel,pickerView,confirmButton])
         
         rect.snp.makeConstraints { make in
-            let width = UIScreen.main.bounds.width*65/375
-            make.height.equalTo(6*width/65)
-            make.width.equalTo(width)
-            make.top.equalToSuperview().offset(10)
+            make.height.equalTo(6 * SizeConstants.screenRatio)
+            make.leading.trailing.equalToSuperview().inset(155 * SizeConstants.screenRatio)
+            make.top.equalToSuperview().offset(10 * SizeConstants.screenRatio)
             make.centerX.equalToSuperview()
         }
         
         headerLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalTo(rect.snp.bottom).offset(16)
-            make.height.equalTo(30)
+            make.top.equalTo(rect.snp.bottom).offset(16 * SizeConstants.screenRatio)
+            make.height.equalTo(30 * SizeConstants.screenRatio)
         }
         
         subLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalTo(headerLabel.snp.bottom).offset(8)
+            make.top.equalTo(headerLabel.snp.bottom).offset(8 * SizeConstants.screenRatio)
         }
         
         pickerView.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(16)
-            make.top.equalTo(subLabel.snp.bottom).offset(28)
-            make.height.equalTo(140)
+            make.leading.trailing.equalToSuperview().inset(16 * SizeConstants.screenRatio)
+            make.top.equalTo(subLabel.snp.bottom).offset(28 * SizeConstants.screenRatio)
+            make.height.equalTo(140 * SizeConstants.screenRatio)
         }
         
         confirmButton.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(23)
-            make.top.equalTo(pickerView.snp.bottom).offset(32)
-            make.bottom.equalToSuperview().inset(66)
-            make.height.equalTo(50)
+            make.leading.trailing.equalToSuperview().inset(23 * SizeConstants.screenRatio)
+            make.top.equalTo(pickerView.snp.bottom).offset(32 * SizeConstants.screenRatio)
+            make.bottom.equalToSuperview().inset(66 * SizeConstants.screenRatio)
+            make.height.equalTo(50 * SizeConstants.screenRatio)
         }
     }
+    
     // MARK: - Protocols
 }
 
 // MARK: - Extension
 
 extension PeriodPopUpViewController : UIPickerViewDelegate{
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        trashBinPeriod = (pickContents[row])
+    }
+    
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return pickContents[row]
     }

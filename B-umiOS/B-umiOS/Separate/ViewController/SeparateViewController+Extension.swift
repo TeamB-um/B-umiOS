@@ -9,7 +9,7 @@ import UIKit
 
 // MARK: - UICollectionViewDelegateFlowLayout
 
-let trash: [String] = ["aaa","bbb","cccc","dd","eee","fff","g","jjj","asd","ett"]
+let trash: [String] = ["aaa","bbb","cccc","dd","eee","fff","g"]
 
 extension SeparateViewController: UICollectionViewDelegateFlowLayout {
 
@@ -43,6 +43,7 @@ extension SeparateViewController: UICollectionViewDataSource {
         }
         
         cell.separateName.text = trash[indexPath.row]
+        cell.separateImage.image = UIImage(named: setSeperateImage(row: indexPath.row, count: 0))
         return cell
     }
 }

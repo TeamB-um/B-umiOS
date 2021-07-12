@@ -38,10 +38,10 @@
             </objects>
             <point key="canvasLocation" x="-832" y="54"/>
         </scene>
-        <!--Trash Bin Pop Up View Controller-->
+        <!--Separate Pop Up View Controller-->
         <scene sceneID="mLq-xC-OA6">
             <objects>
-                <viewController storyboardIdentifier="TrashBinPopUpViewController" id="bQB-kK-apo" customClass="TrashBinPopUpViewController" customModule="B_umiOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SeparatePopUpViewController" id="bQB-kK-apo" customClass="SeparatePopUpViewController" customModule="B_umiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8NF-b6-oE0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
