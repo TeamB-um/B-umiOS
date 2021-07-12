@@ -11,7 +11,7 @@ import UIKit
 
 extension HomeViewController {
     func setConstraint() {
-        view.addSubviews([backgroundView, whiteShadowView, dateLabel, guideLabel, arrowImage, trashBinButton, paper1Button, paper2Button, paper3Button, paper4Button])
+        view.addSubviews([backgroundView, whiteShadowView, dateLabel, guideLabel, arrowImage, trashBinButton, paper1Button, paper2Button, paper3Button, paper4Button, lowLabel, highLabel])
         
         backgroundView.snp.makeConstraints { make in
             make.top.leading.trailing.bottom.equalToSuperview()
@@ -77,6 +77,16 @@ extension HomeViewController {
             make.width.equalToSuperview()
             make.height.equalTo(whiteShadowView.snp.width).multipliedBy(264.0 / 375.0)
         }
+        
+        lowLabel.snp.makeConstraints { make in
+            make.top.equalTo(whiteShadowView.snp.top).offset(189 * SizeConstants.screenRatio)
+            make.leading.equalToSuperview().offset(16.0 * SizeConstants.screenRatio)
+        }
+        
+        highLabel.snp.makeConstraints { make in
+            make.top.equalTo(lowLabel.snp.top)
+            make.trailing.equalToSuperview().offset(-16.0 * SizeConstants.screenRatio)
+        }
     }
     
     func setView() {
@@ -124,7 +134,13 @@ extension HomeViewController {
         transition.duration = 0.5
         transition.timingFunction = .init(name: .easeInEaseOut)
         transition.type = .fade
+        
         guideLabel.layer.add(transition, forKey: CATransitionType.push.rawValue)
+        
+        transition.type = .push
+        transition.subtype = isSelectedTrashBin ? .fromTop : .fromBottom
+        lowLabel.layer.add(transition, forKey: CATransitionType.push.rawValue)
+        highLabel.layer.add(transition, forKey: CATransitionType.push.rawValue)
     }
     
     func reverseArrowAnimate() {

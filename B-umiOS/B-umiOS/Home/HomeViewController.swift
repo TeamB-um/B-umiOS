@@ -87,12 +87,14 @@ class HomeViewController: UIViewController {
         $0.font = .nanumSquareFont(type: .extraBold, size: 20)
         $0.text = "적음"
         $0.textColor = .paper4
+        $0.isHidden = true
     }
     
     let highLabel = UILabel().then {
         $0.font = .nanumSquareFont(type: .extraBold, size: 20)
         $0.text = "많음"
         $0.textColor = .paper4
+        $0.isHidden = true
     }
 
     // MARK: - Properties
@@ -103,6 +105,8 @@ class HomeViewController: UIViewController {
             if isSelectedTrashBin {
                 guideLabel.text = "스트레스 양에 따라\n종이를 선택하세요"
                 arrowImage.isHidden = true
+                lowLabel.isHidden = false
+                highLabel.isHidden = false
                 
                 whiteShadowView.isHidden = false
                 [paper1Button, paper2Button, paper3Button, paper4Button].forEach { button in
@@ -110,6 +114,8 @@ class HomeViewController: UIViewController {
                 }
             } else {
                 guideLabel.text = "휴지통을 클릭해\n스트레스를 비워보세요"
+                lowLabel.isHidden = true
+                highLabel.isHidden = true
                 
                 whiteShadowView.isHidden = true
                 [paper1Button, paper2Button, paper3Button, paper4Button].forEach { button in
