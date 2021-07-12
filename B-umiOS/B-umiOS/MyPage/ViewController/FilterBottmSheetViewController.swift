@@ -56,6 +56,7 @@ class FilterBottmSheetViewController: UIViewController {
         
         components.year = 10
         let maxDate = Calendar.autoupdatingCurrent.date(byAdding: components, to: Date())
+        
         components.year = -10
         let minDate = Calendar.autoupdatingCurrent.date(byAdding: components, to: Date())
         
@@ -122,17 +123,15 @@ class FilterBottmSheetViewController: UIViewController {
     }
     
     // MARK: - Properties
-    
-    var subText : String = "sub view"
-    var placeholder : String = "placeholder"
+   
     var tag: [String] = ["인간관계", "취업", "날파리", "거지챌린지", "아르바이트", "부장님"]
-    var selecetedStartDatePicker : Bool = true
+    var selecetedStartDatePicker: Bool = true
     let dateFormatter = DateFormatter().then {
         $0.locale = Locale(identifier: "ko_KO")
         $0.dateFormat = "yyyy.MM.dd(E)"
     }
-    
-    
+    var components = DateComponents()
+    var endMinimumDate: Date = Date()
     // MARK: - Initializer
     
     // MARK: - LifeCycle
@@ -154,7 +153,8 @@ class FilterBottmSheetViewController: UIViewController {
         if (selecetedStartDatePicker) {
             let dateText = dateFormatter.string(from: datePickerView.date)
             startDateButton.setTitle(dateText, for: .normal)
-            //여기서 시작 끝 날짜 제한 구현
+            endMinimumDate = datePickerView.date
+            
         } else {
             let dateText = dateFormatter.string(from: datePickerView.date)
             endDateButton.setTitle(dateText, for: .normal)
@@ -167,20 +167,21 @@ class FilterBottmSheetViewController: UIViewController {
         datePickerView.date = date!
         
         if sender == startDateButton {
-            print("startDateButton")
             selecetedStartDatePicker = true;
             startDateLine.backgroundColor = .green2Main
             startLabel.textColor = .green2Main
             endDateLine.backgroundColor = .disable
             endLabel.textColor = .iconGray
+            setStardMinimumDate()
         } else {
-            print("endDateButton")
             selecetedStartDatePicker = false
             startDateLine.backgroundColor = .disable
             startLabel.textColor = .iconGray
             endDateLine.backgroundColor = .green2Main
             endLabel.textColor = .green2Main
+            datePickerView.minimumDate = endMinimumDate
         }
+        changeDateText(button: sender)
     }
     
     @objc private func switchDidTap(_ sender: UISwitch) {
@@ -283,7 +284,6 @@ class FilterBottmSheetViewController: UIViewController {
             make.height.equalTo(140)
         }
         
-        
         setDateLabel.snp.makeConstraints { make in
             make.leading.equalTo(confirmButton)
             make.bottom.equalTo(settingPeriodView.snp.top).offset(-24)
@@ -306,6 +306,17 @@ class FilterBottmSheetViewController: UIViewController {
         
         startDateButton.setTitle(dateFormatter.string(from: nowDateTime), for: .normal)
         endDateButton.setTitle(dateFormatter.string(from: nowDateTime), for: .normal)
+    }
+    
+    func setStardMinimumDate(){
+        components.year = -10
+        let minDate = Calendar.autoupdatingCurrent.date(byAdding: components, to: Date())
+        datePickerView.minimumDate = minDate
+    }
+    
+    func changeDateText(button: UIButton) {
+        let dateText = dateFormatter.string(from: datePickerView.date)
+        button.setTitle(dateText, for: .normal)
     }
 }
 
