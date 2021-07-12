@@ -161,7 +161,7 @@ class WritingViewController: UIViewController {
     
     @objc
     func didTapSettingButton(_ sender: UIButton) {
-        /// settingVC로 이동 ...
+        navigationController?.pushViewController(SettingSeparateViewController(), animated: true)
     }
     
     // MARK: - Methods
