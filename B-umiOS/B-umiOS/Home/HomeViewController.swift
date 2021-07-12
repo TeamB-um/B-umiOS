@@ -82,6 +82,18 @@ class HomeViewController: UIViewController {
         $0.image = UIImage(named: "bgElementsStroke")
         $0.isHidden = true
     }
+    
+    let lowLabel = UILabel().then {
+        $0.font = .nanumSquareFont(type: .extraBold, size: 20)
+        $0.text = "적음"
+        $0.textColor = .paper4
+    }
+    
+    let highLabel = UILabel().then {
+        $0.font = .nanumSquareFont(type: .extraBold, size: 20)
+        $0.text = "많음"
+        $0.textColor = .paper4
+    }
 
     // MARK: - Properties
     
@@ -98,7 +110,6 @@ class HomeViewController: UIViewController {
                 }
             } else {
                 guideLabel.text = "휴지통을 클릭해\n스트레스를 비워보세요"
-                arrowImage.isHidden = false
                 
                 whiteShadowView.isHidden = true
                 [paper1Button, paper2Button, paper3Button, paper4Button].forEach { button in
@@ -140,7 +151,9 @@ class HomeViewController: UIViewController {
             animator.stopAnimation(true)
             configureInitAnimate()
             
-            backgroundView.play(fromProgress: backgroundView.currentProgress, toProgress: 0, loopMode: .playOnce, completion: nil)
+            backgroundView.play(fromProgress: backgroundView.currentProgress, toProgress: 0, loopMode: .playOnce) { _ in
+                self.arrowImage.isHidden = false
+            }
         }
     }
     
