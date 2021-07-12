@@ -15,12 +15,21 @@ enum WritingStyle: Int {
 }
 
 extension WritingStyle {
-    var textColor: UIColor {
+    var placeholderColor: UIColor {
         switch self {
         case .paper1, .paper2:
             return UIColor.iconGray
         case .paper3, .paper4:
             return UIColor.paper2
+        }
+    }
+
+    var textColor: UIColor {
+        switch self {
+        case .paper1, .paper2:
+            return UIColor.header
+        case .paper3, .paper4:
+            return UIColor.white
         }
     }
 
