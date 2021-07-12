@@ -16,19 +16,24 @@ class ThrowTrashViewController: UIViewController {
     // MARK: - UIComponenets
 
     let navigationView = UIView().then {
-        $0.backgroundColor = .white
+        $0.backgroundColor = .clear
     }
     
     lazy var navigationLabel = UILabel().then {
         $0.text = self.trashType.rawValue
         $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 20)
-        $0.textColor = UIColor.header
+        $0.textColor = UIColor.white
     }
     
     lazy var backButton = UIButton(type: .custom, primaryAction: UIAction(handler: { _ in
         self.navigationController?.popViewController(animated: true)
     })).then {
-        $0.setImage(UIImage(named: "btnBack"), for: .normal)
+        $0.setImage(UIImage(named: "btnBack")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        $0.tintColor = .white
+    }
+    
+    lazy var backgroudImage = UIImageView().then {
+        $0.image = UIImage(named: "img_\(self.trashType)")
     }
     
     let explanationView = UIView().then {
@@ -38,7 +43,7 @@ class ThrowTrashViewController: UIViewController {
     }
     
     let explanationImage = UIImageView().then {
-        $0.image = UIImage(systemName: "book.fill")
+        $0.image = UIImage(named: "toastPaper1")
     }
     
     lazy var explanationLabel = UILabel().then {
@@ -54,19 +59,16 @@ class ThrowTrashViewController: UIViewController {
     let guideLabel = UILabel().then {
         $0.text = "쓰레기통으로 넣어보세요!"
         $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 20)
-        $0.textColor = .textGray
+        $0.textColor = .white
     }
     
     lazy var trash = UIImageView().then {
-        $0.image = UIImage(systemName: "paperplane.fill")
-        $0.backgroundColor = .orange
+        $0.image = UIImage(named: "imgWritingPaper")
         $0.isUserInteractionEnabled = true
         $0.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:))))
     }
     
-    let trashBin = UIImageView().then {
-        $0.image = UIImage(systemName: "trash")
-    }
+    let trashBin = UIView()
 
     // MARK: - Properties
     
@@ -104,9 +106,8 @@ class ThrowTrashViewController: UIViewController {
         case .changed:
             trash.transform = CGAffineTransform(translationX: translation.x, y: translation.y)
         case .ended:
-            // FIXME: - 야매로 계산. 쓰레기통 나오면 찐 계산합니다.
-            
-            if translation.x > -50 || translation.x < 50, translation.y > 250 {
+            let position = gesture.location(in: view)
+            if position.x > trashBin.frame.midX, position.x < trashBin.frame.maxX, position.y > trashBin.frame.minY, position.y < trashBin.frame.maxY {
                 throwAwayTrash()
             } else {
                 resetTrash()

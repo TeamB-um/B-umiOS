@@ -43,7 +43,6 @@
 		AB7F6DDF2696BDF300EF9C6E /* WritingPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F6DDE2696BDF300EF9C6E /* WritingPopUpViewController.swift */; };
 		AB7F6DE426973E0500EF9C6E /* ThrowTrashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F6DE326973E0500EF9C6E /* ThrowTrashViewController.swift */; };
 		AB7F6DE726975A0900EF9C6E /* ThrowTrashViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F6DE626975A0900EF9C6E /* ThrowTrashViewController+Layout.swift */; };
-		AB7F6DEA26977A9C00EF9C6E /* bium_home_ios.json in Resources */ = {isa = PBXBuildFile; fileRef = AB7F6DE926977A9C00EF9C6E /* bium_home_ios.json */; };
 		AB7F6DFC269897CA00EF9C6E /* MyWritingPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F6DFB269897CA00EF9C6E /* MyWritingPopUpViewController.swift */; };
 		AB7F6DFE2698C6FD00EF9C6E /* DeletePopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F6DFD2698C6FD00EF9C6E /* DeletePopUpViewController.swift */; };
 		AB7F6E5B269BF7AC00EF9C6E /* HomeViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7F6E5A269BF7AB00EF9C6E /* HomeViewController+Layout.swift */; };
@@ -129,7 +128,6 @@
 		AB7F6DDE2696BDF300EF9C6E /* WritingPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingPopUpViewController.swift; sourceTree = "<group>"; };
 		AB7F6DE326973E0500EF9C6E /* ThrowTrashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThrowTrashViewController.swift; sourceTree = "<group>"; };
 		AB7F6DE626975A0900EF9C6E /* ThrowTrashViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThrowTrashViewController+Layout.swift"; sourceTree = "<group>"; };
-		AB7F6DE926977A9C00EF9C6E /* bium_home_ios.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bium_home_ios.json; sourceTree = "<group>"; };
 		AB7F6DFB269897CA00EF9C6E /* MyWritingPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWritingPopUpViewController.swift; sourceTree = "<group>"; };
 		AB7F6DFD2698C6FD00EF9C6E /* DeletePopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletePopUpViewController.swift; sourceTree = "<group>"; };
 		AB7F6E5A269BF7AB00EF9C6E /* HomeViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+Layout.swift"; sourceTree = "<group>"; };
@@ -911,7 +909,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = L9D5M5DM3Y;
+				DEVELOPMENT_TEAM = G7SD8523Y3;
 				INFOPLIST_FILE = "B-umiOS/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -931,7 +929,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4QG3GC35LA;
+				DEVELOPMENT_TEAM = G7SD8523Y3;
 				INFOPLIST_FILE = "B-umiOS/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
