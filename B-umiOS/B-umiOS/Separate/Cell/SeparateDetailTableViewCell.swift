@@ -37,10 +37,8 @@ class SeparateDetailTableViewCell: UITableViewCell {
     override var isSelected: Bool {
         didSet {
             if isSelected {
-                print("check")
                 checkButton.setImage(UIImage(named: "btnCheckColor"), for: .normal)
             } else {
-                print("empty")
                 checkButton.setImage(UIImage(named: "btnCheckEmpty"), for: .normal)
             }
         }

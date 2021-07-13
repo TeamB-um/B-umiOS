@@ -26,18 +26,17 @@ extension SeparateDetailViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.cellForRow(at: indexPath)?.isSelected = true
+        if(!self.confirmButton.isHidden){
+            tableView.cellForRow(at: indexPath)?.isSelected = true
+            removeData.append(indexPath.row)
+        }
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        tableView.cellForRow(at: indexPath)?.isSelected = false
-    }
-    
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowisSelectedPath: IndexPath) {
-        if cell.isSelected {
-            cell.isSelected = true
-        } else{
-            cell.isSelected = false
+        if(!self.confirmButton.isHidden){
+            tableView.cellForRow(at: indexPath)?.isSelected = false
+            guard let elementIndex = removeData.firstIndex(of: indexPath.row) else { return }
+            removeData.remove(at: elementIndex)
         }
     }
 }
@@ -50,12 +49,11 @@ extension SeparateDetailViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SeparateDetailTableViewCell.identifier, for: indexPath) as? SeparateDetailTableViewCell else {
             return UITableViewCell()
         }
         cell.checkButton.isHidden = !self.removeButton.isSelected
-
+        
         return cell
     }
 }

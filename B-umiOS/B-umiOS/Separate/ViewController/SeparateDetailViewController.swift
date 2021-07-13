@@ -57,6 +57,7 @@ class SeparateDetailViewController: UIViewController {
     }
     
     // MARK: - Properties
+    var removeData : [Int] = []
     
     // MARK: - Initializer
     
@@ -90,13 +91,12 @@ class SeparateDetailViewController: UIViewController {
             self.removeButton.setupRoundingButton(title: "삭제", image: "btnRemove")
             self.confirmButton.isHidden = true
             self.removeButton.isSelected = false
-            print(self.removeButton.isSelected)
         }
+        
         else{
             self.removeButton.setupRoundingButton(title: "취소", image: "btnCancel")
             self.confirmButton.isHidden = false
             self.removeButton.isSelected = true
-            print(self.removeButton.isSelected)
         }
         
         self.detailTableView.reloadData()
