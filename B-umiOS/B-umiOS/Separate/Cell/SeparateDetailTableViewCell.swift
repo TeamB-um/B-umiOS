@@ -26,13 +26,15 @@ class SeparateDetailTableViewCell: UITableViewCell {
         $0.font = UIFont.nanumSquareFont(type: .regular, size: 14)
     }
     
-    var checkButton = UIButton().then {
+    lazy var checkButton = UIButton().then {
         $0.setImage(UIImage(named: "btnCheckEmpty"), for: .normal)
+        $0.addTarget(self, action: #selector(checkCell(_:)), for: .touchUpInside)
     }
     
     // MARK: - Properites
     
     static let identifier = "SeparateDetailTableViewCell"
+   
     // MARK: - Initializer
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -40,6 +42,13 @@ class SeparateDetailTableViewCell: UITableViewCell {
         
         setView()
         setConstraint()
+    }
+    
+    // MARK: - LifeCycle
+    
+    // MARK: - Actions
+    
+    @objc private func checkCell(_ sender: UIButton) {
     }
     
     // MARK: - Method

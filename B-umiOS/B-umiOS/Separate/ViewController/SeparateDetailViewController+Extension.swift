@@ -39,7 +39,15 @@ extension SeparateDetailViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         cell.checkButton.isHidden = !self.removeButton.isSelected
-    
+        
+        if(cell.checkButton.isHidden){
+            print("click cell")
+            
+        }
+        else{
+            cell.selectionStyle = .none
+        }
+        
         return cell
     }
 }

@@ -38,6 +38,7 @@ class SeparateDetailViewController: UIViewController {
     
     var confirmButton = RoundingButton().then {
         $0.setupRoundingButton(title: "확인", image: "btnCheckUnseleted")
+        $0.addTarget(self, action: #selector(didTapConfirmButton), for: .touchUpInside)
         $0.isHidden = true
     }
     
@@ -71,6 +72,16 @@ class SeparateDetailViewController: UIViewController {
     // MARK: - Actions
     @objc func didTapBackButton(){
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func didTapConfirmButton(){
+        if(self.confirmButton.backgroundColor == UIColor.blue2Main){
+            let vc = DeletePopUpViewController(title: "글 삭제", guide: "글을 삭제하시겠습니까?")
+            vc.modalTransitionStyle = .crossDissolve
+            vc.modalPresentationStyle = .overCurrentContext
+            
+            self.present(vc, animated: true, completion: nil)
+        }
     }
     
     @objc func didTapCheckButton(){
