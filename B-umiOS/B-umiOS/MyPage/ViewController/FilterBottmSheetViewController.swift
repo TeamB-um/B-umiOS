@@ -11,6 +11,9 @@ import UIKit
 class FilterBottmSheetViewController: UIViewController {
     // MARK: - UIComponenets
     
+//    private let backgroundView = UIView().then {
+//        $0.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
+//    }
     private let popupView = UIView().then {
         $0.cornerRound(radius: 10)
         $0.backgroundColor = .white
@@ -22,6 +25,7 @@ class FilterBottmSheetViewController: UIViewController {
         $0.backgroundColor = .blue2Main
         $0.tintColor = .white
         $0.setTitle("확인", for: .normal)
+        $0.addTarget(self, action: #selector(didTapConfirmButton(_:)), for: .touchUpInside)
     }
     
     private lazy var categoryTagCollecitonView : UICollectionView = {
@@ -79,7 +83,7 @@ class FilterBottmSheetViewController: UIViewController {
     
     private var endDateLine = UIView()
     
-    private var startLabel = UILabel().then{
+    private var startLabel = UILabel().then {
         $0.font = UIFont.nanumSquareFont(type: .regular, size: 14)
         $0.textColor = .green2Main
         $0.text = "시작"
@@ -110,7 +114,7 @@ class FilterBottmSheetViewController: UIViewController {
     private var dateSwitch = UISwitch().then {
         $0.isOn = false
         $0.onTintColor = .green2Main
-        $0.addTarget(self, action: #selector(switchDidTap(_:)), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(didTapSwitch(_:)), for: .touchUpInside)
     }
     
     private let rect = UIView().then {
@@ -120,6 +124,7 @@ class FilterBottmSheetViewController: UIViewController {
     
     private  let backgroundButton = UIButton().then {
         $0.addTarget(self, action: #selector(didTapBackgroundButton(_:)), for: .touchUpInside)
+        $0.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.0)
     }
     
     // MARK: - Properties
@@ -138,9 +143,10 @@ class FilterBottmSheetViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+        //self.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
         setConstraint()
         setFirstDatePicker()
+        showBottomSheet()
     }
     
     // MARK: - Actions
@@ -184,7 +190,7 @@ class FilterBottmSheetViewController: UIViewController {
         changeDateText(button: sender)
     }
     
-    @objc private func switchDidTap(_ sender: UISwitch) {
+    @objc private func didTapSwitch(_ sender: UISwitch) {
         if sender.isOn {
             settingPeriodView.snp.updateConstraints { make in
                 make.leading.trailing.equalToSuperview().inset(16)
@@ -202,12 +208,15 @@ class FilterBottmSheetViewController: UIViewController {
                 make.height.equalTo(0)
             }
     }
-    }
+}
+    @objc private func didTapConfirmButton(_ sender: UIButton) {
+            self.dismiss(animated: true, completion: nil)
+        }
     // MARK: - Methods
     
     func setConstraint() {
         self.view.addSubviews([backgroundButton,popupView])
-        popupView.addSubviews([confirmButton, categoryTagCollecitonView, categoryLabel, settingPeriodView, setDateLabel, dateSwitch])
+        popupView.addSubviews([categoryTagCollecitonView, categoryLabel, settingPeriodView, setDateLabel, dateSwitch, confirmButton])
         settingPeriodView.addSubviews([datePickerView, startDateButton,endDateButton,startDateLine, endDateLine, startLabel, endLabel])
 
         backgroundButton.snp.makeConstraints { make in
@@ -314,10 +323,17 @@ class FilterBottmSheetViewController: UIViewController {
         datePickerView.minimumDate = minDate
     }
     
-    func changeDateText(button: UIButton) {
+    func changeDateText(button: UIButton){
         let dateText = dateFormatter.string(from: datePickerView.date)
         button.setTitle(dateText, for: .normal)
     }
+    
+    func showBottomSheet(){
+            UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseIn, animations: {
+                self.backgroundButton.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
+                self.view.layoutIfNeeded()
+            }, completion: nil)
+        }
 }
 
 // MARK: - Protocols

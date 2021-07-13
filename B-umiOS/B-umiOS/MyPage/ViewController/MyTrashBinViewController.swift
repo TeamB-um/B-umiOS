@@ -46,7 +46,11 @@ class MyTrashBinViewController: UIViewController {
         let popUpVC = PeriodPopUpViewController()
         popUpVC.modalPresentationStyle = .overCurrentContext
         popUpVC.modalTransitionStyle = .crossDissolve
-        self.present(popUpVC, animated: true, completion: nil)
+        if let parentVC = view.superview?.parentViewController {
+            parentVC.present(popUpVC, animated: true, completion: nil)
+        } else {
+            print("error")
+        }
     }
     // MARK: - Methods
     

@@ -65,7 +65,6 @@ class MyPageViewController: UIViewController {
     let menu = ["글", "리워드", "삭제함"]
     let subViewControllers: [UIViewController] = [MyWritingViewController(), MyRewardViewController(), MyTrashBinViewController()]
     let myPageMenuCellLineSpacing: CGFloat = 39.0
-
     // MARK: - Initializer
 
     // MARK: - LifeCycle

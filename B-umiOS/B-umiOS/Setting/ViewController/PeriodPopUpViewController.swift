@@ -59,7 +59,7 @@ class PeriodPopUpViewController: UIViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .clear
+        self.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
         self.pickerView.delegate = self
         self.pickerView.dataSource = self
         
