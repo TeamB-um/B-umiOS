@@ -117,7 +117,7 @@ class ButtonSectionView: UICollectionReusableView {
             confirmButtton.isHidden = false
         }
         
-        NotificationCenter.default.post(name: NSNotification.Name("isDeleteButtonSelected"), object: deleteButton.isSelected)
+        NotificationCenter.default.post(name: NSNotification.Name.isDeleteButtonSelected, object: deleteButton.isSelected)
 
     }
     

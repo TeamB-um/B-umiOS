@@ -55,7 +55,7 @@ class MyWritingViewController: UIViewController {
     }
     
     func addObservers(){
-        NotificationCenter.default.addObserver(self, selector: #selector(deleteButtonClicked), name: NSNotification.Name("isDeleteButtonSelected"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(deleteButtonClicked), name: NSNotification.Name.isDeleteButtonSelected, object: nil)
     }
     
     @objc func deleteButtonClicked(noti : NSNotification){
@@ -91,10 +91,6 @@ extension MyWritingViewController : UICollectionViewDataSource {
         
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ButtonSectionView.identifier, for: indexPath)
         return headerView
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
     }
 }
 
