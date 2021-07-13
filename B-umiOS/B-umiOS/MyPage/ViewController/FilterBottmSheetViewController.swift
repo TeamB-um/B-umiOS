@@ -25,7 +25,7 @@ class FilterBottmSheetViewController: UIViewController {
         $0.backgroundColor = .blue2Main
         $0.tintColor = .white
         $0.setTitle("확인", for: .normal)
-        $0.addTarget(self, action: #selector(confirmButtomDidTap(_:)), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(didTapConfirmButton(_:)), for: .touchUpInside)
     }
     
     private lazy var categoryTagCollecitonView : UICollectionView = {
@@ -114,7 +114,7 @@ class FilterBottmSheetViewController: UIViewController {
     private var dateSwitch = UISwitch().then {
         $0.isOn = false
         $0.onTintColor = .green2Main
-        $0.addTarget(self, action: #selector(switchDidTap(_:)), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(didTapSwitch(_:)), for: .touchUpInside)
     }
     
     private let rect = UIView().then {
@@ -148,12 +148,6 @@ class FilterBottmSheetViewController: UIViewController {
         setFirstDatePicker()
         showBottomSheet()
     }
-    
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(animated)
-//        showBottomSheet()
-//    }
-    
     
     // MARK: - Actions
     
@@ -196,7 +190,7 @@ class FilterBottmSheetViewController: UIViewController {
         changeDateText(button: sender)
     }
     
-    @objc private func switchDidTap(_ sender: UISwitch) {
+    @objc private func didTapSwitch(_ sender: UISwitch) {
         if sender.isOn {
             settingPeriodView.snp.updateConstraints { make in
                 make.leading.trailing.equalToSuperview().inset(16)
@@ -215,7 +209,7 @@ class FilterBottmSheetViewController: UIViewController {
             }
     }
 }
-    @objc private func confirmButtomDidTap(_ sender: UIButton) {
+    @objc private func didTapConfirmButton(_ sender: UIButton) {
             self.dismiss(animated: true, completion: nil)
         }
     // MARK: - Methods

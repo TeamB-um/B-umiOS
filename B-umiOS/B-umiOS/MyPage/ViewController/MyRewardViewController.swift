@@ -85,8 +85,8 @@ extension MyRewardViewController : UICollectionViewDelegateFlowLayout {
         popUpVC.modalTransitionStyle = .crossDissolve
         popUpVC.modalPresentationStyle = .overCurrentContext
         
-        if let parentVc = view.superview?.parentViewController {
-            parentVc.present(popUpVC, animated: true, completion: nil)
+        if let parentVC = view.superview?.parentViewController {
+            parentVC.present(popUpVC, animated: true, completion: nil)
         } else {
             print("error")
         }
