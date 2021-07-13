@@ -21,6 +21,7 @@ extension SeparateDetailViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return bottomView
     }
+    
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 80
     }
@@ -29,6 +30,8 @@ extension SeparateDetailViewController: UITableViewDelegate {
         if(!self.confirmButton.isHidden){
             tableView.cellForRow(at: indexPath)?.isSelected = true
             removeData.append(indexPath.row)
+            
+            isActivated()
         }
     }
     
@@ -37,6 +40,8 @@ extension SeparateDetailViewController: UITableViewDelegate {
             tableView.cellForRow(at: indexPath)?.isSelected = false
             guard let elementIndex = removeData.firstIndex(of: indexPath.row) else { return }
             removeData.remove(at: elementIndex)
+            
+            isActivated()
         }
     }
 }

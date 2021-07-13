@@ -36,7 +36,7 @@ class SeparateDetailViewController: UIViewController {
         $0.backgroundColor = .clear
     }
     
-    var confirmButton = RoundingButton().then {
+    lazy var confirmButton = RoundingButton().then {
         $0.setupRoundingButton(title: "확인", image: "btnCheckUnseleted")
         $0.addTarget(self, action: #selector(didTapConfirmButton), for: .touchUpInside)
         $0.isHidden = true
@@ -71,6 +71,7 @@ class SeparateDetailViewController: UIViewController {
     }
     
     // MARK: - Actions
+    
     @objc func didTapBackButton(){
         self.navigationController?.popViewController(animated: true)
     }
@@ -114,6 +115,15 @@ class SeparateDetailViewController: UIViewController {
         detailTableView.dataSource = self
         detailTableView.allowsMultipleSelection = true
         detailTableView.register(SeparateDetailTableViewCell.self, forCellReuseIdentifier: SeparateDetailTableViewCell.identifier)
+    }
+    
+    func isActivated(){
+        if(removeData.isEmpty){
+            confirmButton.isActivated(false)
+        }
+        else{
+            confirmButton.isActivated(true)
+        }
     }
     
     // MARK: - Protocols
