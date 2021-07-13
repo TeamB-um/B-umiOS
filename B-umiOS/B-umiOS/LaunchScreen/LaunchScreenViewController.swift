@@ -5,6 +5,7 @@
 //  Created by inae Lee on 2021/07/13.
 //
 
+import Alamofire
 import Lottie
 import UIKit
 
@@ -26,7 +27,11 @@ class LaunchScreenViewController: UIViewController {
         super.viewDidLoad()
 
         setConstraints()
-        presentHomeView()
+        login()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        splashView.play()
     }
 
     // MARK: - Actions
@@ -41,17 +46,19 @@ class LaunchScreenViewController: UIViewController {
         }
     }
 
-    func presentHomeView() {
-        splashView.play()
+    func login() {
+        LoginService.shared.login { result in
+            if result {
+                Timer.scheduledTimer(withTimeInterval: 1.3, repeats: false) { _ in
+                    let tabBar = FloatingTabBarController()
+                    tabBar.modalTransitionStyle = .crossDissolve
+                    tabBar.modalPresentationStyle = .fullScreen
 
-        // FIXME: - (Timer 제거하고) 로그인 절차 추가해야함
-
-        Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false) { _ in
-            let tabBar = FloatingTabBarController()
-            tabBar.modalTransitionStyle = .crossDissolve
-            tabBar.modalPresentationStyle = .fullScreen
-
-            self.present(tabBar, animated: true, completion: nil)
+                    self.present(tabBar, animated: true, completion: nil)
+                }
+            } else {
+                print("네트워크 에러 팝업을 띄우기")
+            }
         }
     }
 
