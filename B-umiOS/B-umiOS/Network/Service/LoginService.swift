@@ -19,8 +19,8 @@ struct LoginService {
             switch response {
             case .success(let data):
                 guard let result = data as? GeneralResponse<TokenResponse> else { return }
-
                 UserDefaults.standard.set(result.data?.token, forKey: UserDefaults.Keys.token)
+
                 completion(true)
             case .requestErr, .pathErr, .serverErr, .networkFail:
                 completion(false)
