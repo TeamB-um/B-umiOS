@@ -37,6 +37,8 @@
 		4F875E2B2697E0930085D104 /* SeparateGraphPopUpViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F875E2A2697E0930085D104 /* SeparateGraphPopUpViewController+Layout.swift */; };
 		4F875E302697EE3A0085D104 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F875E2F2697EE3A0085D104 /* GraphView.swift */; };
 		AB21E3A9269CA06900D32EFF /* CompletionMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB21E3A8269CA06900D32EFF /* CompletionMessage.swift */; };
+		AB21E3AC269D427400D32EFF /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB21E3AB269D427400D32EFF /* LaunchScreenViewController.swift */; };
+		AB21E3AE269D43FA00D32EFF /* bium_splash.json in Resources */ = {isa = PBXBuildFile; fileRef = AB21E3AD269D43FA00D32EFF /* bium_splash.json */; };
 		AB5AF762268A2E84001D3CD1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5AF761268A2E84001D3CD1 /* AppDelegate.swift */; };
 		AB5AF764268A2E84001D3CD1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5AF763268A2E84001D3CD1 /* SceneDelegate.swift */; };
 		AB5AF766268A2E84001D3CD1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5AF765268A2E84001D3CD1 /* ViewController.swift */; };
@@ -123,6 +125,8 @@
 		4F875E2A2697E0930085D104 /* SeparateGraphPopUpViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SeparateGraphPopUpViewController+Layout.swift"; sourceTree = "<group>"; };
 		4F875E2F2697EE3A0085D104 /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		AB21E3A8269CA06900D32EFF /* CompletionMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionMessage.swift; sourceTree = "<group>"; };
+		AB21E3AB269D427400D32EFF /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
+		AB21E3AD269D43FA00D32EFF /* bium_splash.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bium_splash.json; sourceTree = "<group>"; };
 		AB5AF75E268A2E84001D3CD1 /* B-umiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "B-umiOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB5AF761268A2E84001D3CD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB5AF763268A2E84001D3CD1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -279,6 +283,14 @@
 			path = Component;
 			sourceTree = "<group>";
 		};
+		AB21E3AA269D425700D32EFF /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				AB21E3AB269D427400D32EFF /* LaunchScreenViewController.swift */,
+			);
+			path = LaunchScreen;
+			sourceTree = "<group>";
+		};
 		AB5AF755268A2E84001D3CD1 = {
 			isa = PBXGroup;
 			children = (
@@ -300,6 +312,7 @@
 		AB5AF760268A2E84001D3CD1 /* B-umiOS */ = {
 			isa = PBXGroup;
 			children = (
+				AB21E3AA269D425700D32EFF /* LaunchScreen */,
 				4F2D1F33269A1A4900D941A1 /* Network */,
 				AB7F6DE226973DB800EF9C6E /* ThrowTrash */,
 				AB9F9DF52690CD8100088502 /* Writing */,
@@ -338,6 +351,7 @@
 		AB7F6DE826977A7600EF9C6E /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
+				AB21E3AD269D43FA00D32EFF /* bium_splash.json */,
 				AB7F6E5C269C02EC00EF9C6E /* home_ios.json */,
 			);
 			path = Lottie;
@@ -657,6 +671,7 @@
 				ABB24E00268CDF64006FEE57 /* NanumSquareOTF_acB.otf in Resources */,
 				AB5AF769268A2E84001D3CD1 /* Main.storyboard in Resources */,
 				AB7F6E5D269C02EC00EF9C6E /* home_ios.json in Resources */,
+				AB21E3AE269D43FA00D32EFF /* bium_splash.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -770,6 +785,7 @@
 				4F4992A2269577FF009541AA /* SizeConstants.swift in Sources */,
 				AB8C3F582693371100B2BA30 /* WritingViewController+Extension.swift in Sources */,
 				4F4992E52695FCC6009541AA /* SeparateDetailViewController+Extension.swift in Sources */,
+				AB21E3AC269D427400D32EFF /* LaunchScreenViewController.swift in Sources */,
 				4F7FD2F126929D6300122964 /* PeriodPopUpViewController.swift in Sources */,
 				FC0541BA2690C92A00FFA9D1 /* MyRewardViewController.swift in Sources */,
 				4F2D1F35269A1AA700D941A1 /* NetworkResult.swift in Sources */,
@@ -935,7 +951,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "inaelee.B-umiOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "inaelee.B-umiOS.";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
