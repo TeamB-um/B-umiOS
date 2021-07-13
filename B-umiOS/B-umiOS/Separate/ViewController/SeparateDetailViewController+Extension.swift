@@ -24,6 +24,22 @@ extension SeparateDetailViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 80
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.cellForRow(at: indexPath)?.isSelected = true
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        tableView.cellForRow(at: indexPath)?.isSelected = false
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowisSelectedPath: IndexPath) {
+        if cell.isSelected {
+            cell.isSelected = true
+        } else{
+            cell.isSelected = false
+        }
+    }
 }
 
 // MARK: - UITableViewDataSource

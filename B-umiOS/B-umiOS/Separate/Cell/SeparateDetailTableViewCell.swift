@@ -48,13 +48,12 @@ class SeparateDetailTableViewCell: UITableViewCell {
    
     // MARK: - Initializer
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
         self.setView()
         contentView.addSubview(mainView)
+        setConstraint()
     }
 
     @available(*, unavailable)
@@ -77,7 +76,7 @@ class SeparateDetailTableViewCell: UITableViewCell {
         self.contentView.backgroundColor = .background
     }
     
-    func setConstraint(){contentView.addSubview(mainView)
+    func setConstraint(){
         mainView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(16 * SizeConstants.screenRatio)
             make.top.bottom.equalToSuperview().inset(8 * SizeConstants.screenRatio)
