@@ -11,8 +11,23 @@ extension SeparateDetailViewController {
     // MARK: - Methods
     
     func setConstraint(){
-        view.addSubviews([navigationView, navigationDividerView, confirmButton, removeButton, detailTableView])
+        view.addSubviews([navigationView, navigationDividerView, detailTableView])
         navigationView.addSubviews([navigationLabel, backButton])
+        headerView.addSubviews([gardientBackground, confirmButton, removeButton])
+        
+        gardientBackground.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        removeButton.snp.makeConstraints { make in
+            make.leading.equalToSuperview().inset(16 * SizeConstants.screenRatio)
+            make.centerY.equalToSuperview()
+        }
+
+        confirmButton.snp.makeConstraints { make in
+            make.leading.equalTo(removeButton.snp.trailing).offset(8 * SizeConstants.screenRatio)
+            make.top.equalTo(removeButton)
+        }
         
         navigationLabel.snp.makeConstraints { make in
             make.center.equalToSuperview()
@@ -34,20 +49,10 @@ extension SeparateDetailViewController {
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(1)
         }
-        
-        removeButton.snp.makeConstraints { make in
-            make.leading.equalToSuperview().inset(16 * SizeConstants.screenRatio)
-            make.top.equalTo(navigationDividerView.snp.bottom).offset(16 * SizeConstants.screenRatio)
-        }
-
-        confirmButton.snp.makeConstraints { make in
-            make.leading.equalTo(removeButton.snp.trailing).offset(8 * SizeConstants.screenRatio)
-            make.top.equalTo(removeButton)
-        }
 
         detailTableView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
-            make.top.equalTo(removeButton.snp.bottom).offset(8 * SizeConstants.screenRatio)
+            make.top.equalTo(navigationDividerView.snp.bottom)
             make.bottom.equalToSuperview()
         }
     }

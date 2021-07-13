@@ -24,23 +24,35 @@ class SeparateDetailViewController: UIViewController {
         $0.addTarget(self, action: #selector(didTapBackButton), for: .touchUpInside)
     }
     
+    lazy var navigationDividerView = UIView().then {
+        $0.backgroundColor = .paper1
+    }
+    
+    var headerView = UIView().then {
+        $0.backgroundColor = .clear
+    }
+    
+    var bottomView = UIView().then {
+        $0.backgroundColor = .clear
+    }
+    
     var confirmButton = RoundingButton().then {
         $0.setupRoundingButton(title: "확인", image: "btnCheckUnseleted")
         $0.isHidden = true
     }
     
     var removeButton = RoundingButton().then {
-        //$0.setupRoundingButton(title: "선택", image: "btnCheckUnseleted")
         $0.setupRoundingButton(title: "삭제", image: "btnRemove")
         $0.addTarget(self, action: #selector(didTapCheckButton), for: .touchUpInside)
     }
     
-    lazy var navigationDividerView = UIView().then {
-        $0.backgroundColor = .paper1
+    let gardientBackground = UIImageView().then {
+        $0.image = UIImage(named: "mywritingTrashbinBgGradientTop")
     }
     
     lazy var detailTableView = UITableView().then {
         $0.separatorStyle = .none
+        $0.backgroundColor = .background
     }
     
     // MARK: - Properties
