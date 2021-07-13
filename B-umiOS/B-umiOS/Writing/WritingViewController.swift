@@ -126,6 +126,8 @@ class WritingViewController: UIViewController {
 
     let placeholder = "당신의 스트레스를 적어주세요"
     let style: WritingStyle
+    var tag: [Category] = []
+    let limitLength = 20
     
     // MARK: - Initializer
 
@@ -151,6 +153,8 @@ class WritingViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         NotificationCenter.default.post(name: Notification.Name.TabBarHide, object: nil)
+        
+        fetchCategoriesData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -185,8 +189,19 @@ class WritingViewController: UIViewController {
     func setCollectionView() {
         tagCollectionView.delegate = self
         tagCollectionView.dataSource = self
-        
-        tagCollectionView.selectItem(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: [])
+    }
+    
+    func fetchCategoriesData() {
+        CategoryService.shared.fetchCategories { result in
+            guard let categories = result as? CategoriesResponse else { return }
+            
+            self.tag = categories.categories
+            self.guideLabel.isHidden = self.tag.count != 0
+            self.guideImage.isHidden = self.tag.count != 0
+            
+            self.tagCollectionView.reloadData()
+            self.tagCollectionView.selectItem(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: [])
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

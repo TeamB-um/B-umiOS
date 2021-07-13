@@ -9,13 +9,10 @@ import UIKit
 
 // MARK: - UICollectionViewDelegateFlowLayout
 
-var tag: [String] = ["인간관계", "취업", "날파리", "거지챌린지", "아르바이트", "부장님"]
-private let limitLength = 20
-
 extension WritingViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let label = UILabel()
-        label.text = tag[indexPath.row]
+        label.text = tag[indexPath.row].name
         label.font = UIFont.nanumSquareFont(type: .regular, size: 16)
         label.sizeToFit()
 
@@ -45,7 +42,7 @@ extension WritingViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WritingTagCollectionViewCell.identifier, for: indexPath) as? WritingTagCollectionViewCell else { return UICollectionViewCell() }
 
-        cell.setTagLabel(tag: tag[indexPath.row])
+        cell.setTagLabel(tag: tag[indexPath.row].name)
         return cell
     }
 
@@ -106,7 +103,7 @@ extension WritingViewController: UITextViewDelegate {
 extension WritingViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        textView.becomeFirstResponder()
+        self.textView.becomeFirstResponder()
 
         return true
     }
