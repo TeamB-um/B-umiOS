@@ -21,6 +21,7 @@ class MyWritingViewController: UIViewController {
         collectionView.register(MyWritingCollectionViewCell.self, forCellWithReuseIdentifier: MyWritingCollectionViewCell.identifier)
         
         collectionView.register(ButtonSectionView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ButtonSectionView.identifier)
+        collectionView.allowsMultipleSelection = true
         
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -28,6 +29,7 @@ class MyWritingViewController: UIViewController {
         return collectionView
     }()
     // MARK: - Properties
+    var deleteButtonIsSelected: Bool = false
     
     // MARK: - Initializer
     
@@ -36,6 +38,7 @@ class MyWritingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setConstraint()
+        addObservers()
     }
     
     // MARK: - Actions
@@ -48,6 +51,17 @@ class MyWritingViewController: UIViewController {
         myWritingCollectionView.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.bottom.leading.trailing.equalToSuperview()
+        }
+    }
+    
+    func addObservers(){
+        NotificationCenter.default.addObserver(self, selector: #selector(deleteButtonClicked), name: NSNotification.Name.isDeleteButtonSelected, object: nil)
+    }
+    
+    @objc func deleteButtonClicked(noti : NSNotification){
+        if let isClicked = noti.object as? Bool {
+            deleteButtonIsSelected.toggle()
+            self.myWritingCollectionView.reloadData()
         }
     }
     // MARK: - Protocols
@@ -64,13 +78,18 @@ extension MyWritingViewController : UICollectionViewDataSource {
         
         cell.setShadow(radius: 20, offset: CGSize(width: 0, height: 4), opacity: 0.03)
         
+        if deleteButtonIsSelected {
+            cell.emptyCheckButton.isHidden = false
+        } else {
+            cell.emptyCheckButton.isHidden = true
+        }
+        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ButtonSectionView.identifier, for: indexPath)
-        
         return headerView
     }
 }

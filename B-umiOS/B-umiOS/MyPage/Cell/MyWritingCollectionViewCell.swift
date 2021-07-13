@@ -48,13 +48,27 @@ class MyWritingCollectionViewCell: UICollectionViewCell {
         
         return label
     }()
+    
+    let emptyCheckButton = UIButton().then {
+        $0.setImage(UIImage(named: "btnCheckEmpty"), for: .normal)
+        $0.isHidden = true
+    }
     // MARK: - Properties
+    override var isSelected: Bool {
+        didSet {
+            if isSelected {
+                emptyCheckButton.setImage(UIImage(named: "btnCheckColor"), for: .normal)
+            } else {
+                emptyCheckButton.setImage(UIImage(named: "btnCheckEmpty"), for: .normal)
+            }
+        }
+    }
     
     // MARK: - Initializer
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.addSubviews([categoryTitle,writingTitle,writingPriview])
+        contentView.addSubviews([categoryTitle,writingTitle,writingPriview, emptyCheckButton])
     }
     
     @available(*, unavailable)
@@ -82,6 +96,10 @@ class MyWritingCollectionViewCell: UICollectionViewCell {
         writingPriview.snp.updateConstraints { make in
             make.top.equalTo(writingTitle.snp.bottom).offset(7)
             make.leading.trailing.equalToSuperview().inset(17)
+        }
+        
+        emptyCheckButton.snp.makeConstraints { make in
+            make.top.trailing.equalToSuperview().inset(16)
         }
         
         contentView.cornerRound(radius: 10)
