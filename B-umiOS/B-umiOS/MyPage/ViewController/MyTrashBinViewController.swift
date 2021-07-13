@@ -12,7 +12,7 @@ class MyTrashBinViewController: UIViewController {
     
     private var settingButton = RoundingButton().then {
         $0.setupRoundingButton(title: "설정", image: "settings")
-        //$0.addTarget(self, action: #selector(didTapCheckButton), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(didTapSettingButton), for: .touchUpInside)
     }
     
     private var headerView = UIView().then {
@@ -43,8 +43,10 @@ class MyTrashBinViewController: UIViewController {
     // MARK: - Actions
     
     @objc func didTapSettingButton(){
-        //휴지통 삭제 기간 팝업 뷰를 띄웁니다
-        self.detailTableView.reloadData()
+        let popUpVC = PeriodPopUpViewController()
+        popUpVC.modalPresentationStyle = .overCurrentContext
+        popUpVC.modalTransitionStyle = .crossDissolve
+        self.present(popUpVC, animated: true, completion: nil)
     }
     // MARK: - Methods
     
