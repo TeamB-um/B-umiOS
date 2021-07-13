@@ -13,8 +13,4 @@ struct WritingsResponse: Codable {
 
 struct WritingResponse: Codable {
     let writing: Writing
-
-    enum CodingKeys: String, CodingKey {
-        case writing = "writingresult"
-    }
 }
