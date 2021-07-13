@@ -50,6 +50,13 @@ class SeparatePopUpViewController: UIViewController {
         $0.text = "0/6"
         $0.font = UIFont.systemFont(ofSize: 13)
     }
+
+    private lazy var boilerLabel = UILabel().then {
+        $0.textColor = .error
+        $0.text = "이름 중복!"
+        $0.font = UIFont.systemFont(ofSize: 13)
+        $0.isHidden = true
+    }
     
     private let cancelButton = UIButton().then {
         $0.cornerRound(radius: 10)
@@ -68,6 +75,7 @@ class SeparatePopUpViewController: UIViewController {
         $0.tintColor = .white
         $0.setTitle("확인", for: .normal)
         $0.titleLabel?.font = UIFont.nanumSquareFont(type: .bold, size: 18)
+        $0.addTarget(self, action: #selector(didTapConfirmButton(_:)), for: .touchUpInside)
     }
     
     private var stackView = UIStackView().then {
@@ -78,10 +86,7 @@ class SeparatePopUpViewController: UIViewController {
     }
     
     // MARK: - Properties
-    
-//    var headerText : String = "header view"
-//    var subText : String = "sub view"
-//    var placeholder : String = "placeholder"
+
     var method : PopUpMethod?
     static let identifier = "SeparatePopUpViewController"
     
@@ -101,6 +106,23 @@ class SeparatePopUpViewController: UIViewController {
     
     @objc private func closePopUp(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc private func didTapConfirmButton(_ sender: UIButton) {
+        
+        //확인 호출 (add, modify method에 따라 구분)
+        
+        //.success => ok일시
+//        self.dismiss(animated: true, completion: nil)
+        
+        //.중복 일시
+//        DispatchQueue.main.async {
+//            self.textfield.layer.borderColor = UIColor.error.cgColor
+//            self.textNumberLabel.textColor = .error
+//            self.confirmButton.backgroundColor = .gray
+//            self.confirmButton.isEnabled = false
+//            self.boilerLabel.isHidden = false
+//        }
     }
     
     // MARK: - Methods
@@ -128,7 +150,8 @@ class SeparatePopUpViewController: UIViewController {
         
         self.view.addSubviews([backgroundButton,popupView])
 
-        popupView.addSubviews([headerLabel,subLabel,textfield,stackView,textNumberLabel])
+        popupView.addSubviews([headerLabel,subLabel,textfield,stackView,textNumberLabel, boilerLabel])
+        
         popupView.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(238 * SizeConstants.screenRatio)
             make.leading.trailing.equalToSuperview().inset(16)
@@ -166,6 +189,10 @@ class SeparatePopUpViewController: UIViewController {
             make.trailing.equalToSuperview().inset(36)
         }
 
+        boilerLabel.snp.makeConstraints { make in
+            make.centerY.equalTo(textNumberLabel)
+            make.trailing.equalTo(textNumberLabel.snp.leading).offset(-8 * SizeConstants.screenRatio)
+        }
         stackView.addArrangedSubview(cancelButton)
         stackView.addArrangedSubview(confirmButton)
     }
@@ -182,18 +209,25 @@ extension SeparatePopUpViewController: UITextFieldDelegate {
         
         DispatchQueue.main.async {
             self.textNumberLabel.text = "\(updatedText.count)/6"
-            if(updatedText.count > 6){
-                textField.layer.borderColor = UIColor.error.cgColor
-                self.textNumberLabel.textColor = .error
-                self.confirmButton.isEnabled = false
-            }
-            else{
-                textField.layer.borderColor = UIColor.paper2.cgColor
-                self.textNumberLabel.textColor = .green2Main
-                self.confirmButton.isEnabled = true
-            }
+            textField.layer.borderColor = UIColor.paper2.cgColor
+            self.textNumberLabel.textColor = .green2Main
+            self.confirmButton.backgroundColor = .blue2Main
+            self.confirmButton.isEnabled = true
+            self.boilerLabel.isHidden = true
         }
-        
-        return updatedText.count < 12
+
+        return updatedText.count < 6
     }
+}
+
+extension SeparatePopUpViewController: TextDelegate{
+    func sendData(name: String) {
+        DispatchQueue.main.async {
+            self.textfield.text = name
+        }
+    }
+}
+
+protocol TextDelegate {
+    func sendData(name: String)
 }

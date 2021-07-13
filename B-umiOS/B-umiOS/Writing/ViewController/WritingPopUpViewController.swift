@@ -44,6 +44,7 @@ class WritingPopUpViewController: UIViewController {
         self.popUpDelegate?.writingPopUpViewPush(trash: .trash)
     })).then {
         $0.setTitle("삭제", for: .normal)
+        $0.titleLabel?.font = UIFont.nanumSquareFont(type: .bold, size: 18)
         $0.setTitleColor(.paper3, for: .normal)
         $0.cornerRound(radius: 10)
         $0.layer.borderWidth = 1.0
@@ -56,6 +57,7 @@ class WritingPopUpViewController: UIViewController {
     })).then {
         $0.backgroundColor = .blue2Main
         $0.setTitle("보관", for: .normal)
+        $0.titleLabel?.font = UIFont.nanumSquareFont(type: .bold, size: 18)
         $0.setTitleColor(.white, for: .normal)
         $0.cornerRound(radius: 10)
     }
@@ -88,8 +90,8 @@ class WritingPopUpViewController: UIViewController {
         popUpView.addSubviews([closeButton, titleLabel, guideLabel, deleteButton, archiveButton])
         
         popUpView.snp.makeConstraints { make in
-            make.width.equalTo(343 * SizeConstants.screenRatio)
-            make.height.equalTo(226 * SizeConstants.screenRatio)
+            make.width.equalToSuperview().multipliedBy(343.0 / 375.0)
+            make.height.equalTo(popUpView.snp.width).multipliedBy(226.0 / 343.0)
             make.center.equalToSuperview()
         }
         
@@ -105,7 +107,7 @@ class WritingPopUpViewController: UIViewController {
         }
         
         guideLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(10 * SizeConstants.screenRatio)
+            make.top.equalTo(titleLabel.snp.bottom).offset(14 * SizeConstants.screenRatio)
             make.centerX.equalToSuperview()
         }
         

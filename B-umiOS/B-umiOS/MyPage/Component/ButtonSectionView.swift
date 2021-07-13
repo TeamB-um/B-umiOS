@@ -23,46 +23,42 @@ class ButtonSectionView: UICollectionReusableView {
         return button
     }()
     
-    private let selectButtton: RoundingButton = {
-        let button = RoundingButton()
-        button.setupRoundingButton(title: "선택", image: "btnCheckUnseleted")
-        button.addTarget(self, action: #selector(didTapSelectButtton(_:)), for: .touchUpInside)
-        
-        return button
-    }()
-    
     private let deleteButton: RoundingButton = {
         let button = RoundingButton()
         button.setupRoundingButton(title: "삭제", image: "btnRemove")
         button.addTarget(self, action: #selector(didTapDeleteButton(_:)), for: .touchUpInside)
+        
+        return button
+    }()
+    
+    let confirmButtton: RoundingButton = {
+        let button = RoundingButton()
+        button.setupRoundingButton(title: "확인", image: "btnCheckUnseleted")
+        button.addTarget(self, action: #selector(didTapConfirmButton(_:)), for: .touchUpInside)
         button.isHidden = true
         
         return button
     }()
 
       // MARK: - Properties
+    var isSelectAllowed: Bool = false
       
       // MARK: - Initializer
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-        
-        //storyboard
     }
 
       // MARK: - Actions
     
-    
-      
       // MARK: - Methods
     
     private func setConstraint(){
-        self.addSubviews([gradationBackground, categoryButtton, selectButtton, deleteButton])
+        self.addSubviews([gradationBackground, categoryButtton, deleteButton, confirmButtton])
         
         gradationBackground.snp.makeConstraints { make in
             make.top.bottom.leading.trailing.equalToSuperview()
@@ -74,20 +70,18 @@ class ButtonSectionView: UICollectionReusableView {
             make.width.equalTo(137)
         }
         
-        selectButtton.snp.makeConstraints { make in
-            make.centerY.equalTo(categoryButtton)
-            make.leading.equalTo(categoryButtton.snp.trailing).offset(8)
-            make.width.equalTo(80)
-        }
-        
         deleteButton.snp.makeConstraints { make in
             make.centerY.equalTo(categoryButtton)
-            make.leading.equalTo(selectButtton.snp.trailing).offset(8)
-            make.width.equalTo(80)
+            make.leading.equalTo(categoryButtton.snp.trailing).offset(8)
+            make.width.equalTo(80.5)
+        }
+        
+        confirmButtton.snp.makeConstraints { make in
+            make.centerY.equalTo(deleteButton)
+            make.leading.equalTo(deleteButton.snp.trailing).offset(8)
+            make.width.equalTo(80.5)
         }
     }
-    
-    
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -101,7 +95,6 @@ class ButtonSectionView: UICollectionReusableView {
             let popUpVC =  FilterBottmSheetViewController()
             popUpVC.modalPresentationStyle = .overFullScreen
             self.parentViewController?.present(popUpVC, animated: true, completion: nil)
-
         }
     
     @objc
@@ -114,18 +107,22 @@ class ButtonSectionView: UICollectionReusableView {
     }
     
     @objc
-    func didTapSelectButtton(_ sender: UIButton) {
-        if selectButtton.isSelected {
-            selectButtton.setupRoundingButton(title: "선택", image: "btnCheckUnseleted", selected: true)
-            deleteButton.isHidden = true
+    func didTapDeleteButton(_ sender: UIButton) {
+        if deleteButton.isSelected {
+            
+            deleteButton.setupRoundingButton(title: "삭제", image: "btnRemove", selected: true)
+            confirmButtton.isHidden = true
         } else {
-            selectButtton.setupRoundingButton(title: "취소", image: "btnClose", selected: false)
-            deleteButton.isHidden = false
+            deleteButton.setupRoundingButton(title: "취소", image: "btnCancel", selected: true)
+            confirmButtton.isHidden = false
         }
+        
+        NotificationCenter.default.post(name: NSNotification.Name.isDeleteButtonSelected, object: deleteButton.isSelected)
+
     }
     
     @objc
-    func didTapDeleteButton(_ sender: UIButton) {
+    func didTapConfirmButton(_ sender: UIButton) {
 
     }
     
