@@ -17,7 +17,7 @@ struct RequestHandler {
         guard let decodedData = try? decoder.decode(decodeType, from: data)
         else { return .serverErr }
         switch statusCode {
-        case 200: return .success(decodedData)
+        case 200, 201: return .success(decodedData)
         case 400: return .requestErr("")
         case 500: return .serverErr
         default: return .networkFail
