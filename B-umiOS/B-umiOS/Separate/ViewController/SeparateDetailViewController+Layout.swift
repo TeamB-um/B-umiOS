@@ -11,7 +11,9 @@ extension SeparateDetailViewController {
     // MARK: - Methods
     
     func setConstraint(){
-        view.addSubviews([navigationView, navigationDividerView, detailTableView])
+        let navigationHeight = 56 + UIDevice.current.safeAreaInset.top
+        
+        self.view.addSubviews([navigationView, navigationDividerView, detailTableView])
         navigationView.addSubviews([navigationLabel, backButton])
         headerView.addSubviews([gardientBackground, confirmButton, removeButton])
         
@@ -30,13 +32,13 @@ extension SeparateDetailViewController {
         }
         
         navigationLabel.snp.makeConstraints { make in
-            make.center.equalToSuperview()
+            make.centerX.equalToSuperview()
+            make.bottom.equalToSuperview().inset(13 * SizeConstants.screenRatio)
         }
         
         navigationView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-            make.width.equalToSuperview()
-            make.height.equalTo(64 * SizeConstants.screenRatio)
+            make.top.width.equalToSuperview()
+            make.height.equalTo(navigationHeight * SizeConstants.screenRatio)
         }
         
         backButton.snp.makeConstraints { make in
