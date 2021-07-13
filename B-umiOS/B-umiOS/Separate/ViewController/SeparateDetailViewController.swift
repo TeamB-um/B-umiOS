@@ -112,6 +112,7 @@ class SeparateDetailViewController: UIViewController {
     func setTableView(){
         detailTableView.delegate = self
         detailTableView.dataSource = self
+        detailTableView.allowsMultipleSelection = true
         detailTableView.register(SeparateDetailTableViewCell.self, forCellReuseIdentifier: SeparateDetailTableViewCell.identifier)
     }
     

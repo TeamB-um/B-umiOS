@@ -28,38 +28,56 @@ class SeparateDetailTableViewCell: UITableViewCell {
     
     lazy var checkButton = UIButton().then {
         $0.setImage(UIImage(named: "btnCheckEmpty"), for: .normal)
-        $0.addTarget(self, action: #selector(checkCell(_:)), for: .touchUpInside)
     }
     
     // MARK: - Properites
     
     static let identifier = "SeparateDetailTableViewCell"
+    
+    override var isSelected: Bool {
+        didSet {
+            if isSelected {
+                print("check")
+                checkButton.setImage(UIImage(named: "btnCheckColor"), for: .normal)
+            } else {
+                print("empty")
+                checkButton.setImage(UIImage(named: "btnCheckEmpty"), for: .normal)
+            }
+        }
+    }
    
     // MARK: - Initializer
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
-        setView()
-        setConstraint()
+    }
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.setView()
+        contentView.addSubview(mainView)
+    }
+
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: - LifeCycle
     
     // MARK: - Actions
     
-    @objc private func checkCell(_ sender: UIButton) {
-    }
-    
     // MARK: - Method
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.setConstraint()
+    }
     
     func setView(){
         self.contentView.backgroundColor = .background
     }
     
-    func setConstraint(){
-        contentView.addSubview(mainView)
-        
+    func setConstraint(){contentView.addSubview(mainView)
         mainView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(16 * SizeConstants.screenRatio)
             make.top.bottom.equalToSuperview().inset(8 * SizeConstants.screenRatio)
