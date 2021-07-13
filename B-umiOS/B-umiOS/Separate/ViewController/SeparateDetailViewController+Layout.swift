@@ -11,7 +11,7 @@ extension SeparateDetailViewController {
     // MARK: - Methods
     
     func setConstraint(){
-        view.addSubviews([navigationView, navigationDividerView, removeButton, checkButton, detailTableView])
+        view.addSubviews([navigationView, navigationDividerView, confirmButton, removeButton, detailTableView])
         navigationView.addSubviews([navigationLabel, backButton])
         
         navigationLabel.snp.makeConstraints { make in
@@ -35,19 +35,19 @@ extension SeparateDetailViewController {
             make.height.equalTo(1)
         }
         
-        checkButton.snp.makeConstraints { make in
-            make.trailing.equalToSuperview().inset(16 * SizeConstants.screenRatio)
+        removeButton.snp.makeConstraints { make in
+            make.leading.equalToSuperview().inset(16 * SizeConstants.screenRatio)
             make.top.equalTo(navigationDividerView.snp.bottom).offset(16 * SizeConstants.screenRatio)
         }
 
-        removeButton.snp.makeConstraints { make in
-            make.trailing.equalTo(checkButton.snp.leading).offset(-8 * SizeConstants.screenRatio)
-            make.top.equalTo(checkButton)
+        confirmButton.snp.makeConstraints { make in
+            make.leading.equalTo(removeButton.snp.trailing).offset(8 * SizeConstants.screenRatio)
+            make.top.equalTo(removeButton)
         }
 
         detailTableView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
-            make.top.equalTo(checkButton.snp.bottom).offset(8 * SizeConstants.screenRatio)
+            make.top.equalTo(removeButton.snp.bottom).offset(8 * SizeConstants.screenRatio)
             make.bottom.equalToSuperview()
         }
     }

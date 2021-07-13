@@ -24,13 +24,14 @@ class SeparateDetailViewController: UIViewController {
         $0.addTarget(self, action: #selector(didTapBackButton), for: .touchUpInside)
     }
     
-    var removeButton = RoundingButton().then {
-        $0.setupRoundingButton(title: "삭제", image: "btnRemove")
+    var confirmButton = RoundingButton().then {
+        $0.setupRoundingButton(title: "확인", image: "btnCheckUnseleted")
         $0.isHidden = true
     }
     
-    var checkButton = RoundingButton().then {
-        $0.setupRoundingButton(title: "선택", image: "btnCheckUnseleted")
+    var removeButton = RoundingButton().then {
+        //$0.setupRoundingButton(title: "선택", image: "btnCheckUnseleted")
+        $0.setupRoundingButton(title: "삭제", image: "btnRemove")
         $0.addTarget(self, action: #selector(didTapCheckButton), for: .touchUpInside)
     }
     
@@ -62,15 +63,17 @@ class SeparateDetailViewController: UIViewController {
     
     @objc func didTapCheckButton(){
         
-        if self.checkButton.isSelected {
-            self.checkButton.setupRoundingButton(title: "선택", image: "btnCheckUnseleted")
-            self.removeButton.isHidden = true
-            self.checkButton.isSelected = false
+        if self.removeButton.isSelected {
+            self.removeButton.setupRoundingButton(title: "삭제", image: "btnRemove")
+            self.confirmButton.isHidden = true
+            self.removeButton.isSelected = false
+            print(self.removeButton.isSelected)
         }
         else{
-            self.checkButton.setupRoundingButton(title: "취소", image: "btnDelete")
-            self.removeButton.isHidden = false
-            self.checkButton.isSelected = true
+            self.removeButton.setupRoundingButton(title: "취소", image: "btnCancel")
+            self.confirmButton.isHidden = false
+            self.removeButton.isSelected = true
+            print(self.removeButton.isSelected)
         }
         
         self.detailTableView.reloadData()
