@@ -82,7 +82,7 @@ class SeparateDetailViewController: UIViewController {
             vc.modalTransitionStyle = .crossDissolve
             vc.modalPresentationStyle = .overCurrentContext
             
-            self.present(vc, animated: true, completion: nil)
+            self.tabBarController?.present(vc, animated: true, completion: nil)
         }
     }
     
