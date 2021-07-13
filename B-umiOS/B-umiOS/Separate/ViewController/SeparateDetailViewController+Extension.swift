@@ -33,6 +33,13 @@ extension SeparateDetailViewController: UITableViewDelegate {
             
             isActivated()
         }
+        else{
+            let vc = MyWritingPopUpViewController(writing: DummyWriting(trashBin: "유경재활용통", title: "제목", date: Date(), content: "내용"))
+            vc.modalTransitionStyle = .crossDissolve
+            vc.modalPresentationStyle = .overCurrentContext
+                                                      
+            self.tabBarController?.present(vc, animated: true, completion: nil)
+        }
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
