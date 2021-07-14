@@ -41,7 +41,7 @@ class SeparateViewController: UIViewController {
     }
         
     // MARK: - Properties
-    
+    var tag: [Category] = []
     // MARK: - Initializer
     
     // MARK: - LifeCycle
@@ -52,6 +52,7 @@ class SeparateViewController: UIViewController {
         setView()
         setCollectionView()
         setConstraint()
+        fetchCategoriesData()
     }
     
     // MARK: - Actions
@@ -72,8 +73,20 @@ class SeparateViewController: UIViewController {
         separateCollectionView.register(SeperateFooterView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: SeperateFooterView.identifier)
     }
     
-    func setSeperateImage(row : Int, count : Int) -> String{
+    func setSeperateImage(row : Int, count : Int) -> String {
         return "seperate\(row+1)_\(count)"
+    }
+    
+    func fetchCategoriesData() {
+        CategoryService.shared.fetchCategories { result in
+            guard let categories = result as? CategoriesResponse else { return }
+            
+            self.tag = categories.categories
+            print(self.tag)
+            
+            //self.tagCollectionView.reloadData()
+            //self.tagCollectionView.selectItem(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: [])
+        }
     }
     
     // MARK: - Protocols
