@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct CategoryRequest {
+struct CategoryRequest: Codable {
     let name: String
 }
