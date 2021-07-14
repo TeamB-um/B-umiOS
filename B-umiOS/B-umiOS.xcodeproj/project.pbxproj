@@ -29,6 +29,7 @@
 		4F4992E826960B60009541AA /* SeparateDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4992E626960B60009541AA /* SeparateDetailTableViewCell.swift */; };
 		4F4992E926960B60009541AA /* SeparateDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F4992E726960B60009541AA /* SeparateDetailTableViewCell.xib */; };
 		4F4992EB2696F685009541AA /* SeparateGraphPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4992EA2696F685009541AA /* SeparateGraphPopUpViewController.swift */; };
+		4F66FB0F269F0BEE007EC311 /* SeparateStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F66FB0E269F0BEE007EC311 /* SeparateStyle.swift */; };
 		4F7FD2E82690E5B400122964 /* SettingSeparateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7FD2E72690E5B400122964 /* SettingSeparateViewController.swift */; };
 		4F7FD2EC26920F3800122964 /* SeparateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7FD2EA26920F3800122964 /* SeparateTableViewCell.swift */; };
 		4F7FD2ED26920F3800122964 /* SeparateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F7FD2EB26920F3800122964 /* SeparateTableViewCell.xib */; };
@@ -133,6 +134,7 @@
 		4F4992E626960B60009541AA /* SeparateDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparateDetailTableViewCell.swift; sourceTree = "<group>"; };
 		4F4992E726960B60009541AA /* SeparateDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeparateDetailTableViewCell.xib; sourceTree = "<group>"; };
 		4F4992EA2696F685009541AA /* SeparateGraphPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparateGraphPopUpViewController.swift; sourceTree = "<group>"; };
+		4F66FB0E269F0BEE007EC311 /* SeparateStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparateStyle.swift; sourceTree = "<group>"; };
 		4F7FD2E72690E5B400122964 /* SettingSeparateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSeparateViewController.swift; sourceTree = "<group>"; };
 		4F7FD2EA26920F3800122964 /* SeparateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparateTableViewCell.swift; sourceTree = "<group>"; };
 		4F7FD2EB26920F3800122964 /* SeparateTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeparateTableViewCell.xib; sourceTree = "<group>"; };
@@ -256,6 +258,7 @@
 		4F2D1F77269D8A1F00D941A1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4F66FB0E269F0BEE007EC311 /* SeparateStyle.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -828,6 +831,7 @@
 				AB7F6E5B269BF7AC00EF9C6E /* HomeViewController+Layout.swift in Sources */,
 				AB21E3C6269D666800D32EFF /* RewardResponse.swift in Sources */,
 				AB21E3C4269D64CE00D32EFF /* Reward.swift in Sources */,
+				4F66FB0F269F0BEE007EC311 /* SeparateStyle.swift in Sources */,
 				AB8C3F5B26935E8600B2BA30 /* WritingViewController+Layout.swift in Sources */,
 				AB8C3F5D2695743E00B2BA30 /* NotificationName+Extension.swift in Sources */,
 				AB7F6DE726975A0900EF9C6E /* ThrowTrashViewController+Layout.swift in Sources */,
