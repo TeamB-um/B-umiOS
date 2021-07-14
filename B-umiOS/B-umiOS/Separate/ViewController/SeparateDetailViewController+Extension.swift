@@ -57,8 +57,7 @@ extension SeparateDetailViewController: UITableViewDelegate {
 
 extension SeparateDetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(writings.count)
-        return writings.count
+        writings.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -68,7 +67,6 @@ extension SeparateDetailViewController: UITableViewDataSource {
         cell.checkButton.isHidden = !self.removeButton.isSelected
         
         let writing = writings[indexPath.row]
-        print(writing)
         cell.setData(title: writing.title, contents: writing.text)
         
         return cell
