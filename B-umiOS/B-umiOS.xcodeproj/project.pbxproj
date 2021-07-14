@@ -253,6 +253,13 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		4F2D1F77269D8A1F00D941A1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		4F34E1042693617A00A54336 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -635,6 +642,7 @@
 		ABB24E6D268E20DD006FEE57 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				4F2D1F77269D8A1F00D941A1 /* Model */,
 				FC6448CF269847CA00C8E30C /* SeparateViewController.swift */,
 				FC6448CE269847CA00C8E30C /* SeparateViewController+Extension.swift */,
 				4F4992962693F9F2009541AA /* SeparateViewController+Layout.swift */,

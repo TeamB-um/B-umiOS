@@ -15,8 +15,8 @@ class RoundingButton: UIButton {
     }()
     
     private let buttonImage: UIImageView = {
-        var image = UIImageView()
-        return image
+        var imageview = UIImageView()
+        return imageview
     }()
 
     func setupRoundingButton(title: String, image: String, selected: Bool) {
@@ -56,7 +56,8 @@ class RoundingButton: UIButton {
         
         buttonTitle.text = title
         buttonTitle.font = .nanumSquareFont(type: .regular, size: 14)
-        buttonImage.image = UIImage(named: image)
+        buttonImage.tintColor = .iconGray
+        buttonImage.image = UIImage(named: image)?.withRenderingMode(.alwaysTemplate)
         buttonTitle.textColor = .iconGray
         
         self.snp.updateConstraints { make in
@@ -69,6 +70,19 @@ class RoundingButton: UIButton {
         buttonTitle.snp.makeConstraints { make in
             make.centerY.equalTo(buttonImage)
             make.leading.equalTo(buttonImage.snp.trailing).offset(5)
+        }
+    }
+    
+    func isActivated(_ isSelected : Bool){
+        if(isSelected){
+            buttonTitle.textColor = .white
+            buttonImage.tintColor = .white
+            self.backgroundColor = .blue2Main
+        }
+        else{
+            buttonTitle.textColor = .iconGray
+            buttonImage.tintColor = .iconGray
+            self.backgroundColor = .white
         }
     }
 }
