@@ -47,12 +47,16 @@ class SeparatePopUpViewController: UIViewController {
         $0.layer.borderColor = UIColor.paper2.cgColor
         $0.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10 * SizeConstants.screenRatio, height: self.view.frame.height))
         $0.leftViewMode = .always
+        $0.text = self.trashBin?.name
     }
 
     private lazy var textNumberLabel = UILabel().then {
         $0.textColor = .green2Main
-        $0.text = "0/6"
         $0.font = UIFont.systemFont(ofSize: 13)
+
+        if let count = self.textfield.text?.count {
+            $0.text = "\(count)/6"
+        }
     }
 
     private lazy var boilerLabel = UILabel().then {
