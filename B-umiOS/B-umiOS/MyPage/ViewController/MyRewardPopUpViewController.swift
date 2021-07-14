@@ -56,11 +56,7 @@ class MyRewardPopUpViewController: UIViewController {
         $0.image = UIImage(named: "group163")
     }
     
-    private let contentView = UIView()
-    
     // MARK: - Properties
-    
-//    private let reward: DummyReward
     
     // MARK: - Initializer
     
