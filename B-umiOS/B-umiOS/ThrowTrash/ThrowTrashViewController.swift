@@ -81,7 +81,6 @@ class ThrowTrashViewController: UIViewController {
     init(trashType: TrashType, writingRequest: WritingRequest) {
         self.trashType = trashType
         self.writing = writingRequest
-        print(writing)
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -116,7 +115,6 @@ class ThrowTrashViewController: UIViewController {
                 throwAwayTrash()
                 
                 WritingService.shared.createWriting(writing: writing) { result in
-                    print(result)
                     if result {
                         self.showToast()
                     } else {
