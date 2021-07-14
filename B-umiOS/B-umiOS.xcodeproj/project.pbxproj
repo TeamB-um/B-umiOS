@@ -112,6 +112,7 @@
 		FCAE097D269F3D7A00B91A08 /* TrashCanService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCAE097C269F3D7A00B91A08 /* TrashCanService.swift */; };
 		FCAE097F269F3EF300B91A08 /* TrashCan.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCAE097E269F3EF300B91A08 /* TrashCan.swift */; };
 		FCAE0981269F46B600B91A08 /* TrashCanResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCAE0980269F46B600B91A08 /* TrashCanResponse.swift */; };
+		FCAE0985269F759000B91A08 /* CollectionViewLeftAlignFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCAE0984269F759000B91A08 /* CollectionViewLeftAlignFlowLayout.swift */; };
 		FCE3608C2694B25F00866525 /* FilterBottmSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE3608B2694B25F00866525 /* FilterBottmSheetViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -225,6 +226,7 @@
 		FCAE097C269F3D7A00B91A08 /* TrashCanService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashCanService.swift; sourceTree = "<group>"; };
 		FCAE097E269F3EF300B91A08 /* TrashCan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashCan.swift; sourceTree = "<group>"; };
 		FCAE0980269F46B600B91A08 /* TrashCanResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashCanResponse.swift; sourceTree = "<group>"; };
+		FCAE0984269F759000B91A08 /* CollectionViewLeftAlignFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewLeftAlignFlowLayout.swift; sourceTree = "<group>"; };
 		FCE3608B2694B25F00866525 /* FilterBottmSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterBottmSheetViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -679,6 +681,7 @@
 				FC0541BF2691B7AE00FFA9D1 /* MyWritingCollectionViewCell.swift */,
 				FC6448CC26983F8A00C8E30C /* MyRewardCollectionViewCell.swift */,
 				FC4AFBAA269899F800B9801B /* MyTrashBinTableViewCell.swift */,
+				FCAE0984269F759000B91A08 /* CollectionViewLeftAlignFlowLayout.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -843,6 +846,7 @@
 				ABB24DF4268CD9B7006FEE57 /* CardCollectionViewCell.swift in Sources */,
 				FC1D6F23269E0FD60060921E /* RewardService.swift in Sources */,
 				AB7F6E5B269BF7AC00EF9C6E /* HomeViewController+Layout.swift in Sources */,
+				FCAE0985269F759000B91A08 /* CollectionViewLeftAlignFlowLayout.swift in Sources */,
 				AB21E3C6269D666800D32EFF /* RewardResponse.swift in Sources */,
 				AB21E3C4269D64CE00D32EFF /* Reward.swift in Sources */,
 				4F66FB0F269F0BEE007EC311 /* SeparateStyle.swift in Sources */,

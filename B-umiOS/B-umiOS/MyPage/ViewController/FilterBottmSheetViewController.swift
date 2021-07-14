@@ -29,7 +29,7 @@ class FilterBottmSheetViewController: UIViewController {
     }
     
     private lazy var categoryTagCollecitonView : UICollectionView = {
-        var layout = UICollectionViewFlowLayout()
+        var layout = CollectionViewLeftAlignFlowLayout()
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .clear
