@@ -39,7 +39,6 @@ class DeletePopUpViewController: UIViewController {
     
     private lazy var cancelButton = UIButton(primaryAction: UIAction(handler: { _ in
         self.dismiss(animated: true, completion: nil)
-        self.popUpDelegate?.writingPopUpViewPush(trash: .trash)
     })).then {
         $0.setTitle("취소", for: .normal)
         $0.setTitleColor(.paper3, for: .normal)

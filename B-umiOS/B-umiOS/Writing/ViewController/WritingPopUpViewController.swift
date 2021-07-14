@@ -41,19 +41,23 @@ class WritingPopUpViewController: UIViewController {
     
     private lazy var deleteButton = UIButton(primaryAction: UIAction(handler: { _ in
         self.dismiss(animated: true, completion: nil)
-        self.popUpDelegate?.writingPopUpViewPush(trash: .trash)
+        
+        self.writingRequest.isWriting = false
+        self.popUpDelegate?.writingPopUpViewPush(trash: .trash, writing: self.writingRequest)
     })).then {
         $0.setTitle("삭제", for: .normal)
         $0.titleLabel?.font = UIFont.nanumSquareFont(type: .bold, size: 18)
         $0.setTitleColor(.paper3, for: .normal)
         $0.cornerRound(radius: 10)
         $0.layer.borderWidth = 1.0
-        $0.layer.borderColor = UIColor(red: 210/255, green: 210/255, blue: 210/255, alpha: 1).cgColor
+        $0.layer.borderColor = UIColor(red: 210 / 255, green: 210 / 255, blue: 210 / 255, alpha: 1).cgColor
     }
     
     private lazy var archiveButton = UIButton(primaryAction: UIAction(handler: { _ in
         self.dismiss(animated: true, completion: nil)
-        self.popUpDelegate?.writingPopUpViewPush(trash: .separate)
+        
+        self.writingRequest.isWriting = true
+        self.popUpDelegate?.writingPopUpViewPush(trash: .separate, writing: self.writingRequest)
     })).then {
         $0.backgroundColor = .blue2Main
         $0.setTitle("보관", for: .normal)
@@ -65,8 +69,19 @@ class WritingPopUpViewController: UIViewController {
     // MARK: - Properties
     
     var popUpDelegate: WritingPopUpDelegate?
+    var writingRequest: WritingRequest
     
     // MARK: - Initializer
+    
+    init(writing: WritingRequest) {
+        self.writingRequest = writing
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - LifeCycle
     
