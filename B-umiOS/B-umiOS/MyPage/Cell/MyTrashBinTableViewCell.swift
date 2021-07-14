@@ -17,26 +17,22 @@ class MyTrashBinTableViewCell: UITableViewCell {
     }
     
     var categoryLabel = UILabel().then {
-        $0.text = "거지챌린지"
         $0.font = UIFont.nanumSquareFont(type: .regular, size: 14)
         $0.textColor = .blue2Main
     }
     
     var remainingDayLabel = UILabel().then {
-        $0.text = "D-365"
         $0.font = UIFont.nanumSquareFont(type: .regular, size: 14)
         $0.textColor = .pink2Main
         $0.textAlignment = .right
     }
     
     var headerLabel = UILabel().then {
-        $0.text = "거지챌린지"
         $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 18)
         $0.textColor = .header
     }
     
     var previewLabel = UILabel().then {
-        $0.text = "버들가쥣쓰는 야카나..다른 재목을 묵는 버들가짓스다.버들가쥣쓰는 야카나..다른 재목을 묵는 버들가짓스다.버들가쥣쓰는 야카나..다른 재목을 묵는 버들가짓스다."
         $0.font = UIFont.nanumSquareFont(type: .regular, size: 14)
         $0.textColor = .textGray
         $0.lineBreakMode = .byTruncatingTail
@@ -52,6 +48,13 @@ class MyTrashBinTableViewCell: UITableViewCell {
         setConstraint()
     }
     // MARK: - Method
+    
+    func setTrashBinData(data:[TrashCan], index: Int){
+        categoryLabel.text = data[index].category.name
+        remainingDayLabel.text = "D-\(data[index].dDay)"
+        headerLabel.text = data[index].title
+        previewLabel.text = data[index].text
+    }
     
     func setView(){
         self.contentView.backgroundColor = .background
