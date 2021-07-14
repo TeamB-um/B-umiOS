@@ -71,11 +71,12 @@ class SeparatePopUpViewController: UIViewController {
     
     private let confirmButton = UIButton().then {
         $0.cornerRound(radius: 10)
-        $0.backgroundColor = .blue2Main
+        $0.backgroundColor = .disable
         $0.tintColor = .white
         $0.setTitle("확인", for: .normal)
         $0.titleLabel?.font = UIFont.nanumSquareFont(type: .bold, size: 18)
         $0.addTarget(self, action: #selector(didTapConfirmButton(_:)), for: .touchUpInside)
+        $0.isEnabled = false
     }
     
     private var stackView = UIStackView().then {
@@ -119,6 +120,7 @@ class SeparatePopUpViewController: UIViewController {
     }
     
     @objc private func didTapConfirmButton(_ sender: UIButton) {
+        print("Dd")
         // 확인 호출 (add, modify method에 따라 구분)
         
         // .success => ok일시
@@ -235,6 +237,14 @@ extension SeparatePopUpViewController: UITextFieldDelegate {
         let length = (textField.text?.count)! - range.length + string.count
         
         textNumberLabel.text = "\(length > limitLength ? limitLength : length)/\(limitLength)"
+        
+        if length == 0 {
+            confirmButton.isEnabled = false
+            confirmButton.backgroundColor = UIColor.disable
+        } else {
+            confirmButton.isEnabled = true
+            confirmButton.backgroundColor = .blue2Main
+        }
         
         return updatedText.count <= limitLength
     }
