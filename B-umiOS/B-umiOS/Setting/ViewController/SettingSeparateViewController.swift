@@ -157,9 +157,7 @@ class SettingSeparateViewController: UIViewController {
     
     func fetchCategories() {
         CategoryService.shared.fetchCategories { result in
-            print(result)
             guard let categories = result as? CategoriesResponse else { return }
-            print(categories)
             
             self.bins = categories.categories
             self.separateTableView.reloadData()
