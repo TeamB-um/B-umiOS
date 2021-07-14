@@ -17,4 +17,7 @@ struct APIConstants {
 
     /// category API
     static let categoryURL = APIConstants.baseURL + "/categories"
+    
+    /// writing API
+    static let writingURL = APIConstants.baseURL + "/writings"
 }
