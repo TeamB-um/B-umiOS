@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SettingViewController: UIViewController, popupDelegate{
+class SettingViewController: UIViewController, popupDelegate {
     // MARK: - UIComponenets
 
     var navigationView = UIView().then {
@@ -86,46 +86,43 @@ class SettingViewController: UIViewController, popupDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setView()
+        self.setView()
         setConstraint()
     }
 
     // MARK: - Actions
 
     @objc
-        private func didTapTrashBinManageButton(_ sender: UIButton) {
-            if let pushVC = self.storyboard?.instantiateViewController(withIdentifier: SettingSeparateViewController.identifier){
-                self.navigationController?.pushViewController(pushVC, animated: true)
-            }
+    private func didTapTrashBinManageButton(_ sender: UIButton) {
+        if let pushVC = self.storyboard?.instantiateViewController(withIdentifier: SettingSeparateViewController.identifier) {
+            self.navigationController?.pushViewController(pushVC, animated: true)
         }
+    }
     
     @objc
-        private func setPeriodButton(_ sender: UIButton) {
-            
-            let popUpVC = self.storyboard?.instantiateViewController(identifier: "PeriodPopUpViewController") as! PeriodPopUpViewController
-            popUpVC.modalPresentationStyle = .overFullScreen
-            popUpVC.modalTransitionStyle = .coverVertical
-            
-            popUpVC.popupdelegate = self
-            
-            DispatchQueue.main.async {
-                self.view.addSubview(self.backgroundView)
-                self.backgroundView.snp.makeConstraints { make in
-                    make.edges.equalToSuperview()
-                }
+    private func setPeriodButton(_ sender: UIButton) {
+        let popUpVC = self.storyboard?.instantiateViewController(identifier: "PeriodPopUpViewController") as! PeriodPopUpViewController
+        popUpVC.modalPresentationStyle = .overFullScreen
+        popUpVC.modalTransitionStyle = .coverVertical
+        
+        popUpVC.popupdelegate = self
+        
+        DispatchQueue.main.async {
+            self.view.addSubview(self.backgroundView)
+            self.backgroundView.snp.makeConstraints { make in
+                make.edges.equalToSuperview()
             }
-            self.present(popUpVC, animated: true, completion: nil)
-            
-            
         }
+        self.present(popUpVC, animated: true, completion: nil)
+    }
     
     // MARK: - Methods
     
-    func setView(){
+    func setView() {
         self.view.backgroundColor = .background
     }
     
-    func createView(text : String, items: [NSCoding]) -> UIView{
+    func createView(text: String, items: [NSCoding]) -> UIView {
         let newView = UIView().then {
             $0.backgroundColor = .background
         }
@@ -144,7 +141,7 @@ class SettingViewController: UIViewController, popupDelegate{
         
         newView.addSubviews([label, stackView])
         
-        for item in items{
+        for item in items {
             stackView.addArrangedSubview(item as! UIView)
         }
         
@@ -171,12 +168,12 @@ class SettingViewController: UIViewController, popupDelegate{
         self.backgroundView.removeFromSuperview()
     }
     
-    func sendPeriod(period : Int) {
-        trashbinPeriodLabel.text = "\(period)일"
+    func sendPeriod(period: Int) {
+        self.trashbinPeriodLabel.text = "\(period)일"
     }
 }
 
 protocol popupDelegate {
     func closeBottomSheet()
-    func sendPeriod(period : Int)
+    func sendPeriod(period: Int)
 }
