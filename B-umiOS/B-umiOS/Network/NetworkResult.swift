@@ -14,3 +14,8 @@ enum NetworkResult<T> {
     case serverErr
     case networkFail
 }
+
+enum ErrorMessage {
+    case conflict
+    case wrongRequest
+}
