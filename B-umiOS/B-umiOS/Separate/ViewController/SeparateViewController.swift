@@ -82,9 +82,8 @@ class SeparateViewController: UIViewController {
             guard let categories = result as? CategoriesResponse else { return }
             
             self.tag = categories.categories
-            print(self.tag)
             
-            //self.tagCollectionView.reloadData()
+            self.separateCollectionView.reloadData()
             //self.tagCollectionView.selectItem(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: [])
         }
     }

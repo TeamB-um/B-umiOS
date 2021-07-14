@@ -10,8 +10,6 @@ import SnapKit
 
 // MARK: - UICollectionViewDelegateFlowLayout
 
-let trash: [String] = ["aaa","bbb","cccc","dd","eee","fff","empty"]
-
 extension SeparateViewController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -35,23 +33,17 @@ extension SeparateViewController: UICollectionViewDelegateFlowLayout {
 
 extension SeparateViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return trash.count
+        return tag.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SeparateCollectionViewCell.identifier, for: indexPath) as? SeparateCollectionViewCell else {
             return UICollectionViewCell()
         }
-        
-        cell.separateName.text = trash[indexPath.row]
-        
-        if(trash[indexPath.row].contains("empty")){
-            cell.separateImage.image = UIImage(named: "group174")
-        }
-        else{
-            cell.separateImage.image = UIImage(named: setSeperateImage(row: indexPath.row, count: 0))
-        }
-    
+         
+        let separate = tag[indexPath.row]
+        cell.setData(name: separate.name, index: separate.index!, count: separate.count!)
+
         return cell
     }
 }
@@ -61,20 +53,20 @@ extension SeparateViewController: UICollectionViewDataSource {
 extension SeparateViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        if(trash[indexPath.row].contains("empty")){
-            let storyboard = UIStoryboard.init(name: "Setting", bundle: nil)
-            if let nextVC = storyboard.instantiateViewController(identifier: SeparatePopUpViewController.identifier) as? SeparatePopUpViewController{
-                nextVC.method = .add
-                nextVC.modalPresentationStyle = .overFullScreen
-                nextVC.modalTransitionStyle = .crossDissolve
-                self.present(nextVC, animated: true, completion: nil)
-            }
-        }
-        else{
-            if let pushVC = self.storyboard?.instantiateViewController(withIdentifier: "SeparateDetailViewController"){
-                self.navigationController?.pushViewController(pushVC, animated: true)
-            }
-        }
+//        if(trash[indexPath.row].contains("empty")){
+//            let storyboard = UIStoryboard.init(name: "Setting", bundle: nil)
+//            if let nextVC = storyboard.instantiateViewController(identifier: SeparatePopUpViewController.identifier) as? SeparatePopUpViewController{
+//                nextVC.method = .add
+//                nextVC.modalPresentationStyle = .overFullScreen
+//                nextVC.modalTransitionStyle = .crossDissolve
+//                self.present(nextVC, animated: true, completion: nil)
+//            }
+//        }
+//        else{
+//            if let pushVC = self.storyboard?.instantiateViewController(withIdentifier: "SeparateDetailViewController"){
+//                self.navigationController?.pushViewController(pushVC, animated: true)
+//            }
+//        }
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
