@@ -31,7 +31,6 @@ class SeparateTableViewCell: UITableViewCell {
     // MARK: - Properties
     
     static let identifier = "SeparateTableViewCell"
-    var textdelegate : TextDelegate?
     
     // MARK: - Initializer
     
@@ -50,11 +49,8 @@ class SeparateTableViewCell: UITableViewCell {
     
     @objc
         private func didTapModifyButton(_ sender: UIButton) {
-            let nextVC = SeparatePopUpViewController()
-            self.textdelegate = nextVC
-            textdelegate?.sendData(name: seperateName.text ?? "")
+            let nextVC = SeparatePopUpViewController(method: .modify)
             
-            nextVC.method = .modify
             nextVC.modalPresentationStyle = .overFullScreen
             nextVC.modalTransitionStyle = .crossDissolve
             self.parentViewController?.tabBarController?.present(nextVC, animated: true, completion: nil)

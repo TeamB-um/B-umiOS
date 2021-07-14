@@ -92,12 +92,22 @@ class SeparatePopUpViewController: UIViewController {
     
     // MARK: - Properties
 
-    var method: PopUpMethod?
+    var method: PopUpMethod
     var delegate: changeCategoryDataDelegate?
     static let identifier = "SeparatePopUpViewController"
     private let limitLength = 6
     
     // MARK: - Initializer
+    
+    init(method: PopUpMethod) {
+        self.method = method
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - LifeCycle
 
@@ -153,8 +163,6 @@ class SeparatePopUpViewController: UIViewController {
             }
         case .modify:
             print("modify")
-        case .none:
-            break
         }
         // 확인 호출 (add, modify method에 따라 구분)
         
@@ -205,8 +213,6 @@ class SeparatePopUpViewController: UIViewController {
         case .modify:
             headerLabel.text = "분리수거 수정"
             subLabel.text = "분리수거함의 이름을 수정해보세요."
-        case .none:
-            break
         }
     }
     
@@ -283,16 +289,4 @@ extension SeparatePopUpViewController: UITextFieldDelegate {
         
         return updatedText.count <= limitLength
     }
-}
-
-extension SeparatePopUpViewController: TextDelegate {
-    func sendData(name: String) {
-        DispatchQueue.main.async {
-            self.textfield.text = name
-        }
-    }
-}
-
-protocol TextDelegate {
-    func sendData(name: String)
 }

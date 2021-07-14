@@ -62,13 +62,11 @@ extension SeparateViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         if(trash[indexPath.row].contains("empty")){
-            let storyboard = UIStoryboard.init(name: "Setting", bundle: nil)
-            if let nextVC = storyboard.instantiateViewController(identifier: SeparatePopUpViewController.identifier) as? SeparatePopUpViewController{
-                nextVC.method = .add
-                nextVC.modalPresentationStyle = .overFullScreen
-                nextVC.modalTransitionStyle = .crossDissolve
-                self.present(nextVC, animated: true, completion: nil)
-            }
+            let nextVC = SeparatePopUpViewController(method: .add)
+            
+            nextVC.modalPresentationStyle = .overFullScreen
+            nextVC.modalTransitionStyle = .crossDissolve
+            self.present(nextVC, animated: true, completion: nil)
         }
         else{
             if let pushVC = self.storyboard?.instantiateViewController(withIdentifier: "SeparateDetailViewController"){
