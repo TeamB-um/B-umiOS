@@ -11,19 +11,19 @@ import UIKit
 
 extension SeparateDetailViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return headerView
+        headerView
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 72 * SizeConstants.screenRatio
+        72 * SizeConstants.screenRatio
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        return bottomView
+        bottomView
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 80
+        80
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -34,7 +34,10 @@ extension SeparateDetailViewController: UITableViewDelegate {
             isActivated()
         }
         else{
-            let vc = MyWritingPopUpViewController(writing: DummyWriting(trashBin: "유경재활용통", title: "제목", date: Date(), content: "내용"))
+            let writing = writings[indexPath.row]
+            let createdDate = Date().stringToDate(date: writings[indexPath.row].createdDate)
+            let vc = MyWritingPopUpViewController(writing: DummyWriting(trashBin: writing.category.name, title: writing.title, date: createdDate, content: writing.text))
+            
             vc.modalTransitionStyle = .crossDissolve
             vc.modalPresentationStyle = .overCurrentContext
                                                       
@@ -57,7 +60,7 @@ extension SeparateDetailViewController: UITableViewDelegate {
 
 extension SeparateDetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        writings.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -65,6 +68,9 @@ extension SeparateDetailViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         cell.checkButton.isHidden = !self.removeButton.isSelected
+        
+        let writing = writings[indexPath.row]
+        cell.setData(title: writing.title, contents: writing.text)
         
         return cell
     }

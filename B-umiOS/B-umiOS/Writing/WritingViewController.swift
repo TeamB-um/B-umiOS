@@ -201,7 +201,7 @@ class WritingViewController: UIViewController {
         CategoryService.shared.fetchCategories { result in
             guard let categories = result as? CategoriesResponse else { return }
             
-            self.tag = categories.categories
+            self.tag = categories.category
             self.guideLabel.isHidden = self.tag.count != 0
             self.guideImage.isHidden = self.tag.count != 0
             

@@ -70,6 +70,11 @@ class SeparateDetailTableViewCell: UITableViewCell {
         self.setConstraint()
     }
     
+    func setData(title: String, contents : String){
+        self.titleLabel.text = title
+        self.previewLabel.text = contents
+    }
+    
     func setView(){
         self.contentView.backgroundColor = .background
     }
@@ -91,6 +96,7 @@ class SeparateDetailTableViewCell: UITableViewCell {
             make.leading.equalTo(titleLabel.snp.leading)
             make.top.equalTo(titleLabel.snp.bottom).offset(18 * SizeConstants.screenRatio)
             make.bottom.equalToSuperview().inset(18 * SizeConstants.screenRatio)
+            make.trailing.equalToSuperview().inset(16 * SizeConstants.screenRatio)
         }
         
         checkButton.snp.makeConstraints { make in

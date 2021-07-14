@@ -49,8 +49,18 @@ class SeparateCollectionViewCell: UICollectionViewCell {
     // MARK: - Actions
     
     // MARK: - Methods
-    
-    // MARK: - Actions
+    func setData(name : String, index: Int, count: Int){
+        self.separateName.text = name
+        
+        if(name == "추가하기"){
+            self.separateName.textColor = UIColor.textGray
+            self.separateImage.image = UIImage(named: "group174")
+        }
+        else{
+            self.separateName.textColor = SeparateStyle.color[index]
+            self.separateImage.image = UIImage(named: "\(SeparateStyle.image[index])\(count)")
+        }
+    }
     
     func setConstraint(){
         self.contentView.addSubviews([separateImage, separateName])

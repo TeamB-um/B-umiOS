@@ -10,8 +10,6 @@ import SnapKit
 
 // MARK: - UICollectionViewDelegateFlowLayout
 
-let trash: [String] = ["aaa","bbb","cccc","dd","eee","fff","empty"]
-
 extension SeparateViewController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -35,23 +33,27 @@ extension SeparateViewController: UICollectionViewDelegateFlowLayout {
 
 extension SeparateViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return trash.count
+        
+        if(tag.count < 8){
+            return tag.count+1
+        }
+        return tag.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SeparateCollectionViewCell.identifier, for: indexPath) as? SeparateCollectionViewCell else {
             return UICollectionViewCell()
         }
-        
-        cell.separateName.text = trash[indexPath.row]
-        
-        if(trash[indexPath.row].contains("empty")){
-            cell.separateImage.image = UIImage(named: "group174")
+         
+        if(indexPath.row == tag.count){
+            cell.setData(name: "추가하기", index: 0, count: 0)
         }
+        
         else{
-            cell.separateImage.image = UIImage(named: setSeperateImage(row: indexPath.row, count: 0))
+            let separate = tag[indexPath.row]
+            cell.setData(name: separate.name, index: separate.index ?? 0, count: separate.count ?? 0)
         }
-    
+
         return cell
     }
 }
@@ -60,8 +62,8 @@ extension SeparateViewController: UICollectionViewDataSource {
 
 extension SeparateViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        if(trash[indexPath.row].contains("empty")){
+    
+        if(indexPath.row == tag.count){
             let storyboard = UIStoryboard.init(name: "Setting", bundle: nil)
             if let nextVC = storyboard.instantiateViewController(identifier: SeparatePopUpViewController.identifier) as? SeparatePopUpViewController{
                 nextVC.method = .add
@@ -71,9 +73,12 @@ extension SeparateViewController: UICollectionViewDelegate {
             }
         }
         else{
-            if let pushVC = self.storyboard?.instantiateViewController(withIdentifier: "SeparateDetailViewController"){
-                self.navigationController?.pushViewController(pushVC, animated: true)
-            }
+            guard let pushVC = self.storyboard?.instantiateViewController(withIdentifier: SeparateDetailViewController.identifier) as? SeparateDetailViewController else{return}
+            
+            pushVC.categoryID = tag[indexPath.row].id
+            
+            self.navigationController?.pushViewController(pushVC, animated: true)
+            
         }
     }
     

@@ -41,6 +41,7 @@ class SeparateViewController: UIViewController {
     }
         
     // MARK: - Properties
+    var tag: [Category] = []
     
     // MARK: - Initializer
     
@@ -52,6 +53,10 @@ class SeparateViewController: UIViewController {
         setView()
         setCollectionView()
         setConstraint()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        fetchCategoriesData()
     }
     
     // MARK: - Actions
@@ -72,8 +77,18 @@ class SeparateViewController: UIViewController {
         separateCollectionView.register(SeperateFooterView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: SeperateFooterView.identifier)
     }
     
-    func setSeperateImage(row : Int, count : Int) -> String{
+    func setSeperateImage(row : Int, count : Int) -> String {
         return "seperate\(row+1)_\(count)"
+    }
+    
+    func fetchCategoriesData() {
+        CategoryService.shared.fetchCategories { result in
+            print(result)
+            guard let categories = result as? CategoriesResponse else { return }
+            
+            self.tag = categories.category
+            self.separateCollectionView.reloadData()
+        }
     }
     
     // MARK: - Protocols

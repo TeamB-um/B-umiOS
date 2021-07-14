@@ -8,5 +8,5 @@
 import Foundation
 
 struct CategoriesResponse: Codable {
-    let categories: [Category]
+    let category: [Category]
 }
