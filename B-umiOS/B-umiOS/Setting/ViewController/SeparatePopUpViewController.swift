@@ -12,6 +12,10 @@ enum PopUpMethod {
     case modify
 }
 
+protocol changeCategoryDataDelegate {
+    func changeCategoryData(data: [Category])
+}
+
 class SeparatePopUpViewController: UIViewController {
     // MARK: - UIComponenets
     
@@ -89,6 +93,7 @@ class SeparatePopUpViewController: UIViewController {
     // MARK: - Properties
 
     var method: PopUpMethod?
+    var delegate: changeCategoryDataDelegate?
     static let identifier = "SeparatePopUpViewController"
     private let limitLength = 6
     
@@ -120,7 +125,37 @@ class SeparatePopUpViewController: UIViewController {
     }
     
     @objc private func didTapConfirmButton(_ sender: UIButton) {
-        print("Dd")
+        switch method {
+        case .add:
+            if let name = textfield.text {
+                let category = CategoryRequest(name: name)
+                
+                CategoryService.shared.createCategory(category: category) { response in
+                    guard let result = response as? NetworkResult<Any> else { return }
+                    
+                    switch result {
+                    case .success(let data):
+                        guard let general = data as? GeneralResponse<CategoriesResponse> else { return }
+                        
+                        if let categories = general.data?.category {
+                            self.delegate?.changeCategoryData(data: categories)
+                            self.dismiss(animated: true, completion: nil)
+                        }
+                    case .requestErr(let message):
+                        guard let msg = message as? ErrorMessage else { return }
+                        if msg == .conflict {
+                            /// 409 status Code 처리
+                        }
+                    case .pathErr, .serverErr, .networkFail:
+                        break
+                    }
+                }
+            }
+        case .modify:
+            print("modify")
+        case .none:
+            break
+        }
         // 확인 호출 (add, modify method에 따라 구분)
         
         // .success => ok일시

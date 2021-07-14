@@ -52,7 +52,13 @@ class SettingSeparateViewController: UIViewController {
     
     var bins: [Category] = [] {
         didSet {
-            trashbinStatusNumber.text = "\(bins.count)/9"
+            trashbinStatusNumber.text = "\(bins.count)/8"
+            
+            if bins.count == 8 {
+                addButton.isEnabled = false
+            } else {
+                addButton.isEnabled = true
+            }
         }
     }
 
@@ -68,9 +74,7 @@ class SettingSeparateViewController: UIViewController {
         setView()
         setConstraint()
         setTableView()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
+        
         fetchCategories()
     }
     
@@ -85,6 +89,7 @@ class SettingSeparateViewController: UIViewController {
     private func didTapAddButton(_ sender: UIButton) {
         if let nextVC = storyboard?.instantiateViewController(identifier: SeparatePopUpViewController.identifier) as? SeparatePopUpViewController {
             nextVC.method = .add
+            nextVC.delegate = self
             nextVC.modalPresentationStyle = .overFullScreen
             nextVC.modalTransitionStyle = .crossDissolve
             present(nextVC, animated: true, completion: nil)
@@ -159,7 +164,7 @@ class SettingSeparateViewController: UIViewController {
         CategoryService.shared.fetchCategories { result in
             guard let categories = result as? CategoriesResponse else { return }
             
-            self.bins = categories.categories
+            self.bins = categories.category
             self.separateTableView.reloadData()
         }
     }
@@ -180,5 +185,12 @@ extension SettingSeparateViewController: UITableViewDataSource {
         cell.selectionStyle = .none
         cell.seperateName.text = bins[indexPath.row].name
         return cell
+    }
+}
+
+extension SettingSeparateViewController: changeCategoryDataDelegate {
+    func changeCategoryData(data: [Category]) {
+        bins = data
+        separateTableView.reloadData()
     }
 }
