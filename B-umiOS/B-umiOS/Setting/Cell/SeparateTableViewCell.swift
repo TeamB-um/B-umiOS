@@ -7,6 +7,8 @@
 
 import UIKit
 
+//protocol
+
 class SeparateTableViewCell: UITableViewCell {
     // MARK: - UIComponenets
     
@@ -43,23 +45,19 @@ class SeparateTableViewCell: UITableViewCell {
             vc.modalTransitionStyle = .crossDissolve
             vc.modalPresentationStyle = .overCurrentContext
             
-            self.window?.rootViewController?.present(vc, animated: true, completion: nil)
+            self.parentViewController?.tabBarController?.present(vc, animated: true, completion: nil)
         }
     
     @objc
         private func didTapModifyButton(_ sender: UIButton) {
+            let nextVC = SeparatePopUpViewController()
+            self.textdelegate = nextVC
+            textdelegate?.sendData(name: seperateName.text ?? "")
             
-            let storyBoard = UIStoryboard(name: "Setting", bundle: Bundle.main)
-            if let nextVC = storyBoard.instantiateViewController(identifier: SeparatePopUpViewController.identifier) as? SeparatePopUpViewController{
-                
-                self.textdelegate = nextVC
-                textdelegate?.sendData(name: seperateName.text ?? "")
-                
-                nextVC.method = .modify
-                nextVC.modalPresentationStyle = .overFullScreen
-                nextVC.modalTransitionStyle = .crossDissolve
-                self.window?.rootViewController?.present(nextVC, animated: true, completion: nil)
-            }
+            nextVC.method = .modify
+            nextVC.modalPresentationStyle = .overFullScreen
+            nextVC.modalTransitionStyle = .crossDissolve
+            self.parentViewController?.tabBarController?.present(nextVC, animated: true, completion: nil)
         }
     
     // MARK: - Methods
