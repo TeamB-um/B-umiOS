@@ -77,7 +77,7 @@ class SeparateDetailViewController: UIViewController {
     }
     
     @objc func didTapConfirmButton(){
-        if(self.confirmButton.backgroundColor == UIColor.blue2Main){
+        if(!removeData.isEmpty){
             let vc = DeletePopUpViewController(title: "글 삭제", guide: "글을 삭제하시겠습니까?")
             vc.modalTransitionStyle = .crossDissolve
             vc.modalPresentationStyle = .overCurrentContext
