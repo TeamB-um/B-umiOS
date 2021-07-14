@@ -89,6 +89,7 @@ class SeparatePopUpViewController: UIViewController {
 
     var method: PopUpMethod?
     static let identifier = "SeparatePopUpViewController"
+    private let limitLength = 6
     
     // MARK: - Initializer
     
@@ -230,19 +231,12 @@ extension SeparatePopUpViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let currentText = textField.text ?? ""
         guard let stringRange = Range(range, in: currentText) else { return false }
-     
         let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
+        let length = (textField.text?.count)! - range.length + string.count
         
-        DispatchQueue.main.async {
-            self.textNumberLabel.text = "\(updatedText.count)/6"
-            textField.layer.borderColor = UIColor.paper2.cgColor
-            self.textNumberLabel.textColor = .green2Main
-            self.confirmButton.backgroundColor = .blue2Main
-            self.confirmButton.isEnabled = true
-            self.boilerLabel.isHidden = true
-        }
-
-        return updatedText.count < 6
+        textNumberLabel.text = "\(length > limitLength ? limitLength : length)/\(limitLength)"
+        
+        return updatedText.count <= limitLength
     }
 }
 
