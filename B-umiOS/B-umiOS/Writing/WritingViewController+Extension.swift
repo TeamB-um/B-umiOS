@@ -123,8 +123,9 @@ extension WritingViewController: UITextFieldDelegate {
 // MARK: - WritingPopUpDelegate
 
 extension WritingViewController: WritingPopUpDelegate {
-    func writingPopUpViewPush(trash: TrashType) {
-        let trashViewController = ThrowTrashViewController(trashType: trash)
+    func writingPopUpViewPush(trash: TrashType, writing: WritingRequest) {
+        let trashViewController = ThrowTrashViewController(trashType: trash, writingRequest: writing)
+        
         self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
         self.navigationController?.pushViewController(trashViewController, animated: true)
     }

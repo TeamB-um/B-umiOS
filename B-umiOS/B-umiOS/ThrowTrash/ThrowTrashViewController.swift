@@ -73,12 +73,16 @@ class ThrowTrashViewController: UIViewController {
     // MARK: - Properties
     
     private var trashType: TrashType
+    private var writing: WritingRequest
     private lazy var explainString = "작성된 글은 \(trashType.rawValue)으로 이동합니다."
     
     // MARK: - Initializer
     
-    init(trashType: TrashType) {
+    init(trashType: TrashType, writingRequest: WritingRequest) {
         self.trashType = trashType
+        self.writing = writingRequest
+        print(writing)
+        
         super.init(nibName: nil, bundle: nil)
     }
     

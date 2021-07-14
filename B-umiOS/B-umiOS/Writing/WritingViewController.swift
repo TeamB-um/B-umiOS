@@ -8,7 +8,7 @@
 import UIKit
 
 protocol WritingPopUpDelegate {
-    func writingPopUpViewPush(trash: TrashType)
+    func writingPopUpViewPush(trash: TrashType, writing: WritingRequest)
 }
 
 class WritingViewController: UIViewController {
@@ -30,15 +30,9 @@ class WritingViewController: UIViewController {
         $0.setImage(UIImage(named: "btnBack"), for: .normal)
     }
     
-    lazy var checkButton = UIButton(type: .custom, primaryAction: UIAction(handler: { _ in
-        let popUpViewController = WritingPopUpViewController()
-        popUpViewController.modalPresentationStyle = .overCurrentContext
-        popUpViewController.modalTransitionStyle = .crossDissolve
-        popUpViewController.popUpDelegate = self
-        
-        self.present(popUpViewController, animated: true, completion: nil)
-    })).then {
+    lazy var checkButton = UIButton().then {
         $0.setImage(UIImage(named: "btnCheck")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        $0.addTarget(self, action: #selector(didTapCheckButton(_:)), for: .touchUpInside)
         $0.tintColor = .disable
         $0.isUserInteractionEnabled = false
     }
@@ -166,6 +160,19 @@ class WritingViewController: UIViewController {
     @objc
     func didTapSettingButton(_ sender: UIButton) {
         navigationController?.pushViewController(SettingSeparateViewController(), animated: true)
+    }
+    
+    @objc
+    func didTapCheckButton(_ sender: UIButton) {
+        guard let idx = tagCollectionView.indexPathsForSelectedItems?.first?.row else { return }
+        let writing = WritingRequest(title: titleTextField.text ?? nil, text: textView.text ?? "", categoryID: tag[idx].id, isWriting: true)
+        
+        let popUpViewController = WritingPopUpViewController(writing: writing)
+        popUpViewController.modalPresentationStyle = .overCurrentContext
+        popUpViewController.modalTransitionStyle = .crossDissolve
+        popUpViewController.popUpDelegate = self
+        
+        present(popUpViewController, animated: true, completion: nil)
     }
     
     // MARK: - Methods
