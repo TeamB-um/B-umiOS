@@ -28,6 +28,7 @@ class MyTrashBinViewController: UIViewController {
         $0.backgroundColor = .background
     }
     // MARK: - Properties
+    var myTrashCan: [TrashCan] = []
     
     // MARK: - Initializer
     
@@ -38,6 +39,10 @@ class MyTrashBinViewController: UIViewController {
         setView()
         setTableView()
         setConstraint()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        fetchTrashBinData()
     }
     
     // MARK: - Actions
@@ -53,7 +58,26 @@ class MyTrashBinViewController: UIViewController {
         }
     }
     // MARK: - Methods
-    
+    func fetchTrashBinData(){
+        TrashCanService.shared.fatchTrashCanData { response in
+            guard let r = response as? NetworkResult<Any> else { return }
+            switch r {
+            case .success(let data):
+                guard let trashCanData = data as? GeneralResponse<TrashCanResponse> else { return }
+
+                if let d = trashCanData.data {
+                    self.myTrashCan = d.trashCan
+                    self.detailTableView.reloadData()
+                } else {
+                    print("error")
+                }
+            
+            default:
+                print("error")
+            }
+        }
+    }
+
     func setView(){
         view.backgroundColor = .background
     }
@@ -99,7 +123,7 @@ extension MyTrashBinViewController: UITableViewDelegate {
 
 extension MyTrashBinViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return myTrashCan.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -107,6 +131,7 @@ extension MyTrashBinViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MyTrashBinTableViewCell.identifier, for: indexPath) as? MyTrashBinTableViewCell else {
             return UITableViewCell()
         }
+        cell.setTrashBinData(data: myTrashCan, index: indexPath.row)
         return cell
     }
 }

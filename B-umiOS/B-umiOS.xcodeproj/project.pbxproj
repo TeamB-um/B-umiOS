@@ -108,6 +108,9 @@
 		FC6A7A472693198900A4ACBE /* ButtonSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6A7A462693198900A4ACBE /* ButtonSectionView.swift */; };
 		FC8A6F552695C65500E64FA5 /* MyPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC8A6F542695C65500E64FA5 /* MyPage.storyboard */; };
 		FCA3639F269A068B0068825D /* MyRewardPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA3639E269A068B0068825D /* MyRewardPopUpViewController.swift */; };
+		FCAE097D269F3D7A00B91A08 /* TrashCanService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCAE097C269F3D7A00B91A08 /* TrashCanService.swift */; };
+		FCAE097F269F3EF300B91A08 /* TrashCan.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCAE097E269F3EF300B91A08 /* TrashCan.swift */; };
+		FCAE0981269F46B600B91A08 /* TrashCanResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCAE0980269F46B600B91A08 /* TrashCanResponse.swift */; };
 		FCE3608C2694B25F00866525 /* FilterBottmSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE3608B2694B25F00866525 /* FilterBottmSheetViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -217,6 +220,9 @@
 		FC6A7A462693198900A4ACBE /* ButtonSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonSectionView.swift; sourceTree = "<group>"; };
 		FC8A6F542695C65500E64FA5 /* MyPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyPage.storyboard; sourceTree = "<group>"; };
 		FCA3639E269A068B0068825D /* MyRewardPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRewardPopUpViewController.swift; sourceTree = "<group>"; };
+		FCAE097C269F3D7A00B91A08 /* TrashCanService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashCanService.swift; sourceTree = "<group>"; };
+		FCAE097E269F3EF300B91A08 /* TrashCan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashCan.swift; sourceTree = "<group>"; };
+		FCAE0980269F46B600B91A08 /* TrashCanResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashCanResponse.swift; sourceTree = "<group>"; };
 		FCE3608B2694B25F00866525 /* FilterBottmSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterBottmSheetViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -252,6 +258,7 @@
 				FC1D6F22269E0FD60060921E /* RewardService.swift */,
 				AB21E3CF269DEF0D00D32EFF /* CategoryService.swift */,
 				AB21E3D1269E9A1D00D32EFF /* WritingService.swift */,
+				FCAE097C269F3D7A00B91A08 /* TrashCanService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -345,6 +352,7 @@
 				AB21E3B9269D580700D32EFF /* Writing.swift */,
 				AB21E3BD269D5F9400D32EFF /* UserInfo.swift */,
 				AB21E3C3269D64CE00D32EFF /* Reward.swift */,
+				FCAE097E269F3EF300B91A08 /* TrashCan.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -358,6 +366,7 @@
 				AB21E3C9269D67C200D32EFF /* CategoriesResponse.swift */,
 				AB21E3CB269D7E1F00D32EFF /* TokenResponse.swift */,
 				AB21E3B2269D4E8C00D32EFF /* GeneralResponse.swift */,
+				FCAE0980269F46B600B91A08 /* TrashCanResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -823,6 +832,7 @@
 				AB9F9DF22690997300088502 /* Date+Extension.swift in Sources */,
 				4F2D1F322698B86D00D941A1 /* SettingViewController+Layout.swift in Sources */,
 				AB21E3C2269D60EE00D32EFF /* WritingRequest.swift in Sources */,
+				FCAE097D269F3D7A00B91A08 /* TrashCanService.swift in Sources */,
 				ABB24E53268E1912006FEE57 /* FloatingBarView.swift in Sources */,
 				FCE3608C2694B25F00866525 /* FilterBottmSheetViewController.swift in Sources */,
 				AB7F6DDF2696BDF300EF9C6E /* WritingPopUpViewController.swift in Sources */,
@@ -864,6 +874,7 @@
 				ABB24E08268CEF0B006FEE57 /* UIColor+Extension.swift in Sources */,
 				4F34E1062693618A00A54336 /* TapGesture.swift in Sources */,
 				FC0541B82690C80000FFA9D1 /* MyWritingViewController.swift in Sources */,
+				FCAE0981269F46B600B91A08 /* TrashCanResponse.swift in Sources */,
 				AB21E3A9269CA06900D32EFF /* CompletionMessage.swift in Sources */,
 				4F875E2B2697E0930085D104 /* SeparateGraphPopUpViewController+Layout.swift in Sources */,
 				4F4992EB2696F685009541AA /* SeparateGraphPopUpViewController.swift in Sources */,
@@ -883,6 +894,7 @@
 				AB8C3F582693371100B2BA30 /* WritingViewController+Extension.swift in Sources */,
 				4F4992E52695FCC6009541AA /* SeparateDetailViewController+Extension.swift in Sources */,
 				AB21E3AC269D427400D32EFF /* LaunchScreenViewController.swift in Sources */,
+				FCAE097F269F3EF300B91A08 /* TrashCan.swift in Sources */,
 				4F7FD2F126929D6300122964 /* PeriodPopUpViewController.swift in Sources */,
 				FC0541BA2690C92A00FFA9D1 /* MyRewardViewController.swift in Sources */,
 				4F2D1F35269A1AA700D941A1 /* NetworkResult.swift in Sources */,

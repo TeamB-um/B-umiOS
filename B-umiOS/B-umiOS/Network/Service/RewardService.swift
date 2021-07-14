@@ -19,7 +19,6 @@ struct RewardService {
                 
                 guard let result = data as? GeneralResponse<RewardsResponse> else { return }
                 completion(result.data)
-//                print(result.data?.rewards[0].author)
                 
             case .requestErr, .pathErr, .serverErr, .networkFail:
                 completion(false)
