@@ -14,4 +14,5 @@ struct APIConstants {
 
     /// user API
     static let login = APIConstants.baseURL + "/users"
+    static let rewardURL = APIConstants.baseURL + "/rewards"
 }

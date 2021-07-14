@@ -24,6 +24,9 @@ class MyRewardViewController: UIViewController {
     }()
     
     // MARK: - Properties
+    
+    var myReward: [Reward] = []
+    
     // MARK: - Initializer
     // MARK: - LifeCycle
 
@@ -32,8 +35,20 @@ class MyRewardViewController: UIViewController {
         setConstraint()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        fetchRewardsData()
+    }
+    
     // MARK: - Actions
     // MARK: - Methods
+    
+    func fetchRewardsData() {
+        RewardService.shared.fatchRewardsData { result in
+            guard let rewards = result as? RewardsResponse else { return }
+            self.myReward = rewards.rewards
+            self.myRewardCollectionView.reloadData()
+        }
+    }
     
     func setConstraint(){
         view.addSubview(myRewardCollectionView)
@@ -49,12 +64,13 @@ class MyRewardViewController: UIViewController {
 
 extension MyRewardViewController : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 17
+        return myReward.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        print("미친놈아")
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyRewardCollectionViewCell.identifier, for: indexPath) as? MyRewardCollectionViewCell else { return UICollectionViewCell() }
-    
+        cell.setData(data: myReward, index: indexPath.row)
         return cell
     }
 }
@@ -80,8 +96,8 @@ extension MyRewardViewController : UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        let popUpVC =  MyRewardPopUpViewController(reward: DummyReward(trashBinIndex: 1, date: Date(timeIntervalSince1970: .init()), titleReward: "버들가쥣쓰는 야카나..다른 재목을 묵는 버들가짓스다.", authorName: "이인애", subReward: "냐옹"))
         let popUpVC =  MyRewardPopUpViewController(reward: DummyReward(trashBinIndex: 1, date: Date(timeIntervalSince1970: .init()), titleReward: "버들가쥣쓰는 야카나..다른 재목을 묵는 버들가짓스다.", authorName: "이인애", subReward: "냐옹"))
-        
         popUpVC.modalTransitionStyle = .crossDissolve
         popUpVC.modalPresentationStyle = .overCurrentContext
         

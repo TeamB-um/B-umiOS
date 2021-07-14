@@ -7,13 +7,13 @@
 
 import UIKit
 
-struct DummyReward {
-    var trashBinIndex: Int
-    var date: Date
-    var titleReward: String
-    var authorName: String
-    var subReward: String
-}
+//struct DummyReward {
+//    var trashBinIndex: Int
+//    var date: Date
+//    var titleReward: String
+//    var authorName: String
+//    var subReward: String
+//}
 
 class MyRewardPopUpViewController: UIViewController {
     // MARK: - UIComponenets

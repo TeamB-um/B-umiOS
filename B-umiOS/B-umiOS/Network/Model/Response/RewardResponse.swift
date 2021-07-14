@@ -11,6 +11,6 @@ struct RewardResponse {
     let reward: Reward
 }
 
-struct RewardsResponse {
+struct RewardsResponse: Codable {
     let rewards: [Reward]
 }

@@ -15,7 +15,8 @@ enum NetworkHeaderKey: String {
 
 struct NetworkInfo {
     static let shared = NetworkInfo()
-    static let token = UserDefaults.standard.string(forKey: "token") ?? ""
+//    static let token = UserDefaults.standard.string(forKey: "token") ?? ""
+    static let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjBlZTY1NTg5OWZlYTEzYzA5NzE0MTkzIn0sImlhdCI6MTYyNjIzNjI1MCwiZXhwIjoxNjI2NTk2MjUwfQ.YES1yb4LaIZC323oakfC-Z4faVi6jOp2FtlghQ6dU5s"
 
     static var headerOnlyType: HTTPHeaders {
         [NetworkHeaderKey.content_type.rawValue: APIConstants.application_json]
