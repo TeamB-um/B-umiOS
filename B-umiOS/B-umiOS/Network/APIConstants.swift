@@ -15,4 +15,11 @@ struct APIConstants {
     /// user API
     static let login = APIConstants.baseURL + "/users"
     static let rewardURL = APIConstants.baseURL + "/rewards"
+    static let loginURL = APIConstants.baseURL + "/users"
+
+    /// category API
+    static let categoryURL = APIConstants.baseURL + "/categories"
+    
+    /// writing API
+    static let writingURL = APIConstants.baseURL + "/writings"
 }

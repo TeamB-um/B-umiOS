@@ -7,12 +7,14 @@
 
 import Foundation
 
-struct WritingRequest {
-    let title, text, categoryID: String
-    /// 분리수거, 삭제함 구분 추가
+struct WritingRequest: Codable {
+    let title: String?
+    let text, categoryID: String
+    var isWriting: Bool
 
     enum CodingKeys: String, CodingKey {
         case title, text
         case categoryID = "category_id"
+        case isWriting = "iswriting"
     }
 }

@@ -73,12 +73,15 @@ class ThrowTrashViewController: UIViewController {
     // MARK: - Properties
     
     private var trashType: TrashType
+    private var writing: WritingRequest
     private lazy var explainString = "작성된 글은 \(trashType.rawValue)으로 이동합니다."
     
     // MARK: - Initializer
     
-    init(trashType: TrashType) {
+    init(trashType: TrashType, writingRequest: WritingRequest) {
         self.trashType = trashType
+        self.writing = writingRequest
+        
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -110,8 +113,15 @@ class ThrowTrashViewController: UIViewController {
             let position = gesture.location(in: view)
             if position.x > trashBin.frame.midX, position.x < trashBin.frame.maxX, position.y > trashBin.frame.minY, position.y < trashBin.frame.maxY {
                 throwAwayTrash()
-                /// network
-                showToast()
+                
+                WritingService.shared.createWriting(writing: writing) { result in
+                    if result {
+                        self.showToast()
+                    } else {
+                        /// 네트워크 실패 토스트 띄우기
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                }
             } else {
                 resetTrash()
             }
