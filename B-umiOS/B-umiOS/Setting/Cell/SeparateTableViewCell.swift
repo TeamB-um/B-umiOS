@@ -7,8 +7,6 @@
 
 import UIKit
 
-//protocol
-
 class SeparateTableViewCell: UITableViewCell {
     // MARK: - UIComponenets
     
@@ -39,28 +37,28 @@ class SeparateTableViewCell: UITableViewCell {
     // MARK: - Actions
     
     @objc
-        private func didTapDeleteButton(_ sender: UIButton) {
-            let vc = DeletePopUpViewController(title: "분리수거함 삭제", guide: "분리수거함을 삭제하면 글도 모두 지워져요.\n정말 삭제하시겠어요?")
-            vc.modalTransitionStyle = .crossDissolve
-            vc.modalPresentationStyle = .overCurrentContext
+    private func didTapDeleteButton(_ sender: UIButton) {
+        let vc = DeletePopUpViewController(title: "분리수거함 삭제", guide: "분리수거함을 삭제하면 글도 모두 지워져요.\n정말 삭제하시겠어요?")
+        vc.modalTransitionStyle = .crossDissolve
+        vc.modalPresentationStyle = .overCurrentContext
             
-            self.parentViewController?.tabBarController?.present(vc, animated: true, completion: nil)
-        }
+        parentViewController?.tabBarController?.present(vc, animated: true, completion: nil)
+    }
     
     @objc
-        private func didTapModifyButton(_ sender: UIButton) {
-            let nextVC = SeparatePopUpViewController(method: .modify)
+    private func didTapModifyButton(_ sender: UIButton) {
+        let nextVC = SeparatePopUpViewController(method: .modify)
             
-            nextVC.modalPresentationStyle = .overFullScreen
-            nextVC.modalTransitionStyle = .crossDissolve
-            self.parentViewController?.tabBarController?.present(nextVC, animated: true, completion: nil)
-        }
+        nextVC.modalPresentationStyle = .overFullScreen
+        nextVC.modalTransitionStyle = .crossDissolve
+        parentViewController?.tabBarController?.present(nextVC, animated: true, completion: nil)
+    }
     
     // MARK: - Methods
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.contentView.backgroundColor = .background
+        contentView.backgroundColor = .background
         setConstraint()
     }
     
@@ -68,8 +66,8 @@ class SeparateTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func setConstraint(){
-        self.contentView.addSubviews([seperateName, modifyButton, deleteButton])
+    func setConstraint() {
+        contentView.addSubviews([seperateName, modifyButton, deleteButton])
         
         seperateName.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
