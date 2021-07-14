@@ -21,7 +21,7 @@ class SeparatePopUpViewController: UIViewController {
         $0.setShadow(radius: 10, offset: CGSize(width: 0, height: 4), opacity: 0.3)
     }
     
-    private  let backgroundButton = UIButton().then {
+    private let backgroundButton = UIButton().then {
         $0.addTarget(self, action: #selector(closePopUp(_:)), for: .touchUpInside)
     }
     
@@ -87,7 +87,7 @@ class SeparatePopUpViewController: UIViewController {
     
     // MARK: - Properties
 
-    var method : PopUpMethod?
+    var method: PopUpMethod?
     static let identifier = "SeparatePopUpViewController"
     
     // MARK: - Initializer
@@ -102,20 +102,28 @@ class SeparatePopUpViewController: UIViewController {
         setConstraint()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self)
+    }
+
     // MARK: - Actions
     
     @objc private func closePopUp(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     @objc private func didTapConfirmButton(_ sender: UIButton) {
+        // 확인 호출 (add, modify method에 따라 구분)
         
-        //확인 호출 (add, modify method에 따라 구분)
-        
-        //.success => ok일시
+        // .success => ok일시
 //        self.dismiss(animated: true, completion: nil)
         
-        //.중복 일시
+        // .중복 일시
 //        DispatchQueue.main.async {
 //            self.textfield.layer.borderColor = UIColor.error.cgColor
 //            self.textNumberLabel.textColor = .error
@@ -125,36 +133,54 @@ class SeparatePopUpViewController: UIViewController {
 //        }
     }
     
-    // MARK: - Methods
-    
-    func setTextField(){
-        textfield.delegate = self
+    @objc func keyboardWillShow(_ notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            let keyboardHeight = keyboardSize.height
+            let space = UIScreen.main.bounds.height / 2 - keyboardHeight + 30
+            
+            popupView.snp.updateConstraints { make in
+                make.centerY.equalToSuperview().offset(-space)
+            }
+        }
     }
     
-    func setView(){
-        self.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+    @objc func keyboardWillHide(_ notification: NSNotification) {
+        popupView.snp.updateConstraints { make in
+            make.center.equalToSuperview()
+        }
+    }
+
+    // MARK: - Methods
+    
+    func setTextField() {
+        textfield.delegate = self
+        textfield.becomeFirstResponder()
+    }
+    
+    func setView() {
+        view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
         
         switch method {
         case .add:
-            self.headerLabel.text = "분리수거 추가"
-            self.subLabel.text = "분리수거함을 추가해 스트레스를 분류하세요."
+            headerLabel.text = "분리수거 추가"
+            subLabel.text = "분리수거함을 추가해 스트레스를 분류하세요."
         case .modify:
-            self.headerLabel.text = "분리수거 수정"
-            self.subLabel.text = "분리수거함의 이름을 수정해보세요."
+            headerLabel.text = "분리수거 수정"
+            subLabel.text = "분리수거함의 이름을 수정해보세요."
         case .none:
             break
         }
     }
     
     func setConstraint() {
-        
-        self.view.addSubviews([backgroundButton,popupView])
+        view.addSubviews([backgroundButton, popupView])
 
-        popupView.addSubviews([headerLabel,subLabel,textfield,stackView,textNumberLabel, boilerLabel])
+        popupView.addSubviews([headerLabel, subLabel, textfield, stackView, textNumberLabel, boilerLabel])
         
         popupView.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(238 * SizeConstants.screenRatio)
-            make.leading.trailing.equalToSuperview().inset(16)
+            make.width.equalToSuperview().multipliedBy(343.0 / 375.0)
+            make.height.equalTo(popupView.snp.width).multipliedBy(271.0 / 343.0)
+            make.center.equalToSuperview()
         }
         
         backgroundButton.snp.makeConstraints { make in
@@ -220,7 +246,7 @@ extension SeparatePopUpViewController: UITextFieldDelegate {
     }
 }
 
-extension SeparatePopUpViewController: TextDelegate{
+extension SeparatePopUpViewController: TextDelegate {
     func sendData(name: String) {
         DispatchQueue.main.async {
             self.textfield.text = name
