@@ -7,14 +7,6 @@
 
 import UIKit
 
-//struct DummyReward {
-//    var trashBinIndex: Int
-//    var date: Date
-//    var titleReward: String
-//    var authorName: String
-//    var subReward: String
-//}
-
 class MyRewardPopUpViewController: UIViewController {
     // MARK: - UIComponenets
     
@@ -22,9 +14,7 @@ class MyRewardPopUpViewController: UIViewController {
         $0.cornerRound(radius: 10)
     }
     
-    private lazy var backgroundImageView = UIImageView().then {
-        $0.image = UIImage(named: "\(reward.trashBinIndex)")
-    }
+    private lazy var backgroundImageView = UIImageView()
     
     private lazy var closeButton = UIButton(primaryAction: UIAction(handler: { _ in
         self.dismiss(animated: true, completion: nil)
@@ -40,22 +30,18 @@ class MyRewardPopUpViewController: UIViewController {
     }
     
     private lazy var dateLabel = UILabel().then {
-        $0.text = Date().dateToString(format: "yyyy년 MM월 dd일 (E)", date: self.reward.date)
         $0.font = .systemFont(ofSize: 15, weight: .regular)
         $0.textColor = .white
     }
     
     private lazy var titleLabel = UILabel().then {
-        $0.text = self.reward.titleReward
         $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 20)
         $0.textColor = .white
         $0.numberOfLines = 0
-        $0.lineSpacing(spacing: 10)
         $0.textAlignment = .center
     }
     
     private lazy var authorLabel = UILabel().then {
-        $0.text = "-\(self.reward.authorName)-"
         $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 20)
         $0.textColor = .white
     }
@@ -64,24 +50,23 @@ class MyRewardPopUpViewController: UIViewController {
         $0.textColor = .white
         $0.font = UIFont.nanumSquareFont(type: .regular, size: 14)
         $0.numberOfLines = 0
-        $0.text = self.reward.subReward
     }
     
-    private let scrollView = UIScrollView().then {
-        $0.showsHorizontalScrollIndicator = false
+    private var logoImage = UIImageView().then {
+        $0.image = UIImage(named: "group163")
     }
     
     private let contentView = UIView()
     
     // MARK: - Properties
     
-    private let reward: DummyReward
+//    private let reward: DummyReward
     
     // MARK: - Initializer
     
-    init(reward: DummyReward) {
-        self.reward = reward
+    init(reward: Reward) {
         super.init(nibName: nil, bundle: nil)
+        setMyRewardData(reward: reward)
     }
     
     @available(*, unavailable)
@@ -101,10 +86,25 @@ class MyRewardPopUpViewController: UIViewController {
     // MARK: - Actions
     
     // MARK: - Methods
+    func setMyRewardData(reward: Reward) {
+        let createdDate = Date().stringToDate(date: reward.createdDate ?? "")
+        dateLabel.text = Date().dateToString(format: "yyyy.MM.dd (E)", date: createdDate)
+        
+        titleLabel.text = reward.sentence
+        titleLabel.lineSpacing(spacing: 10)
+        titleLabel.textAlignment = .center
+        
+        subRewardLabel.text = reward.context
+        subRewardLabel.lineSpacing(spacing: 7)
+        subRewardLabel.textAlignment = .center
+        
+        authorLabel.text = reward.author
+        backgroundImageView.image = UIImage(named: "\(reward.index)")
+    }
     
     func setConstraints() {
         view.addSubviews([popUpView])
-        popUpView.addSubviews([backgroundImageView, rewardLabel, closeButton, dateLabel, titleLabel, authorLabel, subRewardLabel])
+        popUpView.addSubviews([backgroundImageView, rewardLabel, closeButton, dateLabel, titleLabel, authorLabel, subRewardLabel, logoImage])
         
         popUpView.snp.makeConstraints { make in
             make.center.equalToSuperview()
@@ -144,9 +144,15 @@ class MyRewardPopUpViewController: UIViewController {
         }
         
         subRewardLabel.snp.makeConstraints { make in
+            make.top.equalTo(authorLabel.snp.bottom).offset(78 * SizeConstants.screenRatio)
+            make.bottom.equalTo(logoImage.snp.top).offset( -65 * SizeConstants.screenRatio)
+            make.leading.trailing.equalToSuperview().inset(63 * SizeConstants.screenRatio)
+        }
+        
+        logoImage.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalTo(authorLabel.snp.bottom).offset(70 * SizeConstants.screenRatio)
-            make.bottom.equalToSuperview().inset(111 * SizeConstants.screenRatio)
+            make.height.equalTo(19 * SizeConstants.screenRatio)
+            make.bottom.equalToSuperview().inset(28 * SizeConstants.screenRatio)
         }
         
     }

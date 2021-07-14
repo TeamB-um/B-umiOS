@@ -96,8 +96,7 @@ extension MyRewardViewController : UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let popUpVC =  MyRewardPopUpViewController(reward: DummyReward(trashBinIndex: 1, date: Date(timeIntervalSince1970: .init()), titleReward: "버들가쥣쓰는 야카나..다른 재목을 묵는 버들가짓스다.", authorName: "이인애", subReward: "냐옹"))
-        let popUpVC =  MyRewardPopUpViewController(reward: DummyReward(trashBinIndex: 1, date: Date(timeIntervalSince1970: .init()), titleReward: "버들가쥣쓰는 야카나..다른 재목을 묵는 버들가짓스다.", authorName: "이인애", subReward: "냐옹"))
+        let popUpVC =  MyRewardPopUpViewController(reward: myReward[indexPath.row])
         popUpVC.modalTransitionStyle = .crossDissolve
         popUpVC.modalPresentationStyle = .overCurrentContext
         

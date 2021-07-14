@@ -16,38 +16,19 @@ class MyRewardCollectionViewCell: UICollectionViewCell {
     private let rewardDateLabel = UILabel().then {
         $0.font = .systemFont(ofSize: 15, weight: .regular)
         $0.textColor = .white
-        $0.text = "리워드받은날짜쓰"
-        $0.textAlignment = .center
     }
     
     private let rewardLabel = UILabel().then {
         $0.font = .nanumSquareFont(type: .extraBold, size: 14)
         $0.textColor = .white
         $0.numberOfLines = 3
-        $0.text = "버들가쥣쓰는 야카나..다른 재목을 묵는 버들가짓스다.버들가쥣쓰는 야카나..다른 재목을 묵는 버들가짓스다.버들가쥣쓰는 야카나..다른 재목을 묵는 버들가짓스다."
-        
-        let attrString = NSMutableAttributedString(string: $0.text!)
-        let paragraphStyle = NSMutableParagraphStyle()
-        
-        paragraphStyle.lineSpacing = 7
-        attrString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attrString.length))
-        $0.attributedText = attrString
-        $0.textAlignment = .center
         $0.lineBreakMode = .byTruncatingTail
     }
     
     private let authorLabel = UILabel().then {
         $0.font = .nanumSquareFont(type: .extraBold, size: 14)
         $0.textColor = .white
-        $0.text = "-이인애-"
-        $0.textAlignment = .center
-        $0.lineBreakMode = .byTruncatingTail
     }
-    
-//    private let backgorundView = UIImageView().then {
-//        $0.image = UIImage(named: "")
-//    }
-    
 
     // MARK: - Properties
 
@@ -95,9 +76,18 @@ class MyRewardCollectionViewCell: UICollectionViewCell {
     }
     
     func setData(data:[Reward], index: Int){
-        rewardDateLabel.text = data[index].createdDate
+        let createdDate = Date().stringToDate(date: data[index].createdDate ?? "")
+        rewardDateLabel.text = Date().dateToString(format: "yyyy.MM.dd (E)", date: createdDate)
+        rewardDateLabel.textAlignment = .center
+        
         authorLabel.text = data[index].author
+        authorLabel.textAlignment = .center
+        authorLabel.lineBreakMode = .byTruncatingTail
+        
         rewardLabel.text = data[index].sentence
+        rewardLabel.lineSpacing(spacing: 7)
+        rewardLabel.textAlignment = .center
+        
         myRewardView.image = UIImage(named: "\(data[index].index)")
     }
     
