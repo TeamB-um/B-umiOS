@@ -143,12 +143,11 @@ class WritingViewController: UIViewController {
         setView()
         setCollectionView()
         setConstraint()
+        fetchCategoriesData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         NotificationCenter.default.post(name: Notification.Name.TabBarHide, object: nil)
-        
-        fetchCategoriesData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
