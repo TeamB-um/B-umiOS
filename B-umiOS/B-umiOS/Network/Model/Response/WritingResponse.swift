@@ -8,9 +8,5 @@
 import Foundation
 
 struct WritingsResponse: Codable {
-    let writings: [Writing]
-}
-
-struct WritingResponse: Codable {
-    let writing: Writing
+    let writing: [Writing]
 }

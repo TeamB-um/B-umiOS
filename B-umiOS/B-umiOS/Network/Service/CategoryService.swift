@@ -22,4 +22,13 @@ struct CategoryService {
             }
         }
     }
+    
+    func fetchWritings(categories: String, completion: @escaping (Any) -> Void) {
+        let url = "\(APIConstants.writingURL)?category_ids=[\(categories)]"
+        
+        RequestHandler.shared.requestData(url: url, httpmethod: HTTPMethod.get, parameter: nil, header: NetworkInfo.headerWithToken, decodeType: GeneralResponse<WritingsResponse>.self) { response in
+
+            completion(response)
+        }
+    }
 }

@@ -62,7 +62,7 @@ extension SeparateViewController: UICollectionViewDataSource {
 
 extension SeparateViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+    
         if(indexPath.row == tag.count){
             let storyboard = UIStoryboard.init(name: "Setting", bundle: nil)
             if let nextVC = storyboard.instantiateViewController(identifier: SeparatePopUpViewController.identifier) as? SeparatePopUpViewController{
@@ -73,9 +73,12 @@ extension SeparateViewController: UICollectionViewDelegate {
             }
         }
         else{
-            if let pushVC = self.storyboard?.instantiateViewController(withIdentifier: "SeparateDetailViewController"){
-                self.navigationController?.pushViewController(pushVC, animated: true)
-            }
+            guard let pushVC = self.storyboard?.instantiateViewController(withIdentifier: SeparateDetailViewController.identifier) as? SeparateDetailViewController else{return}
+            
+            pushVC.categoryID = tag[indexPath.row].id
+            
+            self.navigationController?.pushViewController(pushVC, animated: true)
+            
         }
     }
     

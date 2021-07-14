@@ -57,7 +57,10 @@ class SeparateDetailViewController: UIViewController {
     }
     
     // MARK: - Properties
+    static let identifier = "SeparateDetailViewController"
     var removeData : [Int] = []
+    var writings : [Writing] = []
+    var categoryID : String?
     
     // MARK: - Initializer
     
@@ -68,6 +71,10 @@ class SeparateDetailViewController: UIViewController {
         setView()
         setTableView()
         setConstraint()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        fetchWritings()
     }
     
     // MARK: - Actions
@@ -87,7 +94,6 @@ class SeparateDetailViewController: UIViewController {
     }
     
     @objc func didTapCheckButton(){
-        
         if self.removeButton.isSelected {
             self.removeButton.setupRoundingButton(title: "삭제", image: "btnRemove")
             self.confirmButton.isHidden = true
@@ -104,7 +110,23 @@ class SeparateDetailViewController: UIViewController {
     }
     
     // MARK: - Methods
-        
+    
+    func fetchWritings(){
+        CategoryService.shared.fetchWritings(categories: categoryID!) { result in
+            guard let r = result as? NetworkResult<Any> else{return}
+      
+            switch r{
+            case .success(let response):
+                guard let w = response as? GeneralResponse<WritingsResponse> else{return}
+                self.writings = w.data?.writing ?? []
+                print(self.writings.count)
+                self.detailTableView.reloadData()
+            default:
+                break
+            }
+        }
+    }
+    
     func setView(){
         view.backgroundColor = .background
         navigationController?.interactivePopGestureRecognizer?.delegate = nil

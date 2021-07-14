@@ -70,6 +70,11 @@ class SeparateDetailTableViewCell: UITableViewCell {
         self.setConstraint()
     }
     
+    func setData(title: String, contents : String){
+        self.titleLabel.text = title
+        self.previewLabel.text = contents
+    }
+    
     func setView(){
         self.contentView.backgroundColor = .background
     }
