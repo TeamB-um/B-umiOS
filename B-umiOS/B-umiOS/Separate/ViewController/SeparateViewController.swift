@@ -42,6 +42,7 @@ class SeparateViewController: UIViewController {
         
     // MARK: - Properties
     var tag: [Category] = []
+    
     // MARK: - Initializer
     
     // MARK: - LifeCycle
@@ -82,9 +83,7 @@ class SeparateViewController: UIViewController {
             guard let categories = result as? CategoriesResponse else { return }
             
             self.tag = categories.categories
-            
             self.separateCollectionView.reloadData()
-            //self.tagCollectionView.selectItem(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: [])
         }
     }
     

@@ -33,6 +33,10 @@ extension SeparateViewController: UICollectionViewDelegateFlowLayout {
 
 extension SeparateViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        if(tag.count < 8){
+            return tag.count+1
+        }
         return tag.count
     }
     
@@ -41,8 +45,14 @@ extension SeparateViewController: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
          
-        let separate = tag[indexPath.row]
-        cell.setData(name: separate.name, index: separate.index!, count: separate.count!)
+        if(indexPath.row == tag.count){
+            cell.setData(name: "추가하기", index: 0, count: 0)
+        }
+        
+        else{
+            let separate = tag[indexPath.row]
+            cell.setData(name: separate.name, index: separate.index ?? 0, count: separate.count ?? 0)
+        }
 
         return cell
     }
@@ -53,20 +63,20 @@ extension SeparateViewController: UICollectionViewDataSource {
 extension SeparateViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-//        if(trash[indexPath.row].contains("empty")){
-//            let storyboard = UIStoryboard.init(name: "Setting", bundle: nil)
-//            if let nextVC = storyboard.instantiateViewController(identifier: SeparatePopUpViewController.identifier) as? SeparatePopUpViewController{
-//                nextVC.method = .add
-//                nextVC.modalPresentationStyle = .overFullScreen
-//                nextVC.modalTransitionStyle = .crossDissolve
-//                self.present(nextVC, animated: true, completion: nil)
-//            }
-//        }
-//        else{
-//            if let pushVC = self.storyboard?.instantiateViewController(withIdentifier: "SeparateDetailViewController"){
-//                self.navigationController?.pushViewController(pushVC, animated: true)
-//            }
-//        }
+        if(indexPath.row == tag.count){
+            let storyboard = UIStoryboard.init(name: "Setting", bundle: nil)
+            if let nextVC = storyboard.instantiateViewController(identifier: SeparatePopUpViewController.identifier) as? SeparatePopUpViewController{
+                nextVC.method = .add
+                nextVC.modalPresentationStyle = .overFullScreen
+                nextVC.modalTransitionStyle = .crossDissolve
+                self.present(nextVC, animated: true, completion: nil)
+            }
+        }
+        else{
+            if let pushVC = self.storyboard?.instantiateViewController(withIdentifier: "SeparateDetailViewController"){
+                self.navigationController?.pushViewController(pushVC, animated: true)
+            }
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
