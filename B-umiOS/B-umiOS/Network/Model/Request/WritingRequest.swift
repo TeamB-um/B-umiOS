@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct WritingRequest {
+struct WritingRequest: Codable {
     let title: String?
     let text, categoryID: String
     var isWriting: Bool
