@@ -183,7 +183,7 @@ extension SettingSeparateViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: SeparateTableViewCell.identifier, for: indexPath) as! SeparateTableViewCell
         
         cell.selectionStyle = .none
-        cell.seperateName.text = bins[indexPath.row].name
+        cell.trashBin = bins[indexPath.row]
         return cell
     }
 }

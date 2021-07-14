@@ -93,14 +93,17 @@ class SeparatePopUpViewController: UIViewController {
     // MARK: - Properties
 
     var method: PopUpMethod
+    var trashBin: Category?
     var delegate: changeCategoryDataDelegate?
     static let identifier = "SeparatePopUpViewController"
     private let limitLength = 6
     
     // MARK: - Initializer
     
-    init(method: PopUpMethod) {
+    init(method: PopUpMethod, trashBin: Category? = nil) {
         self.method = method
+        self.trashBin = trashBin
+        
         super.init(nibName: nil, bundle: nil)
     }
     

@@ -29,6 +29,11 @@ class SeparateTableViewCell: UITableViewCell {
     // MARK: - Properties
     
     static let identifier = "SeparateTableViewCell"
+    var trashBin: Category? {
+        willSet(newValue) {
+            seperateName.text = newValue?.name
+        }
+    }
     
     // MARK: - Initializer
     
@@ -47,7 +52,7 @@ class SeparateTableViewCell: UITableViewCell {
     
     @objc
     private func didTapModifyButton(_ sender: UIButton) {
-        let nextVC = SeparatePopUpViewController(method: .modify)
+        let nextVC = SeparatePopUpViewController(method: .modify, trashBin: trashBin)
             
         nextVC.modalPresentationStyle = .overFullScreen
         nextVC.modalTransitionStyle = .crossDissolve
