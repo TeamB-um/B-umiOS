@@ -99,6 +99,7 @@
 		FC0541BA2690C92A00FFA9D1 /* MyRewardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0541B92690C92A00FFA9D1 /* MyRewardViewController.swift */; };
 		FC0541BC2690C94700FFA9D1 /* MyTrashBinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0541BB2690C94700FFA9D1 /* MyTrashBinViewController.swift */; };
 		FC0541C02691B7AE00FFA9D1 /* MyWritingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0541BF2691B7AE00FFA9D1 /* MyWritingCollectionViewCell.swift */; };
+		FC1D6F23269E0FD60060921E /* RewardService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1D6F22269E0FD60060921E /* RewardService.swift */; };
 		FC4AFBAB269899F800B9801B /* MyTrashBinTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4AFBAA269899F800B9801B /* MyTrashBinTableViewCell.swift */; };
 		FC6448CD26983F8A00C8E30C /* MyRewardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6448CC26983F8A00C8E30C /* MyRewardCollectionViewCell.swift */; };
 		FC6448D0269847CA00C8E30C /* SeparateViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6448CE269847CA00C8E30C /* SeparateViewController+Extension.swift */; };
@@ -207,6 +208,7 @@
 		FC0541B92690C92A00FFA9D1 /* MyRewardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRewardViewController.swift; sourceTree = "<group>"; };
 		FC0541BB2690C94700FFA9D1 /* MyTrashBinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTrashBinViewController.swift; sourceTree = "<group>"; };
 		FC0541BF2691B7AE00FFA9D1 /* MyWritingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWritingCollectionViewCell.swift; sourceTree = "<group>"; };
+		FC1D6F22269E0FD60060921E /* RewardService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardService.swift; sourceTree = "<group>"; };
 		FC4AFBAA269899F800B9801B /* MyTrashBinTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTrashBinTableViewCell.swift; sourceTree = "<group>"; };
 		FC6448CC26983F8A00C8E30C /* MyRewardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRewardCollectionViewCell.swift; sourceTree = "<group>"; };
 		FC6448CE269847CA00C8E30C /* SeparateViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SeparateViewController+Extension.swift"; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 			isa = PBXGroup;
 			children = (
 				4F2D1F3C269ACE7600D941A1 /* LoginService.swift */,
+				FC1D6F22269E0FD60060921E /* RewardService.swift */,
 				AB21E3CF269DEF0D00D32EFF /* CategoryService.swift */,
 				AB21E3D1269E9A1D00D32EFF /* WritingService.swift */,
 			);
@@ -825,6 +828,7 @@
 				AB7F6DDF2696BDF300EF9C6E /* WritingPopUpViewController.swift in Sources */,
 				FC4AFBAB269899F800B9801B /* MyTrashBinTableViewCell.swift in Sources */,
 				ABB24DF4268CD9B7006FEE57 /* CardCollectionViewCell.swift in Sources */,
+				FC1D6F23269E0FD60060921E /* RewardService.swift in Sources */,
 				AB7F6E5B269BF7AC00EF9C6E /* HomeViewController+Layout.swift in Sources */,
 				AB21E3C6269D666800D32EFF /* RewardResponse.swift in Sources */,
 				AB21E3C4269D64CE00D32EFF /* Reward.swift in Sources */,
