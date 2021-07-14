@@ -11,19 +11,19 @@ import UIKit
 
 extension SeparateDetailViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return headerView
+        headerView
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 72 * SizeConstants.screenRatio
+        72 * SizeConstants.screenRatio
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        return bottomView
+        bottomView
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 80
+        80
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -36,10 +36,7 @@ extension SeparateDetailViewController: UITableViewDelegate {
         else{
             let writing = writings[indexPath.row]
             let createdDate = Date().stringToDate(date: writings[indexPath.row].createdDate)
-
-            
             let vc = MyWritingPopUpViewController(writing: DummyWriting(trashBin: writing.category.name, title: writing.title, date: createdDate, content: writing.text))
-            
             
             vc.modalTransitionStyle = .crossDissolve
             vc.modalPresentationStyle = .overCurrentContext
