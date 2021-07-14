@@ -69,11 +69,11 @@ class MyTrashBinViewController: UIViewController {
                     self.myTrashCan = d.trashCan
                     self.detailTableView.reloadData()
                 } else {
-                    print("error")
+                    print("success if let error")
                 }
             
             default:
-                print("error")
+                print("default error")
             }
         }
     }
