@@ -87,13 +87,13 @@ class SettingSeparateViewController: UIViewController {
     
     @objc
     private func didTapAddButton(_ sender: UIButton) {
-        if let nextVC = storyboard?.instantiateViewController(identifier: SeparatePopUpViewController.identifier) as? SeparatePopUpViewController {
-            nextVC.method = .add
-            nextVC.delegate = self
-            nextVC.modalPresentationStyle = .overFullScreen
-            nextVC.modalTransitionStyle = .crossDissolve
-            present(nextVC, animated: true, completion: nil)
-        }
+        let nextVC = SeparatePopUpViewController(method: .add)
+        nextVC.method = .add
+        nextVC.delegate = self
+        nextVC.modalPresentationStyle = .overFullScreen
+        nextVC.modalTransitionStyle = .crossDissolve
+        
+        present(nextVC, animated: true, completion: nil)
     }
     
     // MARK: - Methods
