@@ -47,6 +47,7 @@ extension WritingViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        tagSelectedIdx = indexPath.item
         collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
 }
@@ -125,7 +126,7 @@ extension WritingViewController: UITextFieldDelegate {
 extension WritingViewController: WritingPopUpDelegate {
     func writingPopUpViewPush(trash: TrashType, writing: WritingRequest) {
         let trashViewController = ThrowTrashViewController(trashType: trash, writingRequest: writing)
-        
+
         self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
         self.navigationController?.pushViewController(trashViewController, animated: true)
     }
