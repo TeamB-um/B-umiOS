@@ -99,7 +99,7 @@ class MyWritingCollectionViewCell: UICollectionViewCell {
     
     func setWritingData(data: [Writing], index: Int){
         categoryTitle.text = data[index].category.name
-        categoryTitle.textColor = SeparateStyle.color[index]
+        categoryTitle.textColor = SeparateStyle.color[data[index].category.index]
         
         writingTitle.text = data[index].title
         writingPriview.text = data[index].text
