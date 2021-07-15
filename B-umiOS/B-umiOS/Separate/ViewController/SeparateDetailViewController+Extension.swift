@@ -30,7 +30,6 @@ extension SeparateDetailViewController: UITableViewDelegate {
         if(!self.confirmButton.isHidden){
             tableView.cellForRow(at: indexPath)?.isSelected = true
             removeData.append(indexPath.row)
-            
             isActivated()
         }
         else{
@@ -50,7 +49,6 @@ extension SeparateDetailViewController: UITableViewDelegate {
             tableView.cellForRow(at: indexPath)?.isSelected = false
             guard let elementIndex = removeData.firstIndex(of: indexPath.row) else { return }
             removeData.remove(at: elementIndex)
-            
             isActivated()
         }
     }
@@ -73,5 +71,17 @@ extension SeparateDetailViewController: UITableViewDataSource {
         cell.setData(title: writing.title, contents: writing.text)
         
         return cell
+    }
+}
+
+extension SeparateDetailViewController: DeleteDelegate{
+    func sendWritings(_ newWritings : [Writing]) {
+        removeData = []
+        isActivated()
+        writings = newWritings
+        self.removeButton.setupRoundingButton(title: "삭제", image: "btnRemove")
+        self.confirmButton.isHidden = true
+        self.removeButton.isSelected = false
+        self.detailTableView.reloadData()
     }
 }
