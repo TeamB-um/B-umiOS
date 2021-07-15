@@ -210,7 +210,6 @@ class FilterBottmSheetViewController: UIViewController {
     }
 }
     @objc private func didTapConfirmButton(_ sender: UIButton) {
-            self.dismiss(animated: true, completion: nil)
         }
     // MARK: - Methods
     
