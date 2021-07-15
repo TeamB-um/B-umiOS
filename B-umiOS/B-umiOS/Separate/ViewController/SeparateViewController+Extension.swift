@@ -62,7 +62,6 @@ extension SeparateViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
         if(indexPath.row == tag.count){
-            print("Ss")
             let nextVC = SeparatePopUpViewController(method: .add)
             
             nextVC.delegate = self
