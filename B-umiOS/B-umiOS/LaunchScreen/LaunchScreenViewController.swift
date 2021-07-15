@@ -28,7 +28,6 @@ class LaunchScreenViewController: UIViewController {
 
         setConstraints()
         login()
-        fetchUserInfo()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -50,6 +49,7 @@ class LaunchScreenViewController: UIViewController {
     func login() {
         UserService.shared.login { result in
             if result {
+                self.fetchUserInfo()
                 Timer.scheduledTimer(withTimeInterval: 1.3, repeats: false) { _ in
                     let tabBar = FloatingTabBarController()
                     tabBar.modalTransitionStyle = .crossDissolve
@@ -69,8 +69,8 @@ class LaunchScreenViewController: UIViewController {
 
             switch result {
             case .success(let data):
-                if let userInfoResponse = data as? GeneralResponse<UserInfo>,
-                   let user = userInfoResponse.data
+                if let userInfoResponse = data as? GeneralResponse<UserResponse>,
+                   let user = userInfoResponse.data?.user
                 {
                     UserDefaults.standard.set(user.isPush, forKey: UserDefaults.Keys.isPush)
                     UserDefaults.standard.set(user.deletePeriod, forKey: UserDefaults.Keys.deletePeriod)
