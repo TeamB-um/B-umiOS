@@ -53,6 +53,10 @@ class SeparateTableViewCell: UITableViewCell {
     @objc
     private func didTapModifyButton(_ sender: UIButton) {
         let nextVC = SeparatePopUpViewController(method: .modify, trashBin: trashBin)
+        
+        if let parentVC = parentViewController as? SettingSeparateViewController {
+            nextVC.delegate = parentVC
+        }
             
         nextVC.modalPresentationStyle = .overFullScreen
         nextVC.modalTransitionStyle = .crossDissolve

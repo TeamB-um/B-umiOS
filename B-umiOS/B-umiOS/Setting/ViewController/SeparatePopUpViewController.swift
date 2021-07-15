@@ -101,6 +101,23 @@ class SeparatePopUpViewController: UIViewController {
     var delegate: changeCategoryDataDelegate?
     static let identifier = "SeparatePopUpViewController"
     private let limitLength = 6
+    var isHighligtedTextField = true {
+        didSet {
+            if isHighligtedTextField {
+                textfield.layer.borderColor = UIColor.error.cgColor
+                textNumberLabel.textColor = .error
+                confirmButton.backgroundColor = .disable
+                confirmButton.isEnabled = false
+                boilerLabel.isHidden = false
+            } else {
+                textfield.layer.borderColor = UIColor.paper2.cgColor
+                textNumberLabel.textColor = .green2Main
+                confirmButton.backgroundColor = .blue2Main
+                confirmButton.isEnabled = true
+                boilerLabel.isHidden = true
+            }
+        }
+    }
     
     // MARK: - Initializer
     
@@ -160,8 +177,9 @@ class SeparatePopUpViewController: UIViewController {
                         }
                     case .requestErr(let message):
                         guard let msg = message as? ErrorMessage else { return }
+                        
                         if msg == .conflict {
-                            /// 409 status Code 처리
+                            self.isHighligtedTextField = true
                         }
                     case .pathErr, .serverErr, .networkFail:
                         break
@@ -169,21 +187,32 @@ class SeparatePopUpViewController: UIViewController {
                 }
             }
         case .modify:
-            print("modify")
+            if let category = trashBin,
+               let newName = textfield.text
+            {
+                CategoryService.shared.updateCategory(id: category.id, category: CategoryRequest(name: newName)) { response in
+                    guard let result = response as? NetworkResult<Any> else { return }
+                    
+                    switch result {
+                    case .success(let data):
+                        guard let general = data as? GeneralResponse<CategoriesResponse> else { return }
+                        
+                        if let categories = general.data?.category {
+                            self.delegate?.changeCategoryData(data: categories)
+                            self.dismiss(animated: true, completion: nil)
+                        }
+                    case .requestErr(let message):
+                        guard let msg = message as? ErrorMessage else { return }
+                        
+                        if msg == .conflict {
+                            self.isHighligtedTextField = true
+                        }
+                    case .pathErr, .serverErr, .networkFail:
+                        break
+                    }
+                }
+            }
         }
-        // 확인 호출 (add, modify method에 따라 구분)
-        
-        // .success => ok일시
-//        self.dismiss(animated: true, completion: nil)
-        
-        // .중복 일시
-//        DispatchQueue.main.async {
-//            self.textfield.layer.borderColor = UIColor.error.cgColor
-//            self.textNumberLabel.textColor = .error
-//            self.confirmButton.backgroundColor = .gray
-//            self.confirmButton.isEnabled = false
-//            self.boilerLabel.isHidden = false
-//        }
     }
     
     @objc func keyboardWillShow(_ notification: NSNotification) {
@@ -286,6 +315,7 @@ extension SeparatePopUpViewController: UITextFieldDelegate {
         
         textNumberLabel.text = "\(length > limitLength ? limitLength : length)/\(limitLength)"
         
+        isHighligtedTextField = false
         if length == 0 {
             confirmButton.isEnabled = false
             confirmButton.backgroundColor = UIColor.disable
