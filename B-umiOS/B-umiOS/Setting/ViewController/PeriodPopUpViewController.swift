@@ -59,10 +59,11 @@ class PeriodPopUpViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
+
         pickerView.delegate = self
         pickerView.dataSource = self
         
+        setView()
         setConstraint()
     }
 
@@ -82,6 +83,13 @@ class PeriodPopUpViewController: UIViewController {
     }
     
     // MARK: - Methods
+    
+    func setView() {
+        view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
+        
+        let deletePeriod = UserDefaults.standard.integer(forKey: UserDefaults.Keys.deletePeriod)
+        pickerView.selectRow(deletePeriod, inComponent: 0, animated: true)
+    }
     
     func setConstraint() {
         view.addSubviews([backgroundButton, popupView])
