@@ -190,7 +190,7 @@ extension SettingSeparateViewController: UITableViewDataSource {
     }
 }
 
-extension SettingSeparateViewController: changeCategoryDataDelegate {
+extension SettingSeparateViewController: ChangeCategoryDataDelegate {
     func changeCategoryData(data: [Category]) {
         bins = data
         separateTableView.reloadData()
