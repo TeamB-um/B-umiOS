@@ -30,8 +30,8 @@ class SeparateGraphPopUpViewController: UIViewController {
         $0.setImage(UIImage(named: "btnCloseBlack"), for: .normal)
         $0.addTarget(self, action: #selector(closeView(_:)), for: .touchUpInside)
     }
-    let monthGraphView = GraphView()
-    let entireGraphView = GraphView()
+    let monthGraphView = GraphView(title: "월간", sub: "한 달 내 카테고리별")
+    let entireGraphView = GraphView(title: "전체", sub: "전체 사용 기간 동안의")
     
     var devideLine = UIView().then {
         $0.backgroundColor = .paper1
@@ -50,6 +50,7 @@ class SeparateGraphPopUpViewController: UIViewController {
         
         setView()
         setConstraint()
+        fetchCategoryGraph()
     }
     
     // MARK: - Actions
@@ -62,5 +63,9 @@ class SeparateGraphPopUpViewController: UIViewController {
     
     func setView(){
         self.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+    }
+    
+    func fetchCategoryGraph(){
+        
     }
 }

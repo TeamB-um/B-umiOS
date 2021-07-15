@@ -37,6 +37,7 @@
 		4F7FD2F126929D6300122964 /* PeriodPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7FD2F026929D6300122964 /* PeriodPopUpViewController.swift */; };
 		4F875E2B2697E0930085D104 /* SeparateGraphPopUpViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F875E2A2697E0930085D104 /* SeparateGraphPopUpViewController+Layout.swift */; };
 		4F875E302697EE3A0085D104 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F875E2F2697EE3A0085D104 /* GraphView.swift */; };
+		4FDF643826A0C3F900E5DC2E /* GraphResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDF643726A0C3F900E5DC2E /* GraphResponse.swift */; };
 		AB21E3A9269CA06900D32EFF /* CompletionMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB21E3A8269CA06900D32EFF /* CompletionMessage.swift */; };
 		AB21E3AC269D427400D32EFF /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB21E3AB269D427400D32EFF /* LaunchScreenViewController.swift */; };
 		AB21E3AE269D43FA00D32EFF /* bium_splash.json in Resources */ = {isa = PBXBuildFile; fileRef = AB21E3AD269D43FA00D32EFF /* bium_splash.json */; };
@@ -149,6 +150,7 @@
 		4F7FD2F026929D6300122964 /* PeriodPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodPopUpViewController.swift; sourceTree = "<group>"; };
 		4F875E2A2697E0930085D104 /* SeparateGraphPopUpViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SeparateGraphPopUpViewController+Layout.swift"; sourceTree = "<group>"; };
 		4F875E2F2697EE3A0085D104 /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
+		4FDF643726A0C3F900E5DC2E /* GraphResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphResponse.swift; sourceTree = "<group>"; };
 		AB21E3A8269CA06900D32EFF /* CompletionMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionMessage.swift; sourceTree = "<group>"; };
 		AB21E3AB269D427400D32EFF /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		AB21E3AD269D43FA00D32EFF /* bium_splash.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bium_splash.json; sourceTree = "<group>"; };
@@ -376,6 +378,7 @@
 				AB21E3CB269D7E1F00D32EFF /* TokenResponse.swift */,
 				AB21E3B2269D4E8C00D32EFF /* GeneralResponse.swift */,
 				FCAE0980269F46B600B91A08 /* TrashCanResponse.swift */,
+				4FDF643726A0C3F900E5DC2E /* GraphResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -924,6 +927,7 @@
 				4F2D1F35269A1AA700D941A1 /* NetworkResult.swift in Sources */,
 				AB21E3CC269D7E1F00D32EFF /* TokenResponse.swift in Sources */,
 				FC0541BC2690C94700FFA9D1 /* MyTrashBinViewController.swift in Sources */,
+				4FDF643826A0C3F900E5DC2E /* GraphResponse.swift in Sources */,
 				AB21E3BA269D580700D32EFF /* Writing.swift in Sources */,
 				AB5AF764268A2E84001D3CD1 /* SceneDelegate.swift in Sources */,
 				4F2D1F3D269ACE7600D941A1 /* UserService.swift in Sources */,

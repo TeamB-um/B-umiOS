@@ -6,3 +6,14 @@
 //
 
 import Foundation
+
+struct GraphResponse: Codable {
+    let allstat: [GraphComponent]
+    let monthstat: [GraphComponent]
+}
+
+struct GraphComponent: Codable {
+    let name: String
+    let index: Int
+    let percent: Int
+}

@@ -63,4 +63,12 @@ struct CategoryService {
             completion(response)
         }
     }
+    
+    func fetchGraphData(completion: @escaping (Any) -> Void) {
+        RequestHandler.shared.requestData(url: APIConstants.categoryGraphURL, httpmethod: HTTPMethod.get, parameter: nil, header: NetworkInfo.headerWithToken, decodeType: GeneralResponse<GraphResponse>.self) { response in
+            print(response)
+            completion(response)
+        }
+    }
+
 }
