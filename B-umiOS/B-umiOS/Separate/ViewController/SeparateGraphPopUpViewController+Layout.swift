@@ -25,11 +25,11 @@ extension SeparateGraphPopUpViewController {
         
         headerLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalToSuperview().inset(25 * SizeConstants.screenRatio)
+            make.top.equalToSuperview().inset(23 * SizeConstants.screenRatio)
         }
         
         closeButton.snp.makeConstraints { make in
-            make.top.trailing.equalToSuperview().inset(24.5 * SizeConstants.screenRatio)
+            make.top.trailing.equalToSuperview().inset(7 * SizeConstants.screenRatio)
         }
         monthGraphView.snp.makeConstraints { make in
             make.top.equalTo(headerLabel).offset(50)
