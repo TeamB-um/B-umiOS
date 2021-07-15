@@ -54,6 +54,8 @@ class MyWritingCollectionViewCell: UICollectionViewCell {
         $0.isHidden = true
     }
     // MARK: - Properties
+//    var removeData : [Int] = []
+    
     override var isSelected: Bool {
         didSet {
             if isSelected {
