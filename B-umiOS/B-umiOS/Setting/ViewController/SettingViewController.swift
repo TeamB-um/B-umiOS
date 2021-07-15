@@ -57,8 +57,9 @@ class SettingViewController: UIViewController, popupDelegate {
         $0.addTarget(self, action: #selector(didTapTrashBinManageButton(_:)), for: .touchUpInside)
     }
     
-    var pushAlarmSwitch = UISwitch().then {
+    lazy var pushAlarmSwitch = UISwitch().then {
         $0.onTintColor = .blue2Main
+        $0.addTarget(self, action: #selector(didTapPushSwitch(_:)), for: .valueChanged)
     }
     
     let serviceConditionButton = UIButton().then {
@@ -117,6 +118,27 @@ class SettingViewController: UIViewController, popupDelegate {
         present(popUpVC, animated: true, completion: nil)
     }
     
+    @objc
+    private func didTapPushSwitch(_ sender: UISwitch) {
+        let userInfo = UserInfo(isPush: sender.isOn, deletePeriod: nil)
+        
+        UserService.shared.updateUserInfo(userInfo: userInfo) { response in
+            guard let result = response as? NetworkResult<Any> else { return }
+            
+            switch result {
+            case .success(let data):
+                if let userInfoResponse = data as? GeneralResponse<UserResponse>,
+                   let newUserInfo = userInfoResponse.data?.user
+                {
+                    UserDefaults.standard.set(newUserInfo.isPush, forKey: UserDefaults.Keys.isPush)
+                }
+            case .requestErr, .pathErr, .serverErr, .networkFail:
+                /// 네트워크 에러 처리
+                print("fail to update user info")
+            }
+        }
+    }
+
     // MARK: - Methods
     
     func setView() {
