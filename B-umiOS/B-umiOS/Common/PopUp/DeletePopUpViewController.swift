@@ -61,6 +61,7 @@ class DeletePopUpViewController: UIViewController {
     
     static let identifier = "DeletePopUpViewController"
     var popUpDelegate: WritingPopUpDelegate?
+    var changeCategoriesDataDelegate: ChangeCategoryDataDelegate?
     var kind: Kind
     var deleteData: [String] = []
     var deleteDelegate: DeleteDelegate?
@@ -119,8 +120,21 @@ class DeletePopUpViewController: UIViewController {
                 }
             }
         case .separate:
-            print(deleteData)
-            // 여기다 작성해 인애
+            CategoryService.shared.deleteCategory(id: query) { response in
+                guard let result = response as? NetworkResult<Any> else { return }
+                
+                switch result {
+                case .success(let data):
+                    guard let categoriesResponse = data as? GeneralResponse<CategoriesResponse> else { return }
+                    
+                    if let categories = categoriesResponse.data?.category {
+                        self.changeCategoriesDataDelegate?.changeCategoryData(data: categories)
+                    }
+                    
+                default:
+                    print("fail to delete category")
+                }
+            }
         }
         
         dismiss(animated: true, completion: nil)
