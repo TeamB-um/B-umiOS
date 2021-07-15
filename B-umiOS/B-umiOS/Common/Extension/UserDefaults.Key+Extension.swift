@@ -10,5 +10,7 @@ import UIKit
 extension UserDefaults {
     enum Keys {
         static let token = "token"
+        static let isPush = "isPush"
+        static let deletePeriod = "deletePeriod"
     }
 }

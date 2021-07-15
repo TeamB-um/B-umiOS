@@ -47,8 +47,9 @@ class LaunchScreenViewController: UIViewController {
     }
 
     func login() {
-        LoginService.shared.login { result in
+        UserService.shared.login { result in
             if result {
+                self.fetchUserInfo()
                 Timer.scheduledTimer(withTimeInterval: 1.3, repeats: false) { _ in
                     let tabBar = FloatingTabBarController()
                     tabBar.modalTransitionStyle = .crossDissolve
@@ -58,6 +59,24 @@ class LaunchScreenViewController: UIViewController {
                 }
             } else {
                 print("네트워크 에러 팝업을 띄우기")
+            }
+        }
+    }
+
+    func fetchUserInfo() {
+        UserService.shared.fetchUserInfo { response in
+            guard let result = response as? NetworkResult<Any> else { return }
+
+            switch result {
+            case .success(let data):
+                if let userInfoResponse = data as? GeneralResponse<UserResponse>,
+                   let user = userInfoResponse.data?.user
+                {
+                    UserDefaults.standard.set(user.isPush, forKey: UserDefaults.Keys.isPush)
+                    UserDefaults.standard.set(user.deletePeriod, forKey: UserDefaults.Keys.deletePeriod)
+                }
+            case .requestErr, .pathErr, .serverErr, .networkFail:
+                break
             }
         }
     }

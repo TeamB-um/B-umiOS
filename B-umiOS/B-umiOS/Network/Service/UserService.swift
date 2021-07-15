@@ -8,8 +8,8 @@
 import Alamofire
 import Foundation
 
-struct LoginService {
-    static let shared = LoginService()
+struct UserService {
+    static let shared = UserService()
 
     func login(completion: @escaping (Bool) -> Void) {
         guard let uuid = UIDevice.current.identifierForVendor?.uuidString else { return }
@@ -26,6 +26,20 @@ struct LoginService {
             case .requestErr, .pathErr, .serverErr, .networkFail:
                 completion(false)
             }
+        }
+    }
+
+    func fetchUserInfo(completion: @escaping (Any) -> Void) {
+        RequestHandler.shared.requestData(url: APIConstants.loginURL, httpmethod: .get, parameter: nil, header: NetworkInfo.headerWithToken, decodeType: GeneralResponse<UserResponse>.self) { response in
+            completion(response)
+        }
+    }
+
+    func updateUserInfo(userInfo: UserInfo, completion: @escaping (Any) -> Void) {
+        let parameter = NetworkInfo.shared.makeParameter(model: userInfo)
+
+        RequestHandler.shared.requestData(url: APIConstants.loginURL, httpmethod: .patch, parameter: parameter, header: NetworkInfo.headerWithToken, decodeType: GeneralResponse<UserResponse>.self) { response in
+            completion(response)
         }
     }
 }

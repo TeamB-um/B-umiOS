@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SettingViewController: UIViewController, popupDelegate{
+class SettingViewController: UIViewController, popupDelegate {
     // MARK: - UIComponenets
 
     var navigationView = UIView().then {
@@ -57,8 +57,9 @@ class SettingViewController: UIViewController, popupDelegate{
         $0.addTarget(self, action: #selector(didTapTrashBinManageButton(_:)), for: .touchUpInside)
     }
     
-    var pushAlarmSwitch = UISwitch().then {
+    lazy var pushAlarmSwitch = UISwitch().then {
         $0.onTintColor = .blue2Main
+        $0.addTarget(self, action: #selector(didTapPushSwitch(_:)), for: .valueChanged)
     }
     
     let serviceConditionButton = UIButton().then {
@@ -86,46 +87,65 @@ class SettingViewController: UIViewController, popupDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setView()
+        self.setView()
         setConstraint()
+        self.setUserInfo()
     }
 
     // MARK: - Actions
 
     @objc
-        private func didTapTrashBinManageButton(_ sender: UIButton) {
-            if let pushVC = self.storyboard?.instantiateViewController(withIdentifier: SettingSeparateViewController.identifier){
-                self.navigationController?.pushViewController(pushVC, animated: true)
-            }
+    private func didTapTrashBinManageButton(_ sender: UIButton) {
+        if let pushVC = self.storyboard?.instantiateViewController(withIdentifier: SettingSeparateViewController.identifier) {
+            self.navigationController?.pushViewController(pushVC, animated: true)
         }
-    
-    @objc
-        private func setPeriodButton(_ sender: UIButton) {
-            
-            let popUpVC = self.storyboard?.instantiateViewController(identifier: "PeriodPopUpViewController") as! PeriodPopUpViewController
-            popUpVC.modalPresentationStyle = .overFullScreen
-            popUpVC.modalTransitionStyle = .coverVertical
-            
-            popUpVC.popupdelegate = self
-            
-            DispatchQueue.main.async {
-                self.view.addSubview(self.backgroundView)
-                self.backgroundView.snp.makeConstraints { make in
-                    make.edges.equalToSuperview()
-                }
-            }
-            self.present(popUpVC, animated: true, completion: nil)
-            
-            
-        }
-    
-    // MARK: - Methods
-    
-    func setView(){
-        self.view.backgroundColor = .background
     }
     
-    func createView(text : String, items: [NSCoding]) -> UIView{
+    @objc
+    private func setPeriodButton(_ sender: UIButton) {
+        let popUpVC = self.storyboard?.instantiateViewController(identifier: "PeriodPopUpViewController") as! PeriodPopUpViewController
+        popUpVC.modalPresentationStyle = .overFullScreen
+        popUpVC.modalTransitionStyle = .coverVertical
+        
+        popUpVC.popupdelegate = self
+        
+        DispatchQueue.main.async {
+            self.view.addSubview(self.backgroundView)
+            self.backgroundView.snp.makeConstraints { make in
+                make.edges.equalToSuperview()
+            }
+        }
+        present(popUpVC, animated: true, completion: nil)
+    }
+    
+    @objc
+    private func didTapPushSwitch(_ sender: UISwitch) {
+        let userInfo = UserInfo(isPush: sender.isOn, deletePeriod: nil)
+        
+        UserService.shared.updateUserInfo(userInfo: userInfo) { response in
+            guard let result = response as? NetworkResult<Any> else { return }
+            
+            switch result {
+            case .success(let data):
+                if let userInfoResponse = data as? GeneralResponse<UserResponse>,
+                   let newUserInfo = userInfoResponse.data?.user
+                {
+                    UserDefaults.standard.set(newUserInfo.isPush, forKey: UserDefaults.Keys.isPush)
+                }
+            case .requestErr, .pathErr, .serverErr, .networkFail:
+                /// 네트워크 에러 처리
+                print("fail to update user info")
+            }
+        }
+    }
+
+    // MARK: - Methods
+    
+    func setView() {
+        view.backgroundColor = .background
+    }
+    
+    func createView(text: String, items: [NSCoding]) -> UIView {
         let newView = UIView().then {
             $0.backgroundColor = .background
         }
@@ -144,7 +164,7 @@ class SettingViewController: UIViewController, popupDelegate{
         
         newView.addSubviews([label, stackView])
         
-        for item in items{
+        for item in items {
             stackView.addArrangedSubview(item as! UIView)
         }
         
@@ -164,6 +184,14 @@ class SettingViewController: UIViewController, popupDelegate{
         
         return newView
     }
+    
+    func setUserInfo() {
+        let isPush = UserDefaults.standard.bool(forKey: UserDefaults.Keys.isPush)
+        let deletePeriod = UserDefaults.standard.integer(forKey: UserDefaults.Keys.deletePeriod)
+        
+        self.pushAlarmSwitch.isOn = isPush
+        self.trashbinPeriodLabel.text = "\(deletePeriod)일"
+    }
 
     // MARK: - Protocols
     
@@ -171,12 +199,12 @@ class SettingViewController: UIViewController, popupDelegate{
         self.backgroundView.removeFromSuperview()
     }
     
-    func sendPeriod(period : Int) {
-        trashbinPeriodLabel.text = "\(period)일"
+    func sendPeriod(period: Int) {
+        self.trashbinPeriodLabel.text = "\(period)일"
     }
 }
 
 protocol popupDelegate {
     func closeBottomSheet()
-    func sendPeriod(period : Int)
+    func sendPeriod(period: Int)
 }
