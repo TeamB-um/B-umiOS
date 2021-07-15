@@ -13,16 +13,18 @@ struct APIConstants {
     static let application_json = "application/json"
 
     /// user API
-    static let login = APIConstants.baseURL + "/users"
-    static let rewardURL = APIConstants.baseURL + "/rewards"
-    static let loginURL = APIConstants.baseURL + "/users"
+    // FIXME: - userURL로 네이밍 변경
+    static let userURL = APIConstants.baseURL + "/users"
 
     /// category API
     static let categoryURL = APIConstants.baseURL + "/categories"
-    
+
     /// writing API
     static let writingURL = APIConstants.baseURL + "/writings"
-    
-    ///trashCan API
+
+    /// trashCan API
     static let trashCanURL = APIConstants.baseURL + "/trashcans"
+
+    /// reward API
+    static let rewardURL = APIConstants.baseURL + "/rewards"
 }

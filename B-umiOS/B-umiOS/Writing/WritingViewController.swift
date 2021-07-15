@@ -122,6 +122,7 @@ class WritingViewController: UIViewController {
     let style: WritingStyle
     var tag: [Category] = []
     let limitLength = 20
+    var tagSelectedIdx = 0
     
     // MARK: - Initializer
 
@@ -143,11 +144,12 @@ class WritingViewController: UIViewController {
         setView()
         setCollectionView()
         setConstraint()
-        fetchCategoriesData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         NotificationCenter.default.post(name: Notification.Name.TabBarHide, object: nil)
+        
+        fetchCategoriesData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -206,7 +208,7 @@ class WritingViewController: UIViewController {
             self.guideImage.isHidden = self.tag.count != 0
             
             self.tagCollectionView.reloadData()
-            self.tagCollectionView.selectItem(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: [])
+            self.tagCollectionView.selectItem(at: IndexPath(row: self.tagSelectedIdx, section: 0), animated: false, scrollPosition: .centeredHorizontally)
         }
     }
     

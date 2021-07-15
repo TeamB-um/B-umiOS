@@ -40,7 +40,6 @@ class SettingSeparateViewController: UIViewController {
     }
     
     lazy var trashbinStatusNumber = UILabel().then {
-        $0.text = "\(bins.count)/9"
         $0.font = UIFont.nanumSquareFont(type: .regular, size: 13)
         $0.textColor = .green2Main
     }
@@ -51,7 +50,18 @@ class SettingSeparateViewController: UIViewController {
     
     // MARK: - Properties
     
-    var bins = ["a","b","c","d","e"]
+    var bins: [Category] = [] {
+        didSet {
+            trashbinStatusNumber.text = "\(bins.count)/8"
+            
+            if bins.count >= 8 {
+                addButton.isEnabled = false
+            } else {
+                addButton.isEnabled = true
+            }
+        }
+    }
+
     static let identifier = "SettingSeparateViewController"
     
     // MARK: - Initializer
@@ -64,37 +74,40 @@ class SettingSeparateViewController: UIViewController {
         setView()
         setConstraint()
         setTableView()
+        
+        fetchCategories()
     }
     
     // MARK: - Actions
     
     @objc
     private func didTapBackButton(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
+        navigationController?.popViewController(animated: true)
     }
     
     @objc
     private func didTapAddButton(_ sender: UIButton) {
-        if let nextVC = storyboard?.instantiateViewController(identifier: SeparatePopUpViewController.identifier) as? SeparatePopUpViewController{
-            nextVC.method = .add
-            nextVC.modalPresentationStyle = .overFullScreen
-            nextVC.modalTransitionStyle = .crossDissolve
-            self.present(nextVC, animated: true, completion: nil)
-        }
+        let nextVC = SeparatePopUpViewController(method: .add)
+        nextVC.method = .add
+        nextVC.delegate = self
+        nextVC.modalPresentationStyle = .overFullScreen
+        nextVC.modalTransitionStyle = .crossDissolve
+        
+        present(nextVC, animated: true, completion: nil)
     }
     
     // MARK: - Methods
   
-    func setView(){
+    func setView() {
         navigationController?.interactivePopGestureRecognizer?.delegate = nil
-        self.view.backgroundColor = .background
+        view.backgroundColor = .background
     }
     
-    func setConstraint(){
+    func setConstraint() {
         let navigationHeight = 56 + UIDevice.current.safeAreaInset.top
         
-        self.view.addSubviews([navigationView, navigationDividerView, trashbinStatusLabel, trashbinStatusNumber, separateTableView])
-        navigationView.addSubviews([headerLabel,backButton,addButton])
+        view.addSubviews([navigationView, navigationDividerView, trashbinStatusLabel, trashbinStatusNumber, separateTableView])
+        navigationView.addSubviews([headerLabel, backButton, addButton])
         
         navigationView.snp.makeConstraints { make in
             make.top.width.equalToSuperview()
@@ -138,30 +151,46 @@ class SettingSeparateViewController: UIViewController {
         }
     }
     
-    func setTableView(){
+    func setTableView() {
         separateTableView.delegate = self
         separateTableView.dataSource = self
         separateTableView.backgroundColor = .background
         separateTableView.register(UINib(nibName: SeparateTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: SeparateTableViewCell.identifier)
     }
+    
+    // MARK: - Network
+    
+    func fetchCategories() {
+        CategoryService.shared.fetchCategories { result in
+            guard let categories = result as? CategoriesResponse else { return }
+            
+            self.bins = categories.category
+            self.separateTableView.reloadData()
+        }
+    }
 }
 
 // MARK: - Protocols
 
-extension SettingSeparateViewController: UITableViewDelegate{
+extension SettingSeparateViewController: UITableViewDelegate {}
 
-}
-
-extension SettingSeparateViewController: UITableViewDataSource{
+extension SettingSeparateViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return bins.count
+        bins.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SeparateTableViewCell.identifier, for: indexPath) as! SeparateTableViewCell
         
         cell.selectionStyle = .none
-        cell.seperateName.text = bins[indexPath.row]
+        cell.trashBin = bins[indexPath.row]
         return cell
+    }
+}
+
+extension SettingSeparateViewController: changeCategoryDataDelegate {
+    func changeCategoryData(data: [Category]) {
+        bins = data
+        separateTableView.reloadData()
     }
 }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PeriodPopUpViewController: UIViewController{
+class PeriodPopUpViewController: UIViewController {
     // MARK: - UIComponenets
     
     private let popupView = UIView().then {
@@ -29,10 +29,10 @@ class PeriodPopUpViewController: UIViewController{
         $0.tintColor = .white
         $0.backgroundColor = .blue2Main
         $0.cornerRound(radius: 10)
-        $0.addTarget(self, action: #selector(selectPeriod(_:)), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(didTapConfirmButton(_:)), for: .touchUpInside)
     }
     
-    private  let backgroundButton = UIButton().then {
+    private let backgroundButton = UIButton().then {
         $0.addTarget(self, action: #selector(didTapBackgroundButton(_:)), for: .touchUpInside)
     }
     
@@ -49,9 +49,9 @@ class PeriodPopUpViewController: UIViewController{
     }
     
     // MARK: - Properties
-    var pickContents : [String] = ["즉시 삭제", "1일", "2일", "3일", "4일", "5일", "6일", "7일", "8일", "9일"]
-    var popupdelegate : popupDelegate?
-    var trashBinPeriod : String?
+
+    var pickContents: [String] = ["즉시 삭제", "1일", "2일", "3일", "4일", "5일", "6일", "7일"]
+    var popupdelegate: popupDelegate?
     
     // MARK: - Initializer
 
@@ -59,32 +59,58 @@ class PeriodPopUpViewController: UIViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
-        self.pickerView.delegate = self
-        self.pickerView.dataSource = self
+
+        pickerView.delegate = self
+        pickerView.dataSource = self
         
+        setView()
         setConstraint()
     }
 
     // MARK: - Actions
     
-    @objc private func selectPeriod(_ sender: UIButton) {
-        print(trashBinPeriod)
-        popupdelegate?.sendPeriod(period: 1)
-        popupdelegate?.closeBottomSheet()
-        self.dismiss(animated: true, completion: nil)
+    @objc private func didTapConfirmButton(_ sender: UIButton) {
+        let deletePeriod = pickerView.selectedRow(inComponent: 0)
+        let userInfo = UserInfo(isPush: nil, deletePeriod: deletePeriod)
         
+        UserService.shared.updateUserInfo(userInfo: userInfo) { response in
+            guard let result = response as? NetworkResult<Any> else { return }
+            
+            switch result {
+            case .success(let data):
+                if let userInfoResponse = data as? GeneralResponse<UserResponse>,
+                   let newUserInfo = userInfoResponse.data?.user
+                {
+                    UserDefaults.standard.set(newUserInfo.deletePeriod, forKey: UserDefaults.Keys.deletePeriod)
+                    
+                    self.popupdelegate?.sendPeriod(period: deletePeriod)
+                }
+            case .requestErr, .pathErr, .serverErr, .networkFail:
+                /// 네트워크 에러 처리
+                print("fail to update user info")
+            }
+        }
+        
+        popupdelegate?.closeBottomSheet()
+        dismiss(animated: true, completion: nil)
     }
     
     @objc private func didTapBackgroundButton(_ sender: UIButton) {
         popupdelegate?.closeBottomSheet()
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     // MARK: - Methods
     
+    func setView() {
+        view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
+        
+        let deletePeriod = UserDefaults.standard.integer(forKey: UserDefaults.Keys.deletePeriod)
+        pickerView.selectRow(deletePeriod, inComponent: 0, animated: true)
+    }
+    
     func setConstraint() {
-        self.view.addSubviews([backgroundButton,popupView])
+        view.addSubviews([backgroundButton, popupView])
         
         popupView.snp.makeConstraints { make in
             make.leading.trailing.bottom.equalToSuperview()
@@ -94,7 +120,7 @@ class PeriodPopUpViewController: UIViewController{
             make.edges.equalToSuperview()
         }
         
-        popupView.addSubviews([rect,headerLabel,subLabel,pickerView,confirmButton])
+        popupView.addSubviews([rect, headerLabel, subLabel, pickerView, confirmButton])
         
         rect.snp.makeConstraints { make in
             make.height.equalTo(6 * SizeConstants.screenRatio)
@@ -133,22 +159,18 @@ class PeriodPopUpViewController: UIViewController{
 
 // MARK: - Extension
 
-extension PeriodPopUpViewController : UIPickerViewDelegate{
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        trashBinPeriod = (pickContents[row])
-    }
-    
+extension PeriodPopUpViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickContents[row]
+        pickContents[row]
     }
 }
 
-extension PeriodPopUpViewController : UIPickerViewDataSource{
+extension PeriodPopUpViewController: UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
+        1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-       return pickContents.count
+        pickContents.count
     }
 }

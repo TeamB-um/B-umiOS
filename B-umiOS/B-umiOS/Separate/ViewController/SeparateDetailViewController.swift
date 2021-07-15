@@ -85,7 +85,17 @@ class SeparateDetailViewController: UIViewController {
     
     @objc func didTapConfirmButton(){
         if(!removeData.isEmpty){
+            print("view")
             let vc = DeletePopUpViewController(title: "글 삭제", guide: "글을 삭제하시겠습니까?")
+            var deleteID: [String] = []
+
+            for index in removeData{
+                deleteID.append(writings[index].id)
+            }
+            
+            vc.kind = .writing
+            vc.deleteData = deleteID
+            vc.parentDelegate = self
             vc.modalTransitionStyle = .crossDissolve
             vc.modalPresentationStyle = .overCurrentContext
             
@@ -119,7 +129,6 @@ class SeparateDetailViewController: UIViewController {
             case .success(let response):
                 guard let w = response as? GeneralResponse<WritingsResponse> else{return}
                 self.writings = w.data?.writing ?? []
-                print(self.writings.count)
                 self.detailTableView.reloadData()
             default:
                 break
@@ -149,4 +158,8 @@ class SeparateDetailViewController: UIViewController {
     }
     
     // MARK: - Protocols
+}
+
+protocol DeleteDelegate{
+    func sendWritings(_ newWritings : [Writing])
 }
