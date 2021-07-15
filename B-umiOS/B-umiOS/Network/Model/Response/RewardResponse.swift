@@ -7,10 +7,6 @@
 
 import Foundation
 
-struct RewardResponse {
-    let reward: Reward
-}
-
 struct RewardsResponse: Codable {
-    let rewards: [Reward]
+    let reward: [Reward]
 }
