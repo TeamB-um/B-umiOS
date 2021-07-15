@@ -74,7 +74,7 @@ extension SeparateDetailViewController: UITableViewDataSource {
     }
 }
 
-extension SeparateDetailViewController: deleteDelegate{
+extension SeparateDetailViewController: DeleteDelegate{
     func sendWritings(_ newWritings : [Writing]) {
         removeData = []
         isActivated()

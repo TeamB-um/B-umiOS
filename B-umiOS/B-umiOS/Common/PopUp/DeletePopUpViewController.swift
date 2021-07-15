@@ -67,8 +67,8 @@ class DeletePopUpViewController: UIViewController {
     var popUpGuide: String
     var kind : Kind?
     var deleteData : [String] = []
-    var deletedelegate : deleteDelegate?
-    var parentDelegate : deleteDelegate?
+    var deleteDelegate : DeleteDelegate?
+    var parentDelegate : DeleteDelegate?
     // MARK: - Initializer
     
     init(title popUpTitle: String, guide popUpGuide: String) {
@@ -114,8 +114,8 @@ class DeletePopUpViewController: UIViewController {
                 switch result{
                 case .success(let response):
                     guard let writings = response as? GeneralResponse<WritingsResponse> else{return}
-                    self.deletedelegate = self.parentDelegate
-                    self.deletedelegate?.sendWritings(writings.data?.writing ?? [])
+                    self.deleteDelegate = self.parentDelegate
+                    self.deleteDelegate?.sendWritings(writings.data?.writing ?? [])
                 default:
                     print("error")
                 }

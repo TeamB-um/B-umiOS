@@ -160,6 +160,6 @@ class SeparateDetailViewController: UIViewController {
     // MARK: - Protocols
 }
 
-protocol deleteDelegate{
+protocol DeleteDelegate{
     func sendWritings(_ newWritings : [Writing])
 }
