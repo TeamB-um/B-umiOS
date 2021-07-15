@@ -46,4 +46,11 @@ struct CategoryService {
             completion(response)
         }
     }
+
+    func deleteCategory(id: String, completion: @escaping (Any) -> Void) {
+        RequestHandler.shared.requestData(url: APIConstants.categoryURL +
+            "/\(id)", httpmethod: .delete, parameter: nil, header: NetworkInfo.headerWithToken, decodeType: GeneralResponse<CategoriesResponse>.self) { response in
+            completion(response)
+        }
+    }
 }
