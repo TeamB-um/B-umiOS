@@ -28,4 +28,10 @@ struct UserService {
             }
         }
     }
+
+    func fetchUserInfo(completion: @escaping (Any) -> Void) {
+        RequestHandler.shared.requestData(url: APIConstants.loginURL, httpmethod: .get, parameter: nil, header: NetworkInfo.headerWithToken, decodeType: GeneralResponse<UserResponse>.self) { response in
+            completion(response)
+        }
+    }
 }
