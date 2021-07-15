@@ -161,7 +161,9 @@ class SettingSeparateViewController: UIViewController {
     // MARK: - Network
     
     func fetchCategories() {
+        ActivityIndicator.shared.startLoadingAnimation()
         CategoryService.shared.fetchCategories { result in
+            ActivityIndicator.shared.stopLoadingAnimation()
             guard let categories = result as? CategoriesResponse else { return }
             
             self.bins = categories.category

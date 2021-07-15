@@ -48,6 +48,7 @@ extension SeparateDetailViewController: UITableViewDelegate {
         if(!self.confirmButton.isHidden){
             tableView.cellForRow(at: indexPath)?.isSelected = false
             guard let elementIndex = removeData.firstIndex(of: indexPath.row) else { return }
+            print(elementIndex)
             removeData.remove(at: elementIndex)
             isActivated()
         }
