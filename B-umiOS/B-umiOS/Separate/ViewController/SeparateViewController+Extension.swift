@@ -60,9 +60,7 @@ extension SeparateViewController: UICollectionViewDataSource {
 
 extension SeparateViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(tag[indexPath.row].count)
-        print(indexPath.row == tag.count)
-        
+
         if(indexPath.row == tag.count){
             let storyboard = UIStoryboard(name: "Setting", bundle: nil)
             if let nextVC = storyboard.instantiateViewController(identifier: SeparatePopUpViewController.identifier) as? SeparatePopUpViewController {
@@ -74,12 +72,8 @@ extension SeparateViewController: UICollectionViewDelegate {
         }
         else {
             if(tag[indexPath.row].count >= 5){
-                print(tag[indexPath.row].count)
-                print(self.tag[indexPath.row].id)
-                
                 CategoryService.shared.fetchRewardData(category_id: tag[indexPath.row].id) { response in
-                    print(response)
-                    print(self.tag[indexPath.row].id)
+
                     guard let result = response as? NetworkResult<Any> else{return}
                     
                     switch result{

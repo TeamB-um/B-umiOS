@@ -83,7 +83,6 @@ class SeparateViewController: UIViewController {
     
     func fetchCategoriesData() {
         CategoryService.shared.fetchCategories { result in
-            print(result)
             guard let categories = result as? CategoriesResponse else { return }
             
             self.tag = categories.category
