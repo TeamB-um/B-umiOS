@@ -31,6 +31,7 @@ class MyWritingViewController: UIViewController {
     // MARK: - Properties
     var deleteButtonIsSelected: Bool = false
     var myWritingParentViewcontroller: UIViewController?
+    var myWriting: [Writing] = []
     
     // MARK: - Initializer
     
@@ -42,9 +43,33 @@ class MyWritingViewController: UIViewController {
         addObservers()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        fatchWriting()
+    }
+    
     // MARK: - Actions
     
     // MARK: - Methods
+    
+    func fatchWriting(){
+        WritingService.shared.fatchWriting { response in
+            guard let r = response as? NetworkResult<Any> else { return }
+            switch r {
+            case .success(let data):
+                guard let wiritingData = data as? GeneralResponse<WritingsResponse> else { return }
+
+                if let d = wiritingData.data {
+                    self.myWriting = d.writing
+                    self.myWritingCollectionView.reloadData()
+                } else {
+                    print("success if let error")
+                }
+            
+            default:
+                print("default error")
+            }
+        }
+    }
     
     func setConstraint(){
         view.addSubview(myWritingCollectionView)
@@ -56,7 +81,7 @@ class MyWritingViewController: UIViewController {
     }
     
     func addObservers(){
-        NotificationCenter.default.addObserver(self, selector: #selector(deleteButtonClicked), name: NSNotification.Name.isDeleteButtonSelected, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(isDeleteButtonSelected), name: NSNotification.Name.isDeleteButtonSelected, object: nil)
     }
     
     @objc func deleteButtonClicked(noti : NSNotification){
