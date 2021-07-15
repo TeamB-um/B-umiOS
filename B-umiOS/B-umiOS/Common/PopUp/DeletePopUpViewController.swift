@@ -10,10 +10,12 @@ import UIKit
 // TODO: - 삭제 버튼 Action 등록
 
 /// DeletePopUpViewController(title: "글 삭제", guide: "글을 삭제하시겠습니까?")
+enum Kind{
+    case separate
+    case writing
+}
 
 class DeletePopUpViewController: UIViewController {
-    static let identifier = "DeletePopUpViewController"
-
     // MARK: - UIComponenets
     
     private let popUpView = UIView().then {
@@ -54,14 +56,19 @@ class DeletePopUpViewController: UIViewController {
         $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = UIFont.nanumSquareFont(type: .bold, size: 18)
         $0.cornerRound(radius: 10)
+        $0.addTarget(self, action: #selector(didTapDelete), for: .touchUpInside)
     }
     
     // MARK: - Properties
     
+    static let identifier = "DeletePopUpViewController"
     var popUpDelegate: WritingPopUpDelegate?
     var popUpTitle: String
     var popUpGuide: String
-    
+    var kind : Kind?
+    var deleteData : [String] = []
+    var deletedelegate : deleteDelegate?
+    var parentDelegate : deleteDelegate?
     // MARK: - Initializer
     
     init(title popUpTitle: String, guide popUpGuide: String) {
@@ -87,6 +94,42 @@ class DeletePopUpViewController: UIViewController {
     
     // MARK: - Actions
 
+    @objc func didTapDelete(){
+        var query = ""
+        
+        for (index,item) in deleteData.enumerated(){
+            if(index == 0){
+                query = item
+            }
+            else{
+                query = "\(query),\(item)"
+            }
+        }
+        
+        switch kind{
+        case .writing:
+            WritingService.shared.deleteWriting(writings: query) { response in
+                guard let result = response as? NetworkResult<Any> else{return}
+
+                switch result{
+                case .success(let response):
+                    guard let writings = response as? GeneralResponse<WritingsResponse> else{return}
+                    self.deletedelegate = self.parentDelegate
+                    self.deletedelegate?.sendWritings(writings.data?.writing ?? [])
+                default:
+                    print("error")
+                }
+            }
+        case .separate:
+            print(deleteData)
+            //여기다 작성해 인애
+        case .none:
+            break
+        }
+        
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     // MARK: - Methods
     
     func setView() {
