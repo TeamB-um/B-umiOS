@@ -18,4 +18,5 @@ enum NetworkResult<T> {
 enum ErrorMessage {
     case conflict
     case wrongRequest
+    case notFound
 }

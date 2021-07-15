@@ -7,21 +7,6 @@
 
 import UIKit
 
-/// 사용은 이렇게.. 해주세요 (구조체 임시 - 서버 확정 후 변경)
-
-// let pop = MyWritingPopUpViewController(writing: DummyWriting(trashBin: "웅앵", title: "아아아아", date: Date(timeIntervalSince1970: .init()), content: "당신의 고민을 적어주세요.당신의 고민을 적어주세요."))
-// pop.modalTransitionStyle = .crossDissolve
-// pop.modalPresentationStyle = .overCurrentContext
-//
-// present(pop, animated: true, completion: nil)
-
-struct DummyWriting {
-    var trashBin: String
-    var title: String
-    var date: Date
-    var content: String
-}
-
 class MyWritingPopUpViewController: UIViewController {
     // MARK: - UIComponenets
     
@@ -38,19 +23,16 @@ class MyWritingPopUpViewController: UIViewController {
     }
     
     private lazy var trashBinLabel = UILabel().then {
-        $0.text = self.writing.trashBin
         $0.font = UIFont.nanumSquareFont(type: .regular, size: 14)
         $0.textColor = UIColor.blue2Main
     }
     
     private lazy var titleLabel = UILabel().then {
-        $0.text = self.writing.title
         $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 20)
         $0.textColor = .black
     }
     
     private lazy var dateLabel = UILabel().then {
-        $0.text = Date().dateToString(format: "yyyy년 MM월 dd일 (E)", date: self.writing.date)
         $0.textColor = .textGray
     }
     
@@ -58,8 +40,6 @@ class MyWritingPopUpViewController: UIViewController {
         $0.textColor = .header
         $0.font = UIFont.nanumSquareFont(type: .light, size: 14)
         $0.numberOfLines = 0
-        $0.text = self.writing.content
-        $0.lineSpacing(spacing: 9)
     }
     
     private let scrollView = UIScrollView().then {
@@ -70,13 +50,11 @@ class MyWritingPopUpViewController: UIViewController {
     
     // MARK: - Properties
     
-    private let writing: DummyWriting
-    
     // MARK: - Initializer
     
-    init(writing: DummyWriting) {
-        self.writing = writing
+    init(writing: Writing) {
         super.init(nibName: nil, bundle: nil)
+        setWritingData(data: writing)
     }
     
     @available(*, unavailable)
@@ -88,7 +66,6 @@ class MyWritingPopUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setView()
         setConstraints()
     }
@@ -96,6 +73,16 @@ class MyWritingPopUpViewController: UIViewController {
     // MARK: - Actions
     
     // MARK: - Methods
+    func setWritingData(data: Writing) {
+        trashBinLabel.text = data.category.name
+        titleLabel.text = data.title
+        titleLabel.lineSpacing(spacing: 10)
+        contentLabel.text = data.text
+        contentLabel.lineSpacing(spacing: 9)
+        
+        let createdDate = Date().stringToDate(date: data.createdDate ?? "")
+        dateLabel.text = Date().dateToString(format: "yyyy.MM.dd (E)", date: createdDate)
+    }
     
     func setConstraints() {
         contentView.addSubview(contentLabel)
@@ -130,7 +117,7 @@ class MyWritingPopUpViewController: UIViewController {
         
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(trashBinLabel.snp.bottom).offset(14 * SizeConstants.screenRatio)
-            make.leading.equalTo(trashBinLabel.snp.leading)
+            make.leading.trailing.equalToSuperview().inset(24 * SizeConstants.screenRatio)
         }
         
         dateLabel.snp.makeConstraints { make in
