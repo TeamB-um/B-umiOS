@@ -9,7 +9,8 @@ import Foundation
 
 struct Category: Codable {
     let id, name: String
-    let index, count: Int?
+    let index: Int
+    var count: Int
     let img: String
     let createdDate: String
     let userID: String? /// 서버가 안 고쳐줌

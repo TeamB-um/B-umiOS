@@ -45,7 +45,7 @@ class MyRewardViewController: UIViewController {
     func fetchRewardsData() {
         RewardService.shared.fatchRewardsData { result in
             guard let rewards = result as? RewardsResponse else { return }
-            self.myReward = rewards.reward
+            self.myReward = rewards.rewards
             self.myRewardCollectionView.reloadData()
         }
     }
