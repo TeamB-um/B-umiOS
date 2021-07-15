@@ -231,6 +231,10 @@ class SeparatePopUpViewController: UIViewController {
             make.center.equalToSuperview()
         }
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
 
     // MARK: - Methods
     
