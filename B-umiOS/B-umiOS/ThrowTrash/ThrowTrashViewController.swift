@@ -114,7 +114,9 @@ class ThrowTrashViewController: UIViewController {
             if position.x > trashBin.frame.midX, position.x < trashBin.frame.maxX, position.y > trashBin.frame.minY, position.y < trashBin.frame.maxY {
                 throwAwayTrash()
                 
+                ActivityIndicator.shared.startLoadingAnimation()
                 WritingService.shared.createWriting(writing: writing) { result in
+                    ActivityIndicator.shared.stopLoadingAnimation()
                     if result {
                         self.showToast()
                     } else {
