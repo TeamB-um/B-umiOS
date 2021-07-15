@@ -55,7 +55,7 @@ class SeparatePopUpViewController: UIViewController {
         $0.font = UIFont.systemFont(ofSize: 13)
 
         if let count = self.textfield.text?.count {
-            $0.text = "\(count)/6"
+            $0.text = "\(count)/\(limitLength)"
         }
     }
 
