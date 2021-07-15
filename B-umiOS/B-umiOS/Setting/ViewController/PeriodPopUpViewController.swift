@@ -73,7 +73,9 @@ class PeriodPopUpViewController: UIViewController {
         let deletePeriod = pickerView.selectedRow(inComponent: 0)
         let userInfo = UserInfo(isPush: nil, deletePeriod: deletePeriod)
         
+        ActivityIndicator.shared.startLoadingAnimation()
         UserService.shared.updateUserInfo(userInfo: userInfo) { response in
+            ActivityIndicator.shared.stopLoadingAnimation()
             guard let result = response as? NetworkResult<Any> else { return }
             
             switch result {
