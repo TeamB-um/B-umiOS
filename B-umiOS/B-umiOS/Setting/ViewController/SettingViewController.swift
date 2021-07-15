@@ -88,6 +88,7 @@ class SettingViewController: UIViewController, popupDelegate {
         
         self.setView()
         setConstraint()
+        self.setUserInfo()
     }
 
     // MARK: - Actions
@@ -113,13 +114,13 @@ class SettingViewController: UIViewController, popupDelegate {
                 make.edges.equalToSuperview()
             }
         }
-        self.present(popUpVC, animated: true, completion: nil)
+        present(popUpVC, animated: true, completion: nil)
     }
     
     // MARK: - Methods
     
     func setView() {
-        self.view.backgroundColor = .background
+        view.backgroundColor = .background
     }
     
     func createView(text: String, items: [NSCoding]) -> UIView {
@@ -160,6 +161,14 @@ class SettingViewController: UIViewController, popupDelegate {
         }
         
         return newView
+    }
+    
+    func setUserInfo() {
+        let isPush = UserDefaults.standard.bool(forKey: UserDefaults.Keys.isPush)
+        let deletePeriod = UserDefaults.standard.integer(forKey: UserDefaults.Keys.deletePeriod)
+        
+        self.pushAlarmSwitch.isOn = isPush
+        self.trashbinPeriodLabel.text = "\(deletePeriod)일"
     }
 
     // MARK: - Protocols
