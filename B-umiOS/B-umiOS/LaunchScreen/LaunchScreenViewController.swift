@@ -28,6 +28,7 @@ class LaunchScreenViewController: UIViewController {
 
         setConstraints()
         login()
+        fetchUserInfo()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -47,7 +48,7 @@ class LaunchScreenViewController: UIViewController {
     }
 
     func login() {
-        LoginService.shared.login { result in
+        UserService.shared.login { result in
             if result {
                 Timer.scheduledTimer(withTimeInterval: 1.3, repeats: false) { _ in
                     let tabBar = FloatingTabBarController()
@@ -58,6 +59,24 @@ class LaunchScreenViewController: UIViewController {
                 }
             } else {
                 print("네트워크 에러 팝업을 띄우기")
+            }
+        }
+    }
+
+    func fetchUserInfo() {
+        UserService.shared.fetchUserInfo { response in
+            guard let result = response as? NetworkResult<Any> else { return }
+
+            switch result {
+            case .success(let data):
+                if let userInfoResponse = data as? GeneralResponse<UserInfo>,
+                   let user = userInfoResponse.data
+                {
+                    UserDefaults.standard.set(user.isPush, forKey: UserDefaults.Keys.isPush)
+                    UserDefaults.standard.set(user.deletePeriod, forKey: UserDefaults.Keys.deletePeriod)
+                }
+            case .requestErr, .pathErr, .serverErr, .networkFail:
+                break
             }
         }
     }

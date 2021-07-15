@@ -14,7 +14,7 @@
 		4F2D1F37269A1B5900D941A1 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D1F36269A1B5900D941A1 /* APIConstants.swift */; };
 		4F2D1F39269A1BCB00D941A1 /* RequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D1F38269A1BCB00D941A1 /* RequestHandler.swift */; };
 		4F2D1F3B269A1C9C00D941A1 /* NetworkInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D1F3A269A1C9C00D941A1 /* NetworkInfo.swift */; };
-		4F2D1F3D269ACE7600D941A1 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D1F3C269ACE7600D941A1 /* LoginService.swift */; };
+		4F2D1F3D269ACE7600D941A1 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D1F3C269ACE7600D941A1 /* UserService.swift */; };
 		4F2D1F47269C0C5000D941A1 /* SeperateHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D1F46269C0C5000D941A1 /* SeperateHeaderView.swift */; };
 		4F2D1F49269C556300D941A1 /* SeperateFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D1F48269C556300D941A1 /* SeperateFooterView.swift */; };
 		4F34E10326935F7100A54336 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F34E10226935F7100A54336 /* UIViewController+Extension.swift */; };
@@ -124,7 +124,7 @@
 		4F2D1F36269A1B5900D941A1 /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 		4F2D1F38269A1BCB00D941A1 /* RequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestHandler.swift; sourceTree = "<group>"; };
 		4F2D1F3A269A1C9C00D941A1 /* NetworkInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkInfo.swift; sourceTree = "<group>"; };
-		4F2D1F3C269ACE7600D941A1 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		4F2D1F3C269ACE7600D941A1 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		4F2D1F46269C0C5000D941A1 /* SeperateHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeperateHeaderView.swift; sourceTree = "<group>"; };
 		4F2D1F48269C556300D941A1 /* SeperateFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeperateFooterView.swift; sourceTree = "<group>"; };
 		4F34E10226935F7100A54336 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
@@ -258,7 +258,7 @@
 		4F2D1F42269ADCCF00D941A1 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				4F2D1F3C269ACE7600D941A1 /* LoginService.swift */,
+				4F2D1F3C269ACE7600D941A1 /* UserService.swift */,
 				FC1D6F22269E0FD60060921E /* RewardService.swift */,
 				AB21E3CF269DEF0D00D32EFF /* CategoryService.swift */,
 				AB21E3D1269E9A1D00D32EFF /* WritingService.swift */,
@@ -910,7 +910,7 @@
 				FC0541BC2690C94700FFA9D1 /* MyTrashBinViewController.swift in Sources */,
 				AB21E3BA269D580700D32EFF /* Writing.swift in Sources */,
 				AB5AF764268A2E84001D3CD1 /* SceneDelegate.swift in Sources */,
-				4F2D1F3D269ACE7600D941A1 /* LoginService.swift in Sources */,
+				4F2D1F3D269ACE7600D941A1 /* UserService.swift in Sources */,
 				FC0541B22690C28200FFA9D1 /* MyPageMenuCollectionViewCell.swift in Sources */,
 				FC0541C02691B7AE00FFA9D1 /* MyWritingCollectionViewCell.swift in Sources */,
 				AB7F6DFE2698C6FD00EF9C6E /* DeletePopUpViewController.swift in Sources */,
