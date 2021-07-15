@@ -105,7 +105,7 @@ class PeriodPopUpViewController: UIViewController {
     // MARK: - Methods
     
     func setView() {
-        view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
+        view.backgroundColor = .clear
         
         let deletePeriod = UserDefaults.standard.integer(forKey: UserDefaults.Keys.deletePeriod)
         pickerView.selectRow(deletePeriod, inComponent: 0, animated: true)
