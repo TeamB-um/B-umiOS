@@ -10,5 +10,7 @@ import Foundation
 extension Notification.Name {
     static let TabBarHide = Notification.Name(rawValue: "TabBarHide")
     static let TabBarShow = Notification.Name(rawValue: "TabBarShow")
-    static let isDeleteButtonSelected = Notification.Name(rawValue: "isDeleteButtonSelected")
+    static let deleteButtonIsSelected = Notification.Name(rawValue: "isDeleteButtonSelected")
+    static let confirmButtonIsActive = Notification.Name(rawValue: "confirmButtonIsActive")
+    static let confirmButtonIsUnactive = Notification.Name(rawValue: "confirmButtonIsUnactive")
 }
