@@ -17,7 +17,7 @@ struct WritingService {
         RequestHandler.shared.requestData(url: APIConstants.writingURL, httpmethod: HTTPMethod.post, parameter: parameter, header: NetworkInfo.headerWithToken, decodeType: GeneralResponse<WritingResponse>.self) { response in
             switch response {
             case .success(let data):
-                guard let result = data as? GeneralResponse<WritingResponse> else { return }
+                guard let result = data as? GeneralResponse<WritingsResponse> else { return }
 
                 completion(true)
             case .requestErr, .pathErr, .serverErr, .networkFail:
