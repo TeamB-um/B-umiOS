@@ -122,7 +122,9 @@ class SettingViewController: UIViewController, popupDelegate {
     private func didTapPushSwitch(_ sender: UISwitch) {
         let userInfo = UserInfo(isPush: sender.isOn, deletePeriod: nil)
         
+        ActivityIndicator.shared.startLoadingAnimation()
         UserService.shared.updateUserInfo(userInfo: userInfo) { response in
+            ActivityIndicator.shared.stopLoadingAnimation()
             guard let result = response as? NetworkResult<Any> else { return }
             
             switch result {
