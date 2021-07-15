@@ -129,6 +129,4 @@ extension SeparateViewController: changeCategoryDataDelegate {
         tag = data
         separateCollectionView.reloadData()
     }
-    
-    
 }
