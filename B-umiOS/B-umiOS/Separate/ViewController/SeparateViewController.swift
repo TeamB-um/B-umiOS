@@ -82,7 +82,9 @@ class SeparateViewController: UIViewController {
     }
     
     func fetchCategoriesData() {
+        ActivityIndicator.shared.startLoadingAnimation()
         CategoryService.shared.fetchCategories { result in
+            ActivityIndicator.shared.stopLoadingAnimation()
             print(result)
             guard let categories = result as? CategoriesResponse else { return }
             
