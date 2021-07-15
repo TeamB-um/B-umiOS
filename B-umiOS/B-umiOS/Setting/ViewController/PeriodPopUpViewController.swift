@@ -50,7 +50,7 @@ class PeriodPopUpViewController: UIViewController {
     
     // MARK: - Properties
 
-    var pickContents: [String] = ["즉시 삭제", "1일", "2일", "3일", "4일", "5일", "6일", "7일", "8일", "9일"]
+    var pickContents: [String] = ["즉시 삭제", "1일", "2일", "3일", "4일", "5일", "6일", "7일"]
     var popupdelegate: popupDelegate?
     
     // MARK: - Initializer
