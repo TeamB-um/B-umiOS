@@ -8,8 +8,8 @@
 import Alamofire
 import Foundation
 
-struct LoginService {
-    static let shared = LoginService()
+struct UserService {
+    static let shared = UserService()
 
     func login(completion: @escaping (Bool) -> Void) {
         guard let uuid = UIDevice.current.identifierForVendor?.uuidString else { return }
