@@ -10,7 +10,7 @@ import UIKit
 // TODO: - 삭제 버튼 Action 등록
 
 /// DeletePopUpViewController(title: "글 삭제", guide: "글을 삭제하시겠습니까?")
-enum Kind{
+enum Kind {
     case separate
     case writing
 }
@@ -25,13 +25,11 @@ class DeletePopUpViewController: UIViewController {
     }
     
     private lazy var titleLabel = UILabel().then {
-        $0.text = self.popUpTitle
         $0.textColor = .header
         $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 20)
     }
     
     private lazy var guideLabel = UILabel().then {
-        $0.text = self.popUpGuide
         $0.numberOfLines = 0
         $0.lineSpacing(spacing: 7)
         $0.textAlignment = .center
@@ -63,19 +61,19 @@ class DeletePopUpViewController: UIViewController {
     
     static let identifier = "DeletePopUpViewController"
     var popUpDelegate: WritingPopUpDelegate?
-    var popUpTitle: String
-    var popUpGuide: String
-    var kind : Kind?
-    var deleteData : [String] = []
-    var deleteDelegate : DeleteDelegate?
-    var parentDelegate : DeleteDelegate?
+    var kind: Kind
+    var deleteData: [String] = []
+    var deleteDelegate: DeleteDelegate?
+    var parentDelegate: DeleteDelegate?
+
     // MARK: - Initializer
-    
-    init(title popUpTitle: String, guide popUpGuide: String) {
-        self.popUpTitle = popUpTitle
-        self.popUpGuide = popUpGuide
+
+    init(kind: Kind) {
+        self.kind = kind
         
         super.init(nibName: nil, bundle: nil)
+        titleLabel.text = kind == .separate ? "분리수거함 삭제" : "글 삭제"
+        guideLabel.text = kind == .separate ? "분리수거함을 삭제하면 글도 모두 지워져요.\n정말 삭제하시겠어요?" : "글을 삭제하시겠습니까?"
     }
     
     @available(*, unavailable)
@@ -94,26 +92,26 @@ class DeletePopUpViewController: UIViewController {
     
     // MARK: - Actions
 
-    @objc func didTapDelete(){
+    @objc func didTapDelete() {
         var query = ""
         
-        for (index,item) in deleteData.enumerated(){
-            if(index == 0){
+        for (index, item) in deleteData.enumerated() {
+            if index == 0 {
                 query = item
             }
-            else{
+            else {
                 query = "\(query),\(item)"
             }
         }
         
-        switch kind{
+        switch kind {
         case .writing:
             WritingService.shared.deleteWriting(writings: query) { response in
-                guard let result = response as? NetworkResult<Any> else{return}
+                guard let result = response as? NetworkResult<Any> else { return }
 
-                switch result{
+                switch result {
                 case .success(let response):
-                    guard let writings = response as? GeneralResponse<WritingsResponse> else{return}
+                    guard let writings = response as? GeneralResponse<WritingsResponse> else { return }
                     self.deleteDelegate = self.parentDelegate
                     self.deleteDelegate?.sendWritings(writings.data?.writing ?? [])
                 default:
@@ -122,12 +120,10 @@ class DeletePopUpViewController: UIViewController {
             }
         case .separate:
             print(deleteData)
-            //여기다 작성해 인애
-        case .none:
-            break
+            // 여기다 작성해 인애
         }
         
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     // MARK: - Methods

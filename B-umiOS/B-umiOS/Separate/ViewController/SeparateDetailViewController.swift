@@ -86,14 +86,13 @@ class SeparateDetailViewController: UIViewController {
     @objc func didTapConfirmButton(){
         if(!removeData.isEmpty){
             print("view")
-            let vc = DeletePopUpViewController(title: "글 삭제", guide: "글을 삭제하시겠습니까?")
+            let vc = DeletePopUpViewController(kind: .writing)
             var deleteID: [String] = []
 
             for index in removeData{
                 deleteID.append(writings[index].id)
             }
             
-            vc.kind = .writing
             vc.deleteData = deleteID
             vc.parentDelegate = self
             vc.modalTransitionStyle = .crossDissolve

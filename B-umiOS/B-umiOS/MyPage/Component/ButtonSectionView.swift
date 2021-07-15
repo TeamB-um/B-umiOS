@@ -126,9 +126,9 @@ class ButtonSectionView: UICollectionReusableView {
     @objc
     func didTapConfirmButton(_ sender: UIButton) {
         if confirmButtton.isSelected {
-        let popUpVC =  DeletePopUpViewController(title: "글 삭제", guide: "글을 삭제하시겠습니까?")
-        popUpVC.modalPresentationStyle = .overFullScreen
-        self.parentViewController?.present(popUpVC, animated: true, completion: nil)
+            let popUpVC =  DeletePopUpViewController(kind: .writing)
+            popUpVC.modalPresentationStyle = .overFullScreen
+            self.parentViewController?.present(popUpVC, animated: true, completion: nil)
         }
         
         //삭제했을 때 서버연결
