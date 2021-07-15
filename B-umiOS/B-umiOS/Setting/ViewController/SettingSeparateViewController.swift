@@ -54,7 +54,7 @@ class SettingSeparateViewController: UIViewController {
         didSet {
             trashbinStatusNumber.text = "\(bins.count)/8"
             
-            if bins.count == 8 {
+            if bins.count >= 8 {
                 addButton.isEnabled = false
             } else {
                 addButton.isEnabled = true
