@@ -30,4 +30,12 @@ struct CategoryService {
             completion(response)
         }
     }
+
+    func updateCategory(id: String, category: CategoryRequest, completion: @escaping (Any) -> Void) {
+        let parameter = NetworkInfo.shared.makeParameter(model: category)
+
+        RequestHandler.shared.requestData(url: APIConstants.categoryURL + "/\(id)", httpmethod: .patch, parameter: parameter, header: NetworkInfo.headerWithToken, decodeType: GeneralResponse<CategoriesResponse>.self) { response in
+            completion(response)
+        }
+    }
 }
