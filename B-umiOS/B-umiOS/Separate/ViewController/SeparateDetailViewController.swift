@@ -85,7 +85,6 @@ class SeparateDetailViewController: UIViewController {
     
     @objc func didTapConfirmButton(){
         if(!removeData.isEmpty){
-            print("view")
             let vc = DeletePopUpViewController(title: "글 삭제", guide: "글을 삭제하시겠습니까?")
             var deleteID: [String] = []
 
