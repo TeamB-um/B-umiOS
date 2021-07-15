@@ -27,12 +27,12 @@ extension SeparateDetailViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if(!self.confirmButton.isHidden){
+        if !self.confirmButton.isHidden {
             tableView.cellForRow(at: indexPath)?.isSelected = true
             removeData.append(indexPath.row)
             isActivated()
         }
-        else{
+        else {
             let writing = writings[indexPath.row]
             let createdDate = Date().stringToDate(date: writings[indexPath.row].createdDate)
             let vc = MyWritingPopUpViewController(writing: DummyWriting(trashBin: writing.category.name, title: writing.title, date: createdDate, content: writing.text))
@@ -45,7 +45,7 @@ extension SeparateDetailViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        if(!self.confirmButton.isHidden){
+        if !self.confirmButton.isHidden {
             tableView.cellForRow(at: indexPath)?.isSelected = false
             guard let elementIndex = removeData.firstIndex(of: indexPath.row) else { return }
             print(elementIndex)
@@ -75,8 +75,8 @@ extension SeparateDetailViewController: UITableViewDataSource {
     }
 }
 
-extension SeparateDetailViewController: DeleteDelegate{
-    func sendWritings(_ newWritings : [Writing]) {
+extension SeparateDetailViewController: DeleteDelegate {
+    func sendWritings(_ newWritings: [Writing]) {
         removeData = []
         isActivated()
         writings = newWritings

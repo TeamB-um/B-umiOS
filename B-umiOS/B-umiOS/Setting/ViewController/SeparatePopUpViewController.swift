@@ -12,7 +12,7 @@ enum PopUpMethod {
     case modify
 }
 
-protocol changeCategoryDataDelegate {
+protocol ChangeCategoryDataDelegate {
     func changeCategoryData(data: [Category])
 }
 
@@ -98,7 +98,7 @@ class SeparatePopUpViewController: UIViewController {
 
     var method: PopUpMethod
     var trashBin: Category?
-    var delegate: changeCategoryDataDelegate?
+    var delegate: ChangeCategoryDataDelegate?
     static let identifier = "SeparatePopUpViewController"
     private let limitLength = 6
     var isHighligtedTextField = true {
