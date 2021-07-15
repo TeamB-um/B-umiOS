@@ -21,6 +21,7 @@ class ActivityIndicator {
     
     func startLoadingAnimation() {
         window?.addSubview(lottieLoading)
+        window?.isUserInteractionEnabled = false
         
         lottieLoading.snp.remakeConstraints { make in
             make.center.equalToSuperview()
@@ -30,6 +31,8 @@ class ActivityIndicator {
     }
     
     func stopLoadingAnimation() {
+        window?.isUserInteractionEnabled = true
+        
         lottieLoading.stop()
         lottieLoading.removeFromSuperview()
     }
