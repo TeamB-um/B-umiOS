@@ -62,13 +62,14 @@ extension SeparateViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
         if(indexPath.row == tag.count){
-            let storyboard = UIStoryboard(name: "Setting", bundle: nil)
-            if let nextVC = storyboard.instantiateViewController(identifier: SeparatePopUpViewController.identifier) as? SeparatePopUpViewController {
-                nextVC.method = .add
-                nextVC.modalPresentationStyle = .overFullScreen
-                nextVC.modalTransitionStyle = .crossDissolve
-                self.present(nextVC, animated: true, completion: nil)
-            }
+            print("Ss")
+            let nextVC = SeparatePopUpViewController(method: .add)
+            
+            nextVC.delegate = self
+            nextVC.modalPresentationStyle = .overFullScreen
+            nextVC.modalTransitionStyle = .crossDissolve
+            self.present(nextVC, animated: true, completion: nil)
+            
         }
         else {
             if(tag[indexPath.row].count >= 5){
@@ -121,4 +122,13 @@ extension SeparateViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
         CGSize(width: SizeConstants.screenWidth, height: 100 * SizeConstants.screenRatio)
     }
+}
+
+extension SeparateViewController: changeCategoryDataDelegate {
+    func changeCategoryData(data: [Category]) {
+        tag = data
+        separateCollectionView.reloadData()
+    }
+    
+    
 }

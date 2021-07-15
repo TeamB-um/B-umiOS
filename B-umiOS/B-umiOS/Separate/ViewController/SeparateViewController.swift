@@ -41,6 +41,7 @@ class SeparateViewController: UIViewController {
     }
         
     // MARK: - Properties
+    
     var tag: [Category] = []
     
     // MARK: - Initializer
