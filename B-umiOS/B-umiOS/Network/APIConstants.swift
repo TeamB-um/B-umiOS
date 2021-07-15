@@ -14,7 +14,7 @@ struct APIConstants {
 
     /// user API
     // FIXME: - userURL로 네이밍 변경
-    static let loginURL = APIConstants.baseURL + "/users"
+    static let userURL = APIConstants.baseURL + "/users"
 
     /// category API
     static let categoryURL = APIConstants.baseURL + "/categories"

@@ -18,7 +18,8 @@ struct RequestHandler {
         else { return .serverErr }
         switch statusCode {
         case 200, 201: return .success(decodedData)
-        case 400: return .requestErr("")
+        case 400: return .requestErr(ErrorMessage.wrongRequest)
+        case 409: return .requestErr(ErrorMessage.conflict)
         case 500: return .serverErr
         default: return .networkFail
         }

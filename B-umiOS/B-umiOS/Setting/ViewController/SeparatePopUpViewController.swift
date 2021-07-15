@@ -12,6 +12,10 @@ enum PopUpMethod {
     case modify
 }
 
+protocol changeCategoryDataDelegate {
+    func changeCategoryData(data: [Category])
+}
+
 class SeparatePopUpViewController: UIViewController {
     // MARK: - UIComponenets
     
@@ -21,7 +25,7 @@ class SeparatePopUpViewController: UIViewController {
         $0.setShadow(radius: 10, offset: CGSize(width: 0, height: 4), opacity: 0.3)
     }
     
-    private  let backgroundButton = UIButton().then {
+    private let backgroundButton = UIButton().then {
         $0.addTarget(self, action: #selector(closePopUp(_:)), for: .touchUpInside)
     }
     
@@ -43,12 +47,16 @@ class SeparatePopUpViewController: UIViewController {
         $0.layer.borderColor = UIColor.paper2.cgColor
         $0.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10 * SizeConstants.screenRatio, height: self.view.frame.height))
         $0.leftViewMode = .always
+        $0.text = self.trashBin?.name
     }
 
     private lazy var textNumberLabel = UILabel().then {
         $0.textColor = .green2Main
-        $0.text = "0/6"
         $0.font = UIFont.systemFont(ofSize: 13)
+
+        if let count = self.textfield.text?.count {
+            $0.text = "\(count)/\(limitLength)"
+        }
     }
 
     private lazy var boilerLabel = UILabel().then {
@@ -71,11 +79,12 @@ class SeparatePopUpViewController: UIViewController {
     
     private let confirmButton = UIButton().then {
         $0.cornerRound(radius: 10)
-        $0.backgroundColor = .blue2Main
+        $0.backgroundColor = .disable
         $0.tintColor = .white
         $0.setTitle("확인", for: .normal)
         $0.titleLabel?.font = UIFont.nanumSquareFont(type: .bold, size: 18)
         $0.addTarget(self, action: #selector(didTapConfirmButton(_:)), for: .touchUpInside)
+        $0.isEnabled = false
     }
     
     private var stackView = UIStackView().then {
@@ -87,10 +96,42 @@ class SeparatePopUpViewController: UIViewController {
     
     // MARK: - Properties
 
-    var method : PopUpMethod?
+    var method: PopUpMethod
+    var trashBin: Category?
+    var delegate: changeCategoryDataDelegate?
     static let identifier = "SeparatePopUpViewController"
+    private let limitLength = 6
+    var isHighligtedTextField = true {
+        didSet {
+            if isHighligtedTextField {
+                textfield.layer.borderColor = UIColor.error.cgColor
+                textNumberLabel.textColor = .error
+                confirmButton.backgroundColor = .disable
+                confirmButton.isEnabled = false
+                boilerLabel.isHidden = false
+            } else {
+                textfield.layer.borderColor = UIColor.paper2.cgColor
+                textNumberLabel.textColor = .green2Main
+                confirmButton.backgroundColor = .blue2Main
+                confirmButton.isEnabled = true
+                boilerLabel.isHidden = true
+            }
+        }
+    }
     
     // MARK: - Initializer
+    
+    init(method: PopUpMethod, trashBin: Category? = nil) {
+        self.method = method
+        self.trashBin = trashBin
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - LifeCycle
 
@@ -102,59 +143,128 @@ class SeparatePopUpViewController: UIViewController {
         setConstraint()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self)
+    }
+
     // MARK: - Actions
     
     @objc private func closePopUp(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     @objc private func didTapConfirmButton(_ sender: UIButton) {
-        
-        //확인 호출 (add, modify method에 따라 구분)
-        
-        //.success => ok일시
-//        self.dismiss(animated: true, completion: nil)
-        
-        //.중복 일시
-//        DispatchQueue.main.async {
-//            self.textfield.layer.borderColor = UIColor.error.cgColor
-//            self.textNumberLabel.textColor = .error
-//            self.confirmButton.backgroundColor = .gray
-//            self.confirmButton.isEnabled = false
-//            self.boilerLabel.isHidden = false
-//        }
+        switch method {
+        case .add:
+            if let name = textfield.text {
+                let category = CategoryRequest(name: name)
+                
+                CategoryService.shared.createCategory(category: category) { response in
+                    guard let result = response as? NetworkResult<Any> else { return }
+                    
+                    switch result {
+                    case .success(let data):
+                        guard let general = data as? GeneralResponse<CategoriesResponse> else { return }
+                        
+                        if let categories = general.data?.category {
+                            self.delegate?.changeCategoryData(data: categories)
+                            self.dismiss(animated: true, completion: nil)
+                        }
+                    case .requestErr(let message):
+                        guard let msg = message as? ErrorMessage else { return }
+                        
+                        if msg == .conflict {
+                            self.isHighligtedTextField = true
+                        }
+                    case .pathErr, .serverErr, .networkFail:
+                        break
+                    }
+                }
+            }
+        case .modify:
+            if let category = trashBin,
+               let newName = textfield.text
+            {
+                CategoryService.shared.updateCategory(id: category.id, category: CategoryRequest(name: newName)) { response in
+                    guard let result = response as? NetworkResult<Any> else { return }
+                    
+                    switch result {
+                    case .success(let data):
+                        guard let general = data as? GeneralResponse<CategoriesResponse> else { return }
+                        
+                        if let categories = general.data?.category {
+                            self.delegate?.changeCategoryData(data: categories)
+                            self.dismiss(animated: true, completion: nil)
+                        }
+                    case .requestErr(let message):
+                        guard let msg = message as? ErrorMessage else { return }
+                        
+                        if msg == .conflict {
+                            self.isHighligtedTextField = true
+                        }
+                    case .pathErr, .serverErr, .networkFail:
+                        break
+                    }
+                }
+            }
+        }
     }
     
+    @objc func keyboardWillShow(_ notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            let keyboardHeight = keyboardSize.height
+            let space = UIScreen.main.bounds.height / 2 - keyboardHeight + 30
+            
+            popupView.snp.updateConstraints { make in
+                make.centerY.equalToSuperview().offset(-space)
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(_ notification: NSNotification) {
+        popupView.snp.updateConstraints { make in
+            make.center.equalToSuperview()
+        }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+
     // MARK: - Methods
     
-    func setTextField(){
+    func setTextField() {
         textfield.delegate = self
+        textfield.becomeFirstResponder()
     }
     
-    func setView(){
-        self.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+    func setView() {
+        view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
         
         switch method {
         case .add:
-            self.headerLabel.text = "분리수거 추가"
-            self.subLabel.text = "분리수거함을 추가해 스트레스를 분류하세요."
+            headerLabel.text = "분리수거 추가"
+            subLabel.text = "분리수거함을 추가해 스트레스를 분류하세요."
         case .modify:
-            self.headerLabel.text = "분리수거 수정"
-            self.subLabel.text = "분리수거함의 이름을 수정해보세요."
-        case .none:
-            break
+            headerLabel.text = "분리수거 수정"
+            subLabel.text = "분리수거함의 이름을 수정해보세요."
         }
     }
     
     func setConstraint() {
-        
-        self.view.addSubviews([backgroundButton,popupView])
+        view.addSubviews([backgroundButton, popupView])
 
-        popupView.addSubviews([headerLabel,subLabel,textfield,stackView,textNumberLabel, boilerLabel])
+        popupView.addSubviews([headerLabel, subLabel, textfield, stackView, textNumberLabel, boilerLabel])
         
         popupView.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(238 * SizeConstants.screenRatio)
-            make.leading.trailing.equalToSuperview().inset(16)
+            make.width.equalToSuperview().multipliedBy(343.0 / 375.0)
+            make.height.equalTo(popupView.snp.width).multipliedBy(271.0 / 343.0)
+            make.center.equalToSuperview()
         }
         
         backgroundButton.snp.makeConstraints { make in
@@ -204,30 +314,20 @@ extension SeparatePopUpViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let currentText = textField.text ?? ""
         guard let stringRange = Range(range, in: currentText) else { return false }
-     
         let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
+        let length = (textField.text?.count)! - range.length + string.count
         
-        DispatchQueue.main.async {
-            self.textNumberLabel.text = "\(updatedText.count)/6"
-            textField.layer.borderColor = UIColor.paper2.cgColor
-            self.textNumberLabel.textColor = .green2Main
-            self.confirmButton.backgroundColor = .blue2Main
-            self.confirmButton.isEnabled = true
-            self.boilerLabel.isHidden = true
+        textNumberLabel.text = "\(length > limitLength ? limitLength : length)/\(limitLength)"
+        
+        isHighligtedTextField = false
+        if length == 0 {
+            confirmButton.isEnabled = false
+            confirmButton.backgroundColor = UIColor.disable
+        } else {
+            confirmButton.isEnabled = true
+            confirmButton.backgroundColor = .blue2Main
         }
-
-        return updatedText.count < 6
+        
+        return updatedText.count <= limitLength
     }
-}
-
-extension SeparatePopUpViewController: TextDelegate{
-    func sendData(name: String) {
-        DispatchQueue.main.async {
-            self.textfield.text = name
-        }
-    }
-}
-
-protocol TextDelegate {
-    func sendData(name: String)
 }

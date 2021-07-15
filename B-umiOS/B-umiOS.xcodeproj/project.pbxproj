@@ -51,7 +51,7 @@
 		AB21E3C4269D64CE00D32EFF /* Reward.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB21E3C3269D64CE00D32EFF /* Reward.swift */; };
 		AB21E3C6269D666800D32EFF /* RewardResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB21E3C5269D666800D32EFF /* RewardResponse.swift */; };
 		AB21E3C8269D669800D32EFF /* CategoryRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB21E3C7269D669800D32EFF /* CategoryRequest.swift */; };
-		AB21E3CA269D67C200D32EFF /* CategoriesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB21E3C9269D67C200D32EFF /* CategoriesResponse.swift */; };
+		AB21E3CA269D67C200D32EFF /* CategoryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB21E3C9269D67C200D32EFF /* CategoryResponse.swift */; };
 		AB21E3CC269D7E1F00D32EFF /* TokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB21E3CB269D7E1F00D32EFF /* TokenResponse.swift */; };
 		AB21E3CE269DB32E00D32EFF /* UserDefaults.Key+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB21E3CD269DB32E00D32EFF /* UserDefaults.Key+Extension.swift */; };
 		AB21E3D0269DEF0D00D32EFF /* CategoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB21E3CF269DEF0D00D32EFF /* CategoryService.swift */; };
@@ -161,7 +161,7 @@
 		AB21E3C3269D64CE00D32EFF /* Reward.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reward.swift; sourceTree = "<group>"; };
 		AB21E3C5269D666800D32EFF /* RewardResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardResponse.swift; sourceTree = "<group>"; };
 		AB21E3C7269D669800D32EFF /* CategoryRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRequest.swift; sourceTree = "<group>"; };
-		AB21E3C9269D67C200D32EFF /* CategoriesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesResponse.swift; sourceTree = "<group>"; };
+		AB21E3C9269D67C200D32EFF /* CategoryResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryResponse.swift; sourceTree = "<group>"; };
 		AB21E3CB269D7E1F00D32EFF /* TokenResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenResponse.swift; sourceTree = "<group>"; };
 		AB21E3CD269DB32E00D32EFF /* UserDefaults.Key+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults.Key+Extension.swift"; sourceTree = "<group>"; };
 		AB21E3CF269DEF0D00D32EFF /* CategoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryService.swift; sourceTree = "<group>"; };
@@ -368,7 +368,7 @@
 				AB21E3B7269D50FF00D32EFF /* UserResponse.swift */,
 				AB21E3BF269D5FB400D32EFF /* WritingResponse.swift */,
 				AB21E3C5269D666800D32EFF /* RewardResponse.swift */,
-				AB21E3C9269D67C200D32EFF /* CategoriesResponse.swift */,
+				AB21E3C9269D67C200D32EFF /* CategoryResponse.swift */,
 				AB21E3CB269D7E1F00D32EFF /* TokenResponse.swift */,
 				AB21E3B2269D4E8C00D32EFF /* GeneralResponse.swift */,
 				FCAE0980269F46B600B91A08 /* TrashCanResponse.swift */,
@@ -825,7 +825,7 @@
 				AB21E3CE269DB32E00D32EFF /* UserDefaults.Key+Extension.swift in Sources */,
 				4F4992E12695F65B009541AA /* SeparateDetailViewController.swift in Sources */,
 				ABB24E06268CE317006FEE57 /* UIFont+Extension.swift in Sources */,
-				AB21E3CA269D67C200D32EFF /* CategoriesResponse.swift in Sources */,
+				AB21E3CA269D67C200D32EFF /* CategoryResponse.swift in Sources */,
 				AB21E3B6269D4F8100D32EFF /* UserRequest.swift in Sources */,
 				4F7FD2E82690E5B400122964 /* SettingSeparateViewController.swift in Sources */,
 				ABB24E55268E193B006FEE57 /* FloatingTabBarController.swift in Sources */,

@@ -22,12 +22,27 @@ struct CategoryService {
             }
         }
     }
-    
+
     func fetchWritings(categories: String, completion: @escaping (Any) -> Void) {
         let url = "\(APIConstants.writingURL)?category_ids=[\(categories)]"
-        
-        RequestHandler.shared.requestData(url: url, httpmethod: HTTPMethod.get, parameter: nil, header: NetworkInfo.headerWithToken, decodeType: GeneralResponse<WritingsResponse>.self) { response in
 
+        RequestHandler.shared.requestData(url: url, httpmethod: HTTPMethod.get, parameter: nil, header: NetworkInfo.headerWithToken, decodeType: GeneralResponse<WritingsResponse>.self) { response in
+            completion(response)
+        }
+    }
+
+    func createCategory(category: CategoryRequest, completion: @escaping (Any) -> Void) {
+        let parameter = NetworkInfo.shared.makeParameter(model: category)
+
+        RequestHandler.shared.requestData(url: APIConstants.categoryURL, httpmethod: .post, parameter: parameter, header: NetworkInfo.headerWithToken, decodeType: GeneralResponse<CategoriesResponse>.self) { response in
+            completion(response)
+        }
+    }
+
+    func updateCategory(id: String, category: CategoryRequest, completion: @escaping (Any) -> Void) {
+        let parameter = NetworkInfo.shared.makeParameter(model: category)
+
+        RequestHandler.shared.requestData(url: APIConstants.categoryURL + "/\(id)", httpmethod: .patch, parameter: parameter, header: NetworkInfo.headerWithToken, decodeType: GeneralResponse<CategoriesResponse>.self) { response in
             completion(response)
         }
     }

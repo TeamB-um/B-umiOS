@@ -29,7 +29,11 @@ class SeparateTableViewCell: UITableViewCell {
     // MARK: - Properties
     
     static let identifier = "SeparateTableViewCell"
-    var textdelegate : TextDelegate?
+    var trashBin: Category? {
+        willSet(newValue) {
+            seperateName.text = newValue?.name
+        }
+    }
     
     // MARK: - Initializer
     
@@ -38,35 +42,32 @@ class SeparateTableViewCell: UITableViewCell {
     // MARK: - Actions
     
     @objc
-        private func didTapDeleteButton(_ sender: UIButton) {
-            let vc = DeletePopUpViewController(title: "분리수거함 삭제", guide: "분리수거함을 삭제하면 글도 모두 지워져요.\n정말 삭제하시겠어요?")
-            vc.modalTransitionStyle = .crossDissolve
-            vc.modalPresentationStyle = .overCurrentContext
+    private func didTapDeleteButton(_ sender: UIButton) {
+        let vc = DeletePopUpViewController(title: "분리수거함 삭제", guide: "분리수거함을 삭제하면 글도 모두 지워져요.\n정말 삭제하시겠어요?")
+        vc.modalTransitionStyle = .crossDissolve
+        vc.modalPresentationStyle = .overCurrentContext
             
-            self.window?.rootViewController?.present(vc, animated: true, completion: nil)
-        }
+        parentViewController?.tabBarController?.present(vc, animated: true, completion: nil)
+    }
     
     @objc
-        private func didTapModifyButton(_ sender: UIButton) {
-            
-            let storyBoard = UIStoryboard(name: "Setting", bundle: Bundle.main)
-            if let nextVC = storyBoard.instantiateViewController(identifier: SeparatePopUpViewController.identifier) as? SeparatePopUpViewController{
-                
-                self.textdelegate = nextVC
-                textdelegate?.sendData(name: seperateName.text ?? "")
-                
-                nextVC.method = .modify
-                nextVC.modalPresentationStyle = .overFullScreen
-                nextVC.modalTransitionStyle = .crossDissolve
-                self.window?.rootViewController?.present(nextVC, animated: true, completion: nil)
-            }
+    private func didTapModifyButton(_ sender: UIButton) {
+        let nextVC = SeparatePopUpViewController(method: .modify, trashBin: trashBin)
+        
+        if let parentVC = parentViewController as? SettingSeparateViewController {
+            nextVC.delegate = parentVC
         }
+            
+        nextVC.modalPresentationStyle = .overFullScreen
+        nextVC.modalTransitionStyle = .crossDissolve
+        parentViewController?.tabBarController?.present(nextVC, animated: true, completion: nil)
+    }
     
     // MARK: - Methods
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.contentView.backgroundColor = .background
+        contentView.backgroundColor = .background
         setConstraint()
     }
     
@@ -74,8 +75,8 @@ class SeparateTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func setConstraint(){
-        self.contentView.addSubviews([seperateName, modifyButton, deleteButton])
+    func setConstraint() {
+        contentView.addSubviews([seperateName, modifyButton, deleteButton])
         
         seperateName.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
