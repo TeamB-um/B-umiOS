@@ -52,7 +52,6 @@ class PeriodPopUpViewController: UIViewController {
 
     var pickContents: [String] = ["즉시 삭제", "1일", "2일", "3일", "4일", "5일", "6일", "7일", "8일", "9일"]
     var popupdelegate: popupDelegate?
-    var trashBinPeriod: String?
     
     // MARK: - Initializer
 
@@ -70,8 +69,9 @@ class PeriodPopUpViewController: UIViewController {
     // MARK: - Actions
     
     @objc private func didTapConfirmButton(_ sender: UIButton) {
-        print(trashBinPeriod)
-        popupdelegate?.sendPeriod(period: 1)
+        let deletePeriod = pickerView.selectedRow(inComponent: 0)
+        
+        popupdelegate?.sendPeriod(period: deletePeriod)
         popupdelegate?.closeBottomSheet()
         dismiss(animated: true, completion: nil)
     }
@@ -134,10 +134,6 @@ class PeriodPopUpViewController: UIViewController {
 // MARK: - Extension
 
 extension PeriodPopUpViewController: UIPickerViewDelegate {
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        trashBinPeriod = pickContents[row]
-    }
-    
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         pickContents[row]
     }
