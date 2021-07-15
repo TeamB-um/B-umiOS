@@ -53,4 +53,13 @@ struct CategoryService {
             completion(response)
         }
     }
+    
+    func fetchRewardData(category_id: String, completion: @escaping (Any) -> Void) {
+        let url = "\(APIConstants.categoryURL)/\(category_id)/rewards"
+        print(url)
+        RequestHandler.shared.requestData(url: url, httpmethod: HTTPMethod.get, parameter: nil, header: NetworkInfo.headerWithToken, decodeType: GeneralResponse<RewardResponse>.self) { response in
+            print(response)
+            completion(response)
+        }
+    }
 }

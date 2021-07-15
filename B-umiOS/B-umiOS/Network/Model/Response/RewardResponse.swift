@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct RewardResponse {
+struct RewardResponse : Codable{
     let reward: Reward
 }
 
