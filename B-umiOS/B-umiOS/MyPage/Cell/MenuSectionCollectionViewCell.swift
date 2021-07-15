@@ -35,7 +35,6 @@ class MenuSectionCollectionViewCell: UICollectionViewCell {
         for subView in subViews {
             if subView.tag == MenuSectionCollectionViewCell.SUBVIEW_TAG {
                 subView.removeFromSuperview()
-                print("remove")
             }
         }
     }

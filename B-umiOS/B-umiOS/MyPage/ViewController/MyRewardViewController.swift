@@ -9,7 +9,7 @@ import UIKit
 
 class MyRewardViewController: UIViewController {
     // MARK: - UIComponenets
-    
+
     private lazy var myRewardCollectionView : UICollectionView = {
         var layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -22,11 +22,9 @@ class MyRewardViewController: UIViewController {
         
         return collectionView
     }()
-    
     // MARK: - Properties
     
     var myReward: [Reward] = []
-    
     // MARK: - Initializer
     // MARK: - LifeCycle
 
@@ -107,5 +105,4 @@ extension MyRewardViewController : UICollectionViewDelegateFlowLayout {
             print("error")
         }
     }
-    
 }

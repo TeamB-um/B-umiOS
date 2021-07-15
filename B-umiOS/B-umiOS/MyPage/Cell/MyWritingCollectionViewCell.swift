@@ -16,8 +16,6 @@ class MyWritingCollectionViewCell: UICollectionViewCell {
     private let categoryTitle: UILabel = {
         let label = UILabel()
         label.font = .nanumSquareFont(type: .regular, size: 14)
-        label.textColor = .pink2Main
-        label.text = "카테고리"
         
         return label
     }()
@@ -26,7 +24,6 @@ class MyWritingCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.font = .nanumSquareFont(type: .extraBold, size: 18)
         label.textColor = .black
-        label.text = "글제목"
         
         return label
     }()
@@ -37,14 +34,6 @@ class MyWritingCollectionViewCell: UICollectionViewCell {
         label.font = .nanumSquareFont(type: .regular, size: 14)
         label.textColor = .iconGray
         label.numberOfLines = 2
-        label.text = "대충 글내용 미리보기어쩌고저쩌고대충 글내용 미리보기 어쩌고저쩌고"
-        
-        let attrString = NSMutableAttributedString(string: label.text!)
-        let paragraphStyle = NSMutableParagraphStyle()
-        
-        paragraphStyle.lineSpacing = 7
-        attrString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attrString.length))
-        label.attributedText = attrString
         
         return label
     }()
@@ -54,8 +43,7 @@ class MyWritingCollectionViewCell: UICollectionViewCell {
         $0.isHidden = true
     }
     // MARK: - Properties
-//    var removeData : [Int] = []
-    
+
     override var isSelected: Bool {
         didSet {
             if isSelected {
@@ -106,6 +94,17 @@ class MyWritingCollectionViewCell: UICollectionViewCell {
         
         contentView.cornerRound(radius: 10)
         contentView.backgroundColor = .white
+        
+    }
+    
+    func setWritingData(data: [Writing], index: Int){
+        categoryTitle.text = data[index].category.name
+        categoryTitle.textColor = SeparateStyle.color[index]
+        
+        writingTitle.text = data[index].title
+        writingPriview.text = data[index].text
+        writingPriview.numberOfLines = 2
+        writingPriview.lineSpacing(spacing: 7)
         
     }
     

@@ -35,7 +35,7 @@ extension SeparateDetailViewController: UITableViewDelegate {
         else {
             let writing = writings[indexPath.row]
             let createdDate = Date().stringToDate(date: writings[indexPath.row].createdDate)
-            let vc = MyWritingPopUpViewController(writing: DummyWriting(trashBin: writing.category.name, title: writing.title, date: createdDate, content: writing.text))
+            let vc = MyWritingPopUpViewController(writing: writing)
             
             vc.modalTransitionStyle = .crossDissolve
             vc.modalPresentationStyle = .overCurrentContext
