@@ -123,7 +123,7 @@ extension SeparateViewController: UICollectionViewDelegate {
     }
 }
 
-extension SeparateViewController: changeCategoryDataDelegate {
+extension SeparateViewController: ChangeCategoryDataDelegate {
     func changeCategoryData(data: [Category]) {
         tag = data
         separateCollectionView.reloadData()
