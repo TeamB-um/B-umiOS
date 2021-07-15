@@ -89,6 +89,9 @@ class SettingViewController: UIViewController, popupDelegate {
         
         self.setView()
         setConstraint()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         self.setUserInfo()
     }
 
