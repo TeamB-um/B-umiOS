@@ -8,7 +8,7 @@
 import UIKit
 
 protocol WritingPopUpDelegate {
-    func writingPopUpViewPush(trash: TrashType)
+    func writingPopUpViewPush(trash: TrashType, writing: WritingRequest)
 }
 
 class WritingViewController: UIViewController {
@@ -30,15 +30,9 @@ class WritingViewController: UIViewController {
         $0.setImage(UIImage(named: "btnBack"), for: .normal)
     }
     
-    lazy var checkButton = UIButton(type: .custom, primaryAction: UIAction(handler: { _ in
-        let popUpViewController = WritingPopUpViewController()
-        popUpViewController.modalPresentationStyle = .overCurrentContext
-        popUpViewController.modalTransitionStyle = .crossDissolve
-        popUpViewController.popUpDelegate = self
-        
-        self.present(popUpViewController, animated: true, completion: nil)
-    })).then {
+    lazy var checkButton = UIButton().then {
         $0.setImage(UIImage(named: "btnCheck")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        $0.addTarget(self, action: #selector(didTapCheckButton(_:)), for: .touchUpInside)
         $0.tintColor = .disable
         $0.isUserInteractionEnabled = false
     }
@@ -126,6 +120,8 @@ class WritingViewController: UIViewController {
 
     let placeholder = "당신의 스트레스를 적어주세요"
     let style: WritingStyle
+    var tag: [Category] = []
+    let limitLength = 20
     
     // MARK: - Initializer
 
@@ -147,6 +143,7 @@ class WritingViewController: UIViewController {
         setView()
         setCollectionView()
         setConstraint()
+        fetchCategoriesData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -162,6 +159,19 @@ class WritingViewController: UIViewController {
     @objc
     func didTapSettingButton(_ sender: UIButton) {
         navigationController?.pushViewController(SettingSeparateViewController(), animated: true)
+    }
+    
+    @objc
+    func didTapCheckButton(_ sender: UIButton) {
+        guard let idx = tagCollectionView.indexPathsForSelectedItems?.first?.row else { return }
+        let writing = WritingRequest(title: titleTextField.text ?? nil, text: textView.text ?? "", categoryID: tag[idx].id, isWriting: true)
+        
+        let popUpViewController = WritingPopUpViewController(writing: writing)
+        popUpViewController.modalPresentationStyle = .overCurrentContext
+        popUpViewController.modalTransitionStyle = .crossDissolve
+        popUpViewController.popUpDelegate = self
+        
+        present(popUpViewController, animated: true, completion: nil)
     }
     
     // MARK: - Methods
@@ -185,8 +195,19 @@ class WritingViewController: UIViewController {
     func setCollectionView() {
         tagCollectionView.delegate = self
         tagCollectionView.dataSource = self
-        
-        tagCollectionView.selectItem(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: [])
+    }
+    
+    func fetchCategoriesData() {
+        CategoryService.shared.fetchCategories { result in
+            guard let categories = result as? CategoriesResponse else { return }
+            
+            self.tag = categories.category
+            self.guideLabel.isHidden = self.tag.count != 0
+            self.guideImage.isHidden = self.tag.count != 0
+            
+            self.tagCollectionView.reloadData()
+            self.tagCollectionView.selectItem(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: [])
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

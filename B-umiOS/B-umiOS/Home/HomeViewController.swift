@@ -9,7 +9,6 @@ import Lottie
 import SnapKit
 import Then
 import UIKit
-import Alamofire
 
 // TODO: - guide label 숨김 처리
 
