@@ -34,4 +34,12 @@ struct UserService {
             completion(response)
         }
     }
+
+    func updateUserInfo(userInfo: UserInfo, completion: @escaping (Any) -> Void) {
+        let parameter = NetworkInfo.shared.makeParameter(model: userInfo)
+
+        RequestHandler.shared.requestData(url: APIConstants.loginURL, httpmethod: .patch, parameter: parameter, header: NetworkInfo.headerWithToken, decodeType: GeneralResponse<UserResponse>.self) { response in
+            completion(response)
+        }
+    }
 }

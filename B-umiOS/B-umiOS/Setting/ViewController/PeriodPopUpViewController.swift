@@ -71,8 +71,26 @@ class PeriodPopUpViewController: UIViewController {
     
     @objc private func didTapConfirmButton(_ sender: UIButton) {
         let deletePeriod = pickerView.selectedRow(inComponent: 0)
+        let userInfo = UserInfo(isPush: nil, deletePeriod: deletePeriod)
         
-        popupdelegate?.sendPeriod(period: deletePeriod)
+        UserService.shared.updateUserInfo(userInfo: userInfo) { response in
+            guard let result = response as? NetworkResult<Any> else { return }
+            
+            switch result {
+            case .success(let data):
+                if let userInfoResponse = data as? GeneralResponse<UserResponse>,
+                   let newUserInfo = userInfoResponse.data?.user
+                {
+                    UserDefaults.standard.set(newUserInfo.deletePeriod, forKey: UserDefaults.Keys.deletePeriod)
+                    
+                    self.popupdelegate?.sendPeriod(period: deletePeriod)
+                }
+            case .requestErr, .pathErr, .serverErr, .networkFail:
+                /// 네트워크 에러 처리
+                print("fail to update user info")
+            }
+        }
+        
         popupdelegate?.closeBottomSheet()
         dismiss(animated: true, completion: nil)
     }
