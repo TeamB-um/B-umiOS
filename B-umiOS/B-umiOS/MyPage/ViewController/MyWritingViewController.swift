@@ -94,7 +94,7 @@ class MyWritingViewController: UIViewController {
     }
     
     func setConstraint(){
-        view.addSubviews([myWritingCollectionView,errorView,errorLabel])
+        view.addSubviews([myWritingCollectionView, errorView, errorLabel])
         myWritingCollectionView.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.bottom.leading.trailing.equalToSuperview()
@@ -127,7 +127,7 @@ class MyWritingViewController: UIViewController {
 
 extension MyWritingViewController : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return myWriting.count
+        myWriting.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

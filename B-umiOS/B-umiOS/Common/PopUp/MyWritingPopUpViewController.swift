@@ -73,6 +73,7 @@ class MyWritingPopUpViewController: UIViewController {
     // MARK: - Actions
     
     // MARK: - Methods
+    
     func setWritingData(data: Writing) {
         trashBinLabel.text = data.category.name
         titleLabel.text = data.title
