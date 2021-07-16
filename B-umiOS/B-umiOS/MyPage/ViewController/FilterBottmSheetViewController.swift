@@ -119,9 +119,9 @@ class FilterBottmSheetViewController: UIViewController {
         $0.cornerRound(radius: 5)
     }
     
-    private  let backgroundButton = UIButton().then {
+    private let backgroundButton = UIButton().then {
         $0.addTarget(self, action: #selector(didTapBackgroundButton(_:)), for: .touchUpInside)
-        $0.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.0)
+        $0.backgroundColor = .clear
     }
     
     // MARK: - Properties
@@ -133,6 +133,7 @@ class FilterBottmSheetViewController: UIViewController {
     }
     var components = DateComponents()
     var endMinimumDate: Date = Date()
+    var bgDelegate: viewDelegate?
     var tag: [Category] = []
     var startDate: Date = Date()
     var endDate: Date = Date()
@@ -148,9 +149,9 @@ class FilterBottmSheetViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setView()
         setConstraint()
         setFirstDatePicker()
-        showBottomSheet()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -170,6 +171,8 @@ class FilterBottmSheetViewController: UIViewController {
     }
     
     @objc private func didTapBackgroundButton(_ sender: UIButton) {
+        print("dismiss")
+        bgDelegate?.backgroundRemove()
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -229,6 +232,7 @@ class FilterBottmSheetViewController: UIViewController {
             }
         }
     }
+
     @objc private func didTapConfirmButton(_ sender: UIButton) {
         var startDate = startDate.dateToString(format: "yyyy-MM-dd", date: startDate)
         var endDate = endDate.dateToString(format: "yyyy-MM-dd", date: endDate)
@@ -261,10 +265,17 @@ class FilterBottmSheetViewController: UIViewController {
                 print("404 낫파운드")
             default:
                 print("error")
-            }
+            }                                                                                                                                                                                                   
         }
+        bgDelegate?.backgroundRemove()
+        self.dismiss(animated: true, completion: nil)   
     }
+
     // MARK: - Methods
+    
+    func setView() {
+        self.view.backgroundColor = .clear
+    }
     
     func setConstraint() {
         self.view.addSubviews([backgroundButton,popupView])
@@ -387,13 +398,6 @@ class FilterBottmSheetViewController: UIViewController {
         } else {
             endDate = datePickerView.date
         }
-    }
-    
-    func showBottomSheet(){
-        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseIn, animations: {
-            self.backgroundButton.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
-            self.view.layoutIfNeeded()
-        }, completion: nil)
     }
 }
 

@@ -27,7 +27,14 @@ class MyTrashBinViewController: UIViewController {
         $0.separatorStyle = .none
         $0.backgroundColor = .background
     }
+    
+    let backgroundView = UIView().then {
+        $0.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+        $0.frame = CGRect(origin: .zero, size: CGSize(width: SizeConstants.screenWidth, height: SizeConstants.screenHeight))
+    }
+    
     // MARK: - Properties
+    
     var myTrashCan: [TrashCan] = []
     
     // MARK: - Initializer
@@ -48,15 +55,21 @@ class MyTrashBinViewController: UIViewController {
     // MARK: - Actions
     
     @objc func didTapSettingButton(){
+        
         let popUpVC = PeriodPopUpViewController()
-        popUpVC.modalPresentationStyle = .overCurrentContext
-        popUpVC.modalTransitionStyle = .crossDissolve
+        popUpVC.modalPresentationStyle = .overFullScreen
+        popUpVC.modalTransitionStyle = .coverVertical
+        
+        popUpVC.bgDelegate = self
+        
+        let window = UIApplication.shared.windows.first
+        window?.addSubview(self.backgroundView)
+        
         if let parentVC = view.superview?.parentViewController {
             parentVC.present(popUpVC, animated: true, completion: nil)
-        } else {
-            print("error")
         }
     }
+    
     // MARK: - Methods
     func fetchTrashBinData(){
         ActivityIndicator.shared.startLoadingAnimation()
@@ -135,5 +148,14 @@ extension MyTrashBinViewController: UITableViewDataSource {
         }
         cell.setTrashBinData(data: myTrashCan, index: indexPath.row)
         return cell
+    }
+}
+
+// MARK: - Extension
+
+extension MyTrashBinViewController: viewDelegate {
+    func backgroundRemove() {
+        print("close")
+        backgroundView.removeFromSuperview()
     }
 }
