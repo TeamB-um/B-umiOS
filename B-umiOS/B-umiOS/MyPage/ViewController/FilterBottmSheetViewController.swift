@@ -305,7 +305,7 @@ class FilterBottmSheetViewController: UIViewController {
         }
         
         categoryTagCollecitonView.snp.makeConstraints { make in
-            make.height.equalTo(150)
+            make.height.equalTo(180)
             make.bottom.equalTo(confirmButton.snp.top).offset(30)
             make.leading.trailing.equalTo(confirmButton)
         }
@@ -443,5 +443,4 @@ extension FilterBottmSheetViewController: UICollectionViewDataSource {
         categoryID = tag[indexPath.row].id
         categoryName = tag[indexPath.row].name
     }
-    
 }
