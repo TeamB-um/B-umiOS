@@ -64,6 +64,7 @@ class DeletePopUpViewController: UIViewController {
     var changeCategoriesDataDelegate: ChangeCategoryDataDelegate?
     var kind: Kind
     var deleteData: [String] = []
+    var categoryID: String = ""
     var deleteDelegate: DeleteDelegate?
     var parentDelegate: DeleteDelegate?
 
@@ -95,7 +96,6 @@ class DeletePopUpViewController: UIViewController {
 
     @objc func didTapDelete() {
         var query = ""
-        
         for (index, item) in deleteData.enumerated() {
             if index == 0 {
                 query = item
