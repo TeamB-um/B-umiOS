@@ -53,15 +53,18 @@ extension WritingViewController: UICollectionViewDataSource {
 }
 
 extension WritingViewController: UICollectionViewDelegate {
-    // FIXME: - 일단.. 잠시 사라지게만 해뒀음 좌표값에 따라 변경 필요
-
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.contentOffset.x < 10 {
+        if scrollView.contentOffset.x < 2 {
             UIView.animate(withDuration: 0.3) {
                 self.leftGradientView.alpha = 0
                 self.righrGradientView.alpha = 1
             }
-        } else if scrollView.contentOffset.x > scrollView.contentSize.width - scrollView.bounds.width {
+        } else if scrollView.contentOffset.x < scrollView.contentSize.width - scrollView.bounds.width {
+            UIView.animate(withDuration: 0.3) {
+                self.leftGradientView.alpha = 1
+                self.righrGradientView.alpha = 1
+            }
+        } else {
             UIView.animate(withDuration: 0.3) {
                 self.leftGradientView.alpha = 1
                 self.righrGradientView.alpha = 0
@@ -107,17 +110,6 @@ extension WritingViewController: UITextFieldDelegate {
         self.textView.becomeFirstResponder()
 
         return true
-    }
-
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let currentText = textField.text ?? ""
-        guard let stringRange = Range(range, in: currentText) else { return false }
-
-        let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
-        let length = (textField.text?.count)! - range.length + string.count
-        textFieldCountLabel.text = "\(length > limitLength ? limitLength : length)/20"
-
-        return updatedText.count <= limitLength
     }
 }
 
