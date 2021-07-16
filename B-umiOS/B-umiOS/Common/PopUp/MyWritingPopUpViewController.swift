@@ -81,7 +81,7 @@ class MyWritingPopUpViewController: UIViewController {
         contentLabel.text = data.text
         contentLabel.lineSpacing(spacing: 9)
         
-        let createdDate = Date().stringToDate(date: data.createdDate ?? "")
+        let createdDate = Date().stringToDate(date: data.createdDate)
         dateLabel.text = Date().dateToString(format: "yyyy.MM.dd (E)", date: createdDate)
     }
     
