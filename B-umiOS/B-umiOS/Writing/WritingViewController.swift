@@ -200,7 +200,9 @@ class WritingViewController: UIViewController {
     }
     
     func fetchCategoriesData() {
+        ActivityIndicator.shared.startLoadingAnimation()
         CategoryService.shared.fetchCategories { result in
+            ActivityIndicator.shared.stopLoadingAnimation()
             guard let categories = result as? CategoriesResponse else { return }
             
             self.tag = categories.category

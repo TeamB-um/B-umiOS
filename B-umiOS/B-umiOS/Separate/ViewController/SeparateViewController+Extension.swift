@@ -49,7 +49,7 @@ extension SeparateViewController: UICollectionViewDataSource {
 
         else {
             let separate = tag[indexPath.row]
-            cell.setData(name: separate.name, index: separate.index ?? 0, count: separate.count ?? 0)
+            cell.setData(name: separate.name, index: separate.index , count: separate.count)
         }
 
         return cell
@@ -60,21 +60,44 @@ extension SeparateViewController: UICollectionViewDataSource {
 
 extension SeparateViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.row == tag.count {
-            let storyboard = UIStoryboard(name: "Setting", bundle: nil)
-            if let nextVC = storyboard.instantiateViewController(identifier: SeparatePopUpViewController.identifier) as? SeparatePopUpViewController {
-                nextVC.method = .add
-                nextVC.modalPresentationStyle = .overFullScreen
-                nextVC.modalTransitionStyle = .crossDissolve
-                self.present(nextVC, animated: true, completion: nil)
-            }
+
+        if(indexPath.row == tag.count){
+            let nextVC = SeparatePopUpViewController(method: .add)
+            
+            nextVC.delegate = self
+            nextVC.modalPresentationStyle = .overFullScreen
+            nextVC.modalTransitionStyle = .crossDissolve
+            self.present(nextVC, animated: true, completion: nil)
+            
         }
         else {
-            guard let pushVC = self.storyboard?.instantiateViewController(withIdentifier: SeparateDetailViewController.identifier) as? SeparateDetailViewController else { return }
+            if(tag[indexPath.row].count >= 5){
+                CategoryService.shared.fetchRewardData(category_id: tag[indexPath.row].id) { response in
 
-            pushVC.categoryID = tag[indexPath.row].id
+                    guard let result = response as? NetworkResult<Any> else{return}
+                    
+                    switch result{
+                    case .success(let response):
+                        guard let reward = response as? GeneralResponse<RewardResponse> else{return}
+                        let vc = MyRewardPopUpViewController(reward: reward.data!.reward)
+                        vc.modalTransitionStyle = .crossDissolve
+                        vc.modalPresentationStyle = .overCurrentContext
+                        self.tag[indexPath.row].count = 0
+                        self.tabBarController?.present(vc, animated: true) {
+                            self.separateCollectionView.reloadData()
+                        }
+                    default:
+                        break
+                    }
+                }
+            }
+            else{
+                guard let pushVC = self.storyboard?.instantiateViewController(withIdentifier: SeparateDetailViewController.identifier) as? SeparateDetailViewController else { return }
 
-            self.navigationController?.pushViewController(pushVC, animated: true)
+                pushVC.categoryID = tag[indexPath.row].id
+
+                self.navigationController?.pushViewController(pushVC, animated: true)
+            }
         }
     }
 
@@ -97,5 +120,12 @@ extension SeparateViewController: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
         CGSize(width: SizeConstants.screenWidth, height: 100 * SizeConstants.screenRatio)
+    }
+}
+
+extension SeparateViewController: ChangeCategoryDataDelegate {
+    func changeCategoryData(data: [Category]) {
+        tag = data
+        separateCollectionView.reloadData()
     }
 }

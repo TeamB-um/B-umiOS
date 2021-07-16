@@ -88,7 +88,7 @@ class SettingSeparateViewController: UIViewController {
     @objc
     private func didTapAddButton(_ sender: UIButton) {
         let nextVC = SeparatePopUpViewController(method: .add)
-        nextVC.method = .add
+    
         nextVC.delegate = self
         nextVC.modalPresentationStyle = .overFullScreen
         nextVC.modalTransitionStyle = .crossDissolve
@@ -161,7 +161,9 @@ class SettingSeparateViewController: UIViewController {
     // MARK: - Network
     
     func fetchCategories() {
+        ActivityIndicator.shared.startLoadingAnimation()
         CategoryService.shared.fetchCategories { result in
+            ActivityIndicator.shared.stopLoadingAnimation()
             guard let categories = result as? CategoriesResponse else { return }
             
             self.bins = categories.category
@@ -188,7 +190,7 @@ extension SettingSeparateViewController: UITableViewDataSource {
     }
 }
 
-extension SettingSeparateViewController: changeCategoryDataDelegate {
+extension SettingSeparateViewController: ChangeCategoryDataDelegate {
     func changeCategoryData(data: [Category]) {
         bins = data
         separateTableView.reloadData()

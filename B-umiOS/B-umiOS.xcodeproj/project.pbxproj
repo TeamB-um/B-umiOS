@@ -56,6 +56,8 @@
 		AB21E3CE269DB32E00D32EFF /* UserDefaults.Key+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB21E3CD269DB32E00D32EFF /* UserDefaults.Key+Extension.swift */; };
 		AB21E3D0269DEF0D00D32EFF /* CategoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB21E3CF269DEF0D00D32EFF /* CategoryService.swift */; };
 		AB21E3D2269E9A1D00D32EFF /* WritingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB21E3D1269E9A1D00D32EFF /* WritingService.swift */; };
+		AB21E3D526A0777E00D32EFF /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB21E3D426A0777D00D32EFF /* ActivityIndicator.swift */; };
+		AB21E3D726A07D0000D32EFF /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = AB21E3D626A07D0000D32EFF /* loading.json */; };
 		AB5AF762268A2E84001D3CD1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5AF761268A2E84001D3CD1 /* AppDelegate.swift */; };
 		AB5AF764268A2E84001D3CD1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5AF763268A2E84001D3CD1 /* SceneDelegate.swift */; };
 		AB5AF766268A2E84001D3CD1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5AF765268A2E84001D3CD1 /* ViewController.swift */; };
@@ -167,6 +169,9 @@
 		AB21E3CF269DEF0D00D32EFF /* CategoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryService.swift; sourceTree = "<group>"; };
 		AB21E3D1269E9A1D00D32EFF /* WritingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingService.swift; sourceTree = "<group>"; };
 		AB5AF75E268A2E84001D3CD1 /* 비움(B:um).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "비움(B:um).app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB21E3D426A0777D00D32EFF /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		AB21E3D626A07D0000D32EFF /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
+		AB5AF75E268A2E84001D3CD1 /* B-umiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "B-umiOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB5AF761268A2E84001D3CD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB5AF763268A2E84001D3CD1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		AB5AF765268A2E84001D3CD1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -386,6 +391,14 @@
 			path = Request;
 			sourceTree = "<group>";
 		};
+		AB21E3D326A076D200D32EFF /* Indicator */ = {
+			isa = PBXGroup;
+			children = (
+				AB21E3D426A0777D00D32EFF /* ActivityIndicator.swift */,
+			);
+			path = Indicator;
+			sourceTree = "<group>";
+		};
 		AB5AF755268A2E84001D3CD1 = {
 			isa = PBXGroup;
 			children = (
@@ -446,6 +459,7 @@
 		AB7F6DE826977A7600EF9C6E /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
+				AB21E3D626A07D0000D32EFF /* loading.json */,
 				AB21E3AD269D43FA00D32EFF /* bium_splash.json */,
 				AB7F6E5C269C02EC00EF9C6E /* home_ios.json */,
 			);
@@ -544,6 +558,7 @@
 		ABB24E02268CE1A8006FEE57 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				AB21E3D326A076D200D32EFF /* Indicator */,
 				AB7F6DF92698976900EF9C6E /* PopUp */,
 				4F34E1042693617A00A54336 /* Model */,
 				ABB24E03268CE1D8006FEE57 /* Extension */,
@@ -758,6 +773,7 @@
 				AB5AF76E268A2E87001D3CD1 /* LaunchScreen.storyboard in Resources */,
 				4F49929E26942AD8009541AA /* SeparateCollectionViewCell.xib in Resources */,
 				ABB24DFE268CDF64006FEE57 /* NanumSquareOTF_acEB.otf in Resources */,
+				AB21E3D726A07D0000D32EFF /* loading.json in Resources */,
 				AB5AF76B268A2E87001D3CD1 /* Assets.xcassets in Resources */,
 				ABB24E01268CDF64006FEE57 /* NanumSquareOTF_acR.otf in Resources */,
 				4F7FD2ED26920F3800122964 /* SeparateTableViewCell.xib in Resources */,
@@ -850,6 +866,7 @@
 				AB21E3C6269D666800D32EFF /* RewardResponse.swift in Sources */,
 				AB21E3C4269D64CE00D32EFF /* Reward.swift in Sources */,
 				4F66FB0F269F0BEE007EC311 /* SeparateStyle.swift in Sources */,
+				AB21E3D526A0777E00D32EFF /* ActivityIndicator.swift in Sources */,
 				AB8C3F5B26935E8600B2BA30 /* WritingViewController+Layout.swift in Sources */,
 				AB8C3F5D2695743E00B2BA30 /* NotificationName+Extension.swift in Sources */,
 				AB7F6DE726975A0900EF9C6E /* ThrowTrashViewController+Layout.swift in Sources */,

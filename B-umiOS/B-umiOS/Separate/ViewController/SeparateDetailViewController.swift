@@ -9,6 +9,7 @@ import UIKit
 
 class SeparateDetailViewController: UIViewController {
     // MARK: - UIComponenets
+
     let navigationView = UIView().then {
         $0.backgroundColor = .white
     }
@@ -57,10 +58,11 @@ class SeparateDetailViewController: UIViewController {
     }
     
     // MARK: - Properties
+
     static let identifier = "SeparateDetailViewController"
-    var removeData : [Int] = []
-    var writings : [Writing] = []
-    var categoryID : String?
+    var removeData: [Int] = []
+    var writings: [Writing] = []
+    var categoryID: String?
     
     // MARK: - Initializer
     
@@ -79,47 +81,56 @@ class SeparateDetailViewController: UIViewController {
     
     // MARK: - Actions
     
-    @objc func didTapBackButton(){
-        self.navigationController?.popViewController(animated: true)
+    @objc func didTapBackButton() {
+        navigationController?.popViewController(animated: true)
     }
     
-    @objc func didTapConfirmButton(){
-        if(!removeData.isEmpty){
-            let vc = DeletePopUpViewController(title: "글 삭제", guide: "글을 삭제하시겠습니까?")
+    @objc func didTapConfirmButton() {
+        if !removeData.isEmpty {
+            let vc = DeletePopUpViewController(kind: .writing)
+            var deleteID: [String] = []
+
+            for index in removeData {
+                deleteID.append(writings[index].id)
+            }
+            
+            vc.deleteData = deleteID
+            vc.parentDelegate = self
             vc.modalTransitionStyle = .crossDissolve
             vc.modalPresentationStyle = .overCurrentContext
             
-            self.tabBarController?.present(vc, animated: true, completion: nil)
+            tabBarController?.present(vc, animated: true, completion: nil)
         }
     }
     
-    @objc func didTapCheckButton(){
-        if self.removeButton.isSelected {
-            self.removeButton.setupRoundingButton(title: "삭제", image: "btnRemove")
-            self.confirmButton.isHidden = true
-            self.removeButton.isSelected = false
+    @objc func didTapCheckButton() {
+        if removeButton.isSelected {
+            removeButton.setupRoundingButton(title: "삭제", image: "btnRemove")
+            confirmButton.isHidden = true
+            removeButton.isSelected = false
         }
         
-        else{
-            self.removeButton.setupRoundingButton(title: "취소", image: "btnCancel")
-            self.confirmButton.isHidden = false
-            self.removeButton.isSelected = true
+        else {
+            removeButton.setupRoundingButton(title: "취소", image: "btnCancel")
+            confirmButton.isHidden = false
+            removeButton.isSelected = true
         }
         
-        self.detailTableView.reloadData()
+        detailTableView.reloadData()
     }
     
     // MARK: - Methods
     
-    func fetchWritings(){
+    func fetchWritings() {
+        ActivityIndicator.shared.startLoadingAnimation()
         CategoryService.shared.fetchWritings(categories: categoryID!) { result in
-            guard let r = result as? NetworkResult<Any> else{return}
+            ActivityIndicator.shared.stopLoadingAnimation()
+            guard let r = result as? NetworkResult<Any> else { return }
       
-            switch r{
+            switch r {
             case .success(let response):
-                guard let w = response as? GeneralResponse<WritingsResponse> else{return}
+                guard let w = response as? GeneralResponse<WritingsResponse> else { return }
                 self.writings = w.data?.writing ?? []
-                print(self.writings.count)
                 self.detailTableView.reloadData()
             default:
                 break
@@ -127,26 +138,30 @@ class SeparateDetailViewController: UIViewController {
         }
     }
     
-    func setView(){
+    func setView() {
         view.backgroundColor = .background
         navigationController?.interactivePopGestureRecognizer?.delegate = nil
     }
     
-    func setTableView(){
+    func setTableView() {
         detailTableView.delegate = self
         detailTableView.dataSource = self
         detailTableView.allowsMultipleSelection = true
         detailTableView.register(SeparateDetailTableViewCell.self, forCellReuseIdentifier: SeparateDetailTableViewCell.identifier)
     }
     
-    func isActivated(){
-        if(removeData.isEmpty){
+    func isActivated() {
+        if removeData.isEmpty {
             confirmButton.isActivated(false)
         }
-        else{
+        else {
             confirmButton.isActivated(true)
         }
     }
     
     // MARK: - Protocols
+}
+
+protocol DeleteDelegate {
+    func sendWritings(_ newWritings: [Writing])
 }

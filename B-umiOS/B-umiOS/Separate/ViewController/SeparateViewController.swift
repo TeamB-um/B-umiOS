@@ -41,6 +41,7 @@ class SeparateViewController: UIViewController {
     }
         
     // MARK: - Properties
+    
     var tag: [Category] = []
     
     // MARK: - Initializer
@@ -82,8 +83,10 @@ class SeparateViewController: UIViewController {
     }
     
     func fetchCategoriesData() {
+        ActivityIndicator.shared.startLoadingAnimation()
         CategoryService.shared.fetchCategories { result in
-            print(result)
+            ActivityIndicator.shared.stopLoadingAnimation()
+
             guard let categories = result as? CategoriesResponse else { return }
             
             self.tag = categories.category

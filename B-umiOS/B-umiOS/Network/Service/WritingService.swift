@@ -25,4 +25,19 @@ struct WritingService {
             }
         }
     }
+    
+    func fatchWriting(completion: @escaping (Any) -> Void) {
+        RequestHandler.shared.requestData(url: APIConstants.writingURL, httpmethod: HTTPMethod.get, parameter: nil, header: NetworkInfo.headerWithToken, decodeType: GeneralResponse<WritingsResponse>.self) { response in
+            completion(response)
+        }
+    }
+    
+    func deleteWriting(writings: String, completion: @escaping (Any) -> Void) {
+        
+        let url = "\(APIConstants.writingURL)?ids=[\(writings)]"
+        print(url)
+        RequestHandler.shared.requestData(url: url, httpmethod: HTTPMethod.delete, parameter: nil, header: NetworkInfo.headerWithToken, decodeType: GeneralResponse<WritingsResponse>.self) { response in
+            completion(response)
+        }
+    }
 }

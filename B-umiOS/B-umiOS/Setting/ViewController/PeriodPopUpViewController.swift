@@ -73,7 +73,9 @@ class PeriodPopUpViewController: UIViewController {
         let deletePeriod = pickerView.selectedRow(inComponent: 0)
         let userInfo = UserInfo(isPush: nil, deletePeriod: deletePeriod)
         
+        ActivityIndicator.shared.startLoadingAnimation()
         UserService.shared.updateUserInfo(userInfo: userInfo) { response in
+            ActivityIndicator.shared.stopLoadingAnimation()
             guard let result = response as? NetworkResult<Any> else { return }
             
             switch result {
@@ -103,7 +105,7 @@ class PeriodPopUpViewController: UIViewController {
     // MARK: - Methods
     
     func setView() {
-        view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
+        view.backgroundColor = .clear
         
         let deletePeriod = UserDefaults.standard.integer(forKey: UserDefaults.Keys.deletePeriod)
         pickerView.selectRow(deletePeriod, inComponent: 0, animated: true)

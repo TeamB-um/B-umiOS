@@ -12,7 +12,6 @@ struct RewardService {
     static let shared = RewardService()
 
     func fatchRewardsData(completion: @escaping (Any) -> Void) {
-
         RequestHandler.shared.requestData(url: APIConstants.rewardURL, httpmethod: HTTPMethod.get, parameter: nil, header: NetworkInfo.headerWithToken, decodeType: GeneralResponse<RewardsResponse>.self) { response in
             switch response {
             case .success(let data):

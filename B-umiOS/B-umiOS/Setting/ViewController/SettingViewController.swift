@@ -7,7 +7,12 @@
 
 import UIKit
 
-class SettingViewController: UIViewController, popupDelegate {
+protocol popupDelegate {
+    func closeBottomSheet()
+    func sendPeriod(period: Int)
+}
+
+class SettingViewController: UIViewController {
     // MARK: - UIComponenets
 
     var navigationView = UIView().then {
@@ -87,9 +92,12 @@ class SettingViewController: UIViewController, popupDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.setView()
+        setView()
         setConstraint()
-        self.setUserInfo()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        setUserInfo()
     }
 
     // MARK: - Actions
@@ -122,7 +130,9 @@ class SettingViewController: UIViewController, popupDelegate {
     private func didTapPushSwitch(_ sender: UISwitch) {
         let userInfo = UserInfo(isPush: sender.isOn, deletePeriod: nil)
         
+        ActivityIndicator.shared.startLoadingAnimation()
         UserService.shared.updateUserInfo(userInfo: userInfo) { response in
+            ActivityIndicator.shared.stopLoadingAnimation()
             guard let result = response as? NetworkResult<Any> else { return }
             
             switch result {
@@ -194,7 +204,11 @@ class SettingViewController: UIViewController, popupDelegate {
     }
 
     // MARK: - Protocols
-    
+}
+
+// MARK: - Extension
+
+extension SettingViewController: popupDelegate {
     func closeBottomSheet() {
         self.backgroundView.removeFromSuperview()
     }
@@ -202,9 +216,4 @@ class SettingViewController: UIViewController, popupDelegate {
     func sendPeriod(period: Int) {
         self.trashbinPeriodLabel.text = "\(period)일"
     }
-}
-
-protocol popupDelegate {
-    func closeBottomSheet()
-    func sendPeriod(period: Int)
 }

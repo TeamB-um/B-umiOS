@@ -86,9 +86,14 @@ class ButtonSectionView: UICollectionReusableView {
     override func layoutSubviews() {
         super.layoutSubviews()
         setConstraint()
+        addObservers()
     }
     
     // MARK: - Action
+    func addObservers(){
+        NotificationCenter.default.addObserver(self, selector: #selector(confirmButtonIsActive), name: NSNotification.Name.confirmButtonIsActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(confirmButtonIsunActive), name: NSNotification.Name.confirmButtonIsUnactive, object: nil)
+    }
     
     @objc
     private func didTapAddButton(_ sender: UIButton) {
@@ -109,21 +114,34 @@ class ButtonSectionView: UICollectionReusableView {
     @objc
     func didTapDeleteButton(_ sender: UIButton) {
         if deleteButton.isSelected {
-            
             deleteButton.setupRoundingButton(title: "삭제", image: "btnRemove", selected: true)
             confirmButtton.isHidden = true
         } else {
             deleteButton.setupRoundingButton(title: "취소", image: "btnCancel", selected: true)
             confirmButtton.isHidden = false
         }
-        
-        NotificationCenter.default.post(name: NSNotification.Name.isDeleteButtonSelected, object: deleteButton.isSelected)
-
+        NotificationCenter.default.post(name: NSNotification.Name.deleteButtonIsSelected, object: deleteButton.isSelected)
     }
     
     @objc
     func didTapConfirmButton(_ sender: UIButton) {
-
+        if confirmButtton.isSelected {
+            let popUpVC =  DeletePopUpViewController(kind: .writing)
+            popUpVC.modalPresentationStyle = .overFullScreen
+            self.parentViewController?.present(popUpVC, animated: true, completion: nil)
+        }
+        
+        //삭제했을 때 서버연결
+    }
+    
+    @objc func confirmButtonIsActive(noti : NSNotification){
+        confirmButtton.isActivated(true)
+        confirmButtton.isSelected = true
+    }
+    
+    @objc func confirmButtonIsunActive(noti : NSNotification){
+        confirmButtton.isActivated(false)
+        confirmButtton.isSelected = false
     }
     
       // MARK: - Protocols
