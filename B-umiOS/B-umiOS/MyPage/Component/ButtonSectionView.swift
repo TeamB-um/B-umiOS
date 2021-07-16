@@ -143,8 +143,13 @@ class ButtonSectionView: UICollectionReusableView {
     
     @objc func categoryIsChanged(_ sender: Notification){
         if let filteredCategory = sender.object {
+            if filteredCategory as! String == "" {
+                categoryButtton.setupRoundingButton(title: "전체 카테고리", image: "btnFilter")
+                categoryButtton.isActivated(false)
+            } else {
         categoryButtton.setupRoundingButton(title: "\(filteredCategory)", image: "btnFilter")
         categoryButtton.isActivated(true)
+            }
         }
     }
     

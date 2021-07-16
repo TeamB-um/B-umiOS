@@ -139,7 +139,7 @@ class MyWritingViewController: UIViewController {
         let popUpVC = FilterBottmSheetViewController()
         
         popUpVC.modalPresentationStyle = .overFullScreen
-        popUpVC.categoryID = "와진짜머갈안돌아가"
+//        popUpVC.categoryID = ""
         popUpVC.parentDelegate = self
         present(popUpVC, animated: true, completion: nil)
     }
