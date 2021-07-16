@@ -230,10 +230,7 @@ extension MyPageViewController: UICollectionViewDataSource {
 
 extension MyPageViewController: UICollectionViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        // print(scrollView.contentOffset.x)
-
         if scrollView.contentOffset.x > 375 {}
-        // ..menu.indicatorLeadingConstarint.constant = scrollView.contentOffset.x / 3
     }
 
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {

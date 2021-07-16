@@ -189,7 +189,6 @@ extension MyTrashBinViewController: UITableViewDataSource {
 
 extension MyTrashBinViewController: viewDelegate {
     func backgroundRemove() {
-        print("close")
         backgroundView.removeFromSuperview()
     }
 }

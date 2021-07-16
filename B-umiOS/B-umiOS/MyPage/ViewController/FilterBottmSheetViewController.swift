@@ -171,7 +171,6 @@ class FilterBottmSheetViewController: UIViewController {
     }
     
     @objc private func didTapBackgroundButton(_ sender: UIButton) {
-        print("dismiss")
         bgDelegate?.backgroundRemove()
         self.dismiss(animated: true, completion: nil)
     }
