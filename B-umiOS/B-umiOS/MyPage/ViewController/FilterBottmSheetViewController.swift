@@ -11,9 +11,6 @@ import UIKit
 class FilterBottmSheetViewController: UIViewController {
     // MARK: - UIComponenets
     
-//    private let backgroundView = UIView().then {
-//        $0.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
-//    }
     private let popupView = UIView().then {
         $0.cornerRound(radius: 10)
         $0.backgroundColor = .white
@@ -119,17 +116,16 @@ class FilterBottmSheetViewController: UIViewController {
     
     private let rect = UIView().then {
         $0.backgroundColor = .paper1
-        $0.cornerRound(radius: 10)
+        $0.cornerRound(radius: 5)
     }
     
-    private  let backgroundButton = UIButton().then {
+    private let backgroundButton = UIButton().then {
         $0.addTarget(self, action: #selector(didTapBackgroundButton(_:)), for: .touchUpInside)
-        $0.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.0)
+        $0.backgroundColor = .clear
     }
     
     // MARK: - Properties
-   
-    var tag: [String] = ["인간관계", "취업", "날파리", "거지챌린지", "아르바이트", "부장님"]
+    
     var selecetedStartDatePicker: Bool = true
     let dateFormatter = DateFormatter().then {
         $0.locale = Locale(identifier: "ko_KO")
@@ -137,31 +133,58 @@ class FilterBottmSheetViewController: UIViewController {
     }
     var components = DateComponents()
     var endMinimumDate: Date = Date()
+    var bgDelegate: viewDelegate?
+    var tag: [Category] = []
+    var startDate: Date = Date()
+    var endDate: Date = Date()
+    var categoryID: String = ""
+    var categoryName: String = ""
+    var tagSelectedIdx: Int = 0
+    var parentDelegate: ChangeWritingDataDelegate?
+    var delegate: ChangeWritingDataDelegate?
+    
     // MARK: - Initializer
     
     // MARK: - LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+        setView()
         setConstraint()
         setFirstDatePicker()
-        showBottomSheet()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        fetchCategoriesData()
     }
     
     // MARK: - Actions
     
+    func fetchCategoriesData() {
+        ActivityIndicator.shared.startLoadingAnimation()
+        CategoryService.shared.fetchCategories { result in
+            ActivityIndicator.shared.stopLoadingAnimation()
+            guard let categories = result as? CategoriesResponse else { return }
+            self.tag = categories.category
+            self.categoryTagCollecitonView.reloadData()
+        }
+    }
+    
     @objc private func didTapBackgroundButton(_ sender: UIButton) {
+        print("dismiss")
+        bgDelegate?.backgroundRemove()
         self.dismiss(animated: true, completion: nil)
     }
     
     @objc private func datePickerIsChanged(_ sender: UIPickerView){
         if (selecetedStartDatePicker) {
+            startDate = datePickerView.date
             let dateText = dateFormatter.string(from: datePickerView.date)
             startDateButton.setTitle(dateText, for: .normal)
             endMinimumDate = datePickerView.date
             
         } else {
+            endDate = datePickerView.date
             let dateText = dateFormatter.string(from: datePickerView.date)
             endDateButton.setTitle(dateText, for: .normal)
         }
@@ -207,18 +230,58 @@ class FilterBottmSheetViewController: UIViewController {
                 make.bottom.equalTo(categoryLabel.snp.top).offset(-34)
                 make.height.equalTo(0)
             }
-    }
-}
-    @objc private func didTapConfirmButton(_ sender: UIButton) {
-            self.dismiss(animated: true, completion: nil)
         }
+    }
+
+    @objc private func didTapConfirmButton(_ sender: UIButton) {
+        var startDate = startDate.dateToString(format: "yyyy-MM-dd", date: startDate)
+        var endDate = endDate.dateToString(format: "yyyy-MM-dd", date: endDate)
+        
+        if !dateSwitch.isOn {
+            startDate = ""
+            endDate = ""
+        }
+        
+        ActivityIndicator.shared.startLoadingAnimation()
+        WritingService.shared.filterWritings(start_date: startDate, end_date: endDate, category_id: categoryID) { result in
+            ActivityIndicator.shared.stopLoadingAnimation()
+            
+            guard let r = result as? NetworkResult<Any> else { return }
+            switch r {
+            case .success(let response):
+                guard let data = response as? GeneralResponse<WritingsResponse> else { return }
+                
+                if let d = data.data?.writing {
+                    self.delegate = self.parentDelegate
+                    self.delegate?.changeWitingData(filteredDate: d)
+                    self.dismiss(animated: true, completion: {
+                        self.categoryTagCollecitonView.reloadData()
+                        NotificationCenter.default.post(name: Notification.Name.categoryIsChanged, object: self.categoryName)
+                        
+                    })
+                }
+                
+            case .requestErr(ErrorMessage.notFound):
+                print("404 낫파운드")
+            default:
+                print("error")
+            }                                                                                                                                                                                                   
+        }
+        bgDelegate?.backgroundRemove()
+        self.dismiss(animated: true, completion: nil)   
+    }
+
     // MARK: - Methods
+    
+    func setView() {
+        self.view.backgroundColor = .clear
+    }
     
     func setConstraint() {
         self.view.addSubviews([backgroundButton,popupView])
-        popupView.addSubviews([categoryTagCollecitonView, categoryLabel, settingPeriodView, setDateLabel, dateSwitch, confirmButton])
+        popupView.addSubviews([rect,categoryTagCollecitonView, categoryLabel, settingPeriodView, setDateLabel, dateSwitch, confirmButton])
         settingPeriodView.addSubviews([datePickerView, startDateButton,endDateButton,startDateLine, endDateLine, startLabel, endLabel])
-
+        
         backgroundButton.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
@@ -229,6 +292,12 @@ class FilterBottmSheetViewController: UIViewController {
             make.leading.trailing.equalToSuperview()
         }
         
+        rect.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(10)
+            make.width.equalToSuperview().multipliedBy(65.0/375.0)
+            make.centerX.equalToSuperview()
+            make.height.equalTo(6 * SizeConstants.screenRatio)
+        }
         confirmButton.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(24)
             make.bottom.equalToSuperview().inset(42)
@@ -236,7 +305,7 @@ class FilterBottmSheetViewController: UIViewController {
         }
         
         categoryTagCollecitonView.snp.makeConstraints { make in
-            make.height.equalTo(150)
+            make.height.equalTo(180)
             make.bottom.equalTo(confirmButton.snp.top).offset(30)
             make.leading.trailing.equalTo(confirmButton)
         }
@@ -324,24 +393,21 @@ class FilterBottmSheetViewController: UIViewController {
     }
     
     func changeDateText(button: UIButton){
-        let dateText = dateFormatter.string(from: datePickerView.date)
-        button.setTitle(dateText, for: .normal)
-    }
-    
-    func showBottomSheet(){
-            UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseIn, animations: {
-                self.backgroundButton.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
-                self.view.layoutIfNeeded()
-            }, completion: nil)
+        if button == startDateButton {
+            startDate = datePickerView.date
+        } else {
+            endDate = datePickerView.date
         }
+    }
 }
 
 // MARK: - Protocols
 // MARK: - Extensions
+
 extension FilterBottmSheetViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let label = UILabel()
-        label.text = tag[indexPath.row]
+        label.text = tag[indexPath.row].name
         label.font = UIFont.nanumSquareFont(type: .regular, size: 16)
         label.sizeToFit()
         
@@ -369,8 +435,12 @@ extension FilterBottmSheetViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WritingTagCollectionViewCell.identifier, for: indexPath) as? WritingTagCollectionViewCell else { return UICollectionViewCell() }
-        
-        cell.setTagLabel(tag: tag[indexPath.row])
+        cell.setTagLabel(tag: tag[indexPath.row].name)
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        categoryID = tag[indexPath.row].id
+        categoryName = tag[indexPath.row].name
     }
 }

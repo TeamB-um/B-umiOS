@@ -21,6 +21,7 @@ class SettingViewController: UIViewController {
     
     var backgroundView = UIView().then {
         $0.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+        $0.frame = CGRect(origin: .zero, size: CGSize(width: SizeConstants.screenWidth, height: SizeConstants.screenHeight))
     }
     
     var headerLabel = UILabel().then {
@@ -114,16 +115,12 @@ class SettingViewController: UIViewController {
         let popUpVC = self.storyboard?.instantiateViewController(identifier: "PeriodPopUpViewController") as! PeriodPopUpViewController
         popUpVC.modalPresentationStyle = .overFullScreen
         popUpVC.modalTransitionStyle = .coverVertical
-        
         popUpVC.popupdelegate = self
         
-        DispatchQueue.main.async {
-            self.view.addSubview(self.backgroundView)
-            self.backgroundView.snp.makeConstraints { make in
-                make.edges.equalToSuperview()
-            }
-        }
-        present(popUpVC, animated: true, completion: nil)
+        let window = UIApplication.shared.windows.first
+        window?.addSubview(self.backgroundView)
+        
+        self.present(popUpVC, animated: true, completion: nil)
     }
     
     @objc
