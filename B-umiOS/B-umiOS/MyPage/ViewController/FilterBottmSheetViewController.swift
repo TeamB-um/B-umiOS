@@ -116,7 +116,7 @@ class FilterBottmSheetViewController: UIViewController {
     
     private let rect = UIView().then {
         $0.backgroundColor = .paper1
-        $0.cornerRound(radius: 10)
+        $0.cornerRound(radius: 5)
     }
     
     private  let backgroundButton = UIButton().then {
@@ -268,7 +268,7 @@ class FilterBottmSheetViewController: UIViewController {
     
     func setConstraint() {
         self.view.addSubviews([backgroundButton,popupView])
-        popupView.addSubviews([categoryTagCollecitonView, categoryLabel, settingPeriodView, setDateLabel, dateSwitch, confirmButton])
+        popupView.addSubviews([rect,categoryTagCollecitonView, categoryLabel, settingPeriodView, setDateLabel, dateSwitch, confirmButton])
         settingPeriodView.addSubviews([datePickerView, startDateButton,endDateButton,startDateLine, endDateLine, startLabel, endLabel])
         
         backgroundButton.snp.makeConstraints { make in
@@ -281,6 +281,12 @@ class FilterBottmSheetViewController: UIViewController {
             make.leading.trailing.equalToSuperview()
         }
         
+        rect.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(10)
+            make.width.equalToSuperview().multipliedBy(65.0/375.0)
+            make.centerX.equalToSuperview()
+            make.height.equalTo(6 * SizeConstants.screenRatio)
+        }
         confirmButton.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(24)
             make.bottom.equalToSuperview().inset(42)
@@ -381,8 +387,6 @@ class FilterBottmSheetViewController: UIViewController {
         } else {
             endDate = datePickerView.date
         }
-        //        let dateText = dateFormatter.string(from: datePickerView.date)
-        //        button.setTitle(dateText, for: .normal)
     }
     
     func showBottomSheet(){

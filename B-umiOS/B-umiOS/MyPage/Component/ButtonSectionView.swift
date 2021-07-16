@@ -107,6 +107,7 @@ class ButtonSectionView: UICollectionReusableView {
     func didTapDeleteButton(_ sender: UIButton) {
         if deleteButton.isSelected {
             deleteButton.setupRoundingButton(title: "삭제", image: "btnRemove", selected: true)
+            confirmButtton.isActivated(false)
             confirmButtton.isHidden = true
         } else {
             deleteButton.setupRoundingButton(title: "취소", image: "btnCancel", selected: true)
