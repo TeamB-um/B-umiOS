@@ -60,7 +60,6 @@ class MyWritingViewController: UIViewController {
     var myWriting: [Writing] = [] {
         didSet {
             if myWriting.count == 0 {
-                print("갱신")
                 errorView.isHidden = false
                 errorLabel.isHidden = false
                 errorLabel.text = "아직 글을 작성하지 않았어요!"

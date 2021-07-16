@@ -45,6 +45,10 @@ class RoundingButton: UIButton {
         isSelected.toggle()
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+    }
+    
     func setupRoundingButton(title: String, image: String) {
         let labelSize = buttonTitle.calculateLabelSize(text: title, font: buttonTitle.font)
 

@@ -51,6 +51,8 @@ class ButtonSectionView: UICollectionReusableView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        addObservers()
+        setConstraint()
     }
     
     required init?(coder: NSCoder) {
@@ -88,9 +90,15 @@ class ButtonSectionView: UICollectionReusableView {
     }
     
     override func layoutSubviews() {
+        updateConstraint()
         super.layoutSubviews()
-        setConstraint()
-        addObservers()
+    }
+    
+    func updateConstraint() {
+        categoryButtton.snp.updateConstraints { make in
+            make.centerY.equalToSuperview()
+            make.leading.equalTo(16 * SizeConstants.screenRatio)
+        }
     }
     
     // MARK: - Action
