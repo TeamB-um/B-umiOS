@@ -111,17 +111,6 @@ extension WritingViewController: UITextFieldDelegate {
 
         return true
     }
-
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let currentText = textField.text ?? ""
-        guard let stringRange = Range(range, in: currentText) else { return false }
-
-        let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
-        let length = (textField.text?.count)! - range.length + string.count
-        textFieldCountLabel.text = "\(length > limitLength ? limitLength : length)/20"
-
-        return updatedText.count <= limitLength
-    }
 }
 
 // MARK: - WritingPopUpDelegate

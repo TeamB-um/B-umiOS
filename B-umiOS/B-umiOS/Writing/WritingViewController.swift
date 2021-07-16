@@ -90,6 +90,7 @@ class WritingViewController: UIViewController {
         $0.font = UIFont.nanumSquareFont(type: .bold, size: 14)
         
         $0.delegate = self
+        $0.addTarget(self, action: #selector(changeTextField(_:)), for: .editingChanged)
         $0.becomeFirstResponder()
     }
     
@@ -174,6 +175,20 @@ class WritingViewController: UIViewController {
         popUpViewController.popUpDelegate = self
         
         present(popUpViewController, animated: true, completion: nil)
+    }
+    
+    @objc
+    func changeTextField(_ sender: UITextField) {
+        if let text = titleTextField.text {
+            let length = text.count
+            textFieldCountLabel.text = "\(length > limitLength ? limitLength : length)/\(limitLength)"
+            
+            if length >= limitLength {
+                let index = text.index(text.startIndex, offsetBy: limitLength)
+                let newString = text[text.startIndex ..< index]
+                titleTextField.text = String(newString)
+            }
+        }
     }
     
     // MARK: - Methods
