@@ -11,9 +11,6 @@ import UIKit
 class FilterBottmSheetViewController: UIViewController {
     // MARK: - UIComponenets
     
-//    private let backgroundView = UIView().then {
-//        $0.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
-//    }
     private let popupView = UIView().then {
         $0.cornerRound(radius: 10)
         $0.backgroundColor = .white
@@ -122,13 +119,13 @@ class FilterBottmSheetViewController: UIViewController {
         $0.cornerRound(radius: 10)
     }
     
-    private  let backgroundButton = UIButton().then {
+    private let backgroundButton = UIButton().then {
         $0.addTarget(self, action: #selector(didTapBackgroundButton(_:)), for: .touchUpInside)
-        $0.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.0)
+        $0.backgroundColor = .clear
     }
     
     // MARK: - Properties
-   
+    
     var tag: [String] = ["인간관계", "취업", "날파리", "거지챌린지", "아르바이트", "부장님"]
     var selecetedStartDatePicker: Bool = true
     let dateFormatter = DateFormatter().then {
@@ -137,21 +134,25 @@ class FilterBottmSheetViewController: UIViewController {
     }
     var components = DateComponents()
     var endMinimumDate: Date = Date()
+    var bgDelegate: viewDelegate?
+    
     // MARK: - Initializer
     
     // MARK: - LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+        
+        setView()
         setConstraint()
         setFirstDatePicker()
-        showBottomSheet()
     }
     
     // MARK: - Actions
     
     @objc private func didTapBackgroundButton(_ sender: UIButton) {
+        print("dismiss")
+        bgDelegate?.backgroundRemove()
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -207,12 +208,19 @@ class FilterBottmSheetViewController: UIViewController {
                 make.bottom.equalTo(categoryLabel.snp.top).offset(-34)
                 make.height.equalTo(0)
             }
-    }
-}
-    @objc private func didTapConfirmButton(_ sender: UIButton) {
-            self.dismiss(animated: true, completion: nil)
         }
+    }
+    
+    @objc private func didTapConfirmButton(_ sender: UIButton) {
+        bgDelegate?.backgroundRemove()
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     // MARK: - Methods
+    
+    func setView() {
+        self.view.backgroundColor = .clear
+    }
     
     func setConstraint() {
         self.view.addSubviews([backgroundButton,popupView])
@@ -327,13 +335,6 @@ class FilterBottmSheetViewController: UIViewController {
         let dateText = dateFormatter.string(from: datePickerView.date)
         button.setTitle(dateText, for: .normal)
     }
-    
-    func showBottomSheet(){
-            UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseIn, animations: {
-                self.backgroundButton.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
-                self.view.layoutIfNeeded()
-            }, completion: nil)
-        }
 }
 
 // MARK: - Protocols

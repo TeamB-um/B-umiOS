@@ -39,11 +39,17 @@ class ButtonSectionView: UICollectionReusableView {
         
         return button
     }()
-
-      // MARK: - Properties
+    
+    let backgroundView = UIView().then {
+        $0.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+        $0.frame = CGRect(origin: .zero, size: CGSize(width: SizeConstants.screenWidth, height: 600))
+    }
+    
+    // MARK: - Properties
+    
     var isSelectAllowed: Bool = false
-      
-      // MARK: - Initializer
+    
+    // MARK: - Initializer
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -52,10 +58,10 @@ class ButtonSectionView: UICollectionReusableView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-      // MARK: - Actions
     
-      // MARK: - Methods
+    // MARK: - Actions
+    
+    // MARK: - Methods
     
     private func setConstraint(){
         self.addSubviews([gradationBackground, categoryButtton, deleteButton, confirmButtton])
@@ -97,10 +103,20 @@ class ButtonSectionView: UICollectionReusableView {
     
     @objc
     private func didTapAddButton(_ sender: UIButton) {
-            let popUpVC =  FilterBottmSheetViewController()
-            popUpVC.modalPresentationStyle = .overFullScreen
-            self.parentViewController?.present(popUpVC, animated: true, completion: nil)
+        let popUpVC =  FilterBottmSheetViewController()
+        
+        popUpVC.modalPresentationStyle = .overFullScreen
+        popUpVC.modalTransitionStyle = .coverVertical
+        popUpVC.bgDelegate = self
+        
+        DispatchQueue.main.async {
+            let window = UIApplication.shared.windows.first
+            
+            window?.addSubview(self.backgroundView)
         }
+        
+        self.parentViewController?.present(popUpVC, animated: true, completion: nil)
+    }
     
     @objc
     func didTapCategoryButton(_ sender: UIButton) {
@@ -132,8 +148,6 @@ class ButtonSectionView: UICollectionReusableView {
             
             self.parentViewController?.present(popUpVC, animated: true, completion: nil)
         }
-        
-        //삭제했을 때 서버연결
     }
     
     @objc func confirmButtonIsActive(noti : NSNotification){
@@ -146,5 +160,15 @@ class ButtonSectionView: UICollectionReusableView {
         confirmButtton.isSelected = false
     }
     
-      // MARK: - Protocols
-  }
+    // MARK: - Protocols
+}
+
+extension ButtonSectionView : viewDelegate {
+    func backgroundRemove() {
+        backgroundView.removeFromSuperview()
+    }
+}
+
+protocol viewDelegate {
+    func backgroundRemove()
+}
