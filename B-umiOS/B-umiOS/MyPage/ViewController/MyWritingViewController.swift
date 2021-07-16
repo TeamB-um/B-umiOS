@@ -44,12 +44,13 @@ class MyWritingViewController: UIViewController {
         $0.text = "dlkslfhiwalgnlkwrg"
         $0.isHidden = true
     }
-    
+
     // MARK: - Properties
     var deleteButtonIsSelected: Bool = false
     var myWritingParentViewcontroller: UIViewController?
     var myWriting: [Writing] = []
-    var removeData : [Int] = []
+    var removeData: [Int] = []
+    var headerView: UICollectionReusableView = ButtonSectionView()
     
     // MARK: - Initializer
     
@@ -127,7 +128,17 @@ class MyWritingViewController: UIViewController {
             deleteID.append(myWriting[index].id)
         }
         popUpVC.deleteData = deleteID
+        popUpVC.categoryID = ""
         popUpVC.modalPresentationStyle = .overFullScreen
+        popUpVC.parentDelegate = self
+        self.present(popUpVC, animated: true, completion: nil)
+    }
+    
+    @objc func didTapCategoryButton(_ sender: UIButton){
+        let popUpVC = FilterBottmSheetViewController()
+        
+        popUpVC.modalPresentationStyle = .overFullScreen
+        popUpVC.categoryID = "와진짜머갈안돌아가"
         popUpVC.parentDelegate = self
         self.present(popUpVC, animated: true, completion: nil)
     }
@@ -179,10 +190,11 @@ extension MyWritingViewController : UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-//
         guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ButtonSectionView.identifier, for: indexPath) as? ButtonSectionView else { return UICollectionReusableView() }
+        
         headerView.confirmButtton.addTarget(self, action: #selector(didTapConfirmButton(_:)), for: .touchUpInside)
-        headerView.categoryButtton.addTarget(self, action: #selector(didTapConfirmButton(_:)), for: .touchUpInside)
+        headerView.categoryButtton.addTarget(self, action: #selector(didTapCategoryButton(_:)), for: .touchUpInside)
+        
         return headerView
     }
     

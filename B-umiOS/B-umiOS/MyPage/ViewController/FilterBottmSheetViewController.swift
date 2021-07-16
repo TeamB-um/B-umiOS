@@ -141,6 +141,7 @@ class FilterBottmSheetViewController: UIViewController {
     var tagSelectedIdx: Int = 0
     var parentDelegate: ChangeWritingDataDelegate?
     var delegate: ChangeWritingDataDelegate?
+    
     // MARK: - Initializer
     
     // MARK: - LifeCycle
@@ -251,7 +252,8 @@ class FilterBottmSheetViewController: UIViewController {
                     self.delegate?.changeWitingData(filteredDate: d)
                     self.dismiss(animated: true, completion: {
                         self.categoryTagCollecitonView.reloadData()
-                        NotificationCenter.default.post(name: Notification.Name.categoryIsChanged, object: self.categoryName)
+//                        NotificationCenter.default.post(name: Notification.Name.categoryIsChanged, object: self.categoryName)
+                        
                     })
                 }
                 

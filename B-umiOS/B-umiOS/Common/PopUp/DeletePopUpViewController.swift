@@ -64,6 +64,7 @@ class DeletePopUpViewController: UIViewController {
     var changeCategoriesDataDelegate: ChangeCategoryDataDelegate?
     var kind: Kind
     var deleteData: [String] = []
+    var categoryID: String = ""
     var deleteDelegate: DeleteDelegate?
     var parentDelegate: DeleteDelegate?
 
@@ -116,6 +117,7 @@ class DeletePopUpViewController: UIViewController {
                     guard let writings = response as? GeneralResponse<WritingsResponse> else { return }
                     self.deleteDelegate = self.parentDelegate
                     self.deleteDelegate?.sendWritings(writings.data?.writing ?? [])
+                    print(writings)
                 default:
                     print("error")
                 }

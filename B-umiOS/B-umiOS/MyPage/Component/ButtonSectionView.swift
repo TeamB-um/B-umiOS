@@ -19,7 +19,6 @@ class ButtonSectionView: UICollectionReusableView {
     lazy var categoryButtton: RoundingButton = {
         let button = RoundingButton()
         button.setupRoundingButton(title: "전체 카테고리", image: "btnFilter")
-//        button.addTarget(self, action: #selector(didTapAddButton(_:)), for: .touchUpInside)
         return button
     }()
     
@@ -95,18 +94,6 @@ class ButtonSectionView: UICollectionReusableView {
         NotificationCenter.default.addObserver(self, selector: #selector(categoryIsChanged), name: NSNotification.Name.categoryIsChanged, object: nil)
     }
     
-    func abc(){
-        
-    }
-    
-//    @objc
-//    private func didTapAddButton(_ sender: UIButton) {
-//        let popUpVC =  FilterBottmSheetViewController()
-//        popUpVC.modalPresentationStyle = .overFullScreen
-//        popUpVC.parentDelegate = self.parentViewController as? MyWritingViewController
-//        self.parentViewController?.present(popUpVC, animated: true, completion: nil)
-//    }
-    
     @objc
     func didTapCategoryButton(_ sender: UIButton) {
         if categoryButtton.isSelected {
@@ -139,7 +126,6 @@ class ButtonSectionView: UICollectionReusableView {
 //            }
             
             popUpVC.deleteData = deleteID
-//            popUpVC.parentDelegate = self
             popUpVC.modalPresentationStyle = .overFullScreen
             self.parentViewController?.present(popUpVC, animated: true, completion: nil)
         }
