@@ -128,6 +128,8 @@ class ButtonSectionView: UICollectionReusableView {
         if confirmButtton.isSelected {
             let popUpVC =  DeletePopUpViewController(kind: .writing)
             popUpVC.modalPresentationStyle = .overFullScreen
+            popUpVC.modalTransitionStyle = .crossDissolve
+            
             self.parentViewController?.present(popUpVC, animated: true, completion: nil)
         }
         
