@@ -90,6 +90,7 @@ class SeparateDetailTableViewCell: UITableViewCell {
         titleLabel.snp.makeConstraints { make in
             make.leading.equalToSuperview().inset(16 * SizeConstants.screenRatio)
             make.top.equalToSuperview().inset(17 * SizeConstants.screenRatio)
+            make.trailing.equalToSuperview().inset(40 * SizeConstants.screenRatio)
         }
         
         previewLabel.snp.makeConstraints { make in

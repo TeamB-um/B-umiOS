@@ -13,7 +13,7 @@ extension SeparateGraphPopUpViewController {
     
     func setConstraint(){
         self.view.addSubviews([backgroundButton,popupView])
-        popupView.addSubviews([headerLabel, closeButton, monthGraphView, devideLine, entireGraphView])
+        popupView.addSubviews([headerLabel, closeButton, monthGraphView, divideLine, entireGraphView])
         popupView.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview().inset(80 * SizeConstants.screenRatio)
             make.leading.trailing.equalToSuperview().inset(16 * SizeConstants.screenRatio)
@@ -25,25 +25,25 @@ extension SeparateGraphPopUpViewController {
         
         headerLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalToSuperview().inset(25 * SizeConstants.screenRatio)
+            make.top.equalToSuperview().inset(23 * SizeConstants.screenRatio)
         }
         
         closeButton.snp.makeConstraints { make in
-            make.top.trailing.equalToSuperview().inset(24.5 * SizeConstants.screenRatio)
+            make.top.trailing.equalToSuperview().inset(7 * SizeConstants.screenRatio)
         }
         monthGraphView.snp.makeConstraints { make in
             make.top.equalTo(headerLabel).offset(50)
             make.leading.trailing.equalToSuperview()
         }
         
-        devideLine.snp.makeConstraints { make in
+        divideLine.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(18 * SizeConstants.screenRatio)
             make.height.equalTo(1)
             make.top.equalTo(monthGraphView.snp.bottom).offset(36.5 * SizeConstants.screenRatio)
         }
         
         entireGraphView.snp.makeConstraints { make in
-            make.top.equalTo(devideLine.snp.bottom).offset(33.5 * SizeConstants.screenRatio)
+            make.top.equalTo(divideLine.snp.bottom).offset(33.5 * SizeConstants.screenRatio)
             make.leading.trailing.equalToSuperview()
         }
     }

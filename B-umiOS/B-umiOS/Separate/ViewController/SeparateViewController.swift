@@ -22,7 +22,7 @@ class SeparateViewController: UIViewController {
     
     let graphButton = UIButton().then {
         $0.setImage(UIImage(named: "btnGraph"), for: .normal)
-        $0.addTarget(SeparateGraphPopUpViewController.identifier, .popup)
+        $0.addTarget(self, action: #selector(didTapGraphButton), for: .touchUpInside)
     }
     
     let navigationDividerView = UIView().then {
@@ -61,6 +61,13 @@ class SeparateViewController: UIViewController {
     }
     
     // MARK: - Actions
+    
+    @objc func didTapGraphButton(){
+        let vc = SeparateGraphPopUpViewController()
+        vc.modalTransitionStyle = .crossDissolve
+        vc.modalPresentationStyle = .overCurrentContext
+        self.tabBarController?.present(vc, animated: true, completion: nil)
+    }
     
     // MARK: - Methods
     
