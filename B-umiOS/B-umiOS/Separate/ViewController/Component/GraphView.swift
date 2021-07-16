@@ -97,15 +97,13 @@ class GraphView: UIView {
         }
     }
     
+    var p = 100
     func setStackView() {
-        print(graphData)
         for i in 0 ... 2 {
             componentsView.append(GraphComponentView(name: graphData[i].name, percent: "\(graphData[i].percent)%", color: graphData[i].index))
+            p -= graphData[i].percent
         }
-        var p = 0
-        for i in 3...graphData.count-1{
-            p += graphData[i].percent
-        }
+       
         componentsView.append(GraphComponentView(name: "기타", percent: "\(p)%", color: nil))
    
         for i in 0 ... 1 {
@@ -138,7 +136,7 @@ class GraphView: UIView {
 
 extension GraphView: MultiProgressViewDataSource {
     func numberOfSections(in progressView: MultiProgressView) -> Int {
-        return graphData.count
+        graphData.count
     }
     
     func progressView(_ progressView: MultiProgressView, viewForSection section: Int) -> ProgressViewSection {

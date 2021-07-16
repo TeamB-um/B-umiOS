@@ -13,7 +13,7 @@ extension SeparateGraphPopUpViewController {
     
     func setConstraint(){
         self.view.addSubviews([backgroundButton,popupView])
-        popupView.addSubviews([headerLabel, closeButton, monthGraphView, devideLine, entireGraphView])
+        popupView.addSubviews([headerLabel, closeButton, monthGraphView, divideLine, entireGraphView])
         popupView.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview().inset(80 * SizeConstants.screenRatio)
             make.leading.trailing.equalToSuperview().inset(16 * SizeConstants.screenRatio)
@@ -36,14 +36,14 @@ extension SeparateGraphPopUpViewController {
             make.leading.trailing.equalToSuperview()
         }
         
-        devideLine.snp.makeConstraints { make in
+        divideLine.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(18 * SizeConstants.screenRatio)
             make.height.equalTo(1)
             make.top.equalTo(monthGraphView.snp.bottom).offset(36.5 * SizeConstants.screenRatio)
         }
         
         entireGraphView.snp.makeConstraints { make in
-            make.top.equalTo(devideLine.snp.bottom).offset(33.5 * SizeConstants.screenRatio)
+            make.top.equalTo(divideLine.snp.bottom).offset(33.5 * SizeConstants.screenRatio)
             make.leading.trailing.equalToSuperview()
         }
     }
