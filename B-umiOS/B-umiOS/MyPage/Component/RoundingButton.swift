@@ -63,11 +63,11 @@ class RoundingButton: UIButton {
         self.snp.updateConstraints { make in
             make.width.equalTo(labelSize.width + 56)
         }
-        buttonImage.snp.makeConstraints { make in
+        buttonImage.snp.updateConstraints { make in
             make.centerY.equalToSuperview()
             make.leading.equalToSuperview().offset(16)
         }
-        buttonTitle.snp.makeConstraints { make in
+        buttonTitle.snp.updateConstraints { make in
             make.centerY.equalTo(buttonImage)
             make.leading.equalTo(buttonImage.snp.trailing).offset(5)
         }
