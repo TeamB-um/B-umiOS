@@ -30,8 +30,9 @@ class SeparateGraphPopUpViewController: UIViewController {
         $0.setImage(UIImage(named: "btnCloseBlack"), for: .normal)
         $0.addTarget(self, action: #selector(closeView(_:)), for: .touchUpInside)
     }
-    let monthGraphView = GraphView(title: "월간", sub: "한 달 내 카테고리별")
-    let entireGraphView = GraphView(title: "전체", sub: "전체 사용 기간 동안의")
+    lazy var monthGraphView = GraphView(title: "월간", sub: "한 달 내 카테고리별")
+    lazy var entireGraphView = GraphView(title: "전체", sub: "전체 사용 기간 동안의")
+    
     
     var devideLine = UIView().then {
         $0.backgroundColor = .paper1
@@ -55,7 +56,7 @@ class SeparateGraphPopUpViewController: UIViewController {
     
     // MARK: - Actions
     
-    @objc  private func closeView(_ sender: UIButton) {
+    @objc private func closeView(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -66,6 +67,19 @@ class SeparateGraphPopUpViewController: UIViewController {
     }
     
     func fetchCategoryGraph(){
+        CategoryService.shared.fetchGraphData { response in
+            guard let result = response as? NetworkResult<Any> else{return}
+            
+            switch result {
+            case .success(let response):
+                guard let w = response as? GeneralResponse<GraphResponse> else { return }
         
+                self.monthGraphView.setGraph(data: w.data?.monthstat ?? [])
+                self.entireGraphView.setGraph(data: w.data?.allstat ?? [])
+                
+            default:
+                break
+            }
+        }
     }
 }

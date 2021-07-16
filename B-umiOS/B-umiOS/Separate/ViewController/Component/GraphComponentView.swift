@@ -16,20 +16,23 @@ class GraphComponentView: UIView {
     }
     
     var categoryName = UILabel().then {
-        $0.text = "인간관계sdfdsfsd"
         $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 14)
     }
     
     var percent = UILabel().then {
-        $0.text = "35%"
-        $0.font = UIFont.nanumSquareFont(type: .regular, size: 14)
+        $0.font = UIFont.nanumSquareFont(type: .regular, size: 15)
+        $0.textColor = .paper4
     }
     
     // MARK: - Initializer
     
-    init(){
+    init(name: String, percent: String, color: Int?){
+        self.categoryName.text = name
+        self.categoryName.textColor = SeparateStyle.color[color ?? 8]
+        self.percent.text = percent
+        self.circle.tintColor = SeparateStyle.color[color ?? 8]
+        
         super.init(frame: .init(x: 0, y: 0, width: 300 * SizeConstants.screenWidth, height: 46 * SizeConstants.screenRatio))
-        setData()
         setView()
         setConstraint()
     }
@@ -39,15 +42,9 @@ class GraphComponentView: UIView {
     }
     
     // MARK: - Method
-    
-    func setData(){
-        //서버 붙이고 기능 추가 자리
-        //self.categoryName.text
-        //self.percent.text
-    }
-    
+
     func setView(){
-        self.backgroundColor = .yellow
+        self.backgroundColor = .background
         self.cornerRound(radius: 10)
     
     }

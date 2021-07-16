@@ -23,14 +23,14 @@ class GraphView: UIView {
     }
     
     let progressBackGroundView = UIView().then {
-        $0.backgroundColor = .systemGray6
+        $0.backgroundColor = .white
     }
         
     lazy var progressView = MultiProgressView().then {
         $0.cornerRadius = 18
         $0.lineCap = .round
         $0.trackInset = 5
-        $0.trackBackgroundColor = .lightGray
+        $0.trackBackgroundColor = .disable
         $0.trackBorderColor = .blue
     }
     
@@ -38,27 +38,25 @@ class GraphView: UIView {
         $0.axis = .vertical
         $0.distribution = .fillEqually
         $0.spacing = 11 * SizeConstants.screenRatio
-        $0.backgroundColor = .systemGray4
+        $0.backgroundColor = .white
     }
+    
+    // MARK: - Properties
+    
+    var graphData: [GraphComponent] = []
+    var componentsView: [GraphComponentView] = []
     
     // MARK: - Initializer
     
     init(title: String, sub: String) {
         super.init(frame: .init(x: 0, y: 0, width: SizeConstants.screenWidth, height: 200))
-        self.backgroundColor = .background
+        self.backgroundColor = .white
+        
         self.titleLabel.text = "\(title) 그래프"
         self.subLabel.text =  "\(sub) 스트레스 비율입니다"
-        
+
         setConstraint()
-        setStackView()
         progressView.dataSource = self
-        
-        DispatchQueue.main.async {
-            self.progressView.setProgress(section: 0, to: 0.4)
-            self.progressView.setProgress(section: 1, to: 0.3)
-            self.progressView.setProgress(section: 2, to: 0.2)
-            self.progressView.setProgress(section: 3, to: 0.1)
-        }
     }
     
     @available(*, unavailable)
@@ -101,11 +99,19 @@ class GraphView: UIView {
     }
     
     func setStackView() {
-        for _ in 0 ... 1 {
-            let component = GraphComponentView()
-            let component2 = GraphComponentView()
-
-            let horizontalStackView = UIStackView(arrangedSubviews: [component, component2]).then {
+        print(graphData)
+        for i in 0 ... 2 {
+            componentsView.append(GraphComponentView(name: graphData[i].name, percent: "\(graphData[i].percent)%", color: graphData[i].index))
+        }
+        var p = 0
+        for i in 3...graphData.count-1{
+            p += graphData[i].percent
+        }
+        componentsView.append(GraphComponentView(name: "기타", percent: "\(p)%", color: nil))
+   
+        for i in 0 ... 1 {
+          
+            let horizontalStackView = UIStackView(arrangedSubviews: [componentsView[2*i], componentsView[2*i+1]]).then {
                 $0.alignment = .fill
                 $0.spacing = 11 * SizeConstants.screenRatio
                 $0.axis = .horizontal
@@ -115,19 +121,30 @@ class GraphView: UIView {
             verticalStackView.addArrangedSubview(horizontalStackView)
         }
     }
+    
+    func setGraph(data: [GraphComponent]){
+        graphData = data
+        self.progressView.reloadData()
+        DispatchQueue.main.async {
+            for (index,item) in data.enumerated(){
+                let percent = Float(item.percent)/100.0
+                self.progressView.setProgress(section: index, to: percent)
+            }
+            self.setStackView()
+        }
+    }
 }
 
 // MARK: - Extension
 
 extension GraphView: MultiProgressViewDataSource {
     func numberOfSections(in progressView: MultiProgressView) -> Int {
-        4
+        return graphData.count
     }
     
     func progressView(_ progressView: MultiProgressView, viewForSection section: Int) -> ProgressViewSection {
         let bar = ProgressViewSection()
-        let colors: [UIColor] = [.red, .blue, .green, .systemPink]
-        bar.backgroundColor = colors[section]
+        bar.backgroundColor = SeparateStyle.color[graphData[section].index]
         return bar
     }
 }
