@@ -39,7 +39,7 @@ class SeparatePopUpViewController: UIViewController {
         $0.textColor = .paper3
     }
     
-    private lazy var textfield = UITextField().then {
+    private lazy var textField = UITextField().then {
         $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 14)
         $0.textColor = .header
         $0.layer.borderWidth = 1
@@ -48,13 +48,14 @@ class SeparatePopUpViewController: UIViewController {
         $0.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10 * SizeConstants.screenRatio, height: self.view.frame.height))
         $0.leftViewMode = .always
         $0.text = self.trashBin?.name
+        $0.addTarget(self, action: #selector(changeTextField(_:)), for: .editingChanged)
     }
 
     private lazy var textNumberLabel = UILabel().then {
         $0.textColor = .green2Main
         $0.font = UIFont.systemFont(ofSize: 13)
 
-        if let count = self.textfield.text?.count {
+        if let count = self.textField.text?.count {
             $0.text = "\(count)/\(limitLength)"
         }
     }
@@ -104,13 +105,13 @@ class SeparatePopUpViewController: UIViewController {
     var isHighligtedTextField = true {
         didSet {
             if isHighligtedTextField {
-                textfield.layer.borderColor = UIColor.error.cgColor
+                textField.layer.borderColor = UIColor.error.cgColor
                 textNumberLabel.textColor = .error
                 confirmButton.backgroundColor = .disable
                 confirmButton.isEnabled = false
                 boilerLabel.isHidden = false
             } else {
-                textfield.layer.borderColor = UIColor.paper2.cgColor
+                textField.layer.borderColor = UIColor.paper2.cgColor
                 textNumberLabel.textColor = .green2Main
                 confirmButton.backgroundColor = .blue2Main
                 confirmButton.isEnabled = true
@@ -161,7 +162,7 @@ class SeparatePopUpViewController: UIViewController {
     @objc private func didTapConfirmButton(_ sender: UIButton) {
         switch method {
         case .add:
-            if let name = textfield.text {
+            if let name = textField.text {
                 let category = CategoryRequest(name: name)
                 
                 ActivityIndicator.shared.startLoadingAnimation()
@@ -190,7 +191,7 @@ class SeparatePopUpViewController: UIViewController {
             }
         case .modify:
             if let category = trashBin,
-               let newName = textfield.text
+               let newName = textField.text
             {
                 ActivityIndicator.shared.startLoadingAnimation()
                 CategoryService.shared.updateCategory(id: category.id, category: CategoryRequest(name: newName)) { response in
@@ -236,6 +237,26 @@ class SeparatePopUpViewController: UIViewController {
         }
     }
     
+    @objc func changeTextField(_ sender: UITextField) {
+        if let text = textField.text {
+            let length = text.count
+            textNumberLabel.text = "\(length > limitLength ? limitLength : length)/\(limitLength)"
+            
+            isHighligtedTextField = false
+            if length == 0 {
+                confirmButton.isEnabled = false
+                confirmButton.backgroundColor = UIColor.disable
+            } else if length >= limitLength {
+                let index = text.index(text.startIndex, offsetBy: limitLength)
+                let newString = text[text.startIndex ..< index]
+                textField.text = String(newString)
+            } else {
+                confirmButton.isEnabled = true
+                confirmButton.backgroundColor = .blue2Main
+            }
+        }
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
@@ -243,8 +264,7 @@ class SeparatePopUpViewController: UIViewController {
     // MARK: - Methods
     
     func setTextField() {
-        textfield.delegate = self
-        textfield.becomeFirstResponder()
+        textField.becomeFirstResponder()
     }
     
     func setView() {
@@ -263,7 +283,7 @@ class SeparatePopUpViewController: UIViewController {
     func setConstraint() {
         view.addSubviews([backgroundButton, popupView])
 
-        popupView.addSubviews([headerLabel, subLabel, textfield, stackView, textNumberLabel, boilerLabel])
+        popupView.addSubviews([headerLabel, subLabel, textField, stackView, textNumberLabel, boilerLabel])
         
         popupView.snp.makeConstraints { make in
             make.width.equalToSuperview().multipliedBy(343.0 / 375.0)
@@ -285,21 +305,21 @@ class SeparatePopUpViewController: UIViewController {
             make.top.equalToSuperview().inset(70 * SizeConstants.screenRatio)
         }
 
-        textfield.snp.makeConstraints { make in
+        textField.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(24 * SizeConstants.screenRatio)
             make.top.equalTo(subLabel.snp.bottom).offset(34 * SizeConstants.screenRatio)
             make.height.equalTo(40 * SizeConstants.screenRatio)
         }
 
         stackView.snp.makeConstraints { make in
-            make.top.equalTo(textfield.snp.bottom).offset(28 * SizeConstants.screenRatio)
+            make.top.equalTo(textField.snp.bottom).offset(28 * SizeConstants.screenRatio)
             make.leading.trailing.equalToSuperview().inset(24 * SizeConstants.screenRatio)
             make.bottom.equalToSuperview().inset(32 * SizeConstants.screenRatio)
             make.height.equalTo(50 * SizeConstants.screenRatio)
         }
         
         textNumberLabel.snp.makeConstraints { make in
-            make.centerY.equalTo(textfield)
+            make.centerY.equalTo(textField)
             make.trailing.equalToSuperview().inset(36)
         }
 
@@ -312,26 +332,4 @@ class SeparatePopUpViewController: UIViewController {
     }
     
     // MARK: - Protocols
-}
-
-extension SeparatePopUpViewController: UITextFieldDelegate {
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let currentText = textField.text ?? ""
-        guard let stringRange = Range(range, in: currentText) else { return false }
-        let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
-        let length = (textField.text?.count)! - range.length + string.count
-        
-        textNumberLabel.text = "\(length > limitLength ? limitLength : length)/\(limitLength)"
-        
-        isHighligtedTextField = false
-        if length == 0 {
-            confirmButton.isEnabled = false
-            confirmButton.backgroundColor = UIColor.disable
-        } else {
-            confirmButton.isEnabled = true
-            confirmButton.backgroundColor = .blue2Main
-        }
-        
-        return updatedText.count <= limitLength
-    }
 }

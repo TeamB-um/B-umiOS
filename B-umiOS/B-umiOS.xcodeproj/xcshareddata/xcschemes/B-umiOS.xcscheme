@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "AB5AF75D268A2E84001D3CD1"
-               BuildableName = "B-umiOS.app"
+               BuildableName = "&#x1107;&#x1175;&#x110b;&#x116e;&#x11b7;(B:um).app"
                BlueprintName = "B-umiOS"
                ReferencedContainer = "container:B-umiOS.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "AB5AF75D268A2E84001D3CD1"
-            BuildableName = "B-umiOS.app"
+            BuildableName = "&#x1107;&#x1175;&#x110b;&#x116e;&#x11b7;(B:um).app"
             BlueprintName = "B-umiOS"
             ReferencedContainer = "container:B-umiOS.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "AB5AF75D268A2E84001D3CD1"
-            BuildableName = "B-umiOS.app"
+            BuildableName = "&#x1107;&#x1175;&#x110b;&#x116e;&#x11b7;(B:um).app"
             BlueprintName = "B-umiOS"
             ReferencedContainer = "container:B-umiOS.xcodeproj">
          </BuildableReference>

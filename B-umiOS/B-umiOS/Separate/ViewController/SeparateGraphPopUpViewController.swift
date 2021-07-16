@@ -30,11 +30,16 @@ class SeparateGraphPopUpViewController: UIViewController {
         $0.setImage(UIImage(named: "btnCloseBlack"), for: .normal)
         $0.addTarget(self, action: #selector(closeView(_:)), for: .touchUpInside)
     }
-    let monthGraphView = GraphView()
-    let entireGraphView = GraphView()
+    lazy var monthGraphView = GraphView(title: "월간", sub: "한 달 내 카테고리별").then {
+        $0.isHidden = true
+    }
+    lazy var entireGraphView = GraphView(title: "전체", sub: "전체 사용 기간 동안의").then {
+        $0.isHidden = true
+    }
     
-    var devideLine = UIView().then {
+    var divideLine = UIView().then {
         $0.backgroundColor = .paper1
+        $0.isHidden = true
     }
     
     // MARK: - Properties
@@ -42,6 +47,14 @@ class SeparateGraphPopUpViewController: UIViewController {
     // MARK: - Initializer
     
     static let identifier = "SeparateGraphPopUpViewController"
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - LifeCycle
 
@@ -52,9 +65,13 @@ class SeparateGraphPopUpViewController: UIViewController {
         setConstraint()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        fetchCategoryGraph()
+    }
+    
     // MARK: - Actions
     
-    @objc  private func closeView(_ sender: UIButton) {
+    @objc private func closeView(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -62,5 +79,42 @@ class SeparateGraphPopUpViewController: UIViewController {
     
     func setView(){
         self.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+    }
+    
+    func fetchCategoryGraph(){
+        ActivityIndicator.shared.startLoadingAnimation()
+        CategoryService.shared.fetchGraphData { response in
+            guard let result = response as? NetworkResult<Any> else{return}
+            
+            switch result {
+            case .success(let response):
+                guard let w = response as? GeneralResponse<GraphResponse> else { return }
+        
+                if(w.data?.allstat.count == 0){
+                    self.entireGraphView.emptyLabel.text = "아직 아무것도 버리지 않았어요!"
+                    self.entireGraphView.emptyLabel.isHidden = false
+                }
+                else{
+                    self.entireGraphView.setGraph(data: w.data?.allstat ?? [])
+                    self.entireGraphView.isHidden = false
+                }
+                
+                if(w.data?.monthstat.count == 0){
+                    self.monthGraphView.emptyLabel.text = "지난달 아무것도 버리지 않았어요!"
+                    self.monthGraphView.emptyLabel.isHidden = false
+                }
+                else{
+                    self.monthGraphView.setGraph(data: w.data?.monthstat ?? [])
+                    self.monthGraphView.isHidden = false
+                }
+  
+                
+                self.divideLine.isHidden = false
+                
+            default:
+                break
+            }
+            ActivityIndicator.shared.stopLoadingAnimation()
+        }
     }
 }
