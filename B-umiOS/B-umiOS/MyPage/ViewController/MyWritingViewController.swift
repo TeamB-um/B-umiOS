@@ -77,6 +77,9 @@ class MyWritingViewController: UIViewController {
             switch r {
             case .success(let data):
                 guard let wiritingData = data as? GeneralResponse<WritingsResponse> else { return }
+                
+                self.errorView.isHidden = true
+                self.errorLabel.isHidden = true
 
                 if let d = wiritingData.data {
                     self.myWriting = d.writing
@@ -131,6 +134,7 @@ class MyWritingViewController: UIViewController {
         popUpVC.deleteData = deleteID
         popUpVC.categoryID = ""
         popUpVC.modalPresentationStyle = .overFullScreen
+        popUpVC.modalTransitionStyle = .crossDissolve
         popUpVC.parentDelegate = self
         present(popUpVC, animated: true, completion: nil)
     }

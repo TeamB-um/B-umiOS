@@ -60,6 +60,10 @@ class MyRewardViewController: UIViewController {
             guard let rewards = result as? NetworkResult<Any> else { return }
             switch rewards {
             case .success(let data):
+                
+                self.errorView.isHidden = true
+                self.errorLabel.isHidden = true
+                
                 guard let rewardData = data as? GeneralResponse<RewardsResponse> else { return }
                 if let d = rewardData.data {
                     self.myReward = d.rewards

@@ -90,6 +90,10 @@ class MyTrashBinViewController: UIViewController {
             guard let r = response as? NetworkResult<Any> else { return }
             switch r {
             case .success(let data):
+                
+                self.errorView.isHidden = true
+                self.errorLabel.isHidden = true
+                
                 guard let trashCanData = data as? GeneralResponse<TrashCanResponse> else { return }
 
                 if let d = trashCanData.data {
