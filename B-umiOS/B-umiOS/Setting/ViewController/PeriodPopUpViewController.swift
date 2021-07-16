@@ -18,7 +18,7 @@ class PeriodPopUpViewController: UIViewController {
     
     private let rect = UIView().then {
         $0.backgroundColor = .paper1
-        $0.cornerRound(radius: 10)
+        $0.cornerRound(radius: 3)
     }
     
     private let pickerView = UIPickerView()
@@ -52,6 +52,7 @@ class PeriodPopUpViewController: UIViewController {
 
     var pickContents: [String] = ["즉시 삭제", "1일", "2일", "3일", "4일", "5일", "6일", "7일"]
     var popupdelegate: popupDelegate?
+    var bgDelegate: viewDelegate?
     
     // MARK: - Initializer
 
@@ -94,11 +95,13 @@ class PeriodPopUpViewController: UIViewController {
         }
         
         popupdelegate?.closeBottomSheet()
+        bgDelegate?.backgroundRemove()
         dismiss(animated: true, completion: nil)
     }
     
     @objc private func didTapBackgroundButton(_ sender: UIButton) {
         popupdelegate?.closeBottomSheet()
+        bgDelegate?.backgroundRemove()
         dismiss(animated: true, completion: nil)
     }
     

@@ -38,7 +38,13 @@ class ButtonSectionView: UICollectionReusableView {
         return button
     }()
     
+    let backgroundView = UIView().then {
+        $0.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+        $0.frame = CGRect(origin: .zero, size: CGSize(width: SizeConstants.screenWidth, height: SizeConstants.screenHeight))
+    }
+    
     // MARK: - Properties
+
     var isSelectAllowed: Bool = false
     
     // MARK: - Initializer
@@ -95,6 +101,20 @@ class ButtonSectionView: UICollectionReusableView {
     }
     
     @objc
+    private func didTapAddButton(_ sender: UIButton) {
+        let popUpVC =  FilterBottmSheetViewController()
+        
+        popUpVC.modalPresentationStyle = .overFullScreen
+        popUpVC.modalTransitionStyle = .coverVertical
+        popUpVC.bgDelegate = self
+        
+        let window = UIApplication.shared.windows.first
+        window?.addSubview(self.backgroundView)
+
+        self.parentViewController?.present(popUpVC, animated: true, completion: nil)
+    }
+    
+    @objc
     func didTapCategoryButton(_ sender: UIButton) {
         if categoryButtton.isSelected {
             categoryButtton.setupRoundingButton(title: "전체 카테고리", image: "btnFilter", selected: true)
@@ -128,6 +148,8 @@ class ButtonSectionView: UICollectionReusableView {
             
             popUpVC.deleteData = deleteID
             popUpVC.modalPresentationStyle = .overFullScreen
+            popUpVC.modalTransitionStyle = .crossDissolve
+            
             self.parentViewController?.present(popUpVC, animated: true, completion: nil)
         }
     }
@@ -153,6 +175,18 @@ class ButtonSectionView: UICollectionReusableView {
             }
         }
     }
-    
+  
     // MARK: - Protocols
+}
+
+// MARK: - Extension
+
+extension ButtonSectionView: viewDelegate {
+    func backgroundRemove() {
+        backgroundView.removeFromSuperview()
+    }
+}
+
+protocol viewDelegate {
+    func backgroundRemove()
 }
