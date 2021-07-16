@@ -53,11 +53,8 @@ extension WritingViewController: UICollectionViewDataSource {
 }
 
 extension WritingViewController: UICollectionViewDelegate {
-    // FIXME: - 일단.. 잠시 사라지게만 해뒀음 좌표값에 따라 변경 필요
-
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.contentOffset.x < 2 {
-            print(scrollView.contentOffset.x)
             UIView.animate(withDuration: 0.3) {
                 self.leftGradientView.alpha = 0
                 self.righrGradientView.alpha = 1
