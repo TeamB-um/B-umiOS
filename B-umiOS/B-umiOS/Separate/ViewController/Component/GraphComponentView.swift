@@ -26,11 +26,17 @@ class GraphComponentView: UIView {
     
     // MARK: - Initializer
     
-    init(name: String, percent: String, color: Int?){
+    init(name: String?, percent: String?, color: Int?){
         self.categoryName.text = name
         self.categoryName.textColor = SeparateStyle.color[color ?? 8]
         self.percent.text = percent
-        self.circle.tintColor = SeparateStyle.color[color ?? 8]
+        
+        if(color == nil){
+            self.circle.isHidden = true
+        }
+        else{
+            self.circle.tintColor = SeparateStyle.color[color!]
+        }
         
         super.init(frame: .init(x: 0, y: 0, width: 300 * SizeConstants.screenWidth, height: 46 * SizeConstants.screenRatio))
         setView()

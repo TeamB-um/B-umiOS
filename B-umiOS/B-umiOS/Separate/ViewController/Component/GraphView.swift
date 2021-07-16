@@ -99,13 +99,20 @@ class GraphView: UIView {
     
     var p = 100
     func setStackView() {
-        for i in 0 ... 2 {
+        
+        for i in 0 ..< graphData.count{
+            if(i == 3 && graphData.count != 4){
+                componentsView.append(GraphComponentView(name: "기타", percent: "\(p)%", color: 8))
+                break
+            }
             componentsView.append(GraphComponentView(name: graphData[i].name, percent: "\(graphData[i].percent)%", color: graphData[i].index))
             p -= graphData[i].percent
         }
-       
-        componentsView.append(GraphComponentView(name: "기타", percent: "\(p)%", color: nil))
    
+        while(componentsView.count < 4){
+            componentsView.append(GraphComponentView(name: nil, percent: nil, color: nil))
+        }
+        
         for i in 0 ... 1 {
           
             let horizontalStackView = UIStackView(arrangedSubviews: [componentsView[2*i], componentsView[2*i+1]]).then {
