@@ -10,6 +10,9 @@ import UIKit
 protocol ChangeWritingDataDelegate {
     func changeWitingData(filteredDate: [Writing])
 }
+protocol viewDelegate {
+    func backgroundRemove()
+}
 
 class MyWritingViewController: UIViewController {
     // MARK: - UIComponenets
@@ -44,12 +47,30 @@ class MyWritingViewController: UIViewController {
         $0.text = "dlkslfhiwalgnlkwrg"
         $0.isHidden = true
     }
+    
+    let backgroundView = UIView().then {
+        $0.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+        $0.frame = CGRect(origin: .zero, size: CGSize(width: SizeConstants.screenWidth, height: SizeConstants.screenHeight))
+    }
 
     // MARK: - Properties
 
     var deleteButtonIsSelected: Bool = false
     var myWritingParentViewcontroller: UIViewController?
-    var myWriting: [Writing] = []
+    var myWriting: [Writing] = [] {
+        didSet {
+            if myWriting.count == 0 {
+                print("갱신")
+                errorView.isHidden = false
+                errorLabel.isHidden = false
+                errorLabel.text = "아직 글을 작성하지 않았어요!"
+            } else {
+                errorView.isHidden = true
+                errorLabel.isHidden = true
+            }
+        }
+    }
+
     var removeData: [Int] = []
     var headerView: UICollectionReusableView = ButtonSectionView()
     
@@ -143,8 +164,12 @@ class MyWritingViewController: UIViewController {
         let popUpVC = FilterBottmSheetViewController()
         
         popUpVC.modalPresentationStyle = .overFullScreen
-//        popUpVC.categoryID = ""
         popUpVC.parentDelegate = self
+        popUpVC.bgDelegate = self
+        
+        let window = UIApplication.shared.windows.first
+        window?.addSubview(backgroundView)
+
         present(popUpVC, animated: true, completion: nil)
     }
     
@@ -259,5 +284,13 @@ extension MyWritingViewController: UICollectionViewDelegateFlowLayout {
                 NotificationCenter.default.post(name: Notification.Name.confirmButtonIsUnactive, object: nil)
             }
         }
+    }
+}
+
+// MARK: - Extension
+
+extension MyWritingViewController: viewDelegate {
+    func backgroundRemove() {
+        backgroundView.removeFromSuperview()
     }
 }

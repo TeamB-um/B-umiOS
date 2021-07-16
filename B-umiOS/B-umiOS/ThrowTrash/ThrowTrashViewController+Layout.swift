@@ -37,8 +37,8 @@ extension ThrowTrashViewController {
         
         explanationView.snp.makeConstraints { make in
             make.top.equalTo(navigationView.snp.bottom).offset(16 * SizeConstants.screenRatio)
-            make.leading.trailing.equalToSuperview().inset(24)
-            make.height.equalTo(48 * SizeConstants.screenRatio)
+            make.leading.trailing.equalToSuperview().inset(24 * SizeConstants.screenRatio)
+            make.height.equalTo(explanationView.snp.width).multipliedBy(48.0 / 328.0)
         }
         
         explanationImage.snp.makeConstraints { make in
@@ -48,7 +48,7 @@ extension ThrowTrashViewController {
         }
         
         explanationLabel.snp.makeConstraints { make in
-            make.trailing.equalToSuperview().offset(-27 * SizeConstants.screenRatio)
+            make.trailing.equalToSuperview().offset(-25 * SizeConstants.screenRatio)
             make.centerY.equalToSuperview()
         }
         

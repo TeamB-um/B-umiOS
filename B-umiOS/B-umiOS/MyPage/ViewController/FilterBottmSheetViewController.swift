@@ -4,8 +4,8 @@
 //
 //  Created by kong on 2021/07/07.
 //
-import Then
 import SnapKit
+import Then
 import UIKit
 
 class FilterBottmSheetViewController: UIViewController {
@@ -25,7 +25,7 @@ class FilterBottmSheetViewController: UIViewController {
         $0.addTarget(self, action: #selector(didTapConfirmButton(_:)), for: .touchUpInside)
     }
     
-    private lazy var categoryTagCollecitonView : UICollectionView = {
+    private lazy var categoryTagCollecitonView: UICollectionView = {
         var layout = CollectionViewLeftAlignFlowLayout()
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -131,12 +131,13 @@ class FilterBottmSheetViewController: UIViewController {
         $0.locale = Locale(identifier: "ko_KO")
         $0.dateFormat = "yyyy.MM.dd(E)"
     }
+
     var components = DateComponents()
-    var endMinimumDate: Date = Date()
+    var endMinimumDate = Date()
     var bgDelegate: viewDelegate?
     var tag: [Category] = []
-    var startDate: Date = Date()
-    var endDate: Date = Date()
+    var startDate = Date()
+    var endDate = Date()
     var categoryID: String = ""
     var categoryName: String = ""
     var tagSelectedIdx: Int = 0
@@ -172,11 +173,11 @@ class FilterBottmSheetViewController: UIViewController {
     
     @objc private func didTapBackgroundButton(_ sender: UIButton) {
         bgDelegate?.backgroundRemove()
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
-    @objc private func datePickerIsChanged(_ sender: UIPickerView){
-        if (selecetedStartDatePicker) {
+    @objc private func datePickerIsChanged(_ sender: UIPickerView) {
+        if selecetedStartDatePicker {
             startDate = datePickerView.date
             let dateText = dateFormatter.string(from: datePickerView.date)
             startDateButton.setTitle(dateText, for: .normal)
@@ -195,7 +196,7 @@ class FilterBottmSheetViewController: UIViewController {
         datePickerView.date = date!
         
         if sender == startDateButton {
-            selecetedStartDatePicker = true;
+            selecetedStartDatePicker = true
             startDateLine.backgroundColor = .green2Main
             startLabel.textColor = .green2Main
             endDateLine.backgroundColor = .disable
@@ -261,25 +262,31 @@ class FilterBottmSheetViewController: UIViewController {
                 }
                 
             case .requestErr(ErrorMessage.notFound):
-                print("404 낫파운드")
+                self.delegate = self.parentDelegate
+                self.delegate?.changeWitingData(filteredDate: [])
+                self.dismiss(animated: true, completion: {
+                    self.categoryTagCollecitonView.reloadData()
+                    NotificationCenter.default.post(name: Notification.Name.categoryIsChanged, object: self.categoryName)
+                    
+                })
             default:
                 print("error")
-            }                                                                                                                                                                                                   
+            }
         }
         bgDelegate?.backgroundRemove()
-        self.dismiss(animated: true, completion: nil)   
+        dismiss(animated: true, completion: nil)
     }
 
     // MARK: - Methods
     
     func setView() {
-        self.view.backgroundColor = .clear
+        view.backgroundColor = .clear
     }
     
     func setConstraint() {
-        self.view.addSubviews([backgroundButton,popupView])
-        popupView.addSubviews([rect,categoryTagCollecitonView, categoryLabel, settingPeriodView, setDateLabel, dateSwitch, confirmButton])
-        settingPeriodView.addSubviews([datePickerView, startDateButton,endDateButton,startDateLine, endDateLine, startLabel, endLabel])
+        view.addSubviews([backgroundButton, popupView])
+        popupView.addSubviews([rect, categoryTagCollecitonView, categoryLabel, settingPeriodView, setDateLabel, dateSwitch, confirmButton])
+        settingPeriodView.addSubviews([datePickerView, startDateButton, endDateButton, startDateLine, endDateLine, startLabel, endLabel])
         
         backgroundButton.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -372,10 +379,10 @@ class FilterBottmSheetViewController: UIViewController {
         }
     }
     
-    func setFirstDatePicker(){
-        //익스텐션 사용하는 걸로 수정할게요
-        let nowDateTime = Date();
-        let tmpDateFormatter = DateFormatter();
+    func setFirstDatePicker() {
+        // 익스텐션 사용하는 걸로 수정할게요
+        let nowDateTime = Date()
+        let tmpDateFormatter = DateFormatter()
         tmpDateFormatter.dateFormat = "yyyy.MM.dd(E)"
         
         startDateLine.backgroundColor = .green2Main
@@ -385,13 +392,13 @@ class FilterBottmSheetViewController: UIViewController {
         endDateButton.setTitle(dateFormatter.string(from: nowDateTime), for: .normal)
     }
     
-    func setStardMinimumDate(){
+    func setStardMinimumDate() {
         components.year = -10
         let minDate = Calendar.autoupdatingCurrent.date(byAdding: components, to: Date())
         datePickerView.minimumDate = minDate
     }
     
-    func changeDateText(button: UIButton){
+    func changeDateText(button: UIButton) {
         if button == startDateButton {
             startDate = datePickerView.date
         } else {
@@ -401,6 +408,7 @@ class FilterBottmSheetViewController: UIViewController {
 }
 
 // MARK: - Protocols
+
 // MARK: - Extensions
 
 extension FilterBottmSheetViewController: UICollectionViewDelegateFlowLayout {
@@ -425,6 +433,7 @@ extension FilterBottmSheetViewController: UICollectionViewDelegateFlowLayout {
         8
     }
 }
+
 // MARK: - UICollectionViewDataSource
 
 extension FilterBottmSheetViewController: UICollectionViewDataSource {

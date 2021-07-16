@@ -167,6 +167,10 @@ extension MyPageViewController: UICollectionViewDelegateFlowLayout {
         let height = UIScreen.main.bounds.height - (size.height + 26 + 3 + view.safeAreaInsets.top)
         return CGSize(width: UIScreen.main.bounds.width, height: floor(height))
     }
+    
+//    func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: <#T##String#>, for: <#T##IndexPath#>)
+//    }
 }
 
 extension MyPageViewController: UICollectionViewDataSource {

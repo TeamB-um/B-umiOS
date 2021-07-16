@@ -26,6 +26,7 @@ class MyTrashBinViewController: UIViewController {
     lazy var detailTableView = UITableView().then {
         $0.separatorStyle = .none
         $0.backgroundColor = .background
+        $0.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 200, right: 0)
     }
 
     var errorView = UIImageView().then {
@@ -150,7 +151,8 @@ class MyTrashBinViewController: UIViewController {
         }
 
         detailTableView.snp.makeConstraints { make in
-            make.top.leading.trailing.bottom.equalToSuperview()
+            make.top.leading.trailing.equalToSuperview()
+            make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
         }
     }
     // MARK: - Protocols

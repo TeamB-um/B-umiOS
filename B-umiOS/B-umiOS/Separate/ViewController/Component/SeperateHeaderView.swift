@@ -20,6 +20,7 @@ class SeperateHeaderView: UICollectionReusableView {
     let explanationLabel = UILabel().then {
         $0.text = "당신이 보관한 스트레스입니다."
         $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 14)
+        $0.textColor = .iconGray
         let attributedStr = NSMutableAttributedString(string: "당신이 보관한 스트레스입니다.")
 
         attributedStr.addAttribute(.foregroundColor, value: UIColor.blue3, range: ("당신이 보관한 스트레스입니다." as NSString).range(of: "스트레스"))
