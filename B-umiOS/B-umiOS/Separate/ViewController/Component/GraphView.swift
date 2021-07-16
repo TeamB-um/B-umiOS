@@ -12,6 +12,17 @@ import UIKit
 class GraphView: UIView {
     // MARK: - UIComponenets
         
+    var emptyImage = UIImageView().then {
+        $0.image = UIImage(named: "group192")
+        $0.isHidden = true
+    }
+    
+    var emptyLabel = UILabel().then {
+        $0.textColor = .textGray
+        $0.font = UIFont.nanumSquareFont(type: .regular, size: 14)
+        $0.isHidden = true
+    }
+    
     lazy var titleLabel = UILabel().then {
         $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 18)
         $0.textColor = .header
@@ -67,7 +78,8 @@ class GraphView: UIView {
     // MARK: - Method
     
     func setConstraint() {
-        addSubviews([titleLabel, subLabel, progressBackGroundView, verticalStackView])
+        addSubviews([titleLabel, subLabel, progressBackGroundView, verticalStackView, emptyImage, emptyLabel])
+        
         progressBackGroundView.addSubview(progressView)
         
         titleLabel.snp.makeConstraints { make in
@@ -94,6 +106,18 @@ class GraphView: UIView {
             make.top.equalTo(progressBackGroundView.snp.bottom).offset(31 * SizeConstants.screenRatio)
             make.leading.trailing.equalToSuperview().inset(20 * SizeConstants.screenRatio)
             make.bottom.equalToSuperview()
+        }
+        
+        emptyImage.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(subLabel.snp.bottom).offset(32 * SizeConstants.screenRatio)
+            make.width.equalTo(120 * SizeConstants.screenRatio)
+            make.height.equalTo(135 * SizeConstants.screenRatio)
+        }
+        
+        emptyLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(emptyImage.snp.bottom)
         }
     }
     

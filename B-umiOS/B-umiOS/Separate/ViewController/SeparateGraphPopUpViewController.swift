@@ -90,10 +90,25 @@ class SeparateGraphPopUpViewController: UIViewController {
             case .success(let response):
                 guard let w = response as? GeneralResponse<GraphResponse> else { return }
         
-                self.monthGraphView.setGraph(data: w.data?.monthstat ?? [])
-                self.entireGraphView.setGraph(data: w.data?.allstat ?? [])
-                self.monthGraphView.isHidden = false
-                self.entireGraphView.isHidden = false
+                if(w.data?.allstat.count == 0){
+                    self.entireGraphView.emptyLabel.text = "아직 아무것도 버리지 않았어요!"
+                    self.entireGraphView.emptyLabel.isHidden = false
+                }
+                else{
+                    self.entireGraphView.setGraph(data: w.data?.allstat ?? [])
+                    self.entireGraphView.isHidden = false
+                }
+                
+                if(w.data?.monthstat.count == 0){
+                    self.monthGraphView.emptyLabel.text = "지난달 아무것도 버리지 않았어요!"
+                    self.monthGraphView.emptyLabel.isHidden = false
+                }
+                else{
+                    self.monthGraphView.setGraph(data: w.data?.monthstat ?? [])
+                    self.monthGraphView.isHidden = false
+                }
+  
+                
                 self.divideLine.isHidden = false
                 
             default:
