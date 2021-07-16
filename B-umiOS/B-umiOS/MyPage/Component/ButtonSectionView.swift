@@ -19,7 +19,6 @@ class ButtonSectionView: UICollectionReusableView {
     lazy var categoryButtton: RoundingButton = {
         let button = RoundingButton()
         button.setupRoundingButton(title: "전체 카테고리", image: "btnFilter")
-        button.addTarget(self, action: #selector(didTapAddButton(_:)), for: .touchUpInside)
         return button
     }()
     
@@ -101,19 +100,6 @@ class ButtonSectionView: UICollectionReusableView {
         NotificationCenter.default.addObserver(self, selector: #selector(categoryIsChanged), name: NSNotification.Name.categoryIsChanged, object: nil)
     }
     
-    @objc
-    private func didTapAddButton(_ sender: UIButton) {
-        let popUpVC =  FilterBottmSheetViewController()
-        
-        popUpVC.modalPresentationStyle = .overFullScreen
-        popUpVC.modalTransitionStyle = .coverVertical
-        popUpVC.bgDelegate = self
-        
-        let window = UIApplication.shared.windows.first
-        window?.addSubview(self.backgroundView)
-
-        self.parentViewController?.present(popUpVC, animated: true, completion: nil)
-    }
     
     @objc
     func didTapCategoryButton(_ sender: UIButton) {
@@ -181,13 +167,3 @@ class ButtonSectionView: UICollectionReusableView {
 }
 
 // MARK: - Extension
-
-extension ButtonSectionView: viewDelegate {
-    func backgroundRemove() {
-        backgroundView.removeFromSuperview()
-    }
-}
-
-protocol viewDelegate {
-    func backgroundRemove()
-}
