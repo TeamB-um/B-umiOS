@@ -27,6 +27,19 @@ class MyTrashBinViewController: UIViewController {
         $0.separatorStyle = .none
         $0.backgroundColor = .background
     }
+    
+    var errorView = UIImageView().then {
+        $0.image = UIImage(named: "group192")
+        $0.isHidden = true
+    }
+    
+    var errorLabel = UILabel().then {
+        $0.font = .nanumSquareFont(type: .regular, size: 14)
+        $0.textColor = .textGray
+        $0.text = "dlkslfhiwalgnlkwrg"
+        $0.isHidden = true
+    }
+    
     // MARK: - Properties
     var myTrashCan: [TrashCan] = []
     
@@ -74,8 +87,16 @@ class MyTrashBinViewController: UIViewController {
                     print("success if let error")
                 }
             
+            case .requestErr(ErrorMessage.notFound):
+                print("404 not found")
+                self.errorView.isHidden = false
+                self.errorLabel.isHidden = false
+                self.errorLabel.text = "아직 글을 작성하지 않았어요!"
             default:
                 print("default error")
+                self.errorView.isHidden = false
+                self.errorLabel.isHidden = false
+                self.errorLabel.text = "글을 찾지 못했어요!"
             }
         }
     }
@@ -91,8 +112,18 @@ class MyTrashBinViewController: UIViewController {
     }
     
     func setConstraint(){
-        view.addSubviews([detailTableView])
+        view.addSubviews([detailTableView, errorView, errorLabel])
         headerView.addSubviews([headerGardientBackground, settingButton])
+        
+        errorView.snp.makeConstraints { make in
+            make.top.equalToSuperview().inset(243 * SizeConstants.screenRatio)
+            make.centerX.equalToSuperview()
+        }
+        
+        errorLabel.snp.makeConstraints { make in
+            make.top.equalTo(errorView.snp.bottom).inset(10)
+            make.centerX.equalToSuperview()
+        }
 
         headerGardientBackground.snp.makeConstraints { make in
             make.top.leading.trailing.bottom.equalToSuperview()
