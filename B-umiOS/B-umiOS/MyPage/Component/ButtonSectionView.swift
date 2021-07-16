@@ -16,10 +16,9 @@ class ButtonSectionView: UICollectionReusableView {
     private let gradationBackground = UIImageView().then {
         $0.image = UIImage(named: "mywritingTrashbinBgGradientTop")
     }
-    private let categoryButtton: RoundingButton = {
+    lazy var categoryButtton: RoundingButton = {
         let button = RoundingButton()
         button.setupRoundingButton(title: "전체 카테고리", image: "btnFilter")
-        button.addTarget(self, action: #selector(didTapAddButton(_:)), for: .touchUpInside)
         return button
     }()
     
@@ -31,10 +30,9 @@ class ButtonSectionView: UICollectionReusableView {
         return button
     }()
     
-    let confirmButtton: RoundingButton = {
+    lazy var confirmButtton: RoundingButton = {
         let button = RoundingButton()
         button.setupRoundingButton(title: "확인", image: "btnCheckUnseleted")
-        button.addTarget(self, action: #selector(didTapConfirmButton(_:)), for: .touchUpInside)
         button.isHidden = true
         
         return button
@@ -46,7 +44,7 @@ class ButtonSectionView: UICollectionReusableView {
     }
     
     // MARK: - Properties
-    
+
     var isSelectAllowed: Bool = false
     
     // MARK: - Initializer
@@ -98,7 +96,8 @@ class ButtonSectionView: UICollectionReusableView {
     // MARK: - Action
     func addObservers(){
         NotificationCenter.default.addObserver(self, selector: #selector(confirmButtonIsActive), name: NSNotification.Name.confirmButtonIsActive, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(confirmButtonIsunActive), name: NSNotification.Name.confirmButtonIsUnactive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(confirmButtonIsUnActive), name: NSNotification.Name.confirmButtonIsUnactive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(categoryIsChanged), name: NSNotification.Name.categoryIsChanged, object: nil)
     }
     
     @objc
@@ -128,6 +127,7 @@ class ButtonSectionView: UICollectionReusableView {
     func didTapDeleteButton(_ sender: UIButton) {
         if deleteButton.isSelected {
             deleteButton.setupRoundingButton(title: "삭제", image: "btnRemove", selected: true)
+            confirmButtton.isActivated(false)
             confirmButtton.isHidden = true
         } else {
             deleteButton.setupRoundingButton(title: "취소", image: "btnCancel", selected: true)
@@ -140,6 +140,13 @@ class ButtonSectionView: UICollectionReusableView {
     func didTapConfirmButton(_ sender: UIButton) {
         if confirmButtton.isSelected {
             let popUpVC =  DeletePopUpViewController(kind: .writing)
+            var deleteID: [String] = []
+
+//            for index in removeData {
+//                deleteID.append(writings[index].id)
+//            }
+            
+            popUpVC.deleteData = deleteID
             popUpVC.modalPresentationStyle = .overFullScreen
             popUpVC.modalTransitionStyle = .crossDissolve
             
@@ -152,11 +159,23 @@ class ButtonSectionView: UICollectionReusableView {
         confirmButtton.isSelected = true
     }
     
-    @objc func confirmButtonIsunActive(noti : NSNotification){
+    @objc func confirmButtonIsUnActive(noti : NSNotification){
         confirmButtton.isActivated(false)
         confirmButtton.isSelected = false
     }
     
+    @objc func categoryIsChanged(_ sender: Notification){
+        if let filteredCategory = sender.object {
+            if filteredCategory as! String == "" {
+                categoryButtton.setupRoundingButton(title: "전체 카테고리", image: "btnFilter")
+                categoryButtton.isActivated(false)
+            } else {
+        categoryButtton.setupRoundingButton(title: "\(filteredCategory)", image: "btnFilter")
+        categoryButtton.isActivated(true)
+            }
+        }
+    }
+  
     // MARK: - Protocols
 }
 

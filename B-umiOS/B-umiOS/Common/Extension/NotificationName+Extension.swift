@@ -13,4 +13,5 @@ extension Notification.Name {
     static let deleteButtonIsSelected = Notification.Name(rawValue: "isDeleteButtonSelected")
     static let confirmButtonIsActive = Notification.Name(rawValue: "confirmButtonIsActive")
     static let confirmButtonIsUnactive = Notification.Name(rawValue: "confirmButtonIsUnactive")
+    static let categoryIsChanged = Notification.Name(rawValue: "categoryIsChanged")
 }

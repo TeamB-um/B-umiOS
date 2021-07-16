@@ -7,10 +7,14 @@
 
 import UIKit
 
+protocol ChangeWritingDataDelegate {
+    func changeWitingData(filteredDate: [Writing])
+}
+
 class MyWritingViewController: UIViewController {
     // MARK: - UIComponenets
     
-    private lazy var myWritingCollectionView : UICollectionView = {
+    private lazy var myWritingCollectionView: UICollectionView = {
         var layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.sectionHeadersPinToVisibleBounds = true
@@ -40,12 +44,14 @@ class MyWritingViewController: UIViewController {
         $0.text = "dlkslfhiwalgnlkwrg"
         $0.isHidden = true
     }
-    
+
     // MARK: - Properties
+
     var deleteButtonIsSelected: Bool = false
     var myWritingParentViewcontroller: UIViewController?
     var myWriting: [Writing] = []
-    var removeData : [Int] = []
+    var removeData: [Int] = []
+    var headerView: UICollectionReusableView = ButtonSectionView()
     
     // MARK: - Initializer
     
@@ -65,7 +71,7 @@ class MyWritingViewController: UIViewController {
     
     // MARK: - Methods
     
-    func fatchWriting(){
+    func fatchWriting() {
         WritingService.shared.fatchWriting { response in
             guard let r = response as? NetworkResult<Any> else { return }
             switch r {
@@ -93,7 +99,7 @@ class MyWritingViewController: UIViewController {
         }
     }
     
-    func setConstraint(){
+    func setConstraint() {
         view.addSubviews([myWritingCollectionView, errorView, errorLabel])
         myWritingCollectionView.snp.makeConstraints { make in
             make.top.equalToSuperview()
@@ -111,21 +117,64 @@ class MyWritingViewController: UIViewController {
         }
     }
     
-    func addObservers(){
+    func addObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(deleteButtonClicked), name: NSNotification.Name.deleteButtonIsSelected, object: nil)
     }
     
-    @objc func deleteButtonClicked(noti : NSNotification){
+    @objc func didTapConfirmButton(_ sender: UIButton) {
+        let popUpVC = DeletePopUpViewController(kind: .writing)
+        var deleteID: [String] = []
+        
+        for index in removeData {
+            deleteID.append(myWriting[index].id)
+        }
+        popUpVC.deleteData = deleteID
+        popUpVC.categoryID = ""
+        popUpVC.modalPresentationStyle = .overFullScreen
+        popUpVC.parentDelegate = self
+        present(popUpVC, animated: true, completion: nil)
+    }
+    
+    @objc func didTapCategoryButton(_ sender: UIButton) {
+        let popUpVC = FilterBottmSheetViewController()
+        
+        popUpVC.modalPresentationStyle = .overFullScreen
+//        popUpVC.categoryID = ""
+        popUpVC.parentDelegate = self
+        present(popUpVC, animated: true, completion: nil)
+    }
+    
+    @objc func deleteButtonClicked(noti: NSNotification) {
         if let isClicked = noti.object as? Bool {
             deleteButtonIsSelected.toggle()
-            self.myWritingCollectionView.reloadData()
+            myWritingCollectionView.reloadData()
         }
     }
+    
     // MARK: - Protocols
 }
+
 // MARK: - Extension
 
-extension MyWritingViewController : UICollectionViewDataSource {
+extension MyWritingViewController: ChangeWritingDataDelegate {
+    func changeWitingData(filteredDate: [Writing]) {
+        myWriting = filteredDate
+
+        myWritingCollectionView.reloadData()
+    }
+}
+
+/// 삭제한 후 데이터 변경
+extension MyWritingViewController: DeleteDelegate {
+    func sendWritings(_ newWritings: [Writing]) {
+        removeData = []
+        myWriting = newWritings
+        NotificationCenter.default.post(name: Notification.Name.confirmButtonIsUnactive, object: nil)
+        myWritingCollectionView.reloadData()
+    }
+}
+
+extension MyWritingViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         myWriting.count
     }
@@ -145,8 +194,10 @@ extension MyWritingViewController : UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ButtonSectionView.identifier, for: indexPath) as? ButtonSectionView else { return UICollectionReusableView() }
         
-        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ButtonSectionView.identifier, for: indexPath)
+        headerView.confirmButtton.addTarget(self, action: #selector(didTapConfirmButton(_:)), for: .touchUpInside)
+        headerView.categoryButtton.addTarget(self, action: #selector(didTapCategoryButton(_:)), for: .touchUpInside)
         
         return headerView
     }
@@ -163,14 +214,14 @@ extension MyWritingViewController : UICollectionViewDataSource {
             }
         } else {
             removeData.append(indexPath.row)
-            if removeData.count == 1{
+            if removeData.count >= 1 {
                 NotificationCenter.default.post(name: Notification.Name.confirmButtonIsActive, object: nil)
             }
         }
     }
 }
 
-extension MyWritingViewController : UICollectionViewDelegateFlowLayout {
+extension MyWritingViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let sideLength = (SizeConstants.screenWidth - 47) / 2
         let cellSize = CGSize(width: sideLength, height: sideLength)
@@ -186,20 +237,18 @@ extension MyWritingViewController : UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 16, bottom: 210, right: 16)
+        UIEdgeInsets(top: 0, left: 16, bottom: 210, right: 16)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: SizeConstants.screenWidth, height: 72 * SizeConstants.screenRatio)
+        CGSize(width: SizeConstants.screenWidth, height: 72 * SizeConstants.screenRatio)
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        
         let cellCount = collectionView.indexPathsForSelectedItems?.count
         
         if deleteButtonIsSelected {
             guard let elementIndex = removeData.firstIndex(of: indexPath.row) else { return }
-            print(elementIndex)
             removeData.remove(at: elementIndex)
             
             if cellCount == 0 {
