@@ -59,8 +59,6 @@ class SeparateCollectionViewCell: UICollectionViewCell {
         else{
             self.separateName.textColor = SeparateStyle.color[index]
             self.separateImage.image = UIImage(named: "\(SeparateStyle.image[index])\(count)")
-            
-            print("\(SeparateStyle.image[index])\(count)")
         }
     }
     
