@@ -46,6 +46,10 @@ class MyTrashBinViewController: UIViewController {
         $0.frame = CGRect(origin: .zero, size: CGSize(width: SizeConstants.screenWidth, height: SizeConstants.screenHeight))
     }
     
+    var gradientView = UIImageView().then {
+        $0.image = UIImage(named: "mywritingTrashbinBgGradientBottom")
+    }
+
     // MARK: - Properties
     
     var myTrashCan: [TrashCan] = []
@@ -129,7 +133,7 @@ class MyTrashBinViewController: UIViewController {
     }
     
     func setConstraint(){
-        view.addSubviews([detailTableView, errorView, errorLabel])
+        view.addSubviews([detailTableView, errorView, errorLabel, gradientView])
         headerView.addSubviews([headerGardientBackground, settingButton])
         
         errorView.snp.makeConstraints { make in
@@ -153,6 +157,11 @@ class MyTrashBinViewController: UIViewController {
         detailTableView.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview()
             make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
+        }
+        
+        gradientView.snp.makeConstraints { make in
+            make.bottom.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
         }
     }
     // MARK: - Protocols

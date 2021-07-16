@@ -27,7 +27,6 @@ class FloatingBarView: UIView {
 
     var buttons: [UIButton] = []
     weak var delegate: FloatingBarViewDelegate?
-    let iconSize = (48 * UIScreen.main.bounds.width) / 375
 
     // MARK: - Initializer
 
