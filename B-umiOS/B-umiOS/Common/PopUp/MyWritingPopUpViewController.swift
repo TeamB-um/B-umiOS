@@ -76,6 +76,8 @@ class MyWritingPopUpViewController: UIViewController {
     
     func setWritingData(data: Writing) {
         trashBinLabel.text = data.category.name
+        trashBinLabel.textColor = SeparateStyle.color[data.category.index]
+        
         titleLabel.text = data.title
         titleLabel.lineSpacing(spacing: 10)
         contentLabel.text = data.text
