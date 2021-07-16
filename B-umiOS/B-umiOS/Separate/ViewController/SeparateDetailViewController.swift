@@ -107,6 +107,7 @@ class SeparateDetailViewController: UIViewController {
         if removeButton.isSelected {
             removeButton.setupRoundingButton(title: "삭제", image: "btnRemove")
             confirmButton.isHidden = true
+            confirmButton.isActivated(false)
             removeButton.isSelected = false
         }
         
