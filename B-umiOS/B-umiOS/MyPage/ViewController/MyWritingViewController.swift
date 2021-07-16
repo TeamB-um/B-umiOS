@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol ChangeWritingDataDelegate {
+    func changeWitingData(filteredDate: [Writing])
+}
+
 class MyWritingViewController: UIViewController {
     // MARK: - UIComponenets
     
@@ -115,15 +119,45 @@ class MyWritingViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(deleteButtonClicked), name: NSNotification.Name.deleteButtonIsSelected, object: nil)
     }
     
+    @objc func didTapConfirmButton(_ sender: UIButton){
+        let popUpVC = DeletePopUpViewController(kind: .writing)
+        var deleteID: [String] = []
+        
+        for index in removeData {
+            deleteID.append(myWriting[index].id)
+        }
+        popUpVC.deleteData = deleteID
+        popUpVC.modalPresentationStyle = .overFullScreen
+        popUpVC.parentDelegate = self
+        self.present(popUpVC, animated: true, completion: nil)
+    }
+    
     @objc func deleteButtonClicked(noti : NSNotification){
         if let isClicked = noti.object as? Bool {
             deleteButtonIsSelected.toggle()
             self.myWritingCollectionView.reloadData()
         }
     }
+    
     // MARK: - Protocols
+    
 }
 // MARK: - Extension
+
+extension MyWritingViewController: ChangeWritingDataDelegate {
+    func changeWitingData(filteredDate: [Writing]) {
+        myWriting = filteredDate
+        self.myWritingCollectionView.reloadData()
+    }
+}
+
+extension MyWritingViewController: DeleteDelegate {
+    func sendWritings(_ newWritings: [Writing]) {
+        removeData = []
+        myWriting = newWritings
+        self.myWritingCollectionView.reloadData()
+    }
+}
 
 extension MyWritingViewController : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -145,9 +179,10 @@ extension MyWritingViewController : UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        
-        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ButtonSectionView.identifier, for: indexPath)
-        
+//
+        guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ButtonSectionView.identifier, for: indexPath) as? ButtonSectionView else { return UICollectionReusableView() }
+        headerView.confirmButtton.addTarget(self, action: #selector(didTapConfirmButton(_:)), for: .touchUpInside)
+        headerView.categoryButtton.addTarget(self, action: #selector(didTapConfirmButton(_:)), for: .touchUpInside)
         return headerView
     }
     

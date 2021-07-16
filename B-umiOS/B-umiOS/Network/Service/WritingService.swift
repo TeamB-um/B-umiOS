@@ -42,7 +42,13 @@ struct WritingService {
     }
     
     func filterWritings(start_date: String, end_date: String, category_id: String, completion: @escaping (Any) -> Void) {
-        let url = "\(APIConstants.writingURL)?start_date=\(start_date)&end_date=\(end_date)&category_ids=[\(category_id)]"
+        var url = ""
+        
+        if category_id == "" {
+            url = "\(APIConstants.writingURL)?start_date=\(start_date)&end_date=\(end_date)"
+        } else {
+            url = "\(APIConstants.writingURL)?start_date=\(start_date)&end_date=\(end_date)&category_ids=[\(category_id)]"
+        }
         print(url)
         RequestHandler.shared.requestData(url: url, httpmethod: HTTPMethod.get, parameter: nil, header: NetworkInfo.headerWithToken, decodeType: GeneralResponse<WritingsResponse>.self) { response in
             completion(response)

@@ -16,10 +16,10 @@ class ButtonSectionView: UICollectionReusableView {
     private let gradationBackground = UIImageView().then {
         $0.image = UIImage(named: "mywritingTrashbinBgGradientTop")
     }
-    private let categoryButtton: RoundingButton = {
+    lazy var categoryButtton: RoundingButton = {
         let button = RoundingButton()
         button.setupRoundingButton(title: "전체 카테고리", image: "btnFilter")
-        button.addTarget(self, action: #selector(didTapAddButton(_:)), for: .touchUpInside)
+//        button.addTarget(self, action: #selector(didTapAddButton(_:)), for: .touchUpInside)
         return button
     }()
     
@@ -31,19 +31,18 @@ class ButtonSectionView: UICollectionReusableView {
         return button
     }()
     
-    let confirmButtton: RoundingButton = {
+    lazy var confirmButtton: RoundingButton = {
         let button = RoundingButton()
         button.setupRoundingButton(title: "확인", image: "btnCheckUnseleted")
-        button.addTarget(self, action: #selector(didTapConfirmButton(_:)), for: .touchUpInside)
         button.isHidden = true
         
         return button
     }()
-
-      // MARK: - Properties
+    
+    // MARK: - Properties
     var isSelectAllowed: Bool = false
-      
-      // MARK: - Initializer
+    
+    // MARK: - Initializer
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -52,10 +51,10 @@ class ButtonSectionView: UICollectionReusableView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-      // MARK: - Actions
     
-      // MARK: - Methods
+    // MARK: - Actions
+    
+    // MARK: - Methods
     
     private func setConstraint(){
         self.addSubviews([gradationBackground, categoryButtton, deleteButton, confirmButtton])
@@ -93,14 +92,20 @@ class ButtonSectionView: UICollectionReusableView {
     func addObservers(){
         NotificationCenter.default.addObserver(self, selector: #selector(confirmButtonIsActive), name: NSNotification.Name.confirmButtonIsActive, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(confirmButtonIsunActive), name: NSNotification.Name.confirmButtonIsUnactive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(categoryIsChanged), name: NSNotification.Name.categoryIsChanged, object: nil)
     }
     
-    @objc
-    private func didTapAddButton(_ sender: UIButton) {
-            let popUpVC =  FilterBottmSheetViewController()
-            popUpVC.modalPresentationStyle = .overFullScreen
-            self.parentViewController?.present(popUpVC, animated: true, completion: nil)
-        }
+    func abc(){
+        
+    }
+    
+//    @objc
+//    private func didTapAddButton(_ sender: UIButton) {
+//        let popUpVC =  FilterBottmSheetViewController()
+//        popUpVC.modalPresentationStyle = .overFullScreen
+//        popUpVC.parentDelegate = self.parentViewController as? MyWritingViewController
+//        self.parentViewController?.present(popUpVC, animated: true, completion: nil)
+//    }
     
     @objc
     func didTapCategoryButton(_ sender: UIButton) {
@@ -127,10 +132,17 @@ class ButtonSectionView: UICollectionReusableView {
     func didTapConfirmButton(_ sender: UIButton) {
         if confirmButtton.isSelected {
             let popUpVC =  DeletePopUpViewController(kind: .writing)
+            var deleteID: [String] = []
+
+//            for index in removeData {
+//                deleteID.append(writings[index].id)
+//            }
+            
+            popUpVC.deleteData = deleteID
+//            popUpVC.parentDelegate = self
             popUpVC.modalPresentationStyle = .overFullScreen
             self.parentViewController?.present(popUpVC, animated: true, completion: nil)
         }
-        
         //삭제했을 때 서버연결
     }
     
@@ -144,5 +156,12 @@ class ButtonSectionView: UICollectionReusableView {
         confirmButtton.isSelected = false
     }
     
-      // MARK: - Protocols
-  }
+    @objc func categoryIsChanged(_ sender: Notification){
+        if let filteredCategory = sender.object {
+        categoryButtton.setupRoundingButton(title: "\(filteredCategory)", image: "btnFilter")
+        categoryButtton.isActivated(true)
+        }
+    }
+    
+    // MARK: - Protocols
+}

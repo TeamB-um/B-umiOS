@@ -95,7 +95,6 @@ class DeletePopUpViewController: UIViewController {
 
     @objc func didTapDelete() {
         var query = ""
-        
         for (index, item) in deleteData.enumerated() {
             if index == 0 {
                 query = item
