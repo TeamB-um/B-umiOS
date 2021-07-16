@@ -81,18 +81,17 @@ class GraphView: UIView {
         }
         
         progressBackGroundView.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(20 * SizeConstants.screenRatio)
-            make.top.equalTo(subLabel.snp.bottom).offset(24 * SizeConstants.screenRatio)
-            make.height.equalTo(36 * SizeConstants.screenRatio)
+            make.leading.trailing.equalToSuperview().inset(15 * SizeConstants.screenRatio)
+            make.top.equalTo(subLabel.snp.bottom).offset(19 * SizeConstants.screenRatio)
+            make.height.equalTo(32 * SizeConstants.screenRatio)
         }
         
         progressView.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview()
-            make.top.bottom.equalToSuperview()
+            make.edges.equalToSuperview()
         }
         
         verticalStackView.snp.makeConstraints { make in
-            make.top.equalTo(progressBackGroundView.snp.bottom).offset(36 * SizeConstants.screenRatio)
+            make.top.equalTo(progressBackGroundView.snp.bottom).offset(31 * SizeConstants.screenRatio)
             make.leading.trailing.equalToSuperview().inset(20 * SizeConstants.screenRatio)
             make.bottom.equalToSuperview()
         }
