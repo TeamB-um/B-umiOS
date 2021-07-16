@@ -42,7 +42,7 @@ class ButtonSectionView: UICollectionReusableView {
     
     let backgroundView = UIView().then {
         $0.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
-        $0.frame = CGRect(origin: .zero, size: CGSize(width: SizeConstants.screenWidth, height: 600))
+        $0.frame = CGRect(origin: .zero, size: CGSize(width: SizeConstants.screenWidth, height: SizeConstants.screenHeight))
     }
     
     // MARK: - Properties
@@ -109,12 +109,9 @@ class ButtonSectionView: UICollectionReusableView {
         popUpVC.modalTransitionStyle = .coverVertical
         popUpVC.bgDelegate = self
         
-        DispatchQueue.main.async {
-            let window = UIApplication.shared.windows.first
-            
-            window?.addSubview(self.backgroundView)
-        }
-        
+        let window = UIApplication.shared.windows.first
+        window?.addSubview(self.backgroundView)
+
         self.parentViewController?.present(popUpVC, animated: true, completion: nil)
     }
     
@@ -163,7 +160,9 @@ class ButtonSectionView: UICollectionReusableView {
     // MARK: - Protocols
 }
 
-extension ButtonSectionView : viewDelegate {
+// MARK: - Extension
+
+extension ButtonSectionView: viewDelegate {
     func backgroundRemove() {
         backgroundView.removeFromSuperview()
     }
