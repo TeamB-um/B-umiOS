@@ -329,7 +329,7 @@ class FilterBottmSheetViewController: UIViewController {
         
         startLabel.snp.makeConstraints { make in
             make.top.equalToSuperview()
-            make.leading.equalTo(startLabel).offset(8)
+            make.leading.equalTo(startDateLine).offset(8)
         }
         
         endLabel.snp.makeConstraints { make in

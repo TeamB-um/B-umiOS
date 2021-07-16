@@ -16,6 +16,7 @@ class ButtonSectionView: UICollectionReusableView {
     private let gradationBackground = UIImageView().then {
         $0.image = UIImage(named: "mywritingTrashbinBgGradientTop")
     }
+
     lazy var categoryButtton: RoundingButton = {
         let button = RoundingButton()
         button.setupRoundingButton(title: "전체 카테고리", image: "btnFilter")
@@ -51,8 +52,11 @@ class ButtonSectionView: UICollectionReusableView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        addObservers()
+        setConstraint()
     }
     
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -61,8 +65,8 @@ class ButtonSectionView: UICollectionReusableView {
     
     // MARK: - Methods
     
-    private func setConstraint(){
-        self.addSubviews([gradationBackground, categoryButtton, deleteButton, confirmButtton])
+    private func setConstraint() {
+        addSubviews([gradationBackground, categoryButtton, deleteButton, confirmButtton])
         
         gradationBackground.snp.makeConstraints { make in
             make.top.bottom.leading.trailing.equalToSuperview()
@@ -71,7 +75,6 @@ class ButtonSectionView: UICollectionReusableView {
         categoryButtton.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.leading.equalTo(16 * SizeConstants.screenRatio)
-            make.width.equalTo(137)
         }
         
         deleteButton.snp.makeConstraints { make in
@@ -88,18 +91,24 @@ class ButtonSectionView: UICollectionReusableView {
     }
     
     override func layoutSubviews() {
+        updateConstraint()
         super.layoutSubviews()
-        setConstraint()
-        addObservers()
+    }
+    
+    func updateConstraint() {
+        categoryButtton.snp.updateConstraints { make in
+            make.centerY.equalToSuperview()
+            make.leading.equalTo(16 * SizeConstants.screenRatio)
+        }
     }
     
     // MARK: - Action
-    func addObservers(){
+
+    func addObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(confirmButtonIsActive), name: NSNotification.Name.confirmButtonIsActive, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(confirmButtonIsUnActive), name: NSNotification.Name.confirmButtonIsUnactive, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(categoryIsChanged), name: NSNotification.Name.categoryIsChanged, object: nil)
     }
-    
     
     @objc
     func didTapCategoryButton(_ sender: UIButton) {
@@ -126,39 +135,35 @@ class ButtonSectionView: UICollectionReusableView {
     @objc
     func didTapConfirmButton(_ sender: UIButton) {
         if confirmButtton.isSelected {
-            let popUpVC =  DeletePopUpViewController(kind: .writing)
-            var deleteID: [String] = []
-
-//            for index in removeData {
-//                deleteID.append(writings[index].id)
-//            }
+            let popUpVC = DeletePopUpViewController(kind: .writing)
+            let deleteID: [String] = []
             
             popUpVC.deleteData = deleteID
             popUpVC.modalPresentationStyle = .overFullScreen
             popUpVC.modalTransitionStyle = .crossDissolve
             
-            self.parentViewController?.present(popUpVC, animated: true, completion: nil)
+            parentViewController?.present(popUpVC, animated: true, completion: nil)
         }
     }
     
-    @objc func confirmButtonIsActive(noti : NSNotification){
+    @objc func confirmButtonIsActive(noti: NSNotification) {
         confirmButtton.isActivated(true)
         confirmButtton.isSelected = true
     }
     
-    @objc func confirmButtonIsUnActive(noti : NSNotification){
+    @objc func confirmButtonIsUnActive(noti: NSNotification) {
         confirmButtton.isActivated(false)
         confirmButtton.isSelected = false
     }
     
-    @objc func categoryIsChanged(_ sender: Notification){
+    @objc func categoryIsChanged(_ sender: Notification) {
         if let filteredCategory = sender.object {
             if filteredCategory as! String == "" {
                 categoryButtton.setupRoundingButton(title: "전체 카테고리", image: "btnFilter")
                 categoryButtton.isActivated(false)
             } else {
-        categoryButtton.setupRoundingButton(title: "\(filteredCategory)", image: "btnFilter")
-        categoryButtton.isActivated(true)
+                categoryButtton.setupRoundingButton(title: "\(filteredCategory)", image: "btnFilter")
+                categoryButtton.isActivated(true)
             }
         }
     }

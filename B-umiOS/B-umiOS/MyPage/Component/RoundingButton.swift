@@ -45,6 +45,10 @@ class RoundingButton: UIButton {
         isSelected.toggle()
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+    }
+    
     func setupRoundingButton(title: String, image: String) {
         let labelSize = buttonTitle.calculateLabelSize(text: title, font: buttonTitle.font)
 
@@ -60,9 +64,6 @@ class RoundingButton: UIButton {
         buttonImage.image = UIImage(named: image)?.withRenderingMode(.alwaysTemplate)
         buttonTitle.textColor = .iconGray
         
-        self.snp.updateConstraints { make in
-            make.width.equalTo(labelSize.width + 56)
-        }
         buttonImage.snp.updateConstraints { make in
             make.centerY.equalToSuperview()
             make.leading.equalToSuperview().offset(16)
@@ -70,6 +71,7 @@ class RoundingButton: UIButton {
         buttonTitle.snp.updateConstraints { make in
             make.centerY.equalTo(buttonImage)
             make.leading.equalTo(buttonImage.snp.trailing).offset(5)
+            make.trailing.equalToSuperview().inset(16)
         }
     }
     
