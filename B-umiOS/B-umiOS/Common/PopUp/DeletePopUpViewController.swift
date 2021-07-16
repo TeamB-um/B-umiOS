@@ -117,7 +117,6 @@ class DeletePopUpViewController: UIViewController {
                     guard let writings = response as? GeneralResponse<WritingsResponse> else { return }
                     self.deleteDelegate = self.parentDelegate
                     self.deleteDelegate?.sendWritings(writings.data?.writing ?? [])
-                    print(writings)
                 default:
                     print("error")
                 }

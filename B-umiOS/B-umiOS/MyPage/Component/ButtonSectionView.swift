@@ -90,7 +90,7 @@ class ButtonSectionView: UICollectionReusableView {
     // MARK: - Action
     func addObservers(){
         NotificationCenter.default.addObserver(self, selector: #selector(confirmButtonIsActive), name: NSNotification.Name.confirmButtonIsActive, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(confirmButtonIsunActive), name: NSNotification.Name.confirmButtonIsUnactive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(confirmButtonIsUnActive), name: NSNotification.Name.confirmButtonIsUnactive, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(categoryIsChanged), name: NSNotification.Name.categoryIsChanged, object: nil)
     }
     
@@ -129,7 +129,6 @@ class ButtonSectionView: UICollectionReusableView {
             popUpVC.modalPresentationStyle = .overFullScreen
             self.parentViewController?.present(popUpVC, animated: true, completion: nil)
         }
-        //삭제했을 때 서버연결
     }
     
     @objc func confirmButtonIsActive(noti : NSNotification){
@@ -137,7 +136,7 @@ class ButtonSectionView: UICollectionReusableView {
         confirmButtton.isSelected = true
     }
     
-    @objc func confirmButtonIsunActive(noti : NSNotification){
+    @objc func confirmButtonIsUnActive(noti : NSNotification){
         confirmButtton.isActivated(false)
         confirmButtton.isSelected = false
     }
