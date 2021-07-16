@@ -252,7 +252,7 @@ class FilterBottmSheetViewController: UIViewController {
                     self.delegate?.changeWitingData(filteredDate: d)
                     self.dismiss(animated: true, completion: {
                         self.categoryTagCollecitonView.reloadData()
-//                        NotificationCenter.default.post(name: Notification.Name.categoryIsChanged, object: self.categoryName)
+                        NotificationCenter.default.post(name: Notification.Name.categoryIsChanged, object: self.categoryName)
                         
                     })
                 }
