@@ -234,6 +234,10 @@ class FilterBottmSheetViewController: UIViewController {
     }
 
     @objc private func didTapConfirmButton(_ sender: UIButton) {
+//        let writtenDate = Date().ISOStringToDate(date: data.createdDate)
+//        let date = Date().ISODateToString(format: "yyyy.MM.dd(E)", date: writtenDate)
+//        self.dateLabel.text = date
+        
         var startDate = startDate.dateToString(format: "yyyy-MM-dd", date: startDate)
         var endDate = endDate.dateToString(format: "yyyy-MM-dd", date: endDate)
         

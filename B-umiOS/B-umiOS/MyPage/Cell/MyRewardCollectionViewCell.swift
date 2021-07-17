@@ -76,8 +76,11 @@ class MyRewardCollectionViewCell: UICollectionViewCell {
     }
     
     func setData(data:[Reward], index: Int){
-        let createdDate = Date().stringToDate(date: data[index].createdDate ?? "")
-        rewardDateLabel.text = Date().dateToString(format: "yyyy.MM.dd (E)", date: createdDate)
+        
+        let writtenDate = Date().ISOStringToDate(date: data[index].createdDate ?? "")
+        let date = Date().ISODateToString(format: "yyyy.MM.dd(E)", date: writtenDate)
+        self.rewardDateLabel.text = date
+        
         rewardDateLabel.textAlignment = .center
         
         authorLabel.text = data[index].author

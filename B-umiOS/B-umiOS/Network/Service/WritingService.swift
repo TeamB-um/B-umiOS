@@ -49,6 +49,7 @@ struct WritingService {
         } else {
             url = "\(APIConstants.writingURL)?start_date=\(start_date)&end_date=\(end_date)&category_ids=[\(category_id)]"
         }
+        print(url)
 
         RequestHandler.shared.requestData(url: url, httpmethod: HTTPMethod.get, parameter: nil, header: NetworkInfo.headerWithToken, decodeType: GeneralResponse<WritingsResponse>.self) { response in
             completion(response)

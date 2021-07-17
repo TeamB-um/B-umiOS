@@ -82,9 +82,11 @@ class MyWritingPopUpViewController: UIViewController {
         titleLabel.lineSpacing(spacing: 10)
         contentLabel.text = data.text
         contentLabel.lineSpacing(spacing: 9)
+
+        let writtenDate = Date().ISOStringToDate(date: data.createdDate)
+        let date = Date().ISODateToString(format: "yyyy.MM.dd(E)", date: writtenDate)
+        self.dateLabel.text = date
         
-        let createdDate = Date().stringToDate(date: data.createdDate)
-        dateLabel.text = Date().dateToString(format: "yyyy.MM.dd (E)", date: createdDate)
     }
     
     func setConstraints() {

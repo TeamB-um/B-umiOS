@@ -83,8 +83,9 @@ class MyRewardPopUpViewController: UIViewController {
     
     // MARK: - Methods
     func setMyRewardData(reward: Reward) {
-        let createdDate = Date().stringToDate(date: reward.createdDate ?? "")
-        dateLabel.text = Date().dateToString(format: "yyyy.MM.dd (E)", date: createdDate)
+        let writtenDate = Date().ISOStringToDate(date: reward.createdDate ?? "")
+        let date = Date().ISODateToString(format: "yyyy.MM.dd(E)", date: writtenDate)
+        self.dateLabel.text = date
         
         titleLabel.text = reward.sentence
         titleLabel.lineSpacing(spacing: 10)
