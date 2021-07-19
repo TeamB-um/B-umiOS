@@ -8,6 +8,7 @@
 import UIKit
 
 class MenuSectionCollectionViewCell: UICollectionViewCell {
+    // MARK: - UIComponenets
     
     // MARK: - Properties
     

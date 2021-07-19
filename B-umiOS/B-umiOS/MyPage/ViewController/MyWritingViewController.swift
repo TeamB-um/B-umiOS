@@ -79,7 +79,8 @@ class MyWritingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setConstraint()
+        
+        setConstraints()
         addObservers()
     }
     
@@ -122,7 +123,7 @@ class MyWritingViewController: UIViewController {
         }
     }
     
-    func setConstraint() {
+    func setConstraints() {
         view.addSubviews([myWritingCollectionView, errorView, errorLabel])
         myWritingCollectionView.snp.makeConstraints { make in
             make.top.equalToSuperview()

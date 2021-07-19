@@ -62,7 +62,7 @@ class SeparateGraphPopUpViewController: UIViewController {
         super.viewDidLoad()
         
         setView()
-        setConstraint()
+        setConstraints()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -78,7 +78,7 @@ class SeparateGraphPopUpViewController: UIViewController {
     // MARK: - Methods
     
     func setView(){
-        self.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+        view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
     }
     
     func fetchCategoryGraph(){

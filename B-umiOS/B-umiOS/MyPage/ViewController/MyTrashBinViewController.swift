@@ -164,6 +164,7 @@ class MyTrashBinViewController: UIViewController {
             make.leading.trailing.equalToSuperview()
         }
     }
+    
     // MARK: - Protocols
 }
 

@@ -66,7 +66,7 @@ class GraphView: UIView {
         self.titleLabel.text = "\(title) 그래프"
         self.subLabel.text =  "\(sub) 스트레스 비율입니다"
 
-        setConstraint()
+        setConstraints()
         progressView.dataSource = self
     }
     
@@ -77,7 +77,7 @@ class GraphView: UIView {
     
     // MARK: - Method
     
-    func setConstraint() {
+    func setConstraints() {
         addSubviews([titleLabel, subLabel, progressBackGroundView, verticalStackView, emptyImage, emptyLabel])
         
         progressBackGroundView.addSubview(progressView)

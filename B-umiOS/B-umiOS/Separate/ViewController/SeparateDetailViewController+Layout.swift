@@ -10,8 +10,8 @@ import UIKit
 extension SeparateDetailViewController {
     // MARK: - Methods
     
-    func setConstraint(){
-        self.view.addSubviews([navigationView, navigationDividerView, detailTableView])
+    func setConstraints(){
+        view.addSubviews([navigationView, navigationDividerView, detailTableView])
         navigationView.addSubviews([navigationLabel, backButton])
         headerView.addSubviews([gardientBackground, confirmButton, removeButton])
         
@@ -58,4 +58,5 @@ extension SeparateDetailViewController {
     }
 
 // MARK: - Protocols
+    
 }

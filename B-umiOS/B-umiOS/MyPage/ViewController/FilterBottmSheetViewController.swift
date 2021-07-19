@@ -151,7 +151,7 @@ class FilterBottmSheetViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setView()
-        setConstraint()
+        setConstraints()
         setFirstDatePicker()
     }
     
@@ -287,7 +287,7 @@ class FilterBottmSheetViewController: UIViewController {
         view.backgroundColor = .clear
     }
     
-    func setConstraint() {
+    func setConstraints() {
         view.addSubviews([backgroundButton, popupView])
         popupView.addSubviews([rect, categoryTagCollecitonView, categoryLabel, settingPeriodView, setDateLabel, dateSwitch, confirmButton])
         settingPeriodView.addSubviews([datePickerView, startDateButton, endDateButton, startDateLine, endDateLine, startLabel, endLabel])

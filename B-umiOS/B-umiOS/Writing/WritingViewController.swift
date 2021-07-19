@@ -144,7 +144,7 @@ class WritingViewController: UIViewController {
         
         setView()
         setCollectionView()
-        setConstraint()
+        setConstraints()
     }
     
     override func viewWillAppear(_ animated: Bool) {

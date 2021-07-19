@@ -50,6 +50,8 @@ class SettingSeparateViewController: UIViewController {
     
     // MARK: - Properties
     
+    static let identifier = "SettingSeparateViewController"
+    
     var bins: [Category] = [] {
         didSet {
             trashbinStatusNumber.text = "\(bins.count)/8"
@@ -61,8 +63,6 @@ class SettingSeparateViewController: UIViewController {
             }
         }
     }
-
-    static let identifier = "SettingSeparateViewController"
     
     // MARK: - Initializer
     
@@ -72,7 +72,7 @@ class SettingSeparateViewController: UIViewController {
         super.viewDidLoad()
         
         setView()
-        setConstraint()
+        setConstraints()
         setTableView()
         
         fetchCategories()
@@ -103,7 +103,7 @@ class SettingSeparateViewController: UIViewController {
         view.backgroundColor = .background
     }
     
-    func setConstraint() {
+    func setConstraints() {
         view.addSubviews([navigationView, navigationDividerView, trashbinStatusLabel, trashbinStatusNumber, separateTableView])
         navigationView.addSubviews([headerLabel, backButton, addButton])
         

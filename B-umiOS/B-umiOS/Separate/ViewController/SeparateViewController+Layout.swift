@@ -8,8 +8,8 @@
 import UIKit
 
 extension SeparateViewController {
-    func setConstraint(){
-        self.view.addSubviews([navigationView, navigationDividerView,separateCollectionView])
+    func setConstraints(){
+        view.addSubviews([navigationView, navigationDividerView,separateCollectionView])
         
         navigationView.addSubviews([navigationLabel, graphButton])
         

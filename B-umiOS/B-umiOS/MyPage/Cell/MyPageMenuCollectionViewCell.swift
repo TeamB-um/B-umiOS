@@ -8,6 +8,7 @@
 import UIKit
 
 class MyPageMenuCollectionViewCell: UICollectionViewCell {
+    // MARK: - UIComponenets
     
     // MARK: - Properties
     
@@ -58,7 +59,7 @@ class MyPageMenuCollectionViewCell: UICollectionViewCell {
         menuTitle.font = .nanumSquareFont(type: .extraBold, size: 20)
     }
     
-    func setConstraint() {
+    func setConstraints() {
         menuTitle.snp.updateConstraints { make in
             make.centerX.equalToSuperview()
             make.centerY.equalToSuperview()
@@ -67,7 +68,7 @@ class MyPageMenuCollectionViewCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        setConstraint()
+        setConstraints()
     }
     
 }

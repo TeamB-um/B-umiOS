@@ -141,7 +141,7 @@ class SeparatePopUpViewController: UIViewController {
 
         setTextField()
         setView()
-        setConstraint()
+        setConstraints()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -280,7 +280,7 @@ class SeparatePopUpViewController: UIViewController {
         }
     }
     
-    func setConstraint() {
+    func setConstraints() {
         view.addSubviews([backgroundButton, popupView])
 
         popupView.addSubviews([headerLabel, subLabel, textField, stackView, textNumberLabel, boilerLabel])

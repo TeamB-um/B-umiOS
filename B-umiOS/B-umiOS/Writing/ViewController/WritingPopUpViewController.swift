@@ -8,8 +8,6 @@
 import UIKit
 
 class WritingPopUpViewController: UIViewController {
-    static let identifier = "WritingPopUpViewController"
-
     // MARK: - UIComponenets
     
     private let popUpView = UIView().then {
@@ -68,6 +66,7 @@ class WritingPopUpViewController: UIViewController {
     
     // MARK: - Properties
     
+    static let identifier = "WritingPopUpViewController"
     var popUpDelegate: WritingPopUpDelegate?
     var writingRequest: WritingRequest
     

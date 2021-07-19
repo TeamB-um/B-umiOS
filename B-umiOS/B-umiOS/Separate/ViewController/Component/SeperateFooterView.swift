@@ -11,8 +11,9 @@ import UIKit
 class SeperateFooterView: UICollectionReusableView {
     // MARK: - Properties
     
-    // MARK: - Initializer
     static let identifier = "SeperateFooterView"
+    
+    // MARK: - Initializer
     
     override init(frame: CGRect) {
         super.init(frame: frame)

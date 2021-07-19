@@ -65,7 +65,7 @@ class PeriodPopUpViewController: UIViewController {
         pickerView.dataSource = self
         
         setView()
-        setConstraint()
+        setConstraints()
     }
 
     // MARK: - Actions
@@ -114,7 +114,7 @@ class PeriodPopUpViewController: UIViewController {
         pickerView.selectRow(deletePeriod, inComponent: 0, animated: true)
     }
     
-    func setConstraint() {
+    func setConstraints() {
         view.addSubviews([backgroundButton, popupView])
         
         popupView.snp.makeConstraints { make in

@@ -66,6 +66,7 @@ class MyWritingPopUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setView()
         setConstraints()
     }

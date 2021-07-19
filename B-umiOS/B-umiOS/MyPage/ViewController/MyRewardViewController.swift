@@ -38,12 +38,14 @@ class MyRewardViewController: UIViewController {
     // MARK: - Properties
     
     var myReward: [Reward] = []
+    
     // MARK: - Initializer
+    
     // MARK: - LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setConstraint()
+        setConstraints()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,6 +53,7 @@ class MyRewardViewController: UIViewController {
     }
     
     // MARK: - Actions
+    
     // MARK: - Methods
     
     func fetchRewardsData() {
@@ -82,7 +85,7 @@ class MyRewardViewController: UIViewController {
         }
     }
     
-    func setConstraint(){
+    func setConstraints(){
         view.addSubviews([myRewardCollectionView, errorView, errorLabel])
         myRewardCollectionView.snp.makeConstraints { make in
             make.top.equalToSuperview()
@@ -98,6 +101,7 @@ class MyRewardViewController: UIViewController {
             make.centerX.equalToSuperview()
         }
     }
+    
     // MARK: - Protocols
 }
 // MARK: - Extension

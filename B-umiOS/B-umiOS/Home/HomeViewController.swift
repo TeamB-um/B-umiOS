@@ -133,7 +133,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         setView()
-        setConstraint()
+        setConstraints()
         configureInitAnimate()
     }
     

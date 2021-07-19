@@ -29,6 +29,7 @@ class SeparateTableViewCell: UITableViewCell {
     // MARK: - Properties
     
     static let identifier = "SeparateTableViewCell"
+    
     var trashBin: Category? {
         willSet(newValue) {
             seperateName.text = newValue?.name
@@ -74,15 +75,16 @@ class SeparateTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
         contentView.backgroundColor = .background
-        setConstraint()
+        setConstraints()
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
     
-    func setConstraint() {
+    func setConstraints() {
         contentView.addSubviews([seperateName, modifyButton, deleteButton])
         
         seperateName.snp.makeConstraints { make in

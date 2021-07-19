@@ -11,8 +11,6 @@ import UIKit
 class ButtonSectionView: UICollectionReusableView {
     // MARK: - UIComponenets
     
-    static let identifier = "ButtonSectionView"
-    
     private let gradationBackground = UIImageView().then {
         $0.image = UIImage(named: "mywritingTrashbinBgGradientTop")
     }
@@ -45,7 +43,8 @@ class ButtonSectionView: UICollectionReusableView {
     }
     
     // MARK: - Properties
-
+    
+    static let identifier = "ButtonSectionView"
     var isSelectAllowed: Bool = false
     
     // MARK: - Initializer

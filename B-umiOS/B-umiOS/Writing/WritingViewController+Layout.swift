@@ -8,7 +8,7 @@
 import UIKit
 
 extension WritingViewController {
-    func setConstraint() {
+    func setConstraints() {
         navigationView.addSubviews([navigationLabel, backButton, checkButton])
         view.addSubviews([navigationView, navigationDividerView, guideImage, guideLabel, tagCollectionView, leftGradientView, righrGradientView, settingButton, dividerView, titleTextField, textFieldCountLabel, textFieldDividerView, textView])
    

@@ -40,13 +40,15 @@ class MyTrashBinTableViewCell: UITableViewCell {
     // MARK: - Properites
     
     static let identifier = "MyTrashBinTableViewCell"
+    
     // MARK: - Initializer
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         setView()
-        setConstraint()
+        setConstraints()
     }
+    
     // MARK: - Method
     
     func setTrashBinData(data:[TrashCan], index: Int){
@@ -60,7 +62,7 @@ class MyTrashBinTableViewCell: UITableViewCell {
         self.contentView.backgroundColor = .background
     }
     
-    func setConstraint(){
+    func setConstraints(){
         contentView.addSubview(mainView)
         mainView.addSubviews([categoryLabel, remainingDayLabel, headerLabel, previewLabel])
 

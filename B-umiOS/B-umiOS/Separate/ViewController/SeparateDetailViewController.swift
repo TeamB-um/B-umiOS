@@ -72,7 +72,7 @@ class SeparateDetailViewController: UIViewController {
         super.viewDidLoad()
         setView()
         setTableView()
-        setConstraint()
+        setConstraints()
     }
     
     override func viewWillAppear(_ animated: Bool) {

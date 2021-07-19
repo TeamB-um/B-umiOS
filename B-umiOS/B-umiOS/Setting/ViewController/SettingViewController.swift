@@ -94,7 +94,7 @@ class SettingViewController: UIViewController {
         super.viewDidLoad()
         
         setView()
-        setConstraint()
+        setConstraints()
     }
     
     override func viewWillAppear(_ animated: Bool) {

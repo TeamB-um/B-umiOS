@@ -10,8 +10,8 @@ import UIKit
 extension SettingViewController {
     //setConstraint()
 
-    func setConstraint(){
-        self.view.addSubviews([navigationView, topStackView, bottomStackView, navigationDividerView, stackDividerView])
+    func setConstraints(){
+        view.addSubviews([navigationView, topStackView, bottomStackView, navigationDividerView, stackDividerView])
         navigationView.addSubview(headerLabel)
      
         navigationView.snp.makeConstraints { make in

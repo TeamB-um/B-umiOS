@@ -8,7 +8,6 @@
 import UIKit
 
 class SeparateCollectionViewCell: UICollectionViewCell {
-    
     // MARK: - UIComponenets
     
     var separateImage = UIImageView().then {
@@ -30,8 +29,9 @@ class SeparateCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setConstraint()
-        self.backgroundColor = .background
+        
+        setView()
+        setConstraints()
         isSelected = false
     }
     
@@ -49,6 +49,11 @@ class SeparateCollectionViewCell: UICollectionViewCell {
     // MARK: - Actions
     
     // MARK: - Methods
+    
+    func setView(){
+        self.backgroundColor = .background
+    }
+    
     func setData(name : String, index: Int, count: Int){
         self.separateName.text = name
         
@@ -62,7 +67,7 @@ class SeparateCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func setConstraint(){
+    func setConstraints(){
         self.contentView.addSubviews([separateImage, separateName])
 
         let screenSize = UIScreen.main.bounds
