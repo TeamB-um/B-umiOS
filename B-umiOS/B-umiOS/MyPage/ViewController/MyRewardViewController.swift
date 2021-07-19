@@ -58,10 +58,13 @@ class MyRewardViewController: UIViewController {
     
     func fetchRewardsData() {
         ActivityIndicator.shared.startLoadingAnimation()
-        RewardService.shared.fatchRewardsData { result in
+        
+        RewardService.shared.fatchRewardsData { response in
             ActivityIndicator.shared.stopLoadingAnimation()
-            guard let rewards = result as? NetworkResult<Any> else { return }
-            switch rewards {
+            
+            guard let result = response as? NetworkResult<Any> else { return }
+            
+            switch result {
             case .success(let data):
                 self.errorView.isHidden = true
                 self.errorLabel.isHidden = true
@@ -104,6 +107,7 @@ class MyRewardViewController: UIViewController {
     
     // MARK: - Protocols
 }
+
 // MARK: - Extension
 
 extension MyRewardViewController : UICollectionViewDataSource {
