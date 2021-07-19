@@ -130,6 +130,7 @@ class SettingViewController: UIViewController {
         ActivityIndicator.shared.startLoadingAnimation()
         UserService.shared.updateUserInfo(userInfo: userInfo) { response in
             ActivityIndicator.shared.stopLoadingAnimation()
+            
             guard let result = response as? NetworkResult<Any> else { return }
             
             switch result {

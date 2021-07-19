@@ -49,6 +49,7 @@ class LaunchScreenViewController: UIViewController {
     func login() {
         UserService.shared.login { response in
             guard let result = response as? NetworkResult<Any> else { return }
+            
             switch result {
             case .success(let data):
                 guard let result = data as? GeneralResponse<TokenResponse> else { return }
