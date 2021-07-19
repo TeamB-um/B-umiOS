@@ -104,14 +104,12 @@ class SettingSeparateViewController: UIViewController {
     }
     
     func setConstraint() {
-        let navigationHeight = 56 + UIDevice.current.safeAreaInset.top
-        
         view.addSubviews([navigationView, navigationDividerView, trashbinStatusLabel, trashbinStatusNumber, separateTableView])
         navigationView.addSubviews([headerLabel, backButton, addButton])
         
         navigationView.snp.makeConstraints { make in
             make.top.width.equalToSuperview()
-            make.height.equalTo(navigationHeight * SizeConstants.screenRatio)
+            make.height.equalTo(SizeConstants.navigationHeight * SizeConstants.screenRatio)
         }
         
         navigationDividerView.snp.makeConstraints { make in

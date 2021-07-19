@@ -20,7 +20,7 @@ struct UserService {
             case .success(let data):
                 guard let result = data as? GeneralResponse<TokenResponse> else { return }
                 UserDefaults.standard.set(result.data?.token, forKey: UserDefaults.Keys.token)
-                print(result.data?.token, "🐱 token")
+                print(result.data?.token ?? "NO TOKEN", "🐱 token")
 
                 completion(true)
             case .requestErr, .pathErr, .serverErr, .networkFail:
