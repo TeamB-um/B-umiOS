@@ -18,7 +18,7 @@ struct CategoryService {
     }
 
     ///카테고리 글 조회임을 알 수 있게 이름 리네임 부탁드립니다.
-    func fetchWritings(categories: String, completion: @escaping (Any) -> Void) {
+    func fetchCategoryWritings(categories: String, completion: @escaping (Any) -> Void) {
         let url = "\(APIConstants.writingURL)?category_ids=[\(categories)]"
 
         RequestHandler.shared.requestData(url: url, httpmethod: HTTPMethod.get, parameter: nil, header: NetworkInfo.headerWithToken, decodeType: GeneralResponse<WritingsResponse>.self) { response in

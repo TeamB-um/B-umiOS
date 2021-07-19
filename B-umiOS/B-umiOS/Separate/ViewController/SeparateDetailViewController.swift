@@ -124,14 +124,14 @@ class SeparateDetailViewController: UIViewController {
     
     func fetchWritings() {
         ActivityIndicator.shared.startLoadingAnimation()
-        CategoryService.shared.fetchWritings(categories: categoryID!) { result in
+        CategoryService.shared.fetchCategoryWritings(categories: categoryID!) { response in
             ActivityIndicator.shared.stopLoadingAnimation()
-            guard let r = result as? NetworkResult<Any> else { return }
+            guard let result = response as? NetworkResult<Any> else { return }
       
-            switch r {
-            case .success(let response):
-                guard let w = response as? GeneralResponse<WritingsResponse> else { return }
-                self.writings = w.data?.writing ?? []
+            switch result {
+            case .success(let data):
+                guard let result = data as? GeneralResponse<WritingsResponse> else { return }
+                self.writings = result.data?.writing ?? []
                 self.detailTableView.reloadData()
             default:
                 break
