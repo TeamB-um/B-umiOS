@@ -59,7 +59,7 @@ class MyRewardViewController: UIViewController {
     func fetchRewardsData() {
         ActivityIndicator.shared.startLoadingAnimation()
         
-        RewardService.shared.fatchRewardsData { response in
+        RewardService.shared.fetchRewardsData { response in
             ActivityIndicator.shared.stopLoadingAnimation()
             
             guard let result = response as? NetworkResult<Any> else { return }
