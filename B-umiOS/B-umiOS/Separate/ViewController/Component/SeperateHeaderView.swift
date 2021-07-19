@@ -29,11 +29,11 @@ class SeperateHeaderView: UICollectionReusableView {
     }
     
     let seperateImage = UIImageView().then {
-        $0.image = UIImage(named: "toastPaper1")
+        $0.image = UIImage.toastPaper1
     }
     
     let gardientBackground = UIImageView().then {
-        $0.image = UIImage(named: "separateBgGradientTop")
+        $0.image = UIImage.separateBgGradientTop
     }
     
     // MARK: - Properties

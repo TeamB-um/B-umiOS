@@ -24,12 +24,12 @@ class SettingSeparateViewController: UIViewController {
     }
     
     var backButton = UIButton().then {
-        $0.setImage(UIImage(named: "btnBack"), for: .normal)
+        $0.setImage(UIImage.btnBack, for: .normal)
         $0.addTarget(self, action: #selector(didTapBackButton(_:)), for: .touchUpInside)
     }
     
     private var addButton = UIButton().then {
-        $0.setImage(UIImage(named: "btnPlus"), for: .normal)
+        $0.setImage(UIImage.btnPlus, for: .normal)
         $0.addTarget(self, action: #selector(didTapAddButton(_:)), for: .touchUpInside)
     }
     

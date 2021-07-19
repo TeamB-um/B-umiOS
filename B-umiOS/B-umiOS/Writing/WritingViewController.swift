@@ -27,11 +27,11 @@ class WritingViewController: UIViewController {
     lazy var backButton = UIButton(type: .custom, primaryAction: UIAction(handler: { _ in
         self.navigationController?.popViewController(animated: true)
     })).then {
-        $0.setImage(UIImage(named: "btnBack"), for: .normal)
+        $0.setImage(UIImage.btnBack, for: .normal)
     }
     
     lazy var checkButton = UIButton().then {
-        $0.setImage(UIImage(named: "btnCheck")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        $0.setImage(UIImage.btnCheck.withRenderingMode(.alwaysTemplate), for: .normal)
         $0.addTarget(self, action: #selector(didTapCheckButton(_:)), for: .touchUpInside)
         $0.tintColor = .disable
         $0.isUserInteractionEnabled = false
@@ -42,12 +42,12 @@ class WritingViewController: UIViewController {
     }
     
     lazy var settingButton = UIButton().then {
-        $0.setImage(UIImage(named: "btnSetting"), for: .normal)
+        $0.setImage(UIImage.btnSetting, for: .normal)
         $0.addTarget(self, action: #selector(didTapSettingButton(_:)), for: .touchUpInside)
     }
     
     let guideImage = UIImageView().then {
-        $0.image = UIImage(named: "icArrow")
+        $0.image = UIImage.icArrow
     }
     
     let guideLabel = UILabel().then {
@@ -69,13 +69,13 @@ class WritingViewController: UIViewController {
     }
     
     lazy var leftGradientView = UIImageView().then {
-        $0.image = UIImage(named: "writing1GradientEnd")?.withRenderingMode(.alwaysTemplate)
+        $0.image = UIImage.writing1GradientEnd.withRenderingMode(.alwaysTemplate)
         $0.tintColor = style.paperBgColor
         $0.alpha = 0
     }
 
     lazy var righrGradientView = UIImageView().then {
-        $0.image = UIImage(named: "writing1GradientRight")?.withRenderingMode(.alwaysTemplate)
+        $0.image = UIImage.writing1GradientRight.withRenderingMode(.alwaysTemplate)
         $0.tintColor = style.paperBgColor
     }
 

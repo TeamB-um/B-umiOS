@@ -27,7 +27,7 @@ class SeparateGraphPopUpViewController: UIViewController {
     }
     
     let closeButton = UIButton().then {
-        $0.setImage(UIImage(named: "btnCloseBlack"), for: .normal)
+        $0.setImage(UIImage.btnCloseBlack, for: .normal)
         $0.addTarget(self, action: #selector(closeView(_:)), for: .touchUpInside)
     }
     lazy var monthGraphView = GraphView(title: "월간", sub: "한 달 내 카테고리별").then {

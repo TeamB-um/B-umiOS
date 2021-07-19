@@ -25,7 +25,7 @@ class WritingPopUpViewController: UIViewController {
     private lazy var closeButton = UIButton(frame: .zero, primaryAction: UIAction(handler: { _ in
         self.dismiss(animated: true, completion: nil)
     })).then {
-        $0.setImage(UIImage(named: "btnCloseBlack"), for: .normal)
+        $0.setImage(UIImage.btnCloseBlack, for: .normal)
     }
     
     private let guideLabel = UILabel().then {

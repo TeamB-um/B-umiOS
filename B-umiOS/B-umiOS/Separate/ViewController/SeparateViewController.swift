@@ -21,7 +21,7 @@ class SeparateViewController: UIViewController {
     }
     
     let graphButton = UIButton().then {
-        $0.setImage(UIImage(named: "btnGraph"), for: .normal)
+        $0.setImage(UIImage.btnGraph, for: .normal)
         $0.addTarget(self, action: #selector(didTapGraphButton), for: .touchUpInside)
     }
     

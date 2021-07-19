@@ -20,7 +20,7 @@ class MyTrashBinViewController: UIViewController {
     }
     
     private var headerGardientBackground = UIImageView().then {
-        $0.image = UIImage(named: "mywritingTrashbinBgGradientTop")
+        $0.image = UIImage.mywritingTrashbinBgGradientTop
     }
     
     lazy var detailTableView = UITableView().then {
@@ -30,7 +30,7 @@ class MyTrashBinViewController: UIViewController {
     }
 
     var errorView = UIImageView().then {
-        $0.image = UIImage(named: "group192")
+        $0.image = UIImage.group192
         $0.isHidden = true
     }
     
@@ -47,7 +47,7 @@ class MyTrashBinViewController: UIViewController {
     }
     
     var gradientView = UIImageView().then {
-        $0.image = UIImage(named: "mywritingTrashbinBgGradientBottom")
+        $0.image = UIImage.mywritingTrashbinBgGradientBottom
     }
 
     // MARK: - Properties

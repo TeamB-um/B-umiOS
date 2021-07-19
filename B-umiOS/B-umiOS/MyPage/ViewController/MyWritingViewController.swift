@@ -37,7 +37,7 @@ class MyWritingViewController: UIViewController {
     }()
     
     var errorView = UIImageView().then {
-        $0.image = UIImage(named: "group192")
+        $0.image = UIImage.group192
         $0.isHidden = true
     }
     

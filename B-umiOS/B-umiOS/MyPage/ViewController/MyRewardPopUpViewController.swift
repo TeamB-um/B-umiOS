@@ -19,7 +19,7 @@ class MyRewardPopUpViewController: UIViewController {
     private lazy var closeButton = UIButton(primaryAction: UIAction(handler: { _ in
         self.dismiss(animated: true, completion: nil)
     })).then {
-        $0.setImage(UIImage(named: "btnCloseBlack"), for: .normal)
+        $0.setImage(UIImage.btnCloseBlack, for: .normal)
         $0.tintColor = .white
     }
     
@@ -53,7 +53,7 @@ class MyRewardPopUpViewController: UIViewController {
     }
     
     private var logoImage = UIImageView().then {
-        $0.image = UIImage(named: "group163")
+        $0.image = UIImage.group163
     }
     
     // MARK: - Properties

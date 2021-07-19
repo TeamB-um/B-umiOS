@@ -54,12 +54,12 @@ class SettingViewController: UIViewController {
     }
     
     let trashbinPeriodButton = UIButton().then {
-        $0.setImage(UIImage(named: "brnEdit"), for: .normal)
+        $0.setImage(UIImage.brnEdit, for: .normal)
         $0.addTarget(self, action: #selector(setPeriodButton(_:)), for: .touchUpInside)
     }
     
     let trashbinManageButton = UIButton().then {
-        $0.setImage(UIImage(named: "btnLeft"), for: .normal)
+        $0.setImage(UIImage.btnLeft, for: .normal)
         $0.addTarget(self, action: #selector(didTapTrashBinManageButton(_:)), for: .touchUpInside)
     }
     
@@ -69,19 +69,19 @@ class SettingViewController: UIViewController {
     }
     
     let serviceConditionButton = UIButton().then {
-        $0.setImage(UIImage(named: "btnLeft"), for: .normal)
+        $0.setImage(UIImage.btnLeft, for: .normal)
     }
     
     let personalInfomationButton = UIButton().then {
-        $0.setImage(UIImage(named: "btnLeft"), for: .normal)
+        $0.setImage(UIImage.btnLeft, for: .normal)
     }
     
     let opensourceLicenseButton = UIButton().then {
-        $0.setImage(UIImage(named: "btnLeft"), for: .normal)
+        $0.setImage(UIImage.btnLeft, for: .normal)
     }
     
     let developerInformationButton = UIButton().then {
-        $0.setImage(UIImage(named: "btnLeft"), for: .normal)
+        $0.setImage(UIImage.btnLeft, for: .normal)
     }
 
     // MARK: - Properties

@@ -12,7 +12,7 @@ class ButtonSectionView: UICollectionReusableView {
     // MARK: - UIComponenets
     
     private let gradationBackground = UIImageView().then {
-        $0.image = UIImage(named: "mywritingTrashbinBgGradientTop")
+        $0.image = UIImage.mywritingTrashbinBgGradientTop
     }
 
     lazy var categoryButtton: RoundingButton = {

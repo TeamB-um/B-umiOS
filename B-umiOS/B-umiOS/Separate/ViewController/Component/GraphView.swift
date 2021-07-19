@@ -13,7 +13,7 @@ class GraphView: UIView {
     // MARK: - UIComponenets
         
     var emptyImage = UIImageView().then {
-        $0.image = UIImage(named: "group192")
+        $0.image = UIImage.group192
         $0.isHidden = true
     }
     

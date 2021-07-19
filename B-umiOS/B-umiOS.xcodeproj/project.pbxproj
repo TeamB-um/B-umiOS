@@ -37,6 +37,7 @@
 		4F7FD2F126929D6300122964 /* PeriodPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7FD2F026929D6300122964 /* PeriodPopUpViewController.swift */; };
 		4F875E2B2697E0930085D104 /* SeparateGraphPopUpViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F875E2A2697E0930085D104 /* SeparateGraphPopUpViewController+Layout.swift */; };
 		4F875E302697EE3A0085D104 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F875E2F2697EE3A0085D104 /* GraphView.swift */; };
+		4FB38C5026A5D00B0009FABB /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB38C4F26A5D00B0009FABB /* UIImage+Extension.swift */; };
 		4FDF643826A0C3F900E5DC2E /* GraphResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDF643726A0C3F900E5DC2E /* GraphResponse.swift */; };
 		AB21E3A9269CA06900D32EFF /* CompletionMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB21E3A8269CA06900D32EFF /* CompletionMessage.swift */; };
 		AB21E3AC269D427400D32EFF /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB21E3AB269D427400D32EFF /* LaunchScreenViewController.swift */; };
@@ -150,6 +151,7 @@
 		4F7FD2F026929D6300122964 /* PeriodPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodPopUpViewController.swift; sourceTree = "<group>"; };
 		4F875E2A2697E0930085D104 /* SeparateGraphPopUpViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SeparateGraphPopUpViewController+Layout.swift"; sourceTree = "<group>"; };
 		4F875E2F2697EE3A0085D104 /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
+		4FB38C4F26A5D00B0009FABB /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		4FDF643726A0C3F900E5DC2E /* GraphResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphResponse.swift; sourceTree = "<group>"; };
 		AB21E3A8269CA06900D32EFF /* CompletionMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionMessage.swift; sourceTree = "<group>"; };
 		AB21E3AB269D427400D32EFF /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
@@ -170,10 +172,9 @@
 		AB21E3CD269DB32E00D32EFF /* UserDefaults.Key+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults.Key+Extension.swift"; sourceTree = "<group>"; };
 		AB21E3CF269DEF0D00D32EFF /* CategoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryService.swift; sourceTree = "<group>"; };
 		AB21E3D1269E9A1D00D32EFF /* WritingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingService.swift; sourceTree = "<group>"; };
-		AB5AF75E268A2E84001D3CD1 /* 비움(B:um).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "비움(B:um).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB21E3D426A0777D00D32EFF /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		AB21E3D626A07D0000D32EFF /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
-		AB5AF75E268A2E84001D3CD1 /* B-umiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "B-umiOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB5AF75E268A2E84001D3CD1 /* B-umiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = "B-umiOS.app"; path = "비움(B:um).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB5AF761268A2E84001D3CD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB5AF763268A2E84001D3CD1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		AB5AF765268A2E84001D3CD1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -415,7 +416,7 @@
 		AB5AF75F268A2E84001D3CD1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AB5AF75E268A2E84001D3CD1 /* 비움(B:um).app */,
+				AB5AF75E268A2E84001D3CD1 /* B-umiOS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -581,6 +582,7 @@
 				AB9F9DF326909E2100088502 /* UILabel+Extension.swift */,
 				AB8C3F5C2695743E00B2BA30 /* NotificationName+Extension.swift */,
 				AB21E3CD269DB32E00D32EFF /* UserDefaults.Key+Extension.swift */,
+				4FB38C4F26A5D00B0009FABB /* UIImage+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -732,7 +734,7 @@
 			);
 			name = "B-umiOS";
 			productName = "B-umiOS";
-			productReference = AB5AF75E268A2E84001D3CD1 /* 비움(B:um).app */;
+			productReference = AB5AF75E268A2E84001D3CD1 /* B-umiOS.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -926,6 +928,7 @@
 				4F7FD2F126929D6300122964 /* PeriodPopUpViewController.swift in Sources */,
 				FC0541BA2690C92A00FFA9D1 /* MyRewardViewController.swift in Sources */,
 				4F2D1F35269A1AA700D941A1 /* NetworkResult.swift in Sources */,
+				4FB38C5026A5D00B0009FABB /* UIImage+Extension.swift in Sources */,
 				AB21E3CC269D7E1F00D32EFF /* TokenResponse.swift in Sources */,
 				FC0541BC2690C94700FFA9D1 /* MyTrashBinViewController.swift in Sources */,
 				4FDF643826A0C3F900E5DC2E /* GraphResponse.swift in Sources */,

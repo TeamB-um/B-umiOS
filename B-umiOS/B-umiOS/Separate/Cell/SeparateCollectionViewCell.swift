@@ -11,7 +11,7 @@ class SeparateCollectionViewCell: UICollectionViewCell {
     // MARK: - UIComponenets
     
     var separateImage = UIImageView().then {
-        $0.image = UIImage(named: "btnCheck")
+        $0.image = UIImage.btnCheck
     }
     
     var separateName = UILabel().then {
@@ -59,7 +59,7 @@ class SeparateCollectionViewCell: UICollectionViewCell {
         
         if(name == "추가하기"){
             self.separateName.textColor = UIColor.textGray
-            self.separateImage.image = UIImage(named: "group174")
+            self.separateImage.image = UIImage.group174
         }
         else{
             self.separateName.textColor = SeparateStyle.color[index]

@@ -22,7 +22,7 @@ class SeparateTableViewCell: UITableViewCell {
     }
     
     lazy var deleteButton = UIButton().then {
-        $0.setImage(UIImage(named: "btnDelete"), for: .normal)
+        $0.setImage(UIImage.btnDelete, for: .normal)
         $0.addTarget(self, action: #selector(didTapDeleteButton(_:)), for: .touchUpInside)
     }
     

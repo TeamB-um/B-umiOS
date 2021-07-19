@@ -24,14 +24,14 @@ class MyRewardViewController: UIViewController {
     }()
     
     var errorView = UIImageView().then {
-        $0.image = UIImage(named: "group192")
+        $0.image = UIImage.group192
         $0.isHidden = true
     }
     
     var errorLabel = UILabel().then {
         $0.font = .nanumSquareFont(type: .regular, size: 14)
         $0.textColor = .textGray
-        $0.text = "dlkslfhiwalgnlkwrg"
+        $0.text = "error"
         $0.isHidden = true
     }
     

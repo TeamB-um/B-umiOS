@@ -27,7 +27,7 @@ class SeparateDetailTableViewCell: UITableViewCell {
     }
     
     lazy var checkButton = UIButton().then {
-        $0.setImage(UIImage(named: "btnCheckEmpty"), for: .normal)
+        $0.setImage(UIImage.btnCheckEmpty, for: .normal)
     }
     
     // MARK: - Properites
@@ -37,9 +37,9 @@ class SeparateDetailTableViewCell: UITableViewCell {
     override var isSelected: Bool {
         didSet {
             if isSelected {
-                checkButton.setImage(UIImage(named: "btnCheckColor"), for: .normal)
+                checkButton.setImage(UIImage.btnCheckColor, for: .normal)
             } else {
-                checkButton.setImage(UIImage(named: "btnCheckEmpty"), for: .normal)
+                checkButton.setImage(UIImage.btnCheckEmpty, for: .normal)
             }
         }
     }

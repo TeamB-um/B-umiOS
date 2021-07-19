@@ -21,7 +21,7 @@ class SeparateDetailViewController: UIViewController {
     }
     
     var backButton = UIButton().then {
-        $0.setImage(UIImage(named: "btnBack"), for: .normal)
+        $0.setImage(UIImage.btnBack, for: .normal)
         $0.addTarget(self, action: #selector(didTapBackButton), for: .touchUpInside)
     }
     
@@ -49,7 +49,7 @@ class SeparateDetailViewController: UIViewController {
     }
     
     let gardientBackground = UIImageView().then {
-        $0.image = UIImage(named: "mywritingTrashbinBgGradientTop")
+        $0.image = UIImage.mywritingTrashbinBgGradientTop
     }
     
     lazy var detailTableView = UITableView().then {

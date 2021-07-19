@@ -37,7 +37,7 @@ class MyWritingCollectionViewCell: UICollectionViewCell {
     }()
     
     let emptyCheckButton = UIButton().then {
-        $0.setImage(UIImage(named: "btnCheckEmpty"), for: .normal)
+        $0.setImage(UIImage.btnCheckEmpty, for: .normal)
         $0.isHidden = true
     }
     
@@ -47,9 +47,9 @@ class MyWritingCollectionViewCell: UICollectionViewCell {
     override var isSelected: Bool {
         didSet {
             if isSelected {
-                emptyCheckButton.setImage(UIImage(named: "btnCheckColor"), for: .normal)
+                emptyCheckButton.setImage(UIImage.btnCheckColor, for: .normal)
             } else {
-                emptyCheckButton.setImage(UIImage(named: "btnCheckEmpty"), for: .normal)
+                emptyCheckButton.setImage(UIImage.btnCheckEmpty, for: .normal)
             }
         }
     }

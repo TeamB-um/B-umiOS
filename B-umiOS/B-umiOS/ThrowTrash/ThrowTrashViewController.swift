@@ -28,7 +28,7 @@ class ThrowTrashViewController: UIViewController {
     lazy var backButton = UIButton(type: .custom, primaryAction: UIAction(handler: { _ in
         self.navigationController?.popViewController(animated: true)
     })).then {
-        $0.setImage(UIImage(named: "btnBack")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        $0.setImage(UIImage.btnBack.withRenderingMode(.alwaysTemplate), for: .normal)
         $0.tintColor = .white
     }
     
@@ -43,7 +43,7 @@ class ThrowTrashViewController: UIViewController {
     }
     
     let explanationImage = UIImageView().then {
-        $0.image = UIImage(named: "toastPaper1")
+        $0.image = UIImage.toastPaper1
     }
     
     lazy var explanationLabel = UILabel().then {
@@ -63,7 +63,7 @@ class ThrowTrashViewController: UIViewController {
     }
     
     lazy var trash = UIImageView().then {
-        $0.image = UIImage(named: "imgWritingPaper")
+        $0.image = UIImage.imgWritingPaper
         $0.isUserInteractionEnabled = true
         $0.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:))))
     }
