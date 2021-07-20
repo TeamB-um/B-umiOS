@@ -216,16 +216,23 @@ class WritingViewController: UIViewController {
     
     func fetchCategoriesData() {
         ActivityIndicator.shared.startLoadingAnimation()
-        CategoryService.shared.fetchCategories { result in
+
+        CategoryService.shared.fetchCategories { response in
             ActivityIndicator.shared.stopLoadingAnimation()
-            guard let categories = result as? CategoriesResponse else { return }
             
-            self.tag = categories.category
-            self.guideLabel.isHidden = self.tag.count != 0
-            self.guideImage.isHidden = self.tag.count != 0
+            guard let result = response as? NetworkResult<Any> else { return }
             
-            self.tagCollectionView.reloadData()
-            self.tagCollectionView.selectItem(at: IndexPath(row: self.tagSelectedIdx, section: 0), animated: false, scrollPosition: .centeredHorizontally)
+            switch result {
+            case .success(let data):
+                guard let result = data as? GeneralResponse<CategoriesResponse> else { return }
+                self.tag = result.data?.category ?? []
+                self.guideLabel.isHidden = self.tag.count != 0
+                self.guideImage.isHidden = self.tag.count != 0
+                self.tagCollectionView.reloadData()
+                self.tagCollectionView.selectItem(at: IndexPath(row: self.tagSelectedIdx, section: 0), animated: false, scrollPosition: .centeredHorizontally)
+            case .requestErr, .pathErr, .serverErr, .networkFail:
+                print("error")
+            }
         }
     }
     

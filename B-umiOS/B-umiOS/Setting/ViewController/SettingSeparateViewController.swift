@@ -74,7 +74,6 @@ class SettingSeparateViewController: UIViewController {
         setView()
         setConstraints()
         setTableView()
-        
         fetchCategories()
     }
     
@@ -160,12 +159,23 @@ class SettingSeparateViewController: UIViewController {
     
     func fetchCategories() {
         ActivityIndicator.shared.startLoadingAnimation()
-        CategoryService.shared.fetchCategories { result in
+        
+        CategoryService.shared.fetchCategories { response in
             ActivityIndicator.shared.stopLoadingAnimation()
-            guard let categories = result as? CategoriesResponse else { return }
             
-            self.bins = categories.category
-            self.separateTableView.reloadData()
+            guard let result = response as? NetworkResult<Any> else { return }
+            
+            switch result {
+            case .success(let data):
+                guard let result = data as? GeneralResponse<CategoriesResponse> else { return }
+                    
+                self.bins = result.data?.category ?? []
+                self.separateTableView.reloadData()
+                
+            case .requestErr, .pathErr, .serverErr, .networkFail:
+                /// 네트워크 에러 처리
+                print("error")
+            }
         }
     }
 }

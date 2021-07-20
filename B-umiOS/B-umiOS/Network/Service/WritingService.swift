@@ -11,18 +11,11 @@ import Foundation
 struct WritingService {
     static let shared = WritingService()
 
-    func createWriting(writing: WritingRequest,completion: @escaping (Bool) -> Void) {
+    func createWriting(writing: WritingRequest,completion: @escaping (Any) -> Void) {
         let parameter = NetworkInfo.shared.makeParameter(model: writing)
         
         RequestHandler.shared.requestData(url: APIConstants.writingURL, httpmethod: HTTPMethod.post, parameter: parameter, header: NetworkInfo.headerWithToken, decodeType: GeneralResponse<WritingsResponse>.self) { response in
-            switch response {
-            case .success(let data):
-                guard let result = data as? GeneralResponse<WritingsResponse> else { return }
-
-                completion(true)
-            case .requestErr, .pathErr, .serverErr, .networkFail:
-                completion(false)
-            }
+            completion(response)
         }
     }
     
@@ -49,8 +42,7 @@ struct WritingService {
         } else {
             url = "\(APIConstants.writingURL)?start_date=\(start_date)&end_date=\(end_date)&category_ids=[\(category_id)]"
         }
-        print(url)
-
+        
         RequestHandler.shared.requestData(url: url, httpmethod: HTTPMethod.get, parameter: nil, header: NetworkInfo.headerWithToken, decodeType: GeneralResponse<WritingsResponse>.self) { response in
             completion(response)
         }

@@ -32,6 +32,7 @@ class ThrowTrashViewController: UIViewController {
         $0.tintColor = .white
     }
     
+    
     lazy var backgroudImage = UIImageView().then {
         $0.image = UIImage(named: "img_\(self.trashType)")
     }
@@ -115,12 +116,16 @@ class ThrowTrashViewController: UIViewController {
                 throwAwayTrash()
                 
                 ActivityIndicator.shared.startLoadingAnimation()
-                WritingService.shared.createWriting(writing: writing) { result in
+                
+                WritingService.shared.createWriting(writing: writing) { response in
                     ActivityIndicator.shared.stopLoadingAnimation()
-                    if result {
+                    
+                    guard let result = response as? NetworkResult<Any> else { return }
+                    
+                    switch result {
+                    case .success( _ ):
                         self.showToast()
-                    } else {
-                        /// 네트워크 실패 토스트 띄우기
+                    case .requestErr, .pathErr, .serverErr, .networkFail:
                         self.navigationController?.popViewController(animated: true)
                     }
                 }
