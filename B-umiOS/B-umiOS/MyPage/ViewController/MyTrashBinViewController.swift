@@ -90,10 +90,12 @@ class MyTrashBinViewController: UIViewController {
     // MARK: - Methods
     func fetchTrashBinData(){
         ActivityIndicator.shared.startLoadingAnimation()
+        
         TrashCanService.shared.fatchTrashCanData { response in
             ActivityIndicator.shared.stopLoadingAnimation()
-            guard let r = response as? NetworkResult<Any> else { return }
-            switch r {
+            
+            guard let result = response as? NetworkResult<Any> else { return }
+            switch result {
             case .success(let data):
                 
                 self.errorView.isHidden = true

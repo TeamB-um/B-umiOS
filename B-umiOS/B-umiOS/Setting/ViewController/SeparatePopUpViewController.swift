@@ -166,8 +166,10 @@ class SeparatePopUpViewController: UIViewController {
                 let category = CategoryRequest(name: name)
                 
                 ActivityIndicator.shared.startLoadingAnimation()
+                
                 CategoryService.shared.createCategory(category: category) { response in
                     ActivityIndicator.shared.stopLoadingAnimation()
+                    
                     guard let result = response as? NetworkResult<Any> else { return }
                     
                     switch result {
@@ -194,8 +196,10 @@ class SeparatePopUpViewController: UIViewController {
                let newName = textField.text
             {
                 ActivityIndicator.shared.startLoadingAnimation()
+                
                 CategoryService.shared.updateCategory(id: category.id, category: CategoryRequest(name: newName)) { response in
                     ActivityIndicator.shared.stopLoadingAnimation()
+                    
                     guard let result = response as? NetworkResult<Any> else { return }
                     
                     switch result {
