@@ -124,7 +124,7 @@ class SeparateDetailViewController: UIViewController {
     
     func fetchWritings() {
         ActivityIndicator.shared.startLoadingAnimation()
-        CategoryService.shared.fetchCategoryWritings(categories: categoryID!) { response in
+        CategoryService.shared.fetchWritingsByCategory(categories: categoryID!) { response in
             ActivityIndicator.shared.stopLoadingAnimation()
             guard let result = response as? NetworkResult<Any> else { return }
       
