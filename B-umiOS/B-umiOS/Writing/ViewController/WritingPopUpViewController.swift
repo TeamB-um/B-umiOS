@@ -8,8 +8,6 @@
 import UIKit
 
 class WritingPopUpViewController: UIViewController {
-    static let identifier = "WritingPopUpViewController"
-
     // MARK: - UIComponenets
     
     private let popUpView = UIView().then {
@@ -27,7 +25,7 @@ class WritingPopUpViewController: UIViewController {
     private lazy var closeButton = UIButton(frame: .zero, primaryAction: UIAction(handler: { _ in
         self.dismiss(animated: true, completion: nil)
     })).then {
-        $0.setImage(UIImage(named: "btnCloseBlack"), for: .normal)
+        $0.setImage(UIImage.btnCloseBlack, for: .normal)
     }
     
     private let guideLabel = UILabel().then {
@@ -68,6 +66,7 @@ class WritingPopUpViewController: UIViewController {
     
     // MARK: - Properties
     
+    static let identifier = "WritingPopUpViewController"
     var popUpDelegate: WritingPopUpDelegate?
     var writingRequest: WritingRequest
     

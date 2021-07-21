@@ -18,7 +18,7 @@ class MyWritingPopUpViewController: UIViewController {
     private lazy var closeButton = UIButton(primaryAction: UIAction(handler: { _ in
         self.dismiss(animated: true, completion: nil)
     })).then {
-        $0.setImage(UIImage(named: "btnCloseBlack"), for: .normal)
+        $0.setImage(UIImage.btnCloseBlack, for: .normal)
         $0.tintColor = .header
     }
     
@@ -66,6 +66,7 @@ class MyWritingPopUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setView()
         setConstraints()
     }

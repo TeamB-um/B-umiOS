@@ -8,11 +8,10 @@
 import UIKit
 
 extension SeparateGraphPopUpViewController {
-
     // MARK: - Constraint
     
-    func setConstraint(){
-        self.view.addSubviews([backgroundButton,popupView])
+    func setConstraints(){
+        view.addSubviews([backgroundButton,popupView])
         popupView.addSubviews([headerLabel, closeButton, monthGraphView, divideLine, entireGraphView])
         popupView.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview().inset(80 * SizeConstants.screenRatio)

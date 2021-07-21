@@ -24,12 +24,12 @@ class SettingSeparateViewController: UIViewController {
     }
     
     var backButton = UIButton().then {
-        $0.setImage(UIImage(named: "btnBack"), for: .normal)
+        $0.setImage(UIImage.btnBack, for: .normal)
         $0.addTarget(self, action: #selector(didTapBackButton(_:)), for: .touchUpInside)
     }
     
     private var addButton = UIButton().then {
-        $0.setImage(UIImage(named: "btnPlus"), for: .normal)
+        $0.setImage(UIImage.btnPlus, for: .normal)
         $0.addTarget(self, action: #selector(didTapAddButton(_:)), for: .touchUpInside)
     }
     
@@ -50,6 +50,8 @@ class SettingSeparateViewController: UIViewController {
     
     // MARK: - Properties
     
+    static let identifier = "SettingSeparateViewController"
+    
     var bins: [Category] = [] {
         didSet {
             trashbinStatusNumber.text = "\(bins.count)/8"
@@ -61,8 +63,6 @@ class SettingSeparateViewController: UIViewController {
             }
         }
     }
-
-    static let identifier = "SettingSeparateViewController"
     
     // MARK: - Initializer
     
@@ -72,9 +72,8 @@ class SettingSeparateViewController: UIViewController {
         super.viewDidLoad()
         
         setView()
-        setConstraint()
+        setConstraints()
         setTableView()
-        
         fetchCategories()
     }
     
@@ -103,15 +102,13 @@ class SettingSeparateViewController: UIViewController {
         view.backgroundColor = .background
     }
     
-    func setConstraint() {
-        let navigationHeight = 56 + UIDevice.current.safeAreaInset.top
-        
+    func setConstraints() {
         view.addSubviews([navigationView, navigationDividerView, trashbinStatusLabel, trashbinStatusNumber, separateTableView])
         navigationView.addSubviews([headerLabel, backButton, addButton])
         
         navigationView.snp.makeConstraints { make in
             make.top.width.equalToSuperview()
-            make.height.equalTo(navigationHeight * SizeConstants.screenRatio)
+            make.height.equalTo(SizeConstants.navigationHeight * SizeConstants.screenRatio)
         }
         
         navigationDividerView.snp.makeConstraints { make in
@@ -162,12 +159,23 @@ class SettingSeparateViewController: UIViewController {
     
     func fetchCategories() {
         ActivityIndicator.shared.startLoadingAnimation()
-        CategoryService.shared.fetchCategories { result in
+        
+        CategoryService.shared.fetchCategories { response in
             ActivityIndicator.shared.stopLoadingAnimation()
-            guard let categories = result as? CategoriesResponse else { return }
             
-            self.bins = categories.category
-            self.separateTableView.reloadData()
+            guard let result = response as? NetworkResult<Any> else { return }
+            
+            switch result {
+            case .success(let data):
+                guard let result = data as? GeneralResponse<CategoriesResponse> else { return }
+                    
+                self.bins = result.data?.category ?? []
+                self.separateTableView.reloadData()
+                
+            case .requestErr, .pathErr, .serverErr, .networkFail:
+                /// 네트워크 에러 처리
+                print("error")
+            }
         }
     }
 }

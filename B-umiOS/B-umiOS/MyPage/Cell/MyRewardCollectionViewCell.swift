@@ -8,7 +8,7 @@
 import UIKit
 
 class MyRewardCollectionViewCell: UICollectionViewCell {
-    static let identifier = "MyRewardCollectionViewCell"
+    // MARK: - UIComponenets
     
     private lazy var myRewardView = UIImageView().then {
         $0.image = UIImage(named: "")
@@ -31,8 +31,10 @@ class MyRewardCollectionViewCell: UICollectionViewCell {
     }
 
     // MARK: - Properties
-
+    
+    static let identifier = "MyRewardCollectionViewCell"
     var myRewardBackground: [String] = ["0","1","2","3","4","5","6","7"]
+    
     // MARK: - Initializer
     
     override init(frame: CGRect) {

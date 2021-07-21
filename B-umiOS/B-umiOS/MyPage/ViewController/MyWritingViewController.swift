@@ -37,7 +37,7 @@ class MyWritingViewController: UIViewController {
     }()
     
     var errorView = UIImageView().then {
-        $0.image = UIImage(named: "group192")
+        $0.image = UIImage.group192
         $0.isHidden = true
     }
     
@@ -79,7 +79,8 @@ class MyWritingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setConstraint()
+        
+        setConstraints()
         addObservers()
     }
     
@@ -92,9 +93,13 @@ class MyWritingViewController: UIViewController {
     // MARK: - Methods
     
     func fatchWriting() {
+        ActivityIndicator.shared.startLoadingAnimation()
+        
         WritingService.shared.fatchWriting { response in
-            guard let r = response as? NetworkResult<Any> else { return }
-            switch r {
+            ActivityIndicator.shared.stopLoadingAnimation()
+            
+            guard let result = response as? NetworkResult<Any> else { return }
+            switch result {
             case .success(let data):
                 guard let wiritingData = data as? GeneralResponse<WritingsResponse> else { return }
                 
@@ -122,7 +127,7 @@ class MyWritingViewController: UIViewController {
         }
     }
     
-    func setConstraint() {
+    func setConstraints() {
         view.addSubviews([myWritingCollectionView, errorView, errorLabel])
         myWritingCollectionView.snp.makeConstraints { make in
             make.top.equalToSuperview()

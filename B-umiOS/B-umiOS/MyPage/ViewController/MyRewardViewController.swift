@@ -24,26 +24,28 @@ class MyRewardViewController: UIViewController {
     }()
     
     var errorView = UIImageView().then {
-        $0.image = UIImage(named: "group192")
+        $0.image = UIImage.group192
         $0.isHidden = true
     }
     
     var errorLabel = UILabel().then {
         $0.font = .nanumSquareFont(type: .regular, size: 14)
         $0.textColor = .textGray
-        $0.text = "dlkslfhiwalgnlkwrg"
+        $0.text = "error"
         $0.isHidden = true
     }
     
     // MARK: - Properties
     
     var myReward: [Reward] = []
+    
     // MARK: - Initializer
+    
     // MARK: - LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setConstraint()
+        setConstraints()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,14 +53,18 @@ class MyRewardViewController: UIViewController {
     }
     
     // MARK: - Actions
+    
     // MARK: - Methods
     
     func fetchRewardsData() {
         ActivityIndicator.shared.startLoadingAnimation()
-        RewardService.shared.fatchRewardsData { result in
+        
+        RewardService.shared.fetchRewardsData { response in
             ActivityIndicator.shared.stopLoadingAnimation()
-            guard let rewards = result as? NetworkResult<Any> else { return }
-            switch rewards {
+            
+            guard let result = response as? NetworkResult<Any> else { return }
+            
+            switch result {
             case .success(let data):
                 self.errorView.isHidden = true
                 self.errorLabel.isHidden = true
@@ -82,7 +88,7 @@ class MyRewardViewController: UIViewController {
         }
     }
     
-    func setConstraint(){
+    func setConstraints(){
         view.addSubviews([myRewardCollectionView, errorView, errorLabel])
         myRewardCollectionView.snp.makeConstraints { make in
             make.top.equalToSuperview()
@@ -98,8 +104,10 @@ class MyRewardViewController: UIViewController {
             make.centerX.equalToSuperview()
         }
     }
+    
     // MARK: - Protocols
 }
+
 // MARK: - Extension
 
 extension MyRewardViewController : UICollectionViewDataSource {

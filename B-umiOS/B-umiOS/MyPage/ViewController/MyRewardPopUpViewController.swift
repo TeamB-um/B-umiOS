@@ -19,7 +19,7 @@ class MyRewardPopUpViewController: UIViewController {
     private lazy var closeButton = UIButton(primaryAction: UIAction(handler: { _ in
         self.dismiss(animated: true, completion: nil)
     })).then {
-        $0.setImage(UIImage(named: "btnCloseBlack"), for: .normal)
+        $0.setImage(UIImage.btnCloseBlack, for: .normal)
         $0.tintColor = .white
     }
     
@@ -53,7 +53,7 @@ class MyRewardPopUpViewController: UIViewController {
     }
     
     private var logoImage = UIImageView().then {
-        $0.image = UIImage(named: "group163")
+        $0.image = UIImage.group163
     }
     
     // MARK: - Properties
@@ -82,6 +82,11 @@ class MyRewardPopUpViewController: UIViewController {
     // MARK: - Actions
     
     // MARK: - Methods
+    
+    func setView() {
+        view.layer.backgroundColor = UIColor.black.withAlphaComponent(0.5).cgColor
+    }
+    
     func setMyRewardData(reward: Reward) {
         let writtenDate = Date().ISOStringToDate(date: reward.createdDate ?? "")
         let date = Date().ISODateToString(format: "yyyy.MM.dd(E)", date: writtenDate)
@@ -152,10 +157,6 @@ class MyRewardPopUpViewController: UIViewController {
             make.bottom.equalToSuperview().inset(28 * SizeConstants.screenRatio)
         }
         
-    }
-    
-    func setView() {
-        view.layer.backgroundColor = UIColor.black.withAlphaComponent(0.5).cgColor
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

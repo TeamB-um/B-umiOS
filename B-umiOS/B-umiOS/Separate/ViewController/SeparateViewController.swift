@@ -21,7 +21,7 @@ class SeparateViewController: UIViewController {
     }
     
     let graphButton = UIButton().then {
-        $0.setImage(UIImage(named: "btnGraph"), for: .normal)
+        $0.setImage(UIImage.btnGraph, for: .normal)
         $0.addTarget(self, action: #selector(didTapGraphButton), for: .touchUpInside)
     }
     
@@ -53,7 +53,7 @@ class SeparateViewController: UIViewController {
         
         setView()
         setCollectionView()
-        setConstraint()
+        setConstraints()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -91,13 +91,19 @@ class SeparateViewController: UIViewController {
     
     func fetchCategoriesData() {
         ActivityIndicator.shared.startLoadingAnimation()
-        CategoryService.shared.fetchCategories { result in
+        
+        CategoryService.shared.fetchCategories { response in
             ActivityIndicator.shared.stopLoadingAnimation()
-
-            guard let categories = result as? CategoriesResponse else { return }
             
-            self.tag = categories.category
-            self.separateCollectionView.reloadData()
+            guard let result = response as? NetworkResult<Any> else { return }
+            
+            switch result {
+            case .success(let data):
+                guard let result = data as? GeneralResponse<CategoriesResponse> else { return }
+                self.tag = result.data?.category ?? []
+                self.separateCollectionView.reloadData()
+            case .requestErr, .pathErr, .serverErr, .networkFail: break
+            }
         }
     }
     

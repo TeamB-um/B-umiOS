@@ -38,7 +38,7 @@ class HomeViewController: UIViewController {
     }
     
     let arrowImage = UIImageView().then {
-        $0.image = UIImage(named: "homeAreaTrashbin")
+        $0.image = UIImage.homeAreaTrashbin
     }
     
     lazy var trashBinButton = UIButton().then {
@@ -79,7 +79,7 @@ class HomeViewController: UIViewController {
     }
     
     let whiteShadowView = UIImageView().then {
-        $0.image = UIImage(named: "bgElementsStroke")
+        $0.image = UIImage.bgElementsStroke
         $0.isHidden = true
     }
     
@@ -133,7 +133,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         setView()
-        setConstraint()
+        setConstraints()
         configureInitAnimate()
     }
     

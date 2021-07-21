@@ -65,7 +65,7 @@ class PeriodPopUpViewController: UIViewController {
         pickerView.dataSource = self
         
         setView()
-        setConstraint()
+        setConstraints()
     }
 
     // MARK: - Actions
@@ -75,17 +75,17 @@ class PeriodPopUpViewController: UIViewController {
         let userInfo = UserInfo(isPush: nil, deletePeriod: deletePeriod)
         
         ActivityIndicator.shared.startLoadingAnimation()
+        
         UserService.shared.updateUserInfo(userInfo: userInfo) { response in
             ActivityIndicator.shared.stopLoadingAnimation()
+            
             guard let result = response as? NetworkResult<Any> else { return }
             
             switch result {
             case .success(let data):
                 if let userInfoResponse = data as? GeneralResponse<UserResponse>,
-                   let newUserInfo = userInfoResponse.data?.user
-                {
+                   let newUserInfo = userInfoResponse.data?.user {
                     UserDefaults.standard.set(newUserInfo.deletePeriod, forKey: UserDefaults.Keys.deletePeriod)
-                    
                     self.popupdelegate?.sendPeriod(period: deletePeriod)
                 }
             case .requestErr, .pathErr, .serverErr, .networkFail:
@@ -114,7 +114,7 @@ class PeriodPopUpViewController: UIViewController {
         pickerView.selectRow(deletePeriod, inComponent: 0, animated: true)
     }
     
-    func setConstraint() {
+    func setConstraints() {
         view.addSubviews([backgroundButton, popupView])
         
         popupView.snp.makeConstraints { make in

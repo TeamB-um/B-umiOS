@@ -27,7 +27,7 @@ class SeparateDetailTableViewCell: UITableViewCell {
     }
     
     lazy var checkButton = UIButton().then {
-        $0.setImage(UIImage(named: "btnCheckEmpty"), for: .normal)
+        $0.setImage(UIImage.btnCheckEmpty, for: .normal)
     }
     
     // MARK: - Properites
@@ -37,9 +37,9 @@ class SeparateDetailTableViewCell: UITableViewCell {
     override var isSelected: Bool {
         didSet {
             if isSelected {
-                checkButton.setImage(UIImage(named: "btnCheckColor"), for: .normal)
+                checkButton.setImage(UIImage.btnCheckColor, for: .normal)
             } else {
-                checkButton.setImage(UIImage(named: "btnCheckEmpty"), for: .normal)
+                checkButton.setImage(UIImage.btnCheckEmpty, for: .normal)
             }
         }
     }
@@ -49,9 +49,9 @@ class SeparateDetailTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        self.setView()
+        setView()
         contentView.addSubview(mainView)
-        setConstraint()
+        setConstraints()
     }
 
     @available(*, unavailable)
@@ -67,7 +67,8 @@ class SeparateDetailTableViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.setConstraint()
+        
+        self.setConstraints()
     }
     
     func setData(title: String, contents : String){
@@ -79,7 +80,7 @@ class SeparateDetailTableViewCell: UITableViewCell {
         self.contentView.backgroundColor = .background
     }
     
-    func setConstraint(){
+    func setConstraints(){
         mainView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(16 * SizeConstants.screenRatio)
             make.top.bottom.equalToSuperview().inset(8 * SizeConstants.screenRatio)

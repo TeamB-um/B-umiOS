@@ -8,6 +8,7 @@ import SnapKit
 import UIKit
 
 class RoundingButton: UIButton {
+    // MARK: - UIComponenets
     
     private let buttonTitle: UILabel = {
         let label = UILabel()
@@ -45,10 +46,16 @@ class RoundingButton: UIButton {
         isSelected.toggle()
     }
     
+    // MARK: - Initializer
+    
+    // MARK: - LifeCycle
+    
     override func layoutSubviews() {
         super.layoutSubviews()
     }
     
+    // MARK: - Methods
+
     func setupRoundingButton(title: String, image: String) {
         let labelSize = buttonTitle.calculateLabelSize(text: title, font: buttonTitle.font)
 

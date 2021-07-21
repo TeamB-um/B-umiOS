@@ -28,9 +28,10 @@ class ThrowTrashViewController: UIViewController {
     lazy var backButton = UIButton(type: .custom, primaryAction: UIAction(handler: { _ in
         self.navigationController?.popViewController(animated: true)
     })).then {
-        $0.setImage(UIImage(named: "btnBack")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        $0.setImage(UIImage.btnBack.withRenderingMode(.alwaysTemplate), for: .normal)
         $0.tintColor = .white
     }
+    
     
     lazy var backgroudImage = UIImageView().then {
         $0.image = UIImage(named: "img_\(self.trashType)")
@@ -43,7 +44,7 @@ class ThrowTrashViewController: UIViewController {
     }
     
     let explanationImage = UIImageView().then {
-        $0.image = UIImage(named: "toastPaper1")
+        $0.image = UIImage.toastPaper1
     }
     
     lazy var explanationLabel = UILabel().then {
@@ -63,7 +64,7 @@ class ThrowTrashViewController: UIViewController {
     }
     
     lazy var trash = UIImageView().then {
-        $0.image = UIImage(named: "imgWritingPaper")
+        $0.image = UIImage.imgWritingPaper
         $0.isUserInteractionEnabled = true
         $0.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:))))
     }
@@ -115,12 +116,16 @@ class ThrowTrashViewController: UIViewController {
                 throwAwayTrash()
                 
                 ActivityIndicator.shared.startLoadingAnimation()
-                WritingService.shared.createWriting(writing: writing) { result in
+                
+                WritingService.shared.createWriting(writing: writing) { response in
                     ActivityIndicator.shared.stopLoadingAnimation()
-                    if result {
+                    
+                    guard let result = response as? NetworkResult<Any> else { return }
+                    
+                    switch result {
+                    case .success( _ ):
                         self.showToast()
-                    } else {
-                        /// 네트워크 실패 토스트 띄우기
+                    case .requestErr, .pathErr, .serverErr, .networkFail:
                         self.navigationController?.popViewController(animated: true)
                     }
                 }

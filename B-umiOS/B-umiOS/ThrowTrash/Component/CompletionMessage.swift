@@ -34,7 +34,7 @@ class CompletionMessage: UIView {
         super.init(frame: .zero)
         
         setView()
-        setConstraint()
+        setConstraints()
     }
     
     @available(*, unavailable)
@@ -52,7 +52,7 @@ class CompletionMessage: UIView {
         backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
     }
     
-    func setConstraint() {
+    func setConstraints() {
         addSubviews([logoImage, messageLabel])
         
         logoImage.snp.makeConstraints { make in

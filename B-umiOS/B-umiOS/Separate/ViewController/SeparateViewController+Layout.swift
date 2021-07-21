@@ -8,16 +8,14 @@
 import UIKit
 
 extension SeparateViewController {
-    func setConstraint(){
-        let navigationHeight = 56 + UIDevice.current.safeAreaInset.top
-        
-        self.view.addSubviews([navigationView, navigationDividerView,separateCollectionView])
+    func setConstraints(){
+        view.addSubviews([navigationView, navigationDividerView,separateCollectionView])
         
         navigationView.addSubviews([navigationLabel, graphButton])
         
         navigationView.snp.makeConstraints { make in
             make.top.width.equalToSuperview()
-            make.height.equalTo(navigationHeight * SizeConstants.screenRatio)
+            make.height.equalTo(SizeConstants.navigationHeight * SizeConstants.screenRatio)
         }
         
         navigationLabel.snp.makeConstraints { make in

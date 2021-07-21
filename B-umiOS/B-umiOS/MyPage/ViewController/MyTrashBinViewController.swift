@@ -20,7 +20,7 @@ class MyTrashBinViewController: UIViewController {
     }
     
     private var headerGardientBackground = UIImageView().then {
-        $0.image = UIImage(named: "mywritingTrashbinBgGradientTop")
+        $0.image = UIImage.mywritingTrashbinBgGradientTop
     }
     
     lazy var detailTableView = UITableView().then {
@@ -30,7 +30,7 @@ class MyTrashBinViewController: UIViewController {
     }
 
     var errorView = UIImageView().then {
-        $0.image = UIImage(named: "group192")
+        $0.image = UIImage.group192
         $0.isHidden = true
     }
     
@@ -47,7 +47,7 @@ class MyTrashBinViewController: UIViewController {
     }
     
     var gradientView = UIImageView().then {
-        $0.image = UIImage(named: "mywritingTrashbinBgGradientBottom")
+        $0.image = UIImage.mywritingTrashbinBgGradientBottom
     }
 
     // MARK: - Properties
@@ -90,10 +90,12 @@ class MyTrashBinViewController: UIViewController {
     // MARK: - Methods
     func fetchTrashBinData(){
         ActivityIndicator.shared.startLoadingAnimation()
+        
         TrashCanService.shared.fatchTrashCanData { response in
             ActivityIndicator.shared.stopLoadingAnimation()
-            guard let r = response as? NetworkResult<Any> else { return }
-            switch r {
+            
+            guard let result = response as? NetworkResult<Any> else { return }
+            switch result {
             case .success(let data):
                 
                 self.errorView.isHidden = true
@@ -164,6 +166,7 @@ class MyTrashBinViewController: UIViewController {
             make.leading.trailing.equalToSuperview()
         }
     }
+    
     // MARK: - Protocols
 }
 

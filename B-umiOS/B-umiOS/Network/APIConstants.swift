@@ -18,7 +18,7 @@ struct APIConstants {
 
     /// category API
     static let categoryURL = APIConstants.baseURL + "/categories"
-    static let categoryGraphURL = APIConstants.writingURL + "/stat/graph" ///나중에 url 변경
+    static let categoryGraphURL = APIConstants.writingURL + "/stat/graph"
     
 
     /// writing API

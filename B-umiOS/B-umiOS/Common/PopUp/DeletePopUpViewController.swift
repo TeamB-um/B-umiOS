@@ -108,8 +108,10 @@ class DeletePopUpViewController: UIViewController {
         switch kind {
         case .writing:
             ActivityIndicator.shared.startLoadingAnimation()
+            
             WritingService.shared.deleteWriting(writings: query) { response in
                 ActivityIndicator.shared.stopLoadingAnimation()
+                
                 guard let result = response as? NetworkResult<Any> else { return }
 
                 switch result {
@@ -123,8 +125,10 @@ class DeletePopUpViewController: UIViewController {
             }
         case .separate:
             ActivityIndicator.shared.startLoadingAnimation()
+            
             CategoryService.shared.deleteCategory(id: query) { response in
                 ActivityIndicator.shared.stopLoadingAnimation()
+                
                 guard let result = response as? NetworkResult<Any> else { return }
                 
                 switch result {

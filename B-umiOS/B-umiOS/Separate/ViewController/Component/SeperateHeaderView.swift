@@ -29,17 +29,18 @@ class SeperateHeaderView: UICollectionReusableView {
     }
     
     let seperateImage = UIImageView().then {
-        $0.image = UIImage(named: "toastPaper1")
+        $0.image = UIImage.toastPaper1
     }
     
     let gardientBackground = UIImageView().then {
-        $0.image = UIImage(named: "separateBgGradientTop")
+        $0.image = UIImage.separateBgGradientTop
     }
     
     // MARK: - Properties
     
-    // MARK: - Initializer
     static let identifier = "SeperateSectionView"
+    
+    // MARK: - Initializer
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -50,17 +51,16 @@ class SeperateHeaderView: UICollectionReusableView {
     }
     
     // MARK: - Actions
-  
-  
-    
+
     // MARK: - Methods
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        setConstraint()
+        
+        setConstraints()
     }
         
-    func setConstraint(){
+    func setConstraints(){
         self.addSubviews([gardientBackground, explanationView])
         
         gardientBackground.snp.makeConstraints { make in

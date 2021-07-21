@@ -39,8 +39,9 @@ class GraphComponentView: UIView {
         }
         
         super.init(frame: .init(x: 0, y: 0, width: 300 * SizeConstants.screenWidth, height: 46 * SizeConstants.screenRatio))
+        
         setView()
-        setConstraint()
+        setConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -55,7 +56,7 @@ class GraphComponentView: UIView {
     
     }
     
-    func setConstraint(){
+    func setConstraints(){
         self.addSubviews([circle, categoryName, percent])
 
         circle.snp.makeConstraints { make in

@@ -9,8 +9,6 @@ import UIKit
 
 extension ThrowTrashViewController {
     func setConstraints() {
-        let navigationHeight = 56 + UIDevice.current.safeAreaInset.top
-        
         navigationView.addSubviews([navigationLabel, backButton])
         explanationView.addSubviews([explanationImage, explanationLabel])
         view.addSubviews([backgroudImage, navigationView, explanationView, trash, trashBin, guideLabel])
@@ -32,7 +30,7 @@ extension ThrowTrashViewController {
 
         navigationView.snp.makeConstraints { make in
             make.top.width.equalToSuperview()
-            make.height.equalTo(navigationHeight * SizeConstants.screenRatio)
+            make.height.equalTo(SizeConstants.navigationHeight * SizeConstants.screenRatio)
         }
         
         explanationView.snp.makeConstraints { make in

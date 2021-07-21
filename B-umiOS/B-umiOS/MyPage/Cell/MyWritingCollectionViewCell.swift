@@ -11,8 +11,6 @@ import UIKit
 class MyWritingCollectionViewCell: UICollectionViewCell {
     // MARK: - UIComponenets
     
-    static let identifier = "MyWritingCollectionViewCell"
-    
     private let categoryTitle: UILabel = {
         let label = UILabel()
         label.font = .nanumSquareFont(type: .regular, size: 14)
@@ -39,17 +37,19 @@ class MyWritingCollectionViewCell: UICollectionViewCell {
     }()
     
     let emptyCheckButton = UIButton().then {
-        $0.setImage(UIImage(named: "btnCheckEmpty"), for: .normal)
+        $0.setImage(UIImage.btnCheckEmpty, for: .normal)
         $0.isHidden = true
     }
+    
     // MARK: - Properties
-
+    static let identifier = "MyWritingCollectionViewCell"
+    
     override var isSelected: Bool {
         didSet {
             if isSelected {
-                emptyCheckButton.setImage(UIImage(named: "btnCheckColor"), for: .normal)
+                emptyCheckButton.setImage(UIImage.btnCheckColor, for: .normal)
             } else {
-                emptyCheckButton.setImage(UIImage(named: "btnCheckEmpty"), for: .normal)
+                emptyCheckButton.setImage(UIImage.btnCheckEmpty, for: .normal)
             }
         }
     }
@@ -72,7 +72,7 @@ class MyWritingCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Methods
     
-    func setConstraint() {
+    func setConstraints() {
         categoryTitle.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(16)
             make.leading.trailing.equalToSuperview().inset(17)
@@ -110,7 +110,7 @@ class MyWritingCollectionViewCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        setConstraint()
+        setConstraints()
     }
     
     // MARK: - Protocols

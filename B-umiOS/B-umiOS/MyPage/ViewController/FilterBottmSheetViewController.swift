@@ -151,7 +151,7 @@ class FilterBottmSheetViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setView()
-        setConstraint()
+        setConstraints()
         setFirstDatePicker()
     }
     
@@ -163,11 +163,20 @@ class FilterBottmSheetViewController: UIViewController {
     
     func fetchCategoriesData() {
         ActivityIndicator.shared.startLoadingAnimation()
-        CategoryService.shared.fetchCategories { result in
+        
+        CategoryService.shared.fetchCategories { response in
             ActivityIndicator.shared.stopLoadingAnimation()
-            guard let categories = result as? CategoriesResponse else { return }
-            self.tag = categories.category
-            self.categoryTagCollecitonView.reloadData()
+            
+            guard let result = response as? NetworkResult<Any> else { return }
+            
+            switch result {
+            case .success(let data):
+                guard let result = data as? GeneralResponse<CategoriesResponse> else { return }
+                self.tag = result.data?.category ?? []
+                self.categoryTagCollecitonView.reloadData()
+            case .requestErr, .pathErr, .serverErr, .networkFail:
+                print("error")
+            }
         }
     }
     
@@ -247,15 +256,16 @@ class FilterBottmSheetViewController: UIViewController {
         }
         
         ActivityIndicator.shared.startLoadingAnimation()
-        WritingService.shared.filterWritings(start_date: startDate, end_date: endDate, category_id: categoryID) { result in
+        
+        WritingService.shared.filterWritings(start_date: startDate, end_date: endDate, category_id: categoryID) { response in
             ActivityIndicator.shared.stopLoadingAnimation()
             
-            guard let r = result as? NetworkResult<Any> else { return }
-            switch r {
-            case .success(let response):
-                guard let data = response as? GeneralResponse<WritingsResponse> else { return }
+            guard let result = response as? NetworkResult<Any> else { return }
+            switch result {
+            case .success(let data):
+                guard let result = data as? GeneralResponse<WritingsResponse> else { return }
                 
-                if let d = data.data?.writing {
+                if let d = result.data?.writing {
                     self.delegate = self.parentDelegate
                     self.delegate?.changeWitingData(filteredDate: d)
                     self.dismiss(animated: true, completion: {
@@ -287,7 +297,7 @@ class FilterBottmSheetViewController: UIViewController {
         view.backgroundColor = .clear
     }
     
-    func setConstraint() {
+    func setConstraints() {
         view.addSubviews([backgroundButton, popupView])
         popupView.addSubviews([rect, categoryTagCollecitonView, categoryLabel, settingPeriodView, setDateLabel, dateSwitch, confirmButton])
         settingPeriodView.addSubviews([datePickerView, startDateButton, endDateButton, startDateLine, endDateLine, startLabel, endLabel])

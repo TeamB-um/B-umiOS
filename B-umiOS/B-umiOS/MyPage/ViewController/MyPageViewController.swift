@@ -65,6 +65,7 @@ class MyPageViewController: UIViewController {
     let menu = ["글", "리워드", "삭제함"]
     let subViewControllers: [UIViewController] = [MyWritingViewController(), MyRewardViewController(), MyTrashBinViewController()]
     let myPageMenuCellLineSpacing: CGFloat = 39.0
+    
     // MARK: - Initializer
 
     // MARK: - LifeCycle
@@ -72,7 +73,7 @@ class MyPageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setConstraint()
+        setConstraints()
         setCollectionView()
     }
 
@@ -85,7 +86,7 @@ class MyPageViewController: UIViewController {
         collectionView(myPageMenuCollectionView, didSelectItemAt: IndexPath(row: 0, section: 0))
     }
 
-    func setConstraint() {
+    func setConstraints() {
         view.addSubviews([myPageMenuCollectionView, indicatorBarView, menuSectionCollectionView])
 
         let labelSize = calcLabelSize(text: menu[0])
@@ -167,10 +168,6 @@ extension MyPageViewController: UICollectionViewDelegateFlowLayout {
         let height = UIScreen.main.bounds.height - (size.height + 26 + 3 + view.safeAreaInsets.top)
         return CGSize(width: UIScreen.main.bounds.width, height: floor(height))
     }
-    
-//    func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: <#T##String#>, for: <#T##IndexPath#>)
-//    }
 }
 
 extension MyPageViewController: UICollectionViewDataSource {

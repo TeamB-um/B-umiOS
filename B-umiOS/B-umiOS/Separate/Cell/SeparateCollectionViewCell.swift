@@ -8,11 +8,10 @@
 import UIKit
 
 class SeparateCollectionViewCell: UICollectionViewCell {
-    
     // MARK: - UIComponenets
     
     var separateImage = UIImageView().then {
-        $0.image = UIImage(named: "btnCheck")
+        $0.image = UIImage.btnCheck
     }
     
     var separateName = UILabel().then {
@@ -30,8 +29,9 @@ class SeparateCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setConstraint()
-        self.backgroundColor = .background
+        
+        setView()
+        setConstraints()
         isSelected = false
     }
     
@@ -49,12 +49,17 @@ class SeparateCollectionViewCell: UICollectionViewCell {
     // MARK: - Actions
     
     // MARK: - Methods
+    
+    func setView(){
+        self.backgroundColor = .background
+    }
+    
     func setData(name : String, index: Int, count: Int){
         self.separateName.text = name
         
         if(name == "추가하기"){
             self.separateName.textColor = UIColor.textGray
-            self.separateImage.image = UIImage(named: "group174")
+            self.separateImage.image = UIImage.group174
         }
         else{
             self.separateName.textColor = SeparateStyle.color[index]
@@ -62,7 +67,7 @@ class SeparateCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func setConstraint(){
+    func setConstraints(){
         self.contentView.addSubviews([separateImage, separateName])
 
         let screenSize = UIScreen.main.bounds

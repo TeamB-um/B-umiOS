@@ -27,7 +27,7 @@ class SeparateGraphPopUpViewController: UIViewController {
     }
     
     let closeButton = UIButton().then {
-        $0.setImage(UIImage(named: "btnCloseBlack"), for: .normal)
+        $0.setImage(UIImage.btnCloseBlack, for: .normal)
         $0.addTarget(self, action: #selector(closeView(_:)), for: .touchUpInside)
     }
     lazy var monthGraphView = GraphView(title: "월간", sub: "한 달 내 카테고리별").then {
@@ -62,7 +62,7 @@ class SeparateGraphPopUpViewController: UIViewController {
         super.viewDidLoad()
         
         setView()
-        setConstraint()
+        setConstraints()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -78,7 +78,7 @@ class SeparateGraphPopUpViewController: UIViewController {
     // MARK: - Methods
     
     func setView(){
-        self.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+        view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
     }
     
     func fetchCategoryGraph(){

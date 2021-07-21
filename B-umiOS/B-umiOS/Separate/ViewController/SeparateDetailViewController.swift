@@ -21,7 +21,7 @@ class SeparateDetailViewController: UIViewController {
     }
     
     var backButton = UIButton().then {
-        $0.setImage(UIImage(named: "btnBack"), for: .normal)
+        $0.setImage(UIImage.btnBack, for: .normal)
         $0.addTarget(self, action: #selector(didTapBackButton), for: .touchUpInside)
     }
     
@@ -49,7 +49,7 @@ class SeparateDetailViewController: UIViewController {
     }
     
     let gardientBackground = UIImageView().then {
-        $0.image = UIImage(named: "mywritingTrashbinBgGradientTop")
+        $0.image = UIImage.mywritingTrashbinBgGradientTop
     }
     
     lazy var detailTableView = UITableView().then {
@@ -72,7 +72,7 @@ class SeparateDetailViewController: UIViewController {
         super.viewDidLoad()
         setView()
         setTableView()
-        setConstraint()
+        setConstraints()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -124,14 +124,14 @@ class SeparateDetailViewController: UIViewController {
     
     func fetchWritings() {
         ActivityIndicator.shared.startLoadingAnimation()
-        CategoryService.shared.fetchWritings(categories: categoryID!) { result in
+        CategoryService.shared.fetchWritingsByCategory(categories: categoryID!) { response in
             ActivityIndicator.shared.stopLoadingAnimation()
-            guard let r = result as? NetworkResult<Any> else { return }
+            guard let result = response as? NetworkResult<Any> else { return }
       
-            switch r {
-            case .success(let response):
-                guard let w = response as? GeneralResponse<WritingsResponse> else { return }
-                self.writings = w.data?.writing ?? []
+            switch result {
+            case .success(let data):
+                guard let result = data as? GeneralResponse<WritingsResponse> else { return }
+                self.writings = result.data?.writing ?? []
                 self.detailTableView.reloadData()
             default:
                 break
