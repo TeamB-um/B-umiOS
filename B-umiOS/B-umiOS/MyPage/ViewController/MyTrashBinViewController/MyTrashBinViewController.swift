@@ -10,16 +10,16 @@ import UIKit
 class MyTrashBinViewController: UIViewController {
     // MARK: - UIComponenets
     
-    private var settingButton = RoundingButton().then {
+    var settingButton = RoundingButton().then {
         $0.setupRoundingButton(title: "설정", image: "settings")
         $0.addTarget(self, action: #selector(didTapSettingButton), for: .touchUpInside)
     }
     
-    private var headerView = UIView().then {
+    var headerView = UIView().then {
         $0.backgroundColor = .clear
     }
     
-    private var headerGardientBackground = UIImageView().then {
+    var headerGardientBackground = UIImageView().then {
         $0.image = UIImage.mywritingTrashbinBgGradientTop
     }
     
@@ -134,75 +134,5 @@ class MyTrashBinViewController: UIViewController {
         detailTableView.register(MyTrashBinTableViewCell.self, forCellReuseIdentifier: MyTrashBinTableViewCell.identifier)
     }
     
-    func setConstraint(){
-        view.addSubviews([detailTableView, errorView, errorLabel, gradientView])
-        headerView.addSubviews([headerGardientBackground, settingButton])
-        
-        errorView.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(243 * SizeConstants.screenRatio)
-            make.centerX.equalToSuperview()
-        }
-        
-        errorLabel.snp.makeConstraints { make in
-            make.top.equalTo(errorView.snp.bottom).inset(10)
-            make.centerX.equalToSuperview()
-        }
-
-        headerGardientBackground.snp.makeConstraints { make in
-            make.top.leading.trailing.bottom.equalToSuperview()
-        }
-        settingButton.snp.makeConstraints { make in
-            make.trailing.equalToSuperview().inset(16 * SizeConstants.screenRatio)
-            make.centerY.equalToSuperview()
-        }
-
-        detailTableView.snp.makeConstraints { make in
-            make.top.leading.trailing.equalToSuperview()
-            make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
-        }
-        
-        gradientView.snp.makeConstraints { make in
-            make.bottom.equalToSuperview()
-            make.leading.trailing.equalToSuperview()
-        }
-    }
-    
     // MARK: - Protocols
-}
-
-// MARK: - UITableViewDelegate
-
-extension MyTrashBinViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        headerView
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        72 * SizeConstants.screenRatio
-    }
-}
-
-// MARK: - UITableViewDataSource
-
-extension MyTrashBinViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return myTrashCan.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: MyTrashBinTableViewCell.identifier, for: indexPath) as? MyTrashBinTableViewCell else {
-            return UITableViewCell()
-        }
-        cell.setTrashBinData(data: myTrashCan, index: indexPath.row)
-        return cell
-    }
-}
-
-// MARK: - Extension
-
-extension MyTrashBinViewController: viewDelegate {
-    func backgroundRemove() {
-        backgroundView.removeFromSuperview()
-    }
 }

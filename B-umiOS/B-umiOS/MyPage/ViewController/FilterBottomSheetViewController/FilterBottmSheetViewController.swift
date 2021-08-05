@@ -11,13 +11,13 @@ import UIKit
 class FilterBottmSheetViewController: UIViewController {
     // MARK: - UIComponenets
     
-    private let popupView = UIView().then {
+    let popupView = UIView().then {
         $0.cornerRound(radius: 10)
         $0.backgroundColor = .white
         $0.layer.maskedCorners = CACornerMask(arrayLiteral: .layerMinXMinYCorner, .layerMaxXMinYCorner)
     }
     
-    private let confirmButton = UIButton().then {
+    let confirmButton = UIButton().then {
         $0.cornerRound(radius: 10)
         $0.backgroundColor = .blue2Main
         $0.tintColor = .white
@@ -25,7 +25,7 @@ class FilterBottmSheetViewController: UIViewController {
         $0.addTarget(self, action: #selector(didTapConfirmButton(_:)), for: .touchUpInside)
     }
     
-    private lazy var categoryTagCollecitonView: UICollectionView = {
+    lazy var categoryTagCollecitonView: UICollectionView = {
         var layout = CollectionViewLeftAlignFlowLayout()
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -37,18 +37,18 @@ class FilterBottmSheetViewController: UIViewController {
         return collectionView
     }()
     
-    private lazy var categoryLabel = UILabel().then {
+    lazy var categoryLabel = UILabel().then {
         $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 20)
         $0.textColor = .header
         $0.text = "카테고리"
     }
     
-    private var settingPeriodView = UIView().then {
+    var settingPeriodView = UIView().then {
         $0.backgroundColor = .clear
         $0.clipsToBounds = true
     }
     
-    private var datePickerView: UIDatePicker = {
+    var datePickerView: UIDatePicker = {
         var picker = UIDatePicker()
         picker.datePickerMode = .date
         picker.preferredDatePickerStyle = .wheels
@@ -68,7 +68,7 @@ class FilterBottmSheetViewController: UIViewController {
         return picker
     }()
     
-    private lazy var startDateButton = UIButton().then {
+    lazy var startDateButton = UIButton().then {
         $0.backgroundColor = .clear
         $0.setTitleColor(.iconGray, for: .normal)
         $0.contentHorizontalAlignment = .left
@@ -76,25 +76,25 @@ class FilterBottmSheetViewController: UIViewController {
         $0.isHidden = true
     }
     
-    private var startDateLine = UIView()
+    var startDateLine = UIView()
     
-    private var endDateLine = UIView()
+    var endDateLine = UIView()
     
-    private var startLabel = UILabel().then {
+    var startLabel = UILabel().then {
         $0.font = UIFont.nanumSquareFont(type: .regular, size: 14)
         $0.textColor = .green2Main
         $0.text = "시작"
         $0.isHidden = true
     }
     
-    private var endLabel = UILabel().then {
+    var endLabel = UILabel().then {
         $0.font = UIFont.nanumSquareFont(type: .regular, size: 14)
         $0.textColor = .iconGray
         $0.text = "끝"
         $0.isHidden = true
     }
     
-    private lazy var endDateButton = UIButton().then {
+    lazy var endDateButton = UIButton().then {
         $0.backgroundColor = .clear
         $0.setTitleColor(.iconGray, for: .normal)
         $0.contentHorizontalAlignment = .left
@@ -102,24 +102,24 @@ class FilterBottmSheetViewController: UIViewController {
         $0.isHidden = true
     }
     
-    private lazy var setDateLabel = UILabel().then {
+    lazy var setDateLabel = UILabel().then {
         $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 20)
         $0.textColor = .header
         $0.text = "기간 설정"
     }
     
-    private var dateSwitch = UISwitch().then {
+    var dateSwitch = UISwitch().then {
         $0.isOn = false
         $0.onTintColor = .green2Main
         $0.addTarget(self, action: #selector(didTapSwitch(_:)), for: .touchUpInside)
     }
     
-    private let rect = UIView().then {
+    let rect = UIView().then {
         $0.backgroundColor = .paper1
         $0.cornerRound(radius: 5)
     }
     
-    private let backgroundButton = UIButton().then {
+    let backgroundButton = UIButton().then {
         $0.addTarget(self, action: #selector(didTapBackgroundButton(_:)), for: .touchUpInside)
         $0.backgroundColor = .clear
     }
@@ -297,102 +297,6 @@ class FilterBottmSheetViewController: UIViewController {
         view.backgroundColor = .clear
     }
     
-    func setConstraints() {
-        view.addSubviews([backgroundButton, popupView])
-        popupView.addSubviews([rect, categoryTagCollecitonView, categoryLabel, settingPeriodView, setDateLabel, dateSwitch, confirmButton])
-        settingPeriodView.addSubviews([datePickerView, startDateButton, endDateButton, startDateLine, endDateLine, startLabel, endLabel])
-        
-        backgroundButton.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-        
-        popupView.snp.makeConstraints { make in
-            make.bottom.equalToSuperview()
-            make.top.equalTo(setDateLabel.snp.top).offset(-40)
-            make.leading.trailing.equalToSuperview()
-        }
-        
-        rect.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(10)
-            make.width.equalToSuperview().multipliedBy(65.0/375.0)
-            make.centerX.equalToSuperview()
-            make.height.equalTo(6 * SizeConstants.screenRatio)
-        }
-        confirmButton.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(24)
-            make.bottom.equalToSuperview().inset(42)
-            make.height.equalTo(50)
-        }
-        
-        categoryTagCollecitonView.snp.makeConstraints { make in
-            make.height.equalTo(180)
-            make.bottom.equalTo(confirmButton.snp.top).offset(30)
-            make.leading.trailing.equalTo(confirmButton)
-        }
-        
-        categoryLabel.snp.makeConstraints { make in
-            make.bottom.equalTo(categoryTagCollecitonView.snp.top).offset(-22)
-            make.leading.equalTo(confirmButton)
-        }
-        
-        settingPeriodView.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(16)
-            make.bottom.equalTo(categoryLabel.snp.top).offset(-34)
-            make.height.equalTo(0)
-        }
-        
-        startLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview()
-            make.leading.equalTo(startDateLine).offset(8)
-        }
-        
-        endLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview()
-            make.leading.equalTo(endDateLine).offset(8)
-        }
-        
-        startDateButton.snp.makeConstraints { make in
-            make.top.equalTo(startLabel.snp.bottom).offset(3)
-            make.leading.equalTo(startLabel)
-            make.height.equalTo(28)
-        }
-        
-        endDateButton.snp.makeConstraints { make in
-            make.top.equalTo(endLabel.snp.bottom).offset(3)
-            make.leading.equalTo(endLabel)
-            make.height.equalTo(28)
-        }
-        
-        startDateLine.snp.makeConstraints { make in
-            make.top.equalTo(startDateButton.snp.bottom)
-            make.leading.equalToSuperview()
-            make.width.equalTo((SizeConstants.screenWidth - 55)/2)
-            make.height.equalTo(2)
-        }
-        
-        endDateLine.snp.makeConstraints { make in
-            make.top.equalTo(endDateButton.snp.bottom)
-            make.width.equalTo((SizeConstants.screenWidth - 55)/2)
-            make.trailing.equalToSuperview()
-            make.height.equalTo(2)
-        }
-        
-        datePickerView.snp.makeConstraints { make in
-            make.leading.trailing.bottom.equalToSuperview()
-            make.height.equalTo(140)
-        }
-        
-        setDateLabel.snp.makeConstraints { make in
-            make.leading.equalTo(confirmButton)
-            make.bottom.equalTo(settingPeriodView.snp.top).offset(-24)
-        }
-        
-        dateSwitch.snp.makeConstraints { make in
-            make.trailing.equalToSuperview().inset(20)
-            make.centerY.equalTo(setDateLabel)
-        }
-    }
-    
     func setFirstDatePicker() {
         // 익스텐션 사용하는 걸로 수정할게요
         let nowDateTime = Date()
@@ -422,47 +326,3 @@ class FilterBottmSheetViewController: UIViewController {
 }
 
 // MARK: - Protocols
-
-// MARK: - Extensions
-
-extension FilterBottmSheetViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let label = UILabel()
-        label.text = tag[indexPath.row].name
-        label.font = UIFont.nanumSquareFont(type: .regular, size: 16)
-        label.sizeToFit()
-        
-        return CGSize(width: label.bounds.width + 32, height: label.bounds.height + 18)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 16)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        8
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        8
-    }
-}
-
-// MARK: - UICollectionViewDataSource
-
-extension FilterBottmSheetViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        tag.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WritingTagCollectionViewCell.identifier, for: indexPath) as? WritingTagCollectionViewCell else { return UICollectionViewCell() }
-        cell.setTagLabel(tag: tag[indexPath.row].name)
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        categoryID = tag[indexPath.row].id
-        categoryName = tag[indexPath.row].name
-    }
-}

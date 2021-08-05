@@ -39,6 +39,17 @@
 		4F875E302697EE3A0085D104 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F875E2F2697EE3A0085D104 /* GraphView.swift */; };
 		4FB38C5026A5D00B0009FABB /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB38C4F26A5D00B0009FABB /* UIImage+Extension.swift */; };
 		4FBF7D6226BBCC0800DD9C91 /* WritingPopUpViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF7D6126BBCC0800DD9C91 /* WritingPopUpViewController+Layout.swift */; };
+		4FBF7D7026BBD2EA00DD9C91 /* MyPageViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF7D6F26BBD2EA00DD9C91 /* MyPageViewController+Extension.swift */; };
+		4FBF7D7226BBD34E00DD9C91 /* MyPageViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF7D7126BBD34E00DD9C91 /* MyPageViewController+Layout.swift */; };
+		4FBF7D7926BBD43F00DD9C91 /* MyWritingViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF7D7826BBD43F00DD9C91 /* MyWritingViewController+Extension.swift */; };
+		4FBF7D7B26BBD50400DD9C91 /* MyWritingViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF7D7A26BBD50300DD9C91 /* MyWritingViewController+Layout.swift */; };
+		4FBF7D7D26BBD57800DD9C91 /* MyRewardPopUpViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF7D7C26BBD57800DD9C91 /* MyRewardPopUpViewController+Layout.swift */; };
+		4FBF7D7F26BBD5EA00DD9C91 /* FilterBottomSheetViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF7D7E26BBD5EA00DD9C91 /* FilterBottomSheetViewController+Layout.swift */; };
+		4FBF7D8126BBD66900DD9C91 /* FilterBottomSheetViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF7D8026BBD66900DD9C91 /* FilterBottomSheetViewController+Extension.swift */; };
+		4FBF7D8326BBD6AD00DD9C91 /* MyTrashBinViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF7D8226BBD6AD00DD9C91 /* MyTrashBinViewController+Extension.swift */; };
+		4FBF7D8526BBD6F000DD9C91 /* MyTrashBinViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF7D8426BBD6F000DD9C91 /* MyTrashBinViewController+Layout.swift */; };
+		4FBF7D8726BBD74A00DD9C91 /* MyRewardViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF7D8626BBD74A00DD9C91 /* MyRewardViewController+Extension.swift */; };
+		4FBF7D8926BBD77D00DD9C91 /* MyRewardViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF7D8826BBD77D00DD9C91 /* MyRewardViewController+Layout.swift */; };
 		4FDF643826A0C3F900E5DC2E /* GraphResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDF643726A0C3F900E5DC2E /* GraphResponse.swift */; };
 		AB21E3A9269CA06900D32EFF /* CompletionMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB21E3A8269CA06900D32EFF /* CompletionMessage.swift */; };
 		AB21E3AC269D427400D32EFF /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB21E3AB269D427400D32EFF /* LaunchScreenViewController.swift */; };
@@ -154,6 +165,17 @@
 		4F875E2F2697EE3A0085D104 /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		4FB38C4F26A5D00B0009FABB /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		4FBF7D6126BBCC0800DD9C91 /* WritingPopUpViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WritingPopUpViewController+Layout.swift"; sourceTree = "<group>"; };
+		4FBF7D6F26BBD2EA00DD9C91 /* MyPageViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MyPageViewController+Extension.swift"; sourceTree = "<group>"; };
+		4FBF7D7126BBD34E00DD9C91 /* MyPageViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MyPageViewController+Layout.swift"; sourceTree = "<group>"; };
+		4FBF7D7826BBD43F00DD9C91 /* MyWritingViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MyWritingViewController+Extension.swift"; sourceTree = "<group>"; };
+		4FBF7D7A26BBD50300DD9C91 /* MyWritingViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MyWritingViewController+Layout.swift"; sourceTree = "<group>"; };
+		4FBF7D7C26BBD57800DD9C91 /* MyRewardPopUpViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MyRewardPopUpViewController+Layout.swift"; sourceTree = "<group>"; };
+		4FBF7D7E26BBD5EA00DD9C91 /* FilterBottomSheetViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FilterBottomSheetViewController+Layout.swift"; sourceTree = "<group>"; };
+		4FBF7D8026BBD66900DD9C91 /* FilterBottomSheetViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FilterBottomSheetViewController+Extension.swift"; sourceTree = "<group>"; };
+		4FBF7D8226BBD6AD00DD9C91 /* MyTrashBinViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MyTrashBinViewController+Extension.swift"; sourceTree = "<group>"; };
+		4FBF7D8426BBD6F000DD9C91 /* MyTrashBinViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MyTrashBinViewController+Layout.swift"; sourceTree = "<group>"; };
+		4FBF7D8626BBD74A00DD9C91 /* MyRewardViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MyRewardViewController+Extension.swift"; sourceTree = "<group>"; };
+		4FBF7D8826BBD77D00DD9C91 /* MyRewardViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MyRewardViewController+Layout.swift"; sourceTree = "<group>"; };
 		4FDF643726A0C3F900E5DC2E /* GraphResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphResponse.swift; sourceTree = "<group>"; };
 		AB21E3A8269CA06900D32EFF /* CompletionMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionMessage.swift; sourceTree = "<group>"; };
 		AB21E3AB269D427400D32EFF /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
@@ -453,6 +475,65 @@
 			path = SeparateGraphPopUpViewController;
 			sourceTree = "<group>";
 		};
+		4FBF7D6E26BBD2C900DD9C91 /* MyPageViewController */ = {
+			isa = PBXGroup;
+			children = (
+				ABB24E5B268E1A18006FEE57 /* MyPageViewController.swift */,
+				4FBF7D6F26BBD2EA00DD9C91 /* MyPageViewController+Extension.swift */,
+				4FBF7D7126BBD34E00DD9C91 /* MyPageViewController+Layout.swift */,
+			);
+			path = MyPageViewController;
+			sourceTree = "<group>";
+		};
+		4FBF7D7326BBD3A900DD9C91 /* MyWritingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FC0541B72690C80000FFA9D1 /* MyWritingViewController.swift */,
+				4FBF7D7826BBD43F00DD9C91 /* MyWritingViewController+Extension.swift */,
+				4FBF7D7A26BBD50300DD9C91 /* MyWritingViewController+Layout.swift */,
+			);
+			path = MyWritingViewController;
+			sourceTree = "<group>";
+		};
+		4FBF7D7426BBD3B800DD9C91 /* MyRewardViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FC0541B92690C92A00FFA9D1 /* MyRewardViewController.swift */,
+				4FBF7D8626BBD74A00DD9C91 /* MyRewardViewController+Extension.swift */,
+				4FBF7D8826BBD77D00DD9C91 /* MyRewardViewController+Layout.swift */,
+			);
+			path = MyRewardViewController;
+			sourceTree = "<group>";
+		};
+		4FBF7D7526BBD3C500DD9C91 /* MyTrashBinViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FC0541BB2690C94700FFA9D1 /* MyTrashBinViewController.swift */,
+				4FBF7D8226BBD6AD00DD9C91 /* MyTrashBinViewController+Extension.swift */,
+				4FBF7D8426BBD6F000DD9C91 /* MyTrashBinViewController+Layout.swift */,
+			);
+			path = MyTrashBinViewController;
+			sourceTree = "<group>";
+		};
+		4FBF7D7626BBD3D300DD9C91 /* FilterBottomSheetViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FCE3608B2694B25F00866525 /* FilterBottmSheetViewController.swift */,
+				4FBF7D7E26BBD5EA00DD9C91 /* FilterBottomSheetViewController+Layout.swift */,
+				4FBF7D8026BBD66900DD9C91 /* FilterBottomSheetViewController+Extension.swift */,
+			);
+			path = FilterBottomSheetViewController;
+			sourceTree = "<group>";
+		};
+		4FBF7D7726BBD3E200DD9C91 /* MyRewardPopUpViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FCA3639E269A068B0068825D /* MyRewardPopUpViewController.swift */,
+				4FBF7D7C26BBD57800DD9C91 /* MyRewardPopUpViewController+Layout.swift */,
+			);
+			path = MyRewardPopUpViewController;
+			sourceTree = "<group>";
+		};
 		6C81B240BDBA40A25B2A405D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -535,8 +616,8 @@
 				AB7F6DE226973DB800EF9C6E /* ThrowTrash */,
 				AB9F9DF52690CD8100088502 /* Writing */,
 				ABB24E6B268E20CC006FEE57 /* Separate */,
-				ABB24E5D268E1A31006FEE57 /* Setting */,
 				ABB24E56268E198D006FEE57 /* MyPage */,
+				ABB24E5D268E1A31006FEE57 /* Setting */,
 				ABB24E4D268E00F3006FEE57 /* TabBar */,
 				ABB24E02268CE1A8006FEE57 /* Common */,
 				ABB24DEF268CD8DF006FEE57 /* Home */,
@@ -703,8 +784,8 @@
 		ABB24E56268E198D006FEE57 /* MyPage */ = {
 			isa = PBXGroup;
 			children = (
-				FC6A7A432692F13100A4ACBE /* Component */,
 				FC0541B02690C26600FFA9D1 /* Cell */,
+				FC6A7A432692F13100A4ACBE /* Component */,
 				ABB24E5A268E19AC006FEE57 /* ViewController */,
 				ABB24E57268E1994006FEE57 /* Storyboard */,
 			);
@@ -722,12 +803,12 @@
 		ABB24E5A268E19AC006FEE57 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				ABB24E5B268E1A18006FEE57 /* MyPageViewController.swift */,
-				FC0541B72690C80000FFA9D1 /* MyWritingViewController.swift */,
-				FC0541B92690C92A00FFA9D1 /* MyRewardViewController.swift */,
-				FC0541BB2690C94700FFA9D1 /* MyTrashBinViewController.swift */,
-				FCE3608B2694B25F00866525 /* FilterBottmSheetViewController.swift */,
-				FCA3639E269A068B0068825D /* MyRewardPopUpViewController.swift */,
+				4FBF7D6E26BBD2C900DD9C91 /* MyPageViewController */,
+				4FBF7D7326BBD3A900DD9C91 /* MyWritingViewController */,
+				4FBF7D7726BBD3E200DD9C91 /* MyRewardPopUpViewController */,
+				4FBF7D7626BBD3D300DD9C91 /* FilterBottomSheetViewController */,
+				4FBF7D7526BBD3C500DD9C91 /* MyTrashBinViewController */,
+				4FBF7D7426BBD3B800DD9C91 /* MyRewardViewController */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -945,6 +1026,7 @@
 				AB21E3CE269DB32E00D32EFF /* UserDefaults.Key+Extension.swift in Sources */,
 				4F4992E12695F65B009541AA /* SeparateDetailViewController.swift in Sources */,
 				ABB24E06268CE317006FEE57 /* UIFont+Extension.swift in Sources */,
+				4FBF7D8926BBD77D00DD9C91 /* MyRewardViewController+Layout.swift in Sources */,
 				AB21E3CA269D67C200D32EFF /* CategoryResponse.swift in Sources */,
 				AB21E3B6269D4F8100D32EFF /* UserRequest.swift in Sources */,
 				4F7FD2E82690E5B400122964 /* SettingSeparateViewController.swift in Sources */,
@@ -953,6 +1035,7 @@
 				ABB24DF6268CD9D3006FEE57 /* HomeViewController.swift in Sources */,
 				4F2D1F47269C0C5000D941A1 /* SeperateHeaderView.swift in Sources */,
 				4F7FD2EC26920F3800122964 /* SeparateTableViewCell.swift in Sources */,
+				4FBF7D8326BBD6AD00DD9C91 /* MyTrashBinViewController+Extension.swift in Sources */,
 				ABB24E63268E1A75006FEE57 /* SettingViewController.swift in Sources */,
 				ABB24E0A268CF33B006FEE57 /* UIView+Extension.swift in Sources */,
 				AB9F9DF22690997300088502 /* Date+Extension.swift in Sources */,
@@ -961,6 +1044,7 @@
 				FCAE097D269F3D7A00B91A08 /* TrashCanService.swift in Sources */,
 				ABB24E53268E1912006FEE57 /* FloatingBarView.swift in Sources */,
 				FCE3608C2694B25F00866525 /* FilterBottmSheetViewController.swift in Sources */,
+				4FBF7D7226BBD34E00DD9C91 /* MyPageViewController+Layout.swift in Sources */,
 				AB7F6DDF2696BDF300EF9C6E /* WritingPopUpViewController.swift in Sources */,
 				FC4AFBAB269899F800B9801B /* MyTrashBinTableViewCell.swift in Sources */,
 				ABB24DF4268CD9B7006FEE57 /* CardCollectionViewCell.swift in Sources */,
@@ -970,9 +1054,11 @@
 				AB21E3C6269D666800D32EFF /* RewardResponse.swift in Sources */,
 				AB21E3C4269D64CE00D32EFF /* Reward.swift in Sources */,
 				4F66FB0F269F0BEE007EC311 /* SeparateStyle.swift in Sources */,
+				4FBF7D7026BBD2EA00DD9C91 /* MyPageViewController+Extension.swift in Sources */,
 				AB21E3D526A0777E00D32EFF /* ActivityIndicator.swift in Sources */,
 				4FBF7D6226BBCC0800DD9C91 /* WritingPopUpViewController+Layout.swift in Sources */,
 				AB8C3F5B26935E8600B2BA30 /* WritingViewController+Layout.swift in Sources */,
+				4FBF7D8126BBD66900DD9C91 /* FilterBottomSheetViewController+Extension.swift in Sources */,
 				AB8C3F5D2695743E00B2BA30 /* NotificationName+Extension.swift in Sources */,
 				AB7F6DE726975A0900EF9C6E /* ThrowTrashViewController+Layout.swift in Sources */,
 				AB9F9DF426909E2100088502 /* UILabel+Extension.swift in Sources */,
@@ -985,6 +1071,7 @@
 				4F2D1F39269A1BCB00D941A1 /* RequestHandler.swift in Sources */,
 				ABB24E53268E1912006FEE57 /* FloatingBarView.swift in Sources */,
 				ABB24DF4268CD9B7006FEE57 /* CardCollectionViewCell.swift in Sources */,
+				4FBF7D8726BBD74A00DD9C91 /* MyRewardViewController+Extension.swift in Sources */,
 				4F4992972693F9F2009541AA /* SeparateViewController+Layout.swift in Sources */,
 				FC0541B62690C6EF00FFA9D1 /* MenuSectionCollectionViewCell.swift in Sources */,
 				4F875E302697EE3A0085D104 /* GraphView.swift in Sources */,
@@ -1006,9 +1093,11 @@
 				FC0541B82690C80000FFA9D1 /* MyWritingViewController.swift in Sources */,
 				FCAE0981269F46B600B91A08 /* TrashCanResponse.swift in Sources */,
 				AB21E3A9269CA06900D32EFF /* CompletionMessage.swift in Sources */,
+				4FBF7D7D26BBD57800DD9C91 /* MyRewardPopUpViewController+Layout.swift in Sources */,
 				4F875E2B2697E0930085D104 /* SeparateGraphPopUpViewController+Layout.swift in Sources */,
 				4F4992EB2696F685009541AA /* SeparateGraphPopUpViewController.swift in Sources */,
 				AB5AF766268A2E84001D3CD1 /* ViewController.swift in Sources */,
+				4FBF7D7926BBD43F00DD9C91 /* MyWritingViewController+Extension.swift in Sources */,
 				4F49929D26942AD8009541AA /* SeparateCollectionViewCell.swift in Sources */,
 				4F2D1F3B269A1C9C00D941A1 /* NetworkInfo.swift in Sources */,
 				AB5AF762268A2E84001D3CD1 /* AppDelegate.swift in Sources */,
@@ -1023,11 +1112,14 @@
 				4F4992A2269577FF009541AA /* SizeConstants.swift in Sources */,
 				AB8C3F582693371100B2BA30 /* WritingViewController+Extension.swift in Sources */,
 				4F4992E52695FCC6009541AA /* SeparateDetailViewController+Extension.swift in Sources */,
+				4FBF7D7B26BBD50400DD9C91 /* MyWritingViewController+Layout.swift in Sources */,
 				AB21E3AC269D427400D32EFF /* LaunchScreenViewController.swift in Sources */,
+				4FBF7D8526BBD6F000DD9C91 /* MyTrashBinViewController+Layout.swift in Sources */,
 				FCAE097F269F3EF300B91A08 /* TrashCan.swift in Sources */,
 				4F7FD2F126929D6300122964 /* PeriodPopUpViewController.swift in Sources */,
 				FC0541BA2690C92A00FFA9D1 /* MyRewardViewController.swift in Sources */,
 				4F2D1F35269A1AA700D941A1 /* NetworkResult.swift in Sources */,
+				4FBF7D7F26BBD5EA00DD9C91 /* FilterBottomSheetViewController+Layout.swift in Sources */,
 				4FB38C5026A5D00B0009FABB /* UIImage+Extension.swift in Sources */,
 				AB21E3CC269D7E1F00D32EFF /* TokenResponse.swift in Sources */,
 				FC0541BC2690C94700FFA9D1 /* MyTrashBinViewController.swift in Sources */,
