@@ -253,12 +253,9 @@
 		4F2D1F33269A1A4900D941A1 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				4FBF7D5F26BBCAE100DD9C91 /* Handler */,
 				AB21E3AF269D49EF00D32EFF /* Model */,
 				4F2D1F42269ADCCF00D941A1 /* Service */,
-				4F2D1F34269A1AA700D941A1 /* NetworkResult.swift */,
-				4F2D1F36269A1B5900D941A1 /* APIConstants.swift */,
-				4F2D1F38269A1BCB00D941A1 /* RequestHandler.swift */,
-				4F2D1F3A269A1C9C00D941A1 /* NetworkInfo.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -266,11 +263,11 @@
 		4F2D1F42269ADCCF00D941A1 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				4F2D1F3C269ACE7600D941A1 /* UserService.swift */,
-				FC1D6F22269E0FD60060921E /* RewardService.swift */,
 				AB21E3CF269DEF0D00D32EFF /* CategoryService.swift */,
-				AB21E3D1269E9A1D00D32EFF /* WritingService.swift */,
+				FC1D6F22269E0FD60060921E /* RewardService.swift */,
 				FCAE097C269F3D7A00B91A08 /* TrashCanService.swift */,
+				4F2D1F3C269ACE7600D941A1 /* UserService.swift */,
+				AB21E3D1269E9A1D00D32EFF /* WritingService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -323,6 +320,89 @@
 			path = Component;
 			sourceTree = "<group>";
 		};
+		4FBF7D5726BBC5E400DD9C91 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				AB21E3BD269D5F9400D32EFF /* UserInfo.swift */,
+				AB21E3B5269D4F8100D32EFF /* UserRequest.swift */,
+				AB21E3B7269D50FF00D32EFF /* UserResponse.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		4FBF7D5826BBC74300DD9C91 /* Writing */ = {
+			isa = PBXGroup;
+			children = (
+				AB21E3B9269D580700D32EFF /* Writing.swift */,
+				AB21E3C1269D60EE00D32EFF /* WritingRequest.swift */,
+				AB21E3BF269D5FB400D32EFF /* WritingResponse.swift */,
+			);
+			path = Writing;
+			sourceTree = "<group>";
+		};
+		4FBF7D5926BBC75200DD9C91 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				AB21E3BB269D59C800D32EFF /* Category.swift */,
+				AB21E3C7269D669800D32EFF /* CategoryRequest.swift */,
+				AB21E3C9269D67C200D32EFF /* CategoryResponse.swift */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		4FBF7D5A26BBC76B00DD9C91 /* Reward */ = {
+			isa = PBXGroup;
+			children = (
+				AB21E3C3269D64CE00D32EFF /* Reward.swift */,
+				AB21E3C5269D666800D32EFF /* RewardResponse.swift */,
+			);
+			path = Reward;
+			sourceTree = "<group>";
+		};
+		4FBF7D5B26BBC78400DD9C91 /* TrashCan */ = {
+			isa = PBXGroup;
+			children = (
+				FCAE097E269F3EF300B91A08 /* TrashCan.swift */,
+				FCAE0980269F46B600B91A08 /* TrashCanResponse.swift */,
+			);
+			path = TrashCan;
+			sourceTree = "<group>";
+		};
+		4FBF7D5C26BBC79C00DD9C91 /* Graph */ = {
+			isa = PBXGroup;
+			children = (
+				4FDF643726A0C3F900E5DC2E /* GraphResponse.swift */,
+			);
+			path = Graph;
+			sourceTree = "<group>";
+		};
+		4FBF7D5D26BBC7A700DD9C91 /* Token */ = {
+			isa = PBXGroup;
+			children = (
+				AB21E3CB269D7E1F00D32EFF /* TokenResponse.swift */,
+			);
+			path = Token;
+			sourceTree = "<group>";
+		};
+		4FBF7D5E26BBC7AE00DD9C91 /* General */ = {
+			isa = PBXGroup;
+			children = (
+				AB21E3B2269D4E8C00D32EFF /* GeneralResponse.swift */,
+			);
+			path = General;
+			sourceTree = "<group>";
+		};
+		4FBF7D5F26BBCAE100DD9C91 /* Handler */ = {
+			isa = PBXGroup;
+			children = (
+				4F2D1F36269A1B5900D941A1 /* APIConstants.swift */,
+				4F2D1F3A269A1C9C00D941A1 /* NetworkInfo.swift */,
+				4F2D1F34269A1AA700D941A1 /* NetworkResult.swift */,
+				4F2D1F38269A1BCB00D941A1 /* RequestHandler.swift */,
+			);
+			path = Handler;
+			sourceTree = "<group>";
+		};
 		6C81B240BDBA40A25B2A405D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -359,40 +439,16 @@
 		AB21E3AF269D49EF00D32EFF /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				AB21E3B1269D4C3900D32EFF /* Request */,
-				AB21E3B0269D4C3200D32EFF /* Response */,
-				AB21E3BB269D59C800D32EFF /* Category.swift */,
-				AB21E3B9269D580700D32EFF /* Writing.swift */,
-				AB21E3BD269D5F9400D32EFF /* UserInfo.swift */,
-				AB21E3C3269D64CE00D32EFF /* Reward.swift */,
-				FCAE097E269F3EF300B91A08 /* TrashCan.swift */,
+				4FBF7D5926BBC75200DD9C91 /* Category */,
+				4FBF7D5E26BBC7AE00DD9C91 /* General */,
+				4FBF7D5C26BBC79C00DD9C91 /* Graph */,
+				4FBF7D5A26BBC76B00DD9C91 /* Reward */,
+				4FBF7D5D26BBC7A700DD9C91 /* Token */,
+				4FBF7D5B26BBC78400DD9C91 /* TrashCan */,
+				4FBF7D5726BBC5E400DD9C91 /* User */,
+				4FBF7D5826BBC74300DD9C91 /* Writing */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		AB21E3B0269D4C3200D32EFF /* Response */ = {
-			isa = PBXGroup;
-			children = (
-				AB21E3B7269D50FF00D32EFF /* UserResponse.swift */,
-				AB21E3BF269D5FB400D32EFF /* WritingResponse.swift */,
-				AB21E3C5269D666800D32EFF /* RewardResponse.swift */,
-				AB21E3C9269D67C200D32EFF /* CategoryResponse.swift */,
-				AB21E3CB269D7E1F00D32EFF /* TokenResponse.swift */,
-				AB21E3B2269D4E8C00D32EFF /* GeneralResponse.swift */,
-				FCAE0980269F46B600B91A08 /* TrashCanResponse.swift */,
-				4FDF643726A0C3F900E5DC2E /* GraphResponse.swift */,
-			);
-			path = Response;
-			sourceTree = "<group>";
-		};
-		AB21E3B1269D4C3900D32EFF /* Request */ = {
-			isa = PBXGroup;
-			children = (
-				AB21E3B5269D4F8100D32EFF /* UserRequest.swift */,
-				AB21E3C1269D60EE00D32EFF /* WritingRequest.swift */,
-				AB21E3C7269D669800D32EFF /* CategoryRequest.swift */,
-			);
-			path = Request;
 			sourceTree = "<group>";
 		};
 		AB21E3D326A076D200D32EFF /* Indicator */ = {
