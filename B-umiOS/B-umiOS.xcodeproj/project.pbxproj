@@ -405,23 +405,52 @@
 			path = Handler;
 			sourceTree = "<group>";
 		};
-		4FBF7D6026BBCBE700DD9C91 /* WritingPopUp */ = {
+		4FBF7D6026BBCBE700DD9C91 /* WritingPopUpViewController */ = {
 			isa = PBXGroup;
 			children = (
 				AB7F6DDE2696BDF300EF9C6E /* WritingPopUpViewController.swift */,
 				4FBF7D6126BBCC0800DD9C91 /* WritingPopUpViewController+Layout.swift */,
 			);
-			path = WritingPopUp;
+			path = WritingPopUpViewController;
 			sourceTree = "<group>";
 		};
-		4FBF7D6326BBCC8400DD9C91 /* Writing */ = {
+		4FBF7D6326BBCC8400DD9C91 /* WritingViewController */ = {
 			isa = PBXGroup;
 			children = (
 				AB9F9DF62690CD9900088502 /* WritingViewController.swift */,
 				AB8C3F572693371100B2BA30 /* WritingViewController+Extension.swift */,
 				AB8C3F5A26935E8600B2BA30 /* WritingViewController+Layout.swift */,
 			);
-			path = Writing;
+			path = WritingViewController;
+			sourceTree = "<group>";
+		};
+		4FBF7D6426BBCDAC00DD9C91 /* SeparateViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FC6448CF269847CA00C8E30C /* SeparateViewController.swift */,
+				FC6448CE269847CA00C8E30C /* SeparateViewController+Extension.swift */,
+				4F4992962693F9F2009541AA /* SeparateViewController+Layout.swift */,
+			);
+			path = SeparateViewController;
+			sourceTree = "<group>";
+		};
+		4FBF7D6526BBCE1300DD9C91 /* SeparateDetailViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4F4992E02695F65B009541AA /* SeparateDetailViewController.swift */,
+				4F4992E42695FCC6009541AA /* SeparateDetailViewController+Extension.swift */,
+				4F4992E22695FBE9009541AA /* SeparateDetailViewController+Layout.swift */,
+			);
+			path = SeparateDetailViewController;
+			sourceTree = "<group>";
+		};
+		4FBF7D6626BBCE3500DD9C91 /* SeparateGraphPopUpViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4F4992EA2696F685009541AA /* SeparateGraphPopUpViewController.swift */,
+				4F875E2A2697E0930085D104 /* SeparateGraphPopUpViewController+Layout.swift */,
+			);
+			path = SeparateGraphPopUpViewController;
 			sourceTree = "<group>";
 		};
 		6C81B240BDBA40A25B2A405D /* Pods */ = {
@@ -522,8 +551,8 @@
 		AB7F6DDD2696BDB100EF9C6E /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				4FBF7D6326BBCC8400DD9C91 /* Writing */,
-				4FBF7D6026BBCBE700DD9C91 /* WritingPopUp */,
+				4FBF7D6326BBCC8400DD9C91 /* WritingViewController */,
+				4FBF7D6026BBCBE700DD9C91 /* WritingPopUpViewController */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -737,6 +766,8 @@
 			isa = PBXGroup;
 			children = (
 				4F49929A26942AA5009541AA /* Cell */,
+				4F875E2E2697EE140085D104 /* Component */,
+				4F2D1F77269D8A1F00D941A1 /* Model */,
 				ABB24E6D268E20DD006FEE57 /* ViewController */,
 				ABB24E6C268E20D7006FEE57 /* Storyboard */,
 			);
@@ -754,16 +785,9 @@
 		ABB24E6D268E20DD006FEE57 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				4F2D1F77269D8A1F00D941A1 /* Model */,
-				FC6448CF269847CA00C8E30C /* SeparateViewController.swift */,
-				FC6448CE269847CA00C8E30C /* SeparateViewController+Extension.swift */,
-				4F4992962693F9F2009541AA /* SeparateViewController+Layout.swift */,
-				4F4992E02695F65B009541AA /* SeparateDetailViewController.swift */,
-				4F4992E42695FCC6009541AA /* SeparateDetailViewController+Extension.swift */,
-				4F4992E22695FBE9009541AA /* SeparateDetailViewController+Layout.swift */,
-				4F875E2E2697EE140085D104 /* Component */,
-				4F4992EA2696F685009541AA /* SeparateGraphPopUpViewController.swift */,
-				4F875E2A2697E0930085D104 /* SeparateGraphPopUpViewController+Layout.swift */,
+				4FBF7D6426BBCDAC00DD9C91 /* SeparateViewController */,
+				4FBF7D6526BBCE1300DD9C91 /* SeparateDetailViewController */,
+				4FBF7D6626BBCE3500DD9C91 /* SeparateGraphPopUpViewController */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
