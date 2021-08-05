@@ -28,12 +28,12 @@ class SettingSeparateViewController: UIViewController {
         $0.addTarget(self, action: #selector(didTapBackButton(_:)), for: .touchUpInside)
     }
     
-    private var addButton = UIButton().then {
+    var addButton = UIButton().then {
         $0.setImage(UIImage.btnPlus, for: .normal)
         $0.addTarget(self, action: #selector(didTapAddButton(_:)), for: .touchUpInside)
     }
     
-    private var trashbinStatusLabel = UILabel().then {
+    var trashbinStatusLabel = UILabel().then {
         $0.text = "클릭하면 휴지통 이름 수정이 가능해요"
         $0.font = UIFont.nanumSquareFont(type: .regular, size: 13)
         $0.textColor = .green2Main
@@ -44,7 +44,7 @@ class SettingSeparateViewController: UIViewController {
         $0.textColor = .green2Main
     }
     
-    private lazy var separateTableView = UITableView().then {
+    lazy var separateTableView = UITableView().then {
         $0.separatorStyle = .none
     }
     
@@ -102,59 +102,6 @@ class SettingSeparateViewController: UIViewController {
         view.backgroundColor = .background
     }
     
-    func setConstraints() {
-        view.addSubviews([navigationView, navigationDividerView, trashbinStatusLabel, trashbinStatusNumber, separateTableView])
-        navigationView.addSubviews([headerLabel, backButton, addButton])
-        
-        navigationView.snp.makeConstraints { make in
-            make.top.width.equalToSuperview()
-            make.height.equalTo(SizeConstants.navigationHeight * SizeConstants.screenRatio)
-        }
-        
-        navigationDividerView.snp.makeConstraints { make in
-            make.top.equalTo(navigationView.snp.bottom)
-            make.leading.trailing.equalToSuperview()
-            make.height.equalTo(1)
-        }
-        
-        headerLabel.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview().inset(13 * SizeConstants.screenRatio)
-        }
-        
-        backButton.snp.makeConstraints { make in
-            make.leading.equalToSuperview().inset(16 * SizeConstants.screenRatio)
-            make.centerY.equalTo(headerLabel)
-        }
-        
-        addButton.snp.makeConstraints { make in
-            make.trailing.equalToSuperview().inset(16 * SizeConstants.screenRatio)
-            make.centerY.equalTo(headerLabel)
-        }
-        
-        trashbinStatusLabel.snp.makeConstraints { make in
-            make.top.equalTo(navigationDividerView.snp.bottom).offset(16 * SizeConstants.screenRatio)
-            make.leading.equalToSuperview().inset(24 * SizeConstants.screenRatio)
-        }
-        
-        trashbinStatusNumber.snp.makeConstraints { make in
-            make.top.equalTo(trashbinStatusLabel)
-            make.trailing.equalToSuperview().inset(28)
-        }
-        
-        separateTableView.snp.makeConstraints { make in
-            make.top.equalTo(trashbinStatusLabel.snp.bottom).offset(12)
-            make.trailing.leading.bottom.equalToSuperview()
-        }
-    }
-    
-    func setTableView() {
-        separateTableView.delegate = self
-        separateTableView.dataSource = self
-        separateTableView.backgroundColor = .background
-        separateTableView.register(UINib(nibName: SeparateTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: SeparateTableViewCell.identifier)
-    }
-    
     // MARK: - Network
     
     func fetchCategories() {
@@ -181,26 +128,3 @@ class SettingSeparateViewController: UIViewController {
 }
 
 // MARK: - Protocols
-
-extension SettingSeparateViewController: UITableViewDelegate {}
-
-extension SettingSeparateViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        bins.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: SeparateTableViewCell.identifier, for: indexPath) as! SeparateTableViewCell
-        
-        cell.selectionStyle = .none
-        cell.trashBin = bins[indexPath.row]
-        return cell
-    }
-}
-
-extension SettingSeparateViewController: ChangeCategoryDataDelegate {
-    func changeCategoryData(data: [Category]) {
-        bins = data
-        separateTableView.reloadData()
-    }
-}

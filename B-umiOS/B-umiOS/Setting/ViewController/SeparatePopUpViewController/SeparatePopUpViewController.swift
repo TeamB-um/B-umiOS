@@ -12,34 +12,30 @@ enum PopUpMethod {
     case modify
 }
 
-protocol ChangeCategoryDataDelegate {
-    func changeCategoryData(data: [Category])
-}
-
 class SeparatePopUpViewController: UIViewController {
     // MARK: - UIComponenets
     
-    private let popupView = UIView().then {
+    let popupView = UIView().then {
         $0.cornerRound(radius: 10)
         $0.backgroundColor = .white
         $0.setShadow(radius: 10, offset: CGSize(width: 0, height: 4), opacity: 0.3)
     }
     
-    private let backgroundButton = UIButton().then {
+    let backgroundButton = UIButton().then {
         $0.addTarget(self, action: #selector(closePopUp(_:)), for: .touchUpInside)
     }
     
-    private lazy var headerLabel = UILabel().then {
+    lazy var headerLabel = UILabel().then {
         $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 20)
         $0.textColor = .header
     }
         
-    private lazy var subLabel = UILabel().then {
+    lazy var subLabel = UILabel().then {
         $0.font = UIFont.nanumSquareFont(type: .regular, size: 16)
         $0.textColor = .paper3
     }
     
-    private lazy var textField = UITextField().then {
+    lazy var textField = UITextField().then {
         $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 14)
         $0.textColor = .header
         $0.layer.borderWidth = 1
@@ -51,7 +47,7 @@ class SeparatePopUpViewController: UIViewController {
         $0.addTarget(self, action: #selector(changeTextField(_:)), for: .editingChanged)
     }
 
-    private lazy var textNumberLabel = UILabel().then {
+    lazy var textNumberLabel = UILabel().then {
         $0.textColor = .green2Main
         $0.font = UIFont.systemFont(ofSize: 13)
 
@@ -60,14 +56,14 @@ class SeparatePopUpViewController: UIViewController {
         }
     }
 
-    private lazy var boilerLabel = UILabel().then {
+    lazy var boilerLabel = UILabel().then {
         $0.textColor = .error
         $0.text = "이름 중복!"
         $0.font = UIFont.systemFont(ofSize: 13)
         $0.isHidden = true
     }
     
-    private let cancelButton = UIButton().then {
+    let cancelButton = UIButton().then {
         $0.cornerRound(radius: 10)
         $0.backgroundColor = .white
         $0.layer.borderWidth = 1
@@ -78,7 +74,7 @@ class SeparatePopUpViewController: UIViewController {
         $0.addTarget(self, action: #selector(closePopUp(_:)), for: .touchUpInside)
     }
     
-    private let confirmButton = UIButton().then {
+    let confirmButton = UIButton().then {
         $0.cornerRound(radius: 10)
         $0.backgroundColor = .disable
         $0.tintColor = .white
@@ -88,7 +84,7 @@ class SeparatePopUpViewController: UIViewController {
         $0.isEnabled = false
     }
     
-    private var stackView = UIStackView().then {
+    var stackView = UIStackView().then {
         $0.distribution = .fillEqually
         $0.alignment = .fill
         $0.spacing = 13
@@ -283,57 +279,10 @@ class SeparatePopUpViewController: UIViewController {
             subLabel.text = "분리수거함의 이름을 수정해보세요."
         }
     }
-    
-    func setConstraints() {
-        view.addSubviews([backgroundButton, popupView])
+}
 
-        popupView.addSubviews([headerLabel, subLabel, textField, stackView, textNumberLabel, boilerLabel])
-        
-        popupView.snp.makeConstraints { make in
-            make.width.equalToSuperview().multipliedBy(343.0 / 375.0)
-            make.height.equalTo(popupView.snp.width).multipliedBy(271.0 / 343.0)
-            make.center.equalToSuperview()
-        }
-        
-        backgroundButton.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-        
-        headerLabel.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.top.equalToSuperview().inset(32 * SizeConstants.screenRatio)
-        }
+// MARK: - Protocols
 
-        subLabel.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.top.equalToSuperview().inset(70 * SizeConstants.screenRatio)
-        }
-
-        textField.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(24 * SizeConstants.screenRatio)
-            make.top.equalTo(subLabel.snp.bottom).offset(34 * SizeConstants.screenRatio)
-            make.height.equalTo(40 * SizeConstants.screenRatio)
-        }
-
-        stackView.snp.makeConstraints { make in
-            make.top.equalTo(textField.snp.bottom).offset(28 * SizeConstants.screenRatio)
-            make.leading.trailing.equalToSuperview().inset(24 * SizeConstants.screenRatio)
-            make.bottom.equalToSuperview().inset(32 * SizeConstants.screenRatio)
-            make.height.equalTo(50 * SizeConstants.screenRatio)
-        }
-        
-        textNumberLabel.snp.makeConstraints { make in
-            make.centerY.equalTo(textField)
-            make.trailing.equalToSuperview().inset(36)
-        }
-
-        boilerLabel.snp.makeConstraints { make in
-            make.centerY.equalTo(textNumberLabel)
-            make.trailing.equalTo(textNumberLabel.snp.leading).offset(-8 * SizeConstants.screenRatio)
-        }
-        stackView.addArrangedSubview(cancelButton)
-        stackView.addArrangedSubview(confirmButton)
-    }
-    
-    // MARK: - Protocols
+protocol ChangeCategoryDataDelegate {
+    func changeCategoryData(data: [Category])
 }

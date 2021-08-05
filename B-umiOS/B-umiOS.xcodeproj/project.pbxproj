@@ -50,6 +50,10 @@
 		4FBF7D8526BBD6F000DD9C91 /* MyTrashBinViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF7D8426BBD6F000DD9C91 /* MyTrashBinViewController+Layout.swift */; };
 		4FBF7D8726BBD74A00DD9C91 /* MyRewardViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF7D8626BBD74A00DD9C91 /* MyRewardViewController+Extension.swift */; };
 		4FBF7D8926BBD77D00DD9C91 /* MyRewardViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF7D8826BBD77D00DD9C91 /* MyRewardViewController+Layout.swift */; };
+		4FBF7D8D26BBD8F300DD9C91 /* SettingSeparateViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF7D8C26BBD8F300DD9C91 /* SettingSeparateViewController+Layout.swift */; };
+		4FBF7D8F26BBD94900DD9C91 /* SettingSeparateViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF7D8E26BBD94900DD9C91 /* SettingSeparateViewController+Extension.swift */; };
+		4FBF7D9126BBD99B00DD9C91 /* SeparatePopUpViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF7D9026BBD99B00DD9C91 /* SeparatePopUpViewController+Layout.swift */; };
+		4FBF7D9526BBDA6C00DD9C91 /* PeriodPopUpViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF7D9426BBDA6C00DD9C91 /* PeriodPopUpViewController+Layout.swift */; };
 		4FDF643826A0C3F900E5DC2E /* GraphResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDF643726A0C3F900E5DC2E /* GraphResponse.swift */; };
 		AB21E3A9269CA06900D32EFF /* CompletionMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB21E3A8269CA06900D32EFF /* CompletionMessage.swift */; };
 		AB21E3AC269D427400D32EFF /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB21E3AB269D427400D32EFF /* LaunchScreenViewController.swift */; };
@@ -176,6 +180,10 @@
 		4FBF7D8426BBD6F000DD9C91 /* MyTrashBinViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MyTrashBinViewController+Layout.swift"; sourceTree = "<group>"; };
 		4FBF7D8626BBD74A00DD9C91 /* MyRewardViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MyRewardViewController+Extension.swift"; sourceTree = "<group>"; };
 		4FBF7D8826BBD77D00DD9C91 /* MyRewardViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MyRewardViewController+Layout.swift"; sourceTree = "<group>"; };
+		4FBF7D8C26BBD8F300DD9C91 /* SettingSeparateViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingSeparateViewController+Layout.swift"; sourceTree = "<group>"; };
+		4FBF7D8E26BBD94900DD9C91 /* SettingSeparateViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingSeparateViewController+Extension.swift"; sourceTree = "<group>"; };
+		4FBF7D9026BBD99B00DD9C91 /* SeparatePopUpViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SeparatePopUpViewController+Layout.swift"; sourceTree = "<group>"; };
+		4FBF7D9426BBDA6C00DD9C91 /* PeriodPopUpViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PeriodPopUpViewController+Layout.swift"; sourceTree = "<group>"; };
 		4FDF643726A0C3F900E5DC2E /* GraphResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphResponse.swift; sourceTree = "<group>"; };
 		AB21E3A8269CA06900D32EFF /* CompletionMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionMessage.swift; sourceTree = "<group>"; };
 		AB21E3AB269D427400D32EFF /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
@@ -534,6 +542,43 @@
 			path = MyRewardPopUpViewController;
 			sourceTree = "<group>";
 		};
+		4FBF7D8A26BBD89000DD9C91 /* SettingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				ABB24E62268E1A75006FEE57 /* SettingViewController.swift */,
+				4F2D1F312698B86D00D941A1 /* SettingViewController+Layout.swift */,
+			);
+			path = SettingViewController;
+			sourceTree = "<group>";
+		};
+		4FBF7D8B26BBD8A600DD9C91 /* SettingSeparateViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4F7FD2E72690E5B400122964 /* SettingSeparateViewController.swift */,
+				4FBF7D8C26BBD8F300DD9C91 /* SettingSeparateViewController+Layout.swift */,
+				4FBF7D8E26BBD94900DD9C91 /* SettingSeparateViewController+Extension.swift */,
+			);
+			path = SettingSeparateViewController;
+			sourceTree = "<group>";
+		};
+		4FBF7D9226BBDA0800DD9C91 /* SeparatePopUpViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4F7FD2EE26922F4A00122964 /* SeparatePopUpViewController.swift */,
+				4FBF7D9026BBD99B00DD9C91 /* SeparatePopUpViewController+Layout.swift */,
+			);
+			path = SeparatePopUpViewController;
+			sourceTree = "<group>";
+		};
+		4FBF7D9326BBDA4600DD9C91 /* PeriodPopUpViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4F7FD2F026929D6300122964 /* PeriodPopUpViewController.swift */,
+				4FBF7D9426BBDA6C00DD9C91 /* PeriodPopUpViewController+Layout.swift */,
+			);
+			path = PeriodPopUpViewController;
+			sourceTree = "<group>";
+		};
 		6C81B240BDBA40A25B2A405D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -834,11 +879,10 @@
 		ABB24E61268E1A62006FEE57 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				ABB24E62268E1A75006FEE57 /* SettingViewController.swift */,
-				4F2D1F312698B86D00D941A1 /* SettingViewController+Layout.swift */,
-				4F7FD2E72690E5B400122964 /* SettingSeparateViewController.swift */,
-				4F7FD2EE26922F4A00122964 /* SeparatePopUpViewController.swift */,
-				4F7FD2F026929D6300122964 /* PeriodPopUpViewController.swift */,
+				4FBF7D8A26BBD89000DD9C91 /* SettingViewController */,
+				4FBF7D8B26BBD8A600DD9C91 /* SettingSeparateViewController */,
+				4FBF7D9226BBDA0800DD9C91 /* SeparatePopUpViewController */,
+				4FBF7D9326BBDA4600DD9C91 /* PeriodPopUpViewController */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1034,12 +1078,14 @@
 				AB21E3D2269E9A1D00D32EFF /* WritingService.swift in Sources */,
 				ABB24DF6268CD9D3006FEE57 /* HomeViewController.swift in Sources */,
 				4F2D1F47269C0C5000D941A1 /* SeperateHeaderView.swift in Sources */,
+				4FBF7D8D26BBD8F300DD9C91 /* SettingSeparateViewController+Layout.swift in Sources */,
 				4F7FD2EC26920F3800122964 /* SeparateTableViewCell.swift in Sources */,
 				4FBF7D8326BBD6AD00DD9C91 /* MyTrashBinViewController+Extension.swift in Sources */,
 				ABB24E63268E1A75006FEE57 /* SettingViewController.swift in Sources */,
 				ABB24E0A268CF33B006FEE57 /* UIView+Extension.swift in Sources */,
 				AB9F9DF22690997300088502 /* Date+Extension.swift in Sources */,
 				4F2D1F322698B86D00D941A1 /* SettingViewController+Layout.swift in Sources */,
+				4FBF7D8F26BBD94900DD9C91 /* SettingSeparateViewController+Extension.swift in Sources */,
 				AB21E3C2269D60EE00D32EFF /* WritingRequest.swift in Sources */,
 				FCAE097D269F3D7A00B91A08 /* TrashCanService.swift in Sources */,
 				ABB24E53268E1912006FEE57 /* FloatingBarView.swift in Sources */,
@@ -1075,10 +1121,12 @@
 				4F4992972693F9F2009541AA /* SeparateViewController+Layout.swift in Sources */,
 				FC0541B62690C6EF00FFA9D1 /* MenuSectionCollectionViewCell.swift in Sources */,
 				4F875E302697EE3A0085D104 /* GraphView.swift in Sources */,
+				4FBF7D9526BBDA6C00DD9C91 /* PeriodPopUpViewController+Layout.swift in Sources */,
 				4F34E10326935F7100A54336 /* UIViewController+Extension.swift in Sources */,
 				AB21E3BE269D5F9400D32EFF /* UserInfo.swift in Sources */,
 				4F4992E826960B60009541AA /* SeparateDetailTableViewCell.swift in Sources */,
 				AB21E3B8269D50FF00D32EFF /* UserResponse.swift in Sources */,
+				4FBF7D9126BBD99B00DD9C91 /* SeparatePopUpViewController+Layout.swift in Sources */,
 				AB9F9DF92691F0D100088502 /* WritingStyle.swift in Sources */,
 				ABB24E0C268CF49C006FEE57 /* UIDevice+Extension.swift in Sources */,
 				ABB24E5C268E1A18006FEE57 /* MyPageViewController.swift in Sources */,

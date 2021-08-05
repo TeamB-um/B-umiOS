@@ -10,20 +10,20 @@ import UIKit
 class PeriodPopUpViewController: UIViewController {
     // MARK: - UIComponenets
     
-    private let popupView = UIView().then {
+    let popupView = UIView().then {
         $0.cornerRound(radius: 10)
         $0.backgroundColor = .white
         $0.layer.maskedCorners = CACornerMask(arrayLiteral: .layerMinXMinYCorner, .layerMaxXMinYCorner)
     }
     
-    private let rect = UIView().then {
+    let rect = UIView().then {
         $0.backgroundColor = .paper1
         $0.cornerRound(radius: 3)
     }
     
-    private let pickerView = UIPickerView()
+    let pickerView = UIPickerView()
     
-    private let confirmButton = UIButton().then {
+    let confirmButton = UIButton().then {
         $0.setTitle("확인", for: .normal)
         $0.titleLabel?.font = UIFont.nanumSquareFont(type: .bold, size: 18)
         $0.tintColor = .white
@@ -32,17 +32,17 @@ class PeriodPopUpViewController: UIViewController {
         $0.addTarget(self, action: #selector(didTapConfirmButton(_:)), for: .touchUpInside)
     }
     
-    private let backgroundButton = UIButton().then {
+    let backgroundButton = UIButton().then {
         $0.addTarget(self, action: #selector(didTapBackgroundButton(_:)), for: .touchUpInside)
     }
     
-    private let headerLabel = UILabel().then {
+    let headerLabel = UILabel().then {
         $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 20)
         $0.textColor = .header
         $0.text = "삭제 휴지통 기간"
     }
     
-    private let subLabel = UILabel().then {
+    let subLabel = UILabel().then {
         $0.font = UIFont.nanumSquareFont(type: .regular, size: 14)
         $0.textColor = .paper3
         $0.text = "미화원이 휴지통을 비워갈 기간을 정해주세요."
@@ -112,51 +112,6 @@ class PeriodPopUpViewController: UIViewController {
         
         let deletePeriod = UserDefaults.standard.integer(forKey: UserDefaults.Keys.deletePeriod)
         pickerView.selectRow(deletePeriod, inComponent: 0, animated: true)
-    }
-    
-    func setConstraints() {
-        view.addSubviews([backgroundButton, popupView])
-        
-        popupView.snp.makeConstraints { make in
-            make.leading.trailing.bottom.equalToSuperview()
-        }
-        
-        backgroundButton.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-        
-        popupView.addSubviews([rect, headerLabel, subLabel, pickerView, confirmButton])
-        
-        rect.snp.makeConstraints { make in
-            make.height.equalTo(6 * SizeConstants.screenRatio)
-            make.leading.trailing.equalToSuperview().inset(155 * SizeConstants.screenRatio)
-            make.top.equalToSuperview().offset(10 * SizeConstants.screenRatio)
-            make.centerX.equalToSuperview()
-        }
-        
-        headerLabel.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.top.equalTo(rect.snp.bottom).offset(16 * SizeConstants.screenRatio)
-            make.height.equalTo(30 * SizeConstants.screenRatio)
-        }
-        
-        subLabel.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.top.equalTo(headerLabel.snp.bottom).offset(8 * SizeConstants.screenRatio)
-        }
-        
-        pickerView.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(16 * SizeConstants.screenRatio)
-            make.top.equalTo(subLabel.snp.bottom).offset(28 * SizeConstants.screenRatio)
-            make.height.equalTo(140 * SizeConstants.screenRatio)
-        }
-        
-        confirmButton.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(23 * SizeConstants.screenRatio)
-            make.top.equalTo(pickerView.snp.bottom).offset(32 * SizeConstants.screenRatio)
-            make.bottom.equalToSuperview().inset(66 * SizeConstants.screenRatio)
-            make.height.equalTo(50 * SizeConstants.screenRatio)
-        }
     }
     
     // MARK: - Protocols
