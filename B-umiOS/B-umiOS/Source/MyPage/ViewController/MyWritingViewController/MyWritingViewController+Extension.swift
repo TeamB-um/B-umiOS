@@ -55,7 +55,7 @@ extension MyWritingViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if !deleteButtonIsSelected {
-            let popUpVC = MyWritingPopUpViewController(writing: myWriting[indexPath.row])
+            let popUpVC = SurprisePopUpViewController(writing: myWriting[indexPath.row])
             popUpVC.modalTransitionStyle = .crossDissolve
             popUpVC.modalPresentationStyle = .overCurrentContext
             if let parentVC = view.superview?.parentViewController {
