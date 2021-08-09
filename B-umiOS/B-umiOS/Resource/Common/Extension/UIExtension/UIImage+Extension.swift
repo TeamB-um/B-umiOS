@@ -104,4 +104,8 @@ extension UIImage {
     @nonobjc class var btnLeft: UIImage {
         UIImage(named: "btnLeft") ?? UIImage()
     }
+    
+    @nonobjc class var presentmotivArea: UIImage {
+        UIImage(named: "presentmotivArea") ?? UIImage()
+    }
 }

@@ -23,7 +23,7 @@ class TodayPresentPopUpViewController: UIViewController {
     }
     
     let presentImageView = UIImageView().then {
-        $0.image = UIImage(systemName: "graduationcap.fill")
+        $0.image = UIImage.presentmotivArea
         $0.tintColor = .red
     }
     
@@ -50,6 +50,7 @@ class TodayPresentPopUpViewController: UIViewController {
         
         presentLabel.text = content
         presentLabel.lineSpacing(spacing: 11)
+        presentLabel.textAlignment = .center
     }
     
     @available(*, unavailable)
@@ -62,6 +63,7 @@ class TodayPresentPopUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setView()
         setConstraints()
     }
     
@@ -74,6 +76,10 @@ class TodayPresentPopUpViewController: UIViewController {
     // MARK: - Actions
     
     // MARK: - Methods
+    
+    func setView() {
+        view.layer.backgroundColor = UIColor.black.withAlphaComponent(0.5).cgColor
+    }
     
     func setConstraints() {
         popUpView.addSubviews([closeButton, mainLabel, presentImageView, dividerView, presentLabel])
