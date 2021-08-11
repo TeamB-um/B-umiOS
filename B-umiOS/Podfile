@@ -11,5 +11,7 @@ target 'B-umiOS' do
   pod 'SnapKit', '~> 5.0.0'
   pod 'lottie-ios'
   pod 'MultiProgressView'
+  pod 'Firebase/Messaging'
+  pod 'Firebase/Analytics'
 
 end
