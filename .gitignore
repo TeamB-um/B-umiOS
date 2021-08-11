@@ -124,6 +124,6 @@ fastlane/test_output
 iOSInjectionProject/
 
 # GoogleService
-B-umiOS/B-umiOS/Resource/Supporting Files/GoogleService-Info.plist
+GoogleService-Info.plist
 
 # End of https://www.toptal.com/developers/gitignore/api/swift,macos,cocoapods

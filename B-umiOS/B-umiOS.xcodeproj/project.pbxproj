@@ -55,6 +55,7 @@
 		4FBF7D9126BBD99B00DD9C91 /* SeparatePopUpViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF7D9026BBD99B00DD9C91 /* SeparatePopUpViewController+Layout.swift */; };
 		4FBF7D9526BBDA6C00DD9C91 /* PeriodPopUpViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF7D9426BBDA6C00DD9C91 /* PeriodPopUpViewController+Layout.swift */; };
 		4FDF643826A0C3F900E5DC2E /* GraphResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDF643726A0C3F900E5DC2E /* GraphResponse.swift */; };
+		AB0E164C26C40783005133C7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB0E164B26C40783005133C7 /* GoogleService-Info.plist */; };
 		AB21E3A9269CA06900D32EFF /* CompletionMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB21E3A8269CA06900D32EFF /* CompletionMessage.swift */; };
 		AB21E3AC269D427400D32EFF /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB21E3AB269D427400D32EFF /* LaunchScreenViewController.swift */; };
 		AB21E3AE269D43FA00D32EFF /* bium_splash.json in Resources */ = {isa = PBXBuildFile; fileRef = AB21E3AD269D43FA00D32EFF /* bium_splash.json */; };
@@ -187,6 +188,7 @@
 		4FBF7D9C26BBE26200DD9C91 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4FDF643726A0C3F900E5DC2E /* GraphResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphResponse.swift; sourceTree = "<group>"; };
 		AB0E164A26C40690005133C7 /* 비움(B:um).entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "비움(B:um).entitlements"; sourceTree = "<group>"; };
+		AB0E164B26C40783005133C7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AB21E3A8269CA06900D32EFF /* CompletionMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionMessage.swift; sourceTree = "<group>"; };
 		AB21E3AB269D427400D32EFF /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		AB21E3AD269D43FA00D32EFF /* bium_splash.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bium_splash.json; sourceTree = "<group>"; };
@@ -707,6 +709,7 @@
 			isa = PBXGroup;
 			children = (
 				AB0E164A26C40690005133C7 /* 비움(B:um).entitlements */,
+				AB0E164B26C40783005133C7 /* GoogleService-Info.plist */,
 				4FBF7D9726BBDB9F00DD9C91 /* Resource */,
 				4FBF7D9826BBDBA800DD9C91 /* Source */,
 			);
@@ -1033,6 +1036,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F4992E926960B60009541AA /* SeparateDetailTableViewCell.xib in Resources */,
+				AB0E164C26C40783005133C7 /* GoogleService-Info.plist in Resources */,
 				AB5AF76E268A2E87001D3CD1 /* LaunchScreen.storyboard in Resources */,
 				4F49929E26942AD8009541AA /* SeparateCollectionViewCell.xib in Resources */,
 				ABB24DFE268CDF64006FEE57 /* NanumSquareOTF_acEB.otf in Resources */,
