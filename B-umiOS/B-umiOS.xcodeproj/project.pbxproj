@@ -127,6 +127,7 @@
 		FC6448D1269847CA00C8E30C /* SeparateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6448CF269847CA00C8E30C /* SeparateViewController.swift */; };
 		FC69E37726935B81001093F9 /* RoundingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC69E37626935B81001093F9 /* RoundingButton.swift */; };
 		FC6A7A472693198900A4ACBE /* ButtonSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6A7A462693198900A4ACBE /* ButtonSectionView.swift */; };
+		FC84810326BF00A400AEFEAF /* SurprisePopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC84810226BF00A400AEFEAF /* SurprisePopUpViewController.swift */; };
 		FC8A6F552695C65500E64FA5 /* MyPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC8A6F542695C65500E64FA5 /* MyPage.storyboard */; };
 		FCA3639F269A068B0068825D /* MyRewardPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA3639E269A068B0068825D /* MyRewardPopUpViewController.swift */; };
 		FCAE097D269F3D7A00B91A08 /* TrashCanService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCAE097C269F3D7A00B91A08 /* TrashCanService.swift */; };
@@ -261,6 +262,7 @@
 		FC6448CF269847CA00C8E30C /* SeparateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeparateViewController.swift; sourceTree = "<group>"; };
 		FC69E37626935B81001093F9 /* RoundingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundingButton.swift; sourceTree = "<group>"; };
 		FC6A7A462693198900A4ACBE /* ButtonSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonSectionView.swift; sourceTree = "<group>"; };
+		FC84810226BF00A400AEFEAF /* SurprisePopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurprisePopUpViewController.swift; sourceTree = "<group>"; };
 		FC8A6F542695C65500E64FA5 /* MyPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyPage.storyboard; sourceTree = "<group>"; };
 		FCA3639E269A068B0068825D /* MyRewardPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRewardPopUpViewController.swift; sourceTree = "<group>"; };
 		FCAE097C269F3D7A00B91A08 /* TrashCanService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashCanService.swift; sourceTree = "<group>"; };
@@ -746,6 +748,7 @@
 				AB7F6DFB269897CA00EF9C6E /* MyWritingPopUpViewController.swift */,
 				AB7F6DFD2698C6FD00EF9C6E /* DeletePopUpViewController.swift */,
 				ABB2D67B26C01B0600C1B2C4 /* TodayPresentPopUpViewController.swift */,
+				FC84810226BF00A400AEFEAF /* SurprisePopUpViewController.swift */,
 			);
 			path = PopUp;
 			sourceTree = "<group>";
@@ -1149,6 +1152,7 @@
 				4F2D1F39269A1BCB00D941A1 /* RequestHandler.swift in Sources */,
 				ABB24E53268E1912006FEE57 /* FloatingBarView.swift in Sources */,
 				ABB24DF4268CD9B7006FEE57 /* CardCollectionViewCell.swift in Sources */,
+				FC84810326BF00A400AEFEAF /* SurprisePopUpViewController.swift in Sources */,
 				4FBF7D8726BBD74A00DD9C91 /* MyRewardViewController+Extension.swift in Sources */,
 				4F4992972693F9F2009541AA /* SeparateViewController+Layout.swift in Sources */,
 				FC0541B62690C6EF00FFA9D1 /* MenuSectionCollectionViewCell.swift in Sources */,
@@ -1361,7 +1365,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = G7SD8523Y3;
+				DEVELOPMENT_TEAM = 4QG3GC35LA;
 				INFOPLIST_FILE = "B-umiOS/Resource/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
