@@ -8,87 +8,58 @@
 import UIKit
 
 extension UIColor {
-    @nonobjc class var white: UIColor {
-        UIColor(white: 1.0, alpha: 1.0)
+    convenience init(_ red: CGFloat, _ green: CGFloat, _ blue: CGFloat, _ alpha: CGFloat) {
+        self.init(red: red / 255.0, green: green / 255.0, blue: blue / 255.0, alpha: alpha)
     }
 
-    @nonobjc class var blue2Main: UIColor {
-        UIColor(red: 110.0 / 255.0, green: 213.0 / 255.0, blue: 245.0 / 255.0, alpha: 1.0)
-    }
+    @nonobjc class var symbol: UIColor { .init(87, 255, 243, 1) }
 
-    @nonobjc class var blue3: UIColor {
-        return UIColor(red: 0.0, green: 171.0 / 255.0, blue: 241.0 / 255.0, alpha: 1.0)
-    }
+    // MARK: - StatusBar
 
-    @nonobjc class var blue4: UIColor {
-        UIColor(red: 0.0, green: 121.0 / 255.0, blue: 189.0 / 255.0, alpha: 1.0)
-    }
+    @nonobjc class var statusBarIcon: UIColor { .init(151, 151, 151, 1) }
+    @nonobjc class var statusBar: UIColor { .init(104, 199, 228, 1) }
+    @nonobjc class var statusBar2: UIColor { .init(white: 214.0 / 255.0, alpha: 1) }
 
-    @nonobjc class var green4: UIColor {
-        UIColor(red: 24.0 / 255.0, green: 127.0 / 255.0, blue: 78.0 / 255.0, alpha: 1.0)
-    }
+    // MARK: - Component
 
-    @nonobjc class var pink2Main: UIColor {
-        UIColor(red: 241.0 / 255.0, green: 108.0 / 255.0, blue: 170.0 / 255.0, alpha: 1.0)
-    }
+    @nonobjc class var header: UIColor { .init(white: 37.0 / 255.0, alpha: 1.0) }
+    @nonobjc class var textGray: UIColor { .init(white: 194.0 / 255.0, alpha: 1.0) }
+    @nonobjc class var iconGray: UIColor { .init(white: 161.0 / 255.0, alpha: 1.0) }
+    @nonobjc class var background: UIColor { .init(white: 250.0 / 255.0, alpha: 1.0) }
 
-    @nonobjc class var pink4: UIColor {
-        UIColor(red: 199.0 / 255.0, green: 42.0 / 255.0, blue: 117.0 / 255.0, alpha: 1.0)
-    }
+    // MARK: - State
 
-    @nonobjc class var pink3: UIColor {
-        UIColor(red: 221.0 / 255.0, green: 67.0 / 255.0, blue: 133.0 / 255.0, alpha: 1.0)
-    }
+    @nonobjc class var error: UIColor { .init(255, 83, 83, 1) }
+    @nonobjc class var disable: UIColor { .init(white: 225.0 / 255.0, alpha: 1.0) }
 
-    @nonobjc class var error: UIColor {
-        UIColor(red: 1.0, green: 83.0 / 255.0, blue: 83.0 / 255.0, alpha: 1.0)
-    }
+    // MARK: - Blue
 
-    @nonobjc class var disable: UIColor {
-        UIColor(white: 225.0 / 255.0, alpha: 1.0)
-    }
+    @nonobjc class var blue2Main: UIColor { .init(110, 213, 245, 1) }
+    @nonobjc class var blue3: UIColor { .init(0, 171, 241, 1) }
+    @nonobjc class var blue4: UIColor { .init(0, 121, 189, 1) }
 
-    @nonobjc class var paper2: UIColor {
-        UIColor(white: 202.0 / 255.0, alpha: 1.0)
-    }
+    // MARK: - Green
 
-    @nonobjc class var paper1: UIColor {
-        UIColor(white: 241.0 / 255.0, alpha: 1.0)
-    }
+    @nonobjc class var green1: UIColor { .init(82, 190, 134, 1) }
+    @nonobjc class var green2Main: UIColor { .init(82, 190, 134, 1) }
+    @nonobjc class var green3: UIColor { .init(37, 163, 103, 1) }
+    @nonobjc class var green4: UIColor { .init(9, 96, 56, 1) }
 
-    @nonobjc class var paper3: UIColor {
-        UIColor(white: 131.0 / 255.0, alpha: 1.0)
-    }
+    // MARK: - Pink
 
-    @nonobjc class var paper4: UIColor {
-        UIColor(white: 71.0 / 255.0, alpha: 1.0)
-    }
+    @nonobjc class var pink2Main: UIColor { .init(255, 147, 197, 1) }
+    @nonobjc class var pink3: UIColor { .init(234, 77, 147, 1) }
+    @nonobjc class var pink4: UIColor { .init(199, 42, 117, 1) }
 
-    @nonobjc class var header: UIColor {
-        UIColor(white: 37.0 / 255.0, alpha: 1.0)
-    }
+    // MARK: - Paper
 
-    @nonobjc class var textGray: UIColor {
-        UIColor(white: 194.0 / 255.0, alpha: 1.0)
-    }
+    @nonobjc class var paper1: UIColor { .init(white: 241.0 / 255.0, alpha: 1.0) }
+    @nonobjc class var paper2: UIColor { .init(white: 202.0 / 255.0, alpha: 1.0) }
+    @nonobjc class var paper3: UIColor { .init(white: 131.0 / 255.0, alpha: 1.0) }
+    @nonobjc class var paper4: UIColor { .init(white: 71.0 / 255.0, alpha: 1.0) }
 
-    @nonobjc class var iconGray: UIColor {
-        UIColor(white: 161.0 / 255.0, alpha: 1.0)
-    }
+    // MARK: - Button
 
-    @nonobjc class var green1: UIColor {
-        return UIColor(red: 82.0 / 255.0, green: 190.0 / 255.0, blue: 134.0 / 255.0, alpha: 1.0)
-      }
-
-    @nonobjc class var green2Main: UIColor {
-        UIColor(red: 37.0 / 255.0, green: 163.0 / 255.0, blue: 103.0 / 255.0, alpha: 1.0)
-    }
-
-    @nonobjc class var green3: UIColor {
-        UIColor(red: 37.0 / 255.0, green: 163.0 / 255.0, blue: 103.0 / 255.0, alpha: 1.0)
-    }
-
-    @nonobjc class var background: UIColor {
-        UIColor(white: 250.0 / 255.0, alpha: 1.0)
-    }
+    @nonobjc class var btnGreenStroke: UIColor { .init(283, 227, 205, 1) }
+    @nonobjc class var btnGreenBg: UIColor { .init(143, 212, 177, 1) }
 }
