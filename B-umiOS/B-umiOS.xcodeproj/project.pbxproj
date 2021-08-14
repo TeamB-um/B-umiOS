@@ -113,6 +113,7 @@
 		ABB24E60268E1A57006FEE57 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABB24E5F268E1A57006FEE57 /* Setting.storyboard */; };
 		ABB24E63268E1A75006FEE57 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB24E62268E1A75006FEE57 /* SettingViewController.swift */; };
 		ABB24E6F268E20EB006FEE57 /* Separate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABB24E6E268E20EB006FEE57 /* Separate.storyboard */; };
+		ABB2D67C26C01B0600C1B2C4 /* TodayPresentPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB2D67B26C01B0600C1B2C4 /* TodayPresentPopUpViewController.swift */; };
 		FC0541B22690C28200FFA9D1 /* MyPageMenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0541B12690C28200FFA9D1 /* MyPageMenuCollectionViewCell.swift */; };
 		FC0541B62690C6EF00FFA9D1 /* MenuSectionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0541B52690C6EF00FFA9D1 /* MenuSectionCollectionViewCell.swift */; };
 		FC0541B82690C80000FFA9D1 /* MyWritingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0541B72690C80000FFA9D1 /* MyWritingViewController.swift */; };
@@ -245,6 +246,7 @@
 		ABB24E5F268E1A57006FEE57 /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		ABB24E62268E1A75006FEE57 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		ABB24E6E268E20EB006FEE57 /* Separate.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Separate.storyboard; sourceTree = "<group>"; };
+		ABB2D67B26C01B0600C1B2C4 /* TodayPresentPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayPresentPopUpViewController.swift; sourceTree = "<group>"; };
 		DE4AD5ABF46F8BFB0EBB47E7 /* Pods-B-umiOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-B-umiOS.release.xcconfig"; path = "Target Support Files/Pods-B-umiOS/Pods-B-umiOS.release.xcconfig"; sourceTree = "<group>"; };
 		F7A7067B2D1BCE34B37D28DF /* Pods-B-umiOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-B-umiOS.debug.xcconfig"; path = "Target Support Files/Pods-B-umiOS/Pods-B-umiOS.debug.xcconfig"; sourceTree = "<group>"; };
 		FC0541B12690C28200FFA9D1 /* MyPageMenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageMenuCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -745,6 +747,7 @@
 			children = (
 				AB7F6DFB269897CA00EF9C6E /* MyWritingPopUpViewController.swift */,
 				AB7F6DFD2698C6FD00EF9C6E /* DeletePopUpViewController.swift */,
+				ABB2D67B26C01B0600C1B2C4 /* TodayPresentPopUpViewController.swift */,
 				FC84810226BF00A400AEFEAF /* SurprisePopUpViewController.swift */,
 			);
 			path = PopUp;
@@ -1179,6 +1182,7 @@
 				4F4992EB2696F685009541AA /* SeparateGraphPopUpViewController.swift in Sources */,
 				4FBF7D7926BBD43F00DD9C91 /* MyWritingViewController+Extension.swift in Sources */,
 				4F49929D26942AD8009541AA /* SeparateCollectionViewCell.swift in Sources */,
+				ABB2D67C26C01B0600C1B2C4 /* TodayPresentPopUpViewController.swift in Sources */,
 				4F2D1F3B269A1C9C00D941A1 /* NetworkInfo.swift in Sources */,
 				AB5AF762268A2E84001D3CD1 /* AppDelegate.swift in Sources */,
 				4F4992E32695FBE9009541AA /* SeparateDetailViewController+Layout.swift in Sources */,
