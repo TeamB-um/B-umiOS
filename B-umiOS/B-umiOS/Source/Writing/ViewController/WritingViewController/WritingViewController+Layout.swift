@@ -10,7 +10,8 @@ import UIKit
 extension WritingViewController {
     func setConstraints() {
         navigationView.addSubviews([navigationLabel, backButton, checkButton])
-        view.addSubviews([navigationView, navigationDividerView, guideImage, guideLabel, tagCollectionView, leftGradientView, righrGradientView, settingButton, paperView, titleTextField, textFieldDividerView, textView])
+        paperView.addSubviews([titleTextField, textFieldDividerView, textView])
+        view.addSubviews([navigationView, navigationDividerView, guideImage, guideLabel, tagCollectionView, leftGradientView, righrGradientView, settingButton, paperView])
    
         navigationLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
@@ -57,7 +58,7 @@ extension WritingViewController {
         }
         
         tagCollectionView.snp.makeConstraints { make in
-            make.top.equalTo(navigationDividerView.snp.bottom)
+            make.top.equalTo(navigationDividerView.snp.bottom).offset(8)
             make.leading.equalTo(settingButton.snp.trailing).offset(6 * SizeConstants.screenRatio)
             make.trailing.equalToSuperview()
             make.height.equalTo(64 * SizeConstants.screenRatio)
@@ -78,27 +79,28 @@ extension WritingViewController {
         }
         
         paperView.snp.makeConstraints { make in
-            make.top.equalTo(tagCollectionView.snp.bottom)
+            make.top.equalTo(tagCollectionView.snp.bottom).offset(8)
             make.leading.trailing.equalToSuperview().inset(16 * SizeConstants.screenRatio)
             make.bottom.equalToSuperview()
         }
     
         titleTextField.snp.makeConstraints { make in
-            make.top.equalTo(paperView.snp.top)
-            make.leading.trailing.equalToSuperview().inset(24 * SizeConstants.screenRatio)
-            make.height.equalTo(48 * SizeConstants.screenRatio)
+            make.top.equalTo(paperView.snp.top).offset(15)
+            make.leading.equalToSuperview().offset(18 * SizeConstants.screenRatio)
+            make.width.equalTo(263.0 * SizeConstants.screenRatio)
+            make.height.equalTo(titleTextField.snp.width).multipliedBy(32.0 / 263.0)
         }
 
         textFieldDividerView.snp.makeConstraints { make in
-            make.top.equalTo(titleTextField.snp.bottom)
-            make.leading.trailing.equalToSuperview().inset(16 * SizeConstants.screenRatio)
+            make.top.equalTo(titleTextField.snp.bottom).offset(3.8)
+            make.leading.trailing.equalTo(titleTextField)
             make.height.equalTo(1)
         }
 
         textView.snp.makeConstraints { make in
-            make.top.equalTo(textFieldDividerView.snp.bottom).offset(19.5)
-            make.leading.trailing.equalTo(textFieldDividerView)
-            make.bottom.equalToSuperview().offset(-48)
+            make.top.equalTo(textFieldDividerView.snp.bottom).offset(18.8)
+            make.leading.trailing.equalToSuperview().inset(17 * SizeConstants.screenRatio)
+            make.bottom.equalToSuperview().offset(-53)
         }
     }
 }

@@ -85,9 +85,9 @@ class WritingViewController: UIViewController {
     
     lazy var titleTextField = UITextField().then {
         $0.autocorrectionType = .no
-        $0.attributedPlaceholder = NSAttributedString(string: "제목", attributes: [NSAttributedString.Key.foregroundColor: self.style.placeholderColor, NSAttributedString.Key.font: UIFont.nanumSquareFont(type: .bold, size: 14)])
+        $0.attributedPlaceholder = NSAttributedString(string: "제목", attributes: [NSAttributedString.Key.foregroundColor: self.style.placeholderColor, NSAttributedString.Key.font: UIFont.nanumSquareFont(type: .regular, size: 20)])
         $0.textColor = self.style.textColor
-        $0.font = UIFont.nanumSquareFont(type: .bold, size: 14)
+        $0.font = UIFont.nanumSquareFont(type: .bold, size: 20)
         
         $0.delegate = self
         $0.addTarget(self, action: #selector(changeTextField(_:)), for: .editingChanged)
@@ -103,8 +103,8 @@ class WritingViewController: UIViewController {
         $0.text = self.placeholder
         
         let style = NSMutableParagraphStyle()
-        style.lineSpacing = 8
-        let attributes = [NSAttributedString.Key.paragraphStyle: style, NSAttributedString.Key.foregroundColor: self.style.placeholderColor, NSAttributedString.Key.font: UIFont.nanumSquareFont(type: .light, size: 14)]
+        style.lineSpacing = 14 
+        let attributes = [NSAttributedString.Key.paragraphStyle: style, NSAttributedString.Key.foregroundColor: self.style.placeholderColor, NSAttributedString.Key.font: UIFont.nanumSquareFont(type: .regular, size: 18)]
         $0.attributedText = NSAttributedString(string: $0.text, attributes: attributes)
         
         $0.autocorrectionType = .no
