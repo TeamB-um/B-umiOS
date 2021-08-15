@@ -34,6 +34,7 @@ extension UIColor {
 
     // MARK: - Blue
 
+    @nonobjc class var blue0: UIColor { .init(223, 247, 255, 1) }
     @nonobjc class var blue2Main: UIColor { .init(110, 213, 245, 1) }
     @nonobjc class var blue3: UIColor { .init(0, 171, 241, 1) }
     @nonobjc class var blue4: UIColor { .init(0, 121, 189, 1) }
@@ -57,9 +58,4 @@ extension UIColor {
     @nonobjc class var paper2: UIColor { .init(white: 202.0 / 255.0, alpha: 1.0) }
     @nonobjc class var paper3: UIColor { .init(white: 131.0 / 255.0, alpha: 1.0) }
     @nonobjc class var paper4: UIColor { .init(white: 71.0 / 255.0, alpha: 1.0) }
-
-    // MARK: - Button
-
-    @nonobjc class var btnGreenStroke: UIColor { .init(283, 227, 205, 1) }
-    @nonobjc class var btnGreenBg: UIColor { .init(143, 212, 177, 1) }
 }
