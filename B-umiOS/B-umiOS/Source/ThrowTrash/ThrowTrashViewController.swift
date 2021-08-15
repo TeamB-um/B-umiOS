@@ -32,15 +32,14 @@ class ThrowTrashViewController: UIViewController {
         $0.tintColor = .white
     }
     
-    
     lazy var backgroudImage = UIImageView().then {
         $0.image = UIImage(named: "img_\(self.trashType)")
     }
     
     let explanationView = UIView().then {
-        $0.backgroundColor = .white
+        $0.backgroundColor = .background
         $0.cornerRound(radius: 10)
-        $0.setShadow(radius: 13, offset: CGSize(width: 1, height: 4), opacity: 0.1, color: UIColor(red: 45 / 255, green: 45 / 255, blue: 45 / 255, alpha: 1))
+        $0.setShadow(radius: 13, offset: CGSize(width: 1, height: 4), opacity: 0.1, color: .init(45, 45, 45, 1))
     }
     
     let explanationImage = UIImageView().then {
@@ -48,11 +47,11 @@ class ThrowTrashViewController: UIViewController {
     }
     
     lazy var explanationLabel = UILabel().then {
-        $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 14)
+        $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 15)
         $0.textColor = .iconGray
         let attributedStr = NSMutableAttributedString(string: explainString)
 
-        attributedStr.addAttribute(.foregroundColor, value: UIColor.blue3, range: (explainString as NSString).range(of: self.trashType.rawValue))
+        attributedStr.addAttribute(.foregroundColor, value: UIColor.blue4, range: (explainString as NSString).range(of: self.trashType.rawValue))
 
         $0.attributedText = attributedStr
     }
@@ -123,7 +122,7 @@ class ThrowTrashViewController: UIViewController {
                     guard let result = response as? NetworkResult<Any> else { return }
                     
                     switch result {
-                    case .success( _ ):
+                    case .success:
                         self.showToast()
                     case .requestErr, .pathErr, .serverErr, .networkFail:
                         self.navigationController?.popViewController(animated: true)

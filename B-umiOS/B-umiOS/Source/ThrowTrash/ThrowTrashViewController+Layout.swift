@@ -29,14 +29,15 @@ extension ThrowTrashViewController {
         }
 
         navigationView.snp.makeConstraints { make in
-            make.top.width.equalToSuperview()
+            make.top.leading.trailing.equalToSuperview()
             make.height.equalTo(SizeConstants.navigationHeight * SizeConstants.screenRatio)
         }
         
         explanationView.snp.makeConstraints { make in
             make.top.equalTo(navigationView.snp.bottom).offset(16 * SizeConstants.screenRatio)
-            make.leading.trailing.equalToSuperview().inset(24 * SizeConstants.screenRatio)
+            make.width.equalTo(328.0 * SizeConstants.screenRatio)
             make.height.equalTo(explanationView.snp.width).multipliedBy(48.0 / 328.0)
+            make.centerX.equalToSuperview()
         }
         
         explanationImage.snp.makeConstraints { make in
