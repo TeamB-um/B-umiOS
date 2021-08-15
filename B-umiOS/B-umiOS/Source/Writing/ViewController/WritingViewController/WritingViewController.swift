@@ -100,7 +100,6 @@ class WritingViewController: UIViewController {
     }
     
     lazy var textFieldCountLabel = UILabel().then {
-        $0.textColor = self.style.countColor
         $0.font = UIFont.systemFont(ofSize: 15, weight: .regular)
         $0.text = "0/20"
     }

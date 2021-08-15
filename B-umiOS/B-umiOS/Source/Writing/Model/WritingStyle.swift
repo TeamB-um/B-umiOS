@@ -17,64 +17,28 @@ enum WritingStyle: Int {
 extension WritingStyle {
     var placeholderColor: UIColor {
         switch self {
-        case .paper1, .paper2:
-            return UIColor.iconGray
-        case .paper3, .paper4:
-            return UIColor.paper2
+        case .paper1, .paper3, .paper4:
+            return .textGray
+        case .paper2:
+            return .iconGray
         }
     }
 
     var textColor: UIColor {
         switch self {
         case .paper1, .paper2:
-            return UIColor.header
+            return .header
         case .paper3, .paper4:
-            return UIColor.white
-        }
-    }
-
-    var paperBgColor: UIColor {
-        switch self {
-        case .paper1:
-            return UIColor.paper1
-        case .paper2:
-            return UIColor.paper2
-        case .paper3:
-            return UIColor.paper3
-        case .paper4:
-            return UIColor.paper4
+            return .background
         }
     }
 
     var dividerColor: UIColor {
         switch self {
-        case .paper1, .paper2:
+        case .paper1, .paper3, .paper4:
             return UIColor.textGray
-        case .paper3:
-            return UIColor.paper2
-        case .paper4:
-            return UIColor.paper3
-        }
-    }
-
-    var tagBgColor: UIColor {
-        UIColor.disable
-    }
-
-    var tagTextColor: UIColor {
-        UIColor.paper3
-    }
-
-    var tagBorderColor: UIColor {
-        UIColor.textGray
-    }
-
-    var countColor: UIColor {
-        switch self {
-        case .paper1, .paper2:
-            return UIColor.header
-        case .paper3, .paper4:
-            return UIColor.white
+        case .paper2:
+            return UIColor.iconGray
         }
     }
 }
