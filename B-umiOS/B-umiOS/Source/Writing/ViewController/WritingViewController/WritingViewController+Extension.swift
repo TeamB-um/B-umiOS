@@ -54,12 +54,17 @@ extension WritingViewController: UICollectionViewDataSource {
 
 extension WritingViewController: UICollectionViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.contentOffset.x < 2 {
+        let offset = scrollView.contentOffset.x
+        let scrollViewWidth = scrollView.bounds.size.width
+        let maxOffset = scrollView.contentSize.width - 2
+        let minOffset = offset - 2
+
+        if minOffset < 0 {
             UIView.animate(withDuration: 0.3) {
                 self.leftGradientView.alpha = 0
                 self.righrGradientView.alpha = 1
             }
-        } else if scrollView.contentOffset.x < scrollView.contentSize.width - scrollView.bounds.width {
+        } else if offset + scrollViewWidth < maxOffset {
             UIView.animate(withDuration: 0.3) {
                 self.leftGradientView.alpha = 1
                 self.righrGradientView.alpha = 1

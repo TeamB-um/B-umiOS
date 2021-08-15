@@ -61,12 +61,12 @@ extension UIImage {
         UIImage(named: "bgElementsStroke") ?? UIImage()
     }
     
-    @nonobjc class var writing1GradientEnd: UIImage {
-        UIImage(named: "writing1GradientEnd") ?? UIImage()
+    @nonobjc class var writingGradientLeft: UIImage {
+        UIImage(named: "writingGradientLeft") ?? UIImage()
     }
     
-    @nonobjc class var writing1GradientRight: UIImage {
-        UIImage(named: "writing1GradientRight") ?? UIImage()
+    @nonobjc class var writingGradientRight: UIImage {
+        UIImage(named: "writingGradientRight") ?? UIImage()
     }
     
     @nonobjc class var icArrow: UIImage {

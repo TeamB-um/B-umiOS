@@ -69,13 +69,13 @@ class WritingViewController: UIViewController {
     }
     
     lazy var leftGradientView = UIImageView().then {
-        $0.image = UIImage.writing1GradientEnd.withRenderingMode(.alwaysTemplate)
+        $0.image = UIImage.writingGradientLeft.withRenderingMode(.alwaysTemplate)
         $0.tintColor = .background
         $0.alpha = 0
     }
 
     lazy var righrGradientView = UIImageView().then {
-        $0.image = UIImage.writing1GradientRight
+        $0.image = UIImage.writingGradientRight.withRenderingMode(.alwaysTemplate)
         $0.tintColor = .background
     }
 

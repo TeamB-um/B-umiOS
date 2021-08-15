@@ -2,18 +2,18 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "writing1GradientEnd.png",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "writing1GradientRight.png"
     },
     {
       "scale" : "2x",
-      "filename" : "writing1GradientEnd@2x.png",
+      "filename" : "writing1GradientRight@2x.png",
       "idiom" : "universal"
     },
     {
-      "filename" : "writing1GradientEnd@3x.png",
+      "idiom" : "universal",
       "scale" : "3x",
-      "idiom" : "universal"
+      "filename" : "writing1GradientRight@3x.png"
     }
   ],
   "info" : {
