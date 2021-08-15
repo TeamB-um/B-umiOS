@@ -15,7 +15,7 @@ class WritingViewController: UIViewController {
     // MARK: - UIComponenets
 
     let navigationView = UIView().then {
-        $0.backgroundColor = .white
+        $0.backgroundColor = .clear
     }
     
     let navigationLabel = UILabel().then {
@@ -38,7 +38,7 @@ class WritingViewController: UIViewController {
     }
     
     lazy var navigationDividerView = UIView().then {
-        $0.backgroundColor = self.style.dividerColor
+        $0.backgroundColor = .paper1
     }
     
     lazy var settingButton = UIButton().then {
@@ -47,13 +47,13 @@ class WritingViewController: UIViewController {
     }
     
     let guideImage = UIImageView().then {
-        $0.image = UIImage.icArrow
+        $0.image = UIImage.icArrow.withTintColor(.blue2Main, renderingMode: .alwaysTemplate)
     }
     
     let guideLabel = UILabel().then {
         $0.text = "카테고리를 추가해주세요!"
         $0.font = UIFont.nanumSquareFont(type: .regular, size: 16)
-        $0.textColor = UIColor.green2Main
+        $0.textColor = UIColor.blue2Main
     }
     
     let tagCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout()).then {
@@ -70,15 +70,16 @@ class WritingViewController: UIViewController {
     
     lazy var leftGradientView = UIImageView().then {
         $0.image = UIImage.writing1GradientEnd.withRenderingMode(.alwaysTemplate)
-        $0.tintColor = style.paperBgColor
+        $0.tintColor = .background
         $0.alpha = 0
     }
 
     lazy var righrGradientView = UIImageView().then {
-        $0.image = UIImage.writing1GradientRight.withRenderingMode(.alwaysTemplate)
-        $0.tintColor = style.paperBgColor
+        $0.image = UIImage.writing1GradientRight
+        $0.tintColor = .background
     }
 
+    // TODO: - 없애야함 ..
     lazy var dividerView = UIView().then {
         $0.backgroundColor = self.style.dividerColor
     }
@@ -194,7 +195,7 @@ class WritingViewController: UIViewController {
     // MARK: - Methods
     
     func setView() {
-        view.backgroundColor = style.paperBgColor
+        view.backgroundColor = .background
     }
     
     func setTextView() {

@@ -169,8 +169,4 @@ class HomeViewController: UIViewController {
             navigationController?.pushViewController(WritingViewController(style: style), animated: true)
         }
     }
-    
-    // MARK: - Methods
-    
-    // MARK: - Protocols
 }

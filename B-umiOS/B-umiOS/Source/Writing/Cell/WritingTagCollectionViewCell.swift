@@ -21,15 +21,17 @@ class WritingTagCollectionViewCell: UICollectionViewCell {
     override var isSelected: Bool {
         didSet {
             if isSelected {
-                tagLabel.textColor = .header
+                tagLabel.textColor = .blue3
+                tagLabel.font = .nanumSquareFont(type: .bold, size: 16)
                 
-                contentView.backgroundColor = UIColor(red: 183/255, green: 227/255, blue: 205/255, alpha: 1)
-                contentView.layer.borderColor = UIColor(red: 143/255, green: 212/255, blue: 177/255, alpha: 1).cgColor
+                contentView.backgroundColor = .blue0
+                contentView.layer.borderColor = UIColor.blue2Main.cgColor
             } else {
-                tagLabel.textColor = .paper3
+                tagLabel.textColor = .iconGray
+                tagLabel.font = .nanumSquareFont(type: .regular, size: 16)
                 
-                contentView.backgroundColor = .disable
-                contentView.layer.borderColor = UIColor.textGray.cgColor
+                contentView.backgroundColor = .paper1
+                contentView.layer.borderColor = UIColor.paper1.cgColor
             }
         }
     }
@@ -54,7 +56,7 @@ class WritingTagCollectionViewCell: UICollectionViewCell {
         super.layoutSubviews()
         
         setConstraints()
-        contentView.cornerRound(radius: 19)
+        contentView.cornerRound(radius: 20)
     }
     
     override func prepareForReuse() {

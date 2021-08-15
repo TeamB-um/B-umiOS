@@ -30,7 +30,7 @@ extension WritingViewController {
         }
         
         navigationView.snp.makeConstraints { make in
-            make.top.width.equalToSuperview()
+            make.top.leading.trailing.equalToSuperview()
             make.height.equalTo(SizeConstants.navigationHeight * SizeConstants.screenRatio)
         }
         
@@ -73,7 +73,7 @@ extension WritingViewController {
         righrGradientView.snp.makeConstraints { make in
             make.top.equalTo(navigationDividerView.snp.bottom)
             make.trailing.equalToSuperview()
-            make.width.equalTo(81 * SizeConstants.screenRatio)
+            make.width.equalTo(44 * SizeConstants.screenRatio)
             make.bottom.equalTo(dividerView.snp.bottom)
         }
         
