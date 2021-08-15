@@ -99,11 +99,6 @@ class WritingViewController: UIViewController {
         $0.backgroundColor = self.style.dividerColor
     }
     
-    lazy var textFieldCountLabel = UILabel().then {
-        $0.font = UIFont.systemFont(ofSize: 15, weight: .regular)
-        $0.text = "0/20"
-    }
-    
     lazy var textView = UITextView().then {
         $0.backgroundColor = .clear
         $0.text = self.placeholder
@@ -181,7 +176,6 @@ class WritingViewController: UIViewController {
     func changeTextField(_ sender: UITextField) {
         if let text = titleTextField.text {
             let length = text.count
-            textFieldCountLabel.text = "\(length > limitLength ? limitLength : length)/\(limitLength)"
             
             if length >= limitLength {
                 let index = text.index(text.startIndex, offsetBy: limitLength)

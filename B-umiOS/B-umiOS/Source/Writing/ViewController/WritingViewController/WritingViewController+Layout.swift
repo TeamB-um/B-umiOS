@@ -10,7 +10,7 @@ import UIKit
 extension WritingViewController {
     func setConstraints() {
         navigationView.addSubviews([navigationLabel, backButton, checkButton])
-        view.addSubviews([navigationView, navigationDividerView, guideImage, guideLabel, tagCollectionView, leftGradientView, righrGradientView, settingButton, dividerView, titleTextField, textFieldCountLabel, textFieldDividerView, textView])
+        view.addSubviews([navigationView, navigationDividerView, guideImage, guideLabel, tagCollectionView, leftGradientView, righrGradientView, settingButton, dividerView, titleTextField, textFieldDividerView, textView])
    
         navigationLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
@@ -95,12 +95,6 @@ extension WritingViewController {
             make.height.equalTo(1)
         }
 
-        textFieldCountLabel.snp.makeConstraints { make in
-            make.top.equalTo(dividerView.snp.bottom)
-            make.centerY.equalTo(titleTextField.snp.centerY)
-            make.trailing.equalToSuperview().inset(24 * SizeConstants.screenRatio)
-        }
-        
         textView.snp.makeConstraints { make in
             make.top.equalTo(textFieldDividerView.snp.bottom).offset(19.5)
             make.leading.trailing.equalTo(textFieldDividerView)

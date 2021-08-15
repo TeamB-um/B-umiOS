@@ -108,4 +108,20 @@ extension UIImage {
     @nonobjc class var presentmotivArea: UIImage {
         UIImage(named: "presentmotivArea") ?? UIImage()
     }
+    
+    @nonobjc class var writingPaper1: UIImage {
+        UIImage(named: "writing1Paper") ?? UIImage()
+    }
+
+    @nonobjc class var writingPaper2: UIImage {
+        UIImage(named: "writing2Paper") ?? UIImage()
+    }
+
+    @nonobjc class var writingPaper3: UIImage {
+        UIImage(named: "writing3Paper") ?? UIImage()
+    }
+
+    @nonobjc class var writingPaper4: UIImage {
+        UIImage(named: "writing4Paper") ?? UIImage()
+    }
 }
