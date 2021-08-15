@@ -81,6 +81,7 @@ class WritingViewController: UIViewController {
     
     lazy var paperView = UIImageView().then {
         $0.image = self.style.paperIamge
+        $0.isUserInteractionEnabled = true
     }
     
     lazy var titleTextField = UITextField().then {
@@ -103,7 +104,7 @@ class WritingViewController: UIViewController {
         $0.text = self.placeholder
         
         let style = NSMutableParagraphStyle()
-        style.lineSpacing = 14 
+        style.lineSpacing = 14
         let attributes = [NSAttributedString.Key.paragraphStyle: style, NSAttributedString.Key.foregroundColor: self.style.placeholderColor, NSAttributedString.Key.font: UIFont.nanumSquareFont(type: .regular, size: 18)]
         $0.attributedText = NSAttributedString(string: $0.text, attributes: attributes)
         
