@@ -78,10 +78,9 @@ class WritingViewController: UIViewController {
         $0.image = UIImage.writingGradientRight.withRenderingMode(.alwaysTemplate)
         $0.tintColor = .background
     }
-
-    // TODO: - 없애야함 ..
-    lazy var dividerView = UIView().then {
-        $0.backgroundColor = self.style.dividerColor
+    
+    lazy var paperView = UIImageView().then {
+        $0.image = self.style.paperIamge
     }
     
     lazy var titleTextField = UITextField().then {

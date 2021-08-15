@@ -15,6 +15,19 @@ enum WritingStyle: Int {
 }
 
 extension WritingStyle {
+    var paperIamge: UIImage {
+        switch self {
+        case .paper1:
+            return .writingPaper1
+        case .paper2:
+            return .writingPaper2
+        case .paper3:
+            return .writingPaper3
+        case .paper4:
+            return .writingPaper4
+        }
+    }
+
     var placeholderColor: UIColor {
         switch self {
         case .paper1, .paper3, .paper4:

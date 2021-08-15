@@ -10,7 +10,7 @@ import UIKit
 extension WritingViewController {
     func setConstraints() {
         navigationView.addSubviews([navigationLabel, backButton, checkButton])
-        view.addSubviews([navigationView, navigationDividerView, guideImage, guideLabel, tagCollectionView, leftGradientView, righrGradientView, settingButton, dividerView, titleTextField, textFieldDividerView, textView])
+        view.addSubviews([navigationView, navigationDividerView, guideImage, guideLabel, tagCollectionView, leftGradientView, righrGradientView, settingButton, paperView, titleTextField, textFieldDividerView, textView])
    
         navigationLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
@@ -67,24 +67,24 @@ extension WritingViewController {
             make.top.equalTo(navigationDividerView.snp.bottom)
             make.leading.equalToSuperview()
             make.width.equalTo(100 * SizeConstants.screenRatio)
-            make.bottom.equalTo(dividerView.snp.bottom)
+            make.bottom.equalTo(tagCollectionView.snp.bottom)
         }
         
         righrGradientView.snp.makeConstraints { make in
             make.top.equalTo(navigationDividerView.snp.bottom)
             make.trailing.equalToSuperview()
             make.width.equalTo(44 * SizeConstants.screenRatio)
-            make.bottom.equalTo(dividerView.snp.bottom)
+            make.bottom.equalTo(tagCollectionView.snp.bottom)
         }
         
-        dividerView.snp.makeConstraints { make in
+        paperView.snp.makeConstraints { make in
             make.top.equalTo(tagCollectionView.snp.bottom)
-            make.leading.trailing.equalToSuperview()
-            make.height.equalTo(1)
+            make.leading.trailing.equalToSuperview().inset(16 * SizeConstants.screenRatio)
+            make.bottom.equalToSuperview()
         }
-        
+    
         titleTextField.snp.makeConstraints { make in
-            make.top.equalTo(dividerView.snp.bottom)
+            make.top.equalTo(paperView.snp.top)
             make.leading.trailing.equalToSuperview().inset(24 * SizeConstants.screenRatio)
             make.height.equalTo(48 * SizeConstants.screenRatio)
         }
