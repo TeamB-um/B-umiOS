@@ -54,6 +54,7 @@
 		4FBF7D8F26BBD94900DD9C91 /* SettingSeparateViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF7D8E26BBD94900DD9C91 /* SettingSeparateViewController+Extension.swift */; };
 		4FBF7D9126BBD99B00DD9C91 /* SeparatePopUpViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF7D9026BBD99B00DD9C91 /* SeparatePopUpViewController+Layout.swift */; };
 		4FBF7D9526BBDA6C00DD9C91 /* PeriodPopUpViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF7D9426BBDA6C00DD9C91 /* PeriodPopUpViewController+Layout.swift */; };
+		4FC8F75D26CA6A40006232A9 /* SeparatePresentPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC8F75C26CA6A40006232A9 /* SeparatePresentPopUpViewController.swift */; };
 		4FDF643826A0C3F900E5DC2E /* GraphResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDF643726A0C3F900E5DC2E /* GraphResponse.swift */; };
 		AB21E3A9269CA06900D32EFF /* CompletionMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB21E3A8269CA06900D32EFF /* CompletionMessage.swift */; };
 		AB21E3AC269D427400D32EFF /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB21E3AB269D427400D32EFF /* LaunchScreenViewController.swift */; };
@@ -186,6 +187,7 @@
 		4FBF7D9026BBD99B00DD9C91 /* SeparatePopUpViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SeparatePopUpViewController+Layout.swift"; sourceTree = "<group>"; };
 		4FBF7D9426BBDA6C00DD9C91 /* PeriodPopUpViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PeriodPopUpViewController+Layout.swift"; sourceTree = "<group>"; };
 		4FBF7D9C26BBE26200DD9C91 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4FC8F75C26CA6A40006232A9 /* SeparatePresentPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatePresentPopUpViewController.swift; sourceTree = "<group>"; };
 		4FDF643726A0C3F900E5DC2E /* GraphResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphResponse.swift; sourceTree = "<group>"; };
 		AB21E3A8269CA06900D32EFF /* CompletionMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionMessage.swift; sourceTree = "<group>"; };
 		AB21E3AB269D427400D32EFF /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
@@ -948,6 +950,7 @@
 				4FBF7D6426BBCDAC00DD9C91 /* SeparateViewController */,
 				4FBF7D6526BBCE1300DD9C91 /* SeparateDetailViewController */,
 				4FBF7D6626BBCE3500DD9C91 /* SeparateGraphPopUpViewController */,
+				4FC8F75C26CA6A40006232A9 /* SeparatePresentPopUpViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1138,6 +1141,7 @@
 				4FBF7D7026BBD2EA00DD9C91 /* MyPageViewController+Extension.swift in Sources */,
 				AB21E3D526A0777E00D32EFF /* ActivityIndicator.swift in Sources */,
 				4FBF7D6226BBCC0800DD9C91 /* WritingPopUpViewController+Layout.swift in Sources */,
+				4FC8F75D26CA6A40006232A9 /* SeparatePresentPopUpViewController.swift in Sources */,
 				AB8C3F5B26935E8600B2BA30 /* WritingViewController+Layout.swift in Sources */,
 				4FBF7D8126BBD66900DD9C91 /* FilterBottomSheetViewController+Extension.swift in Sources */,
 				AB8C3F5D2695743E00B2BA30 /* NotificationName+Extension.swift in Sources */,

@@ -71,25 +71,14 @@ extension SeparateViewController: UICollectionViewDelegate {
             
         }
         else {
-            if(tag[indexPath.row].count >= 5){
-                CategoryService.shared.fetchRewardData(category_id: tag[indexPath.row].id) { response in
-
-                    guard let result = response as? NetworkResult<Any> else{return}
-                    
-                    switch result{
-                    case .success(let response):
-                        guard let reward = response as? GeneralResponse<RewardResponse> else{return}
-                        let vc = MyRewardPopUpViewController(reward: reward.data!.reward)
-                        vc.modalTransitionStyle = .crossDissolve
-                        vc.modalPresentationStyle = .overCurrentContext
-                        self.tag[indexPath.row].count = 0
-                        self.tabBarController?.present(vc, animated: true) {
-                            self.separateCollectionView.reloadData()
-                        }
-                    default:
-                        break
-                    }
-                }
+            if(tag[indexPath.row].count >= 1){
+                let vc = SeparatePresentPopUpViewController()
+                vc.popupdelegate = self
+                vc.indexPath_row = indexPath.row
+            
+                vc.modalTransitionStyle = .crossDissolve
+                vc.modalPresentationStyle = .overCurrentContext
+                self.tabBarController?.present(vc, animated: true, completion: nil)
             }
             else{
                 guard let pushVC = self.storyboard?.instantiateViewController(withIdentifier: SeparateDetailViewController.identifier) as? SeparateDetailViewController else { return }
@@ -128,4 +117,34 @@ extension SeparateViewController: ChangeCategoryDataDelegate {
         tag = data
         separateCollectionView.reloadData()
     }
+}
+
+extension SeparateViewController: popupDelegate{
+    func closeBottomSheet() {}
+    
+    func sendData<T>(data: T) {
+        guard let index = data as? Int else { return }
+
+        ActivityIndicator.shared.startLoadingAnimation()
+        
+        CategoryService.shared.fetchRewardData(category_id: tag[index].id) { response in
+            guard let result = response as? NetworkResult<Any> else{return}
+            ActivityIndicator.shared.stopLoadingAnimation()
+            switch result{
+            case .success(let response):
+                guard let reward = response as? GeneralResponse<RewardResponse> else{return}
+
+                let vc = MyRewardPopUpViewController(reward: reward.data!.reward)
+                vc.modalTransitionStyle = .crossDissolve
+                vc.modalPresentationStyle = .overCurrentContext
+                self.tabBarController?.present (vc, animated: true)
+            default:
+                break
+            }
+        }
+
+        self.tag[index].count = 0
+        self.separateCollectionView.reloadData()
+    }
+
 }
