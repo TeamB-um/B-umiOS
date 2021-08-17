@@ -71,7 +71,7 @@ extension SeparateViewController: UICollectionViewDelegate {
             
         }
         else {
-            if(tag[indexPath.row].count >= 1){
+            if(tag[indexPath.row].count >= 5){
                 let vc = SeparatePresentPopUpViewController()
                 vc.popupdelegate = self
                 vc.indexPath_row = indexPath.row
@@ -81,11 +81,15 @@ extension SeparateViewController: UICollectionViewDelegate {
                 self.tabBarController?.present(vc, animated: true, completion: nil)
             }
             else{
-                guard let pushVC = self.storyboard?.instantiateViewController(withIdentifier: SeparateDetailViewController.identifier) as? SeparateDetailViewController else { return }
-
-                pushVC.categoryID = tag[indexPath.row].id
-
-                self.navigationController?.pushViewController(pushVC, animated: true)
+                let vc = SeparateToastViewController()
+                vc.modalTransitionStyle = .crossDissolve
+                vc.modalPresentationStyle = .overCurrentContext
+                self.tabBarController?.present(vc, animated: true, completion: nil)
+//                guard let pushVC = self.storyboard?.instantiateViewController(withIdentifier: SeparateDetailViewController.identifier) as? SeparateDetailViewController else { return }
+//
+//                pushVC.categoryID = tag[indexPath.row].id
+//
+//                self.navigationController?.pushViewController(pushVC, animated: true)
             }
         }
     }
