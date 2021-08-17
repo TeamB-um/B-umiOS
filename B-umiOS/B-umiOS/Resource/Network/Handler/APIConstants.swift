@@ -24,9 +24,6 @@ struct APIConstants {
     /// writing API
     static let writingURL = APIConstants.baseURL + "/writings"
 
-    /// trashCan API
-    static let trashCanURL = APIConstants.baseURL + "/trashcans"
-
     /// reward API
     static let rewardURL = APIConstants.baseURL + "/rewards"
 }
