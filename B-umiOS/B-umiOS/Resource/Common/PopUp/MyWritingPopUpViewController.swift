@@ -10,7 +10,7 @@ import UIKit
 class MyWritingPopUpViewController: UIViewController {
     // MARK: - UIComponenets
     
-    private let popUpView = UIView().then {
+    private let popUpView = UIImageView().then {
         $0.backgroundColor = .white
         $0.cornerRound(radius: 10)
     }
@@ -50,6 +50,8 @@ class MyWritingPopUpViewController: UIViewController {
     
     // MARK: - Properties
     
+    var paperImageArray = ["writing1Paper","writing2Paper","writing3Paper","writing4Paper"]
+    
     // MARK: - Initializer
     
     init(writing: Writing) {
@@ -83,6 +85,7 @@ class MyWritingPopUpViewController: UIViewController {
         titleLabel.lineSpacing(spacing: 10)
         contentLabel.text = data.text
         contentLabel.lineSpacing(spacing: 9)
+//        popUpView.image = UIImage(named: paperImageArray[0])
 
         let writtenDate = Date().ISOStringToDate(date: data.createdDate)
         let date = Date().ISODateToString(format: "yyyy.MM.dd(E)", date: writtenDate)

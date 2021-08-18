@@ -110,7 +110,7 @@ class FilterBottmSheetViewController: UIViewController {
     
     var dateSwitch = UISwitch().then {
         $0.isOn = false
-        $0.onTintColor = .green2Main
+        $0.onTintColor = .blue2Main
         $0.addTarget(self, action: #selector(didTapSwitch(_:)), for: .touchUpInside)
     }
     
