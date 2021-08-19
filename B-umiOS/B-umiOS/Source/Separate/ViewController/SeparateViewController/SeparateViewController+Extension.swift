@@ -71,26 +71,16 @@ extension SeparateViewController: UICollectionViewDelegate {
             
         }
         else {
-            if(tag[indexPath.row].count >= 5){
-                let vc = SeparatePresentPopUpViewController()
-                vc.popupdelegate = self
-                vc.indexPath_row = indexPath.row
+            let vc = tag[indexPath.row].count >= 5 ? SeparatePresentPopUpViewController() : SeparateToastViewController()
             
-                vc.modalTransitionStyle = .crossDissolve
-                vc.modalPresentationStyle = .overCurrentContext
-                self.tabBarController?.present(vc, animated: true, completion: nil)
+            if let nextVC = vc as? SeparatePresentPopUpViewController{
+                nextVC.popupdelegate = self
+                nextVC.indexPath_row = indexPath.row
             }
-            else{
-                let vc = SeparateToastViewController()
-                vc.modalTransitionStyle = .crossDissolve
-                vc.modalPresentationStyle = .overCurrentContext
-                self.tabBarController?.present(vc, animated: true, completion: nil)
-//                guard let pushVC = self.storyboard?.instantiateViewController(withIdentifier: SeparateDetailViewController.identifier) as? SeparateDetailViewController else { return }
-//
-//                pushVC.categoryID = tag[indexPath.row].id
-//
-//                self.navigationController?.pushViewController(pushVC, animated: true)
-            }
+            
+            vc.modalTransitionStyle = .crossDissolve
+            vc.modalPresentationStyle = .overCurrentContext
+            self.tabBarController?.present(vc, animated: true, completion: nil)
         }
     }
 

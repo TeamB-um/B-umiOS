@@ -49,12 +49,10 @@ class SeparateToastViewController: UIViewController {
         
         toastLabel.snp.makeConstraints { make in
             make.bottom.equalToSuperview().inset(116 * SizeConstants.screenRatio)
-            make.height.equalTo(45 * SizeConstants.screenRatio)
             make.width.equalTo(182 * SizeConstants.screenRatio)
+            make.height.equalTo(toastLabel.snp.width).multipliedBy(45.0 / 182.0)
             make.centerX.equalToSuperview()
         }
-
-       
     }
     
     // MARK: - Protocols

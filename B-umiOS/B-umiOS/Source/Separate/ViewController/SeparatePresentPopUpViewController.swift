@@ -66,22 +66,20 @@ class SeparatePresentPopUpViewController: UIViewController {
         
         presentImageView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalToSuperview().inset(302 * SizeConstants.screenRatio)
+            make.top.equalToSuperview().offset(302.0 * SizeConstants.screenHeight / 812.0)
         }
         
         explanationLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalTo(presentImageView.snp.bottom).offset(21 * SizeConstants.screenRatio)
+            make.top.equalTo(presentImageView.snp.bottom).offset(21 * SizeConstants.screenHeight / 812.0)
         }
        
     }
     
     @objc private func didTapBackgroundButton(_ sender: UIButton) {
-        
         self.dismiss(animated: true, completion: {
             self.popupdelegate?.sendData(data: self.indexPath_row)
         })
-        
     }
     
     // MARK: - Protocols
