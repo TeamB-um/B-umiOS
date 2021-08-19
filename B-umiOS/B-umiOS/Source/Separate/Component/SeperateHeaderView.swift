@@ -18,12 +18,11 @@ class SeperateHeaderView: UICollectionReusableView {
     }
     
     let explanationLabel = UILabel().then {
-        $0.text = "당신이 보관한 스트레스입니다."
         $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 14)
         $0.textColor = .iconGray
-        let attributedStr = NSMutableAttributedString(string: "당신이 보관한 스트레스입니다.")
+        let attributedStr = NSMutableAttributedString(string: "쓰레기가 꽉 차면 미화원이 비워갈게요!")
 
-        attributedStr.addAttribute(.foregroundColor, value: UIColor.blue3, range: ("당신이 보관한 스트레스입니다." as NSString).range(of: "스트레스"))
+        attributedStr.addAttribute(.foregroundColor, value: UIColor.blue3, range: ("쓰레기가 꽉 차면 미화원이 비워갈게요!" as NSString).range(of: "쓰레기"))
 
         $0.attributedText = attributedStr
     }
@@ -83,7 +82,7 @@ class SeperateHeaderView: UICollectionReusableView {
         }
         
         explanationLabel.snp.makeConstraints { make in
-            make.leading.equalTo(seperateImage.snp.trailing).offset(48 * SizeConstants.screenRatio)
+            make.leading.equalTo(seperateImage.snp.trailing).offset(27 * SizeConstants.screenRatio)
             make.centerY.equalToSuperview()
         }
     }

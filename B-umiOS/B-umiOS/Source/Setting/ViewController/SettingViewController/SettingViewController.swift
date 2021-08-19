@@ -9,7 +9,7 @@ import UIKit
 
 protocol popupDelegate {
     func closeBottomSheet()
-    func sendPeriod(period: Int)
+    func sendData<T>(data: T)
 }
 
 class SettingViewController: UIViewController {
@@ -211,7 +211,7 @@ extension SettingViewController: popupDelegate {
         self.backgroundView.removeFromSuperview()
     }
     
-    func sendPeriod(period: Int) {
-        self.trashbinPeriodLabel.text = "\(period)일"
+    func sendData<T>(data: T) {
+        self.trashbinPeriodLabel.text = "\(data)일"
     }
 }

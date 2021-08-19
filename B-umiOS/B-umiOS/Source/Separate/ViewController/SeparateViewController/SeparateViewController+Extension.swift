@@ -71,33 +71,16 @@ extension SeparateViewController: UICollectionViewDelegate {
             
         }
         else {
-            if(tag[indexPath.row].count >= 5){
-                CategoryService.shared.fetchRewardData(category_id: tag[indexPath.row].id) { response in
-
-                    guard let result = response as? NetworkResult<Any> else{return}
-                    
-                    switch result{
-                    case .success(let response):
-                        guard let reward = response as? GeneralResponse<RewardResponse> else{return}
-                        let vc = MyRewardPopUpViewController(reward: reward.data!.reward)
-                        vc.modalTransitionStyle = .crossDissolve
-                        vc.modalPresentationStyle = .overCurrentContext
-                        self.tag[indexPath.row].count = 0
-                        self.tabBarController?.present(vc, animated: true) {
-                            self.separateCollectionView.reloadData()
-                        }
-                    default:
-                        break
-                    }
-                }
+            let vc = tag[indexPath.row].count >= 5 ? SeparatePresentPopUpViewController() : SeparateToastViewController()
+            
+            if let nextVC = vc as? SeparatePresentPopUpViewController{
+                nextVC.popupdelegate = self
+                nextVC.indexPath_row = indexPath.row
             }
-            else{
-                guard let pushVC = self.storyboard?.instantiateViewController(withIdentifier: SeparateDetailViewController.identifier) as? SeparateDetailViewController else { return }
-
-                pushVC.categoryID = tag[indexPath.row].id
-
-                self.navigationController?.pushViewController(pushVC, animated: true)
-            }
+            
+            vc.modalTransitionStyle = .crossDissolve
+            vc.modalPresentationStyle = .overCurrentContext
+            self.tabBarController?.present(vc, animated: true, completion: nil)
         }
     }
 
@@ -128,4 +111,34 @@ extension SeparateViewController: ChangeCategoryDataDelegate {
         tag = data
         separateCollectionView.reloadData()
     }
+}
+
+extension SeparateViewController: popupDelegate{
+    func closeBottomSheet() {}
+    
+    func sendData<T>(data: T) {
+        guard let index = data as? Int else { return }
+
+        ActivityIndicator.shared.startLoadingAnimation()
+        
+        CategoryService.shared.fetchRewardData(category_id: tag[index].id) { response in
+            guard let result = response as? NetworkResult<Any> else{return}
+            ActivityIndicator.shared.stopLoadingAnimation()
+            switch result{
+            case .success(let response):
+                guard let reward = response as? GeneralResponse<RewardResponse> else{return}
+
+                let vc = MyRewardPopUpViewController(reward: reward.data!.reward)
+                vc.modalTransitionStyle = .crossDissolve
+                vc.modalPresentationStyle = .overCurrentContext
+                self.tabBarController?.present (vc, animated: true)
+            default:
+                break
+            }
+        }
+
+        self.tag[index].count = 0
+        self.separateCollectionView.reloadData()
+    }
+
 }
