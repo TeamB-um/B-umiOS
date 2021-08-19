@@ -145,11 +145,16 @@ class WritingViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         NotificationCenter.default.post(name: Notification.Name.TabBarHide, object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
         fetchCategoriesData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         NotificationCenter.default.post(name: Notification.Name.TabBarShow, object: nil)
+        
+        NotificationCenter.default.removeObserver(self)
     }
     
     // MARK: - Actions
@@ -182,6 +187,23 @@ class WritingViewController: UIViewController {
                 let newString = text[text.startIndex ..< index]
                 titleTextField.text = String(newString)
             }
+        }
+    }
+    
+    @objc func keyboardWillShow(_ notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            let keyboardHeight = keyboardSize.height
+            let space = keyboardHeight + 30
+            
+            textView.snp.updateConstraints { make in
+                make.bottom.equalToSuperview().offset(-space)
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(_ notification: NSNotification) {
+        textView.snp.updateConstraints { make in
+            make.bottom.equalToSuperview().offset(-53)
         }
     }
     
