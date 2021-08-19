@@ -11,8 +11,7 @@ class MyWritingPopUpViewController: UIViewController {
     // MARK: - UIComponenets
     
     private let popUpView = UIImageView().then {
-        $0.backgroundColor = .white
-        $0.cornerRound(radius: 10)
+        $0.backgroundColor = .clear
     }
     
     private lazy var closeButton = UIButton(primaryAction: UIAction(handler: { _ in
@@ -29,16 +28,17 @@ class MyWritingPopUpViewController: UIViewController {
     
     private lazy var titleLabel = UILabel().then {
         $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 20)
-        $0.textColor = .black
+        $0.textColor = .header
     }
     
     private lazy var dateLabel = UILabel().then {
-        $0.textColor = .textGray
+        $0.textColor = .paper3
+        $0.font = .systemFont(ofSize: 15, weight: .regular)
     }
     
     private lazy var contentLabel = UILabel().then {
         $0.textColor = .header
-        $0.font = UIFont.nanumSquareFont(type: .light, size: 14)
+        $0.font = UIFont.nanumSquareFont(type: .light, size: 18)
         $0.numberOfLines = 0
     }
     
@@ -49,8 +49,6 @@ class MyWritingPopUpViewController: UIViewController {
     private let contentView = UIView()
     
     // MARK: - Properties
-    
-    var paperImageArray = ["writing1Paper","writing2Paper","writing3Paper","writing4Paper"]
     
     // MARK: - Initializer
     
@@ -77,20 +75,29 @@ class MyWritingPopUpViewController: UIViewController {
     
     // MARK: - Methods
     
+    // FIXME: - 서버에서 Writing Model 변경 예정!
+    
     func setWritingData(data: Writing) {
+        let style = WritingStyle(rawValue: 3) ?? WritingStyle.paper1
+        let writtenDate = Date().ISOStringToDate(date: data.createdDate)
+        let date = Date().ISODateToString(format: "yyyy.MM.dd (E)", date: writtenDate)
+        
         trashBinLabel.text = data.category.name
         trashBinLabel.textColor = SeparateStyle.color[data.category.index]
         
         titleLabel.text = data.title
+        titleLabel.textColor = style.textColor
         titleLabel.lineSpacing(spacing: 10)
-        contentLabel.text = data.text
-        contentLabel.lineSpacing(spacing: 9)
-//        popUpView.image = UIImage(named: paperImageArray[0])
-
-        let writtenDate = Date().ISOStringToDate(date: data.createdDate)
-        let date = Date().ISODateToString(format: "yyyy.MM.dd(E)", date: writtenDate)
-        self.dateLabel.text = date
         
+        contentLabel.text = data.text
+        contentLabel.textColor = style.textColor
+        contentLabel.lineSpacing(spacing: 9)
+        
+        dateLabel.text = date
+        dateLabel.textColor = style.dateTextColor
+        
+        popUpView.image = style.myWritingPaperImage
+        closeButton.tintColor = style.textColor
     }
     
     func setConstraints() {
@@ -104,8 +111,7 @@ class MyWritingPopUpViewController: UIViewController {
         }
         
         contentView.snp.makeConstraints { make in
-            make.top.bottom.equalTo(scrollView)
-            make.width.equalTo(scrollView.snp.width)
+            make.edges.width.equalToSuperview()
         }
         
         popUpView.snp.makeConstraints { make in
@@ -125,25 +131,24 @@ class MyWritingPopUpViewController: UIViewController {
         }
         
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(trashBinLabel.snp.bottom).offset(14 * SizeConstants.screenRatio)
+            make.top.equalTo(trashBinLabel.snp.bottom).offset(17)
             make.leading.trailing.equalToSuperview().inset(24 * SizeConstants.screenRatio)
         }
         
         dateLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(8 * SizeConstants.screenRatio)
+            make.top.equalTo(titleLabel.snp.bottom).offset(9)
             make.leading.equalTo(trashBinLabel.snp.leading)
         }
         
         scrollView.snp.makeConstraints { make in
-            make.top.equalTo(dateLabel.snp.bottom).offset(22 * SizeConstants.screenRatio)
-            make.leading.equalTo(trashBinLabel.snp.leading)
-            make.trailing.equalToSuperview().inset(24 * SizeConstants.screenRatio)
-            make.bottom.equalToSuperview().inset(39 * SizeConstants.screenRatio)
+            make.top.equalTo(dateLabel.snp.bottom).offset(24)
+            make.leading.trailing.equalToSuperview().inset(24 * SizeConstants.screenRatio)
+            make.bottom.equalToSuperview().inset(52)
         }
     }
     
     func setView() {
-        view.layer.backgroundColor = UIColor.black.withAlphaComponent(0.5).cgColor
+        view.layer.backgroundColor = UIColor.black.withAlphaComponent(0.6).cgColor
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

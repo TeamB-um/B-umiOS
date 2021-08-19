@@ -28,6 +28,19 @@ extension WritingStyle {
         }
     }
 
+    var myWritingPaperImage: UIImage {
+        switch self {
+        case .paper1:
+            return .myWritingPaper1
+        case .paper2:
+            return .myWritingPaper2
+        case .paper3:
+            return .myWritingPaper3
+        case .paper4:
+            return .myWritingPaper4
+        }
+    }
+
     var placeholderColor: UIColor {
         switch self {
         case .paper1, .paper3, .paper4:
@@ -52,6 +65,15 @@ extension WritingStyle {
             return UIColor.textGray
         case .paper2:
             return UIColor.iconGray
+        }
+    }
+
+    var dateTextColor: UIColor {
+        switch self {
+        case .paper1, .paper2:
+            return .paper3
+        case .paper3, .paper4:
+            return .disable
         }
     }
 }

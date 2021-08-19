@@ -124,4 +124,20 @@ extension UIImage {
     @nonobjc class var writingPaper4: UIImage {
         UIImage(named: "writing4Paper") ?? UIImage()
     }
+    
+    @nonobjc class var myWritingPaper1: UIImage {
+        UIImage(named: "mywritingPaper1") ?? UIImage()
+    }
+
+    @nonobjc class var myWritingPaper2: UIImage {
+        UIImage(named: "mywritingPaper2") ?? UIImage()
+    }
+
+    @nonobjc class var myWritingPaper3: UIImage {
+        UIImage(named: "mywritingPaper3") ?? UIImage()
+    }
+
+    @nonobjc class var myWritingPaper4: UIImage {
+        UIImage(named: "mywritingPaper4") ?? UIImage()
+    }
 }
