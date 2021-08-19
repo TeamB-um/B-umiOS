@@ -11,7 +11,6 @@ import UIKit
 enum MenuStatus: Int {
     case myWriting = 0
     case myReward = 1
-    case MyTrashBin = 2
 }
 
 class MyPageViewController: UIViewController {
@@ -62,8 +61,8 @@ class MyPageViewController: UIViewController {
 
     // MARK: - Properties
 
-    let menu = ["글", "리워드", "삭제함"]
-    let subViewControllers: [UIViewController] = [MyWritingViewController(), MyRewardViewController(), MyTrashBinViewController()]
+    let menu = ["글", "리워드"]
+    let subViewControllers: [UIViewController] = [MyWritingViewController(), MyRewardViewController()]
     let myPageMenuCellLineSpacing: CGFloat = 39.0
     
     // MARK: - Initializer
