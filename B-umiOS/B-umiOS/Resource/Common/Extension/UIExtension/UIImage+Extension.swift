@@ -108,4 +108,8 @@ extension UIImage {
     @nonobjc class var presentmotivArea: UIImage {
         UIImage(named: "presentmotivArea") ?? UIImage()
     }
+    
+    @nonobjc class var imgReward: UIImage {
+        UIImage(named: "imgReward") ?? UIImage()
+    }
 }
