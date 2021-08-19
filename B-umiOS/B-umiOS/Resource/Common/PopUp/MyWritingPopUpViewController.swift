@@ -12,6 +12,7 @@ class MyWritingPopUpViewController: UIViewController {
     
     private let popUpView = UIImageView().then {
         $0.backgroundColor = .clear
+        $0.isUserInteractionEnabled = true
     }
     
     private lazy var closeButton = UIButton(primaryAction: UIAction(handler: { _ in
@@ -44,6 +45,7 @@ class MyWritingPopUpViewController: UIViewController {
     
     private let scrollView = UIScrollView().then {
         $0.showsHorizontalScrollIndicator = false
+        $0.showsVerticalScrollIndicator = true
     }
     
     private let contentView = UIView()
@@ -143,7 +145,7 @@ class MyWritingPopUpViewController: UIViewController {
         scrollView.snp.makeConstraints { make in
             make.top.equalTo(dateLabel.snp.bottom).offset(24)
             make.leading.trailing.equalToSuperview().inset(24 * SizeConstants.screenRatio)
-            make.bottom.equalToSuperview().inset(52)
+            make.bottom.equalToSuperview().inset(70)
         }
     }
     
