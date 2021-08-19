@@ -42,8 +42,8 @@ extension WritingViewController {
         }
         
         settingButton.snp.makeConstraints { make in
-            make.top.equalTo(navigationDividerView.snp.bottom).offset(7.5 * SizeConstants.screenRatio)
-            make.leading.equalToSuperview().offset(2 * SizeConstants.screenRatio)
+            make.centerY.equalTo(tagCollectionView.snp.centerY)
+            make.leading.equalToSuperview().offset(10 * SizeConstants.screenRatio)
             make.width.height.equalTo(48 * SizeConstants.screenRatio)
         }
         
@@ -59,7 +59,7 @@ extension WritingViewController {
         
         tagCollectionView.snp.makeConstraints { make in
             make.top.equalTo(navigationDividerView.snp.bottom).offset(8)
-            make.leading.equalTo(settingButton.snp.trailing).offset(6 * SizeConstants.screenRatio)
+            make.leading.equalTo(settingButton.snp.trailing)
             make.trailing.equalToSuperview()
             make.height.equalTo(64 * SizeConstants.screenRatio)
         }
