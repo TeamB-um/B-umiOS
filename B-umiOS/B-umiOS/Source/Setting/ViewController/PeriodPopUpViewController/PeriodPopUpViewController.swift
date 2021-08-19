@@ -86,7 +86,7 @@ class PeriodPopUpViewController: UIViewController {
                 if let userInfoResponse = data as? GeneralResponse<UserResponse>,
                    let newUserInfo = userInfoResponse.data?.user {
                     UserDefaults.standard.set(newUserInfo.deletePeriod, forKey: UserDefaults.Keys.deletePeriod)
-                    self.popupdelegate?.sendPeriod(period: deletePeriod)
+                    self.popupdelegate?.sendData(data: deletePeriod)
                 }
             case .requestErr, .pathErr, .serverErr, .networkFail:
                 /// 네트워크 에러 처리

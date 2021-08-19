@@ -19,6 +19,7 @@
 		4F2D1F49269C556300D941A1 /* SeperateFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D1F48269C556300D941A1 /* SeperateFooterView.swift */; };
 		4F34E10326935F7100A54336 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F34E10226935F7100A54336 /* UIViewController+Extension.swift */; };
 		4F34E1062693618A00A54336 /* TapGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F34E1052693618A00A54336 /* TapGesture.swift */; };
+		4F36B04026CB8E3300E1AE0B /* SeparateToastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F36B03F26CB8E3300E1AE0B /* SeparateToastViewController.swift */; };
 		4F4992972693F9F2009541AA /* SeparateViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4992962693F9F2009541AA /* SeparateViewController+Layout.swift */; };
 		4F49929D26942AD8009541AA /* SeparateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F49929B26942AD8009541AA /* SeparateCollectionViewCell.swift */; };
 		4F49929E26942AD8009541AA /* SeparateCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F49929C26942AD8009541AA /* SeparateCollectionViewCell.xib */; };
@@ -52,6 +53,7 @@
 		4FBF7D8F26BBD94900DD9C91 /* SettingSeparateViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF7D8E26BBD94900DD9C91 /* SettingSeparateViewController+Extension.swift */; };
 		4FBF7D9126BBD99B00DD9C91 /* SeparatePopUpViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF7D9026BBD99B00DD9C91 /* SeparatePopUpViewController+Layout.swift */; };
 		4FBF7D9526BBDA6C00DD9C91 /* PeriodPopUpViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF7D9426BBDA6C00DD9C91 /* PeriodPopUpViewController+Layout.swift */; };
+		4FC8F75D26CA6A40006232A9 /* SeparatePresentPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC8F75C26CA6A40006232A9 /* SeparatePresentPopUpViewController.swift */; };
 		4FDF643826A0C3F900E5DC2E /* GraphResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDF643726A0C3F900E5DC2E /* GraphResponse.swift */; };
 		AB0E164C26C40783005133C7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB0E164B26C40783005133C7 /* GoogleService-Info.plist */; };
 		AB21E3A9269CA06900D32EFF /* CompletionMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB21E3A8269CA06900D32EFF /* CompletionMessage.swift */; };
@@ -144,6 +146,7 @@
 		4F2D1F48269C556300D941A1 /* SeperateFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeperateFooterView.swift; sourceTree = "<group>"; };
 		4F34E10226935F7100A54336 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		4F34E1052693618A00A54336 /* TapGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapGesture.swift; sourceTree = "<group>"; };
+		4F36B03F26CB8E3300E1AE0B /* SeparateToastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparateToastViewController.swift; sourceTree = "<group>"; };
 		4F4992962693F9F2009541AA /* SeparateViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SeparateViewController+Layout.swift"; sourceTree = "<group>"; };
 		4F49929B26942AD8009541AA /* SeparateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparateCollectionViewCell.swift; sourceTree = "<group>"; };
 		4F49929C26942AD8009541AA /* SeparateCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeparateCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -178,6 +181,7 @@
 		4FBF7D9026BBD99B00DD9C91 /* SeparatePopUpViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SeparatePopUpViewController+Layout.swift"; sourceTree = "<group>"; };
 		4FBF7D9426BBDA6C00DD9C91 /* PeriodPopUpViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PeriodPopUpViewController+Layout.swift"; sourceTree = "<group>"; };
 		4FBF7D9C26BBE26200DD9C91 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4FC8F75C26CA6A40006232A9 /* SeparatePresentPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatePresentPopUpViewController.swift; sourceTree = "<group>"; };
 		4FDF643726A0C3F900E5DC2E /* GraphResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphResponse.swift; sourceTree = "<group>"; };
 		AB0E164A26C40690005133C7 /* 비움(B:um).entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "비움(B:um).entitlements"; sourceTree = "<group>"; };
 		AB0E164B26C40783005133C7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -917,6 +921,8 @@
 				4FBF7D6426BBCDAC00DD9C91 /* SeparateViewController */,
 				4FBF7D6526BBCE1300DD9C91 /* SeparateDetailViewController */,
 				4FBF7D6626BBCE3500DD9C91 /* SeparateGraphPopUpViewController */,
+				4FC8F75C26CA6A40006232A9 /* SeparatePresentPopUpViewController.swift */,
+				4F36B03F26CB8E3300E1AE0B /* SeparateToastViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1103,7 +1109,9 @@
 				4F66FB0F269F0BEE007EC311 /* SeparateStyle.swift in Sources */,
 				4FBF7D7026BBD2EA00DD9C91 /* MyPageViewController+Extension.swift in Sources */,
 				AB21E3D526A0777E00D32EFF /* ActivityIndicator.swift in Sources */,
+				4F36B04026CB8E3300E1AE0B /* SeparateToastViewController.swift in Sources */,
 				4FBF7D6226BBCC0800DD9C91 /* WritingPopUpViewController+Layout.swift in Sources */,
+				4FC8F75D26CA6A40006232A9 /* SeparatePresentPopUpViewController.swift in Sources */,
 				AB8C3F5B26935E8600B2BA30 /* WritingViewController+Layout.swift in Sources */,
 				4FBF7D8126BBD66900DD9C91 /* FilterBottomSheetViewController+Extension.swift in Sources */,
 				AB8C3F5D2695743E00B2BA30 /* NotificationName+Extension.swift in Sources */,
