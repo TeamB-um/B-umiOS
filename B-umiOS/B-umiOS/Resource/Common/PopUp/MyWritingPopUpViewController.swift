@@ -22,8 +22,10 @@ class MyWritingPopUpViewController: UIViewController {
         $0.tintColor = .header
     }
     
+    let trashBinTagView = UIView()
+    
     private lazy var trashBinLabel = UILabel().then {
-        $0.font = UIFont.nanumSquareFont(type: .regular, size: 14)
+        $0.font = UIFont.nanumSquareFont(type: .bold, size: 14)
         $0.textColor = UIColor.blue2Main
     }
     
@@ -72,6 +74,10 @@ class MyWritingPopUpViewController: UIViewController {
         setView()
         setConstraints()
     }
+    
+    override func viewDidLayoutSubviews() {
+        trashBinTagView.cornerRounds()
+    }
 
     // MARK: - Actions
     
@@ -83,6 +89,8 @@ class MyWritingPopUpViewController: UIViewController {
         let style = WritingStyle(rawValue: 3) ?? WritingStyle.paper1
         let writtenDate = Date().ISOStringToDate(date: data.createdDate)
         let date = Date().ISODateToString(format: "yyyy.MM.dd (E)", date: writtenDate)
+        
+        trashBinTagView.backgroundColor = .category
         
         trashBinLabel.text = data.category.name
         trashBinLabel.textColor = SeparateStyle.color[data.category.index]
@@ -105,7 +113,8 @@ class MyWritingPopUpViewController: UIViewController {
     func setConstraints() {
         contentView.addSubview(contentLabel)
         scrollView.addSubview(contentView)
-        popUpView.addSubviews([closeButton, trashBinLabel, titleLabel, dateLabel, scrollView])
+        trashBinTagView.addSubview(trashBinLabel)
+        popUpView.addSubviews([closeButton, trashBinTagView, titleLabel, dateLabel, scrollView])
         view.addSubviews([popUpView])
         
         contentLabel.snp.makeConstraints { make in
@@ -128,18 +137,24 @@ class MyWritingPopUpViewController: UIViewController {
             make.width.height.equalTo(48 * SizeConstants.screenRatio)
         }
         
-        trashBinLabel.snp.makeConstraints { make in
+        trashBinTagView.snp.makeConstraints { make in
             make.top.leading.equalToSuperview().offset(24 * SizeConstants.screenRatio)
+            make.width.equalTo(trashBinLabel.snp.width).offset(22)
+            make.height.equalTo(trashBinLabel.snp.height).offset(10)
+        }
+        
+        trashBinLabel.snp.makeConstraints { make in
+            make.center.equalToSuperview()
         }
         
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(trashBinLabel.snp.bottom).offset(17)
+            make.top.equalTo(trashBinTagView.snp.bottom).offset(15)
             make.leading.trailing.equalToSuperview().inset(24 * SizeConstants.screenRatio)
         }
         
         dateLabel.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(9)
-            make.leading.equalTo(trashBinLabel.snp.leading)
+            make.leading.equalTo(titleLabel.snp.leading)
         }
         
         scrollView.snp.makeConstraints { make in
@@ -158,6 +173,4 @@ class MyWritingPopUpViewController: UIViewController {
             dismiss(animated: true, completion: nil)
         }
     }
-
-    // MARK: - Protocols
 }
