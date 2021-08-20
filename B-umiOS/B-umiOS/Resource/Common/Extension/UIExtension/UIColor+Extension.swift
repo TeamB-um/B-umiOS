@@ -26,6 +26,7 @@ extension UIColor {
     @nonobjc class var textGray: UIColor { .init(white: 194.0 / 255.0, alpha: 1.0) }
     @nonobjc class var iconGray: UIColor { .init(white: 161.0 / 255.0, alpha: 1.0) }
     @nonobjc class var background: UIColor { .init(white: 250.0 / 255.0, alpha: 1.0) }
+    @nonobjc class var category: UIColor { .init(white: 231.0 / 255.0, alpha: 1.0) }
 
     // MARK: - State
 

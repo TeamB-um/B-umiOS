@@ -15,7 +15,7 @@ class WritingViewController: UIViewController {
     // MARK: - UIComponenets
 
     let navigationView = UIView().then {
-        $0.backgroundColor = .white
+        $0.backgroundColor = .clear
     }
     
     let navigationLabel = UILabel().then {
@@ -38,7 +38,7 @@ class WritingViewController: UIViewController {
     }
     
     lazy var navigationDividerView = UIView().then {
-        $0.backgroundColor = self.style.dividerColor
+        $0.backgroundColor = .paper1
     }
     
     lazy var settingButton = UIButton().then {
@@ -47,13 +47,13 @@ class WritingViewController: UIViewController {
     }
     
     let guideImage = UIImageView().then {
-        $0.image = UIImage.icArrow
+        $0.image = UIImage.icArrow.withTintColor(.blue2Main, renderingMode: .alwaysTemplate)
     }
     
     let guideLabel = UILabel().then {
         $0.text = "카테고리를 추가해주세요!"
         $0.font = UIFont.nanumSquareFont(type: .regular, size: 16)
-        $0.textColor = UIColor.green2Main
+        $0.textColor = UIColor.blue2Main
     }
     
     let tagCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout()).then {
@@ -69,25 +69,26 @@ class WritingViewController: UIViewController {
     }
     
     lazy var leftGradientView = UIImageView().then {
-        $0.image = UIImage.writing1GradientEnd.withRenderingMode(.alwaysTemplate)
-        $0.tintColor = style.paperBgColor
+        $0.image = UIImage.writingGradientLeft.withRenderingMode(.alwaysTemplate)
+        $0.tintColor = .background
         $0.alpha = 0
     }
 
     lazy var righrGradientView = UIImageView().then {
-        $0.image = UIImage.writing1GradientRight.withRenderingMode(.alwaysTemplate)
-        $0.tintColor = style.paperBgColor
+        $0.image = UIImage.writingGradientRight.withRenderingMode(.alwaysTemplate)
+        $0.tintColor = .background
     }
-
-    lazy var dividerView = UIView().then {
-        $0.backgroundColor = self.style.dividerColor
+    
+    lazy var paperView = UIImageView().then {
+        $0.image = self.style.paperIamge
+        $0.isUserInteractionEnabled = true
     }
     
     lazy var titleTextField = UITextField().then {
         $0.autocorrectionType = .no
-        $0.attributedPlaceholder = NSAttributedString(string: "제목", attributes: [NSAttributedString.Key.foregroundColor: self.style.placeholderColor, NSAttributedString.Key.font: UIFont.nanumSquareFont(type: .bold, size: 14)])
+        $0.attributedPlaceholder = NSAttributedString(string: "제목", attributes: [NSAttributedString.Key.foregroundColor: self.style.placeholderColor, NSAttributedString.Key.font: UIFont.nanumSquareFont(type: .regular, size: 20)])
         $0.textColor = self.style.textColor
-        $0.font = UIFont.nanumSquareFont(type: .bold, size: 14)
+        $0.font = UIFont.nanumSquareFont(type: .bold, size: 20)
         
         $0.delegate = self
         $0.addTarget(self, action: #selector(changeTextField(_:)), for: .editingChanged)
@@ -98,19 +99,13 @@ class WritingViewController: UIViewController {
         $0.backgroundColor = self.style.dividerColor
     }
     
-    lazy var textFieldCountLabel = UILabel().then {
-        $0.textColor = self.style.countColor
-        $0.font = UIFont.systemFont(ofSize: 15, weight: .regular)
-        $0.text = "0/20"
-    }
-    
     lazy var textView = UITextView().then {
         $0.backgroundColor = .clear
         $0.text = self.placeholder
         
         let style = NSMutableParagraphStyle()
-        style.lineSpacing = 8
-        let attributes = [NSAttributedString.Key.paragraphStyle: style, NSAttributedString.Key.foregroundColor: self.style.placeholderColor, NSAttributedString.Key.font: UIFont.nanumSquareFont(type: .light, size: 14)]
+        style.lineSpacing = 14
+        let attributes = [NSAttributedString.Key.paragraphStyle: style, NSAttributedString.Key.foregroundColor: self.style.placeholderColor, NSAttributedString.Key.font: UIFont.nanumSquareFont(type: .regular, size: 18)]
         $0.attributedText = NSAttributedString(string: $0.text, attributes: attributes)
         
         $0.autocorrectionType = .no
@@ -150,11 +145,16 @@ class WritingViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         NotificationCenter.default.post(name: Notification.Name.TabBarHide, object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
         fetchCategoriesData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         NotificationCenter.default.post(name: Notification.Name.TabBarShow, object: nil)
+        
+        NotificationCenter.default.removeObserver(self)
     }
     
     // MARK: - Actions
@@ -181,7 +181,6 @@ class WritingViewController: UIViewController {
     func changeTextField(_ sender: UITextField) {
         if let text = titleTextField.text {
             let length = text.count
-            textFieldCountLabel.text = "\(length > limitLength ? limitLength : length)/\(limitLength)"
             
             if length >= limitLength {
                 let index = text.index(text.startIndex, offsetBy: limitLength)
@@ -191,10 +190,27 @@ class WritingViewController: UIViewController {
         }
     }
     
+    @objc func keyboardWillShow(_ notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            let keyboardHeight = keyboardSize.height
+            let space = keyboardHeight + 30
+            
+            textView.snp.updateConstraints { make in
+                make.bottom.equalToSuperview().offset(-space)
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(_ notification: NSNotification) {
+        textView.snp.updateConstraints { make in
+            make.bottom.equalToSuperview().offset(-53)
+        }
+    }
+    
     // MARK: - Methods
     
     func setView() {
-        view.backgroundColor = style.paperBgColor
+        view.backgroundColor = .background
     }
     
     func setTextView() {
