@@ -75,10 +75,19 @@ class MyPageViewController: UIViewController {
         setConstraints()
         setCollectionView()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        setCollectionViewData()
+    }
+
 
     // MARK: - Actions
 
     // MARK: - Methods
+    
+    func setCollectionViewData() {
+        menuSectionCollectionView.reloadData()
+    }
 
     func setCollectionView() {
         myPageMenuCollectionView.selectItem(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .init())
