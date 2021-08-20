@@ -96,6 +96,7 @@ class SeparatePopUpViewController: UIViewController {
     var method: PopUpMethod
     var trashBin: Category?
     var delegate: ChangeCategoryDataDelegate?
+    
     static let identifier = "SeparatePopUpViewController"
     private let limitLength = 6
     var isHighligtedTextField = true {
@@ -106,8 +107,9 @@ class SeparatePopUpViewController: UIViewController {
                 confirmButton.backgroundColor = .disable
                 confirmButton.isEnabled = false
                 boilerLabel.isHidden = false
-            } else {
-                textField.layer.borderColor = UIColor.paper2.cgColor
+            }
+            else {
+                textField.layer.borderColor = UIColor.green2Main.cgColor
                 textNumberLabel.textColor = .green2Main
                 confirmButton.backgroundColor = .blue2Main
                 confirmButton.isEnabled = true
@@ -135,9 +137,9 @@ class SeparatePopUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setTextField()
         setView()
         setConstraints()
+        setTextfield()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -225,6 +227,7 @@ class SeparatePopUpViewController: UIViewController {
             let keyboardHeight = keyboardSize.height
             let space = UIScreen.main.bounds.height / 2 - keyboardHeight + 30
             
+            textField.layer.borderColor = UIColor.green2Main.cgColor
             popupView.snp.updateConstraints { make in
                 make.centerY.equalToSuperview().offset(-space)
             }
@@ -232,6 +235,8 @@ class SeparatePopUpViewController: UIViewController {
     }
     
     @objc func keyboardWillHide(_ notification: NSNotification) {
+        textField.layer.borderColor = UIColor.disable.cgColor
+        
         popupView.snp.updateConstraints { make in
             make.center.equalToSuperview()
         }
@@ -262,11 +267,7 @@ class SeparatePopUpViewController: UIViewController {
     }
 
     // MARK: - Methods
-    
-    func setTextField() {
-        textField.becomeFirstResponder()
-    }
-    
+
     func setView() {
         view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
         
@@ -278,6 +279,10 @@ class SeparatePopUpViewController: UIViewController {
             headerLabel.text = "분리수거 수정"
             subLabel.text = "분리수거함의 이름을 수정해보세요."
         }
+    }
+    
+    func setTextfield(){
+        textField.becomeFirstResponder()
     }
 }
 
