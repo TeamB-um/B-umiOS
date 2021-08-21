@@ -46,7 +46,7 @@ extension SettingViewController {
             make.width.equalToSuperview()
         }
         
-        let topViews = [createView(text: "삭제 휴지통 기한", items: [trashbinPeriodLabel, trashbinPeriodButton]),
+        let topViews = [
                         createView(text: "분리수거함 관리", items: [trashbinManageButton]),
                         createView(text: "푸시알림", items: [pushAlarmSwitch])
                         ]
