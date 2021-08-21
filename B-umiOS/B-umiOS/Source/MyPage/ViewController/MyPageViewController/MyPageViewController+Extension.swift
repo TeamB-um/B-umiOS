@@ -106,5 +106,6 @@ extension MyPageViewController: UICollectionViewDelegate {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let idx = Int(scrollView.contentOffset.x / UIScreen.main.bounds.width)
         scrollToMenu(to: idx)
+        menuSectionCollectionView.reloadData()
     }
 }
