@@ -77,7 +77,7 @@ class MyPageViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        setCollectionViewData()
+        reloadCollectionView()
     }
 
 
@@ -85,7 +85,7 @@ class MyPageViewController: UIViewController {
 
     // MARK: - Methods
     
-    func setCollectionViewData() {
+    func reloadCollectionView() {
         menuSectionCollectionView.reloadData()
     }
 
