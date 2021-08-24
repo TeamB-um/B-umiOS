@@ -15,6 +15,7 @@ class CompletionMessage: UIView {
     private lazy var messageLabel = UILabel().then {
         $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 20)
         $0.textColor = .white
+        $0.numberOfLines = 0
     }
     
     // MARK: - Initializer
@@ -24,6 +25,8 @@ class CompletionMessage: UIView {
         
         logoImage.image = image
         messageLabel.text = message
+        messageLabel.lineSpacing(spacing: 10)
+        messageLabel.textAlignment = .center
         
         setView()
         setConstraints()

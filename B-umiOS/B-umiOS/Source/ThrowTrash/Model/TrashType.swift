@@ -61,15 +61,14 @@ enum TrashType {
         case .trash(let mode):
             switch mode {
             case 0:
-                return "날려"
+                return "스트레스를\n날려 버리세요!"
             case 1:
-                return "불태워"
+                return "스트레스를\n불태워 버리세요!"
             case 2:
-                return "찢어"
+                return "스트레스를\n찢어 버리세요!"
             default:
-                return "날려"
+                return "스트레스를\n날려 버리세요!"
             }
-
         case .separate:
             return "보관되었습니다!"
         }

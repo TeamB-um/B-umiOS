@@ -46,7 +46,7 @@ class ThrowTrashViewController: UIViewController {
         $0.textColor = .iconGray
         let attributedStr = NSMutableAttributedString(string: explainString)
 
-        attributedStr.addAttribute(.foregroundColor, value: UIColor.blue4, range: (explainString as NSString).range(of: self.trashType.explain))
+        attributedStr.addAttribute(.foregroundColor, value: UIColor.blue3, range: (explainString as NSString).range(of: self.trashType.explain))
 
         $0.attributedText = attributedStr
     }
