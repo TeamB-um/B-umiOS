@@ -10,7 +10,7 @@ import UIKit
 class WritingPopUpViewController: UIViewController {
     // MARK: - UIComponenets
     
-     let popUpView = UIView().then {
+    let popUpView = UIView().then {
         $0.backgroundColor = .white
         $0.setShadow(radius: 20, offset: CGSize(width: 0, height: 4), opacity: 0.03)
         $0.cornerRound(radius: 10)
@@ -41,7 +41,7 @@ class WritingPopUpViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
         
         self.writingRequest.isWriting = false
-        self.popUpDelegate?.writingPopUpViewPush(trash: .trash, writing: self.writingRequest)
+        self.popUpDelegate?.writingPopUpViewPush(trash: .trash(Int.random(in: 0 ... 2)), writing: self.writingRequest)
     })).then {
         $0.setTitle("삭제", for: .normal)
         $0.titleLabel?.font = UIFont.nanumSquareFont(type: .bold, size: 18)

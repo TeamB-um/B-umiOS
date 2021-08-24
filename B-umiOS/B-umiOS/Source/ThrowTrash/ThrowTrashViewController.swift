@@ -7,11 +7,6 @@
 
 import UIKit
 
-enum TrashType: String {
-    case trash = "삭제 휴지통"
-    case separate = "분리수거함"
-}
-
 class ThrowTrashViewController: UIViewController {
     // MARK: - UIComponenets
 
@@ -20,7 +15,7 @@ class ThrowTrashViewController: UIViewController {
     }
     
     lazy var navigationLabel = UILabel().then {
-        $0.text = self.trashType.rawValue
+        $0.text = self.trashType.mode
         $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 20)
         $0.textColor = UIColor.white
     }
@@ -51,13 +46,13 @@ class ThrowTrashViewController: UIViewController {
         $0.textColor = .iconGray
         let attributedStr = NSMutableAttributedString(string: explainString)
 
-        attributedStr.addAttribute(.foregroundColor, value: UIColor.blue4, range: (explainString as NSString).range(of: self.trashType.rawValue))
+        attributedStr.addAttribute(.foregroundColor, value: UIColor.blue4, range: (explainString as NSString).range(of: self.trashType.explain))
 
         $0.attributedText = attributedStr
     }
     
-    let guideLabel = UILabel().then {
-        $0.text = "쓰레기통으로 넣어보세요!"
+    lazy var guideLabel = UILabel().then {
+        $0.text = "\(self.trashType.trashBinName) 안으로 넣어보세요!"
         $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 20)
         $0.textColor = .white
     }
@@ -74,7 +69,7 @@ class ThrowTrashViewController: UIViewController {
     
     private var trashType: TrashType
     private var writing: WritingRequest
-    private lazy var explainString = "작성된 글은 \(trashType.rawValue)으로 이동합니다."
+    private lazy var explainString = "당신의 스트레스가 \(trashType.explain)."
     
     // MARK: - Initializer
     
@@ -159,7 +154,7 @@ class ThrowTrashViewController: UIViewController {
     }
     
     func showToast() {
-        let msg = trashType == .trash ? "삭제되었습니다" : "분리수거 되었습니다"
+        let msg = trashType.completionMessage
         let toast = CompletionMessage(image: "img_\(trashType)_toast", message: msg)
         toast.tag = 1000
         
