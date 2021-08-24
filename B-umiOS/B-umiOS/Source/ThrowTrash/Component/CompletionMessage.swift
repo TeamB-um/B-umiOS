@@ -10,28 +10,20 @@ import UIKit
 class CompletionMessage: UIView {
     // MARK: - UIComponenets
 
-    private lazy var logoImage = UIImageView().then {
-        $0.image = UIImage(named: self.logo)
-    }
+    private lazy var logoImage = UIImageView()
     
     private lazy var messageLabel = UILabel().then {
-        $0.text = self.message
         $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 20)
         $0.textColor = .white
     }
     
-    // MARK: - Properties
-    
-    var message: String
-    var logo: String
-    
     // MARK: - Initializer
     
-    init(image: String, message: String) {
-        self.logo = image
-        self.message = message
-        
+    init(image: UIImage, message: String) {
         super.init(frame: .zero)
+        
+        logoImage.image = image
+        messageLabel.text = message
         
         setView()
         setConstraints()
@@ -56,14 +48,14 @@ class CompletionMessage: UIView {
         addSubviews([logoImage, messageLabel])
         
         logoImage.snp.makeConstraints { make in
-            make.top.equalTo(326 * SizeConstants.screenRatio)
+            make.top.equalToSuperview().offset(318.0).multipliedBy(318.0 / 812.0)
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(147.0 / 375.0)
             make.height.equalTo(logoImage.snp.width).multipliedBy(102.0 / 147.0)
         }
         
         messageLabel.snp.makeConstraints { make in
-            make.top.equalTo(logoImage.snp.bottom).offset(8)
+            make.top.equalTo(logoImage.snp.bottom).offset(16)
             make.centerX.equalToSuperview()
         }
     }

@@ -155,7 +155,9 @@ class ThrowTrashViewController: UIViewController {
     
     func showToast() {
         let msg = trashType.completionMessage
-        let toast = CompletionMessage(image: "img_\(trashType)_toast", message: msg)
+        let img = trashType.logo
+        
+        let toast = CompletionMessage(image: img, message: msg)
         toast.tag = 1000
         
         tabBarController?.view.addSubview(toast)

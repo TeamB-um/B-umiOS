@@ -5,6 +5,8 @@
 //  Created by inae Lee on 2021/08/24.
 //
 
+import UIKit
+
 enum TrashType {
     case trash(Int)
     case separate
@@ -70,6 +72,16 @@ enum TrashType {
 
         case .separate:
             return "보관되었습니다!"
+        }
+    }
+    
+    var logo: UIImage {
+        switch self {
+        
+        case .trash(_):
+            return .separateToast
+        case .separate:
+            return .trashToast
         }
     }
 }
