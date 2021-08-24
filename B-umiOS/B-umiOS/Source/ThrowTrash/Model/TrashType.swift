@@ -88,11 +88,7 @@ extension TrashType: RawRepresentable {
     typealias RawValue = String
 
     init?(rawValue: String) {
-        if rawValue == "trash" {
-            self = .trash(0)
-        } else {
-            self = .separate
-        }
+        self = rawValue == "trash" ? .trash(0) : .separate
     }
 
     var rawValue: String {

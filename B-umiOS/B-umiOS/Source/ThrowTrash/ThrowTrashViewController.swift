@@ -120,11 +120,10 @@ class ThrowTrashViewController: UIViewController {
             guideLabel.alpha = 1
             
             let position = gesture.location(in: view)
-            if position.x > trashBin.frame.midX, position.x < trashBin.frame.maxX, position.y > trashBin.frame.minY, position.y < trashBin.frame.maxY {
+            if (trashBin.frame.minX ... trashBin.frame.maxX).contains(position.x), (trashBin.frame.minY ... trashBin.frame.maxY).contains(position.y) {
                 throwAwayTrash {
                     self.createWritingData()
                 }
-                
             } else {
                 resetTrash()
             }
