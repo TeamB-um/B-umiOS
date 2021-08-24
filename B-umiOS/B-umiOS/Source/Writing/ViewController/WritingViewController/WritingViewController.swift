@@ -167,7 +167,7 @@ class WritingViewController: UIViewController {
     @objc
     func didTapCheckButton(_ sender: UIButton) {
         guard let idx = tagCollectionView.indexPathsForSelectedItems?.first?.row else { return }
-        let writing = WritingRequest(title: titleTextField.text ?? nil, text: textView.text ?? "", categoryID: tag[idx].id, isWriting: true)
+        let writing = WritingRequest(title: titleTextField.text ?? nil, text: textView.text ?? "", categoryID: tag[idx].id, isWriting: true, paper: style.rawValue)
         
         let popUpViewController = WritingPopUpViewController(writing: writing)
         popUpViewController.modalPresentationStyle = .overCurrentContext

@@ -5,12 +5,8 @@
 //  Created by inae Lee on 2021/07/08.
 //
 
+import Lottie
 import UIKit
-
-enum TrashType: String {
-    case trash = "삭제 휴지통"
-    case separate = "분리수거함"
-}
 
 class ThrowTrashViewController: UIViewController {
     // MARK: - UIComponenets
@@ -20,7 +16,7 @@ class ThrowTrashViewController: UIViewController {
     }
     
     lazy var navigationLabel = UILabel().then {
-        $0.text = self.trashType.rawValue
+        $0.text = self.trashType.mode
         $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 20)
         $0.textColor = UIColor.white
     }
@@ -34,6 +30,11 @@ class ThrowTrashViewController: UIViewController {
     
     lazy var backgroudImage = UIImageView().then {
         $0.image = UIImage(named: "img_\(self.trashType)")
+    }
+    
+    lazy var animationView = AnimationView().then {
+        $0.animation = Animation.named("home_ios")
+        $0.loopMode = .playOnce
     }
     
     let explanationView = UIView().then {
@@ -51,13 +52,13 @@ class ThrowTrashViewController: UIViewController {
         $0.textColor = .iconGray
         let attributedStr = NSMutableAttributedString(string: explainString)
 
-        attributedStr.addAttribute(.foregroundColor, value: UIColor.blue4, range: (explainString as NSString).range(of: self.trashType.rawValue))
+        attributedStr.addAttribute(.foregroundColor, value: UIColor.blue3, range: (explainString as NSString).range(of: self.trashType.explain))
 
         $0.attributedText = attributedStr
     }
     
-    let guideLabel = UILabel().then {
-        $0.text = "쓰레기통으로 넣어보세요!"
+    lazy var guideLabel = UILabel().then {
+        $0.text = "\(self.trashType.trashBinName) 안으로 넣어보세요!"
         $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 20)
         $0.textColor = .white
     }
@@ -74,7 +75,7 @@ class ThrowTrashViewController: UIViewController {
     
     private var trashType: TrashType
     private var writing: WritingRequest
-    private lazy var explainString = "작성된 글은 \(trashType.rawValue)으로 이동합니다."
+    private lazy var explainString = "당신의 스트레스가 \(trashType.explain)."
     
     // MARK: - Initializer
     
@@ -99,6 +100,14 @@ class ThrowTrashViewController: UIViewController {
         setConstraints()
     }
     
+    override func viewWillLayoutSubviews() {
+        let trailing = (explanationView.frame.width - explanationImage.frame.maxX - explanationLabel.frame.width) / 2.0
+
+        explanationLabel.snp.updateConstraints { make in
+            make.trailing.equalToSuperview().offset(-trailing * SizeConstants.screenRatio)
+        }
+    }
+    
     // MARK: - Actions
 
     @objc
@@ -111,22 +120,9 @@ class ThrowTrashViewController: UIViewController {
             guideLabel.alpha = 1
             
             let position = gesture.location(in: view)
-            if position.x > trashBin.frame.midX, position.x < trashBin.frame.maxX, position.y > trashBin.frame.minY, position.y < trashBin.frame.maxY {
-                throwAwayTrash()
-                
-                ActivityIndicator.shared.startLoadingAnimation()
-                
-                WritingService.shared.createWriting(writing: writing) { response in
-                    ActivityIndicator.shared.stopLoadingAnimation()
-                    
-                    guard let result = response as? NetworkResult<Any> else { return }
-                    
-                    switch result {
-                    case .success:
-                        self.showToast()
-                    case .requestErr, .pathErr, .serverErr, .networkFail:
-                        self.navigationController?.popViewController(animated: true)
-                    }
+            if (trashBin.frame.minX ... trashBin.frame.maxX).contains(position.x), (trashBin.frame.minY ... trashBin.frame.maxY).contains(position.y) {
+                throwAwayTrash {
+                    self.createWritingData()
                 }
             } else {
                 resetTrash()
@@ -151,16 +147,26 @@ class ThrowTrashViewController: UIViewController {
         }
     }
     
-    func throwAwayTrash() {
+    func throwAwayTrash(compleition: @escaping () -> ()) {
         guideLabel.alpha = 0
         UIView.animate(withDuration: 0.3) {
             self.trash.alpha = 0
         }
+
+        if trashType == TrashType.separate {
+            compleition()
+        } else {
+            animationView.play { _ in
+                compleition()
+            }
+        }
     }
     
     func showToast() {
-        let msg = trashType == .trash ? "삭제되었습니다" : "분리수거 되었습니다"
-        let toast = CompletionMessage(image: "img_\(trashType)_toast", message: msg)
+        let msg = trashType.completionMessage
+        let img = trashType.logo
+        
+        let toast = CompletionMessage(image: img, message: msg)
         toast.tag = 1000
         
         tabBarController?.view.addSubview(toast)
@@ -168,12 +174,27 @@ class ThrowTrashViewController: UIViewController {
             make.edges.equalToSuperview()
         }
 
-        /// 진동
-        
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             toast.alpha = 0
             toast.removeFromSuperview()
             self.navigationController?.popToRootViewController(animated: true)
+        }
+    }
+    
+    func createWritingData() {
+        ActivityIndicator.shared.startLoadingAnimation()
+        
+        WritingService.shared.createWriting(writing: writing) { response in
+            ActivityIndicator.shared.stopLoadingAnimation()
+            
+            guard let result = response as? NetworkResult<Any> else { return }
+            
+            switch result {
+            case .success:
+                self.showToast()
+            case .requestErr, .pathErr, .serverErr, .networkFail:
+                self.navigationController?.popViewController(animated: true)
+            }
         }
     }
 
