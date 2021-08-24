@@ -73,14 +73,34 @@ enum TrashType {
             return "보관되었습니다!"
         }
     }
-    
+
     var logo: UIImage {
         switch self {
-        
-        case .trash(_):
+        case .trash:
             return .separateToast
         case .separate:
             return .trashToast
+        }
+    }
+}
+
+extension TrashType: RawRepresentable {
+    typealias RawValue = String
+
+    init?(rawValue: String) {
+        if rawValue == "trash" {
+            self = .trash(0)
+        } else {
+            self = .separate
+        }
+    }
+
+    var rawValue: String {
+        switch self {
+        case .trash(let num):
+            return "trash\(num)"
+        case .separate:
+            return "separate"
         }
     }
 }

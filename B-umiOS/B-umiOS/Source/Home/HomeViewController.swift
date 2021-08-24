@@ -10,8 +10,6 @@ import SnapKit
 import Then
 import UIKit
 
-// TODO: - guide label 숨김 처리
-
 class HomeViewController: UIViewController {
     // MARK: - UIComponenets
     

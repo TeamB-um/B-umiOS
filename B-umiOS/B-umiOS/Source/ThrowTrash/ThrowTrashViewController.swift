@@ -5,6 +5,7 @@
 //  Created by inae Lee on 2021/07/08.
 //
 
+import Lottie
 import UIKit
 
 class ThrowTrashViewController: UIViewController {
@@ -29,6 +30,11 @@ class ThrowTrashViewController: UIViewController {
     
     lazy var backgroudImage = UIImageView().then {
         $0.image = UIImage(named: "img_\(self.trashType)")
+    }
+    
+    lazy var animationView = AnimationView().then {
+        $0.animation = Animation.named("home_ios")
+        $0.loopMode = .playOnce
     }
     
     let explanationView = UIView().then {
@@ -94,6 +100,14 @@ class ThrowTrashViewController: UIViewController {
         setConstraints()
     }
     
+    override func viewWillLayoutSubviews() {
+        let trailing = (explanationView.frame.width - explanationImage.frame.maxX - explanationLabel.frame.width) / 2.0
+
+        explanationLabel.snp.updateConstraints { make in
+            make.trailing.equalToSuperview().offset(-trailing * SizeConstants.screenRatio)
+        }
+    }
+    
     // MARK: - Actions
 
     @objc
@@ -107,22 +121,10 @@ class ThrowTrashViewController: UIViewController {
             
             let position = gesture.location(in: view)
             if position.x > trashBin.frame.midX, position.x < trashBin.frame.maxX, position.y > trashBin.frame.minY, position.y < trashBin.frame.maxY {
-                throwAwayTrash()
-                
-                ActivityIndicator.shared.startLoadingAnimation()
-                
-                WritingService.shared.createWriting(writing: writing) { response in
-                    ActivityIndicator.shared.stopLoadingAnimation()
-                    
-                    guard let result = response as? NetworkResult<Any> else { return }
-                    
-                    switch result {
-                    case .success:
-                        self.showToast()
-                    case .requestErr, .pathErr, .serverErr, .networkFail:
-                        self.navigationController?.popViewController(animated: true)
-                    }
+                throwAwayTrash {
+                    self.createWritingData()
                 }
+                
             } else {
                 resetTrash()
             }
@@ -146,10 +148,18 @@ class ThrowTrashViewController: UIViewController {
         }
     }
     
-    func throwAwayTrash() {
+    func throwAwayTrash(compleition: @escaping () -> ()) {
         guideLabel.alpha = 0
         UIView.animate(withDuration: 0.3) {
             self.trash.alpha = 0
+        }
+
+        if trashType == TrashType.separate {
+            compleition()
+        } else {
+            animationView.play { _ in
+                compleition()
+            }
         }
     }
     
@@ -165,12 +175,27 @@ class ThrowTrashViewController: UIViewController {
             make.edges.equalToSuperview()
         }
 
-        /// 진동
-        
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             toast.alpha = 0
             toast.removeFromSuperview()
             self.navigationController?.popToRootViewController(animated: true)
+        }
+    }
+    
+    func createWritingData() {
+        ActivityIndicator.shared.startLoadingAnimation()
+        
+        WritingService.shared.createWriting(writing: writing) { response in
+            ActivityIndicator.shared.stopLoadingAnimation()
+            
+            guard let result = response as? NetworkResult<Any> else { return }
+            
+            switch result {
+            case .success:
+                self.showToast()
+            case .requestErr, .pathErr, .serverErr, .networkFail:
+                self.navigationController?.popViewController(animated: true)
+            }
         }
     }
 
