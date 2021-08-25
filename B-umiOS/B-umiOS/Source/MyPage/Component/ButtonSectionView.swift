@@ -11,17 +11,17 @@ import UIKit
 class ButtonSectionView: UICollectionReusableView {
     // MARK: - UIComponenets
     
-    private let gradationBackground = UIImageView().then {
+    let gradationBackground = UIImageView().then {
         $0.image = UIImage.mywritingTrashbinBgGradientTop
     }
-
-    lazy var categoryButtton: RoundingButton = {
+    
+    var categoryButtton: RoundingButton = {
         let button = RoundingButton()
         button.setupRoundingButton(title: "전체 카테고리", image: "btnFilter")
         return button
     }()
     
-    private let deleteButton: RoundingButton = {
+    let deleteButton: RoundingButton = {
         let button = RoundingButton()
         button.setupRoundingButton(title: "삭제", image: "btnRemove")
         button.addTarget(self, action: #selector(didTapDeleteButton(_:)), for: .touchUpInside)
@@ -29,10 +29,11 @@ class ButtonSectionView: UICollectionReusableView {
         return button
     }()
     
-    lazy var confirmButtton: RoundingButton = {
+    var confirmButtton: RoundingButton = {
         let button = RoundingButton()
         button.setupRoundingButton(title: "확인", image: "btnCheckUnseleted")
         button.isHidden = true
+        button.isEnabled = false
         
         return button
     }()
@@ -53,7 +54,9 @@ class ButtonSectionView: UICollectionReusableView {
         super.init(frame: frame)
         addObservers()
         setConstraint()
+        print("ㅅㅂ이게왜안돼")
     }
+    
     
     @available(*, unavailable)
     required init?(coder: NSCoder) {
@@ -63,6 +66,12 @@ class ButtonSectionView: UICollectionReusableView {
     // MARK: - Actions
     
     // MARK: - Methods
+    
+//    func reloadData() {
+//        deleteButton.setupRoundingButton(title: "삭제", image: "btnRemove")
+//        confirmButtton.isHidden = true
+//        print("reloadData🦊")
+//    }
     
     private func setConstraint() {
         addSubviews([gradationBackground, categoryButtton, deleteButton, confirmButtton])
@@ -102,7 +111,7 @@ class ButtonSectionView: UICollectionReusableView {
     }
     
     // MARK: - Action
-
+    
     func addObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(confirmButtonIsActive), name: NSNotification.Name.confirmButtonIsActive, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(confirmButtonIsUnActive), name: NSNotification.Name.confirmButtonIsUnactive, object: nil)
@@ -110,7 +119,7 @@ class ButtonSectionView: UICollectionReusableView {
     }
     
     @objc
-    func didTapCategoryButton(_ sender: UIButton) {
+    func didTapCategoryButton() {
         if categoryButtton.isSelected {
             categoryButtton.setupRoundingButton(title: "전체 카테고리", image: "btnFilter", selected: true)
         } else {
@@ -131,28 +140,19 @@ class ButtonSectionView: UICollectionReusableView {
         NotificationCenter.default.post(name: NSNotification.Name.deleteButtonIsSelected, object: deleteButton.isSelected)
     }
     
-    @objc
-    func didTapConfirmButton(_ sender: UIButton) {
-        if confirmButtton.isSelected {
-            let popUpVC = DeletePopUpViewController(kind: .writing)
-            let deleteID: [String] = []
-            
-            popUpVC.deleteData = deleteID
-            popUpVC.modalPresentationStyle = .overFullScreen
-            popUpVC.modalTransitionStyle = .crossDissolve
-            
-            parentViewController?.present(popUpVC, animated: true, completion: nil)
-        }
-    }
     
     @objc func confirmButtonIsActive(noti: NSNotification) {
         confirmButtton.isActivated(true)
         confirmButtton.isSelected = true
+        confirmButtton.isEnabled = true
+        print("confirmButtonIsActive")
     }
     
     @objc func confirmButtonIsUnActive(noti: NSNotification) {
         confirmButtton.isActivated(false)
         confirmButtton.isSelected = false
+        confirmButtton.isEnabled = false
+        print("confirmButtonIsUnActive")
     }
     
     @objc func categoryIsChanged(_ sender: Notification) {
@@ -166,7 +166,7 @@ class ButtonSectionView: UICollectionReusableView {
             }
         }
     }
-  
+    
     // MARK: - Protocols
 }
 

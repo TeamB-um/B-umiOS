@@ -10,7 +10,6 @@ import UIKit
 extension MyWritingViewController: ChangeWritingDataDelegate {
     func changeWitingData(filteredDate: [Writing]) {
         myWriting = filteredDate
-
         myWritingCollectionView.reloadData()
     }
 }
@@ -46,7 +45,6 @@ extension MyWritingViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ButtonSectionView.identifier, for: indexPath) as? ButtonSectionView else { return UICollectionReusableView() }
-        
         headerView.confirmButtton.addTarget(self, action: #selector(didTapConfirmButton(_:)), for: .touchUpInside)
         headerView.categoryButtton.addTarget(self, action: #selector(didTapCategoryButton(_:)), for: .touchUpInside)
         

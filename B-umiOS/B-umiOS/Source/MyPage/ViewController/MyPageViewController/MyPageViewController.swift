@@ -79,7 +79,7 @@ class MyPageViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         reloadCollectionView()
     }
-
+gi
 
     // MARK: - Actions
 

@@ -64,7 +64,7 @@ class MyWritingViewController: UIViewController {
     }
 
     var removeData: [Int] = []
-    var headerView: UICollectionReusableView = ButtonSectionView()
+    var headerView = ButtonSectionView()
     
     // MARK: - Initializer
     
@@ -72,13 +72,14 @@ class MyWritingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setConstraints()
         addObservers()
+        ButtonSectionView.init()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         fatchWriting()
+        myWritingCollectionView.reloadData()
     }
     
     // MARK: - Actions
@@ -87,7 +88,6 @@ class MyWritingViewController: UIViewController {
     
     func fatchWriting() {
         ActivityIndicator.shared.startLoadingAnimation()
-        
         WritingService.shared.fatchWriting { response in
             ActivityIndicator.shared.stopLoadingAnimation()
             
@@ -127,12 +127,13 @@ class MyWritingViewController: UIViewController {
     @objc func didTapConfirmButton(_ sender: UIButton) {
         let popUpVC = DeletePopUpViewController(kind: .writing)
         var deleteID: [String] = []
+//        var categoryID = myWriting[ind]
         
         for index in removeData {
             deleteID.append(myWriting[index].id)
         }
         popUpVC.deleteData = deleteID
-        popUpVC.categoryID = ""
+//        popUpVC.categoryID =
         popUpVC.modalPresentationStyle = .overFullScreen
         popUpVC.modalTransitionStyle = .crossDissolve
         popUpVC.parentDelegate = self
