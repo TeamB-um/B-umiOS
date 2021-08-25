@@ -46,6 +46,7 @@ class LaunchScreenViewController: UIViewController {
         }
     }
 
+    // FIXME: - SERVER 수정 후 로그인 주석 해제
     func login() {
             UserDefaults.standard.set("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjEyNGEyNjNkNWVlYmQyNjU5ZDRlMGM0In0sImlhdCI6MTYyOTc5MDgyMCwiZXhwIjoxNjMwMTUwODIwfQ.YSs2VK7BCpaD51hpFo6rBYNyHsjcFRjwE9ze1Y77gcE", forKey: UserDefaults.Keys.token)
     //        print(result.data?.token ?? "NO TOKEN", "🐱 token")
@@ -69,6 +70,7 @@ class LaunchScreenViewController: UIViewController {
     //            }
     //        }
         }
+
 
     func fetchUserInfo() {
         UserService.shared.fetchUserInfo { response in

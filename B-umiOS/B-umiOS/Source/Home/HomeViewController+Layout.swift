@@ -10,8 +10,6 @@ import UIKit
 // MARK: - Layout (View) Method
 
 extension HomeViewController {
-    //setConstraints
-    
     func setConstraints() {
         view.addSubviews([backgroundView, whiteShadowView, dateLabel, guideLabel, arrowImage, trashBinButton, paper1Button, paper2Button, paper3Button, paper4Button, lowLabel, highLabel])
         
