@@ -35,11 +35,14 @@ extension MyWritingViewController: UICollectionViewDataSource {
         cell.setShadow(radius: 20, offset: CGSize(width: 0, height: 4), opacity: 0.03)
         cell.setWritingData(data: myWriting, index: indexPath.row)
         
-        if deleteButtonIsSelected {
-            cell.emptyCheckButton.isHidden = false
-        } else {
-            cell.emptyCheckButton.isHidden = true
-        }
+//        if deleteButtonIsSelected {
+////            cell.emptyCheckButton.isHidden = false
+//            cell.checkButton(bool: true)
+//        } else {
+////            cell.emptyCheckButton.isHidden = true
+//            cell.checkButton(bool: false)
+//        }
+        cell.checkButton(bool: deleteButtonIsSelected)
         return cell
     }
     

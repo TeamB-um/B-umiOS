@@ -108,6 +108,14 @@ class MyWritingCollectionViewCell: UICollectionViewCell {
         
     }
     
+    func checkButton(bool: Bool) {
+        if bool {
+            emptyCheckButton.isHidden = false
+        } else {
+            emptyCheckButton.isHidden = true
+        }
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         setConstraints()
