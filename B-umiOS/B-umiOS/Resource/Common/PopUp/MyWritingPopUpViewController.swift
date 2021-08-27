@@ -86,7 +86,7 @@ class MyWritingPopUpViewController: UIViewController {
     // FIXME: - 서버에서 Writing Model 변경 예정!
     
     func setWritingData(data: Writing) {
-        let style = WritingStyle(rawValue: 3) ?? WritingStyle.paper1
+        let style = WritingStyle(rawValue: data.paper) ?? WritingStyle.paper1
         let writtenDate = Date().ISOStringToDate(date: data.createdDate)
         let date = Date().ISODateToString(format: "yyyy.MM.dd (E)", date: writtenDate)
         
