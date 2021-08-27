@@ -65,7 +65,7 @@ class MyWritingViewController: UIViewController {
     
     var removeData: [Int] = []
     var header = ButtonSectionView()
-    var cell = MyWritingCollectionViewCell()
+    
     // MARK: - Initializer
     
     // MARK: - LifeCycle
