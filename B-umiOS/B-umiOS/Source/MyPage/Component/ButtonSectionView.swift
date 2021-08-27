@@ -11,21 +11,21 @@ import UIKit
 class ButtonSectionView: UICollectionReusableView {
     // MARK: - UIComponenets
     
-    private let gradationBackground = UIImageView().then {
+    let gradationBackground = UIImageView().then {
         $0.image = UIImage.mywritingTrashbinBgGradientTop
     }
-
+    
     lazy var categoryButtton: RoundingButton = {
         let button = RoundingButton()
         button.setupRoundingButton(title: "전체 카테고리", image: "btnFilter")
         return button
     }()
     
-    private let deleteButton: RoundingButton = {
+    lazy var deleteButton: RoundingButton = {
         let button = RoundingButton()
         button.setupRoundingButton(title: "삭제", image: "btnRemove")
-        button.addTarget(self, action: #selector(didTapDeleteButton(_:)), for: .touchUpInside)
-        
+        button.addTarget(self, action: #selector(didTapDeleteButton), for: .touchUpInside)
+        button.tag = 2
         return button
     }()
     
@@ -33,7 +33,9 @@ class ButtonSectionView: UICollectionReusableView {
         let button = RoundingButton()
         button.setupRoundingButton(title: "확인", image: "btnCheckUnseleted")
         button.isHidden = true
-        
+        button.isEnabled = false
+        button.isActivated(false)
+        button.tag = 1
         return button
     }()
     
@@ -45,6 +47,7 @@ class ButtonSectionView: UICollectionReusableView {
     // MARK: - Properties
     
     static let identifier = "ButtonSectionView"
+    var deleteButtonIsSelected = false
     var isSelectAllowed: Bool = false
     
     // MARK: - Initializer
@@ -54,7 +57,7 @@ class ButtonSectionView: UICollectionReusableView {
         addObservers()
         setConstraint()
     }
-    
+
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -102,7 +105,7 @@ class ButtonSectionView: UICollectionReusableView {
     }
     
     // MARK: - Action
-
+    
     func addObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(confirmButtonIsActive), name: NSNotification.Name.confirmButtonIsActive, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(confirmButtonIsUnActive), name: NSNotification.Name.confirmButtonIsUnactive, object: nil)
@@ -110,49 +113,41 @@ class ButtonSectionView: UICollectionReusableView {
     }
     
     @objc
-    func didTapCategoryButton(_ sender: UIButton) {
+    func didTapCategoryButton() {
         if categoryButtton.isSelected {
-            categoryButtton.setupRoundingButton(title: "전체 카테고리", image: "btnFilter", selected: true)
+            categoryButtton.setupRoundingButton(title: "전체 카테고리", image: "btnFilter")
+            categoryButtton.isActivated(false)
         } else {
-            categoryButtton.setupRoundingButton(title: "서버에서", image: "btnFilterWhite", selected: false)
+            categoryButtton.setupRoundingButton(title: "서버에서", image: "btnFilterWhite")
+            categoryButtton.isActivated(true)
         }
     }
     
     @objc
-    func didTapDeleteButton(_ sender: UIButton) {
+    func didTapDeleteButton() {
         if deleteButton.isSelected {
-            deleteButton.setupRoundingButton(title: "삭제", image: "btnRemove", selected: true)
-            confirmButtton.isActivated(false)
+            deleteButton.setupRoundingButton(title: "삭제", image: "btnRemove")
             confirmButtton.isHidden = true
+            confirmButtton.isActivated(false)
         } else {
-            deleteButton.setupRoundingButton(title: "취소", image: "btnCancel", selected: true)
+            deleteButton.setupRoundingButton(title: "취소", image: "btnCancel")
             confirmButtton.isHidden = false
         }
+        deleteButton.isSelected.toggle()
         NotificationCenter.default.post(name: NSNotification.Name.deleteButtonIsSelected, object: deleteButton.isSelected)
     }
     
-    @objc
-    func didTapConfirmButton(_ sender: UIButton) {
-        if confirmButtton.isSelected {
-            let popUpVC = DeletePopUpViewController(kind: .writing)
-            let deleteID: [String] = []
-            
-            popUpVC.deleteData = deleteID
-            popUpVC.modalPresentationStyle = .overFullScreen
-            popUpVC.modalTransitionStyle = .crossDissolve
-            
-            parentViewController?.present(popUpVC, animated: true, completion: nil)
-        }
-    }
     
     @objc func confirmButtonIsActive(noti: NSNotification) {
         confirmButtton.isActivated(true)
         confirmButtton.isSelected = true
+        confirmButtton.isEnabled = true
     }
     
     @objc func confirmButtonIsUnActive(noti: NSNotification) {
         confirmButtton.isActivated(false)
         confirmButtton.isSelected = false
+        confirmButtton.isEnabled = false
     }
     
     @objc func categoryIsChanged(_ sender: Notification) {
@@ -166,7 +161,13 @@ class ButtonSectionView: UICollectionReusableView {
             }
         }
     }
-  
+    
+    @objc func myWritingReset() {
+        deleteButton.setupRoundingButton(title: "삭제", image: "btnRemove")
+        confirmButtton.isHidden = true
+        confirmButtton.isActivated(false)
+    }
+    
     // MARK: - Protocols
 }
 
