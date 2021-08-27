@@ -89,9 +89,10 @@ class MyWritingViewController: UIViewController {
     func resetFilter() {
         NotificationCenter.default.post(name: Notification.Name.categoryIsChanged, object: "")
         
-        let button = self.view.viewWithTag(2) as? RoundingButton;()
-        button?.setupRoundingButton(title: "삭제", image:"btnRemove")
-        button?.isSelected = false
+        if let button = self.view.viewWithTag(2) as? RoundingButton {
+            button.setupRoundingButton(title: "삭제", image:"btnRemove")
+            button.isSelected = false
+        }
         
         if deleteButtonIsSelected {
             NotificationCenter.default.post(name: NSNotification.Name.deleteButtonIsSelected, object: header.deleteButton.isSelected)
