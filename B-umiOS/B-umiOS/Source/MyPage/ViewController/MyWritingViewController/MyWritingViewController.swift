@@ -78,7 +78,7 @@ class MyWritingViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        fatchWriting()
+        fetchWriting()
         resetFilter()
     }
     
@@ -100,9 +100,9 @@ class MyWritingViewController: UIViewController {
         }
     }
     
-    func fatchWriting() {
+    func fetchWriting() {
         ActivityIndicator.shared.startLoadingAnimation()
-        WritingService.shared.fatchWriting { response in
+        WritingService.shared.fetchWriting { response in
             ActivityIndicator.shared.stopLoadingAnimation()
             
             guard let result = response as? NetworkResult<Any> else { return }

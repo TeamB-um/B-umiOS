@@ -19,7 +19,7 @@ struct WritingService {
         }
     }
     
-    func fatchWriting(completion: @escaping (Any) -> Void) {
+    func fetchWriting(completion: @escaping (Any) -> Void) {
         RequestHandler.shared.requestData(url: APIConstants.writingURL, httpmethod: HTTPMethod.get, parameter: nil, header: NetworkInfo.headerWithToken, decodeType: GeneralResponse<WritingsResponse>.self) { response in
             completion(response)
         }
