@@ -91,6 +91,10 @@ class MyWritingViewController: UIViewController {
     func resetFilter() {
         NotificationCenter.default.post(name: Notification.Name.categoryIsChanged, object: "")
         
+        categoryID = ""
+        startDate = ""
+        endDate = ""
+        
         if let button = self.view.viewWithTag(2) as? RoundingButton {
             button.setupRoundingButton(title: "삭제", image:"btnRemove")
             button.isSelected = false
