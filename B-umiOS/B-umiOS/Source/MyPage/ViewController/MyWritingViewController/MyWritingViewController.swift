@@ -62,8 +62,10 @@ class MyWritingViewController: UIViewController {
             }
         }
     }
-    
     var removeData: [Int] = []
+    var categoryID: String = ""
+    var startDate: String = ""
+    var endDate: String = ""
     var header = ButtonSectionView()
     
     // MARK: - Initializer
@@ -141,13 +143,15 @@ class MyWritingViewController: UIViewController {
     @objc func didTapConfirmButton(_ sender: UIButton) {
         let popUpVC = DeletePopUpViewController(kind: .writing)
         var deleteID: [String] = []
-        //        var categoryID = myWriting[ind]
         
         for index in removeData {
             deleteID.append(myWriting[index].id)
         }
         popUpVC.deleteData = deleteID
-        //        popUpVC.categoryID =
+        popUpVC.startDate = startDate
+        popUpVC.endDate = endDate
+        popUpVC.categoryID = categoryID
+        
         popUpVC.modalPresentationStyle = .overFullScreen
         popUpVC.modalTransitionStyle = .crossDissolve
         popUpVC.parentDelegate = self
@@ -179,6 +183,7 @@ class MyWritingViewController: UIViewController {
 
 protocol ChangeWritingDataDelegate {
     func changeWitingData(filteredDate: [Writing])
+    func remainFilterData(filteredCategoryID: String, filteredStartDate: String, filteredEndDate: String)
 }
 protocol viewDelegate {
     func backgroundRemove()

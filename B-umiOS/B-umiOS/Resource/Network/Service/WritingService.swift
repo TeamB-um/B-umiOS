@@ -25,9 +25,14 @@ struct WritingService {
         }
     }
     
-    func deleteWriting(writings: String, completion: @escaping (Any) -> Void) {
+    func deleteWriting(writings: String, start_date: String, end_date: String, category_id: String, completion: @escaping (Any) -> Void) {
+        var url = ""
         
-        let url = "\(APIConstants.writingURL)?ids=[\(writings)]"
+        if category_id == "" {
+            url = "\(APIConstants.writingURL)?ids=[\(writings)]&start_date=\(start_date)&end_date=\(end_date)"
+        } else {
+            url = "\(APIConstants.writingURL)?ids=[\(writings)]&start_date=\(start_date)&end_date=\(end_date)&category_ids=[\(category_id)]"
+        }
 
         RequestHandler.shared.requestData(url: url, httpmethod: HTTPMethod.delete, parameter: nil, header: NetworkInfo.headerWithToken, decodeType: GeneralResponse<WritingsResponse>.self) { response in
             completion(response)

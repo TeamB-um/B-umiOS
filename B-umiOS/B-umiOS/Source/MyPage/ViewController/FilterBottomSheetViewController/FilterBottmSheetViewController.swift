@@ -22,7 +22,7 @@ class FilterBottmSheetViewController: UIViewController {
         $0.backgroundColor = .blue2Main
         $0.tintColor = .white
         $0.setTitle("확인", for: .normal)
-        $0.addTarget(self, action: #selector(didTapConfirmButton(_:)), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(didTapConfirmButton), for: .touchUpInside)
     }
     
     lazy var categoryTagCollecitonView: UICollectionView = {
@@ -142,7 +142,7 @@ class FilterBottmSheetViewController: UIViewController {
     var categoryName: String = ""
     var tagSelectedIdx: Int = 0
     var parentDelegate: ChangeWritingDataDelegate?
-    var delegate: ChangeWritingDataDelegate?
+    var changeDelegate: ChangeWritingDataDelegate?
     
     // MARK: - Initializer
     
@@ -242,7 +242,7 @@ class FilterBottmSheetViewController: UIViewController {
         }
     }
 
-    @objc private func didTapConfirmButton(_ sender: UIButton) {
+    @objc func didTapConfirmButton() {
         var startDate = startDate.dateToString(format: "yyyy-MM-dd", date: startDate)
         var endDate = endDate.dateToString(format: "yyyy-MM-dd", date: endDate)
         
@@ -259,11 +259,13 @@ class FilterBottmSheetViewController: UIViewController {
             guard let result = response as? NetworkResult<Any> else { return }
             switch result {
             case .success(let data):
+                
                 guard let result = data as? GeneralResponse<WritingsResponse> else { return }
                 
                 if let d = result.data?.writing {
-                    self.delegate = self.parentDelegate
-                    self.delegate?.changeWitingData(filteredDate: d)
+                    self.changeDelegate = self.parentDelegate
+                    self.changeDelegate?.changeWitingData(filteredDate: d)
+                    self.changeDelegate?.remainFilterData(filteredCategoryID: self.categoryID, filteredStartDate: startDate, filteredEndDate: endDate)
                     self.dismiss(animated: true, completion: {
                         self.categoryTagCollecitonView.reloadData()
                         NotificationCenter.default.post(name: Notification.Name.categoryIsChanged, object: self.categoryName)
@@ -272,8 +274,8 @@ class FilterBottmSheetViewController: UIViewController {
                 }
                 
             case .requestErr(ErrorMessage.notFound):
-                self.delegate = self.parentDelegate
-                self.delegate?.changeWitingData(filteredDate: [])
+                self.changeDelegate = self.parentDelegate
+                self.changeDelegate?.changeWitingData(filteredDate: [])
                 self.dismiss(animated: true, completion: {
                     self.categoryTagCollecitonView.reloadData()
                     NotificationCenter.default.post(name: Notification.Name.categoryIsChanged, object: self.categoryName)

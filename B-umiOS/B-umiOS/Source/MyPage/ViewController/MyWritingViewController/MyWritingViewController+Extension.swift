@@ -12,6 +12,12 @@ extension MyWritingViewController: ChangeWritingDataDelegate {
         myWriting = filteredDate
         myWritingCollectionView.reloadData()
     }
+    
+    func remainFilterData(filteredCategoryID: String, filteredStartDate: String, filteredEndDate: String) {
+        categoryID = filteredCategoryID
+        startDate = filteredStartDate
+        endDate = filteredEndDate
+    }
 }
 
 /// 삭제한 후 데이터 변경
