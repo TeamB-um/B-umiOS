@@ -45,31 +45,30 @@ class LaunchScreenViewController: UIViewController {
             make.center.equalToSuperview()
         }
     }
-
-    // FIXME: - SERVER 수정 후 로그인 주석 해제
+  
     func login() {
-        UserService.shared.login { response in
-            guard let result = response as? NetworkResult<Any> else { return }
-            
-            switch result {
-            case .success(let data):
-                guard let result = data as? GeneralResponse<TokenResponse> else { return }
-                UserDefaults.standard.set(result.data?.token, forKey: UserDefaults.Keys.token)
-                print(result.data?.token ?? "NO TOKEN", "🐱 token")
+         UserService.shared.login { response in
+             guard let result = response as? NetworkResult<Any> else { return }
+
+             switch result {
+             case .success(let data):
+                 guard let result = data as? GeneralResponse<TokenResponse> else { return }
+                 UserDefaults.standard.set(result.data?.token, forKey: UserDefaults.Keys.token)
+                 print(result.data?.token ?? "NO TOKEN", "🐱 token")
                 self.fetchUserInfo()
-                Timer.scheduledTimer(withTimeInterval: 1.3, repeats: false) { _ in
-                    let tabBar = FloatingTabBarController()
-                    tabBar.modalTransitionStyle = .crossDissolve
-                    tabBar.modalPresentationStyle = .fullScreen
-                    
-                    self.present(tabBar, animated: true, completion: nil)
-                }
-            case .requestErr, .pathErr, .serverErr, .networkFail:
-                print("에러 팝업을 띄우기")
-            }
-        }
+                 Timer.scheduledTimer(withTimeInterval: 1.3, repeats: false) { _ in
+                     let tabBar = FloatingTabBarController()
+                     tabBar.modalTransitionStyle = .crossDissolve
+                     tabBar.modalPresentationStyle = .fullScreen
+
+                     self.present(tabBar, animated: true, completion: nil)
+                 }
+             case .requestErr, .pathErr, .serverErr, .networkFail:
+                 print("에러 팝업을 띄우기")
+             }
+         }
     }
-    
+
     func fetchUserInfo() {
         UserService.shared.fetchUserInfo { response in
             guard let result = response as? NetworkResult<Any> else { return }

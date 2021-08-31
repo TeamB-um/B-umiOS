@@ -22,7 +22,7 @@ class FilterBottmSheetViewController: UIViewController {
         $0.backgroundColor = .blue2Main
         $0.tintColor = .white
         $0.setTitle("확인", for: .normal)
-        $0.addTarget(self, action: #selector(didTapConfirmButton(_:)), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(didTapConfirmButton), for: .touchUpInside)
     }
     
     lazy var categoryTagCollecitonView: UICollectionView = {
@@ -243,10 +243,6 @@ class FilterBottmSheetViewController: UIViewController {
     }
 
     @objc private func didTapConfirmButton(_ sender: UIButton) {
-//        let writtenDate = Date().ISOStringToDate(date: data.createdDate)
-//        let date = Date().ISODateToString(format: "yyyy.MM.dd(E)", date: writtenDate)
-//        self.dateLabel.text = date
-        
         var startDate = startDate.dateToString(format: "yyyy-MM-dd", date: startDate)
         var endDate = endDate.dateToString(format: "yyyy-MM-dd", date: endDate)
         
@@ -263,11 +259,13 @@ class FilterBottmSheetViewController: UIViewController {
             guard let result = response as? NetworkResult<Any> else { return }
             switch result {
             case .success(let data):
+                
                 guard let result = data as? GeneralResponse<WritingsResponse> else { return }
                 
                 if let d = result.data?.writing {
                     self.delegate = self.parentDelegate
                     self.delegate?.changeWitingData(filteredDate: d)
+                    self.delegate?.remainFilterData(filteredCategoryID: self.categoryID, filteredStartDate: startDate, filteredEndDate: endDate)
                     self.dismiss(animated: true, completion: {
                         self.categoryTagCollecitonView.reloadData()
                         NotificationCenter.default.post(name: Notification.Name.categoryIsChanged, object: self.categoryName)
@@ -287,6 +285,7 @@ class FilterBottmSheetViewController: UIViewController {
                 print("error")
             }
         }
+        
         bgDelegate?.backgroundRemove()
         dismiss(animated: true, completion: nil)
     }

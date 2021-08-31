@@ -45,9 +45,9 @@ class MyWritingViewController: UIViewController {
         $0.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
         $0.frame = CGRect(origin: .zero, size: CGSize(width: SizeConstants.screenWidth, height: SizeConstants.screenHeight))
     }
-
+    
     // MARK: - Properties
-
+    
     var deleteButtonIsSelected: Bool = false
     var myWritingParentViewcontroller: UIViewController?
     var myWriting: [Writing] = [] {
@@ -62,33 +62,53 @@ class MyWritingViewController: UIViewController {
             }
         }
     }
-
     var removeData: [Int] = []
-    var headerView: UICollectionReusableView = ButtonSectionView()
+    var categoryID: String = ""
+    var startDate: String = ""
+    var endDate: String = ""
+    var header = ButtonSectionView()
     
     // MARK: - Initializer
     
     // MARK: - LifeCycle
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setConstraints()
         addObservers()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        fatchWriting()
+        fetchWriting()
+        resetFilter()
     }
     
     // MARK: - Actions
     
     // MARK: - Methods
     
-    func fatchWriting() {
-        ActivityIndicator.shared.startLoadingAnimation()
+    func resetFilter() {
+        NotificationCenter.default.post(name: Notification.Name.categoryIsChanged, object: "")
         
-        WritingService.shared.fatchWriting { response in
+        categoryID = ""
+        startDate = ""
+        endDate = ""
+        
+        if let button = self.view.viewWithTag(2) as? RoundingButton {
+            button.setupRoundingButton(title: "삭제", image:"btnRemove")
+            button.isSelected = false
+        }
+        
+        if deleteButtonIsSelected {
+            NotificationCenter.default.post(name: NSNotification.Name.deleteButtonIsSelected, object: header.deleteButton.isSelected)
+            self.view.viewWithTag(1)?.isHidden = true
+        }
+    }
+    
+    func fetchWriting() {
+        ActivityIndicator.shared.startLoadingAnimation()
+        WritingService.shared.fetchWriting { response in
             ActivityIndicator.shared.stopLoadingAnimation()
             
             guard let result = response as? NetworkResult<Any> else { return }
@@ -98,7 +118,7 @@ class MyWritingViewController: UIViewController {
                 
                 self.errorView.isHidden = true
                 self.errorLabel.isHidden = true
-
+                
                 if let d = wiritingData.data {
                     self.myWriting = d.writing
                     self.myWritingCollectionView.reloadData()
@@ -132,7 +152,10 @@ class MyWritingViewController: UIViewController {
             deleteID.append(myWriting[index].id)
         }
         popUpVC.deleteData = deleteID
-        popUpVC.categoryID = ""
+        popUpVC.startDate = startDate
+        popUpVC.endDate = endDate
+        popUpVC.categoryID = categoryID
+        
         popUpVC.modalPresentationStyle = .overFullScreen
         popUpVC.modalTransitionStyle = .crossDissolve
         popUpVC.parentDelegate = self
@@ -148,7 +171,7 @@ class MyWritingViewController: UIViewController {
         
         let window = UIApplication.shared.windows.first
         window?.addSubview(backgroundView)
-
+        
         present(popUpVC, animated: true, completion: nil)
     }
     
@@ -164,6 +187,7 @@ class MyWritingViewController: UIViewController {
 
 protocol ChangeWritingDataDelegate {
     func changeWitingData(filteredDate: [Writing])
+    func remainFilterData(filteredCategoryID: String, filteredStartDate: String, filteredEndDate: String)
 }
 protocol viewDelegate {
     func backgroundRemove()

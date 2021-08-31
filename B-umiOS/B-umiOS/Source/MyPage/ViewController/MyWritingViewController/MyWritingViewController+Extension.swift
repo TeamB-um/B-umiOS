@@ -10,8 +10,13 @@ import UIKit
 extension MyWritingViewController: ChangeWritingDataDelegate {
     func changeWitingData(filteredDate: [Writing]) {
         myWriting = filteredDate
-
         myWritingCollectionView.reloadData()
+    }
+    
+    func remainFilterData(filteredCategoryID: String, filteredStartDate: String, filteredEndDate: String) {
+        categoryID = filteredCategoryID
+        startDate = filteredStartDate
+        endDate = filteredEndDate
     }
 }
 
@@ -35,18 +40,12 @@ extension MyWritingViewController: UICollectionViewDataSource {
         
         cell.setShadow(radius: 20, offset: CGSize(width: 0, height: 4), opacity: 0.03)
         cell.setWritingData(data: myWriting, index: indexPath.row)
-        
-        if deleteButtonIsSelected {
-            cell.emptyCheckButton.isHidden = false
-        } else {
-            cell.emptyCheckButton.isHidden = true
-        }
+        cell.checkButton(bool: deleteButtonIsSelected)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ButtonSectionView.identifier, for: indexPath) as? ButtonSectionView else { return UICollectionReusableView() }
-        
         headerView.confirmButtton.addTarget(self, action: #selector(didTapConfirmButton(_:)), for: .touchUpInside)
         headerView.categoryButtton.addTarget(self, action: #selector(didTapCategoryButton(_:)), for: .touchUpInside)
         

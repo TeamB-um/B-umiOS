@@ -11,11 +11,12 @@ struct Writing: Codable {
     let id, title, text: String
     let category: Category
     let createdDate: String
-    let categoryID: String? /// 서버가 안 고쳐줌
+    let categoryID: String?
+    let paper: Int
 
     enum CodingKeys: String, CodingKey {
         case id = "_id"
-        case title, text, category
+        case title, text, category, paper
         case createdDate = "created_date"
         case categoryID = "category_id"
     }
