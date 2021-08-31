@@ -45,8 +45,7 @@ class LaunchScreenViewController: UIViewController {
             make.center.equalToSuperview()
         }
     }
-
-    // FIXME: - SERVER 수정 후 로그인 주석 해제
+  
     func login() {
          UserService.shared.login { response in
              guard let result = response as? NetworkResult<Any> else { return }
@@ -69,7 +68,6 @@ class LaunchScreenViewController: UIViewController {
              }
          }
     }
-
 
     func fetchUserInfo() {
         UserService.shared.fetchUserInfo { response in

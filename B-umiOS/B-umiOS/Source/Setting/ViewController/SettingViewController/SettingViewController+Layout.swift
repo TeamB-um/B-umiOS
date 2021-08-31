@@ -47,19 +47,20 @@ extension SettingViewController {
         }
         
         let topViews = [
-                        createView(text: "분리수거함 관리", items: [trashbinManageButton]),
-                        createView(text: "푸시알림", items: [pushAlarmSwitch])
-                        ]
+            createView(text: "분리수거함 관리", items: [btnLeftButton()]),
+            createView(text: "푸시알림", items: [pushAlarmSwitch])
+        ]
         
         for view in topViews{
             topStackView.addArrangedSubview(view)
         }
-
-        let bottomViews = [createView(text: "서비스 이용약관", items: [serviceConditionButton]),
-                           createView(text: "개인정보 처리방침", items: [personalInfomationButton]),
-                           createView(text: "오픈소스 라이센스", items: [opensourceLicenseButton]),
-                           createView(text: "비움 미화원 소개", items: [developerInformationButton])
-                          ]
+        
+        let bottomViews = [
+            createView(text: "서비스 이용약관", items: [btnLeftButton()]),
+            createView(text: "개인정보 처리방침", items: [btnLeftButton()]),
+            createView(text: "오픈소스 라이센스", items: [btnLeftButton()]),
+            createView(text: "비움 미화원 소개", items: [btnLeftButton()])
+        ]
         
         for view in bottomViews{
             bottomStackView.addArrangedSubview(view)
