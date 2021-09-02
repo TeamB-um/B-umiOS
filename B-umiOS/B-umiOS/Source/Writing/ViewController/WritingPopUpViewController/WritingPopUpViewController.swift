@@ -22,8 +22,8 @@ class WritingPopUpViewController: UIViewController {
         $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 20)
     }
     
-    lazy var closeButton = UIButton(frame: .zero, primaryAction: UIAction(handler: { _ in
-        self.dismiss(animated: true, completion: nil)
+    lazy var closeButton = UIButton(frame: .zero, primaryAction: UIAction(handler: { [weak self] _ in
+        self?.dismiss(animated: true, completion: nil)
     })).then {
         $0.setImage(UIImage.btnCloseBlack, for: .normal)
     }
@@ -37,11 +37,13 @@ class WritingPopUpViewController: UIViewController {
         $0.textColor = .paper3
     }
     
-    lazy var deleteButton = UIButton(primaryAction: UIAction(handler: { _ in
-        self.dismiss(animated: true, completion: nil)
+    lazy var deleteButton = UIButton(primaryAction: UIAction(handler: { [weak self] _ in
+        self?.dismiss(animated: true, completion: nil)
         
-        self.writingRequest.isWriting = false
-        self.popUpDelegate?.writingPopUpViewPush(trash: .trash(Int.random(in: 0 ... 2)), writing: self.writingRequest)
+        if let writingRequest = self?.writingRequest {
+            self?.writingRequest.isWriting = false
+            self?.popUpDelegate?.writingPopUpViewPush(trash: .trash(Int.random(in: 0 ... 2)), writing: writingRequest)
+        }
     })).then {
         $0.setTitle("삭제", for: .normal)
         $0.titleLabel?.font = UIFont.nanumSquareFont(type: .bold, size: 18)
@@ -51,11 +53,13 @@ class WritingPopUpViewController: UIViewController {
         $0.layer.borderColor = UIColor(red: 210 / 255, green: 210 / 255, blue: 210 / 255, alpha: 1).cgColor
     }
     
-    lazy var archiveButton = UIButton(primaryAction: UIAction(handler: { _ in
-        self.dismiss(animated: true, completion: nil)
+    lazy var archiveButton = UIButton(primaryAction: UIAction(handler: { [weak self] _ in
+        self?.dismiss(animated: true, completion: nil)
         
-        self.writingRequest.isWriting = true
-        self.popUpDelegate?.writingPopUpViewPush(trash: .separate, writing: self.writingRequest)
+        if let writingRequest = self?.writingRequest {
+            self?.writingRequest.isWriting = true
+            self?.popUpDelegate?.writingPopUpViewPush(trash: .separate, writing: writingRequest)
+        }
     })).then {
         $0.backgroundColor = .blue2Main
         $0.setTitle("보관", for: .normal)
