@@ -8,8 +8,10 @@
 import UIKit
 
 extension MyWritingViewController: ChangeWritingDataDelegate {
-    func changeWitingData(filteredDate: [Writing]) {
+    func changeWitingData(filteredDate: [Writing], count: Int) {
+        page = 1
         myWriting = filteredDate
+        writingCount = count
         myWritingCollectionView.reloadData()
     }
     
@@ -108,26 +110,13 @@ extension MyWritingViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print("scrollViewDidScroll")
         let offset = max(myWritingCollectionView.contentOffset.y, 0)
-//        let content = myWritingCollectionView.contentSize.height
-//        let minHeight = myWritingCollectionView.bounds.minY
-//        let minCellSizeHeight = (SizeConstants.screenWidth - 47) / 2
-//        let boundsMax = myWritingCollectionView.bounds.maxY
-//        if offset < minHeight || boundsMax + minHeight > content {
-//            print(" 이프문 들어왔긔 offset:",offset, "minHeight:",minHeight, "boundsMax:",boundsMax)
-//        } else {
-//            print("offset:",offset, "minHeight:",minHeight, "boundsMax:",boundsMax)
-//        }
-        if offset >= SizeConstants.screenWidth, myWriting.count < 20 {
-            print("되냐..?")
+        if offset > myWritingCollectionView.contentSize.height - myWritingCollectionView.bounds.size.height
+        , fetchingMore, myWriting.count < writingCount {
+            fetchingMore = false
             page += 1
-            print(page)
             fetchWriting(page: page)
-//            ActivityIndicator.shared.startLoadingAnimation()
-            myWritingCollectionView.reloadData()
         }
-        
     }
 }
 

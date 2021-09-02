@@ -53,23 +53,25 @@ class MyWritingViewController: UIViewController {
     
     var myWriting: [Writing] = [] {
         didSet {
-            if myWriting.count == 0 {
-                errorView.isHidden = false
-                errorLabel.isHidden = false
-                errorLabel.text = "아직 글을 작성하지 않았어요!"
-            } else {
+//            if myWriting.count == 0 {
+//                errorView.isHidden = false
+//                errorLabel.isHidden = false
+//                errorLabel.text = "아직 글을 작성하지 않았어요!"
+//            } else {
                 errorView.isHidden = true
                 errorLabel.isHidden = true
-            }
+//            }
         }
     }
     
     var page = 1
+    var writingCount = 0
     var removeData: [Int] = []
     var categoryID: String = ""
     var startDate: String = ""
     var endDate: String = ""
     var header = ButtonSectionView()
+    var fetchingMore = false
     
     // MARK: - Initializer
     
@@ -83,8 +85,8 @@ class MyWritingViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        fetchWriting(page: page)
         resetFilter()
+        fetchWriting(page: 1)
     }
     
     // MARK: - Actions
@@ -98,6 +100,10 @@ class MyWritingViewController: UIViewController {
         startDate = ""
         endDate = ""
         myWriting = []
+        fetchingMore = false
+        page = 1
+        writingCount = 0
+        myWritingCollectionView.reloadData()
         
         if let button = self.view.viewWithTag(2) as? RoundingButton {
             button.setupRoundingButton(title: "삭제", image:"btnRemove")
@@ -112,26 +118,26 @@ class MyWritingViewController: UIViewController {
     
     func fetchWriting(page: Int) {
         ActivityIndicator.shared.startLoadingAnimation()
-        WritingService.shared.fetchWriting(page: "\(page)", offset: "") { response in
+        WritingService.shared.fetchWriting(page: "\(page)", start_date: startDate, end_date: endDate, category_id: categoryID) { response in
             ActivityIndicator.shared.stopLoadingAnimation()
             
             guard let result = response as? NetworkResult<Any> else { return }
             switch result {
             case .success(let data):
                 guard let wiritingData = data as? GeneralResponse<WritingsResponse> else { return }
-                
                 self.errorView.isHidden = true
                 self.errorLabel.isHidden = true
-                
                 if let d = wiritingData.data {
+                    self.writingCount = d.count
+                    
                     for i in 0..<d.writing.count {
                         self.myWriting.append(d.writing[i])
                     }
+                    self.fetchingMore = true
                     self.myWritingCollectionView.reloadData()
                 } else {
                     print("success if let error")
                 }
-                
             case .requestErr(ErrorMessage.notFound):
                 print("404 not found")
                 self.errorView.isHidden = false
@@ -192,7 +198,7 @@ class MyWritingViewController: UIViewController {
 // MARK: - Protocol
 
 protocol ChangeWritingDataDelegate {
-    func changeWitingData(filteredDate: [Writing])
+    func changeWitingData(filteredDate: [Writing], count: Int)
     func remainFilterData(filteredCategoryID: String, filteredStartDate: String, filteredEndDate: String)
 }
 protocol viewDelegate {

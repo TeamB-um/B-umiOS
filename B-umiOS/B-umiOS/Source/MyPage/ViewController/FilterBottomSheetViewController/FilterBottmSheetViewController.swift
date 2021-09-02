@@ -251,9 +251,10 @@ class FilterBottmSheetViewController: UIViewController {
             endDate = ""
         }
         
+        
         ActivityIndicator.shared.startLoadingAnimation()
         
-        WritingService.shared.filterWritings(start_date: startDate, end_date: endDate, category_id: categoryID) { response in
+        WritingService.shared.fetchWriting(page: "1", start_date: startDate, end_date: endDate, category_id: categoryID) { response in
             ActivityIndicator.shared.stopLoadingAnimation()
             
             guard let result = response as? NetworkResult<Any> else { return }
@@ -262,9 +263,9 @@ class FilterBottmSheetViewController: UIViewController {
                 
                 guard let result = data as? GeneralResponse<WritingsResponse> else { return }
                 
-                if let d = result.data?.writing {
+                if let d = result.data {
                     self.delegate = self.parentDelegate
-                    self.delegate?.changeWitingData(filteredDate: d)
+                    self.delegate?.changeWitingData(filteredDate: d.writing, count: d.count)
                     self.delegate?.remainFilterData(filteredCategoryID: self.categoryID, filteredStartDate: startDate, filteredEndDate: endDate)
                     self.dismiss(animated: true, completion: {
                         self.categoryTagCollecitonView.reloadData()
@@ -275,7 +276,7 @@ class FilterBottmSheetViewController: UIViewController {
                 
             case .requestErr(ErrorMessage.notFound):
                 self.delegate = self.parentDelegate
-                self.delegate?.changeWitingData(filteredDate: [])
+                self.delegate?.changeWitingData(filteredDate: [], count: 0)
                 self.dismiss(animated: true, completion: {
                     self.categoryTagCollecitonView.reloadData()
                     NotificationCenter.default.post(name: Notification.Name.categoryIsChanged, object: self.categoryName)
