@@ -50,6 +50,7 @@ class MyWritingViewController: UIViewController {
     
     var deleteButtonIsSelected: Bool = false
     var myWritingParentViewcontroller: UIViewController?
+    
     var myWriting: [Writing] = [] {
         didSet {
             if myWriting.count == 0 {
@@ -62,6 +63,8 @@ class MyWritingViewController: UIViewController {
             }
         }
     }
+    
+    var page = 1
     var removeData: [Int] = []
     var categoryID: String = ""
     var startDate: String = ""
@@ -80,7 +83,7 @@ class MyWritingViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        fetchWriting()
+        fetchWriting(page: page)
         resetFilter()
     }
     
@@ -94,6 +97,7 @@ class MyWritingViewController: UIViewController {
         categoryID = ""
         startDate = ""
         endDate = ""
+        myWriting = []
         
         if let button = self.view.viewWithTag(2) as? RoundingButton {
             button.setupRoundingButton(title: "삭제", image:"btnRemove")
@@ -106,9 +110,9 @@ class MyWritingViewController: UIViewController {
         }
     }
     
-    func fetchWriting() {
+    func fetchWriting(page: Int) {
         ActivityIndicator.shared.startLoadingAnimation()
-        WritingService.shared.fetchWriting { response in
+        WritingService.shared.fetchWriting(page: "\(page)", offset: "") { response in
             ActivityIndicator.shared.stopLoadingAnimation()
             
             guard let result = response as? NetworkResult<Any> else { return }
@@ -120,7 +124,9 @@ class MyWritingViewController: UIViewController {
                 self.errorLabel.isHidden = true
                 
                 if let d = wiritingData.data {
-                    self.myWriting = d.writing
+                    for i in 0..<d.writing.count {
+                        self.myWriting.append(d.writing[i])
+                    }
                     self.myWritingCollectionView.reloadData()
                 } else {
                     print("success if let error")

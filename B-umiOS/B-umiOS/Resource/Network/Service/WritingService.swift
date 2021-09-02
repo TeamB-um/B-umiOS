@@ -19,8 +19,16 @@ struct WritingService {
         }
     }
     
-    func fetchWriting(completion: @escaping (Any) -> Void) {
-        RequestHandler.shared.requestData(url: APIConstants.writingURL, httpmethod: HTTPMethod.get, parameter: nil, header: NetworkInfo.headerWithToken, decodeType: GeneralResponse<WritingsResponse>.self) { response in
+//    func fetchWriting(completion: @escaping (Any) -> Void) {
+//        RequestHandler.shared.requestData(url: APIConstants.writingURL, httpmethod: HTTPMethod.get, parameter: nil, header: NetworkInfo.headerWithToken, decodeType: GeneralResponse<WritingsResponse>.self) { response in
+//            completion(response)
+//        }
+//    }
+    func fetchWriting(page: String, offset: String, completion: @escaping (Any) -> Void) {
+        var url = "\(APIConstants.writingURL)?&page=\(page)"
+        url += offset == "" ? "" : "&offset=\(offset)"
+        
+        RequestHandler.shared.requestData(url: url, httpmethod: HTTPMethod.get, parameter: nil, header: NetworkInfo.headerWithToken, decodeType: GeneralResponse<WritingsResponse>.self) { response in
             completion(response)
         }
     }
