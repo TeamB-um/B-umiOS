@@ -15,8 +15,8 @@ class ThrowTrashViewController: UIViewController {
         $0.backgroundColor = .clear
     }
     
-    lazy var navigationLabel = UILabel().then {
-        $0.text = self.trashType.mode
+    var navigationLabel = UILabel().then {
+//        $0.text = self.trashType.mode
         $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 20)
         $0.textColor = UIColor.white
     }
@@ -28,12 +28,9 @@ class ThrowTrashViewController: UIViewController {
         $0.tintColor = .white
     }
     
-    lazy var backgroudImage = UIImageView().then {
-        $0.image = UIImage(named: "img_\(self.trashType)")
-    }
+    var backgroudImage = UIImageView()
     
-    lazy var animationView = AnimationView().then {
-        $0.animation = Animation.named("home_ios")
+    var animationView = AnimationView().then {
         $0.loopMode = .playOnce
     }
     
@@ -47,23 +44,17 @@ class ThrowTrashViewController: UIViewController {
         $0.image = UIImage.toastPaper1
     }
     
-    lazy var explanationLabel = UILabel().then {
+    var explanationLabel = UILabel().then {
         $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 15)
         $0.textColor = .iconGray
-        let attributedStr = NSMutableAttributedString(string: explainString)
-
-        attributedStr.addAttribute(.foregroundColor, value: UIColor.blue3, range: (explainString as NSString).range(of: self.trashType.explain))
-
-        $0.attributedText = attributedStr
     }
     
-    lazy var guideLabel = UILabel().then {
-        $0.text = "\(self.trashType.trashBinName) 안으로 넣어보세요!"
+    var guideLabel = UILabel().then {
         $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 20)
         $0.textColor = .white
     }
     
-    lazy var trash = UIImageView().then {
+    var trash = UIImageView().then {
         $0.image = UIImage.imgWritingPaper
         $0.isUserInteractionEnabled = true
         $0.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:))))
@@ -91,6 +82,10 @@ class ThrowTrashViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    deinit {
+        print("throw trash deinit 🎵👀")
+    }
+    
     // MARK: - LifeCycle
 
     override func viewDidLoad() {
@@ -100,13 +95,13 @@ class ThrowTrashViewController: UIViewController {
         setConstraints()
     }
     
-    override func viewWillLayoutSubviews() {
-        let trailing = (explanationView.frame.width - explanationImage.frame.maxX - explanationLabel.frame.width) / 2.0
-
-        explanationLabel.snp.updateConstraints { make in
-            make.trailing.equalToSuperview().offset(-trailing * SizeConstants.screenRatio)
-        }
-    }
+//    override func viewWillLayoutSubviews() {
+//        let trailing = (explanationView.frame.width - explanationImage.frame.maxX - explanationLabel.frame.width) / 2.0
+//
+//        explanationLabel.snp.updateConstraints { make in
+//            make.trailing.equalToSuperview().offset(-trailing * SizeConstants.screenRatio)
+//        }
+//    }
     
     // MARK: - Actions
 
@@ -120,10 +115,12 @@ class ThrowTrashViewController: UIViewController {
             guideLabel.alpha = 1
             
             let position = gesture.location(in: view)
-            if (trashBin.frame.minX ... trashBin.frame.maxX).contains(position.x), (trashBin.frame.minY ... trashBin.frame.maxY).contains(position.y) {
-                throwAwayTrash {
-                    self.createWritingData()
-                }
+            if (trashBin.frame.minX ... trashBin.frame.maxX).contains(position.x),
+               (trashBin.frame.minY ... trashBin.frame.maxY).contains(position.y)
+            {
+//                throwAwayTrash { [weak self] in
+//                    self?.createWritingData()
+//                }
             } else {
                 resetTrash()
             }
@@ -139,6 +136,18 @@ class ThrowTrashViewController: UIViewController {
     
     func setView() {
         view.backgroundColor = .white
+        
+        backgroudImage.image = UIImage(named: "img_\(trashType)")
+        animationView.animation = Animation.named("\(trashType.rawValue)")
+        
+        guideLabel.text = "\(trashType.trashBinName) 안으로 넣어보세요!"
+        navigationLabel.text = trashType.mode
+        
+        let attributedStr = NSMutableAttributedString(string: explainString)
+
+        attributedStr.addAttribute(.foregroundColor, value: UIColor.blue3, range: (explainString as NSString).range(of: trashType.explain))
+
+        explanationLabel.attributedText = attributedStr
     }
     
     func resetTrash() {
@@ -174,29 +183,29 @@ class ThrowTrashViewController: UIViewController {
             make.edges.equalToSuperview()
         }
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
             toast.alpha = 0
             toast.removeFromSuperview()
-            self.navigationController?.popToRootViewController(animated: true)
+            self?.navigationController?.popToRootViewController(animated: true)
         }
     }
     
-    func createWritingData() {
-        ActivityIndicator.shared.startLoadingAnimation()
-        
-        WritingService.shared.createWriting(writing: writing) { response in
-            ActivityIndicator.shared.stopLoadingAnimation()
-            
-            guard let result = response as? NetworkResult<Any> else { return }
-            
-            switch result {
-            case .success:
-                self.showToast()
-            case .requestErr, .pathErr, .serverErr, .networkFail:
-                self.navigationController?.popViewController(animated: true)
-            }
-        }
-    }
+//    func createWritingData() {
+//        ActivityIndicator.shared.startLoadingAnimation()
+//
+//        WritingService.shared.createWriting(writing: writing) { response in
+//            ActivityIndicator.shared.stopLoadingAnimation()
+//
+//            guard let result = response as? NetworkResult<Any> else { return }
+//
+//            switch result {
+//            case .success:
+//                self.showToast()
+//            case .requestErr, .pathErr, .serverErr, .networkFail:
+//                self.navigationController?.popViewController(animated: true)
+//            }
+//        }
+//    }
 
     // MARK: - Protocols
 }
