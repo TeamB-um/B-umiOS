@@ -162,12 +162,6 @@ class ButtonSectionView: UICollectionReusableView {
         }
     }
     
-    @objc func myWritingReset() {
-        deleteButton.setupRoundingButton(title: "삭제", image: "btnRemove")
-        confirmButtton.isHidden = true
-        confirmButtton.isActivated(false)
-    }
-    
     // MARK: - Protocols
 }
 
