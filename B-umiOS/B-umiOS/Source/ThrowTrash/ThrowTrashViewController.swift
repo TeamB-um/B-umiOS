@@ -114,8 +114,10 @@ class ThrowTrashViewController: UIViewController {
             if (trashBin.frame.minX ... trashBin.frame.maxX).contains(position.x),
                (trashBin.frame.minY ... trashBin.frame.maxY).contains(position.y)
             {
+                navigationController?.interactivePopGestureRecognizer?.isEnabled = false
                 throwAwayTrash {
                     self.createWritingData()
+                    self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
                 }
             } else {
                 resetTrash()
