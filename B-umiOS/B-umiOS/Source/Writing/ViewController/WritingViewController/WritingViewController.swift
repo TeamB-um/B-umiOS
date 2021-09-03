@@ -24,13 +24,13 @@ class WritingViewController: UIViewController {
         $0.textColor = UIColor.header
     }
     
-    lazy var backButton = UIButton(type: .custom, primaryAction: UIAction(handler: { [weak self] action in
+    lazy var backButton = UIButton(type: .custom, primaryAction: UIAction(handler: { [weak self] _ in
         self?.navigationController?.popViewController(animated: true)
     })).then {
         $0.setImage(UIImage.btnBack, for: .normal)
     }
     
-    lazy var checkButton = UIButton().then { [weak self] in
+    lazy var checkButton = UIButton().then {
         $0.setImage(UIImage.btnCheck.withRenderingMode(.alwaysTemplate), for: .normal)
         $0.addTarget(self, action: #selector(didTapCheckButton(_:)), for: .touchUpInside)
         $0.tintColor = .disable
@@ -41,7 +41,7 @@ class WritingViewController: UIViewController {
         $0.backgroundColor = .paper1
     }
     
-    lazy var settingButton = UIButton().then { [weak self] in
+    lazy var settingButton = UIButton().then {
         $0.setImage(UIImage.btnSetting, for: .normal)
         $0.addTarget(self, action: #selector(didTapSettingButton(_:)), for: .touchUpInside)
     }
@@ -79,15 +79,15 @@ class WritingViewController: UIViewController {
         $0.tintColor = .background
     }
     
-    lazy var paperView = UIImageView().then { [weak self] in
-        $0.image = self?.style.paperIamge
+    lazy var paperView = UIImageView().then {
+        $0.image = self.style.paperIamge
         $0.isUserInteractionEnabled = true
     }
     
-    lazy var titleTextField = UITextField().then { [weak self] in
+    lazy var titleTextField = UITextField().then {
         $0.autocorrectionType = .no
-        $0.attributedPlaceholder = NSAttributedString(string: "제목", attributes: [NSAttributedString.Key.foregroundColor: self?.style.placeholderColor as Any, NSAttributedString.Key.font: UIFont.nanumSquareFont(type: .regular, size: 20)])
-        $0.textColor = self?.style.textColor
+        $0.attributedPlaceholder = NSAttributedString(string: "제목", attributes: [NSAttributedString.Key.foregroundColor: self.style.placeholderColor as Any, NSAttributedString.Key.font: UIFont.nanumSquareFont(type: .regular, size: 20)])
+        $0.textColor = self.style.textColor
         $0.font = UIFont.nanumSquareFont(type: .bold, size: 20)
         
         $0.delegate = self
@@ -95,18 +95,18 @@ class WritingViewController: UIViewController {
         $0.becomeFirstResponder()
     }
     
-    lazy var textFieldDividerView = UIView().then { [weak self] in
-        $0.backgroundColor = self?.style.dividerColor
+    lazy var textFieldDividerView = UIView().then {
+        $0.backgroundColor = self.style.dividerColor
     }
     
-    lazy var textView = UITextView().then { [weak self] in
+    lazy var textView = UITextView().then {
         $0.backgroundColor = .clear
-        $0.text = self?.placeholder
+        $0.text = self.placeholder
         
         let style = NSMutableParagraphStyle()
         style.lineSpacing = 14
-        let attributes = [NSAttributedString.Key.paragraphStyle: style, NSAttributedString.Key.foregroundColor: self?.style.placeholderColor, NSAttributedString.Key.font: UIFont.nanumSquareFont(type: .regular, size: 18)]
-        $0.attributedText = NSAttributedString(string: $0.text, attributes: attributes as [NSAttributedString.Key : Any])
+        let attributes = [NSAttributedString.Key.paragraphStyle: style, NSAttributedString.Key.foregroundColor: self.style.placeholderColor, NSAttributedString.Key.font: UIFont.nanumSquareFont(type: .regular, size: 18)]
+        $0.attributedText = NSAttributedString(string: $0.text, attributes: attributes as [NSAttributedString.Key: Any])
         
         $0.autocorrectionType = .no
         $0.delegate = self

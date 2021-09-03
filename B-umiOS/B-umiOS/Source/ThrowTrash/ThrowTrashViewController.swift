@@ -15,14 +15,14 @@ class ThrowTrashViewController: UIViewController {
         $0.backgroundColor = .clear
     }
     
-    var navigationLabel = UILabel().then {
-//        $0.text = self.trashType.mode
+    lazy var navigationLabel = UILabel().then {
+        $0.text = self.trashType.mode
         $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 20)
         $0.textColor = UIColor.white
     }
     
-    lazy var backButton = UIButton(type: .custom, primaryAction: UIAction(handler: { _ in
-        self.navigationController?.popViewController(animated: true)
+    lazy var backButton = UIButton(type: .custom, primaryAction: UIAction(handler: { [weak self] _ in
+        self?.navigationController?.popViewController(animated: true)
     })).then {
         $0.setImage(UIImage.btnBack.withRenderingMode(.alwaysTemplate), for: .normal)
         $0.tintColor = .white
@@ -54,7 +54,7 @@ class ThrowTrashViewController: UIViewController {
         $0.textColor = .white
     }
     
-    var trash = UIImageView().then {
+    lazy var trash = UIImageView().then {
         $0.image = UIImage.imgWritingPaper
         $0.isUserInteractionEnabled = true
         $0.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:))))
@@ -82,10 +82,6 @@ class ThrowTrashViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    deinit {
-        print("throw trash deinit 🎵👀")
-    }
-    
     // MARK: - LifeCycle
 
     override func viewDidLoad() {
@@ -95,13 +91,13 @@ class ThrowTrashViewController: UIViewController {
         setConstraints()
     }
     
-//    override func viewWillLayoutSubviews() {
-//        let trailing = (explanationView.frame.width - explanationImage.frame.maxX - explanationLabel.frame.width) / 2.0
-//
-//        explanationLabel.snp.updateConstraints { make in
-//            make.trailing.equalToSuperview().offset(-trailing * SizeConstants.screenRatio)
-//        }
-//    }
+    override func viewWillLayoutSubviews() {
+        let trailing = (explanationView.frame.width - explanationImage.frame.maxX - explanationLabel.frame.width) / 2.0
+
+        explanationLabel.snp.updateConstraints { make in
+            make.trailing.equalToSuperview().offset(-trailing * SizeConstants.screenRatio)
+        }
+    }
     
     // MARK: - Actions
 
@@ -118,9 +114,9 @@ class ThrowTrashViewController: UIViewController {
             if (trashBin.frame.minX ... trashBin.frame.maxX).contains(position.x),
                (trashBin.frame.minY ... trashBin.frame.maxY).contains(position.y)
             {
-//                throwAwayTrash { [weak self] in
-//                    self?.createWritingData()
-//                }
+                throwAwayTrash {
+                    self.createWritingData()
+                }
             } else {
                 resetTrash()
             }
@@ -144,9 +140,7 @@ class ThrowTrashViewController: UIViewController {
         navigationLabel.text = trashType.mode
         
         let attributedStr = NSMutableAttributedString(string: explainString)
-
         attributedStr.addAttribute(.foregroundColor, value: UIColor.blue3, range: (explainString as NSString).range(of: trashType.explain))
-
         explanationLabel.attributedText = attributedStr
     }
     
@@ -190,22 +184,22 @@ class ThrowTrashViewController: UIViewController {
         }
     }
     
-//    func createWritingData() {
-//        ActivityIndicator.shared.startLoadingAnimation()
-//
-//        WritingService.shared.createWriting(writing: writing) { response in
-//            ActivityIndicator.shared.stopLoadingAnimation()
-//
-//            guard let result = response as? NetworkResult<Any> else { return }
-//
-//            switch result {
-//            case .success:
-//                self.showToast()
-//            case .requestErr, .pathErr, .serverErr, .networkFail:
-//                self.navigationController?.popViewController(animated: true)
-//            }
-//        }
-//    }
+    func createWritingData() {
+        ActivityIndicator.shared.startLoadingAnimation()
+
+        WritingService.shared.createWriting(writing: writing) { response in
+            ActivityIndicator.shared.stopLoadingAnimation()
+
+            guard let result = response as? NetworkResult<Any> else { return }
+
+            switch result {
+            case .success:
+                self.showToast()
+            case .requestErr, .pathErr, .serverErr, .networkFail:
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
+    }
 
     // MARK: - Protocols
 }
