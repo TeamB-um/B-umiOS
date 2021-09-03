@@ -179,10 +179,10 @@ class ThrowTrashViewController: UIViewController {
             make.edges.equalToSuperview()
         }
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             toast.alpha = 0
             toast.removeFromSuperview()
-            self?.navigationController?.popToRootViewController(animated: true)
+            self.navigationController?.popToRootViewController(animated: true)
         }
     }
     
