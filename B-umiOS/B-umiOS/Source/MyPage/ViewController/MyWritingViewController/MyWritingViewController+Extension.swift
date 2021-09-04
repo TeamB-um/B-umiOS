@@ -12,6 +12,12 @@ extension MyWritingViewController: ChangeWritingDataDelegate {
         myWriting = filteredDate
         myWritingCollectionView.reloadData()
     }
+    
+    func remainFilterData(filteredCategoryID: String, filteredStartDate: String, filteredEndDate: String) {
+        categoryID = filteredCategoryID
+        startDate = filteredStartDate
+        endDate = filteredEndDate
+    }
 }
 
 /// 삭제한 후 데이터 변경
@@ -34,14 +40,6 @@ extension MyWritingViewController: UICollectionViewDataSource {
         
         cell.setShadow(radius: 20, offset: CGSize(width: 0, height: 4), opacity: 0.03)
         cell.setWritingData(data: myWriting, index: indexPath.row)
-        
-//        if deleteButtonIsSelected {
-////            cell.emptyCheckButton.isHidden = false
-//            cell.checkButton(bool: true)
-//        } else {
-////            cell.emptyCheckButton.isHidden = true
-//            cell.checkButton(bool: false)
-//        }
         cell.checkButton(bool: deleteButtonIsSelected)
         return cell
     }

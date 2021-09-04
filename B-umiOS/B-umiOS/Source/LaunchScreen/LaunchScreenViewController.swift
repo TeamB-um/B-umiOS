@@ -45,7 +45,7 @@ class LaunchScreenViewController: UIViewController {
             make.center.equalToSuperview()
         }
     }
-
+  
     func login() {
         UserService.shared.login { response in
             guard let result = response as? NetworkResult<Any> else { return }

@@ -58,34 +58,13 @@ class SettingViewController: UIViewController {
         $0.addTarget(self, action: #selector(setPeriodButton(_:)), for: .touchUpInside)
     }
     
-    let trashbinManageButton = UIButton().then {
-        $0.setImage(UIImage.btnLeft, for: .normal)
-        $0.addTarget(self, action: #selector(didTapTrashBinManageButton(_:)), for: .touchUpInside)
-    }
-    
     lazy var pushAlarmSwitch = UISwitch().then {
         $0.onTintColor = .blue2Main
         $0.addTarget(self, action: #selector(didTapPushSwitch(_:)), for: .valueChanged)
     }
-    
-    let serviceConditionButton = UIButton().then {
-        $0.setImage(UIImage.btnLeft, for: .normal)
-    }
-    
-    let personalInfomationButton = UIButton().then {
-        $0.setImage(UIImage.btnLeft, for: .normal)
-    }
-    
-    let opensourceLicenseButton = UIButton().then {
-        $0.setImage(UIImage.btnLeft, for: .normal)
-    }
-    
-    let developerInformationButton = UIButton().then {
-        $0.setImage(UIImage.btnLeft, for: .normal)
-    }
 
     // MARK: - Properties
-    
+
     // MARK: - Initializer
 
     // MARK: - LifeCycle
@@ -102,14 +81,23 @@ class SettingViewController: UIViewController {
     }
 
     // MARK: - Actions
-
+    
     @objc
-    private func didTapTrashBinManageButton(_ sender: UIButton) {
-        if let pushVC = self.storyboard?.instantiateViewController(withIdentifier: SettingSeparateViewController.identifier) {
-            self.navigationController?.pushViewController(pushVC, animated: true)
+    private func touchInside(_ sender: TapGesture){
+        switch sender.identifier {
+        case "분리수거함 관리" :
+            print("서비스")
+            if let pushVC = self.storyboard?.instantiateViewController(withIdentifier: SettingSeparateViewController.identifier) {
+                self.navigationController?.pushViewController(pushVC, animated: true)
+                
+            }
+        case "푸시알림", "서비스 이용약관","개인정보 처리방침","오픈소스 라이센스", "비움 미화원 소개" :
+            break
+        default:
+            break
         }
     }
-    
+        
     @objc
     private func setPeriodButton(_ sender: UIButton) {
         let popUpVC = self.storyboard?.instantiateViewController(identifier: "PeriodPopUpViewController") as! PeriodPopUpViewController
@@ -154,8 +142,13 @@ class SettingViewController: UIViewController {
     }
     
     func createView(text: String, items: [NSCoding]) -> UIView {
+        let tapGesture = TapGesture(target: self, action: #selector(touchInside(_:)))
+        tapGesture.identifier = text
+        
         let newView = UIView().then {
             $0.backgroundColor = .background
+            $0.addGestureRecognizer(tapGesture)
+            $0.isUserInteractionEnabled = true
         }
     
         let label = UILabel().then {
@@ -201,6 +194,13 @@ class SettingViewController: UIViewController {
         self.trashbinPeriodLabel.text = "\(deletePeriod)일"
     }
 
+    func btnLeftButton() -> UIButton {
+        let button = UIButton().then {
+            $0.setImage(UIImage.btnLeft, for: .normal)
+            $0.isEnabled = false
+        }
+        return button
+    }
     // MARK: - Protocols
 }
 
@@ -215,3 +215,4 @@ extension SettingViewController: popupDelegate {
         self.trashbinPeriodLabel.text = "\(data)일"
     }
 }
+

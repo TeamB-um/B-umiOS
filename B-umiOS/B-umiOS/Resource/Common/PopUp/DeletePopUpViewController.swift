@@ -64,9 +64,12 @@ class DeletePopUpViewController: UIViewController {
     var changeCategoriesDataDelegate: ChangeCategoryDataDelegate?
     var kind: Kind
     var deleteData: [String] = []
-    var categoryID: String = ""
     var deleteDelegate: DeleteDelegate?
     var parentDelegate: DeleteDelegate?
+    var startDate = ""
+    var endDate = ""
+    var categoryID = ""
+    var delegate: ChangeWritingDataDelegate?
 
     // MARK: - Initializer
 
@@ -109,7 +112,7 @@ class DeletePopUpViewController: UIViewController {
         case .writing:
             ActivityIndicator.shared.startLoadingAnimation()
             
-            WritingService.shared.deleteWriting(writings: query) { response in
+            WritingService.shared.deleteWriting(writings: query, start_date: startDate, end_date: endDate, category_id: categoryID) { response in
                 ActivityIndicator.shared.stopLoadingAnimation()
                 
                 guard let result = response as? NetworkResult<Any> else { return }

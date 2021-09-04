@@ -9,5 +9,6 @@ import UIKit
 
 class TapGesture : UITapGestureRecognizer{
     var nextIdentifier = String()
+    var identifier = String()
     var method : ShowMethod?
 }
