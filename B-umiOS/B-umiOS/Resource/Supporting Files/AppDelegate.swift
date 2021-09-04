@@ -78,14 +78,7 @@ extension AppDelegate: MessagingDelegate {
         print("🥺 [fcm token]: ", fcmToken)
         guard let token = fcmToken else { return }
 
-        UserService.shared.registerFCMToken(token: fcmTokenRequest(pushToken: token)) { response in
-            guard let result = response as? NetworkResult<Any> else { return }
-
-            switch result {
-            case .success, .requestErr, .pathErr, .serverErr, .networkFail:
-                break
-            }
-        }
+        UserService.shared.registerFCMToken(token: fcmTokenRequest(pushToken: token))
     }
 
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
