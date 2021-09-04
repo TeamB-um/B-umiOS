@@ -13,7 +13,6 @@ struct PresentService {
 
     func fetchPresentData(completion: @escaping (Any) -> Void) {
         RequestHandler.shared.requestData(url: APIConstants.presentURL, httpmethod: .get, parameter: nil, header: NetworkInfo.headerWithToken, decodeType: GeneralResponse<PresentResponse>.self) { response in
-            print(response)
             completion(response)
         }
     }
