@@ -244,8 +244,6 @@ class FilterBottmSheetViewController: UIViewController {
     }
 
     @objc private func didTapConfirmButton(_ sender: UIButton) {
-        myWritingViewcontroller.deleteMyWriting()
-        
         var startDate = startDate.dateToString(format: "yyyy-MM-dd", date: startDate)
         var endDate = endDate.dateToString(format: "yyyy-MM-dd", date: endDate)
         
@@ -263,9 +261,7 @@ class FilterBottmSheetViewController: UIViewController {
             guard let result = response as? NetworkResult<Any> else { return }
             switch result {
             case .success(let data):
-                
                 guard let result = data as? GeneralResponse<WritingsResponse> else { return }
-                
                 if let d = result.data {
                     self.delegate = self.parentDelegate
                     self.delegate?.changeWitingData(filteredDate: d.writing, count: d.count)
@@ -276,6 +272,7 @@ class FilterBottmSheetViewController: UIViewController {
                         
                     })
                 }
+                self.myWritingViewcontroller.deleteMyWriting()
                 
             case .requestErr(ErrorMessage.notFound):
                 self.delegate = self.parentDelegate
@@ -301,7 +298,6 @@ class FilterBottmSheetViewController: UIViewController {
     }
     
     func setFirstDatePicker() {
-        // 익스텐션 사용하는 걸로 수정할게요
         let nowDateTime = Date()
         let tmpDateFormatter = DateFormatter()
         tmpDateFormatter.dateFormat = "yyyy.MM.dd(E)"

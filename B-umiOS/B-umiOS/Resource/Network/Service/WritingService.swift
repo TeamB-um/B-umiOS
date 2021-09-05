@@ -19,22 +19,8 @@ struct WritingService {
         }
     }
     
-//    func deleteWriting(writings: String, start_date: String, end_date: String, category_id: String, completion: @escaping (Any) -> Void) {
-//        var url = "\(APIConstants.writingURL)?ids=[\(writings)]&start_date=\(start_date)&end_date=\(end_date)"
-//        url += category_id == "" ? "" : "&category_ids=[\(category_id)]"
-//
-//        print("deleteWritingURL",url)
-//
-//        RequestHandler.shared.requestData(url: url, httpmethod: HTTPMethod.delete, parameter: nil, header: NetworkInfo.headerWithToken, decodeType: GeneralResponse<WritingsResponse>.self) { response in
-//            completion(response)
-//        }
-//    }
-    
     func deleteWriting(writings: String, completion: @escaping (Any) -> Void) {
         let url = "\(APIConstants.writingURL)?ids=[\(writings)]"
-//        url += category_id == "" ? "" : "&category_ids=[\(category_id)]"
-        
-        print("deleteWritingURL",url)
         
         RequestHandler.shared.requestData(url: url, httpmethod: HTTPMethod.delete, parameter: nil, header: NetworkInfo.headerWithToken, decodeType: GeneralResponse<WritingsResponse>.self) { response in
             completion(response)
@@ -44,7 +30,6 @@ struct WritingService {
     func fetchWriting(page: String, start_date: String, end_date: String, category_id: String, completion: @escaping (Any) -> Void) {
         let categoryID = category_id == "" ? "" : "&category_ids=[\(category_id)]"
         let url = "\(APIConstants.writingURL)?start_date=\(start_date)&end_date=\(end_date)\(categoryID)&page=\(page)"
-        
         RequestHandler.shared.requestData(url: url, httpmethod: HTTPMethod.get, parameter: nil, header: NetworkInfo.headerWithToken, decodeType: GeneralResponse<WritingsResponse>.self) { response in
             completion(response)
         }

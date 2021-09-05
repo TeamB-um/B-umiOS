@@ -31,14 +31,12 @@ class MyWritingViewController: UIViewController {
     
     var errorView = UIImageView().then {
         $0.image = UIImage.group192
-        $0.isHidden = true
     }
     
     var errorLabel = UILabel().then {
         $0.font = .nanumSquareFont(type: .regular, size: 14)
         $0.textColor = .textGray
         $0.text = "error"
-        $0.isHidden = true
     }
     
     let backgroundView = UIView().then {
@@ -51,7 +49,7 @@ class MyWritingViewController: UIViewController {
     var deleteButtonIsSelected: Bool = false
     var myWritingParentViewcontroller: UIViewController?
     
-    //전체글, 나중에 삭제
+    ///전체 글 배열, 필터 적용&viewwilldisappear 될 때 deleteData에 있는 id들이 삭제됨(진짜 삭제는 나중에)
     var totalMyWritngs: [Writing] = [] {
         didSet {
             if totalMyWritngs.count == 0 {
@@ -64,7 +62,7 @@ class MyWritingViewController: UIViewController {
             }
         }
     }
-    //보여질 글 즉시 삭제
+    ///삭제했을 때 컬렉션뷰에 바로 반영되는 배열, 삭제 버튼을 누르면 바로 removeData에 있는 글들이 삭제됨(보이는 부분 먼저 삭제)
     var myWriting: [Writing] = []
     var page = 1
     var totalWritingCount = 0
@@ -89,27 +87,19 @@ class MyWritingViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        setView()
         resetFilter()
         fetchWriting(page: 1)
-        print("어렵다.어려워")
     }
-    
-//    override func viewDidDisappear(_ animated: Bool) {
-//        deleteMyWriting()
-//    }
     
     override func viewWillDisappear(_ animated: Bool) {
         deleteMyWriting()
-        
     }
     
     // MARK: - Actions
     
     // MARK: - Methods
-    
-    func resetFilter() {
-        NotificationCenter.default.post(name: Notification.Name.categoryIsChanged, object: "")
-        
+    func setView() {
         categoryID = ""
         startDate = ""
         endDate = ""
@@ -119,7 +109,12 @@ class MyWritingViewController: UIViewController {
         fetchingMore = false
         page = 1
         totalWritingCount = 0
-        myWritingCollectionView.reloadData()
+        errorView.isHidden = true
+        errorLabel.isHidden = true
+    }
+    
+    func resetFilter() {
+        NotificationCenter.default.post(name: Notification.Name.categoryIsChanged, object: "")
         
         if let button = self.view.viewWithTag(2) as? RoundingButton {
             button.setupRoundingButton(title: "삭제", image:"btnRemove")
@@ -135,10 +130,7 @@ class MyWritingViewController: UIViewController {
     func fetchWriting(page: Int) {
         if page == 1, !deleteData.isEmpty {
             deleteMyWriting()
-            print("삭제되나?")
         }
-        
-        print("fetchWritingfetchWritingfetchWritingfetchWriting",page)
         ActivityIndicator.shared.startLoadingAnimation()
         WritingService.shared.fetchWriting(page: "\(page)", start_date: startDate, end_date: endDate, category_id: categoryID) { response in
             ActivityIndicator.shared.stopLoadingAnimation()
@@ -147,8 +139,6 @@ class MyWritingViewController: UIViewController {
             switch result {
             case .success(let data):
                 guard let writingData = data as? GeneralResponse<WritingsResponse> else { return }
-                self.errorView.isHidden = true
-                self.errorLabel.isHidden = true
                 if let d = writingData.data {
                     self.totalWritingCount = d.count ?? 0
                     for i in 0..<d.writing.count {
@@ -174,34 +164,26 @@ class MyWritingViewController: UIViewController {
     
     func deleteMyWriting() {
         if !deleteData.isEmpty {
-        var query = ""
-        for (index, item) in deleteData.enumerated() {
-            if index == 0 {
-                query = item
+            var query = ""
+            for (index, item) in deleteData.enumerated() {
+                if index == 0 {
+                    query = item
+                }
+                else {
+                    query = "\(query),\(item)"
+                }
             }
-            else {
-                query = "\(query),\(item)"
+            WritingService.shared.deleteWriting(writings: query) { response in
+                
+                guard let result = response as? NetworkResult<Any> else { return }
+                switch result {
+                case .success:
+                    self.deleteData = []
+                    self.myWritingCollectionView.reloadData()
+                default:
+                    print("error")
+                }
             }
-        }
-        WritingService.shared.deleteWriting(writings: query) { response in
-            
-            guard let result = response as? NetworkResult<Any> else { return }
-            switch result {
-            case .success:
-                print("success")
-                self.deleteData = []
-                self.myWritingCollectionView.reloadData()
-                //                case .success:
-                //                    self.deleteDelegate = self.parentDelegate
-                //                    self.deleteDelegate?.sendWritings()
-//
-//                guard let writings = response as? GeneralResponse<WritingsResponse> else { return }
-//                self.deleteDelegate = self.parentDelegate
-//                self.deleteDelegate?.sendWritings(writings.data?.writing ?? [])
-            default:
-                print("error")
-            }
-        }
         }
     }
     
