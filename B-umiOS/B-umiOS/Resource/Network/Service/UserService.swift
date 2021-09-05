@@ -33,4 +33,10 @@ struct UserService {
             completion(response)
         }
     }
+
+    func registerFCMToken(token: fcmTokenRequest) {
+        let parameter = NetworkInfo.shared.makeParameter(model: token)
+
+        RequestHandler.shared.requestData(url: APIConstants.fcmTokenURL, httpmethod: .post, parameter: parameter, header: NetworkInfo.headerOnlyType, decodeType: GeneralResponse<Data>.self) { _ in }
+    }
 }

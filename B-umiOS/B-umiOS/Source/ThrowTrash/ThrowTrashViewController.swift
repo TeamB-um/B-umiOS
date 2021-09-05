@@ -21,19 +21,16 @@ class ThrowTrashViewController: UIViewController {
         $0.textColor = UIColor.white
     }
     
-    lazy var backButton = UIButton(type: .custom, primaryAction: UIAction(handler: { _ in
-        self.navigationController?.popViewController(animated: true)
+    lazy var backButton = UIButton(type: .custom, primaryAction: UIAction(handler: { [weak self] _ in
+        self?.navigationController?.popViewController(animated: true)
     })).then {
         $0.setImage(UIImage.btnBack.withRenderingMode(.alwaysTemplate), for: .normal)
         $0.tintColor = .white
     }
     
-    lazy var backgroudImage = UIImageView().then {
-        $0.image = UIImage(named: "img_\(self.trashType)")
-    }
+    var backgroudImage = UIImageView()
     
-    lazy var animationView = AnimationView().then {
-        $0.animation = Animation.named("home_ios")
+    var animationView = AnimationView().then {
         $0.loopMode = .playOnce
     }
     
@@ -47,18 +44,12 @@ class ThrowTrashViewController: UIViewController {
         $0.image = UIImage.toastPaper1
     }
     
-    lazy var explanationLabel = UILabel().then {
+    var explanationLabel = UILabel().then {
         $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 15)
         $0.textColor = .iconGray
-        let attributedStr = NSMutableAttributedString(string: explainString)
-
-        attributedStr.addAttribute(.foregroundColor, value: UIColor.blue3, range: (explainString as NSString).range(of: self.trashType.explain))
-
-        $0.attributedText = attributedStr
     }
     
-    lazy var guideLabel = UILabel().then {
-        $0.text = "\(self.trashType.trashBinName) 안으로 넣어보세요!"
+    var guideLabel = UILabel().then {
         $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 20)
         $0.textColor = .white
     }
@@ -120,9 +111,13 @@ class ThrowTrashViewController: UIViewController {
             guideLabel.alpha = 1
             
             let position = gesture.location(in: view)
-            if (trashBin.frame.minX ... trashBin.frame.maxX).contains(position.x), (trashBin.frame.minY ... trashBin.frame.maxY).contains(position.y) {
+            if (trashBin.frame.minX ... trashBin.frame.maxX).contains(position.x),
+               (trashBin.frame.minY ... trashBin.frame.maxY).contains(position.y)
+            {
+                navigationController?.interactivePopGestureRecognizer?.isEnabled = false
                 throwAwayTrash {
                     self.createWritingData()
+                    self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
                 }
             } else {
                 resetTrash()
@@ -139,6 +134,16 @@ class ThrowTrashViewController: UIViewController {
     
     func setView() {
         view.backgroundColor = .white
+        
+        backgroudImage.image = UIImage(named: "img_\(trashType)")
+        animationView.animation = Animation.named("\(trashType.rawValue)")
+        
+        guideLabel.text = "\(trashType.trashBinName) 안으로 넣어보세요!"
+        navigationLabel.text = trashType.mode
+        
+        let attributedStr = NSMutableAttributedString(string: explainString)
+        attributedStr.addAttribute(.foregroundColor, value: UIColor.blue3, range: (explainString as NSString).range(of: trashType.explain))
+        explanationLabel.attributedText = attributedStr
     }
     
     func resetTrash() {
@@ -183,12 +188,12 @@ class ThrowTrashViewController: UIViewController {
     
     func createWritingData() {
         ActivityIndicator.shared.startLoadingAnimation()
-        
+
         WritingService.shared.createWriting(writing: writing) { response in
             ActivityIndicator.shared.stopLoadingAnimation()
-            
+
             guard let result = response as? NetworkResult<Any> else { return }
-            
+
             switch result {
             case .success:
                 self.showToast()

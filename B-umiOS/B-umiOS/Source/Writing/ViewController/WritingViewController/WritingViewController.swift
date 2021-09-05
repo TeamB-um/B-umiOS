@@ -24,8 +24,8 @@ class WritingViewController: UIViewController {
         $0.textColor = UIColor.header
     }
     
-    lazy var backButton = UIButton(type: .custom, primaryAction: UIAction(handler: { _ in
-        self.navigationController?.popViewController(animated: true)
+    lazy var backButton = UIButton(type: .custom, primaryAction: UIAction(handler: { [weak self] _ in
+        self?.navigationController?.popViewController(animated: true)
     })).then {
         $0.setImage(UIImage.btnBack, for: .normal)
     }
@@ -37,7 +37,7 @@ class WritingViewController: UIViewController {
         $0.isUserInteractionEnabled = false
     }
     
-    lazy var navigationDividerView = UIView().then {
+    var navigationDividerView = UIView().then {
         $0.backgroundColor = .paper1
     }
     
@@ -86,7 +86,7 @@ class WritingViewController: UIViewController {
     
     lazy var titleTextField = UITextField().then {
         $0.autocorrectionType = .no
-        $0.attributedPlaceholder = NSAttributedString(string: "제목", attributes: [NSAttributedString.Key.foregroundColor: self.style.placeholderColor, NSAttributedString.Key.font: UIFont.nanumSquareFont(type: .regular, size: 20)])
+        $0.attributedPlaceholder = NSAttributedString(string: "제목", attributes: [NSAttributedString.Key.foregroundColor: self.style.placeholderColor as Any, NSAttributedString.Key.font: UIFont.nanumSquareFont(type: .regular, size: 20)])
         $0.textColor = self.style.textColor
         $0.font = UIFont.nanumSquareFont(type: .bold, size: 20)
         
@@ -106,7 +106,7 @@ class WritingViewController: UIViewController {
         let style = NSMutableParagraphStyle()
         style.lineSpacing = 14
         let attributes = [NSAttributedString.Key.paragraphStyle: style, NSAttributedString.Key.foregroundColor: self.style.placeholderColor, NSAttributedString.Key.font: UIFont.nanumSquareFont(type: .regular, size: 18)]
-        $0.attributedText = NSAttributedString(string: $0.text, attributes: attributes)
+        $0.attributedText = NSAttributedString(string: $0.text, attributes: attributes as [NSAttributedString.Key: Any])
         
         $0.autocorrectionType = .no
         $0.delegate = self
@@ -131,7 +131,7 @@ class WritingViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     // MARK: - LifeCycle
 
     override func viewDidLoad() {

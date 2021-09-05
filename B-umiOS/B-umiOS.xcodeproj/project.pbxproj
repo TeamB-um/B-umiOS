@@ -77,6 +77,13 @@
 		AB21E3D526A0777E00D32EFF /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB21E3D426A0777D00D32EFF /* ActivityIndicator.swift */; };
 		AB21E3D726A07D0000D32EFF /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = AB21E3D626A07D0000D32EFF /* loading.json */; };
 		AB4A7DDD26D4E8F100798FC1 /* TrashType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4A7DDC26D4E8F100798FC1 /* TrashType.swift */; };
+		AB4A7DED26DB75EA00798FC1 /* fcmTokenRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4A7DEC26DB75EA00798FC1 /* fcmTokenRequest.swift */; };
+		AB4A7DF026DB7D7100798FC1 /* PresentResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4A7DEF26DB7D7100798FC1 /* PresentResponse.swift */; };
+		AB4A7DF226DB7E5100798FC1 /* PresentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4A7DF126DB7E5100798FC1 /* PresentService.swift */; };
+		AB4A7DF526DB868C00798FC1 /* Present.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4A7DF426DB868C00798FC1 /* Present.swift */; };
+		AB4A7E5A26DE237900798FC1 /* trash1.json in Resources */ = {isa = PBXBuildFile; fileRef = AB4A7E5726DE237900798FC1 /* trash1.json */; };
+		AB4A7E5B26DE237900798FC1 /* trash2.json in Resources */ = {isa = PBXBuildFile; fileRef = AB4A7E5826DE237900798FC1 /* trash2.json */; };
+		AB4A7E5C26DE237900798FC1 /* trash0.json in Resources */ = {isa = PBXBuildFile; fileRef = AB4A7E5926DE237900798FC1 /* trash0.json */; };
 		AB5AF762268A2E84001D3CD1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5AF761268A2E84001D3CD1 /* AppDelegate.swift */; };
 		AB5AF764268A2E84001D3CD1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5AF763268A2E84001D3CD1 /* SceneDelegate.swift */; };
 		AB5AF769268A2E84001D3CD1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB5AF767268A2E84001D3CD1 /* Main.storyboard */; };
@@ -208,6 +215,13 @@
 		AB21E3D426A0777D00D32EFF /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		AB21E3D626A07D0000D32EFF /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		AB4A7DDC26D4E8F100798FC1 /* TrashType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashType.swift; sourceTree = "<group>"; };
+		AB4A7DEC26DB75EA00798FC1 /* fcmTokenRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fcmTokenRequest.swift; sourceTree = "<group>"; };
+		AB4A7DEF26DB7D7100798FC1 /* PresentResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentResponse.swift; sourceTree = "<group>"; };
+		AB4A7DF126DB7E5100798FC1 /* PresentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentService.swift; sourceTree = "<group>"; };
+		AB4A7DF426DB868C00798FC1 /* Present.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Present.swift; sourceTree = "<group>"; };
+		AB4A7E5726DE237900798FC1 /* trash1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = trash1.json; sourceTree = "<group>"; };
+		AB4A7E5826DE237900798FC1 /* trash2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = trash2.json; sourceTree = "<group>"; };
+		AB4A7E5926DE237900798FC1 /* trash0.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = trash0.json; sourceTree = "<group>"; };
 		AB5AF75E268A2E84001D3CD1 /* B:um.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "B:um.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB5AF761268A2E84001D3CD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB5AF763268A2E84001D3CD1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -296,6 +310,7 @@
 				FC1D6F22269E0FD60060921E /* RewardService.swift */,
 				4F2D1F3C269ACE7600D941A1 /* UserService.swift */,
 				AB21E3D1269E9A1D00D32EFF /* WritingService.swift */,
+				AB4A7DF126DB7E5100798FC1 /* PresentService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -399,6 +414,7 @@
 			isa = PBXGroup;
 			children = (
 				AB21E3CB269D7E1F00D32EFF /* TokenResponse.swift */,
+				AB4A7DEC26DB75EA00798FC1 /* fcmTokenRequest.swift */,
 			);
 			path = Token;
 			sourceTree = "<group>";
@@ -641,6 +657,7 @@
 		AB21E3AF269D49EF00D32EFF /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				AB4A7DEE26DB7D3F00798FC1 /* Present */,
 				4FBF7D5926BBC75200DD9C91 /* Category */,
 				4FBF7D5E26BBC7AE00DD9C91 /* General */,
 				4FBF7D5C26BBC79C00DD9C91 /* Graph */,
@@ -666,6 +683,15 @@
 				AB4A7DDC26D4E8F100798FC1 /* TrashType.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		AB4A7DEE26DB7D3F00798FC1 /* Present */ = {
+			isa = PBXGroup;
+			children = (
+				AB4A7DEF26DB7D7100798FC1 /* PresentResponse.swift */,
+				AB4A7DF426DB868C00798FC1 /* Present.swift */,
+			);
+			path = Present;
 			sourceTree = "<group>";
 		};
 		AB5AF755268A2E84001D3CD1 = {
@@ -720,6 +746,9 @@
 		AB7F6DE826977A7600EF9C6E /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
+				AB4A7E5926DE237900798FC1 /* trash0.json */,
+				AB4A7E5726DE237900798FC1 /* trash1.json */,
+				AB4A7E5826DE237900798FC1 /* trash2.json */,
 				AB21E3D626A07D0000D32EFF /* loading.json */,
 				AB21E3AD269D43FA00D32EFF /* bium_splash.json */,
 				AB7F6E5C269C02EC00EF9C6E /* home_ios.json */,
@@ -1019,6 +1048,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F4992E926960B60009541AA /* SeparateDetailTableViewCell.xib in Resources */,
+				AB4A7E5A26DE237900798FC1 /* trash1.json in Resources */,
 				AB0E164C26C40783005133C7 /* GoogleService-Info.plist in Resources */,
 				AB5AF76E268A2E87001D3CD1 /* LaunchScreen.storyboard in Resources */,
 				4F49929E26942AD8009541AA /* SeparateCollectionViewCell.xib in Resources */,
@@ -1033,7 +1063,9 @@
 				FC8A6F552695C65500E64FA5 /* MyPage.storyboard in Resources */,
 				ABB24E60268E1A57006FEE57 /* Setting.storyboard in Resources */,
 				ABB24E00268CDF64006FEE57 /* NanumSquareOTF_acB.otf in Resources */,
+				AB4A7E5C26DE237900798FC1 /* trash0.json in Resources */,
 				AB5AF769268A2E84001D3CD1 /* Main.storyboard in Resources */,
+				AB4A7E5B26DE237900798FC1 /* trash2.json in Resources */,
 				AB7F6E5D269C02EC00EF9C6E /* home_ios.json in Resources */,
 				AB21E3AE269D43FA00D32EFF /* bium_splash.json in Resources */,
 			);
@@ -1088,6 +1120,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB4A7DED26DB75EA00798FC1 /* fcmTokenRequest.swift in Sources */,
 				AB21E3CE269DB32E00D32EFF /* UserDefaults.Key+Extension.swift in Sources */,
 				4F4992E12695F65B009541AA /* SeparateDetailViewController.swift in Sources */,
 				ABB24E06268CE317006FEE57 /* UIFont+Extension.swift in Sources */,
@@ -1109,6 +1142,7 @@
 				AB21E3C2269D60EE00D32EFF /* WritingRequest.swift in Sources */,
 				ABB24E53268E1912006FEE57 /* FloatingBarView.swift in Sources */,
 				FCE3608C2694B25F00866525 /* FilterBottmSheetViewController.swift in Sources */,
+				AB4A7DF026DB7D7100798FC1 /* PresentResponse.swift in Sources */,
 				4FBF7D7226BBD34E00DD9C91 /* MyPageViewController+Layout.swift in Sources */,
 				AB7F6DDF2696BDF300EF9C6E /* WritingPopUpViewController.swift in Sources */,
 				ABB24DF4268CD9B7006FEE57 /* CardCollectionViewCell.swift in Sources */,
@@ -1132,6 +1166,7 @@
 				AB7F6DE426973E0500EF9C6E /* ThrowTrashViewController.swift in Sources */,
 				4F7FD2EF26922F4A00122964 /* SeparatePopUpViewController.swift in Sources */,
 				AB4A7DDD26D4E8F100798FC1 /* TrashType.swift in Sources */,
+				AB4A7DF526DB868C00798FC1 /* Present.swift in Sources */,
 				AB21E3C8269D669800D32EFF /* CategoryRequest.swift in Sources */,
 				4F7FD2EF26922F4A00122964 /* SeparatePopUpViewController.swift in Sources */,
 				4F2D1F49269C556300D941A1 /* SeperateFooterView.swift in Sources */,
@@ -1199,6 +1234,7 @@
 				FCA3639F269A068B0068825D /* MyRewardPopUpViewController.swift in Sources */,
 				FC6448CD26983F8A00C8E30C /* MyRewardCollectionViewCell.swift in Sources */,
 				AB21E3BC269D59C800D32EFF /* Category.swift in Sources */,
+				AB4A7DF226DB7E5100798FC1 /* PresentService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

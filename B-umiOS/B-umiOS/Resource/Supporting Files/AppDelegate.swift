@@ -12,7 +12,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
+
         let notificationOptions = UNAuthorizationOptions(arrayLiteral: [.alert, .badge, .sound])
 
         UNUserNotificationCenter.current().requestAuthorization(options: notificationOptions) { _, error in
@@ -75,15 +75,10 @@ extension AppDelegate: MessagingDelegate {
 
     /// 현재 등록 토큰 가져오기 (갱신 시 알림 받기)
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
-        print( "🥺 [fcm token]: ", fcmToken)
+        print("🥺 [fcm token]: ", fcmToken)
+        guard let token = fcmToken else { return }
 
-        /// 서버로 토큰 등록
-//        let dataDict: [String: String] = ["token": fcmToken ?? ""]
-//        NotificationCenter.default.post(
-//            name: Notification.Name("FCMToken"),
-//            object: nil,
-//            userInfo: dataDict
-//        )
+        UserService.shared.registerFCMToken(token: fcmTokenRequest(pushToken: token))
     }
 
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {

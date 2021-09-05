@@ -15,7 +15,7 @@ struct RequestHandler {
         let decoder = JSONDecoder()
         
         guard let decodedData = try? decoder.decode(decodeType, from: data)
-        else { return .serverErr }
+        else { return .requestErr(ErrorMessage.wrongRequest) }
         
         switch statusCode {
         case 200, 201: return .success(decodedData)
