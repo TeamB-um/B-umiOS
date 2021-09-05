@@ -64,8 +64,8 @@ class DeletePopUpViewController: UIViewController {
     var changeCategoriesDataDelegate: ChangeCategoryDataDelegate?
     var kind: Kind
     var deleteData: [String] = []
-    var deleteDelegate: DeleteDelegate?
-    var parentDelegate: DeleteDelegate?
+    var deleteDelegate: DeleteWritingsDelegate?
+    var parentDelegate: DeleteWritingsDelegate?
     var startDate = ""
     var endDate = ""
     var categoryID = ""
@@ -110,22 +110,32 @@ class DeletePopUpViewController: UIViewController {
         
         switch kind {
         case .writing:
-            ActivityIndicator.shared.startLoadingAnimation()
+            self.deleteDelegate = self.parentDelegate
+            self.deleteDelegate?.deleteWriting()
             
-            WritingService.shared.deleteWriting(writings: query, start_date: startDate, end_date: endDate, category_id: categoryID) { response in
-                ActivityIndicator.shared.stopLoadingAnimation()
-                
-                guard let result = response as? NetworkResult<Any> else { return }
-
-                switch result {
-                case .success(let response):
-                    guard let writings = response as? GeneralResponse<WritingsResponse> else { return }
-                    self.deleteDelegate = self.parentDelegate
-                    self.deleteDelegate?.sendWritings(writings.data?.writing ?? [])
-                default:
-                    print("error")
-                }
-            }
+//            ActivityIndicator.shared.startLoadingAnimation()
+//
+//            WritingService.shared.deleteWriting(writings: query, start_date: startDate, end_date: endDate, category_id: categoryID) { response in
+//                ActivityIndicator.shared.stopLoadingAnimation()
+//
+//                guard let result = response as? NetworkResult<Any> else { return }
+//                print("개빡쳐",result)
+//                switch result {
+//                case .success(let response):
+////                case .success:
+////                    self.deleteDelegate = self.parentDelegate
+////                    self.deleteDelegate?.sendWritings()
+//
+//                    guard let writings = response as? GeneralResponse<WritingsResponse> else { return }
+//                    self.deleteDelegate = self.parentDelegate
+//                    self.deleteDelegate?.sendWritings(writings.data?.writing ?? [])
+//                default:
+//                    print("error")
+//                }
+//            }
+        
+        
+        
         case .separate:
             ActivityIndicator.shared.startLoadingAnimation()
             

@@ -141,6 +141,7 @@ class FilterBottmSheetViewController: UIViewController {
     var categoryID: String = ""
     var categoryName: String = ""
     var tagSelectedIdx: Int = 0
+    var myWritingViewcontroller = MyWritingViewController()
     var parentDelegate: ChangeWritingDataDelegate?
     var delegate: ChangeWritingDataDelegate?
     
@@ -243,6 +244,8 @@ class FilterBottmSheetViewController: UIViewController {
     }
 
     @objc private func didTapConfirmButton(_ sender: UIButton) {
+        myWritingViewcontroller.deleteMyWriting()
+        
         var startDate = startDate.dateToString(format: "yyyy-MM-dd", date: startDate)
         var endDate = endDate.dateToString(format: "yyyy-MM-dd", date: endDate)
         

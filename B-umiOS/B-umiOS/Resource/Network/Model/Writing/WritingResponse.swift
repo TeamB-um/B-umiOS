@@ -9,5 +9,5 @@ import Foundation
 
 struct WritingsResponse: Codable {
     let writing: [Writing]
-    let count: Int
+    let count: Int?
 }

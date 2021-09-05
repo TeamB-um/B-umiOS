@@ -19,23 +19,22 @@ struct WritingService {
         }
     }
     
-//    func fetchWriting(completion: @escaping (Any) -> Void) {
-//        RequestHandler.shared.requestData(url: APIConstants.writingURL, httpmethod: HTTPMethod.get, parameter: nil, header: NetworkInfo.headerWithToken, decodeType: GeneralResponse<WritingsResponse>.self) { response in
-//            completion(response)
-//        }
-//    }
-//    func fetchWriting(page: String, offset: String, completion: @escaping (Any) -> Void) {
-//        var url = "\(APIConstants.writingURL)?&page=\(page)"
-//        url += offset == "" ? "" : "&offset=\(offset)"
+//    func deleteWriting(writings: String, start_date: String, end_date: String, category_id: String, completion: @escaping (Any) -> Void) {
+//        var url = "\(APIConstants.writingURL)?ids=[\(writings)]&start_date=\(start_date)&end_date=\(end_date)"
+//        url += category_id == "" ? "" : "&category_ids=[\(category_id)]"
 //
-//        RequestHandler.shared.requestData(url: url, httpmethod: HTTPMethod.get, parameter: nil, header: NetworkInfo.headerWithToken, decodeType: GeneralResponse<WritingsResponse>.self) { response in
+//        print("deleteWritingURL",url)
+//
+//        RequestHandler.shared.requestData(url: url, httpmethod: HTTPMethod.delete, parameter: nil, header: NetworkInfo.headerWithToken, decodeType: GeneralResponse<WritingsResponse>.self) { response in
 //            completion(response)
 //        }
 //    }
     
-    func deleteWriting(writings: String, start_date: String, end_date: String, category_id: String, completion: @escaping (Any) -> Void) {
-        var url = "\(APIConstants.writingURL)?ids=[\(writings)]&start_date=\(start_date)&end_date=\(end_date)"
-        url += category_id == "" ? "" : "&category_ids=[\(category_id)]"
+    func deleteWriting(writings: String, completion: @escaping (Any) -> Void) {
+        let url = "\(APIConstants.writingURL)?ids=[\(writings)]"
+//        url += category_id == "" ? "" : "&category_ids=[\(category_id)]"
+        
+        print("deleteWritingURL",url)
         
         RequestHandler.shared.requestData(url: url, httpmethod: HTTPMethod.delete, parameter: nil, header: NetworkInfo.headerWithToken, decodeType: GeneralResponse<WritingsResponse>.self) { response in
             completion(response)
@@ -43,15 +42,8 @@ struct WritingService {
     }
     
     func fetchWriting(page: String, start_date: String, end_date: String, category_id: String, completion: @escaping (Any) -> Void) {
-//        var url = "\(APIConstants.writingURL)?start_date=\(start_date)&end_date=\(end_date)"
-//        url += category_id == "" ? "" : "&category_ids=[\(category_id)]"
-        ///writings?start_date=2021-07-15&end_date=2021-07-16&category_ids=abc1&page=1&offset=9
-        var url = ""
-        if category_id == "" {
-            url = "\(APIConstants.writingURL)?start_date=\(start_date)&end_date=\(end_date)&page=\(page)"
-        } else {
-            url = "\(APIConstants.writingURL)?start_date=\(start_date)&end_date=\(end_date)&category_ids=[\(category_id)]&page=\(page)"
-        }
+        let categoryID = category_id == "" ? "" : "&category_ids=[\(category_id)]"
+        let url = "\(APIConstants.writingURL)?start_date=\(start_date)&end_date=\(end_date)\(categoryID)&page=\(page)"
         
         RequestHandler.shared.requestData(url: url, httpmethod: HTTPMethod.get, parameter: nil, header: NetworkInfo.headerWithToken, decodeType: GeneralResponse<WritingsResponse>.self) { response in
             completion(response)

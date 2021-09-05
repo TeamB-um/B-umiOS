@@ -95,7 +95,7 @@ class SeparateDetailViewController: UIViewController {
             }
             
             vc.deleteData = deleteID
-            vc.parentDelegate = self
+//            vc.parentDelegate = self
             vc.modalTransitionStyle = .crossDissolve
             vc.modalPresentationStyle = .overCurrentContext
             

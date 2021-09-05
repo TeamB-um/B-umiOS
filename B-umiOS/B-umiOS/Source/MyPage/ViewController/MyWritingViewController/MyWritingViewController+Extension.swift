@@ -8,10 +8,10 @@
 import UIKit
 
 extension MyWritingViewController: ChangeWritingDataDelegate {
-    func changeWitingData(filteredDate: [Writing], count: Int) {
+    func changeWitingData(filteredDate: [Writing], count: Int?) {
         page = 1
-        myWriting = filteredDate
-        writingCount = count
+        totalMyWritngs = filteredDate
+        totalWritingCount = count ?? 0
         myWritingCollectionView.reloadData()
     }
     
@@ -23,13 +23,35 @@ extension MyWritingViewController: ChangeWritingDataDelegate {
 }
 
 /// 삭제한 후 데이터 변경
-extension MyWritingViewController: DeleteDelegate {
-    func sendWritings(_ newWritings: [Writing]) {
-        removeData = []
-        myWriting = newWritings
-        NotificationCenter.default.post(name: Notification.Name.confirmButtonIsUnactive, object: nil)
+extension MyWritingViewController: DeleteWritingsDelegate {
+    func deleteWriting() {
+        
+        for i in removeData {
+            deleteData.append(myWriting[i].id)
+        }
+        
+        for j in removeData {
+            myWriting.remove(at: j)
+        }
         myWritingCollectionView.reloadData()
+        
+        removeData = []
+        
+        NotificationCenter.default.post(name: Notification.Name.confirmButtonIsUnactive, object: nil)
     }
+    
+    
+    
+    //    func sendWritings() {
+    ////        myWritingCollectionView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
+    //        let minimumPage = (removeData.min() ?? 1 / 10) + 1
+    //        for i in removeData {
+    //        myWriting.remove(at: i)
+    //        }
+    ////        removeData = []
+    //        fetchWriting(page: minimumPage)
+    //        NotificationCenter.default.post(name: Notification.Name.confirmButtonIsUnactive, object: nil)
+    //    }
 }
 
 extension MyWritingViewController: UICollectionViewDataSource {
@@ -70,6 +92,8 @@ extension MyWritingViewController: UICollectionViewDataSource {
                 NotificationCenter.default.post(name: Notification.Name.confirmButtonIsActive, object: nil)
             }
         }
+        
+        print("지울 데이터",removeData)
     }
 }
 
@@ -111,11 +135,17 @@ extension MyWritingViewController: UICollectionViewDelegateFlowLayout {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offset = max(myWritingCollectionView.contentOffset.y, 0)
+        //        let writingCount = pagedWritingCount == 0 ? myWriting.count : pagedWritingCount
+        
+//        print(totalMyWritngs.count)
+//        print(totalWritingCount)
         if offset > myWritingCollectionView.contentSize.height - myWritingCollectionView.bounds.size.height
-        , fetchingMore, myWriting.count < writingCount {
+           , fetchingMore, totalMyWritngs.count < totalWritingCount {
             fetchingMore = false
             page += 1
+//            print("page👻",page)
             fetchWriting(page: page)
+            
         }
     }
 }
