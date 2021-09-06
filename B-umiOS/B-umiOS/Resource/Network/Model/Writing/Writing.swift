@@ -21,11 +21,3 @@ struct Writing: Codable {
         case categoryID = "category_id"
     }
 }
-
-struct WritingCount: Codable {
-    var count: Int
-
-    enum CodingKeys: String, CodingKey {
-        case count
-    }
-}
