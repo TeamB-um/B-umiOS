@@ -65,7 +65,6 @@ class DeletePopUpViewController: UIViewController {
     var kind: Kind
     var deleteData: [String] = []
     var deleteDelegate: DeleteWritingsDelegate?
-//    var parentDelegate: DeleteWritingsDelegate?
     var startDate = ""
     var endDate = ""
     var categoryID = ""
