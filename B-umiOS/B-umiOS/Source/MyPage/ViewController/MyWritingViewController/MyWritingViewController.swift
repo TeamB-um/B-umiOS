@@ -66,7 +66,6 @@ class MyWritingViewController: UIViewController {
     var myWriting: [Writing] = []
     var page = 1
     var totalWritingCount = 0
-    var pagedWritingCount = 0
     var removeData: [Int] = []
     var deleteData: [String] = []
     var categoryID: String = ""
@@ -205,7 +204,7 @@ class MyWritingViewController: UIViewController {
         
         popUpVC.modalPresentationStyle = .overFullScreen
         popUpVC.modalTransitionStyle = .crossDissolve
-        popUpVC.parentDelegate = self
+        popUpVC.deleteDelegate = self
         present(popUpVC, animated: true, completion: nil)
     }
     
