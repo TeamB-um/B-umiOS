@@ -34,6 +34,7 @@
 		4F7FD2F126929D6300122964 /* PeriodPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7FD2F026929D6300122964 /* PeriodPopUpViewController.swift */; };
 		4F875E2B2697E0930085D104 /* SeparateGraphPopUpViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F875E2A2697E0930085D104 /* SeparateGraphPopUpViewController+Layout.swift */; };
 		4F875E302697EE3A0085D104 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F875E2F2697EE3A0085D104 /* GraphView.swift */; };
+		4F87C78526E75CCF0087D46D /* SettingInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F87C78426E75CCF0087D46D /* SettingInfo.swift */; };
 		4FB38C5026A5D00B0009FABB /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB38C4F26A5D00B0009FABB /* UIImage+Extension.swift */; };
 		4FBF7D6226BBCC0800DD9C91 /* WritingPopUpViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF7D6126BBCC0800DD9C91 /* WritingPopUpViewController+Layout.swift */; };
 		4FBF7D7026BBD2EA00DD9C91 /* MyPageViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBF7D6F26BBD2EA00DD9C91 /* MyPageViewController+Extension.swift */; };
@@ -166,6 +167,7 @@
 		4F7FD2F026929D6300122964 /* PeriodPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodPopUpViewController.swift; sourceTree = "<group>"; };
 		4F875E2A2697E0930085D104 /* SeparateGraphPopUpViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SeparateGraphPopUpViewController+Layout.swift"; sourceTree = "<group>"; };
 		4F875E2F2697EE3A0085D104 /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
+		4F87C78426E75CCF0087D46D /* SettingInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingInfo.swift; sourceTree = "<group>"; };
 		4FB38C4F26A5D00B0009FABB /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		4FBF7D6126BBCC0800DD9C91 /* WritingPopUpViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WritingPopUpViewController+Layout.swift"; sourceTree = "<group>"; };
 		4FBF7D6F26BBD2EA00DD9C91 /* MyPageViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MyPageViewController+Extension.swift"; sourceTree = "<group>"; };
@@ -524,6 +526,7 @@
 			children = (
 				ABB24E62268E1A75006FEE57 /* SettingViewController.swift */,
 				4F2D1F312698B86D00D941A1 /* SettingViewController+Layout.swift */,
+				4F87C78426E75CCF0087D46D /* SettingInfo.swift */,
 			);
 			path = SettingViewController;
 			sourceTree = "<group>";
@@ -1173,6 +1176,7 @@
 				AB21E3D0269DEF0D00D32EFF /* CategoryService.swift in Sources */,
 				FC6448D1269847CA00C8E30C /* SeparateViewController.swift in Sources */,
 				ABB24E5C268E1A18006FEE57 /* MyPageViewController.swift in Sources */,
+				4F87C78526E75CCF0087D46D /* SettingInfo.swift in Sources */,
 				FC69E37726935B81001093F9 /* RoundingButton.swift in Sources */,
 				FC6A7A472693198900A4ACBE /* ButtonSectionView.swift in Sources */,
 				ABB24E08268CEF0B006FEE57 /* UIColor+Extension.swift in Sources */,
