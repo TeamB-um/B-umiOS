@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SafariServices
 
 protocol popupDelegate {
     func closeBottomSheet()
@@ -86,12 +87,18 @@ class SettingViewController: UIViewController {
     private func touchInside(_ sender: TapGesture){
         switch sender.identifier {
         case "분리수거함 관리" :
-            print("서비스")
             if let pushVC = self.storyboard?.instantiateViewController(withIdentifier: SettingSeparateViewController.identifier) {
                 self.navigationController?.pushViewController(pushVC, animated: true)
-                
             }
-        case "푸시알림", "서비스 이용약관","개인정보 처리방침","오픈소스 라이센스", "비움 미화원 소개" :
+        case "푸시알림" :
+            break
+        case "서비스 이용약관":
+            self.present(SFSafariViewController(url: URL(string: "https://buttery-hockey-3d6.notion.site/5d286495dc4b46a79938864aa21fa6f6")!), animated: true, completion: nil)
+        case "개인정보 처리방침" :
+            self.present(SFSafariViewController(url: URL(string: "https://buttery-hockey-3d6.notion.site/e3127bcf5d034b57aebd7a466918002c")!), animated: true, completion: nil)
+        case "오픈소스 라이센스" :
+            break
+        case "비움 미화원 소개" :
             break
         default:
             break
