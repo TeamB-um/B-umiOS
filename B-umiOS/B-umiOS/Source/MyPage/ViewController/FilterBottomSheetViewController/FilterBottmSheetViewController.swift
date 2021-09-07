@@ -141,6 +141,7 @@ class FilterBottmSheetViewController: UIViewController {
     var categoryID: String = ""
     var categoryName: String = ""
     var tagSelectedIdx: Int = 0
+    var myWritingViewcontroller = MyWritingViewController()
     var parentDelegate: ChangeWritingDataDelegate?
     var delegate: ChangeWritingDataDelegate?
     
@@ -251,20 +252,19 @@ class FilterBottmSheetViewController: UIViewController {
             endDate = ""
         }
         
+        
         ActivityIndicator.shared.startLoadingAnimation()
         
-        WritingService.shared.filterWritings(start_date: startDate, end_date: endDate, category_id: categoryID) { response in
+        WritingService.shared.fetchWriting(page: "1", start_date: startDate, end_date: endDate, category_id: categoryID) { response in
             ActivityIndicator.shared.stopLoadingAnimation()
             
             guard let result = response as? NetworkResult<Any> else { return }
             switch result {
             case .success(let data):
-                
                 guard let result = data as? GeneralResponse<WritingsResponse> else { return }
-                
-                if let d = result.data?.writing {
+                if let d = result.data {
                     self.delegate = self.parentDelegate
-                    self.delegate?.changeWitingData(filteredDate: d)
+                    self.delegate?.changeWitingData(filteredDate: d.writing, count: d.count)
                     self.delegate?.remainFilterData(filteredCategoryID: self.categoryID, filteredStartDate: startDate, filteredEndDate: endDate)
                     self.dismiss(animated: true, completion: {
                         self.categoryTagCollecitonView.reloadData()
@@ -272,10 +272,11 @@ class FilterBottmSheetViewController: UIViewController {
                         
                     })
                 }
+                self.myWritingViewcontroller.deleteMyWriting()
                 
             case .requestErr(ErrorMessage.notFound):
                 self.delegate = self.parentDelegate
-                self.delegate?.changeWitingData(filteredDate: [])
+                self.delegate?.changeWitingData(filteredDate: [], count: 0)
                 self.dismiss(animated: true, completion: {
                     self.categoryTagCollecitonView.reloadData()
                     NotificationCenter.default.post(name: Notification.Name.categoryIsChanged, object: self.categoryName)
@@ -297,7 +298,6 @@ class FilterBottmSheetViewController: UIViewController {
     }
     
     func setFirstDatePicker() {
-        // 익스텐션 사용하는 걸로 수정할게요
         let nowDateTime = Date()
         let tmpDateFormatter = DateFormatter()
         tmpDateFormatter.dateFormat = "yyyy.MM.dd(E)"

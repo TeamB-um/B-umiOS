@@ -8,8 +8,11 @@
 import UIKit
 
 extension MyWritingViewController: ChangeWritingDataDelegate {
-    func changeWitingData(filteredDate: [Writing]) {
+    func changeWitingData(filteredDate: [Writing], count: Int?) {
+        page = 1
         myWriting = filteredDate
+        totalMyWritngs = filteredDate
+        totalWritingCount = count ?? 0
         myWritingCollectionView.reloadData()
     }
     
@@ -20,13 +23,16 @@ extension MyWritingViewController: ChangeWritingDataDelegate {
     }
 }
 
-/// 삭제한 후 데이터 변경
-extension MyWritingViewController: DeleteDelegate {
-    func sendWritings(_ newWritings: [Writing]) {
+extension MyWritingViewController: DeleteWritingsDelegate {
+    func deleteWriting() {
+        
+        for i in removeData {
+            deleteData.append(myWriting[i].id)
+        }
+        removeData.forEach { myWriting.remove(at: $0) }
         removeData = []
-        myWriting = newWritings
-        NotificationCenter.default.post(name: Notification.Name.confirmButtonIsUnactive, object: nil)
         myWritingCollectionView.reloadData()
+        NotificationCenter.default.post(name: Notification.Name.confirmButtonIsUnactive, object: nil)
     }
 }
 
@@ -104,6 +110,16 @@ extension MyWritingViewController: UICollectionViewDelegateFlowLayout {
             if cellCount == 0 {
                 NotificationCenter.default.post(name: Notification.Name.confirmButtonIsUnactive, object: nil)
             }
+        }
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offset = max(myWritingCollectionView.contentOffset.y, 0)
+        if offset > myWritingCollectionView.contentSize.height - myWritingCollectionView.bounds.size.height
+           , fetchingMore, totalMyWritngs.count < totalWritingCount {
+            fetchingMore = false
+            page += 1
+            fetchWriting(page: page)
         }
     }
 }

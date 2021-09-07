@@ -49,6 +49,7 @@ class MyRewardViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        myRewardCollectionView.reloadData()
         fetchRewardsData()
     }
     

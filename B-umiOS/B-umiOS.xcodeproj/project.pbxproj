@@ -23,9 +23,6 @@
 		4F49929D26942AD8009541AA /* SeparateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F49929B26942AD8009541AA /* SeparateCollectionViewCell.swift */; };
 		4F49929E26942AD8009541AA /* SeparateCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F49929C26942AD8009541AA /* SeparateCollectionViewCell.xib */; };
 		4F4992A2269577FF009541AA /* SizeConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4992A1269577FF009541AA /* SizeConstants.swift */; };
-		4F4992E12695F65B009541AA /* SeparateDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4992E02695F65B009541AA /* SeparateDetailViewController.swift */; };
-		4F4992E32695FBE9009541AA /* SeparateDetailViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4992E22695FBE9009541AA /* SeparateDetailViewController+Layout.swift */; };
-		4F4992E52695FCC6009541AA /* SeparateDetailViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4992E42695FCC6009541AA /* SeparateDetailViewController+Extension.swift */; };
 		4F4992E826960B60009541AA /* SeparateDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4992E626960B60009541AA /* SeparateDetailTableViewCell.swift */; };
 		4F4992E926960B60009541AA /* SeparateDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F4992E726960B60009541AA /* SeparateDetailTableViewCell.xib */; };
 		4F4992EB2696F685009541AA /* SeparateGraphPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4992EA2696F685009541AA /* SeparateGraphPopUpViewController.swift */; };
@@ -159,9 +156,6 @@
 		4F49929B26942AD8009541AA /* SeparateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparateCollectionViewCell.swift; sourceTree = "<group>"; };
 		4F49929C26942AD8009541AA /* SeparateCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeparateCollectionViewCell.xib; sourceTree = "<group>"; };
 		4F4992A1269577FF009541AA /* SizeConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeConstants.swift; sourceTree = "<group>"; };
-		4F4992E02695F65B009541AA /* SeparateDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparateDetailViewController.swift; sourceTree = "<group>"; };
-		4F4992E22695FBE9009541AA /* SeparateDetailViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SeparateDetailViewController+Layout.swift"; sourceTree = "<group>"; };
-		4F4992E42695FCC6009541AA /* SeparateDetailViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SeparateDetailViewController+Extension.swift"; sourceTree = "<group>"; };
 		4F4992E626960B60009541AA /* SeparateDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparateDetailTableViewCell.swift; sourceTree = "<group>"; };
 		4F4992E726960B60009541AA /* SeparateDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeparateDetailTableViewCell.xib; sourceTree = "<group>"; };
 		4F4992EA2696F685009541AA /* SeparateGraphPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparateGraphPopUpViewController.swift; sourceTree = "<group>"; };
@@ -465,16 +459,6 @@
 				4F4992962693F9F2009541AA /* SeparateViewController+Layout.swift */,
 			);
 			path = SeparateViewController;
-			sourceTree = "<group>";
-		};
-		4FBF7D6526BBCE1300DD9C91 /* SeparateDetailViewController */ = {
-			isa = PBXGroup;
-			children = (
-				4F4992E02695F65B009541AA /* SeparateDetailViewController.swift */,
-				4F4992E42695FCC6009541AA /* SeparateDetailViewController+Extension.swift */,
-				4F4992E22695FBE9009541AA /* SeparateDetailViewController+Layout.swift */,
-			);
-			path = SeparateDetailViewController;
 			sourceTree = "<group>";
 		};
 		4FBF7D6626BBCE3500DD9C91 /* SeparateGraphPopUpViewController */ = {
@@ -959,7 +943,6 @@
 			isa = PBXGroup;
 			children = (
 				4FBF7D6426BBCDAC00DD9C91 /* SeparateViewController */,
-				4FBF7D6526BBCE1300DD9C91 /* SeparateDetailViewController */,
 				4FBF7D6626BBCE3500DD9C91 /* SeparateGraphPopUpViewController */,
 				4FC8F75C26CA6A40006232A9 /* SeparatePresentPopUpViewController.swift */,
 				4F36B03F26CB8E3300E1AE0B /* SeparateToastViewController.swift */,
@@ -1122,7 +1105,6 @@
 			files = (
 				AB4A7DED26DB75EA00798FC1 /* fcmTokenRequest.swift in Sources */,
 				AB21E3CE269DB32E00D32EFF /* UserDefaults.Key+Extension.swift in Sources */,
-				4F4992E12695F65B009541AA /* SeparateDetailViewController.swift in Sources */,
 				ABB24E06268CE317006FEE57 /* UIFont+Extension.swift in Sources */,
 				4FBF7D8926BBD77D00DD9C91 /* MyRewardViewController+Layout.swift in Sources */,
 				AB21E3CA269D67C200D32EFF /* CategoryResponse.swift in Sources */,
@@ -1205,7 +1187,6 @@
 				ABB2D67C26C01B0600C1B2C4 /* TodayPresentPopUpViewController.swift in Sources */,
 				4F2D1F3B269A1C9C00D941A1 /* NetworkInfo.swift in Sources */,
 				AB5AF762268A2E84001D3CD1 /* AppDelegate.swift in Sources */,
-				4F4992E32695FBE9009541AA /* SeparateDetailViewController+Layout.swift in Sources */,
 				AB9F9DF72690CD9900088502 /* WritingViewController.swift in Sources */,
 				AB21E3C0269D5FB400D32EFF /* WritingResponse.swift in Sources */,
 				AB7F6DFC269897CA00EF9C6E /* MyWritingPopUpViewController.swift in Sources */,
@@ -1215,7 +1196,6 @@
 				4F2D1F37269A1B5900D941A1 /* APIConstants.swift in Sources */,
 				4F4992A2269577FF009541AA /* SizeConstants.swift in Sources */,
 				AB8C3F582693371100B2BA30 /* WritingViewController+Extension.swift in Sources */,
-				4F4992E52695FCC6009541AA /* SeparateDetailViewController+Extension.swift in Sources */,
 				4FBF7D7B26BBD50400DD9C91 /* MyWritingViewController+Layout.swift in Sources */,
 				AB21E3AC269D427400D32EFF /* LaunchScreenViewController.swift in Sources */,
 				4F7FD2F126929D6300122964 /* PeriodPopUpViewController.swift in Sources */,
