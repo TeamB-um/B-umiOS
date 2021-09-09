@@ -24,9 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.registerForRemoteNotifications()
         FirebaseApp.configure()
 
-        UNUserNotificationCenter.current().delegate = self
-        Messaging.messaging().delegate = self
-
         return true
     }
 
@@ -42,53 +39,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the user discards a scene session.
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
-    }
-}
-
-extension AppDelegate: UNUserNotificationCenterDelegate {
-    /// foreground 상태일 때 push 알림 받음
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        let userInfo = notification.request.content.userInfo
-        print(userInfo, "👅")
-
-        /// 애널리틱스에 전달
-        Messaging.messaging().appDidReceiveMessage(userInfo)
-        completionHandler([.list, .badge, .sound, .banner])
-    }
-
-    /// background일 때
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        UIApplication.shared.applicationIconBadgeNumber += 1
-
-        let userInfo = response.notification.request.content.userInfo
-        print(userInfo, "👅")
-
-        Messaging.messaging().appDidReceiveMessage(userInfo)
-        completionHandler()
-    }
-}
-
-extension AppDelegate: MessagingDelegate {
-    func applicationDidFinishLaunching(_ application: UIApplication) {
-        print("applicationDidFinishLaunching")
-    }
-
-    /// 현재 등록 토큰 가져오기 (갱신 시 알림 받기)
-    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
-        print("🥺 [fcm token]: ", fcmToken)
-        guard let token = fcmToken else { return }
-
-        UserService.shared.registerFCMToken(token: fcmTokenRequest(pushToken: token))
-    }
-
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        print(userInfo, "💬")
-        Messaging.messaging().appDidReceiveMessage(userInfo)
-
-        completionHandler(UIBackgroundFetchResult.newData)
-    }
-
-    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        Messaging.messaging().apnsToken = deviceToken
     }
 }
