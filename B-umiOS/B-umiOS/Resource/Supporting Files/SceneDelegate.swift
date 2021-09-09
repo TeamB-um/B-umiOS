@@ -63,13 +63,14 @@ extension SceneDelegate: UNUserNotificationCenterDelegate {
 
     /// background일 때
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        UIApplication.shared.applicationIconBadgeNumber += 1
+        UIApplication.shared.applicationIconBadgeNumber = 0
 
         let userInfo = response.notification.request.content.userInfo
+        guard (userInfo["aps"] as? [String: AnyObject]) != nil else { return }
         print(userInfo, "👅")
 
-        if let aps = userInfo["aps"] as? [String: AnyObject] {
-            print(aps)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            NotificationCenter.default.post(name: Notification.Name.pushPresent, object: nil)
         }
 
         Messaging.messaging().appDidReceiveMessage(userInfo)

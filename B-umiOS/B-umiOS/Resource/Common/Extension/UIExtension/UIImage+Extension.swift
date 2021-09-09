@@ -152,4 +152,8 @@ extension UIImage {
     @nonobjc class var trashToast: UIImage {
         UIImage(named: "img_trash_toast") ?? UIImage()
     }
+    
+    @nonobjc class var imgPresent: UIImage {
+        UIImage(named: "imgPresent") ?? UIImage()
+    }
 }

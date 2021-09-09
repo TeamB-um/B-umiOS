@@ -15,8 +15,9 @@ class SurprisePopUpViewController: UIViewController {
         $0.cornerRound(radius: 10)
     }
     
-    private let popUpImage = UIView().then {
+    private let popUpImage = UIImageView().then {
         $0.backgroundColor = .blue2Main
+        $0.image = UIImage.imgPresent
         $0.cornerRound(radius: 10)
     }
     
@@ -66,7 +67,7 @@ class SurprisePopUpViewController: UIViewController {
     
     // MARK: - Initializer
     
-    init(writing: Writing) {
+    init() {
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -123,13 +124,11 @@ class SurprisePopUpViewController: UIViewController {
             $0.bottom.equalTo(popUpView).inset(20)
             $0.height.equalTo(50 * SizeConstants.screenRatio)
         }
-        
     }
     
     func setView() {
         view.layer.backgroundColor = UIColor.black.withAlphaComponent(0.5).cgColor
     }
     
-
     // MARK: - Protocols
 }

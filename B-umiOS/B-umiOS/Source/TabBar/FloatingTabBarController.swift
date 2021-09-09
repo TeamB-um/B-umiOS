@@ -47,6 +47,15 @@ class FloatingTabBarController: UITabBarController {
         })
     }
     
+    @objc
+    func showPresentPopUp(_ sender: NotificationCenter) {
+        let popUpVC = SurprisePopUpViewController()
+        popUpVC.modalTransitionStyle = .crossDissolve
+        popUpVC.modalPresentationStyle = .overCurrentContext
+        
+        self.present(popUpVC, animated: true, completion: nil)
+    }
+    
     // MARK: - Methods
     
     func createNavigationController(viewController: UIViewController) -> UIViewController {
@@ -83,6 +92,7 @@ class FloatingTabBarController: UITabBarController {
     func setNotifiaction() {
         NotificationCenter.default.addObserver(self, selector: #selector(showTabBar(_:)), name: Notification.Name.TabBarShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(hideTabBar(_:)), name: Notification.Name.TabBarHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showPresentPopUp(_:)), name: Notification.Name.pushPresent, object: nil)
     }
 }
 
