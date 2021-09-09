@@ -8,6 +8,10 @@
 import Lottie
 import UIKit
 
+protocol PresentDelegate: AnyObject {
+    func dismissPopUp()
+}
+
 class PresentViewController: UIViewController {
     // MARK: - UIComponenets
    
@@ -37,6 +41,7 @@ class PresentViewController: UIViewController {
             let popUpVC = TodayPresentPopUpViewController(content: "머 어쩌라능")
             popUpVC.modalTransitionStyle = .crossDissolve
             popUpVC.modalPresentationStyle = .overCurrentContext
+            popUpVC.delegate = self
             
             self.tabBarController?.present(popUpVC, animated: true, completion: nil)
         }
@@ -57,6 +62,12 @@ class PresentViewController: UIViewController {
             make.top.equalToSuperview().offset(57)
         }
     }
-    
-    // MARK: - Protocols
+}
+
+// MARK: - Protocols
+
+extension PresentViewController: PresentDelegate {
+    func dismissPopUp() {
+        navigationController?.popViewController(animated: true)
+    }
 }

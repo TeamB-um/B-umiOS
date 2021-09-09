@@ -39,9 +39,12 @@ class TodayPresentPopUpViewController: UIViewController {
     
     lazy var closeButton = UIButton().then {
         $0.setImage(UIImage.btnCloseBlack, for: .normal)
+        $0.addTarget(self, action: #selector(didTapCloseButton(_:)), for: .touchUpInside)
     }
     
     // MARK: - Properties
+    
+    weak var delegate: PresentDelegate?
     
     // MARK: - Initializer
     
@@ -70,10 +73,17 @@ class TodayPresentPopUpViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if touches.first?.view != popUpView {
             dismiss(animated: true, completion: nil)
+            delegate?.dismissPopUp()
         }
     }
 
     // MARK: - Actions
+
+    @objc
+    func didTapCloseButton(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+        delegate?.dismissPopUp()
+    }
     
     // MARK: - Methods
     
