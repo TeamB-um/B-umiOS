@@ -76,8 +76,17 @@ enum TrashType {
 
     var logo: UIImage {
         switch self {
-        case .trash:
-            return .separateToast
+        case .trash(let mode):
+            switch mode {
+            case 0:
+                return .separateToast0
+            case 1:
+                return .separateToast1
+            case 2:
+                return .separateToast2
+            default:
+                return .separateToast0
+            }
         case .separate:
             return .trashToast
         }
