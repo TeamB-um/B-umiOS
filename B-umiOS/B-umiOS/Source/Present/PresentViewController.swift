@@ -35,21 +35,20 @@ class PresentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setView()
         setConstraints()
-        
         animationView.play { _ in
-            let popUpVC = TodayPresentPopUpViewController(content: "머 어쩌라능")
-            popUpVC.modalTransitionStyle = .crossDissolve
-            popUpVC.modalPresentationStyle = .overCurrentContext
-            popUpVC.delegate = self
-            
-            self.tabBarController?.present(popUpVC, animated: true, completion: nil)
+            self.fetchPresentData()
         }
     }
     
     // MARK: - Actions
     
     // MARK: - Methods
+    
+    func setView() {
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+    }
     
     func setConstraints() {
         view.addSubviews([animationView, titleLabel])
@@ -60,6 +59,28 @@ class PresentViewController: UIViewController {
         titleLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalToSuperview().offset(57)
+        }
+    }
+    
+    func fetchPresentData() {
+        PresentService.shared.fetchPresentData { response in
+            guard let result = response as? NetworkResult<Any> else { return }
+               
+            switch result {
+            case .success(let data):
+                guard let presentResponse = data as? GeneralResponse<PresentResponse> else { return }
+                   
+                if let present = presentResponse.data?.present.sentence {
+                    let popUpVC = TodayPresentPopUpViewController(content: present)
+                    popUpVC.modalTransitionStyle = .crossDissolve
+                    popUpVC.modalPresentationStyle = .overCurrentContext
+                    popUpVC.delegate = self
+                    
+                    self.tabBarController?.present(popUpVC, animated: true, completion: nil)
+                }
+            default:
+                self.navigationController?.popViewController(animated: true)
+            }
         }
     }
 }

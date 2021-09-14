@@ -53,7 +53,7 @@ class FloatingTabBarController: UITabBarController {
         popUpVC.modalTransitionStyle = .crossDissolve
         popUpVC.modalPresentationStyle = .overCurrentContext
         
-        self.present(popUpVC, animated: true, completion: nil)
+        present(popUpVC, animated: true, completion: nil)
     }
     
     // MARK: - Methods
@@ -71,7 +71,7 @@ class FloatingTabBarController: UITabBarController {
         let myPageViewController = UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(identifier: "MyPageViewController")
         let settingViewController = UIStoryboard(name: "Setting", bundle: nil).instantiateViewController(identifier: "SettingViewController")
         
-        viewControllers = [createNavigationController(viewController: homeViewController), createNavigationController(viewController: separateViewController), myPageViewController, createNavigationController(viewController: settingViewController)]
+        viewControllers = [createNavigationController(viewController: homeViewController), createNavigationController(viewController: separateViewController), createNavigationController(viewController: myPageViewController), createNavigationController(viewController: settingViewController)]
         
         tabBar.isHidden = true
     }
