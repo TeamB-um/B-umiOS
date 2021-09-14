@@ -16,7 +16,7 @@ class SurprisePopUpViewController: UIViewController {
     }
     
     private let popUpImage = UIImageView().then {
-        $0.backgroundColor = .blue2Main
+        $0.backgroundColor = UIColor.init(159, 232, 255, 1)
         $0.image = UIImage.imgPresent
         $0.clipsToBounds = true
     }
@@ -25,6 +25,7 @@ class SurprisePopUpViewController: UIViewController {
         $0.text = "깜짝 선물을 발견했어요!"
         $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 20)
         $0.textColor = .black
+        $0.lineSpacing(spacing: 5)
     }
     
     private var contentLabel = UILabel().then {
@@ -110,7 +111,7 @@ class SurprisePopUpViewController: UIViewController {
         
         popUpView.snp.makeConstraints {
             $0.width.equalTo(343 * SizeConstants.screenRatio)
-            $0.height.equalTo(438 * SizeConstants.screenRatio)
+            $0.height.equalTo(438).multipliedBy(812.0 / 438.0)
             $0.center.equalToSuperview()
         }
         
@@ -120,20 +121,19 @@ class SurprisePopUpViewController: UIViewController {
         }
         
         titleLabel.snp.makeConstraints {
-            $0.top.equalTo(popUpImage.snp.bottom).offset(19)
+            $0.top.equalTo(popUpImage.snp.bottom).offset(23)
             $0.centerX.equalToSuperview()
         }
         
         contentLabel.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(10)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(13)
             $0.centerX.equalToSuperview()
-            $0.bottom.equalTo(bottomButtonStackView.snp.top).offset(-26)
         }
         
         bottomButtonStackView.snp.makeConstraints {
-            $0.leading.trailing.equalTo(popUpView).inset(24)
+            $0.leading.trailing.equalTo(popUpView).inset(24 * SizeConstants.screenRatio)
             $0.bottom.equalTo(popUpView).inset(20)
-            $0.height.equalTo(50 * SizeConstants.screenRatio)
+            $0.height.equalTo(50).multipliedBy(812.0 / 50.0)
         }
     }
     
