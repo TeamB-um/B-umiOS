@@ -65,24 +65,18 @@ class SettingViewController: UIViewController {
     
     // MARK: - Properties
     
-    lazy var pushSwitchIsOn: Bool = true
-    
     // MARK: - Initializer
     
     // MARK: - LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setView()
         setConstraints()
-        print("viewDidLoad")
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print("viewWillAppear")
         setUserInfo()
-//        setPushSwitch()
         UNUserNotificationCenter.current().getNotificationSettings(completionHandler: myNotificationSettingsCompletionHandler)
     }
     
@@ -181,26 +175,11 @@ class SettingViewController: UIViewController {
         self.trashbinPeriodLabel.text = "\(deletePeriod)일"
     }
     
-//    func setPushSwitch() {
-//        UNUserNotificationCenter.current().getNotificationSettings { setting in
-//            self.pushSwitchIsOn = setting.alertSetting == .enabled ? true : false
-//            print("🚬", self.pushSwitchIsOn)
-////            print("👯‍♀️",self.pushAlarmSwitch.isOn)
-//        }
-//        print("전",self.pushAlarmSwitch.isOn)
-//        pushAlarmSwitch.isOn = pushSwitchIsOn
-//        print("후",self.pushAlarmSwitch.isOn)
-//    }
-    
     func myNotificationSettingsCompletionHandler(settings: UNNotificationSettings) -> Void {
-        if settings.authorizationStatus == .denied {
-            print("denied")
-        } else {
-            print("else")
+        DispatchQueue.main.async {
+            self.pushAlarmSwitch.isOn = settings.authorizationStatus == .authorized ? true : false
         }
     }
-    
-    
     
     func btnLeftButton() -> UIButton {
         let button = UIButton().then {
@@ -224,4 +203,3 @@ extension SettingViewController: popupDelegate {
         self.trashbinPeriodLabel.text = "\(data)일"
     }
 }
-
