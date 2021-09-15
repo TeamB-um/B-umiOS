@@ -14,7 +14,7 @@ protocol popupDelegate {
 
 class SettingViewController: UIViewController {
     // MARK: - UIComponenets
-
+    
     var navigationView = UIView().then {
         $0.backgroundColor = .white
     }
@@ -62,24 +62,30 @@ class SettingViewController: UIViewController {
         $0.onTintColor = .blue2Main
         $0.addTarget(self, action: #selector(didTapPushSwitch(_:)), for: .valueChanged)
     }
-
+    
     // MARK: - Properties
-
+    
+    lazy var pushSwitchIsOn: Bool = true
+    
     // MARK: - Initializer
-
+    
     // MARK: - LifeCycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setView()
         setConstraints()
+        print("viewDidLoad")
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        print("viewWillAppear")
         setUserInfo()
+//        setPushSwitch()
+        UNUserNotificationCenter.current().getNotificationSettings(completionHandler: myNotificationSettingsCompletionHandler)
     }
-
+    
     // MARK: - Actions
     
     @objc
@@ -97,7 +103,7 @@ class SettingViewController: UIViewController {
             break
         }
     }
-        
+    
     @objc
     private func setPeriodButton(_ sender: UIButton) {
         let popUpVC = self.storyboard?.instantiateViewController(identifier: "PeriodPopUpViewController") as! PeriodPopUpViewController
@@ -113,44 +119,12 @@ class SettingViewController: UIViewController {
     
     @objc
     private func didTapPushSwitch(_ sender: UISwitch) {
-//        UIApplication.shared.open(URL(string:"App-Prefs:root=NOTIFICATIONS_ID")!, options: [:], completionHandler: nil)
-        
-//        if let bundle = Bundle.main.bundleIdentifier,
         guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
-            if UIApplication.shared.canOpenURL(url) {
-                UIApplication.shared.open(url)
-            }
-        
-        
-//        // 설정창의 url 생성
-//        guard let url = URL(string:"App-prefs:root=NOTIFICATIONS_ID&path=com.codershigh.B-umiOS") else { return }
-//        // 열 수 있는 url 이라면, 이동
-//        if UIApplication.shared.canOpenURL(url) {
-//            UIApplication.shared.open(url, options: [:], completionHandler: nil)
-//        }
-        
-//        let userInfo = UserInfo(isPush: sender.isOn, deletePeriod: nil)
-//
-//        ActivityIndicator.shared.startLoadingAnimation()
-//        UserService.shared.updateUserInfo(userInfo: userInfo) { response in
-//            ActivityIndicator.shared.stopLoadingAnimation()
-//
-//            guard let result = response as? NetworkResult<Any> else { return }
-//
-//            switch result {
-//            case .success(let data):
-//                if let userInfoResponse = data as? GeneralResponse<UserResponse>,
-//                   let newUserInfo = userInfoResponse.data?.user
-//                {
-//                    UserDefaults.standard.set(newUserInfo.isPush, forKey: UserDefaults.Keys.isPush)
-//                }
-//            case .requestErr, .pathErr, .serverErr, .networkFail:
-//                /// 네트워크 에러 처리
-//                print("fail to update user info")
-//            }
-//        }
+        if UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url)
+        }
     }
-
+    
     // MARK: - Methods
     
     func setView() {
@@ -166,7 +140,7 @@ class SettingViewController: UIViewController {
             $0.addGestureRecognizer(tapGesture)
             $0.isUserInteractionEnabled = true
         }
-    
+        
         let label = UILabel().then {
             $0.textColor = .paper4
             $0.text = text
@@ -193,7 +167,7 @@ class SettingViewController: UIViewController {
             make.leading.equalToSuperview().inset(24 * SizeConstants.screenRatio)
             make.centerY.equalToSuperview()
         }
-
+        
         stackView.snp.makeConstraints { make in
             make.trailing.equalToSuperview().inset(24)
             make.top.bottom.equalTo(label)
@@ -204,22 +178,30 @@ class SettingViewController: UIViewController {
     
     func setUserInfo() {
         let deletePeriod = UserDefaults.standard.integer(forKey: UserDefaults.Keys.deletePeriod)
-        
         self.trashbinPeriodLabel.text = "\(deletePeriod)일"
     }
     
-    func setPushSwitch() {
-        let isPushOn = UIApplication.shared.isRegisteredForRemoteNotifications
-
-        if isPushOn {
-            print("push on")
-            self.pushAlarmSwitch.isOn = true
+//    func setPushSwitch() {
+//        UNUserNotificationCenter.current().getNotificationSettings { setting in
+//            self.pushSwitchIsOn = setting.alertSetting == .enabled ? true : false
+//            print("🚬", self.pushSwitchIsOn)
+////            print("👯‍♀️",self.pushAlarmSwitch.isOn)
+//        }
+//        print("전",self.pushAlarmSwitch.isOn)
+//        pushAlarmSwitch.isOn = pushSwitchIsOn
+//        print("후",self.pushAlarmSwitch.isOn)
+//    }
+    
+    func myNotificationSettingsCompletionHandler(settings: UNNotificationSettings) -> Void {
+        if settings.authorizationStatus == .denied {
+            print("denied")
         } else {
-            print("push off")
-            self.pushAlarmSwitch.isOn = false
+            print("else")
         }
     }
-
+    
+    
+    
     func btnLeftButton() -> UIButton {
         let button = UIButton().then {
             $0.setImage(UIImage.btnLeft, for: .normal)
@@ -227,6 +209,7 @@ class SettingViewController: UIViewController {
         }
         return button
     }
+    
     // MARK: - Protocols
 }
 
