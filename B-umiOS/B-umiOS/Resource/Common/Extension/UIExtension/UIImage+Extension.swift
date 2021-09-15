@@ -145,11 +145,23 @@ extension UIImage {
         UIImage(named: "imgReward") ?? UIImage()
     }
     
-    @nonobjc class var separateToast: UIImage {
-        UIImage(named: "img_separate_toast") ?? UIImage()
+    @nonobjc class var separateToast0: UIImage {
+        UIImage(named: "img_separate_toast0") ?? UIImage()
+    }
+    
+    @nonobjc class var separateToast1: UIImage {
+        UIImage(named: "img_separate_toast1") ?? UIImage()
+    }
+    
+    @nonobjc class var separateToast2: UIImage {
+        UIImage(named: "img_separate_toast2") ?? UIImage()
     }
 
     @nonobjc class var trashToast: UIImage {
         UIImage(named: "img_trash_toast") ?? UIImage()
+    }
+    
+    @nonobjc class var imgPresent: UIImage {
+        UIImage(named: "imgPresent") ?? UIImage()
     }
 }

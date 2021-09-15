@@ -12,7 +12,7 @@ extension UIColor {
         self.init(red: red / 255.0, green: green / 255.0, blue: blue / 255.0, alpha: alpha)
     }
 
-    @nonobjc class var symbol: UIColor { .init(87, 255, 243, 1) }
+    @nonobjc class var symbol: UIColor { .init(87, 205, 243, 1) }
 
     // MARK: - StatusBar
 
