@@ -16,7 +16,7 @@ protocol popupDelegate {
 
 class SettingViewController: UIViewController {
     // MARK: - UIComponenets
-
+    
     var navigationView = UIView().then {
         $0.backgroundColor = .white
     }
@@ -64,24 +64,24 @@ class SettingViewController: UIViewController {
         $0.onTintColor = .blue2Main
         $0.addTarget(self, action: #selector(didTapPushSwitch(_:)), for: .valueChanged)
     }
-
+    
     // MARK: - Properties
-
+    
     // MARK: - Initializer
-
+    
     // MARK: - LifeCycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setView()
         setConstraints()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         setUserInfo()
+        UNUserNotificationCenter.current().getNotificationSettings(completionHandler: myNotificationSettingsCompletionHandler)
     }
-
+    
     // MARK: - Actions
     
     @objc
@@ -113,7 +113,7 @@ class SettingViewController: UIViewController {
             break
         }
     }
-        
+    
     @objc
     private func setPeriodButton(_ sender: UIButton) {
         let popUpVC = self.storyboard?.instantiateViewController(identifier: "PeriodPopUpViewController") as! PeriodPopUpViewController
@@ -129,28 +129,12 @@ class SettingViewController: UIViewController {
     
     @objc
     private func didTapPushSwitch(_ sender: UISwitch) {
-        let userInfo = UserInfo(isPush: sender.isOn, deletePeriod: nil)
-        
-        ActivityIndicator.shared.startLoadingAnimation()
-        UserService.shared.updateUserInfo(userInfo: userInfo) { response in
-            ActivityIndicator.shared.stopLoadingAnimation()
-            
-            guard let result = response as? NetworkResult<Any> else { return }
-            
-            switch result {
-            case .success(let data):
-                if let userInfoResponse = data as? GeneralResponse<UserResponse>,
-                   let newUserInfo = userInfoResponse.data?.user
-                {
-                    UserDefaults.standard.set(newUserInfo.isPush, forKey: UserDefaults.Keys.isPush)
-                }
-            case .requestErr, .pathErr, .serverErr, .networkFail:
-                /// 네트워크 에러 처리
-                print("fail to update user info")
-            }
+        guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
+        if UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url)
         }
     }
-
+    
     // MARK: - Methods
     
     func setView() {
@@ -166,7 +150,7 @@ class SettingViewController: UIViewController {
             $0.addGestureRecognizer(tapGesture)
             $0.isUserInteractionEnabled = true
         }
-    
+        
         let label = UILabel().then {
             $0.textColor = .paper4
             $0.text = text
@@ -193,7 +177,7 @@ class SettingViewController: UIViewController {
             make.leading.equalToSuperview().inset(24 * SizeConstants.screenRatio)
             make.centerY.equalToSuperview()
         }
-
+        
         stackView.snp.makeConstraints { make in
             make.trailing.equalToSuperview().inset(24)
             make.top.bottom.equalTo(label)
@@ -203,13 +187,16 @@ class SettingViewController: UIViewController {
     }
     
     func setUserInfo() {
-        let isPush = UserDefaults.standard.bool(forKey: UserDefaults.Keys.isPush)
         let deletePeriod = UserDefaults.standard.integer(forKey: UserDefaults.Keys.deletePeriod)
-        
-        self.pushAlarmSwitch.isOn = isPush
         self.trashbinPeriodLabel.text = "\(deletePeriod)일"
     }
-
+    
+    func myNotificationSettingsCompletionHandler(settings: UNNotificationSettings) -> Void {
+        DispatchQueue.main.async {
+            self.pushAlarmSwitch.isOn = settings.authorizationStatus == .authorized ? true : false
+        }
+    }
+    
     func btnLeftButton() -> UIButton {
         let button = UIButton().then {
             $0.setImage(UIImage.btnLeft, for: .normal)
@@ -217,7 +204,6 @@ class SettingViewController: UIViewController {
         }
         return button
     }
-    // MARK: - Protocols
 }
 
 // MARK: - Extension
