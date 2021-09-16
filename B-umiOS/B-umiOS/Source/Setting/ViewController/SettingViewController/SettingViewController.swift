@@ -113,26 +113,42 @@ class SettingViewController: UIViewController {
     
     @objc
     private func didTapPushSwitch(_ sender: UISwitch) {
-        let userInfo = UserInfo(isPush: sender.isOn, deletePeriod: nil)
+//        UIApplication.shared.open(URL(string:"App-Prefs:root=NOTIFICATIONS_ID")!, options: [:], completionHandler: nil)
         
-        ActivityIndicator.shared.startLoadingAnimation()
-        UserService.shared.updateUserInfo(userInfo: userInfo) { response in
-            ActivityIndicator.shared.stopLoadingAnimation()
-            
-            guard let result = response as? NetworkResult<Any> else { return }
-            
-            switch result {
-            case .success(let data):
-                if let userInfoResponse = data as? GeneralResponse<UserResponse>,
-                   let newUserInfo = userInfoResponse.data?.user
-                {
-                    UserDefaults.standard.set(newUserInfo.isPush, forKey: UserDefaults.Keys.isPush)
-                }
-            case .requestErr, .pathErr, .serverErr, .networkFail:
-                /// 네트워크 에러 처리
-                print("fail to update user info")
+//        if let bundle = Bundle.main.bundleIdentifier,
+        guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url)
             }
-        }
+        
+        
+//        // 설정창의 url 생성
+//        guard let url = URL(string:"App-prefs:root=NOTIFICATIONS_ID&path=com.codershigh.B-umiOS") else { return }
+//        // 열 수 있는 url 이라면, 이동
+//        if UIApplication.shared.canOpenURL(url) {
+//            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+//        }
+        
+//        let userInfo = UserInfo(isPush: sender.isOn, deletePeriod: nil)
+//
+//        ActivityIndicator.shared.startLoadingAnimation()
+//        UserService.shared.updateUserInfo(userInfo: userInfo) { response in
+//            ActivityIndicator.shared.stopLoadingAnimation()
+//
+//            guard let result = response as? NetworkResult<Any> else { return }
+//
+//            switch result {
+//            case .success(let data):
+//                if let userInfoResponse = data as? GeneralResponse<UserResponse>,
+//                   let newUserInfo = userInfoResponse.data?.user
+//                {
+//                    UserDefaults.standard.set(newUserInfo.isPush, forKey: UserDefaults.Keys.isPush)
+//                }
+//            case .requestErr, .pathErr, .serverErr, .networkFail:
+//                /// 네트워크 에러 처리
+//                print("fail to update user info")
+//            }
+//        }
     }
 
     // MARK: - Methods
@@ -187,11 +203,21 @@ class SettingViewController: UIViewController {
     }
     
     func setUserInfo() {
-        let isPush = UserDefaults.standard.bool(forKey: UserDefaults.Keys.isPush)
         let deletePeriod = UserDefaults.standard.integer(forKey: UserDefaults.Keys.deletePeriod)
         
-        self.pushAlarmSwitch.isOn = isPush
         self.trashbinPeriodLabel.text = "\(deletePeriod)일"
+    }
+    
+    func setPushSwitch() {
+        let isPushOn = UIApplication.shared.isRegisteredForRemoteNotifications
+
+        if isPushOn {
+            print("push on")
+            self.pushAlarmSwitch.isOn = true
+        } else {
+            print("push off")
+            self.pushAlarmSwitch.isOn = false
+        }
     }
 
     func btnLeftButton() -> UIButton {
