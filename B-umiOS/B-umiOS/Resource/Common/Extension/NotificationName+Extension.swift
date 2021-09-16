@@ -14,4 +14,5 @@ extension Notification.Name {
     static let confirmButtonIsActive = Notification.Name(rawValue: "confirmButtonIsActive")
     static let confirmButtonIsUnactive = Notification.Name(rawValue: "confirmButtonIsUnactive")
     static let categoryIsChanged = Notification.Name(rawValue: "categoryIsChanged")
+    static let pushPresent = Notification.Name(rawValue: "pushPresent")
 }

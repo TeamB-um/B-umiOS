@@ -25,7 +25,6 @@ extension MyWritingViewController: ChangeWritingDataDelegate {
 
 extension MyWritingViewController: DeleteWritingsDelegate {
     func deleteWriting() {
-        
         for i in removeData {
             deleteData.append(myWriting[i].id)
         }
@@ -63,7 +62,7 @@ extension MyWritingViewController: UICollectionViewDataSource {
             let popUpVC = MyWritingPopUpViewController(writing: myWriting[indexPath.row])
             popUpVC.modalTransitionStyle = .crossDissolve
             popUpVC.modalPresentationStyle = .overCurrentContext
-            if let parentVC = view.superview?.parentViewController {
+            if let parentVC = view.superview?.parentViewController?.tabBarController {
                 parentVC.present(popUpVC, animated: true, completion: nil)
             } else {
                 print("error")
@@ -115,8 +114,9 @@ extension MyWritingViewController: UICollectionViewDelegateFlowLayout {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offset = max(myWritingCollectionView.contentOffset.y, 0)
-        if offset > myWritingCollectionView.contentSize.height - myWritingCollectionView.bounds.size.height
-           , fetchingMore, totalMyWritngs.count < totalWritingCount {
+        if offset > myWritingCollectionView.contentSize.height - myWritingCollectionView.bounds.size.height,
+           fetchingMore, totalMyWritngs.count < totalWritingCount
+        {
             fetchingMore = false
             page += 1
             fetchWriting(page: page)
@@ -129,4 +129,3 @@ extension MyWritingViewController: viewDelegate {
         backgroundView.removeFromSuperview()
     }
 }
-
