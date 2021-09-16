@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import SafariServices
+import MessageUI
 
 protocol popupDelegate {
     func closeBottomSheet()
@@ -86,12 +88,26 @@ class SettingViewController: UIViewController {
     private func touchInside(_ sender: TapGesture){
         switch sender.identifier {
         case "분리수거함 관리" :
-            print("서비스")
             if let pushVC = self.storyboard?.instantiateViewController(withIdentifier: SettingSeparateViewController.identifier) {
                 self.navigationController?.pushViewController(pushVC, animated: true)
-                
             }
-        case "푸시알림", "서비스 이용약관","개인정보 처리방침","오픈소스 라이센스", "비움 미화원 소개" :
+        case "푸시알림" :
+            break
+        case "서비스 이용약관":
+            self.present(SFSafariViewController(url: SettingInfo.serviceURL), animated: true, completion: nil)
+        case "개인정보 처리방침" :
+            self.present(SFSafariViewController(url: SettingInfo.personalInfoURL), animated: true, completion: nil)
+        case "문의하기" :
+            if MFMailComposeViewController.canSendMail(){
+                let mail = MFMailComposeViewController()
+                mail.mailComposeDelegate = self
+                mail.setToRecipients([SettingInfo.biumEmail])
+                mail.setMessageBody("", isHTML: true)
+
+                present(mail, animated: true)
+            }
+            break
+        case "비움 미화원 소개" :
             break
         default:
             break
@@ -216,3 +232,8 @@ extension SettingViewController: popupDelegate {
     }
 }
 
+extension SettingViewController : MFMailComposeViewControllerDelegate {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true)
+    }
+}
