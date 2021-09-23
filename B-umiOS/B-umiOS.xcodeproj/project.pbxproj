@@ -121,8 +121,8 @@
 		ABB24E63268E1A75006FEE57 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB24E62268E1A75006FEE57 /* SettingViewController.swift */; };
 		ABB24E6F268E20EB006FEE57 /* Separate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABB24E6E268E20EB006FEE57 /* Separate.storyboard */; };
 		ABB2D67C26C01B0600C1B2C4 /* TodayPresentPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB2D67B26C01B0600C1B2C4 /* TodayPresentPopUpViewController.swift */; };
-		ABCDD61626F9FAE2009D7127 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ABCDD61526F9FAE2009D7127 /* GoogleService-Info.plist */; };
 		ABCDD61926FA0610009D7127 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = ABCDD61B26FA0610009D7127 /* InfoPlist.strings */; };
+		ABCDD61F26FCB2D9009D7127 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ABCDD61E26FCB2D9009D7127 /* GoogleService-Info.plist */; };
 		EF99A57404DD2FAB3CF4114B /* Pods_B_umiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B09A575B95349468C3BE1CE6 /* Pods_B_umiOS.framework */; };
 		FC0541B22690C28200FFA9D1 /* MyPageMenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0541B12690C28200FFA9D1 /* MyPageMenuCollectionViewCell.swift */; };
 		FC0541B62690C6EF00FFA9D1 /* MenuSectionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0541B52690C6EF00FFA9D1 /* MenuSectionCollectionViewCell.swift */; };
@@ -261,9 +261,9 @@
 		ABB24E62268E1A75006FEE57 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		ABB24E6E268E20EB006FEE57 /* Separate.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Separate.storyboard; sourceTree = "<group>"; };
 		ABB2D67B26C01B0600C1B2C4 /* TodayPresentPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayPresentPopUpViewController.swift; sourceTree = "<group>"; };
-		ABCDD61526F9FAE2009D7127 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
-		ABCDD61A26FA0610009D7127 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		ABCDD61C26FA062E009D7127 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		ABCDD61D26FA0CB2009D7127 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		ABCDD61E26FCB2D9009D7127 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B09A575B95349468C3BE1CE6 /* Pods_B_umiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_B_umiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD98A999FF577D7711B1C1CB /* Pods-B-umiOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-B-umiOS.release.xcconfig"; path = "Target Support Files/Pods-B-umiOS/Pods-B-umiOS.release.xcconfig"; sourceTree = "<group>"; };
 		FC0541B12690C28200FFA9D1 /* MyPageMenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageMenuCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -711,7 +711,7 @@
 			isa = PBXGroup;
 			children = (
 				AB0E164A26C40690005133C7 /* 비움(B:um).entitlements */,
-				ABCDD61526F9FAE2009D7127 /* GoogleService-Info.plist */,
+				ABCDD61E26FCB2D9009D7127 /* GoogleService-Info.plist */,
 				4FBF7D9726BBDB9F00DD9C91 /* Resource */,
 				4FBF7D9826BBDBA800DD9C91 /* Source */,
 			);
@@ -1069,10 +1069,10 @@
 				FC8A6F552695C65500E64FA5 /* MyPage.storyboard in Resources */,
 				ABB24E60268E1A57006FEE57 /* Setting.storyboard in Resources */,
 				ABB24E00268CDF64006FEE57 /* NanumSquareOTF_acB.otf in Resources */,
+				ABCDD61F26FCB2D9009D7127 /* GoogleService-Info.plist in Resources */,
 				AB4A7E5C26DE237900798FC1 /* trash0.json in Resources */,
 				AB5AF769268A2E84001D3CD1 /* Main.storyboard in Resources */,
 				AB4A7E5B26DE237900798FC1 /* trash2.json in Resources */,
-				ABCDD61626F9FAE2009D7127 /* GoogleService-Info.plist in Resources */,
 				AB7F6E5D269C02EC00EF9C6E /* home_ios.json in Resources */,
 				AB21E3AE269D43FA00D32EFF /* bium_splash.json in Resources */,
 			);
@@ -1266,8 +1266,8 @@
 		ABCDD61B26FA0610009D7127 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				ABCDD61A26FA0610009D7127 /* en */,
 				ABCDD61C26FA062E009D7127 /* ko */,
+				ABCDD61D26FA0CB2009D7127 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
