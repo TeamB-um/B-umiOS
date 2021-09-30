@@ -220,7 +220,7 @@
 		AB4A7E5726DE237900798FC1 /* trash1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = trash1.json; sourceTree = "<group>"; };
 		AB4A7E5826DE237900798FC1 /* trash2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = trash2.json; sourceTree = "<group>"; };
 		AB4A7E5926DE237900798FC1 /* trash0.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = trash0.json; sourceTree = "<group>"; };
-		AB5AF75E268A2E84001D3CD1 /* B:um.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "B:um.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB5AF75E268A2E84001D3CD1 /* B-um.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "B-um.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB5AF761268A2E84001D3CD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB5AF763268A2E84001D3CD1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		AB5AF768268A2E84001D3CD1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -702,7 +702,7 @@
 		AB5AF75F268A2E84001D3CD1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AB5AF75E268A2E84001D3CD1 /* B:um.app */,
+				AB5AF75E268A2E84001D3CD1 /* B-um.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1011,7 +1011,7 @@
 			);
 			name = "B-umiOS";
 			productName = "B-umiOS";
-			productReference = AB5AF75E268A2E84001D3CD1 /* B:um.app */;
+			productReference = AB5AF75E268A2E84001D3CD1 /* B-um.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1409,7 +1409,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.inae-lee.B-umiOS";
-				PRODUCT_NAME = "B:um";
+				PRODUCT_NAME = "B-um";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1431,7 +1431,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.inae-lee.B-umiOS";
-				PRODUCT_NAME = "B:um";
+				PRODUCT_NAME = "B-um";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
