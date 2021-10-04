@@ -26,15 +26,18 @@ class GraphView: UIView {
     lazy var titleLabel = UILabel().then {
         $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 18)
         $0.textColor = .header
+        $0.isHidden = true
     }
     
     lazy var subLabel = UILabel().then {
         $0.font = UIFont.nanumSquareFont(type: .regular, size: 13)
         $0.textColor = .paper3
+        $0.isHidden = true
     }
     
     let progressBackGroundView = UIView().then {
         $0.backgroundColor = .white
+        $0.isHidden = true
     }
         
     lazy var progressView = MultiProgressView().then {
@@ -46,6 +49,7 @@ class GraphView: UIView {
     }
     
     let verticalStackView = UIStackView().then {
+        $0.isHidden = true
         $0.axis = .vertical
         $0.distribution = .fillEqually
         $0.spacing = 11 * SizeConstants.screenRatio
@@ -109,8 +113,7 @@ class GraphView: UIView {
         }
         
         emptyImage.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.top.equalTo(subLabel.snp.bottom).offset(32 * SizeConstants.screenRatio)
+            make.center.equalToSuperview()
             make.width.equalTo(120 * SizeConstants.screenRatio)
             make.height.equalTo(135 * SizeConstants.screenRatio)
         }
@@ -123,7 +126,7 @@ class GraphView: UIView {
     
     var p = 100
     func setStackView() {
-        
+      
         for i in 0 ..< graphData.count{
             if(i == 3 && graphData.count != 4){
                 componentsView.append(GraphComponentView(name: "기타", percent: "\(p)%", color: 8))
@@ -132,13 +135,12 @@ class GraphView: UIView {
             componentsView.append(GraphComponentView(name: graphData[i].name, percent: "\(graphData[i].percent)%", color: graphData[i].index))
             p -= graphData[i].percent
         }
-   
+        
         while(componentsView.count < 4){
             componentsView.append(GraphComponentView(name: nil, percent: nil, color: nil))
         }
         
         for i in 0 ... 1 {
-          
             let horizontalStackView = UIStackView(arrangedSubviews: [componentsView[2*i], componentsView[2*i+1]]).then {
                 $0.alignment = .fill
                 $0.spacing = 11 * SizeConstants.screenRatio
