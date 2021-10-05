@@ -1402,7 +1402,7 @@
 				CODE_SIGN_ENTITLEMENTS = "B-umiOS/비움(B:um).entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = G7SD8523Y3;
 				INFOPLIST_FILE = "B-umiOS/Resource/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1426,7 +1426,7 @@
 				CODE_SIGN_ENTITLEMENTS = "B-umiOS/비움(B:um).entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = G7SD8523Y3;
 				INFOPLIST_FILE = "B-umiOS/Resource/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
