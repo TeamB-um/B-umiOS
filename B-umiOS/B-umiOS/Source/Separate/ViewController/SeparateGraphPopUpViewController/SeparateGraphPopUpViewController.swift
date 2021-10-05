@@ -89,32 +89,44 @@ class SeparateGraphPopUpViewController: UIViewController {
             switch result {
             case .success(let response):
                 guard let w = response as? GeneralResponse<GraphResponse> else { return }
-        
+                
+                self.entireGraphView.isHidden = false
+                self.monthGraphView.isHidden = false
+                self.divideLine.isHidden = false
+                self.entireGraphView.setGraph(data: w.data?.allstat ?? [])
+                self.monthGraphView.setGraph(data: w.data?.monthstat ?? [])
+                
                 if(w.data?.allstat.count == 0){
-                    self.entireGraphView.emptyLabel.text = "아직 아무것도 버리지 않았어요!"
-                    self.entireGraphView.emptyLabel.isHidden = false
+                    self.emptyData(self.entireGraphView, "아직 아무것도 버리지 않았어요!")
                 }
                 else{
-                    self.entireGraphView.setGraph(data: w.data?.allstat ?? [])
-                    self.entireGraphView.isHidden = false
+                    self.existData(self.entireGraphView)
                 }
                 
                 if(w.data?.monthstat.count == 0){
-                    self.monthGraphView.emptyLabel.text = "지난달 아무것도 버리지 않았어요!"
-                    self.monthGraphView.emptyLabel.isHidden = false
+                    self.emptyData(self.monthGraphView, "지난달 아무것도 버리지 않았어요!")
                 }
                 else{
-                    self.monthGraphView.setGraph(data: w.data?.monthstat ?? [])
-                    self.monthGraphView.isHidden = false
+                    self.existData(self.monthGraphView)
                 }
-  
-                
-                self.divideLine.isHidden = false
                 
             default:
                 break
             }
             ActivityIndicator.shared.stopLoadingAnimation()
         }
+    }
+    
+    func existData(_ graph : GraphView){
+        graph.titleLabel.isHidden = false
+        graph.subLabel.isHidden = false
+        graph.verticalStackView.isHidden = false
+        graph.progressBackGroundView.isHidden = false
+    }
+    
+    func emptyData(_ graph : GraphView, _ text : String){
+        graph.emptyLabel.text = text
+        graph.emptyImage.isHidden = false
+        graph.emptyLabel.isHidden = false
     }
 }
