@@ -14,30 +14,25 @@ class GraphView: UIView {
         
     var emptyImage = UIImageView().then {
         $0.image = UIImage.group192
-        $0.isHidden = true
     }
     
     var emptyLabel = UILabel().then {
         $0.textColor = .textGray
         $0.font = UIFont.nanumSquareFont(type: .regular, size: 14)
-        $0.isHidden = true
     }
     
     lazy var titleLabel = UILabel().then {
         $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 18)
         $0.textColor = .header
-        $0.isHidden = true
     }
     
     lazy var subLabel = UILabel().then {
         $0.font = UIFont.nanumSquareFont(type: .regular, size: 13)
         $0.textColor = .paper3
-        $0.isHidden = true
     }
     
     let progressBackGroundView = UIView().then {
         $0.backgroundColor = .white
-        $0.isHidden = true
     }
         
     lazy var progressView = MultiProgressView().then {
@@ -49,7 +44,6 @@ class GraphView: UIView {
     }
     
     let verticalStackView = UIStackView().then {
-        $0.isHidden = true
         $0.axis = .vertical
         $0.distribution = .fillEqually
         $0.spacing = 11 * SizeConstants.screenRatio
@@ -64,12 +58,11 @@ class GraphView: UIView {
     // MARK: - Initializer
     
     init(title: String, sub: String) {
-        super.init(frame: .init(x: 0, y: 0, width: SizeConstants.screenWidth, height: 200))
+        super.init(frame: .init(x: 0, y: 0, width: SizeConstants.screenWidth, height: 100))
         self.backgroundColor = .white
-        
         self.titleLabel.text = "\(title) 그래프"
         self.subLabel.text =  "\(sub) 스트레스 비율입니다"
-
+        self.bringSubviewToFront(emptyLabel)
         setConstraints()
         progressView.dataSource = self
     }
@@ -83,23 +76,22 @@ class GraphView: UIView {
     
     func setConstraints() {
         addSubviews([titleLabel, subLabel, progressBackGroundView, verticalStackView, emptyImage, emptyLabel])
-        
         progressBackGroundView.addSubview(progressView)
         
         titleLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview()
-            make.leading.equalToSuperview().offset(20 * SizeConstants.screenRatio)
+            make.top.equalToSuperview().offset(35 * SizeConstants.screenHeight / 812.0)
+            make.leading.equalToSuperview().offset(20 * SizeConstants.screenHeight / 812.0)
         }
         
         subLabel.snp.makeConstraints { make in
             make.leading.equalTo(titleLabel.snp.leading)
-            make.top.equalTo(titleLabel.snp.bottom).offset(10 * SizeConstants.screenRatio)
+            make.top.equalTo(titleLabel.snp.bottom).offset(10 * SizeConstants.screenHeight / 812.0)
         }
         
         progressBackGroundView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(15 * SizeConstants.screenRatio)
-            make.top.equalTo(subLabel.snp.bottom).offset(19 * SizeConstants.screenRatio)
-            make.height.equalTo(32 * SizeConstants.screenRatio)
+            make.top.equalTo(subLabel.snp.bottom).offset(19 * SizeConstants.screenHeight / 812.0)
+            make.height.equalTo(32 * SizeConstants.screenHeight / 812.0)
         }
         
         progressView.snp.makeConstraints { make in
@@ -107,20 +99,22 @@ class GraphView: UIView {
         }
         
         verticalStackView.snp.makeConstraints { make in
-            make.top.equalTo(progressBackGroundView.snp.bottom).offset(31 * SizeConstants.screenRatio)
+            make.top.equalTo(progressBackGroundView.snp.bottom).offset(31 * SizeConstants.screenHeight / 812.0)
             make.leading.trailing.equalToSuperview().inset(20 * SizeConstants.screenRatio)
-            make.bottom.equalToSuperview()
+            make.bottom.equalToSuperview().inset(35 * SizeConstants.screenHeight / 812.0)
         }
         
         emptyImage.snp.makeConstraints { make in
-            make.center.equalToSuperview()
-            make.width.equalTo(120 * SizeConstants.screenRatio)
-            make.height.equalTo(135 * SizeConstants.screenRatio)
+            make.top.equalTo(progressView.snp.top)
+            make.centerX.equalToSuperview()
+            make.height.equalTo(130 * SizeConstants.screenHeight / 812.0)
         }
-        
+
         emptyLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalTo(emptyImage.snp.bottom)
+                //.offset(5 * SizeConstants.screenHeight / 812.0)
+            //make.bottom.equalToSuperview().inset(15 * SizeConstants.screenHeight / 812.0)
         }
     }
     
