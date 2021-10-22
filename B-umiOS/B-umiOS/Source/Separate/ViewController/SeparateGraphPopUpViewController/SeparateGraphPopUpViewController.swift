@@ -35,8 +35,8 @@ class SeparateGraphPopUpViewController: UIViewController {
     var entireGraphView = GraphView(title: "전체", sub: "전체 사용 기간 동안의")
     
     var divideLine = UIView().then {
-        $0.backgroundColor = .red
-        //paper.1
+        $0.backgroundColor = .paper1
+        $0.isHidden = true
     }
     
     var graphStackView = UIStackView().then {
@@ -98,6 +98,7 @@ class SeparateGraphPopUpViewController: UIViewController {
                 
                 self.entireGraphView.setGraph(data: w.data?.allstat ?? [])
                 self.monthGraphView.setGraph(data: w.data?.monthstat ?? [])
+                self.divideLine.isHidden = false
                 
                 if(w.data?.allstat.count == 0){
                     self.emptyData(self.entireGraphView, "아직 아무것도 버리지 않았어요!")
@@ -123,14 +124,12 @@ class SeparateGraphPopUpViewController: UIViewController {
     func existData(_ graph : GraphView){
         graph.verticalStackView.isHidden = false
         graph.progressBackGroundView.isHidden = false
+        graph.progressView.isHidden = false
     }
     
     func emptyData(_ graph : GraphView, _ text : String){
-        DispatchQueue.main.async {
-            graph.emptyLabel.text = text
-        }
-        
-        //graph.emptyImage.isHidden = false
-        //graph.emptyLabel.isHidden = false
+        graph.emptyLabel.text = text
+        graph.emptyImage.isHidden = false
+        graph.emptyLabel.isHidden = false
     }
 }

@@ -14,11 +14,13 @@ class GraphView: UIView {
         
     var emptyImage = UIImageView().then {
         $0.image = UIImage.group192
+        $0.isHidden = true
     }
     
     var emptyLabel = UILabel().then {
         $0.textColor = .textGray
         $0.font = UIFont.nanumSquareFont(type: .regular, size: 14)
+        $0.isHidden = true
     }
     
     lazy var titleLabel = UILabel().then {
@@ -41,6 +43,7 @@ class GraphView: UIView {
         $0.trackInset = 5
         $0.trackBackgroundColor = .disable
         $0.trackBorderColor = .blue
+        $0.isHidden = true
     }
     
     let verticalStackView = UIStackView().then {
@@ -48,12 +51,14 @@ class GraphView: UIView {
         $0.distribution = .fillEqually
         $0.spacing = 11 * SizeConstants.screenRatio
         $0.backgroundColor = .white
+        $0.isHidden = true
     }
     
     // MARK: - Properties
     
     var graphData: [GraphComponent] = []
     var componentsView: [GraphComponentView] = []
+    var p = 100
     
     // MARK: - Initializer
     
@@ -63,6 +68,7 @@ class GraphView: UIView {
         self.titleLabel.text = "\(title) 그래프"
         self.subLabel.text =  "\(sub) 스트레스 비율입니다"
         self.bringSubviewToFront(emptyLabel)
+        self.bringSubviewToFront(emptyImage)
         setConstraints()
         progressView.dataSource = self
     }
@@ -113,12 +119,9 @@ class GraphView: UIView {
         emptyLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalTo(emptyImage.snp.bottom)
-                //.offset(5 * SizeConstants.screenHeight / 812.0)
-            //make.bottom.equalToSuperview().inset(15 * SizeConstants.screenHeight / 812.0)
         }
     }
     
-    var p = 100
     func setStackView() {
       
         for i in 0 ..< graphData.count{
