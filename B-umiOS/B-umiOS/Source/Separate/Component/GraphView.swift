@@ -58,7 +58,7 @@ class GraphView: UIView {
     
     var graphData: [GraphComponent] = []
     var componentsView: [GraphComponentView] = []
-    var p = 100
+    var percent = 100
     
     // MARK: - Initializer
     
@@ -126,11 +126,11 @@ class GraphView: UIView {
       
         for i in 0 ..< graphData.count{
             if(i == 3 && graphData.count != 4){
-                componentsView.append(GraphComponentView(name: "기타", percent: "\(p)%", color: 8))
+                componentsView.append(GraphComponentView(name: "기타", percent: "\(percent)%", color: 8))
                 break
             }
             componentsView.append(GraphComponentView(name: graphData[i].name, percent: "\(graphData[i].percent)%", color: graphData[i].index))
-            p -= graphData[i].percent
+            percent -= graphData[i].percent
         }
         
         while(componentsView.count < 4){
