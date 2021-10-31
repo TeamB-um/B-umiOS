@@ -51,7 +51,7 @@ class CompletionMessage: UIView {
         addSubviews([logoImage, messageLabel])
         
         logoImage.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(318.0).multipliedBy(318.0 / 812.0)
+            make.top.equalToSuperview().offset(318.0 * (SizeConstants.screenHeight / 812.0))
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(147.0 / 375.0)
             make.height.equalTo(logoImage.snp.width).multipliedBy(102.0 / 147.0)
