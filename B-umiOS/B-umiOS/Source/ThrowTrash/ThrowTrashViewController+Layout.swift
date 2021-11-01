@@ -56,7 +56,7 @@ extension ThrowTrashViewController {
         }
         
         trash.snp.makeConstraints { make in
-            make.top.equalTo(explanationView.snp.bottom).offset(28 * SizeConstants.screenRatio)
+            make.top.equalTo(explanationView.snp.bottom).offset(28 * SizeConstants.screenHeight / 812.0)
             make.width.height.equalTo(88 * SizeConstants.screenRatio)
             make.centerX.equalToSuperview()
         }
@@ -70,7 +70,7 @@ extension ThrowTrashViewController {
             make.centerX.equalToSuperview()
             make.bottom.equalToSuperview().offset(-134.0 * SizeConstants.screenHeight / 812.0)
             make.width.equalToSuperview().multipliedBy(178.0 / 375.0)
-            make.height.equalTo(trashBin.snp.width).multipliedBy(233.0 / 178.0)
+            make.height.equalToSuperview().multipliedBy(0.312)
         }
     }
 }
