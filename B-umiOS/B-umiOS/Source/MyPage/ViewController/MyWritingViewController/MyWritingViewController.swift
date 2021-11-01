@@ -49,7 +49,7 @@ class MyWritingViewController: UIViewController {
     var deleteButtonIsSelected: Bool = false
     var myWritingParentViewcontroller: UIViewController?
     
-    ///전체 글 배열, 필터 적용&viewwilldisappear 될 때 deleteData에 있는 id들이 삭제됨(진짜 삭제는 나중에)
+    /// 전체 글 배열, 필터 적용&viewwilldisappear 될 때 deleteData에 있는 id들이 삭제됨(진짜 삭제는 나중에)
     var totalMyWritngs: [Writing] = [] {
         didSet {
             if totalMyWritngs.count == 0 {
@@ -62,7 +62,8 @@ class MyWritingViewController: UIViewController {
             }
         }
     }
-    ///삭제했을 때 컬렉션뷰에 바로 반영되는 배열, 삭제 버튼을 누르면 바로 removeData에 있는 글들이 삭제됨(보이는 부분 먼저 삭제)
+
+    /// 삭제했을 때 컬렉션뷰에 바로 반영되는 배열, 삭제 버튼을 누르면 바로 removeData에 있는 글들이 삭제됨(보이는 부분 먼저 삭제)
     var myWriting: [Writing] = []
     var page = 1
     var totalWritingCount = 0
@@ -77,7 +78,6 @@ class MyWritingViewController: UIViewController {
     // MARK: - Initializer
     
     // MARK: - LifeCycle
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,6 +98,7 @@ class MyWritingViewController: UIViewController {
     // MARK: - Actions
     
     // MARK: - Methods
+
     func setView() {
         categoryID = ""
         startDate = ""
@@ -115,14 +116,14 @@ class MyWritingViewController: UIViewController {
     func resetFilter() {
         NotificationCenter.default.post(name: Notification.Name.categoryIsChanged, object: "")
         
-        if let button = self.view.viewWithTag(2) as? RoundingButton {
-            button.setupRoundingButton(title: "삭제", image:"btnRemove")
+        if let button = view.viewWithTag(2) as? RoundingButton {
+            button.setupRoundingButton(title: "삭제", image: "btnRemove")
             button.isSelected = false
         }
         
         if deleteButtonIsSelected {
             NotificationCenter.default.post(name: NSNotification.Name.deleteButtonIsSelected, object: header.deleteButton.isSelected)
-            self.view.viewWithTag(1)?.isHidden = true
+            view.viewWithTag(1)?.isHidden = true
         }
     }
     
@@ -140,7 +141,7 @@ class MyWritingViewController: UIViewController {
                 guard let writingData = data as? GeneralResponse<WritingsResponse> else { return }
                 if let d = writingData.data {
                     self.totalWritingCount = d.count ?? 0
-                    for i in 0..<d.writing.count {
+                    for i in 0 ..< d.writing.count {
                         self.myWriting.append(d.writing[i])
                         self.totalMyWritngs.append(d.writing[i])
                     }
@@ -167,8 +168,7 @@ class MyWritingViewController: UIViewController {
             for (index, item) in deleteData.enumerated() {
                 if index == 0 {
                     query = item
-                }
-                else {
+                } else {
                     query = "\(query),\(item)"
                 }
             }
@@ -222,10 +222,8 @@ class MyWritingViewController: UIViewController {
     }
     
     @objc func deleteButtonClicked(noti: NSNotification) {
-        if let isClicked = noti.object as? Bool {
-            deleteButtonIsSelected.toggle()
-            myWritingCollectionView.reloadData()
-        }
+        deleteButtonIsSelected.toggle()
+        myWritingCollectionView.reloadData()
     }
 }
 

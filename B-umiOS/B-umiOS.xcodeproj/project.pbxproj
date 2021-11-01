@@ -103,7 +103,6 @@
 		AB9F9DF92691F0D100088502 /* WritingStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9F9DF82691F0D100088502 /* WritingStyle.swift */; };
 		ABB2147A26E9EEE500D5F44B /* PresentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB2147926E9EEE500D5F44B /* PresentViewController.swift */; };
 		ABB2147C26E9EF4B00D5F44B /* present_ios.json in Resources */ = {isa = PBXBuildFile; fileRef = ABB2147B26E9EF4B00D5F44B /* present_ios.json */; };
-		ABB24DF4268CD9B7006FEE57 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB24DF3268CD9B7006FEE57 /* CardCollectionViewCell.swift */; };
 		ABB24DF6268CD9D3006FEE57 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB24DF5268CD9D3006FEE57 /* HomeViewController.swift */; };
 		ABB24DF8268CD9FF006FEE57 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABB24DF7268CD9FF006FEE57 /* Home.storyboard */; };
 		ABB24DFE268CDF64006FEE57 /* NanumSquareOTF_acEB.otf in Resources */ = {isa = PBXBuildFile; fileRef = ABB24DFA268CDF64006FEE57 /* NanumSquareOTF_acEB.otf */; };
@@ -244,7 +243,6 @@
 		AB9F9DF82691F0D100088502 /* WritingStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingStyle.swift; sourceTree = "<group>"; };
 		ABB2147926E9EEE500D5F44B /* PresentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentViewController.swift; sourceTree = "<group>"; };
 		ABB2147B26E9EF4B00D5F44B /* present_ios.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = present_ios.json; sourceTree = "<group>"; };
-		ABB24DF3268CD9B7006FEE57 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
 		ABB24DF5268CD9D3006FEE57 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		ABB24DF7268CD9FF006FEE57 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		ABB24DFA268CDF64006FEE57 /* NanumSquareOTF_acEB.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareOTF_acEB.otf; sourceTree = "<group>"; };
@@ -592,8 +590,6 @@
 			isa = PBXGroup;
 			children = (
 				4FBF7D9926BBDFA800DD9C91 /* Storyboard */,
-				ABB24E02268CE1A8006FEE57 /* Common */,
-				4F2D1F33269A1A4900D941A1 /* Network */,
 				ABB24DEE268CD6D9006FEE57 /* Supporting Files */,
 			);
 			path = Resource;
@@ -602,6 +598,8 @@
 		4FBF7D9826BBDBA800DD9C91 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				ABB24E02268CE1A8006FEE57 /* Common */,
+				4F2D1F33269A1A4900D941A1 /* Network */,
 				ABB2147826E9EE9F00D5F44B /* Present */,
 				ABB24DEF268CD8DF006FEE57 /* Home */,
 				AB21E3AA269D425700D32EFF /* LaunchScreen */,
@@ -814,7 +812,6 @@
 		ABB24DEF268CD8DF006FEE57 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				ABB24DF2268CD913006FEE57 /* Cell */,
 				ABB24DF0268CD8E6006FEE57 /* Storyboard */,
 				ABB24DF5268CD9D3006FEE57 /* HomeViewController.swift */,
 				AB7F6E5A269BF7AB00EF9C6E /* HomeViewController+Layout.swift */,
@@ -828,14 +825,6 @@
 				ABB24DF7268CD9FF006FEE57 /* Home.storyboard */,
 			);
 			path = Storyboard;
-			sourceTree = "<group>";
-		};
-		ABB24DF2268CD913006FEE57 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				ABB24DF3268CD9B7006FEE57 /* CardCollectionViewCell.swift */,
-			);
-			path = Cell;
 			sourceTree = "<group>";
 		};
 		ABB24DF9268CDEF4006FEE57 /* Font */ = {
@@ -1151,7 +1140,6 @@
 				AB4A7DF026DB7D7100798FC1 /* PresentResponse.swift in Sources */,
 				4FBF7D7226BBD34E00DD9C91 /* MyPageViewController+Layout.swift in Sources */,
 				AB7F6DDF2696BDF300EF9C6E /* WritingPopUpViewController.swift in Sources */,
-				ABB24DF4268CD9B7006FEE57 /* CardCollectionViewCell.swift in Sources */,
 				FC1D6F23269E0FD60060921E /* RewardService.swift in Sources */,
 				AB7F6E5B269BF7AC00EF9C6E /* HomeViewController+Layout.swift in Sources */,
 				FCAE0985269F759000B91A08 /* CollectionViewLeftAlignFlowLayout.swift in Sources */,
@@ -1178,7 +1166,6 @@
 				4F2D1F49269C556300D941A1 /* SeperateFooterView.swift in Sources */,
 				4F2D1F39269A1BCB00D941A1 /* RequestHandler.swift in Sources */,
 				ABB24E53268E1912006FEE57 /* FloatingBarView.swift in Sources */,
-				ABB24DF4268CD9B7006FEE57 /* CardCollectionViewCell.swift in Sources */,
 				FC84810326BF00A400AEFEAF /* SurprisePopUpViewController.swift in Sources */,
 				4FBF7D8726BBD74A00DD9C91 /* MyRewardViewController+Extension.swift in Sources */,
 				4F4992972693F9F2009541AA /* SeparateViewController+Layout.swift in Sources */,
