@@ -590,8 +590,6 @@
 			isa = PBXGroup;
 			children = (
 				4FBF7D9926BBDFA800DD9C91 /* Storyboard */,
-				ABB24E02268CE1A8006FEE57 /* Common */,
-				4F2D1F33269A1A4900D941A1 /* Network */,
 				ABB24DEE268CD6D9006FEE57 /* Supporting Files */,
 			);
 			path = Resource;
@@ -600,6 +598,8 @@
 		4FBF7D9826BBDBA800DD9C91 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				ABB24E02268CE1A8006FEE57 /* Common */,
+				4F2D1F33269A1A4900D941A1 /* Network */,
 				ABB2147826E9EE9F00D5F44B /* Present */,
 				ABB24DEF268CD8DF006FEE57 /* Home */,
 				AB21E3AA269D425700D32EFF /* LaunchScreen */,
