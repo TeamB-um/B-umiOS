@@ -62,13 +62,13 @@ extension ThrowTrashViewController {
         }
         
         guideLabel.snp.makeConstraints { make in
-            make.top.equalTo(trash.snp.bottom).offset(52 * SizeConstants.screenRatio)
+            make.top.equalTo(trash.snp.bottom).offset(52 * SizeConstants.screenHeight / 812.0)
             make.centerX.equalToSuperview()
         }
         
         trashBin.snp.makeConstraints { make in
-            make.top.equalTo(guideLabel.snp.bottom).offset(83 * SizeConstants.screenRatio)
             make.centerX.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-134.0 * SizeConstants.screenHeight / 812.0)
             make.width.equalToSuperview().multipliedBy(178.0 / 375.0)
             make.height.equalTo(trashBin.snp.width).multipliedBy(233.0 / 178.0)
         }
