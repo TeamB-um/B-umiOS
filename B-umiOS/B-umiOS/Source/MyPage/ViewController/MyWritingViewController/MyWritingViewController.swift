@@ -49,21 +49,20 @@ class MyWritingViewController: UIViewController {
     var deleteButtonIsSelected: Bool = false
     var myWritingParentViewcontroller: UIViewController?
     
-    ///전체 글 배열, 필터 적용&viewwilldisappear 될 때 deleteData에 있는 id들이 삭제됨(진짜 삭제는 나중에)
     var totalMyWritngs: [Writing] = [] {
         didSet {
-            if totalMyWritngs.count == 0 {
-                errorView.isHidden = false
-                errorLabel.isHidden = false
-                errorLabel.text = "아직 글을 작성하지 않았어요!"
-            } else {
+//            if totalMyWritngs.count == 0 {
+//                errorView.isHidden = false
+//                errorLabel.isHidden = false
+//                errorLabel.text = "아직 글을 작성하지 않았어요!"
+//            } else {
+            if totalMyWritngs.count > 0 {
                 errorView.isHidden = true
                 errorLabel.isHidden = true
             }
         }
     }
-    ///삭제했을 때 컬렉션뷰에 바로 반영되는 배열, 삭제 버튼을 누르면 바로 removeData에 있는 글들이 삭제됨(보이는 부분 먼저 삭제)
-    var myWriting: [Writing] = []
+    
     var page = 1
     var totalWritingCount = 0
     var removeData: [Int] = []
@@ -91,10 +90,6 @@ class MyWritingViewController: UIViewController {
         fetchWriting(page: 1)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        deleteMyWriting()
-    }
-    
     // MARK: - Actions
     
     // MARK: - Methods
@@ -102,7 +97,6 @@ class MyWritingViewController: UIViewController {
         categoryID = ""
         startDate = ""
         endDate = ""
-        myWriting = []
         totalMyWritngs = []
         removeData = []
         fetchingMore = false
@@ -127,9 +121,6 @@ class MyWritingViewController: UIViewController {
     }
     
     func fetchWriting(page: Int) {
-        if page == 1, !deleteData.isEmpty {
-            deleteMyWriting()
-        }
         ActivityIndicator.shared.startLoadingAnimation()
         WritingService.shared.fetchWriting(page: "\(page)", start_date: startDate, end_date: endDate, category_id: categoryID) { response in
             ActivityIndicator.shared.stopLoadingAnimation()
@@ -141,7 +132,6 @@ class MyWritingViewController: UIViewController {
                 if let d = writingData.data {
                     self.totalWritingCount = d.count ?? 0
                     for i in 0..<d.writing.count {
-                        self.myWriting.append(d.writing[i])
                         self.totalMyWritngs.append(d.writing[i])
                     }
                     self.fetchingMore = true
@@ -178,6 +168,7 @@ class MyWritingViewController: UIViewController {
                 switch result {
                 case .success:
                     self.deleteData = []
+                    self.removeData = []
                     self.myWritingCollectionView.reloadData()
                 default:
                     print("error")
@@ -194,10 +185,10 @@ class MyWritingViewController: UIViewController {
         let popUpVC = DeletePopUpViewController(kind: .writing)
         var deleteID: [String] = []
         
-        for index in removeData {
-            deleteID.append(myWriting[index].id)
-        }
-        popUpVC.deleteData = deleteID
+//        for index in removeData {
+//            deleteData.append(totalMyWritngs[index].id)
+//        }
+//        popUpVC.deleteData = deleteID
         popUpVC.startDate = startDate
         popUpVC.endDate = endDate
         popUpVC.categoryID = categoryID
