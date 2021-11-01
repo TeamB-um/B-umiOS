@@ -28,10 +28,14 @@ class ThrowTrashViewController: UIViewController {
         $0.tintColor = .white
     }
     
-    var backgroudImage = UIImageView()
+    var backgroudImage = UIImageView().then {
+        $0.image = UIImage(named: "writing_archive_bg")
+        $0.contentMode = .scaleAspectFill
+    }
     
-    var animationView = AnimationView().then {
+    lazy var animationView = AnimationView().then {
         $0.loopMode = .playOnce
+        $0.animation = Animation.named("\(trashType.rawValue)")
     }
     
     let explanationView = UIView().then {
@@ -49,9 +53,10 @@ class ThrowTrashViewController: UIViewController {
         $0.textColor = .iconGray
     }
     
-    var guideLabel = UILabel().then {
+    lazy var guideLabel = UILabel().then {
         $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 20)
         $0.textColor = .white
+        $0.text = "\(trashType.trashBinName) 안으로 넣어보세요!"
     }
     
     lazy var trash = UIImageView().then {
@@ -134,12 +139,6 @@ class ThrowTrashViewController: UIViewController {
     
     func setView() {
         view.backgroundColor = .white
-        
-        backgroudImage.image = UIImage(named: "img_\(trashType)")
-        animationView.animation = Animation.named("\(trashType.rawValue)")
-        
-        guideLabel.text = "\(trashType.trashBinName) 안으로 넣어보세요!"
-        navigationLabel.text = trashType.mode
         
         let attributedStr = NSMutableAttributedString(string: explainString)
         attributedStr.addAttribute(.foregroundColor, value: UIColor.blue3, range: (explainString as NSString).range(of: trashType.explain))

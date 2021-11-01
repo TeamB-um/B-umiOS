@@ -81,7 +81,7 @@ class WritingViewController: UIViewController {
     
     lazy var paperView = UIImageView().then {
         $0.image = self.style.paperIamge
-        $0.contentMode = .top
+        $0.contentMode = .scaleAspectFill
         $0.isUserInteractionEnabled = true
     }
     
