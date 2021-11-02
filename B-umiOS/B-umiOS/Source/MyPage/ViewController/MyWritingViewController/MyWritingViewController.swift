@@ -49,14 +49,9 @@ class MyWritingViewController: UIViewController {
     var deleteButtonIsSelected: Bool = false
     var myWritingParentViewcontroller: UIViewController?
     
-    var totalMyWritngs: [Writing] = [] {
+    var myWriting: [Writing] = [] {
         didSet {
-//            if totalMyWritngs.count == 0 {
-//                errorView.isHidden = false
-//                errorLabel.isHidden = false
-//                errorLabel.text = "아직 글을 작성하지 않았어요!"
-//            } else {
-            if totalMyWritngs.count > 0 {
+            if myWriting.count > 0 {
                 errorView.isHidden = true
                 errorLabel.isHidden = true
             }
@@ -64,7 +59,7 @@ class MyWritingViewController: UIViewController {
     }
     
     var page = 1
-    var totalWritingCount = 0
+    var myWritingCount = 0
     var removeData: [Int] = []
     var deleteData: [String] = []
     var categoryID: String = ""
@@ -97,11 +92,11 @@ class MyWritingViewController: UIViewController {
         categoryID = ""
         startDate = ""
         endDate = ""
-        totalMyWritngs = []
+        myWriting = []
         removeData = []
         fetchingMore = false
         page = 1
-        totalWritingCount = 0
+        myWritingCount = 0
         errorView.isHidden = true
         errorLabel.isHidden = true
     }
@@ -130,9 +125,9 @@ class MyWritingViewController: UIViewController {
             case .success(let data):
                 guard let writingData = data as? GeneralResponse<WritingsResponse> else { return }
                 if let d = writingData.data {
-                    self.totalWritingCount = d.count ?? 0
+                    self.myWritingCount = d.count ?? 0
                     for i in 0..<d.writing.count {
-                        self.totalMyWritngs.append(d.writing[i])
+                        self.myWriting.append(d.writing[i])
                     }
                     self.fetchingMore = true
                     self.myWritingCollectionView.reloadData()
@@ -183,12 +178,7 @@ class MyWritingViewController: UIViewController {
     
     @objc func didTapConfirmButton(_ sender: UIButton) {
         let popUpVC = DeletePopUpViewController(kind: .writing)
-        var deleteID: [String] = []
         
-//        for index in removeData {
-//            deleteData.append(totalMyWritngs[index].id)
-//        }
-//        popUpVC.deleteData = deleteID
         popUpVC.startDate = startDate
         popUpVC.endDate = endDate
         popUpVC.categoryID = categoryID

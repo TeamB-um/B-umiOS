@@ -10,8 +10,8 @@ import UIKit
 extension MyWritingViewController: ChangeWritingDataDelegate {
     func changeWitingData(filteredDate: [Writing], count: Int?) {
         page = 1
-        totalMyWritngs = filteredDate
-        totalWritingCount = count ?? 0
+        myWriting = filteredDate
+        myWritingCount = count ?? 0
         myWritingCollectionView.reloadData()
     }
     
@@ -25,10 +25,10 @@ extension MyWritingViewController: ChangeWritingDataDelegate {
 extension MyWritingViewController: DeleteWritingsDelegate {
     func deleteWriting() {
         for index in removeData {
-            deleteData.append(totalMyWritngs[index].id)
+            deleteData.append(myWriting[index].id)
         }
         deleteMyWriting()
-        totalMyWritngs = []
+        myWriting = []
         fetchWriting(page: 1)
         NotificationCenter.default.post(name: Notification.Name.confirmButtonIsUnactive, object: nil)
         myWritingCollectionView.reloadData()
@@ -37,14 +37,14 @@ extension MyWritingViewController: DeleteWritingsDelegate {
 
 extension MyWritingViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        totalMyWritngs.count
+        myWriting.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyWritingCollectionViewCell.identifier, for: indexPath) as? MyWritingCollectionViewCell else { return UICollectionViewCell() }
         
         cell.setShadow(radius: 20, offset: CGSize(width: 0, height: 4), opacity: 0.03)
-        cell.setWritingData(data: totalMyWritngs, index: indexPath.row)
+        cell.setWritingData(data: myWriting, index: indexPath.row)
         cell.checkButton(bool: deleteButtonIsSelected)
         return cell
     }
@@ -59,7 +59,7 @@ extension MyWritingViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if !deleteButtonIsSelected {
-            let popUpVC = MyWritingPopUpViewController(writing: totalMyWritngs[indexPath.row])
+            let popUpVC = MyWritingPopUpViewController(writing: myWriting[indexPath.row])
             popUpVC.modalTransitionStyle = .crossDissolve
             popUpVC.modalPresentationStyle = .overCurrentContext
             if let parentVC = view.superview?.parentViewController?.tabBarController {
@@ -115,7 +115,7 @@ extension MyWritingViewController: UICollectionViewDelegateFlowLayout {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offset = max(myWritingCollectionView.contentOffset.y, 0)
         if offset > myWritingCollectionView.contentSize.height - myWritingCollectionView.bounds.size.height,
-           fetchingMore, totalMyWritngs.count < totalWritingCount
+           fetchingMore, myWriting.count < myWritingCount
         {
             fetchingMore = false
             page += 1
