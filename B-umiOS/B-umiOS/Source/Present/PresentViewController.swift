@@ -17,13 +17,14 @@ class PresentViewController: UIViewController {
    
     let titleLabel = UILabel().then {
         $0.font = .nanumSquareFont(type: .extraBold, size: 20)
-        $0.textColor = .header
+        $0.textColor = .white
         $0.text = "미화원의 선물"
     }
 
     let animationView = AnimationView().then {
         $0.animation = Animation.named("present_ios")
         $0.loopMode = .playOnce
+        $0.contentMode = .scaleAspectFill
     }
     
     // MARK: - Properties

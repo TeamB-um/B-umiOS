@@ -26,11 +26,13 @@ class DeletePopUpViewController: UIViewController {
     
     private lazy var titleLabel = UILabel().then {
         $0.textColor = .header
+        $0.text = kind == .separate ? "분리수거함 삭제" : "글 삭제"
         $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 20)
     }
     
     private lazy var guideLabel = UILabel().then {
         $0.numberOfLines = 0
+        $0.text = kind == .separate ? "분리수거함을 삭제하면 글도 모두 지워져요.\n정말 삭제하시겠어요?" : "글을 삭제하시겠습니까?"
         $0.lineSpacing(spacing: 7)
         $0.textAlignment = .center
         $0.font = UIFont.nanumSquareFont(type: .regular, size: 14)
@@ -74,10 +76,7 @@ class DeletePopUpViewController: UIViewController {
 
     init(kind: Kind) {
         self.kind = kind
-        
         super.init(nibName: nil, bundle: nil)
-        titleLabel.text = kind == .separate ? "분리수거함 삭제" : "글 삭제"
-        guideLabel.text = kind == .separate ? "분리수거함을 삭제하면 글도 모두 지워져요.\n정말 삭제하시겠어요?" : "글을 삭제하시겠습니까?"
     }
     
     @available(*, unavailable)
@@ -110,7 +109,7 @@ class DeletePopUpViewController: UIViewController {
         switch kind {
         case .writing:
 //            self.deleteDelegate = self.parentDelegate
-            self.deleteDelegate?.deleteWriting()
+            deleteDelegate?.deleteWriting()
         
         case .separate:
             ActivityIndicator.shared.startLoadingAnimation()

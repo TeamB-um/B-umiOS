@@ -38,7 +38,7 @@ class GraphComponentView: UIView {
             self.circle.tintColor = SeparateStyle.color[color!]
         }
         
-        super.init(frame: .init(x: 0, y: 0, width: 300 * SizeConstants.screenWidth, height: 46 * SizeConstants.screenRatio))
+        super.init(frame: .init(x: 0, y: 0, width: 300 * SizeConstants.screenWidth, height: 1))
         
         setView()
         setConstraints()
@@ -53,7 +53,6 @@ class GraphComponentView: UIView {
     func setView(){
         self.backgroundColor = .background
         self.cornerRound(radius: 10)
-    
     }
     
     func setConstraints(){
@@ -74,10 +73,6 @@ class GraphComponentView: UIView {
         percent.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.trailing.equalToSuperview().inset(10)
-        }
-        
-        self.snp.makeConstraints { make in
-            make.height.equalTo(46 * SizeConstants.screenRatio)
         }
     }
     

@@ -30,16 +30,20 @@ class SeparateGraphPopUpViewController: UIViewController {
         $0.setImage(UIImage.btnCloseBlack, for: .normal)
         $0.addTarget(self, action: #selector(closeView(_:)), for: .touchUpInside)
     }
-    lazy var monthGraphView = GraphView(title: "월간", sub: "한 달 내 카테고리별").then {
-        $0.isHidden = true
-    }
-    lazy var entireGraphView = GraphView(title: "전체", sub: "전체 사용 기간 동안의").then {
-        $0.isHidden = true
-    }
+    
+    var monthGraphView = GraphView(title: "월간", sub: "한 달 내 카테고리별")
+    var entireGraphView = GraphView(title: "전체", sub: "전체 사용 기간 동안의")
     
     var divideLine = UIView().then {
         $0.backgroundColor = .paper1
         $0.isHidden = true
+    }
+    
+    var graphStackView = UIStackView().then {
+        $0.axis = .vertical
+        $0.distribution = .fillEqually
+        $0.spacing = 15 * SizeConstants.screenRatio
+        $0.backgroundColor = .white
     }
     
     // MARK: - Properties
@@ -60,7 +64,6 @@ class SeparateGraphPopUpViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setView()
         setConstraints()
     }
@@ -79,6 +82,9 @@ class SeparateGraphPopUpViewController: UIViewController {
     
     func setView(){
         view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+        graphStackView.addArrangedSubview(monthGraphView)
+        graphStackView.addArrangedSubview(entireGraphView)
+        self.view.bringSubviewToFront(divideLine)
     }
     
     func fetchCategoryGraph(){
@@ -89,32 +95,41 @@ class SeparateGraphPopUpViewController: UIViewController {
             switch result {
             case .success(let response):
                 guard let w = response as? GeneralResponse<GraphResponse> else { return }
-        
+                
+                self.entireGraphView.setGraph(data: w.data?.allstat ?? [])
+                self.monthGraphView.setGraph(data: w.data?.monthstat ?? [])
+                self.divideLine.isHidden = false
+                
                 if(w.data?.allstat.count == 0){
-                    self.entireGraphView.emptyLabel.text = "아직 아무것도 버리지 않았어요!"
-                    self.entireGraphView.emptyLabel.isHidden = false
+                    self.emptyData(self.entireGraphView, "아직 아무것도 버리지 않았어요!")
                 }
                 else{
-                    self.entireGraphView.setGraph(data: w.data?.allstat ?? [])
-                    self.entireGraphView.isHidden = false
+                    self.existData(self.entireGraphView)
                 }
                 
                 if(w.data?.monthstat.count == 0){
-                    self.monthGraphView.emptyLabel.text = "지난달 아무것도 버리지 않았어요!"
-                    self.monthGraphView.emptyLabel.isHidden = false
+                    self.emptyData(self.monthGraphView, "지난달 아무것도 버리지 않았어요!")
                 }
                 else{
-                    self.monthGraphView.setGraph(data: w.data?.monthstat ?? [])
-                    self.monthGraphView.isHidden = false
+                    self.existData(self.monthGraphView)
                 }
-  
-                
-                self.divideLine.isHidden = false
                 
             default:
                 break
             }
             ActivityIndicator.shared.stopLoadingAnimation()
         }
+    }
+    
+    func existData(_ graph : GraphView){
+        graph.verticalStackView.isHidden = false
+        graph.progressBackGroundView.isHidden = false
+        graph.progressView.isHidden = false
+    }
+    
+    func emptyData(_ graph : GraphView, _ text : String){
+        graph.emptyLabel.text = text
+        graph.emptyImage.isHidden = false
+        graph.emptyLabel.isHidden = false
     }
 }

@@ -43,6 +43,7 @@ class GraphView: UIView {
         $0.trackInset = 5
         $0.trackBackgroundColor = .disable
         $0.trackBorderColor = .blue
+        $0.isHidden = true
     }
     
     let verticalStackView = UIStackView().then {
@@ -50,22 +51,24 @@ class GraphView: UIView {
         $0.distribution = .fillEqually
         $0.spacing = 11 * SizeConstants.screenRatio
         $0.backgroundColor = .white
+        $0.isHidden = true
     }
     
     // MARK: - Properties
     
     var graphData: [GraphComponent] = []
     var componentsView: [GraphComponentView] = []
+    var percent = 100
     
     // MARK: - Initializer
     
     init(title: String, sub: String) {
-        super.init(frame: .init(x: 0, y: 0, width: SizeConstants.screenWidth, height: 200))
+        super.init(frame: .init(x: 0, y: 0, width: SizeConstants.screenWidth, height: 100))
         self.backgroundColor = .white
-        
         self.titleLabel.text = "\(title) 그래프"
         self.subLabel.text =  "\(sub) 스트레스 비율입니다"
-
+        self.bringSubviewToFront(emptyLabel)
+        self.bringSubviewToFront(emptyImage)
         setConstraints()
         progressView.dataSource = self
     }
@@ -79,23 +82,22 @@ class GraphView: UIView {
     
     func setConstraints() {
         addSubviews([titleLabel, subLabel, progressBackGroundView, verticalStackView, emptyImage, emptyLabel])
-        
         progressBackGroundView.addSubview(progressView)
         
         titleLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview()
-            make.leading.equalToSuperview().offset(20 * SizeConstants.screenRatio)
+            make.top.equalToSuperview().offset(35 * SizeConstants.screenHeight / 812.0)
+            make.leading.equalToSuperview().offset(20 * SizeConstants.screenHeight / 812.0)
         }
         
         subLabel.snp.makeConstraints { make in
             make.leading.equalTo(titleLabel.snp.leading)
-            make.top.equalTo(titleLabel.snp.bottom).offset(10 * SizeConstants.screenRatio)
+            make.top.equalTo(titleLabel.snp.bottom).offset(10 * SizeConstants.screenHeight / 812.0)
         }
         
         progressBackGroundView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(15 * SizeConstants.screenRatio)
-            make.top.equalTo(subLabel.snp.bottom).offset(19 * SizeConstants.screenRatio)
-            make.height.equalTo(32 * SizeConstants.screenRatio)
+            make.top.equalTo(subLabel.snp.bottom).offset(19 * SizeConstants.screenHeight / 812.0)
+            make.height.equalTo(32 * SizeConstants.screenHeight / 812.0)
         }
         
         progressView.snp.makeConstraints { make in
@@ -103,42 +105,39 @@ class GraphView: UIView {
         }
         
         verticalStackView.snp.makeConstraints { make in
-            make.top.equalTo(progressBackGroundView.snp.bottom).offset(31 * SizeConstants.screenRatio)
+            make.top.equalTo(progressBackGroundView.snp.bottom).offset(31 * SizeConstants.screenHeight / 812.0)
             make.leading.trailing.equalToSuperview().inset(20 * SizeConstants.screenRatio)
-            make.bottom.equalToSuperview()
+            make.bottom.equalToSuperview().inset(35 * SizeConstants.screenHeight / 812.0)
         }
         
         emptyImage.snp.makeConstraints { make in
+            make.top.equalTo(progressView.snp.top)
             make.centerX.equalToSuperview()
-            make.top.equalTo(subLabel.snp.bottom).offset(32 * SizeConstants.screenRatio)
-            make.width.equalTo(120 * SizeConstants.screenRatio)
-            make.height.equalTo(135 * SizeConstants.screenRatio)
+            make.height.equalTo(130 * SizeConstants.screenHeight / 812.0)
         }
-        
+
         emptyLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalTo(emptyImage.snp.bottom)
         }
     }
     
-    var p = 100
     func setStackView() {
-        
+      
         for i in 0 ..< graphData.count{
             if(i == 3 && graphData.count != 4){
-                componentsView.append(GraphComponentView(name: "기타", percent: "\(p)%", color: 8))
+                componentsView.append(GraphComponentView(name: "기타", percent: "\(percent)%", color: 8))
                 break
             }
             componentsView.append(GraphComponentView(name: graphData[i].name, percent: "\(graphData[i].percent)%", color: graphData[i].index))
-            p -= graphData[i].percent
+            percent -= graphData[i].percent
         }
-   
+        
         while(componentsView.count < 4){
             componentsView.append(GraphComponentView(name: nil, percent: nil, color: nil))
         }
         
         for i in 0 ... 1 {
-          
             let horizontalStackView = UIStackView(arrangedSubviews: [componentsView[2*i], componentsView[2*i+1]]).then {
                 $0.alignment = .fill
                 $0.spacing = 11 * SizeConstants.screenRatio

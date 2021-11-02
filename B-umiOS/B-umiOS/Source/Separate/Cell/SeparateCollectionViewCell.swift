@@ -15,7 +15,7 @@ class SeparateCollectionViewCell: UICollectionViewCell {
     }
     
     var separateName = UILabel().then {
-        $0.text = "aa"
+        $0.text = ""
         $0.textColor = .blue3 //변경필요
         $0.textAlignment = .center
         $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 16)
@@ -63,7 +63,8 @@ class SeparateCollectionViewCell: UICollectionViewCell {
         }
         else{
             self.separateName.textColor = SeparateStyle.color[index]
-            self.separateImage.image = UIImage(named: "\(SeparateStyle.image[index])\(count)")
+            let cnt = count <= 5 ? count : 5
+            self.separateImage.image = UIImage(named: "\(SeparateStyle.image[index])\(cnt)")
         }
     }
     

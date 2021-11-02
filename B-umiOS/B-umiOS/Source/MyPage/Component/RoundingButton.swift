@@ -31,8 +31,6 @@ class RoundingButton: UIButton {
     // MARK: - Methods
 
     func setupRoundingButton(title: String, image: String) {
-        let labelSize = buttonTitle.calculateLabelSize(text: title, font: buttonTitle.font)
-
         self.layer.cornerRadius = 16
         self.layer.borderWidth = 1
         self.layer.borderColor = UIColor.disable.cgColor

@@ -14,7 +14,7 @@ extension HomeViewController {
         view.addSubviews([backgroundView, whiteShadowView, dateLabel, guideLabel, arrowImage, trashBinButton, paper1Button, paper2Button, paper3Button, paper4Button, lowLabel, highLabel])
         
         backgroundView.snp.makeConstraints { make in
-            make.top.leading.trailing.bottom.equalToSuperview()
+            make.edges.equalToSuperview()
         }
         
         dateLabel.snp.makeConstraints { make in
@@ -36,7 +36,7 @@ extension HomeViewController {
         
         trashBinButton.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalTo(arrowImage.snp.bottom).offset(59 * SizeConstants.screenRatio)
+            make.top.equalTo(arrowImage.snp.bottom).offset(59 * SizeConstants.screenHeight / 812.0)
             make.width.equalToSuperview().multipliedBy(187.0 / 375.0)
             make.height.equalToSuperview().multipliedBy(0.312)
         }
