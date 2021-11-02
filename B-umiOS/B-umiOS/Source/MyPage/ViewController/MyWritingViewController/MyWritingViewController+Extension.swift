@@ -11,8 +11,7 @@ extension MyWritingViewController: ChangeWritingDataDelegate {
     func changeWitingData(filteredDate: [Writing], count: Int?) {
         page = 1
         myWriting = filteredDate
-        totalMyWritngs = filteredDate
-        totalWritingCount = count ?? 0
+        myWritingCount = count ?? 0
         myWritingCollectionView.reloadData()
     }
     
@@ -25,13 +24,14 @@ extension MyWritingViewController: ChangeWritingDataDelegate {
 
 extension MyWritingViewController: DeleteWritingsDelegate {
     func deleteWriting() {
-        for i in removeData {
-            deleteData.append(myWriting[i].id)
+        for index in removeData {
+            deleteData.append(myWriting[index].id)
         }
-        removeData.forEach { myWriting.remove(at: $0) }
-        removeData = []
-        myWritingCollectionView.reloadData()
+        deleteMyWriting()
+        myWriting = []
+        fetchWriting(page: 1)
         NotificationCenter.default.post(name: Notification.Name.confirmButtonIsUnactive, object: nil)
+        myWritingCollectionView.reloadData()
     }
 }
 
@@ -115,7 +115,7 @@ extension MyWritingViewController: UICollectionViewDelegateFlowLayout {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offset = max(myWritingCollectionView.contentOffset.y, 0)
         if offset > myWritingCollectionView.contentSize.height - myWritingCollectionView.bounds.size.height,
-           fetchingMore, totalMyWritngs.count < totalWritingCount
+           fetchingMore, myWriting.count < myWritingCount
         {
             fetchingMore = false
             page += 1

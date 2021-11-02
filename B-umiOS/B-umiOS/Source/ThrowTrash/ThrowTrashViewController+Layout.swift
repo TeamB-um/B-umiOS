@@ -11,7 +11,7 @@ extension ThrowTrashViewController {
     func setConstraints() {
         navigationView.addSubviews([navigationLabel, backButton])
         explanationView.addSubviews([explanationImage, explanationLabel])
-        view.addSubviews([animationView, backgroudImage, navigationView, explanationView, trash, trashBin, guideLabel])
+        view.addSubviews([backgroudImage, animationView, navigationView, explanationView, trash, trashBin, guideLabel])
         
         backgroudImage.snp.makeConstraints { make in
             make.edges.equalToSuperview()

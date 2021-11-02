@@ -24,6 +24,7 @@ class PresentViewController: UIViewController {
     let animationView = AnimationView().then {
         $0.animation = Animation.named("present_ios")
         $0.loopMode = .playOnce
+        $0.contentMode = .scaleAspectFill
     }
     
     // MARK: - Properties
