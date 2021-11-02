@@ -57,7 +57,7 @@ class MyWritingViewController: UIViewController {
             }
         }
     }
-    
+
     var page = 1
     var myWritingCount = 0
     var removeData: [Int] = []
@@ -71,7 +71,6 @@ class MyWritingViewController: UIViewController {
     // MARK: - Initializer
     
     // MARK: - LifeCycle
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,6 +87,7 @@ class MyWritingViewController: UIViewController {
     // MARK: - Actions
     
     // MARK: - Methods
+
     func setView() {
         categoryID = ""
         startDate = ""
@@ -104,14 +104,14 @@ class MyWritingViewController: UIViewController {
     func resetFilter() {
         NotificationCenter.default.post(name: Notification.Name.categoryIsChanged, object: "")
         
-        if let button = self.view.viewWithTag(2) as? RoundingButton {
-            button.setupRoundingButton(title: "삭제", image:"btnRemove")
+        if let button = view.viewWithTag(2) as? RoundingButton {
+            button.setupRoundingButton(title: "삭제", image: "btnRemove")
             button.isSelected = false
         }
         
         if deleteButtonIsSelected {
             NotificationCenter.default.post(name: NSNotification.Name.deleteButtonIsSelected, object: header.deleteButton.isSelected)
-            self.view.viewWithTag(1)?.isHidden = true
+            view.viewWithTag(1)?.isHidden = true
         }
     }
     
@@ -152,8 +152,7 @@ class MyWritingViewController: UIViewController {
             for (index, item) in deleteData.enumerated() {
                 if index == 0 {
                     query = item
-                }
-                else {
+                } else {
                     query = "\(query),\(item)"
                 }
             }
@@ -203,10 +202,8 @@ class MyWritingViewController: UIViewController {
     }
     
     @objc func deleteButtonClicked(noti: NSNotification) {
-        if let isClicked = noti.object as? Bool {
-            deleteButtonIsSelected.toggle()
-            myWritingCollectionView.reloadData()
-        }
+        deleteButtonIsSelected.toggle()
+        myWritingCollectionView.reloadData()
     }
 }
 
