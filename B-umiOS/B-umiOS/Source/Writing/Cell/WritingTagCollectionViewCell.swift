@@ -61,8 +61,6 @@ class WritingTagCollectionViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         isSelected = false
-        
-        updateConstraint()
     }
     
     // MARK: - Actions
@@ -78,12 +76,6 @@ class WritingTagCollectionViewCell: UICollectionViewCell {
         contentView.addSubviews([tagLabel])
         
         tagLabel.snp.makeConstraints { make in
-            make.center.equalToSuperview()
-        }
-    }
-    
-    func updateConstraint() {
-        tagLabel.snp.updateConstraints { make in
             make.center.equalToSuperview()
         }
     }
