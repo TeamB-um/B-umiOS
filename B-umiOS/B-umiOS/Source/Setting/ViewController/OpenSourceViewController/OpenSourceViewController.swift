@@ -21,7 +21,7 @@ class OpenSourceViewController: UIViewController {
         $0.dataSource = self
         $0.delegate = self
         $0.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 200, right: 0)
-        $0.allowsSelection = false
+        $0.allowsMultipleSelection = false
     }
     
     let navigationView = UIView().then {
@@ -107,4 +107,10 @@ extension OpenSourceViewController: UITableViewDataSource {
     }
 }
 
-extension OpenSourceViewController: UITableViewDelegate {}
+extension OpenSourceViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let url = URL(string: libraries[indexPath.row].link) {
+            UIApplication.shared.open(url, options: [:])
+        }
+    }
+}
