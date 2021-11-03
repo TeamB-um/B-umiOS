@@ -75,9 +75,9 @@ class NetworkErrorPopUpView: UIView {
         addSubviews([errorImage, errorLabel, retryButton])
         
         errorImage.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(120.0 * SizeConstants.screenHeight / 812.0)
-            make.width.equalTo(175 * SizeConstants.screenRatio)
-            make.height.equalTo(290 * SizeConstants.screenHeight / 812.0)
+            make.top.equalToSuperview().offset(190 * SizeConstants.screenHeight / 812.0)
+            make.width.equalTo(257 * SizeConstants.screenRatio)
+            make.height.equalTo(328 * SizeConstants.screenHeight / 812.0)
             make.centerX.equalToSuperview()
         }
         
@@ -134,5 +134,9 @@ class NetworkErrorPopUpView: UIView {
             
             self?.removeFromSuperview()
         }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.endEditing(true)
     }
 }
