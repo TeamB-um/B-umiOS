@@ -95,6 +95,7 @@
 		AB82613E2731331600874688 /* home_selection_wide.json in Resources */ = {isa = PBXBuildFile; fileRef = AB82613D2731331600874688 /* home_selection_wide.json */; };
 		AB826141273159A400874688 /* OpenSourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB826140273159A300874688 /* OpenSourceViewController.swift */; };
 		AB82614427315D6F00874688 /* OpenSourceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB82614327315D6F00874688 /* OpenSourceTableViewCell.swift */; };
+		AB82614627326F0400874688 /* NetworkErrorPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB82614527326F0400874688 /* NetworkErrorPopUpView.swift */; };
 		AB8C3F56269331EF00B2BA30 /* WritingTagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8C3F55269331EF00B2BA30 /* WritingTagCollectionViewCell.swift */; };
 		AB8C3F582693371100B2BA30 /* WritingViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8C3F572693371100B2BA30 /* WritingViewController+Extension.swift */; };
 		AB8C3F5B26935E8600B2BA30 /* WritingViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8C3F5A26935E8600B2BA30 /* WritingViewController+Layout.swift */; };
@@ -237,6 +238,7 @@
 		AB82613D2731331600874688 /* home_selection_wide.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = home_selection_wide.json; path = "../../../../../../../Documents/비움/home_selection_wide.json"; sourceTree = "<group>"; };
 		AB826140273159A300874688 /* OpenSourceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSourceViewController.swift; sourceTree = "<group>"; };
 		AB82614327315D6F00874688 /* OpenSourceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSourceTableViewCell.swift; sourceTree = "<group>"; };
+		AB82614527326F0400874688 /* NetworkErrorPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorPopUpView.swift; sourceTree = "<group>"; };
 		AB8C3F55269331EF00B2BA30 /* WritingTagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingTagCollectionViewCell.swift; sourceTree = "<group>"; };
 		AB8C3F572693371100B2BA30 /* WritingViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WritingViewController+Extension.swift"; sourceTree = "<group>"; };
 		AB8C3F5A26935E8600B2BA30 /* WritingViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WritingViewController+Layout.swift"; sourceTree = "<group>"; };
@@ -759,6 +761,7 @@
 			children = (
 				AB7F6DFB269897CA00EF9C6E /* MyWritingPopUpViewController.swift */,
 				AB7F6DFD2698C6FD00EF9C6E /* DeletePopUpViewController.swift */,
+				AB82614527326F0400874688 /* NetworkErrorPopUpView.swift */,
 			);
 			path = PopUp;
 			sourceTree = "<group>";
@@ -1162,6 +1165,7 @@
 				AB4A7DF026DB7D7100798FC1 /* PresentResponse.swift in Sources */,
 				4FBF7D7226BBD34E00DD9C91 /* MyPageViewController+Layout.swift in Sources */,
 				AB7F6DDF2696BDF300EF9C6E /* WritingPopUpViewController.swift in Sources */,
+				AB82614627326F0400874688 /* NetworkErrorPopUpView.swift in Sources */,
 				FC1D6F23269E0FD60060921E /* RewardService.swift in Sources */,
 				AB7F6E5B269BF7AC00EF9C6E /* HomeViewController+Layout.swift in Sources */,
 				FCAE0985269F759000B91A08 /* CollectionViewLeftAlignFlowLayout.swift in Sources */,

@@ -46,6 +46,16 @@ struct RequestHandler {
                 completion(networkResult)
             case .failure:
                 completion(.serverErr)
+                
+                if NetworkErrorPopUpView.presentedView == nil {
+                    NetworkErrorPopUpView.showInKeyWindow {
+                        requestData(url: url, httpmethod: httpmethod, parameter: parameter, header: header, decodeType: T.self, completion: completion)
+                    }
+                } else {
+                    NetworkErrorPopUpView.appendCompletion {
+                        requestData(url: url, httpmethod: httpmethod, parameter: parameter, header: header, decodeType: T.self, completion: completion)
+                    }
+                }
             }
         }
     }

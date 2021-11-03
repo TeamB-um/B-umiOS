@@ -87,6 +87,13 @@ extension HomeViewController {
             make.top.equalTo(lowLabel.snp.top)
             make.trailing.equalToSuperview().offset(-16.0 * SizeConstants.screenRatio)
         }
+//        
+//        let pop = NetworkErrorPopUpView()
+//        view.addSubview(pop)
+//        
+//        pop.snp.makeConstraints { make in
+//            make.edges.equalToSuperview()
+//        }
     }
     
     func setView() {
