@@ -14,7 +14,8 @@ class HomeViewController: UIViewController {
     // MARK: - UIComponenets
     
     let backgroundView = AnimationView().then {
-        $0.animation = Animation.named("home_ios")
+        $0.animation = Animation.named("home_selection_wide")
+        $0.contentMode = .scaleAspectFill
         $0.loopMode = .playOnce
     }
 

@@ -59,7 +59,7 @@ extension SettingViewController {
             createView(text: "서비스 이용약관", items: [btnLeftButton()]),
             createView(text: "개인정보 처리방침", items: [btnLeftButton()]),
             createView(text: "문의하기", items: [btnLeftButton()]),
-            createView(text: "비움 미화원 소개", items: [btnLeftButton()])
+            createView(text: "오픈소스 라이센스", items: [btnLeftButton()])
         ]
         
         for view in bottomViews{

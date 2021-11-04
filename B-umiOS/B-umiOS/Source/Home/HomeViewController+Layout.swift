@@ -29,7 +29,7 @@ extension HomeViewController {
         
         arrowImage.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalTo(guideLabel.snp.bottom).offset(55 * SizeConstants.screenRatio)
+            make.top.equalTo(guideLabel.snp.bottom).offset(37 * SizeConstants.screenHeight / 812.0)
             make.width.equalToSuperview().multipliedBy(90.0 / 375.0)
             make.height.equalTo(arrowImage.snp.width)
         }
@@ -87,6 +87,13 @@ extension HomeViewController {
             make.top.equalTo(lowLabel.snp.top)
             make.trailing.equalToSuperview().offset(-16.0 * SizeConstants.screenRatio)
         }
+//        
+//        let pop = NetworkErrorPopUpView()
+//        view.addSubview(pop)
+//        
+//        pop.snp.makeConstraints { make in
+//            make.edges.equalToSuperview()
+//        }
     }
     
     func setView() {
@@ -145,7 +152,7 @@ extension HomeViewController {
     
     func reverseArrowAnimate() {
         UIView.animate(withDuration: 1.3, delay: 0, options: [.repeat, .autoreverse]) {
-            self.arrowImage.transform = CGAffineTransform(translationX: 0, y: 40).scaledBy(x: 0.9, y: 0.9)
+            self.arrowImage.transform = CGAffineTransform(translationX: 0, y: 40 * SizeConstants.screenHeight / 812.0).scaledBy(x: 0.9, y: 0.9)
         } completion: { _ in
             self.arrowImage.transform = .identity
         }

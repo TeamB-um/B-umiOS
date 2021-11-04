@@ -5,9 +5,9 @@
 //  Created by inae Lee on 2021/07/02.
 //
 
-import UIKit
-import SafariServices
 import MessageUI
+import SafariServices
+import UIKit
 
 protocol popupDelegate {
     func closeBottomSheet()
@@ -73,32 +73,32 @@ class SettingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setView()
+        self.setView()
         setConstraints()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        setUserInfo()
-        UNUserNotificationCenter.current().getNotificationSettings(completionHandler: myNotificationSettingsCompletionHandler)
+        self.setUserInfo()
+        UNUserNotificationCenter.current().getNotificationSettings(completionHandler: self.myNotificationSettingsCompletionHandler)
     }
     
     // MARK: - Actions
     
     @objc
-    private func touchInside(_ sender: TapGesture){
+    private func touchInside(_ sender: TapGesture) {
         switch sender.identifier {
-        case "분리수거함 관리" :
+        case "분리수거함 관리":
             if let pushVC = self.storyboard?.instantiateViewController(withIdentifier: SettingSeparateViewController.identifier) {
                 self.navigationController?.pushViewController(pushVC, animated: true)
             }
-        case "푸시알림" :
+        case "푸시알림":
             break
         case "서비스 이용약관":
             self.present(SFSafariViewController(url: SettingInfo.serviceURL), animated: true, completion: nil)
-        case "개인정보 처리방침" :
+        case "개인정보 처리방침":
             self.present(SFSafariViewController(url: SettingInfo.personalInfoURL), animated: true, completion: nil)
-        case "문의하기" :
-            if MFMailComposeViewController.canSendMail(){
+        case "문의하기":
+            if MFMailComposeViewController.canSendMail() {
                 let mail = MFMailComposeViewController()
                 mail.mailComposeDelegate = self
                 mail.setToRecipients([SettingInfo.biumEmail])
@@ -106,9 +106,8 @@ class SettingViewController: UIViewController {
 
                 present(mail, animated: true)
             }
-            break
-        case "비움 미화원 소개" :
-            break
+        case "오픈소스 라이센스":
+            self.navigationController?.pushViewController(OpenSourceViewController(), animated: true)
         default:
             break
         }
@@ -142,7 +141,7 @@ class SettingViewController: UIViewController {
     }
     
     func createView(text: String, items: [NSCoding]) -> UIView {
-        let tapGesture = TapGesture(target: self, action: #selector(touchInside(_:)))
+        let tapGesture = TapGesture(target: self, action: #selector(self.touchInside(_:)))
         tapGesture.identifier = text
         
         let newView = UIView().then {
@@ -191,7 +190,7 @@ class SettingViewController: UIViewController {
         self.trashbinPeriodLabel.text = "\(deletePeriod)일"
     }
     
-    func myNotificationSettingsCompletionHandler(settings: UNNotificationSettings) -> Void {
+    func myNotificationSettingsCompletionHandler(settings: UNNotificationSettings) {
         DispatchQueue.main.async {
             self.pushAlarmSwitch.isOn = settings.authorizationStatus == .authorized ? true : false
         }
@@ -218,7 +217,7 @@ extension SettingViewController: popupDelegate {
     }
 }
 
-extension SettingViewController : MFMailComposeViewControllerDelegate {
+extension SettingViewController: MFMailComposeViewControllerDelegate {
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true)
     }
