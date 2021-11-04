@@ -79,10 +79,15 @@ class WritingViewController: UIViewController {
         $0.tintColor = .background
     }
     
-    lazy var paperView = UIImageView().then {
-        $0.image = self.style.paperIamge
-        $0.contentMode = .scaleAspectFill
+    lazy var paperView = UIView().then {
+        $0.backgroundColor = style.color
+        $0.cornerRound(radius: 10)
         $0.isUserInteractionEnabled = true
+    }
+    
+    let paperPiece = UIImageView().then {
+        $0.image = UIImage(named: "imgPaperPiece")
+        $0.contentMode = .scaleAspectFill
     }
     
     lazy var titleTextField = UITextField().then {
