@@ -46,6 +46,7 @@ class SettingSeparateViewController: UIViewController {
     
     lazy var separateTableView = UITableView().then {
         $0.separatorStyle = .none
+        $0.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 150, right: 0)
     }
     
     // MARK: - Properties
