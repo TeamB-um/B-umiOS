@@ -14,7 +14,7 @@ extension SettingSeparateViewController {
         
         navigationView.snp.makeConstraints { make in
             make.top.width.equalToSuperview()
-            make.height.equalTo(SizeConstants.navigationHeight * SizeConstants.screenRatio)
+            make.height.equalTo(SizeConstants.navigationHeight * SizeConstants.screenWidthRatio)
         }
         
         navigationDividerView.snp.makeConstraints { make in
@@ -25,22 +25,22 @@ extension SettingSeparateViewController {
         
         headerLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview().inset(13 * SizeConstants.screenRatio)
+            make.bottom.equalToSuperview().inset(13 * SizeConstants.screenWidthRatio)
         }
         
         backButton.snp.makeConstraints { make in
-            make.leading.equalToSuperview().inset(16 * SizeConstants.screenRatio)
+            make.leading.equalToSuperview().inset(16 * SizeConstants.screenWidthRatio)
             make.centerY.equalTo(headerLabel)
         }
         
         addButton.snp.makeConstraints { make in
-            make.trailing.equalToSuperview().inset(16 * SizeConstants.screenRatio)
+            make.trailing.equalToSuperview().inset(16 * SizeConstants.screenWidthRatio)
             make.centerY.equalTo(headerLabel)
         }
         
         trashbinStatusLabel.snp.makeConstraints { make in
-            make.top.equalTo(navigationDividerView.snp.bottom).offset(16 * SizeConstants.screenRatio)
-            make.leading.equalToSuperview().inset(24 * SizeConstants.screenRatio)
+            make.top.equalTo(navigationDividerView.snp.bottom).offset(16 * SizeConstants.screenWidthRatio)
+            make.leading.equalToSuperview().inset(24 * SizeConstants.screenWidthRatio)
         }
         
         trashbinStatusNumber.snp.makeConstraints { make in

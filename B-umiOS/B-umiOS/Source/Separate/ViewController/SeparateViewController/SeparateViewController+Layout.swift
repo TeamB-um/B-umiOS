@@ -15,17 +15,17 @@ extension SeparateViewController {
         
         navigationView.snp.makeConstraints { make in
             make.top.width.equalToSuperview()
-            make.height.equalTo(SizeConstants.navigationHeight * SizeConstants.screenRatio)
+            make.height.equalTo(SizeConstants.navigationHeight * SizeConstants.screenWidthRatio)
         }
         
         navigationLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview().inset(13 * SizeConstants.screenRatio)
+            make.bottom.equalToSuperview().inset(13 * SizeConstants.screenWidthRatio)
         }
         
         graphButton.snp.makeConstraints { make in
-            make.trailing.equalToSuperview().offset(-8 * SizeConstants.screenRatio)
-            make.width.height.equalTo(36 * SizeConstants.screenRatio)
+            make.trailing.equalToSuperview().offset(-8 * SizeConstants.screenWidthRatio)
+            make.width.height.equalTo(36 * SizeConstants.screenWidthRatio)
             make.centerY.equalTo(navigationLabel)
         }
         

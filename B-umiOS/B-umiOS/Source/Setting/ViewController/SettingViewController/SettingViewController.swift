@@ -159,7 +159,7 @@ class SettingViewController: UIViewController {
         let stackView = UIStackView().then {
             $0.distribution = .fillEqually
             $0.axis = .horizontal
-            $0.spacing = 16 * SizeConstants.screenRatio
+            $0.spacing = 16 * SizeConstants.screenWidthRatio
         }
         
         newView.addSubviews([label, stackView])
@@ -169,11 +169,11 @@ class SettingViewController: UIViewController {
         }
         
         newView.snp.makeConstraints { make in
-            make.height.equalTo(48 * SizeConstants.screenRatio)
+            make.height.equalTo(48 * SizeConstants.screenWidthRatio)
         }
         
         label.snp.makeConstraints { make in
-            make.leading.equalToSuperview().inset(24 * SizeConstants.screenRatio)
+            make.leading.equalToSuperview().inset(24 * SizeConstants.screenWidthRatio)
             make.centerY.equalToSuperview()
         }
         

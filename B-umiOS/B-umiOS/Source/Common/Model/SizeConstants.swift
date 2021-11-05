@@ -10,6 +10,7 @@ import UIKit
 struct SizeConstants {
     static let screenWidth = UIScreen.main.bounds.width
     static let screenHeight = UIScreen.main.bounds.height
-    static let screenRatio = UIScreen.main.bounds.width / 375.0
-    static let navigationHeight = 56 + UIDevice.current.safeAreaInset.top
+    static let screenWidthRatio = screenWidth / 375.0
+    static let screenHeightRatio = screenHeight / 812.0
+    static let navigationHeight = 56.0
 }

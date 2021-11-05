@@ -16,8 +16,8 @@ extension SeparateGraphPopUpViewController {
         popupView.addSubviews([headerLabel, closeButton, graphStackView, divideLine])
         
         popupView.snp.makeConstraints { make in
-            make.top.bottom.equalToSuperview().inset(80 * SizeConstants.screenRatio)
-            make.leading.trailing.equalToSuperview().inset(16 * SizeConstants.screenRatio)
+            make.top.bottom.equalToSuperview().inset(80 * SizeConstants.screenWidthRatio)
+            make.leading.trailing.equalToSuperview().inset(16 * SizeConstants.screenWidthRatio)
         }
         
         backgroundButton.snp.makeConstraints { make in
@@ -26,11 +26,11 @@ extension SeparateGraphPopUpViewController {
         
         headerLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalToSuperview().inset(23 * SizeConstants.screenRatio)
+            make.top.equalToSuperview().inset(23 * SizeConstants.screenWidthRatio)
         }
         
         closeButton.snp.makeConstraints { make in
-            make.trailing.equalToSuperview().inset(7 * SizeConstants.screenRatio)
+            make.trailing.equalToSuperview().inset(7 * SizeConstants.screenWidthRatio)
             make.top.equalToSuperview().inset(7 * SizeConstants.screenHeight / 812.0)
         }
         
@@ -40,7 +40,7 @@ extension SeparateGraphPopUpViewController {
         }
         
         divideLine.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(18 * SizeConstants.screenRatio)
+            make.leading.trailing.equalToSuperview().inset(18 * SizeConstants.screenWidthRatio)
             make.centerY.equalTo(graphStackView)
             make.height.equalTo(1)
         }

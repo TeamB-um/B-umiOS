@@ -14,7 +14,7 @@ class ActivityIndicator {
     let window = UIApplication.shared.windows.first
     
     private var lottieLoading = AnimationView().then {
-        $0.frame = CGRect(origin: .zero, size: CGSize(width: 80 * SizeConstants.screenRatio, height: 80 * SizeConstants.screenRatio))
+        $0.frame = CGRect(origin: .zero, size: CGSize(width: 80 * SizeConstants.screenWidthRatio, height: 80 * SizeConstants.screenWidthRatio))
         $0.animation = Animation.named("loading")
         $0.loopMode = .loop
     }

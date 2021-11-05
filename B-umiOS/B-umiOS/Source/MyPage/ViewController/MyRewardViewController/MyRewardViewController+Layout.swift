@@ -15,7 +15,7 @@ extension MyRewardViewController {
             make.bottom.leading.trailing.equalToSuperview()
         }
         errorView.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(243 * SizeConstants.screenRatio)
+            make.top.equalToSuperview().inset(243 * SizeConstants.screenWidthRatio)
             make.centerX.equalToSuperview()
         }
         

@@ -76,7 +76,7 @@ class NetworkErrorPopUpView: UIView {
         
         errorImage.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(190 * SizeConstants.screenHeight / 812.0)
-            make.width.equalTo(257 * SizeConstants.screenRatio)
+            make.width.equalTo(257 * SizeConstants.screenWidthRatio)
             make.height.equalTo(328 * SizeConstants.screenHeight / 812.0)
             make.centerX.equalToSuperview()
         }
@@ -88,8 +88,8 @@ class NetworkErrorPopUpView: UIView {
         
         retryButton.snp.makeConstraints { make in
             make.top.equalTo(errorLabel.snp.bottom).offset(20)
-            make.width.equalTo(141.0 * SizeConstants.screenRatio)
-            make.height.equalTo(50.0 * SizeConstants.screenRatio)
+            make.width.equalTo(141.0 * SizeConstants.screenWidthRatio)
+            make.height.equalTo(50.0 * SizeConstants.screenWidthRatio)
             make.centerX.equalToSuperview()
         }
     }

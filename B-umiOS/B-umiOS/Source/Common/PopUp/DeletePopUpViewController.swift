@@ -147,34 +147,34 @@ class DeletePopUpViewController: UIViewController {
         popUpView.addSubviews([titleLabel, guideLabel, cancelButton, deleteButton])
         
         popUpView.snp.makeConstraints { make in
-            make.width.equalTo(343 * SizeConstants.screenRatio)
+            make.width.equalTo(343 * SizeConstants.screenWidthRatio)
             make.center.equalToSuperview()
         }
 
         titleLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(32 * SizeConstants.screenRatio)
+            make.top.equalToSuperview().offset(32 * SizeConstants.screenWidthRatio)
             make.centerX.equalToSuperview()
         }
         
         guideLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(10 * SizeConstants.screenRatio)
+            make.top.equalTo(titleLabel.snp.bottom).offset(10 * SizeConstants.screenWidthRatio)
             make.centerX.equalToSuperview()
         }
         
         cancelButton.snp.makeConstraints { make in
-            make.top.equalTo(guideLabel.snp.bottom).offset(30 * SizeConstants.screenRatio).priority(.high)
-            make.leading.equalToSuperview().offset(24 * SizeConstants.screenRatio)
-            make.bottom.equalToSuperview().offset(-28 * SizeConstants.screenRatio)
-            make.width.equalTo(141 * SizeConstants.screenRatio)
-            make.height.equalTo(50 * SizeConstants.screenRatio)
+            make.top.equalTo(guideLabel.snp.bottom).offset(30 * SizeConstants.screenWidthRatio).priority(.high)
+            make.leading.equalToSuperview().offset(24 * SizeConstants.screenWidthRatio)
+            make.bottom.equalToSuperview().offset(-28 * SizeConstants.screenWidthRatio)
+            make.width.equalTo(141 * SizeConstants.screenWidthRatio)
+            make.height.equalTo(50 * SizeConstants.screenWidthRatio)
         }
         
         deleteButton.snp.makeConstraints { make in
             make.top.equalTo(cancelButton.snp.top)
-            make.trailing.equalToSuperview().offset(-24 * SizeConstants.screenRatio)
-            make.bottom.equalToSuperview().offset(-28 * SizeConstants.screenRatio)
-            make.width.equalTo(141 * SizeConstants.screenRatio)
-            make.height.equalTo(50 * SizeConstants.screenRatio)
+            make.trailing.equalToSuperview().offset(-24 * SizeConstants.screenWidthRatio)
+            make.bottom.equalToSuperview().offset(-28 * SizeConstants.screenWidthRatio)
+            make.width.equalTo(141 * SizeConstants.screenWidthRatio)
+            make.height.equalTo(50 * SizeConstants.screenWidthRatio)
         }
     }
     

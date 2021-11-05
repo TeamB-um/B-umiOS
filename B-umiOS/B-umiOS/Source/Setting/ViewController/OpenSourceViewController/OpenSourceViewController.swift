@@ -74,14 +74,14 @@ class OpenSourceViewController: UIViewController {
         }
         
         backButton.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(8 * SizeConstants.screenRatio)
-            make.width.height.equalTo(36 * SizeConstants.screenRatio)
+            make.leading.equalToSuperview().offset(8 * SizeConstants.screenWidthRatio)
+            make.width.height.equalTo(36 * SizeConstants.screenWidthRatio)
             make.bottom.equalToSuperview().offset(-10)
         }
         
         navigationView.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview()
-            make.height.equalTo(SizeConstants.navigationHeight * SizeConstants.screenRatio)
+            make.height.equalTo(SizeConstants.navigationHeight * SizeConstants.screenWidthRatio)
         }
 
         tableView.snp.makeConstraints { make in

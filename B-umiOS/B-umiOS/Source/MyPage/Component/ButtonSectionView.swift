@@ -76,7 +76,7 @@ class ButtonSectionView: UICollectionReusableView {
         
         categoryButtton.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.leading.equalTo(16 * SizeConstants.screenRatio)
+            make.leading.equalTo(16 * SizeConstants.screenWidthRatio)
         }
         
         deleteButton.snp.makeConstraints { make in
@@ -100,7 +100,7 @@ class ButtonSectionView: UICollectionReusableView {
     func updateConstraint() {
         categoryButtton.snp.updateConstraints { make in
             make.centerY.equalToSuperview()
-            make.leading.equalTo(16 * SizeConstants.screenRatio)
+            make.leading.equalTo(16 * SizeConstants.screenWidthRatio)
         }
     }
     

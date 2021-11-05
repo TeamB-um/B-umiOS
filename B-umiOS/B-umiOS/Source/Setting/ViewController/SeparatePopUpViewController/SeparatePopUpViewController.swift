@@ -41,7 +41,7 @@ class SeparatePopUpViewController: UIViewController {
         $0.layer.borderWidth = 1
         $0.layer.cornerRadius = 10
         $0.layer.borderColor = UIColor.paper2.cgColor
-        $0.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10 * SizeConstants.screenRatio, height: self.view.frame.height))
+        $0.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10 * SizeConstants.screenWidthRatio, height: self.view.frame.height))
         $0.leftViewMode = .always
         $0.text = self.trashBin?.name
         $0.addTarget(self, action: #selector(changeTextField(_:)), for: .editingChanged)

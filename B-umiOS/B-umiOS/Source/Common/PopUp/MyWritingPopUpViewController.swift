@@ -127,18 +127,18 @@ class MyWritingPopUpViewController: UIViewController {
         
         popUpView.snp.makeConstraints { make in
             make.center.equalToSuperview()
-            make.width.equalTo(343 * SizeConstants.screenRatio)
-            make.height.equalTo(593 * SizeConstants.screenRatio)
+            make.width.equalTo(343 * SizeConstants.screenWidthRatio)
+            make.height.equalTo(593 * SizeConstants.screenWidthRatio)
         }
         
         closeButton.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(4 * SizeConstants.screenRatio)
-            make.trailing.equalToSuperview().inset(4 * SizeConstants.screenRatio)
-            make.width.height.equalTo(48 * SizeConstants.screenRatio)
+            make.top.equalToSuperview().inset(4 * SizeConstants.screenWidthRatio)
+            make.trailing.equalToSuperview().inset(4 * SizeConstants.screenWidthRatio)
+            make.width.height.equalTo(48 * SizeConstants.screenWidthRatio)
         }
         
         trashBinTagView.snp.makeConstraints { make in
-            make.top.leading.equalToSuperview().offset(24 * SizeConstants.screenRatio)
+            make.top.leading.equalToSuperview().offset(24 * SizeConstants.screenWidthRatio)
             make.width.equalTo(trashBinLabel.snp.width).offset(22)
             make.height.equalTo(trashBinLabel.snp.height).offset(10)
         }
@@ -149,7 +149,7 @@ class MyWritingPopUpViewController: UIViewController {
         
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(trashBinTagView.snp.bottom).offset(15)
-            make.leading.trailing.equalToSuperview().inset(24 * SizeConstants.screenRatio)
+            make.leading.trailing.equalToSuperview().inset(24 * SizeConstants.screenWidthRatio)
         }
         
         dateLabel.snp.makeConstraints { make in
@@ -159,7 +159,7 @@ class MyWritingPopUpViewController: UIViewController {
         
         scrollView.snp.makeConstraints { make in
             make.top.equalTo(dateLabel.snp.bottom).offset(24)
-            make.leading.trailing.equalToSuperview().inset(24 * SizeConstants.screenRatio)
+            make.leading.trailing.equalToSuperview().inset(24 * SizeConstants.screenWidthRatio)
             make.bottom.equalToSuperview().inset(70)
         }
     }

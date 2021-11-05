@@ -16,7 +16,7 @@ extension SettingViewController {
      
         navigationView.snp.makeConstraints { make in
             make.top.width.equalToSuperview()
-            make.height.equalTo(SizeConstants.navigationHeight * SizeConstants.screenRatio)
+            make.height.equalTo(SizeConstants.navigationHeight * SizeConstants.screenWidthRatio)
         }
         
         navigationDividerView.snp.makeConstraints { make in
@@ -27,7 +27,7 @@ extension SettingViewController {
         
         headerLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview().inset(13 * SizeConstants.screenRatio)
+            make.bottom.equalToSuperview().inset(13 * SizeConstants.screenWidthRatio)
         }
         
         topStackView.snp.makeConstraints { make in
@@ -36,13 +36,13 @@ extension SettingViewController {
         }
         
         stackDividerView.snp.makeConstraints { make in
-            make.top.equalTo(topStackView.snp.bottom).offset(15.5 * SizeConstants.screenRatio)
-            make.leading.trailing.equalToSuperview().inset(16 * SizeConstants.screenRatio)
+            make.top.equalTo(topStackView.snp.bottom).offset(15.5 * SizeConstants.screenWidthRatio)
+            make.leading.trailing.equalToSuperview().inset(16 * SizeConstants.screenWidthRatio)
             make.height.equalTo(1)
         }
         
         bottomStackView.snp.makeConstraints { make in
-            make.top.equalTo(stackDividerView.snp.bottom).offset(15.5 * SizeConstants.screenRatio)
+            make.top.equalTo(stackDividerView.snp.bottom).offset(15.5 * SizeConstants.screenWidthRatio)
             make.width.equalToSuperview()
         }
         

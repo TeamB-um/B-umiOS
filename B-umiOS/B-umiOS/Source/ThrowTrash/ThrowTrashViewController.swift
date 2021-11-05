@@ -100,7 +100,7 @@ class ThrowTrashViewController: UIViewController {
         let trailing = (explanationView.frame.width - explanationImage.frame.maxX - explanationLabel.frame.width) / 2.0
 
         explanationLabel.snp.updateConstraints { make in
-            make.trailing.equalToSuperview().offset(-trailing * SizeConstants.screenRatio)
+            make.trailing.equalToSuperview().offset(-trailing * SizeConstants.screenWidthRatio)
         }
     }
     

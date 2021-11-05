@@ -27,7 +27,7 @@ extension FilterBottmSheetViewController {
             make.top.equalToSuperview().offset(10)
             make.width.equalToSuperview().multipliedBy(65.0/375.0)
             make.centerX.equalToSuperview()
-            make.height.equalTo(6 * SizeConstants.screenRatio)
+            make.height.equalTo(6 * SizeConstants.screenWidthRatio)
         }
         confirmButton.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(24)
