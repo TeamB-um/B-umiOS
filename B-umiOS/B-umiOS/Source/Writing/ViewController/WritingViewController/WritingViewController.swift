@@ -79,10 +79,15 @@ class WritingViewController: UIViewController {
         $0.tintColor = .background
     }
     
-    lazy var paperView = UIImageView().then {
-        $0.image = self.style.paperIamge
-        $0.contentMode = .scaleAspectFill
+    lazy var paperView = UIView().then {
+        $0.backgroundColor = style.color
+        $0.cornerRound(radius: 12)
         $0.isUserInteractionEnabled = true
+    }
+    
+    let paperPiece = UIImageView().then {
+        $0.image = UIImage(named: "imgPaperPiece")
+        $0.contentMode = .scaleAspectFill
     }
     
     lazy var titleTextField = UITextField().then {
@@ -246,11 +251,20 @@ class WritingViewController: UIViewController {
                 self.guideLabel.isHidden = self.tag.count != 0
                 self.guideImage.isHidden = self.tag.count != 0
                 self.tagCollectionView.reloadData()
-                self.tagCollectionView.selectItem(at: IndexPath(row: self.tagSelectedIdx, section: 0), animated: false, scrollPosition: .centeredHorizontally)
+                
+                self.updateTagIdx()
+                
+                if !self.tag.isEmpty {
+                    self.tagCollectionView.selectItem(at: IndexPath(row: self.tagSelectedIdx, section: 0), animated: false, scrollPosition: .centeredHorizontally)
+                }
             case .requestErr, .pathErr, .serverErr, .networkFail:
                 print("error")
             }
         }
+    }
+    
+    func updateTagIdx() {
+        tagSelectedIdx = tagSelectedIdx >= tag.count ? 0 : tagSelectedIdx
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
