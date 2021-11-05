@@ -11,7 +11,7 @@ extension WritingViewController {
     func setConstraints() {
         navigationView.addSubviews([navigationLabel, backButton, checkButton])
         paperView.addSubviews([titleTextField, textFieldDividerView, textView])
-        view.addSubviews([navigationView, navigationDividerView, guideImage, guideLabel, tagCollectionView, leftGradientView, righrGradientView, settingButton, paperView])
+        view.addSubviews([navigationView, navigationDividerView, guideImage, guideLabel, tagCollectionView, leftGradientView, righrGradientView, settingButton, paperView, paperPiece])
    
         navigationLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
@@ -81,7 +81,12 @@ extension WritingViewController {
         paperView.snp.makeConstraints { make in
             make.top.equalTo(tagCollectionView.snp.bottom).offset(8)
             make.leading.trailing.equalToSuperview().inset(16 * SizeConstants.screenRatio)
-            make.bottom.equalToSuperview()
+            make.bottom.equalToSuperview().offset(10)
+        }
+        
+        paperPiece.snp.makeConstraints { make in
+            make.top.trailing.equalTo(paperView)
+            make.width.height.equalTo(44 * SizeConstants.screenRatio)
         }
     
         titleTextField.snp.makeConstraints { make in
