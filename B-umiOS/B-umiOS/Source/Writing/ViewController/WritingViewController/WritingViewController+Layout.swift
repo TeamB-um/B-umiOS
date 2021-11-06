@@ -15,19 +15,19 @@ extension WritingViewController {
    
         navigationLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.centerY.equalTo(backButton.snp.centerY)
+            make.bottom.equalToSuperview().offset(-13 * SizeConstants.screenHeightRatio)
         }
         
         backButton.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(8 * SizeConstants.screenWidthRatio)
             make.width.height.equalTo(36 * SizeConstants.screenWidthRatio)
-            make.bottom.equalToSuperview().offset(-10)
+            make.centerY.equalTo(navigationLabel)
         }
         
         checkButton.snp.makeConstraints { make in
             make.trailing.equalToSuperview().offset(-8 * SizeConstants.screenWidthRatio)
             make.width.height.equalTo(36 * SizeConstants.screenWidthRatio)
-            make.bottom.equalToSuperview().offset(-10)
+            make.centerY.equalTo(navigationLabel)
         }
         
         navigationView.snp.makeConstraints { make in

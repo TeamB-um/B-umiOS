@@ -35,6 +35,7 @@ class OpenSourceTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         selectionStyle = .none
+        backgroundColor = .background
         setConstraints()
     }
     
