@@ -32,7 +32,7 @@ extension MyPageViewController: UICollectionViewDelegateFlowLayout {
         let size = calcLabelSize(text: menu[indexPath.row])
 
         if collectionView == myPageMenuCollectionView {
-            return CGSize(width: size.width + 10, height: size.height + 26)
+            return CGSize(width: size.width + 10, height: SizeConstants.navigationHeight - UIDevice.current.safeAreaInset.top)
         }
         let height = UIScreen.main.bounds.height - (size.height + 26 + 3 + view.safeAreaInsets.top)
         return CGSize(width: UIScreen.main.bounds.width, height: floor(height))

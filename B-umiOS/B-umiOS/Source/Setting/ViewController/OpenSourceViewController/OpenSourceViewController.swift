@@ -25,7 +25,11 @@ class OpenSourceViewController: UIViewController {
     }
     
     let navigationView = UIView().then {
-        $0.backgroundColor = .clear
+        $0.backgroundColor = .white
+    }
+    
+    let navigationDividerView = UIView().then {
+        $0.backgroundColor = .paper1
     }
     
     let navigationLabel = UILabel().then {
@@ -66,22 +70,28 @@ class OpenSourceViewController: UIViewController {
     
     func setConstraints() {
         navigationView.addSubviews([navigationLabel, backButton])
-        view.addSubviews([tableView, navigationView])
+        view.addSubviews([tableView, navigationView, navigationDividerView])
         
         navigationLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.centerY.equalTo(backButton.snp.centerY)
+            make.bottom.equalToSuperview().offset(-13 * SizeConstants.screenHeightRatio)
         }
         
         backButton.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(8 * SizeConstants.screenWidthRatio)
             make.width.height.equalTo(36 * SizeConstants.screenWidthRatio)
-            make.bottom.equalToSuperview().offset(-10)
+            make.centerY.equalTo(navigationLabel)
         }
         
         navigationView.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview()
             make.height.equalTo(SizeConstants.navigationHeight * SizeConstants.screenWidthRatio)
+        }
+        
+        navigationDividerView.snp.makeConstraints { make in
+            make.top.equalTo(navigationView.snp.bottom)
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(1)
         }
 
         tableView.snp.makeConstraints { make in

@@ -16,7 +16,7 @@ extension SettingViewController {
      
         navigationView.snp.makeConstraints { make in
             make.top.width.equalToSuperview()
-            make.height.equalTo(SizeConstants.navigationHeight * SizeConstants.screenWidthRatio)
+            make.height.equalTo(SizeConstants.navigationHeight)
         }
         
         navigationDividerView.snp.makeConstraints { make in
