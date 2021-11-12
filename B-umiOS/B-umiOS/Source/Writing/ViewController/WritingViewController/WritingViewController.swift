@@ -14,31 +14,15 @@ protocol WritingPopUpDelegate {
 class WritingViewController: UIViewController {
     // MARK: - UIComponenets
 
-    let navigationView = UIView().then {
-        $0.backgroundColor = .clear
-    }
-    
-    let navigationLabel = UILabel().then {
-        $0.text = "글쓰기"
-        $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 20)
-        $0.textColor = UIColor.header
-    }
-    
-    lazy var backButton = UIButton(type: .custom, primaryAction: UIAction(handler: { [weak self] _ in
+    lazy var navigationView = CustomNavigationBar(title: "글쓰기", backButtonAction: { [weak self] in
         self?.navigationController?.popViewController(animated: true)
-    })).then {
-        $0.setImage(UIImage.btnBack, for: .normal)
-    }
+    })
     
     lazy var checkButton = UIButton().then {
         $0.setImage(UIImage.btnCheck.withRenderingMode(.alwaysTemplate), for: .normal)
         $0.addTarget(self, action: #selector(didTapCheckButton(_:)), for: .touchUpInside)
         $0.tintColor = .disable
         $0.isUserInteractionEnabled = false
-    }
-    
-    var navigationDividerView = UIView().then {
-        $0.backgroundColor = .paper1
     }
     
     lazy var settingButton = UIButton().then {
