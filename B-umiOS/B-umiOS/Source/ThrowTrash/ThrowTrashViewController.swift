@@ -31,6 +31,7 @@ class ThrowTrashViewController: UIViewController {
     var backgroudImage = UIImageView().then {
         $0.image = UIImage(named: "writing_archive_bg")
         $0.contentMode = .scaleAspectFill
+        $0.clipsToBounds = true
     }
     
     lazy var animationView = AnimationView().then {
