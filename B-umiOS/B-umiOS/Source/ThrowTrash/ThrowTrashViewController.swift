@@ -187,7 +187,6 @@ class ThrowTrashViewController: UIViewController {
     }
     
     func createWritingData() {
-        guard trashType == .separate else { return showToast() }
         ActivityIndicator.shared.startLoadingAnimation()
 
         WritingService.shared.createWriting(writing: writing) { response in
