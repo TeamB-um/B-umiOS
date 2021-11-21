@@ -37,7 +37,6 @@ class CustomNavigationBar: UIView {
     }
 
     lazy var backButton = UIButton().then {
-        $0.setImage(UIImage.btnBack, for: .normal)
         $0.addTarget(self, action: #selector(didTapButton(_:)), for: .touchUpInside)
     }
 
@@ -73,6 +72,7 @@ class CustomNavigationBar: UIView {
         self.rightButtonAction = rightButtonAction
 
         rightButton.setImage(rightButtonIcon.icon, for: .normal)
+        backButtonAction == nil ? backButton.setImage(UIImage(), for: .normal) : backButton.setImage(UIImage.btnBack, for: .normal)
 
         setConstraints()
     }
@@ -114,8 +114,6 @@ class CustomNavigationBar: UIView {
 
     @objc
     func didTapButton(_ sender: UIButton) {
-        print("button clicked")
-
         switch sender {
         case backButton:
             if let backButtonAction = backButtonAction {

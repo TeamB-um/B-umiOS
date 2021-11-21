@@ -10,26 +10,14 @@ import UIKit
 class SeparateViewController: UIViewController {
     // MARK: - UIComponenets
     
-    let navigationView = UIView().then {
-        $0.backgroundColor = .white
-    }
+    lazy var navigationView = CustomNavigationBar(title: "분리수거", backButtonAction: nil, rightButtonAction: { [weak self] in
+        let vc = SeparateGraphPopUpViewController()
+        vc.modalTransitionStyle = .crossDissolve
+        vc.modalPresentationStyle = .overCurrentContext
+        self?.tabBarController?.present(vc, animated: true, completion: nil)
+    }, rightButtonIcon: .graph)
     
-    let navigationLabel = UILabel().then {
-        $0.text = "분리수거"
-        $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 20)
-        $0.textColor = UIColor.header
-    }
-    
-    let graphButton = UIButton().then {
-        $0.setImage(UIImage.btnGraph, for: .normal)
-        $0.addTarget(self, action: #selector(didTapGraphButton), for: .touchUpInside)
-    }
-    
-    let navigationDividerView = UIView().then {
-        $0.backgroundColor = .paper1
-    }
-    
-    let separateCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then{
+    let separateCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.sectionHeadersPinToVisibleBounds = true
@@ -62,12 +50,7 @@ class SeparateViewController: UIViewController {
     
     // MARK: - Actions
     
-    @objc func didTapGraphButton(){
-        let vc = SeparateGraphPopUpViewController()
-        vc.modalTransitionStyle = .crossDissolve
-        vc.modalPresentationStyle = .overCurrentContext
-        self.tabBarController?.present(vc, animated: true, completion: nil)
-    }
+//    @objc func didTapGraphButton() {}
     
     // MARK: - Methods
     
@@ -85,8 +68,8 @@ class SeparateViewController: UIViewController {
         separateCollectionView.register(SeperateFooterView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: SeperateFooterView.identifier)
     }
     
-    func setSeperateImage(row : Int, count : Int) -> String {
-        return "seperate\(row+1)_\(count)"
+    func setSeperateImage(row: Int, count: Int) -> String {
+        "seperate\(row + 1)_\(count)"
     }
     
     func fetchCategoriesData() {
