@@ -20,7 +20,7 @@ extension MyPageViewController {
         }
 
         indicatorBarView.snp.makeConstraints { make in
-            make.top.equalTo(myPageMenuCollectionView.snp.bottom)
+            make.bottom.equalTo(myPageMenuCollectionView.snp.bottom)
             make.leading.equalTo(self.view.safeAreaLayoutGuide.snp.leading).offset(myPageMenuCellLineSpacing)
             make.width.equalTo(labelSize.width + 10)
             make.height.equalTo(3)
