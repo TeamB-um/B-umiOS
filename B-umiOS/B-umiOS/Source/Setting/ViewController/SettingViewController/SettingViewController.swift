@@ -17,22 +17,11 @@ protocol popupDelegate {
 class SettingViewController: UIViewController {
     // MARK: - UIComponenets
     
-    var navigationView = UIView().then {
-        $0.backgroundColor = .white
-    }
+    var navigationView = CustomNavigationBar(title: "설정")
     
     var backgroundView = UIView().then {
         $0.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
         $0.frame = CGRect(origin: .zero, size: CGSize(width: SizeConstants.screenWidth, height: SizeConstants.screenHeight))
-    }
-    
-    var headerLabel = UILabel().then {
-        $0.text = "설정"
-        $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 20)
-    }
-    
-    let navigationDividerView = UIView().then {
-        $0.backgroundColor = .paper1
     }
     
     let stackDividerView = UIView().then {

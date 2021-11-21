@@ -201,6 +201,7 @@ class WritingViewController: UIViewController {
     
     func setView() {
         view.backgroundColor = .background
+        navigationView.backgroundColor = .background
     }
     
     func setTextView() {

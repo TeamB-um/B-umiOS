@@ -9,37 +9,22 @@ import UIKit
 
 extension SettingSeparateViewController {
     func setConstraints() {
-        view.addSubviews([navigationView, navigationDividerView, trashbinStatusLabel, trashbinStatusNumber, separateTableView])
-        navigationView.addSubviews([headerLabel, backButton, addButton])
+        view.addSubviews([navigationView, trashbinStatusLabel, trashbinStatusNumber, separateTableView])
+        navigationView.addSubview(addButton)
         
         navigationView.snp.makeConstraints { make in
             make.top.width.equalToSuperview()
-            make.height.equalTo(SizeConstants.navigationHeight * SizeConstants.screenWidthRatio)
-        }
-        
-        navigationDividerView.snp.makeConstraints { make in
-            make.top.equalTo(navigationView.snp.bottom)
-            make.leading.trailing.equalToSuperview()
-            make.height.equalTo(1)
-        }
-        
-        headerLabel.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview().inset(13 * SizeConstants.screenWidthRatio)
-        }
-        
-        backButton.snp.makeConstraints { make in
-            make.leading.equalToSuperview().inset(16 * SizeConstants.screenWidthRatio)
-            make.centerY.equalTo(headerLabel)
+            make.height.equalTo(SizeConstants.navigationHeight)
         }
         
         addButton.snp.makeConstraints { make in
-            make.trailing.equalToSuperview().inset(16 * SizeConstants.screenWidthRatio)
-            make.centerY.equalTo(headerLabel)
+            make.trailing.equalToSuperview().offset(-16 * SizeConstants.screenWidthRatio)
+            make.width.height.equalTo(36 * SizeConstants.screenWidthRatio)
+            make.bottom.equalToSuperview().offset(-10 * SizeConstants.screenHeightRatio)
         }
         
         trashbinStatusLabel.snp.makeConstraints { make in
-            make.top.equalTo(navigationDividerView.snp.bottom).offset(16 * SizeConstants.screenWidthRatio)
+            make.top.equalTo(navigationView.snp.bottom).offset(16 * SizeConstants.screenHeightRatio)
             make.leading.equalToSuperview().inset(24 * SizeConstants.screenWidthRatio)
         }
         

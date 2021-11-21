@@ -15,7 +15,7 @@ extension WritingViewController {
    
         navigationView.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview()
-            make.height.equalTo(SizeConstants.navigationHeight * SizeConstants.screenWidthRatio)
+            make.height.equalTo(SizeConstants.navigationHeight)
         }
         
         checkButton.snp.makeConstraints { make in

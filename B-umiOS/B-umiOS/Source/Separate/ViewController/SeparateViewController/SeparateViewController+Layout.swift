@@ -13,7 +13,7 @@ extension SeparateViewController {
 
         navigationView.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview()
-            make.height.equalTo(SizeConstants.navigationHeight * SizeConstants.screenWidthRatio)
+            make.height.equalTo(SizeConstants.navigationHeight)
         }
 
         separateCollectionView.snp.makeConstraints { make in

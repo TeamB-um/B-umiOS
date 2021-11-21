@@ -74,6 +74,7 @@ class CustomNavigationBar: UIView {
         rightButton.setImage(rightButtonIcon.icon, for: .normal)
         backButtonAction == nil ? backButton.setImage(UIImage(), for: .normal) : backButton.setImage(UIImage.btnBack, for: .normal)
 
+        backgroundColor = .white
         setConstraints()
     }
 
