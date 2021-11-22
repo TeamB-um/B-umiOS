@@ -101,9 +101,9 @@ class TodayPresentPopUpViewController: UIViewController {
         }
         
         closeButton.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(4 * SizeConstants.screenRatio)
-            make.trailing.equalToSuperview().inset(4 * SizeConstants.screenRatio)
-            make.width.height.equalTo(SizeConstants.screenRatio * 48)
+            make.top.equalToSuperview().inset(4 * SizeConstants.screenWidthRatio)
+            make.trailing.equalToSuperview().inset(4 * SizeConstants.screenWidthRatio)
+            make.width.height.equalTo(SizeConstants.screenWidthRatio * 48)
         }
         
         mainLabel.snp.makeConstraints { make in

@@ -110,7 +110,7 @@ class SurprisePopUpViewController: UIViewController {
         view.addSubview(popUpView)
         
         popUpView.snp.makeConstraints {
-            $0.width.equalTo(343 * SizeConstants.screenRatio)
+            $0.width.equalTo(343 * SizeConstants.screenWidthRatio)
             $0.height.equalTo(438).multipliedBy(812.0 / 438.0)
             $0.center.equalToSuperview()
         }
@@ -131,7 +131,7 @@ class SurprisePopUpViewController: UIViewController {
         }
         
         bottomButtonStackView.snp.makeConstraints {
-            $0.leading.trailing.equalTo(popUpView).inset(24 * SizeConstants.screenRatio)
+            $0.leading.trailing.equalTo(popUpView).inset(24 * SizeConstants.screenWidthRatio)
             $0.bottom.equalTo(popUpView).inset(20)
             $0.height.equalTo(50).multipliedBy(812.0 / 50.0)
         }

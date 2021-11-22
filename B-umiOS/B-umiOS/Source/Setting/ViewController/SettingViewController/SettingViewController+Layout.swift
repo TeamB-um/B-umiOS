@@ -8,26 +8,12 @@
 import UIKit
 
 extension SettingViewController {
-    //setConstraint()
-
-    func setConstraints(){
-        view.addSubviews([navigationView, topStackView, bottomStackView, navigationDividerView, stackDividerView])
-        navigationView.addSubview(headerLabel)
+    func setConstraints() {
+        view.addSubviews([navigationView, topStackView, bottomStackView, stackDividerView])
      
         navigationView.snp.makeConstraints { make in
-            make.top.width.equalToSuperview()
-            make.height.equalTo(SizeConstants.navigationHeight * SizeConstants.screenRatio)
-        }
-        
-        navigationDividerView.snp.makeConstraints { make in
-            make.top.equalTo(navigationView.snp.bottom)
-            make.leading.trailing.equalToSuperview()
-            make.height.equalTo(1)
-        }
-        
-        headerLabel.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview().inset(13 * SizeConstants.screenRatio)
+            make.top.leading.trailing.equalToSuperview()
+            make.height.equalTo(SizeConstants.navigationHeight)
         }
         
         topStackView.snp.makeConstraints { make in
@@ -36,13 +22,13 @@ extension SettingViewController {
         }
         
         stackDividerView.snp.makeConstraints { make in
-            make.top.equalTo(topStackView.snp.bottom).offset(15.5 * SizeConstants.screenRatio)
-            make.leading.trailing.equalToSuperview().inset(16 * SizeConstants.screenRatio)
+            make.top.equalTo(topStackView.snp.bottom).offset(15.5 * SizeConstants.screenWidthRatio)
+            make.leading.trailing.equalToSuperview().inset(16 * SizeConstants.screenWidthRatio)
             make.height.equalTo(1)
         }
         
         bottomStackView.snp.makeConstraints { make in
-            make.top.equalTo(stackDividerView.snp.bottom).offset(15.5 * SizeConstants.screenRatio)
+            make.top.equalTo(stackDividerView.snp.bottom).offset(15.5 * SizeConstants.screenWidthRatio)
             make.width.equalToSuperview()
         }
         
@@ -51,7 +37,7 @@ extension SettingViewController {
             createView(text: "푸시알림", items: [pushAlarmSwitch])
         ]
         
-        for view in topViews{
+        for view in topViews {
             topStackView.addArrangedSubview(view)
         }
         
@@ -62,7 +48,7 @@ extension SettingViewController {
             createView(text: "오픈소스 라이센스", items: [btnLeftButton()])
         ]
         
-        for view in bottomViews{
+        for view in bottomViews {
             bottomStackView.addArrangedSubview(view)
         }
     }

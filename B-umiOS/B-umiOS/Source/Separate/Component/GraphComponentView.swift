@@ -59,14 +59,14 @@ class GraphComponentView: UIView {
         self.addSubviews([circle, categoryName, percent])
 
         circle.snp.makeConstraints { make in
-            make.leading.equalToSuperview().inset(10 * SizeConstants.screenRatio)
+            make.leading.equalToSuperview().inset(10 * SizeConstants.screenWidthRatio)
             make.centerY.equalToSuperview()
-            make.height.width.equalTo(10 *  SizeConstants.screenRatio)
+            make.height.width.equalTo(10 *  SizeConstants.screenWidthRatio)
         }
 
         categoryName.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.leading.equalTo(circle.snp.trailing).offset(4 * SizeConstants.screenRatio)
+            make.leading.equalTo(circle.snp.trailing).offset(4 * SizeConstants.screenWidthRatio)
             
         }
 

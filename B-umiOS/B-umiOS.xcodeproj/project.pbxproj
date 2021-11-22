@@ -100,6 +100,7 @@
 		AB8C3F582693371100B2BA30 /* WritingViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8C3F572693371100B2BA30 /* WritingViewController+Extension.swift */; };
 		AB8C3F5B26935E8600B2BA30 /* WritingViewController+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8C3F5A26935E8600B2BA30 /* WritingViewController+Layout.swift */; };
 		AB8C3F5D2695743E00B2BA30 /* NotificationName+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8C3F5C2695743E00B2BA30 /* NotificationName+Extension.swift */; };
+		AB9F72792735A0C500F48D88 /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9F72782735A0C500F48D88 /* CustomNavigationBar.swift */; };
 		AB9F9DF22690997300088502 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9F9DF12690997300088502 /* Date+Extension.swift */; };
 		AB9F9DF426909E2100088502 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9F9DF326909E2100088502 /* UILabel+Extension.swift */; };
 		AB9F9DF72690CD9900088502 /* WritingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9F9DF62690CD9900088502 /* WritingViewController.swift */; };
@@ -243,6 +244,7 @@
 		AB8C3F572693371100B2BA30 /* WritingViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WritingViewController+Extension.swift"; sourceTree = "<group>"; };
 		AB8C3F5A26935E8600B2BA30 /* WritingViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WritingViewController+Layout.swift"; sourceTree = "<group>"; };
 		AB8C3F5C2695743E00B2BA30 /* NotificationName+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationName+Extension.swift"; sourceTree = "<group>"; };
+		AB9F72782735A0C500F48D88 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 		AB9F9DF12690997300088502 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		AB9F9DF326909E2100088502 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		AB9F9DF62690CD9900088502 /* WritingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingViewController.swift; sourceTree = "<group>"; };
@@ -791,6 +793,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		AB9F72772735A09B00F48D88 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				AB9F72782735A0C500F48D88 /* CustomNavigationBar.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
 		AB9F9DF52690CD8100088502 /* Writing */ = {
 			isa = PBXGroup;
 			children = (
@@ -865,6 +875,7 @@
 		ABB24E02268CE1A8006FEE57 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				AB9F72772735A09B00F48D88 /* Navigation */,
 				AB21E3D326A076D200D32EFF /* Indicator */,
 				AB7F6DF92698976900EF9C6E /* PopUp */,
 				4F34E1042693617A00A54336 /* Model */,
@@ -1229,6 +1240,7 @@
 				AB9F9DF72690CD9900088502 /* WritingViewController.swift in Sources */,
 				AB21E3C0269D5FB400D32EFF /* WritingResponse.swift in Sources */,
 				AB7F6DFC269897CA00EF9C6E /* MyWritingPopUpViewController.swift in Sources */,
+				AB9F72792735A0C500F48D88 /* CustomNavigationBar.swift in Sources */,
 				AB21E3B3269D4E8C00D32EFF /* GeneralResponse.swift in Sources */,
 				AB5AF764268A2E84001D3CD1 /* SceneDelegate.swift in Sources */,
 				4F2D1F302697FB2D00D941A1 /* GraphComponentView.swift in Sources */,

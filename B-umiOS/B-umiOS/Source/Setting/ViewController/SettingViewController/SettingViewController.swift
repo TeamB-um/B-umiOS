@@ -17,22 +17,11 @@ protocol popupDelegate {
 class SettingViewController: UIViewController {
     // MARK: - UIComponenets
     
-    var navigationView = UIView().then {
-        $0.backgroundColor = .white
-    }
+    var navigationView = CustomNavigationBar(title: "설정")
     
     var backgroundView = UIView().then {
         $0.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
         $0.frame = CGRect(origin: .zero, size: CGSize(width: SizeConstants.screenWidth, height: SizeConstants.screenHeight))
-    }
-    
-    var headerLabel = UILabel().then {
-        $0.text = "설정"
-        $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 20)
-    }
-    
-    let navigationDividerView = UIView().then {
-        $0.backgroundColor = .paper1
     }
     
     let stackDividerView = UIView().then {
@@ -159,7 +148,7 @@ class SettingViewController: UIViewController {
         let stackView = UIStackView().then {
             $0.distribution = .fillEqually
             $0.axis = .horizontal
-            $0.spacing = 16 * SizeConstants.screenRatio
+            $0.spacing = 16 * SizeConstants.screenWidthRatio
         }
         
         newView.addSubviews([label, stackView])
@@ -169,11 +158,11 @@ class SettingViewController: UIViewController {
         }
         
         newView.snp.makeConstraints { make in
-            make.height.equalTo(48 * SizeConstants.screenRatio)
+            make.height.equalTo(48 * SizeConstants.screenWidthRatio)
         }
         
         label.snp.makeConstraints { make in
-            make.leading.equalToSuperview().inset(24 * SizeConstants.screenRatio)
+            make.leading.equalToSuperview().inset(24 * SizeConstants.screenWidthRatio)
             make.centerY.equalToSuperview()
         }
         

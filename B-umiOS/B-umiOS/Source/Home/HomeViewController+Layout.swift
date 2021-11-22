@@ -19,7 +19,7 @@ extension HomeViewController {
         
         dateLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalTo(self.view.safeAreaLayoutGuide).offset(SizeConstants.screenRatio * 13.0)
+            make.top.equalTo(self.view.safeAreaLayoutGuide).offset(SizeConstants.screenWidthRatio * 13.0)
         }
         
         guideLabel.snp.makeConstraints { make in
@@ -45,29 +45,29 @@ extension HomeViewController {
         let height = 84.5 / width
         
         paper1Button.snp.makeConstraints { make in
-            make.top.equalTo(whiteShadowView.snp.top).offset(67.39 * SizeConstants.screenRatio)
-            make.leading.equalToSuperview().inset(33 * SizeConstants.screenRatio)
+            make.top.equalTo(whiteShadowView.snp.top).offset(67.39 * SizeConstants.screenWidthRatio)
+            make.leading.equalToSuperview().inset(33 * SizeConstants.screenWidthRatio)
             make.width.equalToSuperview().multipliedBy(width)
             make.height.equalTo(84.5).multipliedBy(height)
         }
         
         paper2Button.snp.makeConstraints { make in
-            make.top.equalTo(whiteShadowView.snp.top).offset(24.77 * SizeConstants.screenRatio)
-            make.leading.equalTo(paper1Button.snp.trailing).offset(24.81 * SizeConstants.screenRatio)
+            make.top.equalTo(whiteShadowView.snp.top).offset(24.77 * SizeConstants.screenWidthRatio)
+            make.leading.equalTo(paper1Button.snp.trailing).offset(24.81 * SizeConstants.screenWidthRatio)
             make.width.equalToSuperview().multipliedBy(width)
             make.height.equalTo(84.5).multipliedBy(height)
         }
         
         paper3Button.snp.makeConstraints { make in
             make.top.equalTo(paper2Button.snp.top)
-            make.trailing.equalTo(paper4Button.snp.leading).offset(-24.81 * SizeConstants.screenRatio)
+            make.trailing.equalTo(paper4Button.snp.leading).offset(-24.81 * SizeConstants.screenWidthRatio)
             make.width.equalToSuperview().multipliedBy(width)
             make.height.equalTo(84.5).multipliedBy(height)
         }
         
         paper4Button.snp.makeConstraints { make in
             make.top.equalTo(paper1Button.snp.top)
-            make.trailing.equalToSuperview().inset(33 * SizeConstants.screenRatio)
+            make.trailing.equalToSuperview().inset(33 * SizeConstants.screenWidthRatio)
             make.width.equalToSuperview().multipliedBy(width)
             make.height.equalTo(84.5).multipliedBy(height)
         }
@@ -79,13 +79,13 @@ extension HomeViewController {
         }
         
         lowLabel.snp.makeConstraints { make in
-            make.top.equalTo(whiteShadowView.snp.top).offset(189 * SizeConstants.screenRatio)
-            make.leading.equalToSuperview().offset(16.0 * SizeConstants.screenRatio)
+            make.top.equalTo(whiteShadowView.snp.top).offset(189 * SizeConstants.screenWidthRatio)
+            make.leading.equalToSuperview().offset(16.0 * SizeConstants.screenWidthRatio)
         }
         
         highLabel.snp.makeConstraints { make in
             make.top.equalTo(lowLabel.snp.top)
-            make.trailing.equalToSuperview().offset(-16.0 * SizeConstants.screenRatio)
+            make.trailing.equalToSuperview().offset(-16.0 * SizeConstants.screenWidthRatio)
         }
 //        
 //        let pop = NetworkErrorPopUpView()

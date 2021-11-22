@@ -31,6 +31,7 @@ class ThrowTrashViewController: UIViewController {
     var backgroudImage = UIImageView().then {
         $0.image = UIImage(named: "writing_archive_bg")
         $0.contentMode = .scaleAspectFill
+        $0.clipsToBounds = true
     }
     
     lazy var animationView = AnimationView().then {
@@ -100,7 +101,7 @@ class ThrowTrashViewController: UIViewController {
         let trailing = (explanationView.frame.width - explanationImage.frame.maxX - explanationLabel.frame.width) / 2.0
 
         explanationLabel.snp.updateConstraints { make in
-            make.trailing.equalToSuperview().offset(-trailing * SizeConstants.screenRatio)
+            make.trailing.equalToSuperview().offset(-trailing * SizeConstants.screenWidthRatio)
         }
     }
     
@@ -186,7 +187,6 @@ class ThrowTrashViewController: UIViewController {
     }
     
     func createWritingData() {
-        guard trashType == .separate else { return showToast() }
         ActivityIndicator.shared.startLoadingAnimation()
 
         WritingService.shared.createWriting(writing: writing) { response in

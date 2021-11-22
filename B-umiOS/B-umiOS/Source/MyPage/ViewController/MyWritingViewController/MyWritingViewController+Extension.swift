@@ -96,7 +96,7 @@ extension MyWritingViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        CGSize(width: SizeConstants.screenWidth, height: 72 * SizeConstants.screenRatio)
+        CGSize(width: SizeConstants.screenWidth, height: 72 * SizeConstants.screenWidthRatio)
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {

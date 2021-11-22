@@ -12,8 +12,8 @@ extension MyRewardPopUpViewController {
         
         popUpView.snp.makeConstraints { make in
             make.center.equalToSuperview()
-            make.width.equalTo(343 * SizeConstants.screenRatio)
-            make.height.equalTo(593 * SizeConstants.screenRatio)
+            make.width.equalTo(343 * SizeConstants.screenWidthRatio)
+            make.height.equalTo(593 * SizeConstants.screenWidthRatio)
         }
         
         backgroundImageView.snp.makeConstraints { make in
@@ -21,24 +21,24 @@ extension MyRewardPopUpViewController {
         }
         
         rewardLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(23 * SizeConstants.screenRatio)
+            make.top.equalToSuperview().inset(23 * SizeConstants.screenWidthRatio)
             make.centerX.equalToSuperview()
         }
         
         closeButton.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(4 * SizeConstants.screenRatio)
-            make.trailing.equalToSuperview().inset(4 * SizeConstants.screenRatio)
-            make.width.height.equalTo(48 * SizeConstants.screenRatio)
+            make.top.equalToSuperview().inset(4 * SizeConstants.screenWidthRatio)
+            make.trailing.equalToSuperview().inset(4 * SizeConstants.screenWidthRatio)
+            make.width.height.equalTo(48 * SizeConstants.screenWidthRatio)
         }
         
         dateLabel.snp.makeConstraints { make in
-            make.top.equalTo(rewardLabel.snp.bottom).offset(10 * SizeConstants.screenRatio)
+            make.top.equalTo(rewardLabel.snp.bottom).offset(10 * SizeConstants.screenWidthRatio)
             make.centerX.equalToSuperview()
         }
         
         titleLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(191 * SizeConstants.screenRatio)
-            make.bottom.equalToSuperview().inset(317 * SizeConstants.screenRatio)
+            make.top.equalToSuperview().inset(191 * SizeConstants.screenWidthRatio)
+            make.bottom.equalToSuperview().inset(317 * SizeConstants.screenWidthRatio)
             make.leading.trailing.equalToSuperview().inset(16)
         }
         
@@ -48,15 +48,15 @@ extension MyRewardPopUpViewController {
         }
         
         subRewardLabel.snp.makeConstraints { make in
-            make.top.equalTo(authorLabel.snp.bottom).offset(78 * SizeConstants.screenRatio)
-            make.bottom.equalTo(logoImage.snp.top).offset( -65 * SizeConstants.screenRatio)
-            make.leading.trailing.equalToSuperview().inset(63 * SizeConstants.screenRatio)
+            make.top.equalTo(authorLabel.snp.bottom).offset(78 * SizeConstants.screenWidthRatio)
+            make.bottom.equalTo(logoImage.snp.top).offset( -65 * SizeConstants.screenWidthRatio)
+            make.leading.trailing.equalToSuperview().inset(63 * SizeConstants.screenWidthRatio)
         }
         
         logoImage.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.height.equalTo(19 * SizeConstants.screenRatio)
-            make.bottom.equalToSuperview().inset(28 * SizeConstants.screenRatio)
+            make.height.equalTo(19 * SizeConstants.screenWidthRatio)
+            make.bottom.equalToSuperview().inset(28 * SizeConstants.screenWidthRatio)
         }
     }
 }

@@ -49,7 +49,7 @@ class GraphView: UIView {
     let verticalStackView = UIStackView().then {
         $0.axis = .vertical
         $0.distribution = .fillEqually
-        $0.spacing = 11 * SizeConstants.screenRatio
+        $0.spacing = 11 * SizeConstants.screenWidthRatio
         $0.backgroundColor = .white
         $0.isHidden = true
     }
@@ -95,7 +95,7 @@ class GraphView: UIView {
         }
         
         progressBackGroundView.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(15 * SizeConstants.screenRatio)
+            make.leading.trailing.equalToSuperview().inset(15 * SizeConstants.screenWidthRatio)
             make.top.equalTo(subLabel.snp.bottom).offset(19 * SizeConstants.screenHeight / 812.0)
             make.height.equalTo(32 * SizeConstants.screenHeight / 812.0)
         }
@@ -106,7 +106,7 @@ class GraphView: UIView {
         
         verticalStackView.snp.makeConstraints { make in
             make.top.equalTo(progressBackGroundView.snp.bottom).offset(31 * SizeConstants.screenHeight / 812.0)
-            make.leading.trailing.equalToSuperview().inset(20 * SizeConstants.screenRatio)
+            make.leading.trailing.equalToSuperview().inset(20 * SizeConstants.screenWidthRatio)
             make.bottom.equalToSuperview().inset(35 * SizeConstants.screenHeight / 812.0)
         }
         
@@ -140,7 +140,7 @@ class GraphView: UIView {
         for i in 0 ... 1 {
             let horizontalStackView = UIStackView(arrangedSubviews: [componentsView[2*i], componentsView[2*i+1]]).then {
                 $0.alignment = .fill
-                $0.spacing = 11 * SizeConstants.screenRatio
+                $0.spacing = 11 * SizeConstants.screenWidthRatio
                 $0.axis = .horizontal
                 $0.distribution = .fillEqually
             }

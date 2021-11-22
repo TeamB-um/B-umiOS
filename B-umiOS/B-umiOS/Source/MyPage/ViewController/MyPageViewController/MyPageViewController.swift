@@ -37,6 +37,10 @@ class MyPageViewController: UIViewController {
 
         return view
     }()
+    
+    let navigationDividerView = UIView().then {
+        $0.backgroundColor = .paper1
+    }
 
     lazy var menuSectionCollectionView: UICollectionView = {
         var layout = UICollectionViewFlowLayout()

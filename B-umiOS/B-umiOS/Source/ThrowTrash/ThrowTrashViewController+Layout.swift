@@ -27,37 +27,37 @@ extension ThrowTrashViewController {
         }
         
         backButton.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(8 * SizeConstants.screenRatio)
-            make.width.height.equalTo(36 * SizeConstants.screenRatio)
+            make.leading.equalToSuperview().offset(8 * SizeConstants.screenWidthRatio)
+            make.width.height.equalTo(36 * SizeConstants.screenWidthRatio)
             make.bottom.equalToSuperview().offset(-10)
         }
 
         navigationView.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview()
-            make.height.equalTo(SizeConstants.navigationHeight * SizeConstants.screenRatio)
+            make.height.equalTo(SizeConstants.navigationHeight * SizeConstants.screenWidthRatio)
         }
         
         explanationView.snp.makeConstraints { make in
-            make.top.equalTo(navigationView.snp.bottom).offset(16 * SizeConstants.screenRatio)
-            make.width.equalTo(328.0 * SizeConstants.screenRatio)
+            make.top.equalTo(navigationView.snp.bottom).offset(16 * SizeConstants.screenWidthRatio)
+            make.width.equalTo(328.0 * SizeConstants.screenWidthRatio)
             make.height.equalTo(explanationView.snp.width).multipliedBy(48.0 / 328.0)
             make.centerX.equalToSuperview()
         }
         
         explanationImage.snp.makeConstraints { make in
-            make.width.height.equalTo(24 * SizeConstants.screenRatio)
-            make.leading.equalTo(24 * SizeConstants.screenRatio)
+            make.width.height.equalTo(24 * SizeConstants.screenWidthRatio)
+            make.leading.equalTo(24 * SizeConstants.screenWidthRatio)
             make.centerY.equalToSuperview()
         }
         
         explanationLabel.snp.makeConstraints { make in
-            make.trailing.equalToSuperview().offset(-25 * SizeConstants.screenRatio)
+            make.trailing.equalToSuperview().offset(-25 * SizeConstants.screenWidthRatio)
             make.centerY.equalToSuperview()
         }
         
         trash.snp.makeConstraints { make in
             make.top.equalTo(explanationView.snp.bottom).offset(28 * SizeConstants.screenHeight / 812.0)
-            make.width.height.equalTo(88 * SizeConstants.screenRatio)
+            make.width.height.equalTo(88 * SizeConstants.screenWidthRatio)
             make.centerX.equalToSuperview()
         }
         

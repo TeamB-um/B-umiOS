@@ -42,7 +42,7 @@ class SeparateGraphPopUpViewController: UIViewController {
     var graphStackView = UIStackView().then {
         $0.axis = .vertical
         $0.distribution = .fillEqually
-        $0.spacing = 15 * SizeConstants.screenRatio
+        $0.spacing = 15 * SizeConstants.screenWidthRatio
         $0.backgroundColor = .white
     }
     

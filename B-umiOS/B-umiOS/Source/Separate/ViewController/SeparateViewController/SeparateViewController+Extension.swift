@@ -98,11 +98,11 @@ extension SeparateViewController: UICollectionViewDelegate {
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        CGSize(width: SizeConstants.screenWidth, height: 72 * SizeConstants.screenRatio)
+        CGSize(width: SizeConstants.screenWidth, height: 72 * SizeConstants.screenWidthRatio)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        CGSize(width: SizeConstants.screenWidth, height: 100 * SizeConstants.screenRatio)
+        CGSize(width: SizeConstants.screenWidth, height: 100 * SizeConstants.screenWidthRatio)
     }
 }
 

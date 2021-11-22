@@ -32,9 +32,9 @@ extension MyPageViewController: UICollectionViewDelegateFlowLayout {
         let size = calcLabelSize(text: menu[indexPath.row])
 
         if collectionView == myPageMenuCollectionView {
-            return CGSize(width: size.width + 10, height: size.height + 26)
+            return CGSize(width: size.width + 10, height: SizeConstants.navigationHeight - UIDevice.current.safeAreaInset.top)
         }
-        let height = UIScreen.main.bounds.height - (size.height + 26 + 3 + view.safeAreaInsets.top)
+        let height = UIScreen.main.bounds.height - SizeConstants.navigationHeight
         return CGSize(width: UIScreen.main.bounds.width, height: floor(height))
     }
 }
@@ -85,7 +85,7 @@ extension MyPageViewController: UICollectionViewDataSource {
             }
 
             indicatorBarView.snp.remakeConstraints { make in
-                make.top.equalTo(cell.snp.bottom)
+                make.bottom.equalTo(cell.snp.bottom)
                 make.leading.equalTo(cell.snp.leading)
                 make.width.equalTo(cell.snp.width)
                 make.height.equalTo(3)

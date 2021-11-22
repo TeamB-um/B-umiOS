@@ -10,23 +10,9 @@ import UIKit
 class SettingSeparateViewController: UIViewController {
     // MARK: - UIComponenets
     
-    let navigationView = UIView().then {
-        $0.backgroundColor = .white
-    }
-    
-    let navigationDividerView = UIView().then {
-        $0.backgroundColor = .paper1
-    }
-    
-    let headerLabel = UILabel().then {
-        $0.text = "분리수거함 관리"
-        $0.font = UIFont.nanumSquareFont(type: .extraBold, size: 20)
-    }
-    
-    var backButton = UIButton().then {
-        $0.setImage(UIImage.btnBack, for: .normal)
-        $0.addTarget(self, action: #selector(didTapBackButton(_:)), for: .touchUpInside)
-    }
+    lazy var navigationView = CustomNavigationBar(title: "분리수거함 관리", backButtonAction: { [weak self] in
+        self?.navigationController?.popViewController(animated: true)
+    }, rightButtonAction: nil, rightButtonIcon: .none)
     
     var addButton = UIButton().then {
         $0.setImage(UIImage.btnPlus, for: .normal)

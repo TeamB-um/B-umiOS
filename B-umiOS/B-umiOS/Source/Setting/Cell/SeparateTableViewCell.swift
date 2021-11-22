@@ -89,8 +89,8 @@ class SeparateTableViewCell: UITableViewCell {
         
         seperateName.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.leading.equalToSuperview().inset(24 * SizeConstants.screenRatio)
-            make.top.bottom.equalToSuperview().inset(14 * SizeConstants.screenRatio)
+            make.leading.equalToSuperview().inset(24 * SizeConstants.screenWidthRatio)
+            make.top.bottom.equalToSuperview().inset(14 * SizeConstants.screenWidthRatio)
         }
         
         modifyButton.snp.makeConstraints { make in
@@ -99,7 +99,7 @@ class SeparateTableViewCell: UITableViewCell {
         
         deleteButton.snp.makeConstraints { make in
             make.centerY.equalTo(seperateName)
-            make.trailing.equalToSuperview().inset(24 * SizeConstants.screenRatio)
+            make.trailing.equalToSuperview().inset(24 * SizeConstants.screenWidthRatio)
         }
     }
 }

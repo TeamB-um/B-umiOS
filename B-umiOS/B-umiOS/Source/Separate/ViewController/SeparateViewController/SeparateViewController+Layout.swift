@@ -8,35 +8,16 @@
 import UIKit
 
 extension SeparateViewController {
-    func setConstraints(){
-        view.addSubviews([navigationView, navigationDividerView,separateCollectionView])
-        
-        navigationView.addSubviews([navigationLabel, graphButton])
-        
+    func setConstraints() {
+        view.addSubviews([navigationView, separateCollectionView])
+
         navigationView.snp.makeConstraints { make in
-            make.top.width.equalToSuperview()
-            make.height.equalTo(SizeConstants.navigationHeight * SizeConstants.screenRatio)
+            make.top.leading.trailing.equalToSuperview()
+            make.height.equalTo(SizeConstants.navigationHeight)
         }
-        
-        navigationLabel.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview().inset(13 * SizeConstants.screenRatio)
-        }
-        
-        graphButton.snp.makeConstraints { make in
-            make.trailing.equalToSuperview().offset(-8 * SizeConstants.screenRatio)
-            make.width.height.equalTo(36 * SizeConstants.screenRatio)
-            make.centerY.equalTo(navigationLabel)
-        }
-        
-        navigationDividerView.snp.makeConstraints { make in
-            make.top.equalTo(navigationView.snp.bottom)
-            make.leading.trailing.equalToSuperview()
-            make.height.equalTo(1)
-        }
-        
+
         separateCollectionView.snp.makeConstraints { make in
-            make.top.equalTo(navigationDividerView.snp.bottom)
+            make.top.equalTo(navigationView.snp.bottom)
             make.leading.trailing.bottom.equalToSuperview()
         }
     }
