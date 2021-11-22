@@ -227,7 +227,7 @@ class SeparatePopUpViewController: UIViewController {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             let keyboardHeight = keyboardSize.height
             let space = UIScreen.main.bounds.height / 2 - keyboardHeight + 30
-            print(isHighligtedTextField)
+        
             textField.layer.borderColor = isHighligtedTextField ? UIColor.error.cgColor : UIColor.green2Main.cgColor
             popupView.snp.updateConstraints { make in
                 make.centerY.equalToSuperview().offset(-space)

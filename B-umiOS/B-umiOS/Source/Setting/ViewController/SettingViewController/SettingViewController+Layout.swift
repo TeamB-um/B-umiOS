@@ -22,13 +22,13 @@ extension SettingViewController {
         }
         
         stackDividerView.snp.makeConstraints { make in
-            make.top.equalTo(topStackView.snp.bottom).offset(15.5 * SizeConstants.screenWidthRatio)
+            make.top.equalTo(topStackView.snp.bottom).offset(15.5 * SizeConstants.screenHeightRatio)
             make.leading.trailing.equalToSuperview().inset(16 * SizeConstants.screenWidthRatio)
             make.height.equalTo(1)
         }
         
         bottomStackView.snp.makeConstraints { make in
-            make.top.equalTo(stackDividerView.snp.bottom).offset(15.5 * SizeConstants.screenWidthRatio)
+            make.top.equalTo(stackDividerView.snp.bottom).offset(15.5 * SizeConstants.screenHeightRatio)
             make.width.equalToSuperview()
         }
         
