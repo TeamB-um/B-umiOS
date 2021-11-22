@@ -90,7 +90,7 @@ class SeparateTableViewCell: UITableViewCell {
         seperateName.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.leading.equalToSuperview().inset(24 * SizeConstants.screenWidthRatio)
-            make.top.bottom.equalToSuperview().inset(14 * SizeConstants.screenWidthRatio)
+            make.top.bottom.equalToSuperview().inset(14 * SizeConstants.screenHeightRatio)
         }
         
         modifyButton.snp.makeConstraints { make in

@@ -61,7 +61,7 @@ class GraphComponentView: UIView {
         circle.snp.makeConstraints { make in
             make.leading.equalToSuperview().inset(10 * SizeConstants.screenWidthRatio)
             make.centerY.equalToSuperview()
-            make.height.width.equalTo(10 *  SizeConstants.screenWidthRatio)
+            make.height.width.equalTo(10 *  SizeConstants.screenHeightRatio)
         }
 
         categoryName.snp.makeConstraints { make in

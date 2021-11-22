@@ -83,26 +83,26 @@ class SeparateDetailTableViewCell: UITableViewCell {
     func setConstraints(){
         mainView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(16 * SizeConstants.screenWidthRatio)
-            make.top.bottom.equalToSuperview().inset(8 * SizeConstants.screenWidthRatio)
+            make.top.bottom.equalToSuperview().inset(8 * SizeConstants.screenHeightRatio)
         }
         
         mainView.addSubviews([titleLabel, previewLabel, checkButton])
         
         titleLabel.snp.makeConstraints { make in
             make.leading.equalToSuperview().inset(16 * SizeConstants.screenWidthRatio)
-            make.top.equalToSuperview().inset(17 * SizeConstants.screenWidthRatio)
+            make.top.equalToSuperview().inset(17 * SizeConstants.screenHeightRatio)
             make.trailing.equalToSuperview().inset(40 * SizeConstants.screenWidthRatio)
         }
         
         previewLabel.snp.makeConstraints { make in
             make.leading.equalTo(titleLabel.snp.leading)
-            make.top.equalTo(titleLabel.snp.bottom).offset(18 * SizeConstants.screenWidthRatio)
-            make.bottom.equalToSuperview().inset(18 * SizeConstants.screenWidthRatio)
+            make.top.equalTo(titleLabel.snp.bottom).offset(18 * SizeConstants.screenHeightRatio)
+            make.bottom.equalToSuperview().inset(18 * SizeConstants.screenHeightRatio)
             make.trailing.equalToSuperview().inset(16 * SizeConstants.screenWidthRatio)
         }
         
         checkButton.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(16 * SizeConstants.screenWidthRatio)
+            make.top.equalToSuperview().inset(16 * SizeConstants.screenHeightRatio)
         }
         checkButton.snp.makeConstraints { make in
             make.trailing.equalToSuperview().inset(20 * SizeConstants.screenWidthRatio)

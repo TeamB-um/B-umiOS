@@ -70,10 +70,10 @@ class SeperateHeaderView: UICollectionReusableView {
         
         
         explanationView.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(16 * SizeConstants.screenWidthRatio)
-            make.bottom.equalToSuperview().inset(8 * SizeConstants.screenWidthRatio)
+            make.top.equalToSuperview().inset(16 * SizeConstants.screenHeightRatio)
+            make.bottom.equalToSuperview().inset(8 * SizeConstants.screenHeightRatio)
             make.leading.trailing.equalToSuperview().inset(24 * SizeConstants.screenWidthRatio)
-            make.height.equalTo(48 * SizeConstants.screenWidthRatio)
+            make.height.equalTo(48 * SizeConstants.screenHeightRatio)
         }
         
         seperateImage.snp.makeConstraints { make in

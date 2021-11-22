@@ -71,15 +71,13 @@ class SeparateCollectionViewCell: UICollectionViewCell {
     func setConstraints(){
         self.contentView.addSubviews([separateImage, separateName])
 
-        let screenSize = UIScreen.main.bounds
-        
         separateImage.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview()
             make.height.equalTo(separateImage.snp.width)
         }
         separateName.snp.makeConstraints { make in
             make.leading.trailing.equalTo(separateImage)
-            make.top.equalTo(separateImage.snp.bottom).offset(8 * screenSize.width / 375)
+            make.top.equalTo(separateImage.snp.bottom).offset(8 * SizeConstants.screenHeightRatio)
             make.bottom.equalToSuperview()
         }
     }
