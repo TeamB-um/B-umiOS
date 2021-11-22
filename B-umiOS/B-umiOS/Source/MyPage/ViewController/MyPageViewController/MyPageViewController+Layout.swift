@@ -27,7 +27,7 @@ extension MyPageViewController {
         }
 
         navigationDividerView.snp.makeConstraints { make in
-            make.top.equalTo(indicatorBarView.snp.bottom)
+            make.bottom.equalTo(indicatorBarView.snp.bottom)
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(1)
         }
