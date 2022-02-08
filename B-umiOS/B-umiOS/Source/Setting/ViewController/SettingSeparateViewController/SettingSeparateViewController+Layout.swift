@@ -19,7 +19,8 @@ extension SettingSeparateViewController {
         
         addButton.snp.makeConstraints { make in
             make.trailing.equalToSuperview().offset(-16 * SizeConstants.screenWidthRatio)
-            make.width.height.equalTo(36 * SizeConstants.screenWidthRatio)
+            make.width.equalTo(36 * SizeConstants.screenWidthRatio)
+            make.height.equalTo(36 * SizeConstants.screenHeightRatio)
             make.bottom.equalToSuperview().offset(-10 * SizeConstants.screenHeightRatio)
         }
         

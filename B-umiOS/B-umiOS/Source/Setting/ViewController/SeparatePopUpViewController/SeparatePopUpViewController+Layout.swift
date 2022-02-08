@@ -25,30 +25,30 @@ extension SeparatePopUpViewController {
         
         headerLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalToSuperview().inset(32 * SizeConstants.screenWidthRatio)
+            make.top.equalToSuperview().inset(32 * SizeConstants.screenHeightRatio)
         }
 
         subLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalToSuperview().inset(70 * SizeConstants.screenWidthRatio)
+            make.top.equalToSuperview().inset(70 * SizeConstants.screenHeightRatio)
         }
 
         textField.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(24 * SizeConstants.screenWidthRatio)
             make.top.equalTo(subLabel.snp.bottom).offset(34 * SizeConstants.screenWidthRatio)
-            make.height.equalTo(40 * SizeConstants.screenWidthRatio)
+            make.height.equalTo(40 * SizeConstants.screenHeightRatio)
         }
 
         stackView.snp.makeConstraints { make in
-            make.top.equalTo(textField.snp.bottom).offset(28 * SizeConstants.screenWidthRatio)
+            make.top.equalTo(textField.snp.bottom).offset(28 * SizeConstants.screenHeightRatio)
             make.leading.trailing.equalToSuperview().inset(24 * SizeConstants.screenWidthRatio)
-            make.bottom.equalToSuperview().inset(32 * SizeConstants.screenWidthRatio)
-            make.height.equalTo(50 * SizeConstants.screenWidthRatio)
+            make.bottom.equalToSuperview().inset(32 * SizeConstants.screenHeightRatio)
+            make.height.equalTo(50 * SizeConstants.screenHeightRatio)
         }
         
         textNumberLabel.snp.makeConstraints { make in
             make.centerY.equalTo(textField)
-            make.trailing.equalToSuperview().inset(36)
+            make.trailing.equalToSuperview().inset(36 * SizeConstants.screenWidthRatio)
         }
 
         boilerLabel.snp.makeConstraints { make in

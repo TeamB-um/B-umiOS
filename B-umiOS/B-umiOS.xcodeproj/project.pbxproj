@@ -126,7 +126,7 @@
 		ABB2D67C26C01B0600C1B2C4 /* TodayPresentPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB2D67B26C01B0600C1B2C4 /* TodayPresentPopUpViewController.swift */; };
 		ABCDD61926FA0610009D7127 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = ABCDD61B26FA0610009D7127 /* InfoPlist.strings */; };
 		ABCDD61F26FCB2D9009D7127 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ABCDD61E26FCB2D9009D7127 /* GoogleService-Info.plist */; };
-		D90470B9F7E8AF23705C1BE0 /* Pods_B_umiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4E2F8F4C2D2F39E27D767AD /* Pods_B_umiOS.framework */; };
+		DF56046D071ADA9570C045A5 /* Pods_B_umiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14028CDE5E76852EE437F3B5 /* Pods_B_umiOS.framework */; };
 		FC0541B22690C28200FFA9D1 /* MyPageMenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0541B12690C28200FFA9D1 /* MyPageMenuCollectionViewCell.swift */; };
 		FC0541B62690C6EF00FFA9D1 /* MenuSectionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0541B52690C6EF00FFA9D1 /* MenuSectionCollectionViewCell.swift */; };
 		FC0541B82690C80000FFA9D1 /* MyWritingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0541B72690C80000FFA9D1 /* MyWritingViewController.swift */; };
@@ -146,6 +146,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		14028CDE5E76852EE437F3B5 /* Pods_B_umiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_B_umiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F2D1F2F2697FB2D00D941A1 /* GraphComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphComponentView.swift; sourceTree = "<group>"; };
 		4F2D1F312698B86D00D941A1 /* SettingViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingViewController+Layout.swift"; sourceTree = "<group>"; };
 		4F2D1F34269A1AA700D941A1 /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
@@ -192,8 +193,8 @@
 		4FBF7D9C26BBE26200DD9C91 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4FC8F75C26CA6A40006232A9 /* SeparatePresentPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatePresentPopUpViewController.swift; sourceTree = "<group>"; };
 		4FDF643726A0C3F900E5DC2E /* GraphResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphResponse.swift; sourceTree = "<group>"; };
-		73B9B04593E1E518D0367FB9 /* Pods-B-umiOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-B-umiOS.debug.xcconfig"; path = "Target Support Files/Pods-B-umiOS/Pods-B-umiOS.debug.xcconfig"; sourceTree = "<group>"; };
-		8915108C2B105BF3024CDDCC /* Pods-B-umiOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-B-umiOS.release.xcconfig"; path = "Target Support Files/Pods-B-umiOS/Pods-B-umiOS.release.xcconfig"; sourceTree = "<group>"; };
+		6984F73361D0671834C82F71 /* Pods-B-umiOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-B-umiOS.release.xcconfig"; path = "Target Support Files/Pods-B-umiOS/Pods-B-umiOS.release.xcconfig"; sourceTree = "<group>"; };
+		78994BC5022EDA80498D25D5 /* Pods-B-umiOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-B-umiOS.debug.xcconfig"; path = "Target Support Files/Pods-B-umiOS/Pods-B-umiOS.debug.xcconfig"; sourceTree = "<group>"; };
 		AB0E164A26C40690005133C7 /* 비움(B:um).entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "비움(B:um).entitlements"; sourceTree = "<group>"; };
 		AB21E3A8269CA06900D32EFF /* CompletionMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionMessage.swift; sourceTree = "<group>"; };
 		AB21E3AB269D427400D32EFF /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
@@ -236,7 +237,7 @@
 		AB7F6DFB269897CA00EF9C6E /* MyWritingPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWritingPopUpViewController.swift; sourceTree = "<group>"; };
 		AB7F6DFD2698C6FD00EF9C6E /* DeletePopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletePopUpViewController.swift; sourceTree = "<group>"; };
 		AB7F6E5A269BF7AB00EF9C6E /* HomeViewController+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+Layout.swift"; sourceTree = "<group>"; };
-		AB82613D2731331600874688 /* home_selection_wide.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = home_selection_wide.json; path = "../../../../../../../Documents/비움/home_selection_wide.json"; sourceTree = "<group>"; };
+		AB82613D2731331600874688 /* home_selection_wide.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = home_selection_wide.json; sourceTree = "<group>"; };
 		AB826140273159A300874688 /* OpenSourceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSourceViewController.swift; sourceTree = "<group>"; };
 		AB82614327315D6F00874688 /* OpenSourceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSourceTableViewCell.swift; sourceTree = "<group>"; };
 		AB82614527326F0400874688 /* NetworkErrorPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorPopUpView.swift; sourceTree = "<group>"; };
@@ -271,7 +272,6 @@
 		ABCDD61C26FA062E009D7127 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		ABCDD61D26FA0CB2009D7127 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		ABCDD61E26FCB2D9009D7127 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		C4E2F8F4C2D2F39E27D767AD /* Pods_B_umiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_B_umiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC0541B12690C28200FFA9D1 /* MyPageMenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageMenuCollectionViewCell.swift; sourceTree = "<group>"; };
 		FC0541B52690C6EF00FFA9D1 /* MenuSectionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuSectionCollectionViewCell.swift; sourceTree = "<group>"; };
 		FC0541B72690C80000FFA9D1 /* MyWritingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWritingViewController.swift; sourceTree = "<group>"; };
@@ -295,17 +295,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D90470B9F7E8AF23705C1BE0 /* Pods_B_umiOS.framework in Frameworks */,
+				DF56046D071ADA9570C045A5 /* Pods_B_umiOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1DF1D085958A078AA0789D2A /* Frameworks */ = {
+		0DD4D164E249822A7F3C8E5F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C4E2F8F4C2D2F39E27D767AD /* Pods_B_umiOS.framework */,
+				14028CDE5E76852EE437F3B5 /* Pods_B_umiOS.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -633,8 +633,8 @@
 		6C81B240BDBA40A25B2A405D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				73B9B04593E1E518D0367FB9 /* Pods-B-umiOS.debug.xcconfig */,
-				8915108C2B105BF3024CDDCC /* Pods-B-umiOS.release.xcconfig */,
+				78994BC5022EDA80498D25D5 /* Pods-B-umiOS.debug.xcconfig */,
+				6984F73361D0671834C82F71 /* Pods-B-umiOS.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -701,7 +701,7 @@
 				AB5AF760268A2E84001D3CD1 /* B-umiOS */,
 				AB5AF75F268A2E84001D3CD1 /* Products */,
 				6C81B240BDBA40A25B2A405D /* Pods */,
-				1DF1D085958A078AA0789D2A /* Frameworks */,
+				0DD4D164E249822A7F3C8E5F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1024,11 +1024,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AB5AF772268A2E87001D3CD1 /* Build configuration list for PBXNativeTarget "B-umiOS" */;
 			buildPhases = (
-				78BD4B08D4246A45828B1AF5 /* [CP] Check Pods Manifest.lock */,
+				9E9031258FCFDF62DC813B82 /* [CP] Check Pods Manifest.lock */,
 				AB5AF75A268A2E84001D3CD1 /* Sources */,
 				AB5AF75B268A2E84001D3CD1 /* Frameworks */,
 				AB5AF75C268A2E84001D3CD1 /* Resources */,
-				F53F385FFE99C6889286E8B1 /* [CP] Embed Pods Frameworks */,
+				4E460A51648053371C7A8472 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1106,7 +1106,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		78BD4B08D4246A45828B1AF5 /* [CP] Check Pods Manifest.lock */ = {
+		4E460A51648053371C7A8472 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-B-umiOS/Pods-B-umiOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-B-umiOS/Pods-B-umiOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-B-umiOS/Pods-B-umiOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9E9031258FCFDF62DC813B82 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1126,23 +1143,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F53F385FFE99C6889286E8B1 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-B-umiOS/Pods-B-umiOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-B-umiOS/Pods-B-umiOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-B-umiOS/Pods-B-umiOS-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1422,7 +1422,7 @@
 		};
 		AB5AF773268A2E87001D3CD1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 73B9B04593E1E518D0367FB9 /* Pods-B-umiOS.debug.xcconfig */;
+			baseConfigurationReference = 78994BC5022EDA80498D25D5 /* Pods-B-umiOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1446,7 +1446,7 @@
 		};
 		AB5AF774268A2E87001D3CD1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8915108C2B105BF3024CDDCC /* Pods-B-umiOS.release.xcconfig */;
+			baseConfigurationReference = 6984F73361D0671834C82F71 /* Pods-B-umiOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

@@ -44,6 +44,7 @@ class SeparatePopUpViewController: UIViewController {
         $0.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10 * SizeConstants.screenWidthRatio, height: self.view.frame.height))
         $0.leftViewMode = .always
         $0.text = self.trashBin?.name
+        $0.placeholder = "추가할 분리수거함 이름"
         $0.addTarget(self, action: #selector(changeTextField(_:)), for: .editingChanged)
     }
 
@@ -99,7 +100,7 @@ class SeparatePopUpViewController: UIViewController {
     
     static let identifier = "SeparatePopUpViewController"
     private let limitLength = 6
-    var isHighligtedTextField = true {
+    var isHighligtedTextField = false {
         didSet {
             if isHighligtedTextField {
                 textField.layer.borderColor = UIColor.error.cgColor
@@ -226,8 +227,8 @@ class SeparatePopUpViewController: UIViewController {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             let keyboardHeight = keyboardSize.height
             let space = UIScreen.main.bounds.height / 2 - keyboardHeight + 30
-            
-            textField.layer.borderColor = UIColor.green2Main.cgColor
+        
+            textField.layer.borderColor = isHighligtedTextField ? UIColor.error.cgColor : UIColor.green2Main.cgColor
             popupView.snp.updateConstraints { make in
                 make.centerY.equalToSuperview().offset(-space)
             }
